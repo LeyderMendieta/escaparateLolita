@@ -1,0 +1,101 @@
+/* Essential Grid styles
+----------------------------------------------------------------- */
+body .esgbox-overlay {
+    z-index: 10000 !important;
+}
+.esgbox-wrap,
+.esgbox-opened {
+    z-index: 10002 !important;
+}
+.minimal-light .esg-filterbutton,
+.minimal-light .esg-navigationbutton,
+.minimal-light .esg-sortbutton,
+.minimal-light .esg-cartbutton a {
+    border-radius: 0 !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.1px;
+    line-height: 29px !important;
+    padding: 0 15px !important;
+    text-transform: uppercase;
+    border: 1px solid #ebebeb !important;
+    margin-bottom: 4px !important;
+    margin-right: 4px !important;
+    -webkit-transition: all ease .3s;
+    -moz-transition: all ease .3s;
+    -ms-transition: all ease .3s;
+    -o-transition: all ease .3s;
+    transition: all ease .3s;
+    color: #777777 !important;
+}
+.minimal-light .esg-filters .esg-navigationbutton {
+    font-size: 13px !important;
+    padding: 0 5px !important;
+    width: 39px !important;
+    height: 39px !important;
+    line-height: 39px !important;
+    margin-right: 11px !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-weight: 500 !important;
+}
+.minimal-light .esg-navigationbutton:hover, .minimal-light .esg-filterbutton:hover, .minimal-light .esg-sortbutton:hover, .minimal-light .esg-sortbutton-order:hover, .minimal-light .esg-cartbutton a:hover, .minimal-light .esg-filterbutton.selected {
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    border-color: #141414 !important;
+    color: #141414 !important;
+}
+.minimal-light .esg-navigationbutton {
+    border-color: #777777 !important;
+    color: #777777 !important;
+}
+.esg-grid i {
+    color: inherit !important;
+}
+.esg-loadmore-wrapper .esg-loadmore {
+    border: medium none !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    line-height: 24px !important;
+    padding: 0.7em 1.6em !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+    margin-top: 3.3em;
+}
+
+
+
+.eg-theme-grid-shop-content {
+    min-height: 10.45em !important;
+}
+.eg-theme-grid-shop-wrapper .esg-bc.eec .esg-bottom {
+    width: 50%;
+}
+.eg-theme-grid-shop-wrapper .esg-bc.eec .esg-bottom a {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+}
+.esg-starring .star-rating {
+    font-size: 0.93em;
+    letter-spacing: 0.26em;
+    width: 6.1em;
+}
+.esg-starring .star-rating:before,
+.esg-starring .star-rating span {
+    top: 1px;
+}
+.esg-starring .star-rating:before {
+    content:'\e940\e940\e940\e940\e940';
+    font-family:'fontello';
+    color: #c9c9c9;
+}
+.esg-starring .star-rating span:before {
+    content:'\e940\e940\e940\e940\e940';
+    font-family:'fontello';
+}

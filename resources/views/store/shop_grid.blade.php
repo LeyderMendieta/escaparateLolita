@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js scheme_default">
+    <head>
+        <title>Shop Grid &#8211; Alice&#039;s Lingerie Store</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="format-detection" content="telephone=no">    
+
+        @include('store.layouts.head')
+        <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/essential-grid/public/assets/css/settings.css')}}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/essential-grid/public/assets/css/lightbox.css')}}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{URL::asset('assets/store/css/essential-grid.css')}}" type='text/css' media='all'/>        
+        <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/theme.hovers/theme.hovers.css')}}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/chosen/chosen.min.css')}}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/css/front.css')}}" type='text/css' media='all'/>
+
+    </head>
+    
+    <body class="page-template-default page scheme_default blog_mode_page body_style_wide is_single sidebar_hide expand_content header_position_default menu_style_top no_layout">
+        <div class="body_wrap">
+            <div class="page_wrap">
+                <header class="top_panel top_panel_custom without_bg_image scheme_default">
+                    <div class="column_row sc_layouts_row sc_layouts_row_type_narrow sc_layouts_row_delimiter scheme_dark">
+                        <div class="column-equal-height column-content-middle column-flex">
+                            <div class="container">
+                                <div class="sc_content_width_1_1">
+                                    <div class="column_row">
+                                        <div class="columns_wrap">
+                                            <div class="column_container column-2_3 sc_layouts_column sc_layouts_column_align_left sc_layouts_column_icons_position_left">
+                                                <div class="column-inner">
+                                                    @include('store.layouts.nav-default-1')
+                                                </div>
+                                            </div><div class="column_container column-1_3 sc_layouts_column sc_layouts_column_align_right sc_layouts_column_icons_position_left">
+                                            <div class="column-inner">
+                                                <div class="wrapper">
+                                                    <div class="sc_layouts_item">
+                                                        <div class="sc_layouts_login">
+                                                            <a href="#trx_addons_login_popup" class="trx_addons_popup_link trx_addons_login_link ">
+                                                                <span class="sc_layouts_item_icon sc_layouts_login_icon trx_addons_icon-user-alt">
+                                                                </span>
+                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Login</span>
+                                                            </a>
+                                                        </div>
+                                                    </div><div class="sc_layouts_item">
+                                                    <div class="sc_layouts_currency">
+                                                        <div class="menu_user_currency">
+                                                            <form method="post" action="#" class="woocommerce-currency-switcher-form ">
+                                                                <input type="hidden" name="woocommerce-currency-switcher" value="USD">
+                                                                <div class="select_container">
+                                                                    <select name="woocommerce-currency-switcher w_100per d_none" 
+                                                                            data-width="100%" 
+                                                                            data-flag-position="right" 
+                                                                            class="woocommerce-currency-switcher">
+
+                                                                        <option value="USD" 
+                                                                                selected="selected" 
+                                                                                data-imagesrc="" 
+                                                                                data-icon="" 
+                                                                                data-description="USA dollar">USD, $
+                                                                        </option>
+
+                                                                        <option value="EUR"
+                                                                                data-imagesrc=""
+                                                                                data-icon="" 
+                                                                                data-description="Europian Euro">EUR, €
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div> 
+                                                    </div><div class="sc_layouts_item">
+                                                    <div class="sc_layouts_cart">
+                                                        <span class="sc_layouts_item_icon sc_layouts_cart_icon trx_addons_icon-basket">
+                                                        </span>
+                                                        <span class="sc_layouts_item_details sc_layouts_cart_details">
+                                                            <span class="sc_layouts_item_details_line1 sc_layouts_cart_label">Shopping Cart</span>
+                                                            <span class="sc_layouts_item_details_line2 sc_layouts_cart_totals">
+                                                                <span class="sc_layouts_cart_items">2 items</span>
+                                                                -
+                                                                <span class="sc_layouts_cart_summa">115.00&#36;</span>
+                                                            </span>
+                                                        </span>
+                                                        <span class="sc_layouts_cart_items_short">2</span>
+                                                        <div class="sc_layouts_cart_widget widget_area">
+                                                            <span class="sc_layouts_cart_widget_close trx_addons_icon-cancel">
+                                                            </span>
+                                                            <div class="widget woocommerce widget_shopping_cart">
+                                                                <div class="hide_cart_widget_if_empty">
+                                                                    <div class="widget_shopping_cart_content">
+                                                                        <ul class="cart_list product_list_widget ">
+                                                                            <li class="mini_cart_item">
+                                                                                <a href="#" class="remove" title="Remove this item">×</a>			
+                                                                                <a href="#">
+                                                                                    <img src="images/product-18-180x180.jpg" alt="" >Strapless Bikini Top &amp; Bottom&nbsp;							
+                                                                                </a>
+                                                                                <dl class="variation">
+                                                                                    <dt class="variation-Size">Size:</dt>
+                                                                                    <dd class="variation-Size"><p>M</p></dd>
+                                                                                    <dt class="variation-Color">Color:</dt>
+                                                                                    <dd class="variation-Color"><p>Gentle Peach</p></dd>
+                                                                                </dl>
+                                                                                <span class="quantity">1 × <span class="amount">61.00<span class="woocommerce-Price-currencySymbol">$</span></span>
+                                                                                </span>					
+                                                                            </li>
+                                                                            <li class="mini_cart_item">
+                                                                                <a href="#" class="remove" title="Remove this item">×</a>			
+                                                                                <a href="#">
+                                                                                    <img src="images/product-16-180x180.jpg" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;							
+                                                                                </a>
+                                                                                <dl class="variation">
+                                                                                    <dt class="variation-Size">Size:</dt>
+                                                                                    <dd class="variation-Size"><p>M</p></dd>
+                                                                                    <dt class="variation-Color">Color:</dt>
+                                                                                    <dd class="variation-Color"><p>Gentle Peach</p></dd>
+                                                                                </dl>
+                                                                                <span class="quantity">1 × <span class="amount">54.00<span class="woocommerce-Price-currencySymbol">$</span></span></span>		
+                                                                            </li>
+                                                                        </ul><!-- end product list -->
+                                                                        <p class="total"><strong>Subtotal:</strong> <span class="amount">115.00<span class="woocommerce-Price-currencySymbol">$</span></span></p>
+                                                                        <p class="buttons">
+                                                                            <a href="#" class="button wc-forward sc_button_hover_slide_left">View Cart</a>
+                                                                            <a href="#" class="button checkout wc-forward sc_button_hover_slide_left">Checkout</a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column_row vc_row-has-fill sc_layouts_row sc_layouts_row_type_normal sc_layouts_row_fixed scheme_default bg_light">
+                        <div class="column-equal-height column-content-middle column-flex">
+                            <div class="container">
+                                @include('store.layouts.nav-logo-1')
+                            </div>
+                        </div>
+                    </div>
+                    <div class="empty_space h-1_5em"><span class="empty_space_inner"></span></div>
+                </header>
+                <div class="menu_mobile_overlay"></div>
+                <div class="menu_mobile scheme_dark">
+                    <div class="menu_mobile_inner">
+                        <a class="menu_mobile_close icon-cancel"></a>
+                        <a class="sc_layouts_logo" href="index.html"><img src="images/logo_light.png" alt=""></a>
+                        <nav class="menu_mobile_nav_area">
+                            <ul id="menu_mobile-main-menu" class="">
+                                <li class="menu-item menu-item-has-children">
+                                    <a href="#">
+                                        <span>Home</span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item menu-item-home">
+                                            <a href="index.html">
+                                                <span>Home 1</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="index-2.html">
+                                                <span>Home 2</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="index-3.html">
+                                                <span>Home 3</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="index-4.html">
+                                                <span>Home 4</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children">
+                                    <a href="#">
+                                        <span>About Us</span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a href="about-style-1.html">
+                                                <span>Style 1</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="about-style-2.html">
+                                                <span>Style 2</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children">
+                                    <a href="#">
+                                        <span>Features</span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="#">
+                                                <span>Tools</span>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item">
+                                                    <a href="features-shortcodes.html">
+                                                        <span>Shortcodes</span>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="features-typography.html">
+                                                        <span>Typography</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="#">
+                                                <span>Support</span>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item">
+                                                    <a href="features-support.html">
+                                                        <span>Support</span>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="features-customization.html">
+                                                        <span>Customization</span>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="features-video-tutorials.html">
+                                                        <span>Video Tutorials</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children">
+                                    <a href="#">
+                                        <span>Blog</span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a href="blog-streampage.html">
+                                                <span>Streampage</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="blog-classic-style.html">
+                                                <span>Classic Style</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="#">
+                                                <span>Portfolio Style</span>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item">
+                                                    <a href="blog-classic-2-columns.html">
+                                                        <span>2 Columns</span>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="blog-classic-3-columns.html">
+                                                        <span>3 Columns</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="#">
+                                                <span>Chess Style</span>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item">
+                                                    <a href="blog-chess-2-columns.html">
+                                                        <span>2 Columns</span>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="blog-chess-4-columns.html">
+                                                        <span>4 Columns</span>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="blog-chess-6-columns.html">
+                                                        <span>6 Columns</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children">
+                                    <a href="#">
+                                        <span>Store</span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a href="shop.html">
+                                                <span>WooCommerce</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item current-menu-item">
+                                            <a href="shop-grid.html">
+                                                <span>Ess. Grid Store</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="gallery.html">
+                                        <span>Gallery</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="contacts.html">
+                                        <span>Contacts</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="search_wrap search_style_normal search_mobile">
+                            <div class="search_form_wrap">
+                                <form role="search" method="get" class="search_form" action="#">
+                                    <input type="text" class="search_field" placeholder="Search" value="" name="s">
+                                    <button type="submit" class="search_submit trx_addons_icon-search"></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="socials_mobile">
+                            <span class="social_item">
+                                <a href="#" class="social_icons social_twitter">
+                                    <span class="trx_addons_icon-twitter"></span>
+                                </a>
+                            </span><span class="social_item">
+                            <a href="#" class="social_icons social_facebook">
+                                <span class="trx_addons_icon-facebook"></span>
+                            </a>
+                            </span><span class="social_item">
+                            <a href="#" class="social_icons social_gplus">
+                                <span class="trx_addons_icon-gplus"></span>
+                            </a>
+                            </span><span class="social_item">
+                            <a href="#" class="social_icons social_instagram">
+                                <span class="trx_addons_icon-instagram"></span>
+                            </a>
+                            </span>
+                        </div>	
+                    </div>
+                </div>
+                <div class="page_content_wrap scheme_default">
+                    <div class="content_wrap">
+                        <div class="content">
+                            <article class="post_item_single post_type_page page type-page">
+                                <div class="post_content entry-content">
+                                    <section>
+                                        <div class="content_container">
+                                            <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
+                                                <div class="column-inner">
+                                                    <article class="myportfolio-container minimal-light" id="esg-grid-4-1-wrap">
+                                                        <div id="esg-grid-4-1" class="esg-grid esg-grid_global">
+                                                            <ul>
+                                                                <li class="filterall filter-variable filter-333 filter-bikinis filter-sales filter-sleep-lounge filter-sport filter-swim-wear filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-8.jpg" alt="" width="960" height="1286"></div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button  product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html">Convertible Longline Strapless Corset</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 4 out of 5">
+                                                                                        <span class="w_80per"><strong class="rating">4</strong> out of 5</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code" ><span class="woocommerce-Price-amount amount">39<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">49<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div> 
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-333 filter-bikinis filter-sales filter-sleep-lounge filter-sport filter-swim-wear filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-4.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button  product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Sinfully Yours Soft Silk Bikinis</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 4 out of 5"><span class="w_80per"><strong class="rating">4</strong> out of 5</span></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">14<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">19<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-333 filter-bras filter-highlight filter-pretty-little-world filter-sleep-lounge filter-sport filter-swim-wear filter-lace filter-sexy filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-5.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a>
+                                                                            </div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html"  class="eg-theme-grid-shop-element-28 button add_to_cart_button product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Heart's Desire 2-piece Set</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 3 out of 5"><span class="w_60per "><strong class="rating">3</strong> out of 5</span></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">36<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">45<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-hipsters filter-retro-briefs filter-sales filter-sleep-lounge filter-sport filter-swim-wear filter-bikini filter-briefs filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper" >
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-2.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1"><a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Libertine Obsession High Bikinis</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code" >
+                                                                                    <span class="woocommerce-Price-amount amount">16<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">22<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-bras filter-essentials filter-highlight filter-sexy-intimates filter-sport filter-swim-wear filter-thongs filter-view-all-panties filter-design filter-luxury filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-7.jpg" width="960" height="1286" alt=""  >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button  product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Smolder Lace Triangle Bralette</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 3 out of 5"><span class="w_60per"><strong class="rating">3</strong> out of 5</span></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">79<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">85<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-sales filter-sleep-lounge filter-sport filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-10.jpg" width="961" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button  product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Colette Cotton Soft Night Sleepshirt</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">38<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">44<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-hipsters filter-retro-briefs filter-sport filter-swim-wear filter-thongs filter-lace filter-sexy filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-9.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button  product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Hot Pink Bikini Top Swim Suit</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">22<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">25<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-sales filter-sexy-intimates filter-sport filter-swim-wear filter-bikini filter-briefs filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-6.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom  eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button  product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Fanciful Lace Bikini Panties</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 2 out of 5"><span class="w_40per"><strong class="rating">2</strong> out of 5</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">13<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">16<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-bras filter-highlight filter-panties filter-pretty-little-world filter-sales filter-sexy-intimates filter-sleep-lounge filter-design filter-luxury filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-13.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a>
+                                                                            </div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Illicit Lace &amp; Convertible Demi Teddy</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">70<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">76<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-333 filter-bras filter-bridal filter-essentials filter-highlight filter-hipsters filter-panties filter-pretty-little-world filter-retro-briefs filter-sales filter-sexy-intimates filter-sleep-lounge filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-12.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a>
+                                                                            </div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button  product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Daring Pretty Little Liars Push-Up Bra</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 4 out of 5"><span class="w_80per"><strong class="rating">4</strong> out of 5</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code" ><span class="woocommerce-Price-amount amount">23<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">29<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-bras filter-highlight filter-sales filter-sexy-intimates filter-sleep-lounge filter-lace filter-sexy filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-17.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a>
+                                                                            </div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button  product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Victory Contour Hiphugger &amp; Push Up Bra</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">53<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">56<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-bikinis filter-panties filter-sales filter-sexy-intimates filter-sleep-lounge filter-thongs filter-view-all-panties filter-bikini filter-briefs filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product14.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a>
+                                                                            </div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">3-Piece Garter Belt Lace Strapless Set</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">41<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">47<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-bikinis filter-bras filter-bridal filter-essentials filter-pretty-little-world filter-sexy-intimates filter-design filter-luxury filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper" >
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-15.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Crochet Lace Triangle Bralette</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">79<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">85<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-highlight filter-sales filter-sexy-intimates filter-sleep-lounge filter-sport filter-swim-wear filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-1.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a>
+                                                                            </div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button  product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0 eg-post-360" href="shop-single.html" target="_self">Very Sexy Lace Teddy</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 4 out of 5"><span class="w_80per"><strong class="rating">4</strong> out of 5</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">17<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">20<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-bikinis filter-bras filter-highlight filter-sales filter-sexy-intimates filter-sleep-lounge filter-sport filter-swim-wear filter-bikini filter-briefs filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-18.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a>
+                                                                            </div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button  product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Strapless Bikini Top &amp; Bottom</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 4 out of 5"><span class="w_80per"><strong class="rating">4</strong> out of 5</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">59<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">65<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-333 filter-bras filter-essentials filter-hipsters filter-pretty-little-world filter-sales filter-view-all-panties filter-lace filter-sexy filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-11.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a>
+                                                                            </div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Smooth Raw Cut Hiphugger</a></div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code" ><span class="woocommerce-Price-amount amount">66<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">72<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="filterall filter-variable filter-bikinis filter-bridal filter-highlight filter-retro-briefs filter-sales filter-sexy-intimates filter-thongs filter-bikini filter-briefs filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper" >
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-16.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a>
+                                                                            </div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Sexy Long Line Plunge Bra and Sexy Thong</a></div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code"><span class="woocommerce-Price-amount amount">52<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">58<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li  class="filterall filter-variable filter-bras filter-highlight filter-pretty-little-world filter-sales filter-sexy-intimates filter-sleep-lounge filter-sport filter-swim-wear filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper" >
+                                                                    <div class="esg-media-cover-wrapper">
+                                                                        <div class="esg-entry-media">
+                                                                            <img src="images/product-19.jpg" width="960" height="1286" alt="" >
+                                                                        </div>
+                                                                        <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                            <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
+                                                                                <a class="eg-theme-grid-shop-element-34" href="shop-single.html" target="_self">details</a>
+                                                                            </div>
+                                                                            <div class="esg-bottom eg-theme-grid-shop-element-28-a esg-slideleft" data-delay="0.1">
+                                                                                <a href="shop-single.html" class="eg-theme-grid-shop-element-28 button add_to_cart_button product_type_variable">Buy now</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="esg-entry-content eg-theme-grid-shop-content">
+                                                                            <div class="esg-content eg-theme-grid-shop-element-0-a">
+                                                                                <a class="eg-theme-grid-shop-element-0" href="shop-single.html" target="_self">Halter Bodysuit</a>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-30">
+                                                                                <div class="esg-starring">
+                                                                                    <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="esg-content eg-theme-grid-shop-element-25">
+                                                                                <span class="woocs_price_code" ><span class="woocommerce-Price-amount amount">53<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="woocommerce-Price-amount amount">59<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                            <article class="esg-filters esg-singlefilters mt-15px align_center">
+                                                                <div class="esg-pagination  esg-fgc-4 ml-2_5px mr-2_5px"></div>
+                                                            </article>
+                                                            <div class="esg-clear-no-height"></div>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                            </div>    
+                                        </div>        
+                                    </section>   
+                                    <section>
+                                        <div class="content_container">
+                                            <div class="column-row" data-animation="animated fadeIn slow">
+                                                <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
+                                                    <div class="column-inner">
+                                                        <div class="empty_space h-3em"><span class="empty_space_inner"></span></div>
+                                                        <div class="empty_space hide_on_mobile h-4_2em"><span class="empty_space_inner"></span></div>       <div class="scheme_dark sc_promo sc_promo_default sc_promo_size_large sc_promo_image_position_left">
+                                                            <div class="sc_promo_image bg_promo"></div>
+                                                            <div class="sc_promo_text w_50per f_right">
+                                                                <div class="sc_promo_text_inner sc_align_center bg_pink">
+                                                                    <img class="top_promo_image" src="images/promo.png" alt="">
+                                                                    <h2 class="sc_item_title sc_promo_title sc_align_default sc_item_title_style_default">Back<br />
+                                                                        to<br />
+                                                                        Black</h2>
+                                                                    <div class="sc_item_descr sc_promo_descr sc_align_default">It’s the sultriest
+                                                                        <br /> shade of seduction</div>
+                                                                    <div class="sc_item_button sc_item_button_simple sc_promo_button sc_align_default sc_button_wrap">
+                                                                       <a href="#" class="sc_button sc_button_simple sc_button_size_normal sc_button_icon_left"><span class="sc_button_text"><span class="sc_button_title">shop now</span></span><!-- /.sc_button_text --></a>
+                                                                        <!-- /.sc_button -->
+                                                                    </div>
+                                                                    <!-- /.sc_item_button sc_item_button_simple sc_promo_button sc_align_default -->
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.sc_promo_text -->
+                                                        </div>
+                                                        <!-- /.sc_promo -->
+                                                        <div class="empty_space h_30px"><span class="empty_space_inner"></span></div>
+                                                    </div>
+                                                </div> 
+                                            </div>       
+                                        </div>                      
+                                    </section>
+                                    <section class="margin_on">
+                                        <div class="content_container">
+                                            <div class="column_row">
+                                                <div class="column-equal-height column-content-middle column-flex">
+                                                    <div class="column_container column-7_12 sc_layouts_column_icons_position_left scr_xs">
+                                                        <div class="column-inner mb-20px">
+                                                            <div class="sc_action sc_action_default" data-slides-min-width="250">
+                                                                <div class="sc_action_content sc_item_content">
+                                                                    <div class="sc_action_item sc_action_item_default with_image sc_action_item_tl bg_promo-2">
+                                                                        <div class="sc_action_item_mask"></div>
+                                                                        <div class="sc_action_item_inner">
+                                                                            <h3 class="sc_action_item_title"><span>Sexy Thongs</span></h3>
+                                                                            <div class="sc_action_item_description"><span>fun and flirty pieces for a<br/></span><span>seamless look</span></div><a href="#" class="sc_action_item_link">browse</a>
+                                                                        </div>
+                                                                        <!-- /.sc_action_item_inner -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.sc_action -->    
+                                                        </div>
+                                                    </div><div class="extra_height column_container column-5_12 sc_layouts_column_icons_position_left scr_xs">
+                                                        <div class="column-inner bg_banner">
+                                                            <div class="text_column bg_white_with_spaces">
+                                                                <h2 class="fsz_2em m_0 fw_400 align_center"><a href="#"><b><span class="accent">Free Shipping</span></b><br />
+                                                                    on all orders<br />
+                                                                    over $75!</a>
+                                                                </h2>    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <!-- .entry-content -->
+                            </article>
+                        </div>
+                        <!-- </.content> -->
+                    </div>
+                    <!-- </.content_wrap> -->
+                </div>
+                <!-- </.page_content_wrap> -->
+                
+                <footer class="footer_wrap footer_custom scheme_default">
+                    <div class="column_row sc_layouts_row sc_layouts_row_type_normal">
+                        <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
+                            <div class="column-inner bg_light">
+                                <div class="text_column">
+                                    <div class="empty_space hide_on_mobile h-3_5em" ><span class="empty_space_inner"></span></div>
+                                    <div class="empty_space h-4em" ><span class="empty_space_inner"></span></div>
+                                    <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">
+                                        <div class="sc_content_container">
+                                            <section class="cta3-container">
+                                                <div class="general cta3 cta3-style-classic cta3-shape-square cta3-align-left cta3-color-classic cta3-icon-size-md cta3-actions-right brd-3px_red">
+                                                    <div class="cta3_content-container">
+                                                        <div class="cta3-content">
+                                                            <div class="cta3-content-header">
+                                                                <h2>Let’s Stay Connected!</h2>									
+                                                            </div>
+                                                            <p>Sign up today for our newsletter and receive <em>15% OFF</em> your first purchase, and also get our sneak peeks, tips, and exclusive offers.</p>
+                                                        </div>
+                                                        <div class="cta3-actions">
+                                                            <div class="btn3-container btn3-inline">
+                                                                <a class="general btn3 btn3-size-md btn3-shape-square btn3-style-classic btn3-color-grey" href="#" title="">sign up</a>
+                                                            </div>
+                                                        </div>		
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                    <!-- /.sc_content -->
+                                    <div class="empty_space h-2em" ><span class="empty_space_inner"></span></div>
+                                    
+                                    <!-- /.sc_content -->
+                                    <div class="empty_space h-2_2em" ><span class="empty_space_inner"></span></div>
+                                    <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">
+                                        <div class="sc_content_container">
+                                            <div class="text_column">
+                                                <div class="widget widget_text">			
+                                                    <div class="textwidget">
+                                                        <div class="fsz_13px fw_400">&copy;2017 Alice’s Lingerie Store. All Rights Reserved. <a href="#" >Terms of use</a> and <a href="#">Privacy Policy</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.sc_content -->
+                                    <div class="empty_space h-3_2em" ><span class="empty_space_inner"></span></div>
+                                    <div class="empty_space  hide_on_mobile h-3em"><span class="empty_space_inner"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- /.footer_wrap -->
+            </div>
+            <!-- /.page_wrap -->
+        </div>
+        <!-- /.body_wrap -->
+
+        <div id="trx_addons_login_popup" class="trx_addons_popup trx_addons_tabs mfp-hide">
+            <ul class="trx_addons_tabs_titles">
+                <li class="trx_addons_tabs_title trx_addons_tabs_title_login">
+                    <a href="#trx_addons_login_content"><i class="trx_addons_icon-lock-open"></i>Login</a>
+                </li><li class="trx_addons_tabs_title trx_addons_tabs_title_register" data-disabled="true">
+                <a href="#trx_addons_register_content"><i class="trx_addons_icon-user-plus"></i>Register</a>
+                </li>
+            </ul>	
+            <div id="trx_addons_login_content" class="trx_addons_tabs_content trx_addons_login_content">
+                <div>
+                    <div class="trx_addons_popup_form_wrap trx_addons_popup_form_wrap_login">
+                        <form class="trx_addons_popup_form trx_addons_popup_form_login sc_input_hover_iconed" action="#" method="post" name="trx_addons_login_form">
+                            <input type="hidden" id="redirect_to" name="redirect_to" value="">
+                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_login">
+                                <label class="sc_form_field sc_form_field_log required">
+                                    <span class="sc_form_field_wrap"><input type="text" name="log" id="log" value="" >
+                                        <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-user-alt"></i>
+                                            <span class="sc_form_field_content" data-content="Login">Login</span>
+                                        </span>	
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_password">
+                                <label class="sc_form_field sc_form_field_pwd required">
+                                    <span class="sc_form_field_wrap"><input type="password" name="pwd" id="pwd" value="" >
+                                        <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-lock"></i>
+                                            <span class="sc_form_field_content" data-content="Password">Password</span>
+                                        </span>	
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_remember">
+                                <a href="#" class="trx_addons_popup_form_field_forgot_password">Forgot password?</a>
+                                <input type="checkbox" value="forever" id="rememberme" name="rememberme">
+                                <label for="rememberme"> Remember me</label>
+                            </div>
+                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_submit">
+                                <input type="submit" class="submit_button" value="Login">
+                            </div>
+                            <div class="trx_addons_message_box sc_form_result"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @include('store.layouts.foot')
+        <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/skip-link-focus-fix.js')}}"></script>
+        <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/essential-grid/public/assets/js/lightbox.js')}}"></script>
+        <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/essential-grid/public/assets/js/jquery.themepunch.tools.min.js')}}"></script>
+        <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/essential-grid/public/assets/js/jquery.themepunch.essential.js')}}"></script>
+        <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/theme.hovers/theme.hovers.js')}}"></script>
+        <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/chosen/chosen.jquery.min.js')}}"></script>
+        <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/front.js')}}"></script>        
+        
+        <a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>
+    </body>
+</html>
