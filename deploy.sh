@@ -1,3 +1,3 @@
 # Run Database Migrations
-php artisas migrate
+php artisan migrate
 
