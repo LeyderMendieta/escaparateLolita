@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('store.home');
 });
+Route::get('/home', function () {
+    return view('store.home');
+});
 Route::get('/about', function () {
     return view('store.about');
 });

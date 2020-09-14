@@ -23,7 +23,7 @@
                         <ul id="menu-main-menu" class="sc_layouts_menu_nav">
                             <li class="menu-item menu-item-has-children">
                                 <li class="menu-item">
-                                    <a href="/">
+                                    <a href="{{ url('/' . $page='home') }}">
                                         <span>Home</span>
                                     </a>
                                 </li>
