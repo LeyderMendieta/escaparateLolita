@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="yes-js js_active js scheme_default">
     <head>
-        <title>Alice&#039;s Lingerie Store</title>
+        <title>El Escaparate de Lolita</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="format-detection" content="telephone=no">
@@ -148,8 +148,8 @@
                                                 <div class="column-inner">
                                                     <div class="sc_layouts_item">
                                                         <!-- .sc_layouts_logo -->
-                                                        <a href="index.html" class="sc_layouts_logo sc_layouts_logo_default">
-                                                            <img class="logo_image" src="{{URL::asset('assets/store/images/logo_large.png')}}" alt="" >
+                                                        <a href="#" class="sc_layouts_logo sc_layouts_logo_default">
+                                                            <img class="logo_image" src="{{URL::asset('assets/store/images/logo.svg')}}" alt="" >
                                                         </a>
                                                         <!-- /.sc_layouts_logo -->
                                                     </div>

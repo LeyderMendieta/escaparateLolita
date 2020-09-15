@@ -59,7 +59,7 @@
                                                                             <li class="mini_cart_item">
                                                                                 <a href="#" class="remove" title="Remove this item">×</a>			
                                                                                 <a href="#">
-                                                                                    <img src="images/product-18-180x180.jpg" alt="" >Strapless Bikini Top &amp; Bottom&nbsp;							
+                                                                                    <img src="{{URL::asset('assets/store/images/product-18-180x180.jpg')}}" alt="" >Strapless Bikini Top &amp; Bottom&nbsp;							
                                                                                 </a>
                                                                                 <dl class="variation">
                                                                                     <dt class="variation-Size">Size:</dt>
@@ -73,7 +73,7 @@
                                                                             <li class="mini_cart_item">
                                                                                 <a href="#" class="remove" title="Remove this item">×</a>			
                                                                                 <a href="#">
-                                                                                    <img src="images/product-16-180x180.jpg" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;							
+                                                                                    <img src="{{URL::asset('assets/store/images/product-16-180x180.jpg')}}" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;							
                                                                                 </a>
                                                                                 <dl class="variation">
                                                                                     <dt class="variation-Size">Size:</dt>
@@ -161,7 +161,7 @@
                 <div class="menu_mobile scheme_dark">
                     <div class="menu_mobile_inner">
                         <a class="menu_mobile_close icon-cancel"></a>
-                        <a class="sc_layouts_logo" href="index.html"><img src="images/logo_light.png" alt=""></a>
+                        <a class="sc_layouts_logo" href="index.html"><img src="{{URL::asset('assets/store/images/logo_light.png')}}" alt=""></a>
                         @include('store.layouts.nav-mobile-menu')
                         <div class="search_wrap search_style_normal search_mobile">
                             <div class="search_form_wrap">
@@ -220,7 +220,7 @@
                                                         <div class="widget_area sc_widget_video">
                                                             <aside class="widget widget_video">
                                                                 <div class="trx_addons_video_player with_cover hover_play">
-                                                                    <img src="images/video-870x490.jpg" alt="" width="870" height="490">
+                                                                    <img src="{{URL::asset('assets/store/images/video-870x490.jpg')}}" alt="" width="870" height="490">
                                                                     <div class="video_mask"></div>
                                                                     <div class="video_hover" data-video="&lt;iframe src=&quot;https://player.vimeo.com/video/21709803?autoplay=1&quot; width=&quot;640&quot; height=&quot;352&quot; frameborder=&quot;0&quot; title=&quot;Lingerie&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;"></div>
                                                                     <div class="video_embed video_frame"></div>
@@ -288,7 +288,7 @@
                                                                     <div class="audio_frame audio_local">
                                                                         <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
                                                                         <audio class="w_100per-imp" preload="none" controls="controls">
-                                                                            <source type="audio/mpeg" src="audio/sample-melody.mp3" />
+                                                                            <source type="audio/mpeg" src="{{URL::asset('assets/store/audio/sample-melody.mp3')}}" />
                                                                             <a href="audio/sample-melody.mp3">audio/sample-melody.mp3</a>
                                                                         </audio>
                                                                     </div>
@@ -626,7 +626,7 @@
                                                         <div class="sc_promo_image bg_promo"></div>
                                                         <div class="sc_promo_text w_50per f_right">
                                                             <div class="sc_promo_text_inner sc_align_center bg_pink"> 
-                                                                <img class="top_promo_image" src="images/promo.png" alt="">
+                                                                <img class="top_promo_image" src="{{URL::asset('assets/store/images/promo.png')}}" alt="">
                                                                 <h2 class="sc_item_title sc_promo_title sc_align_default sc_item_title_style_default">Back<br />
                                                                     to<br />
                                                                     Black
@@ -715,54 +715,7 @@
                                     </div>
                                     <!-- /.sc_content -->
                                     <div class="empty_space h-2em" ><span class="empty_space_inner"></span></div>
-                                    <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">
-                                        <div class="sc_content_container">
-                                            <div class="sc_layouts_item">
-                                                <nav class="sc_layouts_menu sc_layouts_menu_default menu_hover_fade" data-animation-in="fadeIn" data-animation-out="fadeOut">
-                                                    <ul id="menu_footer" class="sc_layouts_menu_nav menu_footer_nav">
-                                                        <li class="menu-item menu-item-home">
-                                                            <a href="index.html">
-                                                                <span>Home</span>
-                                                            </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="shop.html">
-                                                            <span>Lingerie</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="shop.html">
-                                                            <span>Sport</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="about-style-1.html">
-                                                            <span>About Us</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="gallery.html">
-                                                            <span>Gallery</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="shop.html">
-                                                            <span>Shop</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="blog-streampage.html">
-                                                            <span>Blog</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="features-support.html">
-                                                            <span>Support</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="contacts.html">
-                                                            <span>Contacts</span>
-                                                        </a>
-                                                        </li>
-                                                    </ul>
-                                                </nav>
-                                                <!-- /.sc_layouts_menu -->
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <!-- /.sc_content -->
                                     <div class="empty_space h-2_2em" ><span class="empty_space_inner"></span></div>
                                     <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">

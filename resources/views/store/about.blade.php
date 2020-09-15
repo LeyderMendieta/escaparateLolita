@@ -57,7 +57,7 @@
                                                                             <li class="mini_cart_item">
                                                                                 <a href="#" class="remove" title="Remove this item">×</a>			
                                                                                 <a href="#">
-                                                                                    <img src="images/product-18-180x180.jpg" alt="" >Strapless Bikini Top &amp; Bottom&nbsp;							
+                                                                                    <img src="{{URL::asset('assets/store/images/product-18-180x180.jpg')}}" alt="" >Strapless Bikini Top &amp; Bottom&nbsp;							
                                                                                 </a>
                                                                                 <dl class="variation">
                                                                                     <dt class="variation-Size">Size:</dt>
@@ -71,7 +71,7 @@
                                                                             <li class="mini_cart_item">
                                                                                 <a href="#" class="remove" title="Remove this item">×</a>			
                                                                                 <a href="#">
-                                                                                    <img src="images/product-16-180x180.jpg" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;							
+                                                                                    <img src="{{URL::asset('assets/store/images/product-16-180x180.jpg')}}" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;							
                                                                                 </a>
                                                                                 <dl class="variation">
                                                                                     <dt class="variation-Size">Size:</dt>
@@ -122,10 +122,10 @@
                                                     <div class="sc_layouts_item">
                                                         <!-- .sc_layouts_title -->
                                                         <div class="sc_layouts_title">
-                                                            <div class="sc_layouts_title_title"><h1 class="sc_layouts_title_caption">About 1</h1></div>
+                                                            <div class="sc_layouts_title_title"><h1 class="sc_layouts_title_caption">About</h1></div>
                                                             <div class="sc_layouts_title_breadcrumbs">
                                                                 <div class="breadcrumbs">
-                                                                    <a class="breadcrumbs_item home" href="index.html">Home</a><span class="breadcrumbs_delimiter"></span><span class="breadcrumbs_item current">About 1</span>
+                                                                    <a class="breadcrumbs_item home" href="index.html">Home</a><span class="breadcrumbs_delimiter"></span><span class="breadcrumbs_item current">About</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -159,7 +159,7 @@
                 <div class="menu_mobile scheme_dark">
                     <div class="menu_mobile_inner">
                         <a class="menu_mobile_close icon-cancel"></a>
-                        <a class="sc_layouts_logo" href="index.html"><img src="images/logo_light.png" alt=""></a>
+                        <a class="sc_layouts_logo" href="index.html"><img src="{{URL::asset('assets/store/images/logo_light.png')}}" alt=""></a>
                         @include('store.layouts.nav-mobile-menu')
                         <div class="search_wrap search_style_normal search_mobile">
                             <div class="search_form_wrap">
@@ -214,7 +214,7 @@
                                                                                 <div class="sc_promo_content sc_item_content">
                                                                                     <div class="empty_space h-1_4em"><span class="empty_space_inner"></span></div>
                                                                                     <figure>
-                                                                                        <div><img src="images/promo-2.png" alt="" /></div>
+                                                                                        <div><img src="{{URL::asset('assets/store/images/promo-2.png')}}" alt="" /></div>
                                                                                     </figure>
                                                                                     <div class="empty_space h-2_25em"><span class="empty_space_inner"></span></div>
                                                                                     <div class="text_column">
@@ -224,7 +224,7 @@
                                                                                     </div>
                                                                                     <div class="empty_space h-1_3em"><span class="empty_space_inner"></span></div>
                                                                                     <figure>
-                                                                                        <div><img src="images/promo-3.png" alt="" /></div>
+                                                                                        <div><img src="{{URL::asset('assets/store/images/promo-3.png')}}" alt="" /></div>
                                                                                     </figure>
                                                                                     <div class="empty_space h-2_55em"><span class="empty_space_inner"></span></div>
                                                                                 </div>
@@ -275,7 +275,7 @@
                                                                 <div class="text_column">
                                                                     <div class="brd-1px_grey">
                                                                         <figure class="align_center">
-                                                                            <a href="#"><img src="images/2.png" alt="" /></a>
+                                                                            <a href="#"><img src="{{URL::asset('assets/store/images/2.png')}}" alt="" /></a>
                                                                         </figure>
                                                                     </div>
                                                                     <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
@@ -286,7 +286,7 @@
                                                                 <div class="text_column">
                                                                     <div class="brd-1px_grey">
                                                                         <figure class="align_center">
-                                                                            <a href="#"><img src="images/4.png" alt="" /></a>
+                                                                            <a href="#"><img src="{{URL::asset('assets/store/images/4.png')}}" alt="" /></a>
                                                                         </figure>
                                                                     </div>
                                                                     <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
@@ -297,7 +297,7 @@
                                                                 <div class="text_column">
                                                                     <div class="brd-1px_grey">
                                                                         <figure class="align_center">
-                                                                            <a href="#"><img src="images/7.png" alt="" /></a>
+                                                                            <a href="#"><img src="{{URL::asset('assets/store/images/7.png')}}" alt="" /></a>
                                                                         </figure>
                                                                     </div>
                                                                     <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
@@ -308,7 +308,7 @@
                                                                 <div class="text_column">
                                                                     <div class="brd-1px_grey">
                                                                         <figure class="align_center">
-                                                                            <a href="#"><img src="images/3.png" alt="" /></a>
+                                                                            <a href="#"><img src="{{URL::asset('assets/store/images/3.png')}}" alt="" /></a>
                                                                         </figure>
                                                                     </div>
                                                                     <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
@@ -330,7 +330,7 @@
                                                                 <div class="text_column">
                                                                     <div class="brd-1px_grey">
                                                                         <figure class="align_center">
-                                                                            <a href="#"><img src="images/1.png" alt="" /></a>
+                                                                            <a href="#"><img src="{{URL::asset('assets/store/images/1.png')}}" alt="" /></a>
                                                                         </figure>
                                                                     </div>
                                                                     <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
@@ -341,7 +341,7 @@
                                                             <div class="text_column">
                                                                 <div class="brd-1px_grey">
                                                                     <figure class="align_center">
-                                                                        <a href="#"><img src="images/5.png" alt="" /></a>
+                                                                        <a href="#"><img src="{{URL::asset('assets/store/images/5.png')}}" alt="" /></a>
                                                                     </figure>
                                                                 </div>
                                                                 <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
@@ -352,7 +352,7 @@
                                                             <div class="text_column">
                                                                 <div class="brd-1px_grey">
                                                                     <figure class="align_center">
-                                                                        <a href="#"><img src="images/8.png" alt="" /></a>
+                                                                        <a href="#"><img src="{{URL::asset('assets/store/images/8.png')}}" alt="" /></a>
                                                                     </figure>
                                                                 </div>
                                                                 <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
@@ -363,7 +363,7 @@
                                                             <div class="text_column">
                                                                 <div class="brd-1px_grey">
                                                                     <figure class="align_center">
-                                                                        <a href="#"><img src="images/6.png" alt="" /></a>
+                                                                        <a href="#"><img src="{{URL::asset('assets/store/images/6.png')}}" alt="" /></a>
                                                                     </figure>
                                                                 </div>
                                                                 <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
@@ -386,7 +386,7 @@
                                                             <div class="widget_area sc_widget_video">
                                                                 <aside class="widget widget_video">
                                                                     <div class="trx_addons_video_player with_cover hover_play">
-                                                                        <img src="images/bg_video-870x490.jpg" alt="" >
+                                                                        <img src="{{URL::asset('assets/store/images/bg_video-870x490.jpg')}}" alt="" >
                                                                         <div class="video_mask"></div>
                                                                         <div class="video_hover" data-video="&lt;iframe src=&quot;https://player.vimeo.com/video/21709803?autoplay=1&quot; width=&quot;640&quot; height=&quot;352&quot; frameborder=&quot;0&quot; title=&quot;Lingerie&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;"></div>
                                                                         <div class="video_embed video_frame"></div>
@@ -443,7 +443,7 @@
                                             <div class="column-inner">
                                                 <div class="text_column">
                                                     <figure>
-                                                        <a class="inst_hover" href="#"><img src="images/inst1.jpg" alt="" /></a>
+                                                        <a class="inst_hover" href="#"><img src="{{URL::asset('assets/store/images/inst1.jpg')}}" alt="" /></a>
                                                     </figure>
                                                 </div>
                                             </div>
@@ -451,7 +451,7 @@
                                         <div class="column-inner">
                                             <div class="text_column">
                                                 <figure>
-                                                    <a class="inst_hover" href="#"><img src="images/inst2.jpg" alt="" /></a>
+                                                    <a class="inst_hover" href="#"><img src="{{URL::asset('assets/store/images/inst2.jpg')}}" alt="" /></a>
                                                 </figure>
                                             </div>
                                         </div>
@@ -459,7 +459,7 @@
                                         <div class="column-inner">
                                             <div class="text_column">
                                                 <figure>
-                                                    <a class="inst_hover" href="#"><img src="images/inst3.jpg" alt="" /></a>
+                                                    <a class="inst_hover" href="#"><img src="{{URL::asset('assets/store/images/inst3.jpg')}}" alt="" /></a>
                                                 </figure>
                                             </div>
                                         </div>
@@ -467,7 +467,7 @@
                                         <div class="column-inner">
                                             <div class="text_column">
                                                 <figure>
-                                                    <a class="inst_hover" href="#"><img src="images/inst4.jpg" alt="" /></a>
+                                                    <a class="inst_hover" href="#"><img src="{{URL::asset('assets/store/images/inst4.jpg')}}" alt="" /></a>
                                                 </figure>
                                             </div>
                                         </div>

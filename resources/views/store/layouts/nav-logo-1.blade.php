@@ -6,8 +6,8 @@
                 <div class="column-inner">
                     <div class="sc_layouts_item">
                         <!-- .sc_layouts_logo -->
-                        <a href="index.html" class="sc_layouts_logo sc_layouts_logo_default">
-                            <img class="logo_image" src="images/logo.png" alt="">
+                        <a href="{{ url('/' . $page='home') }}" class="sc_layouts_logo sc_layouts_logo_default">
+                            <img class="logo_image" src="{{URL::asset('assets/store/images/logo.svg')}}" alt="">
                         </a>
                         <!-- /.sc_layouts_logo -->
                     </div>
@@ -33,17 +33,10 @@
                                     <span>About Us</span>
                                 </a>
                             </li>
-                            <li class="menu-item menu-item-has-children">
-                                <a href="#">
+                            <li class="menu-item">
+                                <a href="{{ url('/' . $page='features/shortcodes') }}">
                                     <span>Features</span>
                                 </a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item">
-                                        <a href="{{ url('/' . $page='features/shortcodes') }}">
-                                            <span>ShortCodes</span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="menu-item  menu-item-has-children">
                                 <a href="#">

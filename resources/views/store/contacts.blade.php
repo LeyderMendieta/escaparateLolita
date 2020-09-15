@@ -331,54 +331,7 @@
                                     </div>
                                     <!-- /.sc_content -->
                                     <div class="empty_space h-2em" ><span class="empty_space_inner"></span></div>
-                                    <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">
-                                        <div class="sc_content_container">
-                                            <div class="sc_layouts_item">
-                                                <nav class="sc_layouts_menu sc_layouts_menu_default menu_hover_fade" data-animation-in="fadeIn" data-animation-out="fadeOut">
-                                                    <ul id="menu_footer" class="sc_layouts_menu_nav menu_footer_nav">
-                                                        <li class="menu-item menu-item-home">
-                                                            <a href="index.html">
-                                                                <span>Home</span>
-                                                            </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="shop.html">
-                                                            <span>Lingerie</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="shop.html">
-                                                            <span>Sport</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="about-style-1.html">
-                                                            <span>About Us</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="gallery.html">
-                                                            <span>Gallery</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="shop.html">
-                                                            <span>Shop</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="blog-streampage.html">
-                                                            <span>Blog</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="features-support.html">
-                                                            <span>Support</span>
-                                                        </a>
-                                                        </li><li class="menu-item current-menu-item">
-                                                        <a href="contacts.html">
-                                                            <span>Contacts</span>
-                                                        </a>
-                                                        </li>
-                                                    </ul>
-                                                </nav>
-                                                <!-- /.sc_layouts_menu -->
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                     <!-- /.sc_content -->
                                     <div class="empty_space h-2_2em" ><span class="empty_space_inner"></span></div>
                                     <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">

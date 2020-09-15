@@ -1,4 +1,4 @@
-<link rel="icon" href="{{URL::asset('assets/store/images/cropped-512x512-90x90.png')}}" sizes="32x32"/>
+<link rel="icon" href="{{URL::asset('assets/images/favicon.ico')}}" sizes="32x32"/>
 
 <link rel='stylesheet' href="{{URL::asset('assets/store/css/fontello/css/fontello-embedded.css')}}" type='text/css' media='all'/>
 <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/woocommerce/assets/css/woocommerce-layout.css')}}" type='text/css' media='all'/>

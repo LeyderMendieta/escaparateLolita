@@ -750,35 +750,8 @@
                         </div>
                         <!-- /.footer_widgets_inner -->
                     </div>
-                    <!-- /.footer_widgets_wrap -->
-                    
-                    <div class="footer_menu_wrap">
-                        <div class="footer_menu_inner">
-                            <nav class="menu_footer_nav_area">
-                                <ul id="menu_footer" class="sc_layouts_menu_nav menu_footer_nav inited sf-js-enabled sf-arrows">
-                                    <li class="menu-item  menu-item-home">
-                                       <a href="index.html"><span>Home</span></a>
-                                    </li><li class="menu-item">
-                                        <a href="shop.html"><span>Lingerie</span></a>
-                                    </li><li class="menu-item">
-                                        <a href="shop.html"><span>Sport</span></a>
-                                    </li><li class="menu-item">
-                                        <a href="about-style-1.html"><span>About Us</span></a>
-                                    </li><li class="menu-item current-menu-item current_page_item">
-                                        <a href="gallery.html"><span>Gallery</span></a>
-                                    </li><li class="menu-item">
-                                        <a href="shop.html"><span>Shop</span></a>
-                                    </li><li class="menu-item">
-                                        <a href="blog-streampage.html"><span>Blog</span></a>
-                                    </li><li class="menu-item">
-                                        <a href="features-support.html"><span>Support</span></a>
-                                    </li><li class="menu-item">
-                                        <a href="contacts.html"><span>Contacts</span></a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+                    <!-- /.footer_widgets_wrap -->                    
+                   
                     <div class="footer_copyright_wrap scheme_">
                         <div class="footer_copyright_inner">
                             <div class="content_wrap">
