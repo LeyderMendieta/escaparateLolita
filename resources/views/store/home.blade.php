@@ -82,7 +82,7 @@
                                                             </span>
                                                         </span>
                                                         <span class="sc_layouts_cart_items_short">2</span>
-                                                        <div class="sc_layouts_cart_widget widget_area">
+                                                        <div class="sc_layouts_cart_widget widget_area" style="width:280px!important">
                                                             <span class="sc_layouts_cart_widget_close trx_addons_icon-cancel">
                                                             </span>
                                                             <div class="widget woocommerce widget_shopping_cart">
@@ -272,7 +272,7 @@
                                                             <div id="rev_slider_1_1" class="rev_slider fullwidthabanner d_none" data-version="5.3.0.2">
                                                                 <ul>
                                                                     <!-- SLIDE  1-->
-                                                                    <li data-index="rs-1" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="images/slider_1_bg_1-100x50.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                                                    <li data-index="rs-1" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="{{URL::asset('assets/store/images/slider_1_bg_1-100x50.jpg')}}" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                                                         <!-- MAIN IMAGE -->
                                                                         <img src="{{URL::asset('assets/store/images/slider_1_bg_1.jpg')}}" alt="" title="slider_1_bg_1" width="1170" height="652" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                                                                         <!-- LAYERS -->
@@ -334,7 +334,7 @@
                                                                         </div>
                                                                     </li>
                                                                     <!-- SLIDE 2 -->
-                                                                    <li data-index="rs-2" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="images/slider_1_bg_2-100x50.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                                                    <li data-index="rs-2" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="{{URL::asset('assets/store/images/slider_1_bg_2-100x50.jpg')}}" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                                                         <!-- MAIN IMAGE -->
                                                                         <img src="{{URL::asset('assets/store/images/slider_1_bg_2.jpg')}}" alt="" title="slider_1_bg_2" width="1170" height="652" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                                                                         <!-- LAYERS -->
@@ -396,7 +396,7 @@
                                                                         </div>
                                                                     </li>
                                                                     <!-- SLIDE  3-->
-                                                                    <li data-index="rs-4" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="images/slider_1_bg_3-100x50.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                                                    <li data-index="rs-4" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="{{URL::asset('assets/store/images/slider_1_bg_3-100x50.jpg')}}" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                                                         <!-- MAIN IMAGE --> 
                                                                         <img src="{{URL::asset('assets/store/images/slider_1_bg_3.jpg')}}" alt="" title="slider_1_bg_3" width="1170" height="652" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                                                                         <!-- LAYERS -->
@@ -513,158 +513,7 @@
                                                         </div>
                                                         <!-- /.sc_title -->
                                                         <div class="empty_space h-2_3em"><span class="empty_space_inner"></span></div>
-                                                        <div class="woocommerce columns-5">
-                                                            <ul class="products wcspt-products">
-                                                                <li class="product type-product wcspt-has-gallery">
-                                                                    <div class="post_item post_layout_thumbs">
-                                                                        <div class="post_featured hover_shop_buttons">
-                                                                            <a href="shop-single.html" class="wcspt-img-link">
-                                                                                <img src="{{URL::asset('assets/store/images/product-19-300x410.jpg')}}" alt="product-19" title="product-19" />
-                                                                                <img src="{{URL::asset('assets/store/images/product-17-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
-                                                                            </a>
-                                                                            <div class="mask"></div>
-                                                                            <div class="icons">
-                                                                                <a href="shop-single.html" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy now</a>
-                                                                                <a href="shop-single.html" class="shop_link button icon-link">Details</a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- /.post_featured -->
-                                                                        <div class="post_data">
-                                                                            <div class="post_header entry-header">
-                                                                                <h3><a href="shop-single.html">Halter Bodysuit</a></h3>
-                                                                                <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span></div>
-                                                                            </div>
-                                                                            <!-- /.post_header -->
-                                                                            <span class="price">
-                                                                                <span class="woocs_price_code"><span class="amount">53<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">59<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                                                                </span>
-                                                                            </span>
-                                                                            <a href="shop-single.html" class="button product_type_variable add_to_cart_button">Buy now</a> 
-                                                                        </div>
-                                                                        <!-- /.post_data -->
-                                                                    </div>
-                                                                    <!-- /.post_item -->
-                                                                </li>
-                                                                <li class="product type-product wcspt-has-gallery">
-                                                                    <div class="post_item post_layout_thumbs">
-                                                                        <div class="post_featured hover_shop_buttons">
-                                                                            <a href="shop-single.html" class="wcspt-img-link">
-                                                                                <img src="{{URL::asset('assets/store/images/product-16-300x410.jpg')}}" alt="product-16" title="product-16" />
-                                                                                <img src="{{URL::asset('assets/store/images/product-15-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
-                                                                            </a>
-                                                                            <div class="mask"></div>
-                                                                            <div class="icons">
-                                                                                <a href="shop-single.html" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy now</a>
-                                                                                <a href="shop-single.html" class="shop_link button icon-link">Details</a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- /.post_featured -->
-                                                                        <div class="post_data">
-                                                                            <div class="post_header entry-header">
-                                                                                <h3><a href="shop-single.html">Sexy Long Line Plunge Bra and Sexy Thong</a></h3>
-                                                                            </div>
-                                                                            <!-- /.post_header -->
-                                                                            <span class="price">
-                                                                                <span class="woocs_price_code"><span class="amount">52<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">58<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                                                                </span>
-                                                                            </span>
-                                                                            <a href="shop-single.html" class="button product_type_variable add_to_cart_button">Buy now</a> 
-                                                                        </div>
-                                                                        <!-- /.post_data -->
-                                                                    </div>
-                                                                    <!-- /.post_item -->
-                                                                </li>
-                                                                <li class="product type-product wcspt-has-gallery">
-                                                                    <div class="post_item post_layout_thumbs">
-                                                                        <div class="post_featured hover_shop_buttons">
-                                                                            <a href="shop-single.html" class="wcspt-img-link">
-                                                                                <img src="{{URL::asset('assets/store/images/product-11-300x410.jpg')}}" alt="product-11" title="product-11" />
-                                                                                <img src="{{URL::asset('assets/store/images/product-12-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
-                                                                            </a>
-                                                                            <div class="mask"></div>
-                                                                            <div class="icons">
-                                                                                <a href="shop-single.html" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy now</a>
-                                                                                <a href="shop-single.html" class="shop_link button icon-link">Details</a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- /.post_featured -->
-                                                                        <div class="post_data">
-                                                                            <div class="post_header entry-header">
-                                                                                <h3><a href="shop-single.html">Smooth Raw Cut Hiphugger</a></h3>
-                                                                                <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span></div>
-                                                                            </div>
-                                                                            <!-- /.post_header -->
-                                                                            <span class="price">
-                                                                                <span class="woocs_price_code"><span class="amount">66<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">72<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                                                                </span>
-                                                                            </span>
-                                                                            <a href="shop-single.html" class="button product_type_variable add_to_cart_button">Buy now</a> 
-                                                                        </div>
-                                                                        <!-- /.post_data -->
-                                                                    </div>
-                                                                    <!-- /.post_item -->
-                                                                </li>
-                                                                <li class="product type-product wcspt-has-gallery">
-                                                                    <div class="post_item post_layout_thumbs">
-                                                                        <div class="post_featured hover_shop_buttons">
-                                                                            <a href="shop-single.html" class="wcspt-img-link">
-                                                                                <img src="{{URL::asset('assets/store/images/product-18-300x410.jpg')}}" alt="product-18" title="product-18" />
-                                                                                <img src="{{URL::asset('assets/store/images/product-19-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
-                                                                            </a>
-                                                                            <div class="mask"></div>
-                                                                            <div class="icons">
-                                                                                <a href="shop-single.html" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy now</a>
-                                                                                <a href="shop-single.html" class="shop_link button icon-link">Details</a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- /.post_featured -->
-                                                                        <div class="post_data">
-                                                                            <div class="post_header entry-header">
-                                                                                <h3><a href="shop-single.html">Strapless Bikini Top &#038; Bottom</a></h3>
-                                                                                <div class="star-rating" title="Rated 4 out of 5"><span class="w_80per"><strong class="rating">4</strong> out of 5</span></div>
-                                                                            </div>
-                                                                            <!-- /.post_header -->
-                                                                            <span class="price">
-                                                                                <span class="woocs_price_code"><span class="amount">59<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">65<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                                                                </span>
-                                                                            </span>
-                                                                            <a  href="shop-single.html" class="button product_type_variable add_to_cart_button">Buy now</a> 
-                                                                        </div>
-                                                                        <!-- /.post_data -->
-                                                                    </div>
-                                                                    <!-- /.post_item -->
-                                                                </li>
-                                                                <li class="product type-product wcspt-has-gallery">
-                                                                    <div class="post_item post_layout_thumbs">
-                                                                        <div class="post_featured hover_shop_buttons">
-                                                                            <a href="shop-single.html" class="wcspt-img-link">
-                                                                                <img src="{{URL::asset('assets/store/images/product-15-300x410.jpg')}}" alt="product-15" title="product-15" />
-                                                                                <img src="{{URL::asset('assets/store/images/product-13-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
-                                                                            </a>
-                                                                            <div class="mask"></div>
-                                                                            <div class="icons">
-                                                                                <a href="shop-single.html" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy now</a>
-                                                                                <a href="shop-single.html" class="shop_link button icon-link">Details</a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- /.post_featured -->
-                                                                        <div class="post_data">
-                                                                            <div class="post_header entry-header">
-                                                                                <h3><a href="shop-single.html">Crochet Lace Triangle Bralette</a></h3>
-                                                                            </div>
-                                                                            <!-- /.post_header -->
-                                                                            <span class="price">
-                                                                                <span class="woocs_price_code"><span class="amount">79<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">85<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                                                                </span>
-                                                                            </span>
-                                                                            <a href="shop-single.html" class="button product_type_variable add_to_cart_button">Buy now</a> 
-                                                                        </div>
-                                                                        <!-- /.post_data -->
-                                                                    </div>
-                                                                    <!-- /.post_item -->
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+                                                        <div class="woocommerce columns-5" id="Products_Must_Have"></div>                               
                                                     </div>
                                                 </div>
                                             </div>
@@ -886,124 +735,7 @@
                 </div>
                 <!-- </.page_content_wrap> -->
                 
-                <footer class="footer_wrap footer_custom scheme_side">
-                    <section>
-                        <div class="content_container">
-                            <div class="column_row">
-                                <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
-                                    <div class="column-inner">
-                                        <div class="text_column">
-                                            <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">
-                                                <div class="sc_content_container">
-                                                    <div class="empty_space h-5em h_xs"><span class="empty_space_inner"></span></div>
-                                                    <div class="text_column">
-                                                        <div class="fsz-1_2em fw_600 lspace-0_5px tt_upper"><span class="dark">follow us on</span> 
-                                                            <span class="accent"><a class="accent-imp" href="#">@instagram</a></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="empty_space h-3_5em"><span class="empty_space_inner"></span></div>
-                                                </div>
-                                            </div>
-                                            <!-- /.sc_content -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="inst_section">
-                        <div class="content_container">
-                            <div class="column_row"> 
-                                <div class="column-inner">
-                                    <div class="columns_wrap">
-                                        <div class="column_container column-1_4 sc_layouts_column_icons_position_left xs_1-4">
-                                            <div class="column-inner">
-                                                <div class="text_column">
-                                                    <figure>
-                                                        <a class="inst_hover" href="#"><img src="{{URL::asset('assets/store/images/inst1.jpg')}}" alt="" /></a>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left xs_1-4">
-                                        <div class="column-inner">
-                                            <div class="text_column">
-                                                <figure>
-                                                    <a class="inst_hover" href="#"><img src="{{URL::asset('assets/store/images/inst2.jpg')}}" alt="" /></a>
-                                                </figure>
-                                            </div>
-                                        </div>
-                                        </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left xs_1-4">
-                                        <div class="column-inner">
-                                            <div class="text_column">
-                                                <figure>
-                                                    <a class="inst_hover" href="#"><img src="{{URL::asset('assets/store/images/inst3.jpg')}}" alt="" /></a>
-                                                </figure>
-                                            </div>
-                                        </div>
-                                        </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left xs_1-4">
-                                        <div class="column-inner">
-                                            <div class="text_column">
-                                                <figure>
-                                                    <a class="inst_hover" href="#"><img src="{{URL::asset('assets/store/images/inst4.jpg')}}" alt="" /></a>
-                                                </figure>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section>   
-                        <div class="column_row sc_layouts_row sc_layouts_row_type_normal">
-                            <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
-                                <div class="column-inner">
-                                    <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">
-                                        <div class="sc_content_container">
-                                            <div class="empty_space h-5_3em"><span class="empty_space_inner"></span></div>
-                                            <section class="cta3-container">
-                                                <div class="general cta3 cta3-style-classic cta3-shape-square cta3-align-left cta3-color-classic cta3-icon-size-md cta3-actions-right brd-3px_red">
-                                                    <div class="cta3_content-container">
-                                                        <div class="cta3-content">
-                                                            <div class="cta3-content-header">
-                                                                <h2>Let’s Stay Connected!</h2>									
-                                                            </div>
-                                                            <p>Sign up today for our newsletter and receive <em>15% OFF</em> your first purchase, and also get our sneak peeks, tips, and exclusive offers.</p>
-                                                        </div>
-                                                        <div class="cta3-actions">
-                                                            <div class="btn3-container btn3-inline">
-                                                                <a class="general btn3 btn3-size-md btn3-shape-square btn3-style-classic btn3-color-grey" href="#" title="">sign up</a>
-                                                            </div>
-                                                        </div>		
-                                                    </div>
-                                                </div>
-                                            </section>
-                                        </div>
-                                    </div>
-                                    <!-- /.sc_content -->
-                                    <div class="empty_space h-2em" ><span class="empty_space_inner"></span></div>
-                                   
-                                    <!-- /.sc_content -->
-                                    <div class="empty_space h-2_2em" ><span class="empty_space_inner"></span></div>
-                                    <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">
-                                        <div class="sc_content_container">
-                                            <div class="text_column">
-                                                <div class="widget widget_text">			
-                                                    <div class="textwidget">
-                                                        <div class="fsz_13px fw_400">&copy;2017 Alice’s Lingerie Store. All Rights Reserved. <a href="#" >Terms of use</a> and <a href="#">Privacy Policy</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.sc_content -->
-                                    <div class="empty_space h-3_2em" ><span class="empty_space_inner"></span></div>
-                                    <div class="empty_space  hide_on_mobile h-3em"><span class="empty_space_inner"></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </section> 
-                </footer>
+                @include('store.layouts.footer1')
                 <!-- /.footer_wrap -->
             </div>
             <!-- /.page_wrap -->

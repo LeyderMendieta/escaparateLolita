@@ -106,7 +106,7 @@
                                                                             <li class="mini_cart_item">
                                                                                 <a href="#" class="remove" title="Remove this item">×</a>			
                                                                                 <a href="#">
-                                                                                    <img src="images/product-16-180x180.jpg" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;							
+                                                                                    <img src="{{ URL::asset('assets/store/images/product-16-180x180.jpg')}}" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;							
                                                                                 </a>
                                                                                 <dl class="variation">
                                                                                     <dt class="variation-Size">Size:</dt>
@@ -151,7 +151,7 @@
                 <div class="menu_mobile scheme_dark">
                     <div class="menu_mobile_inner">
                         <a class="menu_mobile_close icon-cancel"></a>
-                        <a class="sc_layouts_logo" href="index.html"><img src="images/logo_light.png" alt=""></a>
+                        <a class="sc_layouts_logo" href="index.html"><img src="{{ URL::asset('assets/store/images/logo_light.png')}}" alt=""></a>
                         @include('store.layouts.nav-mobile-menu')
                         <div class="search_wrap search_style_normal search_mobile">
                             <div class="search_form_wrap">
@@ -193,29 +193,29 @@
                                 <div  class="product type-product wcspt-has-gallery">
                                     <div class="images">
 
-                                        <a href="images/product-19.jpg" class="yith_magnifier_zoom woocommerce-main-image" title="product-19">
-                                            <img src="images/product-19-600x650.jpg" alt="" />
+                                        <a href="{{ URL::asset('assets/store/images/product-19.jpg')}}" class="yith_magnifier_zoom woocommerce-main-image" title="product-19">
+                                            <img src="{{ URL::asset('assets/store/images/product-19-600x650.jpg')}}" alt="" />
                                         </a>
                                         <div class="thumbnails noslider">
                                             <ul class="yith_magnifier_gallery">
                                                 <li class="yith_magnifier_thumbnail">
-                                                    <a href="images/product-19.jpg" class="yith_magnifier_thumbnail" title="product-19" data-small="images/product-19-600x650.jpg">
-                                                        <img src="images/product-19-180x180.jpg" alt="" />
+                                                    <a href="{{ URL::asset('assets/store/images/product-19.jpg')}}" class="yith_magnifier_thumbnail" title="product-19" data-small="{{ URL::asset('assets/store/images/product-19-600x650.jpg')}}">
+                                                        <img src="{{ URL::asset('assets/store/images/product-19-180x180.jpg')}}" alt="" />
                                                     </a>
                                                 </li>
                                                 <li class="yith_magnifier_thumbnail">
-                                                    <a href="images/product-17.jpg" class="yith_magnifier_thumbnail" title="product-17" data-small="images/product-17-600x650.jpg">
-                                                        <img  src="images/product-17-180x180.jpg" alt="" />
+                                                    <a href="{{ URL::asset('assets/store/images/product-17.jpg')}}" class="yith_magnifier_thumbnail" title="product-17" data-small="{{ URL::asset('assets/store/images/product-17-600x650.jpg')}}">
+                                                        <img  src="{{ URL::asset('assets/store/images/product-17-180x180.jpg')}}" alt="" />
                                                     </a>
                                                 </li>
                                                 <li class="yith_magnifier_thumbnail">
-                                                    <a href="images/product-13.jpg" class="yith_magnifier_thumbnail" title="product-13" data-small="images/product-13-600x650.jpg">
-                                                        <img  src="images/product-13-180x180.jpg" alt="" />
+                                                    <a href="{{ URL::asset('assets/store/images/product-13.jpg')}}" class="yith_magnifier_thumbnail" title="product-13" data-small="{{ URL::asset('assets/store/images/product-13-600x650.jpg')}}">
+                                                        <img  src="{{ URL::asset('assets/store/images/product-13-180x180.jpg')}}" alt="" />
                                                     </a>
                                                 </li>
                                                 <li class="yith_magnifier_thumbnail">
-                                                    <a href="images/product-15.jpg" class="yith_magnifier_thumbnail" title="product-15" data-small="images/product-15-600x650.jpg">
-                                                        <img  src="images/product-15-180x180.jpg" alt="" />
+                                                    <a href="{{ URL::asset('assets/store/images/product-15.jpg')}}" class="yith_magnifier_thumbnail" title="product-15" data-small="{{ URL::asset('assets/store/images/product-15-600x650.jpg')}}">
+                                                        <img  src="{{ URL::asset('assets/store/images/product-15-180x180.jpg')}}" alt="" />
                                                     </a>
                                                 </li>
                                             </ul>
@@ -424,7 +424,7 @@
                                                     <ol class="commentlist">
                                                         <li class="comment even thread-even depth-1" >
                                                             <div class="comment_container">
-                                                                <img alt='' src='images/avatar3.jpg' srcset='images/avatar3.jpg' class='avatar photo'/>
+                                                                <img alt='' src="{{ URL::asset('assets/store/images/avatar3.jpg')}}" srcset="{{ URL::asset('assets/store/images/avatar3.jpg')}}" class='avatar photo'/>
                                                                 <div class="comment-text">
                                                                     <div  class="star-rating" title="Rated 5 out of 5">
                                                                         <span class="w_100per"><strong>5</strong> out of 5</span>
@@ -475,8 +475,8 @@
                                                 <div class="post_item post_layout_thumbs">
                                                     <div class="post_featured hover_shop_buttons">
                                                         <a href="#">
-                                                            <img src="images/product-8-300x410.jpg" alt="product-8" title="product-8" />
-                                                            <img src="images/product-7-300x410.jpg" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
+                                                            <img src="{{ URL::asset('assets/store/images/product-8-300x410.jpg')}}" alt="product-8" title="product-8" />
+                                                            <img src="{{ URL::asset('assets/store/images/product-7-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
                                                         </a>
                                                         <div class="mask"></div>
                                                         <div class="icons">
@@ -507,8 +507,8 @@
                                                 <div class="post_item post_layout_thumbs">
                                                     <div class="post_featured hover_shop_buttons">
                                                         <a href="#">
-                                                            <img src="images/product-1-300x410.jpg" alt="product-1" title="product-1" />
-                                                            <img src="images/product-6-300x410.jpg" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
+                                                            <img src="{{ URL::asset('assets/store/images/product-1-300x410.jpg')}}" alt="product-1" title="product-1" />
+                                                            <img src="{{ URL::asset('assets/store/images/product-6-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
                                                         </a>
                                                         <div class="mask"></div>
                                                         <div class="icons">
@@ -539,8 +539,8 @@
                                                 <div class="post_item post_layout_thumbs">
                                                     <div class="post_featured hover_shop_buttons">
                                                         <a href="#">
-                                                            <img src="images/product-5-300x410.jpg" alt="product-5" title="product-5" />
-                                                            <img src="images/product-4-300x410.jpg" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> </a>
+                                                            <img src="{{ URL::asset('assets/store/images/product-5-300x410.jpg')}}" alt="product-5" title="product-5" />
+                                                            <img src="{{ URL::asset('assets/store/images/product-4-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> </a>
                                                         <div class="mask"></div>
                                                         <div class="icons">
                                                             <a href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy now</a><a href="#" class="shop_link button icon-link">Details</a>
@@ -567,8 +567,8 @@
                                                 <div class="post_item post_layout_thumbs">
                                                     <div class="post_featured hover_shop_buttons">
                                                         <a href="#">
-                                                            <img src="images/product-2-300x410.jpg" alt="product-2" title="product-2" />
-                                                            <img src="images/product-7-300x410.jpg" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
+                                                            <img src="{{ URL::asset('assets/store/images/product-2-300x410.jpg')}}" alt="product-2" title="product-2" />
+                                                            <img src="{{ URL::asset('assets/store/images/product-7-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
                                                         </a>
                                                         <div class="mask"></div>
                                                         <div class="icons">
@@ -605,105 +605,7 @@
                 </div>
                 <!-- </.page_content_wrap> -->
                 
-                <footer class="footer_wrap footer_custom scheme_default">
-                    <div class="column_row sc_layouts_row sc_layouts_row_type_normal">
-                        <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
-                            <div class="column-inner bg_light">
-                                <div class="text_column">
-                                    <div class="empty_space hide_on_mobile h-3_5em" ><span class="empty_space_inner"></span></div>
-                                    <div class="empty_space h-4em" ><span class="empty_space_inner"></span></div>
-                                    <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">
-                                        <div class="sc_content_container">
-                                            <section class="cta3-container">
-                                                <div class="general cta3 cta3-style-classic cta3-shape-square cta3-align-left cta3-color-classic cta3-icon-size-md cta3-actions-right brd-3px_red">
-                                                    <div class="cta3_content-container">
-                                                        <div class="cta3-content">
-                                                            <div class="cta3-content-header">
-                                                                <h2>Let’s Stay Connected!</h2>									
-                                                            </div>
-                                                            <p>Sign up today for our newsletter and receive <em>15% OFF</em> your first purchase, and also get our sneak peeks, tips, and exclusive offers.</p>
-                                                        </div>
-                                                        <div class="cta3-actions">
-                                                            <div class="btn3-container btn3-inline">
-                                                                <a class="general btn3 btn3-size-md btn3-shape-square btn3-style-classic btn3-color-grey" href="#" title="">sign up</a>
-                                                            </div>
-                                                        </div>		
-                                                    </div>
-                                                </div>
-                                            </section>
-                                        </div>
-                                    </div>
-                                    <!-- /.sc_content -->
-                                    <div class="empty_space h-2em" ><span class="empty_space_inner"></span></div>
-                                    <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">
-                                        <div class="sc_content_container">
-                                            <div class="sc_layouts_item">
-                                                <nav class="sc_layouts_menu sc_layouts_menu_default menu_hover_fade" data-animation-in="fadeIn" data-animation-out="fadeOut">
-                                                    <ul id="menu_footer" class="sc_layouts_menu_nav menu_footer_nav">
-                                                        <li class="menu-item menu-item-home">
-                                                            <a href="index.html">
-                                                                <span>Home</span>
-                                                            </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="shop.html">
-                                                            <span>Lingerie</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="shop.html">
-                                                            <span>Sport</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="about-style-1.html">
-                                                            <span>About Us</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="gallery.html">
-                                                            <span>Gallery</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="shop.html">
-                                                            <span>Shop</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="blog-streampage.html">
-                                                            <span>Blog</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="features-support.html">
-                                                            <span>Support</span>
-                                                        </a>
-                                                        </li><li class="menu-item">
-                                                        <a href="contacts.html">
-                                                            <span>Contacts</span>
-                                                        </a>
-                                                        </li>
-                                                    </ul>
-                                                </nav>
-                                                <!-- /.sc_layouts_menu -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.sc_content -->
-                                    <div class="empty_space h-2_2em" ><span class="empty_space_inner"></span></div>
-                                    <div class="sc_content sc_content_default sc_float_center sc_align_center sc_content_width_1_1">
-                                        <div class="sc_content_container">
-                                            <div class="text_column">
-                                                <div class="widget widget_text">			
-                                                    <div class="textwidget">
-                                                        <div class="fsz_13px fw_400">&copy;2017 Alice’s Lingerie Store. All Rights Reserved. <a href="#" >Terms of use</a> and <a href="#">Privacy Policy</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.sc_content -->
-                                    <div class="empty_space h-3_2em" ><span class="empty_space_inner"></span></div>
-                                    <div class="empty_space  hide_on_mobile h-3em"><span class="empty_space_inner"></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                @include('store.layouts.footer2')
                 <!-- /.footer_wrap -->
             </div>
             <!-- /.page_wrap -->

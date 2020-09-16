@@ -9,4 +9,6 @@
 <link rel='stylesheet' href="{{URL::asset('assets/store/css/template-color.css')}}" type='text/css' media='all'/>
 <link rel='stylesheet' href="{{URL::asset('assets/store/css/woocommerce.css')}}" type='text/css' media='all'/>
 <link rel='stylesheet' href="{{URL::asset('assets/store/css/responsive.css')}}" type='text/css' media='all'/>
+
+<link rel='stylesheet' href="{{URL::asset('css/app.css')}}" type='text/css' media='all'/>
     
