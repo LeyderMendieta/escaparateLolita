@@ -65798,6 +65798,8 @@ __webpack_require__(/*! ./components/Products/Listado */ "./resources/js/compone
 
 __webpack_require__(/*! ./components/Products/MustHaveProducts */ "./resources/js/components/Products/MustHaveProducts.js");
 
+__webpack_require__(/*! ./components/Products/BrandsProducts */ "./resources/js/components/Products/BrandsProducts.js");
+
 __webpack_require__(/*! ./components/StartApp */ "./resources/js/components/StartApp.js");
 
 /***/ }),
@@ -65857,7 +65859,63 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var url_principal = "http://127.0.0.1:8000/";
-/* harmony default export */ __webpack_exports__["default"] = (url_principal);
+var url_images = url_principal + 'assets/store/images/';
+var Configuracion = {
+  url_principal: url_principal,
+  url_images: url_images
+};
+/* harmony default export */ __webpack_exports__["default"] = (Configuracion);
+
+/***/ }),
+
+/***/ "./resources/js/components/Products/BrandsProducts.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/Products/BrandsProducts.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var BrandsProducts = function BrandsProducts(_ref) {
+  var products = _ref.products,
+      url_images = _ref.url_images,
+      url_href = _ref.url_href;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "columns_wrap"
+  }, products.map(function (producto) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "column_container column-1_4 sc_layouts_column_icons_position_left scr_xs",
+      key: producto.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "column-inner"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "text_column"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "brd-1px_grey"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("figure", {
+      className: "align_center"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: url_images + producto.imagen,
+      alt: ""
+    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "empty_space h_30px"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "empty_space_inner"
+    })))));
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BrandsProducts);
 
 /***/ }),
 
@@ -66000,7 +66058,7 @@ var MustHaveProducts = function MustHaveProducts(_ref) {
 /*!*********************************************!*\
   !*** ./resources/js/components/StartApp.js ***!
   \*********************************************/
-/*! exports provided: default */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66009,8 +66067,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Products_Listado__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Products/Listado */ "./resources/js/components/Products/Listado.js");
-/* harmony import */ var _Products_MustHaveProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Products/MustHaveProducts */ "./resources/js/components/Products/MustHaveProducts.js");
+/* harmony import */ var _Products_MustHaveProducts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Products/MustHaveProducts */ "./resources/js/components/Products/MustHaveProducts.js");
+/* harmony import */ var _Products_BrandsProducts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Products/BrandsProducts */ "./resources/js/components/Products/BrandsProducts.js");
 /* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Configuration */ "./resources/js/components/Configuration.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -66040,43 +66098,38 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var Inicio = /*#__PURE__*/function (_Component) {
-  _inherits(Inicio, _Component);
+var Product_MustHave = /*#__PURE__*/function (_Component) {
+  _inherits(Product_MustHave, _Component);
 
-  var _super = _createSuper(Inicio);
+  var _super = _createSuper(Product_MustHave);
 
-  function Inicio(props) {
+  function Product_MustHave(props) {
     var _this;
 
-    _classCallCheck(this, Inicio);
+    _classCallCheck(this, Product_MustHave);
 
     _this = _super.call(this, props);
     _this.state = {
       error: null,
       isLoaded: false,
-      products: [],
-      url_images: _Configuration__WEBPACK_IMPORTED_MODULE_4__["default"] + 'assets/store/images/',
-      url_href: _Configuration__WEBPACK_IMPORTED_MODULE_4__["default"]
+      products: []
     };
     return _this;
   }
 
-  _createClass(Inicio, [{
+  _createClass(Product_MustHave, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_4__["default"] + "api/products/1").then(function (res) {
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_4__["default"].url_principal + "api/products/reference_must_have").then(function (res) {
         return res.json();
       }).then(function (result) {
         _this2.setState({
           isLoaded: true,
           products: result
         });
-      }, // Nota: es importante manejar errores aquí y no en 
-      // un bloque catch() para que no interceptemos errores
-      // de errores reales en los componentes.
-      function (error) {
+      }, function (error) {
         _this2.setState({
           isLoaded: true,
           error: error
@@ -66086,21 +66139,75 @@ var Inicio = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Products_MustHaveProducts__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Products_MustHaveProducts__WEBPACK_IMPORTED_MODULE_2__["default"], {
         products: this.state.products,
-        url_images: this.state.url_images,
-        url_href: this.state.url_href
+        url_images: _Configuration__WEBPACK_IMPORTED_MODULE_4__["default"].url_images,
+        url_href: _Configuration__WEBPACK_IMPORTED_MODULE_4__["default"].url_principal
       });
     }
   }]);
 
-  return Inicio;
+  return Product_MustHave;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Inicio);
-
 if (document.getElementById('Products_Must_Have')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Inicio, null), document.getElementById('Products_Must_Have'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Product_MustHave, null), document.getElementById('Products_Must_Have'));
+}
+
+var Product_Brands = /*#__PURE__*/function (_Component2) {
+  _inherits(Product_Brands, _Component2);
+
+  var _super2 = _createSuper(Product_Brands);
+
+  function Product_Brands(props) {
+    var _this3;
+
+    _classCallCheck(this, Product_Brands);
+
+    _this3 = _super2.call(this, props);
+    _this3.state = {
+      error: null,
+      isLoaded: false,
+      products: []
+    };
+    return _this3;
+  }
+
+  _createClass(Product_Brands, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this4 = this;
+
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_4__["default"].url_principal + "api/products_brands").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this4.setState({
+          isLoaded: true,
+          products: result
+        });
+      }, function (error) {
+        _this4.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Products_BrandsProducts__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        products: this.state.products,
+        url_images: _Configuration__WEBPACK_IMPORTED_MODULE_4__["default"].url_images,
+        url_href: _Configuration__WEBPACK_IMPORTED_MODULE_4__["default"].url_principal
+      });
+    }
+  }]);
+
+  return Product_Brands;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('Products_Brands')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Product_Brands, null), document.getElementById('Products_Brands'));
 }
 
 /***/ }),

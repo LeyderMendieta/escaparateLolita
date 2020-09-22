@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     Route::get('/products/{type}','ProductController@index');
     Route::post('/product','ProductController@store');
+    Route::get('/products_brands','ProductController@getBrands');
+    Route::get('/product_detail/{product}','ProductController@viewProductDetail');

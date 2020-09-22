@@ -16,6 +16,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $referencias = array();
+        $referenciasBrands = array();
 
         $product1 = Product::create([
             'acceso_url' => Str::random(20).Str::random(20),

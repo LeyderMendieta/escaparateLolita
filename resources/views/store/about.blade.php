@@ -34,64 +34,9 @@
                                                                 <span class="sc_layouts_item_details sc_layouts_login_details">Login</span>
                                                             </a>
                                                         </div>
-                                                    </div><div class="sc_layouts_item">
-                                                    <div class="sc_layouts_cart">
-                                                        <span class="sc_layouts_item_icon sc_layouts_cart_icon trx_addons_icon-basket">
-                                                        </span>
-                                                        <span class="sc_layouts_item_details sc_layouts_cart_details">
-                                                            <span class="sc_layouts_item_details_line1 sc_layouts_cart_label">Shopping Cart</span>
-                                                            <span class="sc_layouts_item_details_line2 sc_layouts_cart_totals">
-                                                                <span class="sc_layouts_cart_items">2 items</span>
-                                                                -
-                                                                <span class="sc_layouts_cart_summa">115.00&#36;</span>
-                                                            </span>
-                                                        </span>
-                                                        <span class="sc_layouts_cart_items_short">2</span>
-                                                        <div class="sc_layouts_cart_widget widget_area">
-                                                            <span class="sc_layouts_cart_widget_close trx_addons_icon-cancel">
-                                                            </span>
-                                                            <div class="widget woocommerce widget_shopping_cart">
-                                                                <div class="hide_cart_widget_if_empty">
-                                                                    <div class="widget_shopping_cart_content">
-                                                                        <ul class="cart_list product_list_widget ">
-                                                                            <li class="mini_cart_item">
-                                                                                <a href="#" class="remove" title="Remove this item">×</a>			
-                                                                                <a href="#">
-                                                                                    <img src="{{URL::asset('assets/store/images/product-18-180x180.jpg')}}" alt="" >Strapless Bikini Top &amp; Bottom&nbsp;							
-                                                                                </a>
-                                                                                <dl class="variation">
-                                                                                    <dt class="variation-Size">Size:</dt>
-                                                                                    <dd class="variation-Size"><p>M</p></dd>
-                                                                                    <dt class="variation-Color">Color:</dt>
-                                                                                    <dd class="variation-Color"><p>Gentle Peach</p></dd>
-                                                                                </dl>
-                                                                                <span class="quantity">1 × <span class="amount">61.00<span class="woocommerce-Price-currencySymbol">$</span></span>
-                                                                                </span>					
-                                                                            </li>
-                                                                            <li class="mini_cart_item">
-                                                                                <a href="#" class="remove" title="Remove this item">×</a>			
-                                                                                <a href="#">
-                                                                                    <img src="{{URL::asset('assets/store/images/product-16-180x180.jpg')}}" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;							
-                                                                                </a>
-                                                                                <dl class="variation">
-                                                                                    <dt class="variation-Size">Size:</dt>
-                                                                                    <dd class="variation-Size"><p>M</p></dd>
-                                                                                    <dt class="variation-Color">Color:</dt>
-                                                                                    <dd class="variation-Color"><p>Gentle Peach</p></dd>
-                                                                                </dl>
-                                                                                <span class="quantity">1 × <span class="amount">54.00<span class="woocommerce-Price-currencySymbol">$</span></span></span>		
-                                                                            </li>
-                                                                        </ul><!-- end product list -->
-                                                                        <p class="total"><strong>Subtotal:</strong> <span class="amount">115.00<span class="woocommerce-Price-currencySymbol">$</span></span></p>
-                                                                        <p class="buttons">
-                                                                            <a href="#" class="button wc-forward sc_button_hover_slide_left">View Cart</a>
-                                                                            <a href="#" class="button checkout wc-forward sc_button_hover_slide_left">Checkout</a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
+                                                    <div class="sc_layouts_item">
+                                                        @include('store.layouts.mycart')
                                                     </div>
                                                 </div>
                                             </div>
@@ -267,109 +212,7 @@
                                     <section class="no_pt">
                                         <div class="content_container">
                                             <div class="column_row"> 
-                                                <div class="column-inner">
-                                                    <div class="columns_wrap">
-                                                        <div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
-                                                            <div class="column-inner">
-                                                                <div class="text_column">
-                                                                    <div class="brd-1px_grey">
-                                                                        <figure class="align_center">
-                                                                            <a href="#"><img src="{{URL::asset('assets/store/images/2.png')}}" alt="" /></a>
-                                                                        </figure>
-                                                                    </div>
-                                                                    <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
-                                                                </div>
-                                                            </div>
-                                                        </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
-                                                            <div class="column-inner">
-                                                                <div class="text_column">
-                                                                    <div class="brd-1px_grey">
-                                                                        <figure class="align_center">
-                                                                            <a href="#"><img src="{{URL::asset('assets/store/images/4.png')}}" alt="" /></a>
-                                                                        </figure>
-                                                                    </div>
-                                                                    <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
-                                                                </div>
-                                                            </div>
-                                                        </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
-                                                            <div class="column-inner">
-                                                                <div class="text_column">
-                                                                    <div class="brd-1px_grey">
-                                                                        <figure class="align_center">
-                                                                            <a href="#"><img src="{{URL::asset('assets/store/images/7.png')}}" alt="" /></a>
-                                                                        </figure>
-                                                                    </div>
-                                                                    <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
-                                                                </div>
-                                                            </div>
-                                                        </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
-                                                            <div class="column-inner">
-                                                                <div class="text_column">
-                                                                    <div class="brd-1px_grey">
-                                                                        <figure class="align_center">
-                                                                            <a href="#"><img src="{{URL::asset('assets/store/images/3.png')}}" alt="" /></a>
-                                                                        </figure>
-                                                                    </div>
-                                                                    <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section> 
-                                    <section class="no_pt">
-                                        <div class="content_container">
-                                            <div class="column_row"> 
-                                                <div class="column-inner">
-                                                    <div class="columns_wrap">
-                                                        <div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
-                                                            <div class="column-inner">
-                                                                <div class="text_column">
-                                                                    <div class="brd-1px_grey">
-                                                                        <figure class="align_center">
-                                                                            <a href="#"><img src="{{URL::asset('assets/store/images/1.png')}}" alt="" /></a>
-                                                                        </figure>
-                                                                    </div>
-                                                                    <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
-                                                                </div>
-                                                            </div>
-                                                        </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
-                                                        <div class="column-inner">
-                                                            <div class="text_column">
-                                                                <div class="brd-1px_grey">
-                                                                    <figure class="align_center">
-                                                                        <a href="#"><img src="{{URL::asset('assets/store/images/5.png')}}" alt="" /></a>
-                                                                    </figure>
-                                                                </div>
-                                                                <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
-                                                            </div>
-                                                        </div>
-                                                        </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
-                                                        <div class="column-inner">
-                                                            <div class="text_column">
-                                                                <div class="brd-1px_grey">
-                                                                    <figure class="align_center">
-                                                                        <a href="#"><img src="{{URL::asset('assets/store/images/8.png')}}" alt="" /></a>
-                                                                    </figure>
-                                                                </div>
-                                                                <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
-                                                            </div>
-                                                        </div>
-                                                        </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
-                                                        <div class="column-inner">
-                                                            <div class="text_column">
-                                                                <div class="brd-1px_grey">
-                                                                    <figure class="align_center">
-                                                                        <a href="#"><img src="{{URL::asset('assets/store/images/6.png')}}" alt="" /></a>
-                                                                    </figure>
-                                                                </div>
-                                                                <div class="empty_space h_30px"><span class="empty_space_inner"></span></div> 
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="column-inner" id="Products_Brands">
                                                 </div>
                                             </div>
                                         </div>

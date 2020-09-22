@@ -14,5 +14,6 @@ require('./bootstrap');
 require('./components/Configuration');
 require('./components/Products/Listado');
 require('./components/Products/MustHaveProducts');
+require('./components/Products/BrandsProducts');
 require('./components/StartApp');
 
