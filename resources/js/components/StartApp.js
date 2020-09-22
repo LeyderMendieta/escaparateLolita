@@ -116,7 +116,9 @@ class Products_Shop extends Component {
         page: {          
           itemPerPage: 10,
           total: 30
-        }      
+        },    
+        from: null,
+        to: null
         
       };
     }
@@ -133,7 +135,9 @@ class Products_Shop extends Component {
         (result) => {
           this.setState({
             isLoaded: true,
-            products: result.data
+            products: result.data,
+            from: result.from,
+            to: result.to
           });
         },
         
@@ -159,8 +163,13 @@ class Products_Shop extends Component {
           <div>
             <ListProducts 
                 productos={this.state.products}
+                url_images={Configuracion.url_images}
+                url_href={Configuracion.url_principal}
+                totalItemsCount={this.state.page.total}
+                from={this.state.from}
+                to={this.state.to}
             />
-            <nav class="woocommerce-pagination">
+            <nav className="woocommerce-pagination">
               <Pagination
                   activePage={this.state.activePage}
                   itemsCountPerPage={this.state.page.itemPerPage}

@@ -68102,23 +68102,97 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ListProducts = function ListProducts(_ref) {
-  var productos = _ref.productos;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-    className: "table"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "First"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "Last"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "Handle"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, productos.map(function (product) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-      key: product.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-      scope: "row"
-    }, product.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, product.descripcion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, product.created_at));
+  var productos = _ref.productos,
+      url_images = _ref.url_images,
+      url_href = _ref.url_href,
+      totalItemsCount = _ref.totalItemsCount,
+      from = _ref.from,
+      to = _ref.to;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "woocommerce-result-count"
+  }, " Showing ", from, " - ", to, " of ", totalItemsCount, " results"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "woocommerce-ordering",
+    method: "get"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "select_container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "orderby",
+    className: "orderby"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "popularity"
+  }, "Sort by popularity"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "rating"
+  }, "Sort by average rating"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "date",
+    selected: "selected"
+  }, "Sort by newness"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "price"
+  }, "Sort by price: low to high"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "price-desc"
+  }, "Sort by price: high to low")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "products wcspt-products"
+  }, productos.map(function (producto) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "product column-1_4 wcspt-has-gallery",
+      key: producto.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "post_item post_layout_thumbs"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "post_featured hover_shop_buttons"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: url_href + "shop/" + producto.acceso_url,
+      className: "wcspt-img-link"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: url_images + producto.imagen_main,
+      alt: "product-19",
+      title: "product-19"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: url_images + producto.imagen_secundaria,
+      className: "secondary-thumb wcspt-transition",
+      alt: ""
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "mask"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "icons"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: url_href + "shop/" + producto.acceso_url,
+      className: "shop_cart icon-cart-2 button add_to_cart_button product_type_variable"
+    }, "Buy now"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: url_href + "shop/" + producto.acceso_url,
+      className: "shop_link button icon-link"
+    }, "Details"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "post_data"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "post_header entry-header"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: url_href + "shop/" + producto.acceso_url
+    }, producto.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "star-rating",
+      title: "Rated 5 out of 5"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "w_100per"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+      className: "rating"
+    }, "5"), " out of 5"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "price"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "woocs_price_code"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "amount"
+    }, "53", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "decimals"
+    }, "00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "woocommerce-Price-currencySymbol"
+    }, "$")), "\u2013", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "amount"
+    }, "59", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "decimals"
+    }, "00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "woocommerce-Price-currencySymbol"
+    }, "$")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: url_href + "shop/" + producto.acceso_url,
+      className: "button product_type_variable add_to_cart_button sc_button_hover_slide_left"
+    }, "Buy now"))));
   })));
 };
 
@@ -68413,7 +68487,9 @@ var Products_Shop = /*#__PURE__*/function (_Component3) {
       page: {
         itemPerPage: 10,
         total: 30
-      }
+      },
+      from: null,
+      to: null
     };
     return _this5;
   }
@@ -68462,7 +68538,9 @@ var Products_Shop = /*#__PURE__*/function (_Component3) {
                 }).then(function (result) {
                   _this6.setState({
                     isLoaded: true,
-                    products: result.data
+                    products: result.data,
+                    from: result.from,
+                    to: result.to
                   });
                 }, function (error) {
                   _this6.setState({
@@ -68518,9 +68596,14 @@ var Products_Shop = /*#__PURE__*/function (_Component3) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Products_ListProducts__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        productos: this.state.products
+        productos: this.state.products,
+        url_images: _Configuration__WEBPACK_IMPORTED_MODULE_4__["default"].url_images,
+        url_href: _Configuration__WEBPACK_IMPORTED_MODULE_4__["default"].url_principal,
+        totalItemsCount: this.state.page.total,
+        from: this.state.from,
+        to: this.state.to
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("nav", {
-        "class": "woocommerce-pagination"
+        className: "woocommerce-pagination"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_8___default.a, {
         activePage: this.state.activePage,
         itemsCountPerPage: this.state.page.itemPerPage,
