@@ -12,7 +12,7 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 require('./components/Configuration');
-require('./components/Products/Listado');
+require('./components/Products/ListProducts');
 require('./components/Products/MustHaveProducts');
 require('./components/Products/BrandsProducts');
 require('./components/StartApp');

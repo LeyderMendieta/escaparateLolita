@@ -80,5 +80,20 @@ class ProductSeeder extends Seeder
                 'target_on' => 'reference_must_have'
             ]);
         }
+
+        $i = 0;
+        while($i < 25)
+        {
+            $product = Product::create([
+                'acceso_url' => Str::random(20).Str::random(20),
+                'name' => Str::random(20),
+                'descripcion' => Str::random(150),
+                'imagen_main' => "must_have_5_175x235.jpg",
+                'imagen_secundaria' => "must_have_5_175x235.jpg",
+                'sizes' => json_encode(array('L','S')),
+                'colores'=> json_encode(array('Gris','Negro'))
+            ]);
+            $i++;
+        }        
     }
 }

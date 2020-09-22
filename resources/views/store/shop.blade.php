@@ -152,6 +152,7 @@
                                         </select>
                                     </div>
                                 </form>
+                                <div id="Shop_Products"></div>
                                 <ul class="products wcspt-products">
                                     <li class="product column-1_4 wcspt-has-gallery">
                                         <div class="post_item post_layout_thumbs">

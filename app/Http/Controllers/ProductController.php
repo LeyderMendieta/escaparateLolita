@@ -18,6 +18,13 @@ class ProductController extends Controller
         return response()->json($products, 200);
     }
 
+    public function getProducts()
+    {
+        $products = Product::query()->orderBy('id', 'ASC')->paginate(10);
+
+        return response()->json($products, 200);
+    }
+
     public function getBrands()
     {
         $brands = DB::table('product_brands')
