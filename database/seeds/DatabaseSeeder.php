@@ -1,6 +1,6 @@
 <?php
 
-use App\AgendaTipo;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,9 +11,9 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        $this->call(AgendaTipoSeeder::class);
+    {        
         $this->call(ProductSeeder::class);
         $this->call(ProductBrandSeeder::class);
+        $this->call(AgendaTipoSeeder::class);
     }
 }
