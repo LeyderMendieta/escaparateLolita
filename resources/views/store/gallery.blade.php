@@ -111,7 +111,7 @@
                 <div class="menu_mobile scheme_dark">
                     <div class="menu_mobile_inner">
                         <a class="menu_mobile_close icon-cancel"></a>
-                        <a class="sc_layouts_logo" href="index.html"><img src="images/logo_light.png" alt=""></a>
+                        <a class="sc_layouts_logo" href="index.html"><img src="{{URL::asset('assets/store/images/logo_light.png')}}" alt=""></a>
                         @include('store.layouts.nav-mobile-menu')
                         <div class="search_wrap search_style_normal search_mobile">
                             <div class="search_form_wrap">
@@ -174,12 +174,12 @@
                                                             <li  class="filterall filter-highlights-of-the-runway filter-knickers filter-undershirt eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-28.jpg" alt="" >
+                                                                        <img src="{{URL::asset('assets/store/images/post-28.jpg')}}" alt="" >
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-28.jpg" title="Divide and Conquer"><i class="eg-icon-search"></i>
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-28.jpg')}}" title="Divide and Conquer"><i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
@@ -196,12 +196,12 @@
                                                             <li  class="filterall filter-beautiful-reclessness filter-briefs filter-panty-hose eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-27.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/post-27.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-27.jpg" title="The Comfort of Sleep is Cruicial"><i class="eg-icon-search"></i>
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-27.jpg')}}" title="The Comfort of Sleep is Cruicial"><i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
@@ -218,12 +218,12 @@
                                                             <li class="filterall filter-beautiful-reclessness filter-knickers filter-undershirt eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-26.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/post-26.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-26.jpg" title="Your Holiday Shop Assistant"><i class="eg-icon-search"></i>
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-26.jpg')}}" title="Your Holiday Shop Assistant"><i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
@@ -240,12 +240,12 @@
                                                             <li class="filterall filter-christian-louboutin-show filter-givenchy-fw-2016 filter-highlights-of-the-runway filter-spring-by-gaultier filter-briefs filter-panty-hose eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-25.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/post-25.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-25.jpg" title="Our Gift for Beautiful Brides"><i class="eg-icon-search"></i>
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-25.jpg')}}" title="Our Gift for Beautiful Brides"><i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
@@ -262,12 +262,12 @@
                                                             <li class="filterall filter-beautiful-reclessness filter-knickers filter-undershirt eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-24.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/post-24.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-24.jpg" title="Chocolate Passion in Your Master Bedroom">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-24.jpg')}}" title="Chocolate Passion in Your Master Bedroom">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -285,12 +285,12 @@
                                                             <li class="filterall filter-highlights-of-the-runway filter-briefs filter-panty-hose eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-23.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/post-23.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-23.jpg" title="Innocent - a New Collection of Lingerie">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-23.jpg')}}" title="Innocent - a New Collection of Lingerie">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -308,12 +308,12 @@
                                                             <li class="filterall filter-highlights-of-the-runway filter-knickers filter-undershirt eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-22.jpg" alt="" >
+                                                                        <img src="{{URL::asset('assets/store/images/post-22.jpg')}}" alt="" >
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-22.jpg" title="Lilac Silk, Smooth Textures and Detail">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-22.jpg')}}" title="Lilac Silk, Smooth Textures and Detail">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -331,12 +331,12 @@
                                                             <li class="filterall filter-beautiful-reclessness filter-comfort-vs-appearance filter-briefs filter-panty-hose eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-21.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/post-21.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-21.jpg" title="Classic Romance Style Today">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-21.jpg')}}" title="Classic Romance Style Today">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -354,12 +354,12 @@
                                                             <li class="filterall filter-beautiful-reclessness filter-knickers filter-undershirt eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-20.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/post-20.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-20.jpg" title="The Most Expensive Sleepwear">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-20.jpg')}}" title="The Most Expensive Sleepwear">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -377,12 +377,12 @@
                                                             <li  class="filterall filter-highlights-of-the-runway filter-knickers filter-undershirt eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-19.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/post-19.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-19.jpg" title="Behind the Scenes of the Photoshoot">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-19.jpg')}}" title="Behind the Scenes of the Photoshoot">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -400,12 +400,12 @@
                                                             <li class="filterall filter-comfort-vs-appearance filter-briefs filter-panty-hose eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-18.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/post-18.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-18.jpg" title="Underneath It All">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-18.jpg')}}" title="Underneath It All">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -423,12 +423,12 @@
                                                             <li class="filterall filter-comfort-vs-appearance filter-highlights-of-the-runway filter-knickers filter-undershirt eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-17.jpg" alt="" >
+                                                                        <img src="{{URL::asset('assets/store/images/post-17.jpg')}}" alt="" >
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-17.jpg" title="Always, Your Lady Pink Accessories">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-17.jpg')}}" title="Always, Your Lady Pink Accessories">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -446,12 +446,12 @@
                                                             <li class="filterall filter-comfort-vs-appearance filter-ladies-secrets filter-briefs filter-panty-hose eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-15.jpg" alt="" >
+                                                                        <img src="{{URL::asset('assets/store/images/post-15.jpg')}}" alt="" >
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-15.jpg" title="Intimate Apparel at Sportswear Stage">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-15.jpg')}}" title="Intimate Apparel at Sportswear Stage">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -469,12 +469,12 @@
                                                             <li class="filterall filter-comfort-vs-appearance filter-ladies-secrets filter-knickers filter-undershirt eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-14.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/post-14.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-14.jpg" title="Discover Your Inner Girlish Self">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-14.jpg')}}" title="Discover Your Inner Girlish Self">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -492,12 +492,12 @@
                                                             <li  class="filterall filter-comfort-vs-appearance filter-ladies-secrets filter-knickers filter-undershirt eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-13.jpg" alt="" >
+                                                                        <img src="{{URL::asset('assets/store/images/post-13.jpg')}}" alt="" >
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-13.jpg" title="Spring in the Middle of January">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-13.jpg')}}" title="Spring in the Middle of January">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -515,12 +515,12 @@
                                                             <li class="filterall filter-comfort-vs-appearance filter-ladies-secrets filter-briefs filter-panty-hose eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/1promo.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/1promo.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/1promo.jpg" title="The Means for Seduction in Fall 2016">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/1promo.jpg')}}" title="The Means for Seduction in Fall 2016">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -538,12 +538,12 @@
                                                             <li class="filterall filter-beautiful-reclessness filter-comfort-vs-appearance filter-ladies-secrets filter-briefs filter-panty-hose eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-12.jpg" alt="" >
+                                                                        <img src="{{URL::asset('assets/store/images/post-12.jpg')}}" alt="" >
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-12.jpg" title="Luxury Plus Size Sleepwear Brand">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-12.jpg')}}" title="Luxury Plus Size Sleepwear Brand">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -561,12 +561,12 @@
                                                             <li class="filterall filter-comfort-vs-appearance filter-ladies-secrets filter-knickers filter-undershirt eg-theme-wrapper">
                                                                 <div class="esg-media-cover-wrapper">
                                                                     <div class="esg-entry-media">
-                                                                        <img src="images/post-11.jpg" alt="">
+                                                                        <img src="{{URL::asset('assets/store/images/post-11.jpg')}}" alt="">
                                                                     </div>
                                                                     <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                         <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
                                                                         <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="images/post-11.jpg" title="‘Beth’ Is the Most Popular Camisole">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-11.jpg')}}" title="‘Beth’ Is the Most Popular Camisole">
                                                                                 <i class="eg-icon-search"></i>
                                                                             </a>
                                                                         </div>
@@ -626,7 +626,7 @@
                                         <h5 class="widget_title">Recent Posts</h5>
                                         <article class="post_item with_thumb">
                                             <div class="post_thumb">
-                                                <a href="#"><img src="images/post-29-90x90.jpg" alt="Lingerie Supports Fashion Targets Breast Cancer"></a>
+                                                <a href="#"><img src="{{URL::asset('assets/store/images/post-29-90x90.jpg')}}" alt="Lingerie Supports Fashion Targets Breast Cancer"></a>
                                             </div>
                                             <div class="post_content">
                                                 <h6 class="post_title"><a href="#">Lingerie Supports Fashion Targets Breast Cancer</a></h6>
@@ -635,7 +635,7 @@
                                         </article>
                                         <article class="post_item with_thumb">
                                             <div class="post_thumb">
-                                                <a href="#"><img src="images/post-5-90x90.jpg" alt="A Case for No Shirt, No Problem"></a>
+                                                <a href="#"><img src="{{URL::asset('assets/store/images/post-5-90x90.jpg')}}" alt="A Case for No Shirt, No Problem"></a>
                                             </div>
                                             <div class="post_content">
                                                 <h6 class="post_title"><a href="#">A Case for No Shirt, No Problem</a></h6>
@@ -644,7 +644,7 @@
                                         </article>
                                         <article class="post_item with_thumb">
                                             <div class="post_thumb">
-                                                <a href="#"><img src="images/post-6-90x90.jpg" alt="Emotional Experience of Balconette Bra"></a>
+                                                <a href="#"><img src="{{URL::asset('assets/store/images/post-6-90x90.jpg')}}" alt="Emotional Experience of Balconette Bra"></a>
                                             </div>
                                             <div class="post_content">
                                                 <h6 class="post_title"><a href="#">Emotional Experience of Balconette Bra</a></h6>

@@ -15,5 +15,8 @@ require('./components/Configuration');
 require('./components/Products/ListProducts');
 require('./components/Products/MustHaveProducts');
 require('./components/Products/BrandsProducts');
+require('./components/Products/ProductDetail_Images');
 require('./components/StartApp');
+require('./components/App_Calendario');
+require('./components/App_ProductDetail');
 

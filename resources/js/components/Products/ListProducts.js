@@ -29,7 +29,7 @@ const ListProducts = ({productos,url_images,url_href,totalItemsCount,from,to}) =
                               <a href={url_href+"shop/"+producto.acceso_url} className="shop_link button icon-link">Details</a>
                           </div>
                       </div>
-                      <div className="post_data">
+                      <div className="post_data" style={{height:'9rem'}} >
                           <div className="post_header entry-header">
                               <h3><a href={url_href+"shop/"+producto.acceso_url}>{producto.name}</a></h3>
                               <div className="star-rating" title="Rated 5 out of 5"><span className="w_100per"><strong className="rating">5</strong> out of 5</span></div>			

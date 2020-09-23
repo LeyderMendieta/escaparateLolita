@@ -496,6 +496,11 @@
                                     </section>
                                     <section>
                                         <div class="content_container">
+                                            <div id="App_Calendar"></div>     
+                                        </div>
+                                    </section>                                   
+                                    <section>
+                                        <div class="content_container">
                                             <div class="column_row"> 
                                                 <div class="column_container column-1_1 sc_layouts_column_icons_position_left">   
                                                     <div class="column-inner">
@@ -743,3 +748,34 @@
         <a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>
     </body>
 </html>  
+<style>
+    .btn-tile-calendario:disabled
+    {
+        background:#F0EDED;
+        color:#000;
+        text-decoration: none;
+    }
+    .btn-tile-calendario{
+        border:1px solid #ccc!important;
+    }
+    abbr{
+        cursor:default;
+        border-bottom:none;
+    }
+    .react-calendar__navigation__label,.react-calendar__navigation__arrow{
+        color:black!important;
+        background:#fff!important;
+    }
+    .react-calendar__navigation__label:hover,.react-calendar__navigation__arrow:hover{
+        color:black!important;
+        background:#ccc!important;
+    }
+
+    .contenedor-calendario{
+        margin:0 auto;
+    }
+    .cursor-pointer{
+        cursor: pointer;
+    }
+
+</style>

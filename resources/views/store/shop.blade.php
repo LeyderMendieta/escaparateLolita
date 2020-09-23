@@ -93,7 +93,7 @@
                 <div class="menu_mobile scheme_dark">
                     <div class="menu_mobile_inner">
                         <a class="menu_mobile_close icon-cancel"></a>
-                        <a class="sc_layouts_logo" href="index.html"><img src="images/logo_light.png" alt=""></a>
+                        <a class="sc_layouts_logo" href="index.html"><img src="{{URL::asset('assets/store/images/logo_light.png')}}" alt=""></a>
                         @include('store.layouts.nav-mobile-menu')
                         <div class="search_wrap search_style_normal search_mobile">
                             <div class="search_form_wrap">
@@ -153,7 +153,7 @@
                                             <li class="mini_cart_item">
                                                 <a href="#" class="remove" title="Remove this item">×</a>
                                                 <a href="#">
-                                                    <img src="images/product-18-180x180.jpg" alt="">Strapless Bikini Top &amp; Bottom&nbsp;
+                                                    <img src="{{URL::asset('assets/store/images/product-18-180x180.jpg')}}" alt="">Strapless Bikini Top &amp; Bottom&nbsp;
                                                 </a>
                                                 <dl class="variation">
                                                     <dt class="variation-Size">Size:</dt>
@@ -166,7 +166,7 @@
                                             <li class="mini_cart_item">
                                                 <a href="#" class="remove" title="Remove this item">×</a>												
                                                 <a href="#">
-                                                    <img src="images/product-16-180x180.jpg" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;	
+                                                    <img src="{{URL::asset('assets/store/images/product-16-180x180.jpg')}}" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;	
                                                 </a>
                                                 <dl class="variation">
                                                     <dt class="variation-Size">Size:</dt>
@@ -233,7 +233,7 @@
                                     <ul class="product_list_widget">
                                         <li>
                                             <a href="#" title="Halter Bodysuit"> 
-                                                <img src="images/product-19-180x180.jpg" alt="" /> 
+                                                <img src="{{URL::asset('assets/store/images/product-19-180x180.jpg')}}" alt="" /> 
                                                 <span class="product-title">Halter Bodysuit</span> 
                                             </a>
                                             <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span>
@@ -243,7 +243,7 @@
                                         </li>
                                         <li>
                                             <a href="#" title="Smooth Raw Cut Hiphugger"> 
-                                                <img src="images/product-11-180x180.jpg" alt="" /> 
+                                                <img src="{{URL::asset('assets/store/images/product-11-180x180.jpg')}}" alt="" /> 
                                                 <span class="product-title">Smooth Raw Cut Hiphugger</span> 
                                             </a>
                                             <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span>
@@ -253,7 +253,7 @@
                                         </li>
                                         <li>
                                             <a href="#" title="Victory Contour Hiphugger &amp; Push Up Bra"> 
-                                                <img src="images/product-17-180x180.jpg" alt="" /> 
+                                                <img src="{{URL::asset('assets/store/images/product-17-180x180.jpg')}}" alt="" /> 
                                                 <span class="product-title">Victory Contour Hiphugger &amp; Push Up Bra</span> 
                                             </a>
                                             <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span>
@@ -263,7 +263,7 @@
                                         </li>
                                         <li>
                                             <a href="#" title="Libertine Obsession High Bikinis"> 
-                                                <img src="images/product-2-180x180.jpg" alt="" /> 
+                                                <img src="{{URL::asset('assets/store/images/product-2-180x180.jpg')}}" alt="" /> 
                                                 <span class="product-title">Libertine Obsession High Bikinis</span> 
                                             </a>
                                             <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span>
@@ -274,7 +274,7 @@
                                     </ul>
                                 </aside><aside class="widget widget_banner">
                                     <a href="#" class="image_wrap">
-                                        <img src="images/banner_1.jpg" alt="" >
+                                        <img src="{{URL::asset('assets/store/images/banner_1.jpg')}}" alt="" >
                                     </a>
                                 </aside><aside class="widget woocommerce widget_product_tag_cloud">
                                     <h5 class="widget_title">Tags</h5>
@@ -288,11 +288,11 @@
                                     </div>
                                 </aside><aside  class="widget widget_banner">
                                     <a href="#" class="image_wrap">
-                                        <img src="images/banner_2.jpg" alt="">
+                                        <img src="{{URL::asset('assets/store/images/banner_2.jpg')}}" alt="">
                                     </a>
                                 </aside><aside class="widget widget_banner">
                                     <a href="#" class="image_wrap">
-                                        <img src="images/banner_3.jpg" alt="" >
+                                        <img src="{{URL::asset('assets/store/images/banner_3.jpg')}}" alt="" >
                                     </a>
                                 </aside>
                             </div>

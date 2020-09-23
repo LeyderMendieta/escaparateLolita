@@ -52,7 +52,10 @@ class ProductController extends Controller
 
     public function verProducto($producto)
     {
-        return view("store.shop-single");
+        $product = DB::table('products')
+            ->where('acceso_url',$producto)
+            ->get();
+        return view("store.shop-single",["producto" => $producto,"info_product" => $product[0]]);
     }
 }
 

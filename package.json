@@ -25,6 +25,9 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "react-js-pagination": "^3.0.3"
+        "react-calendar": "^3.1.0",
+        "react-js-pagination": "^3.0.3",
+        "react-schedule-calendar": "^0.22.6",
+        "scheduler-calendar": "^2.1.3"
     }
 }

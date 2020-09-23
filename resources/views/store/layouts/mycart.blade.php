@@ -22,7 +22,7 @@
                         <li class="mini_cart_item">
                             <a href="#" class="remove" title="Remove this item">×</a>			
                             <a href="#">
-                                <img src="images/product-18-180x180.jpg" alt="" >da Bikini Top &amp; Bottom&nbsp;							
+                                <img src="{{URL::asset('assets/store/images/product-18-180x180.jpg')}}" alt="" >da Bikini Top &amp; Bottom&nbsp;							
                             </a>
                             <dl class="variation">
                                 <dt class="variation-Size">Size:</dt>
@@ -36,7 +36,7 @@
                         <li class="mini_cart_item">
                             <a href="#" class="remove" title="Remove this item">×</a>			
                             <a href="#">
-                                <img src="images/product-16-180x180.jpg" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;							
+                                <img src="{{URL::asset('assets/store/images/product-16-180x180.jpg')}}" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;							
                             </a>
                             <dl class="variation">
                                 <dt class="variation-Size">Size:</dt>

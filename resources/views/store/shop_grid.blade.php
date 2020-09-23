@@ -96,7 +96,7 @@
                 <div class="menu_mobile scheme_dark">
                     <div class="menu_mobile_inner">
                         <a class="menu_mobile_close icon-cancel"></a>
-                        <a class="sc_layouts_logo" href="index.html"><img src="images/logo_light.png" alt=""></a>
+                        <a class="sc_layouts_logo" href="index.html"><img src="{{URL::asset('assets/store/images/logo_light.png')}}" alt=""></a>
                         @include('store.layouts.nav-mobile-menu')
                         <div class="search_wrap search_style_normal search_mobile">
                             <div class="search_form_wrap">
@@ -142,7 +142,7 @@
                                                                 <li class="filterall filter-variable filter-333 filter-bikinis filter-sales filter-sleep-lounge filter-sport filter-swim-wear filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-8.jpg" alt="" width="960" height="1286"></div>
+                                                                            <img src="{{URL::asset('assets/store/images/product-8.jpg')}}" alt="" width="960" height="1286"></div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
                                                                             <div class="esg-bottom eg-theme-grid-shop-element-34-a esg-slideright" data-delay="0.1">
@@ -171,7 +171,7 @@
                                                                 <li class="filterall filter-variable filter-333 filter-bikinis filter-sales filter-sleep-lounge filter-sport filter-swim-wear filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-4.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-4.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -199,7 +199,7 @@
                                                                 <li class="filterall filter-variable filter-333 filter-bras filter-highlight filter-pretty-little-world filter-sleep-lounge filter-sport filter-swim-wear filter-lace filter-sexy filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-5.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-5.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -228,7 +228,7 @@
                                                                 <li class="filterall filter-variable filter-hipsters filter-retro-briefs filter-sales filter-sleep-lounge filter-sport filter-swim-wear filter-bikini filter-briefs filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper" >
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-2.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-2.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -257,7 +257,7 @@
                                                                 <li class="filterall filter-variable filter-bras filter-essentials filter-highlight filter-sexy-intimates filter-sport filter-swim-wear filter-thongs filter-view-all-panties filter-design filter-luxury filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-7.jpg" width="960" height="1286" alt=""  >
+                                                                            <img src="{{URL::asset('assets/store/images/product-7.jpg')}}" width="960" height="1286" alt=""  >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -285,7 +285,7 @@
                                                                 <li class="filterall filter-variable filter-sales filter-sleep-lounge filter-sport filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-10.jpg" width="961" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-10.jpg')}}" width="961" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -308,7 +308,7 @@
                                                                 <li class="filterall filter-variable filter-hipsters filter-retro-briefs filter-sport filter-swim-wear filter-thongs filter-lace filter-sexy filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-9.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-9.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -331,7 +331,7 @@
                                                                 <li class="filterall filter-variable filter-sales filter-sexy-intimates filter-sport filter-swim-wear filter-bikini filter-briefs filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-6.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-6.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -360,7 +360,7 @@
                                                                 <li class="filterall filter-variable filter-bras filter-highlight filter-panties filter-pretty-little-world filter-sales filter-sexy-intimates filter-sleep-lounge filter-design filter-luxury filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-13.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-13.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -384,7 +384,7 @@
                                                                 <li class="filterall filter-variable filter-333 filter-bras filter-bridal filter-essentials filter-highlight filter-hipsters filter-panties filter-pretty-little-world filter-retro-briefs filter-sales filter-sexy-intimates filter-sleep-lounge filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-12.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-12.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -414,7 +414,7 @@
                                                                 <li class="filterall filter-variable filter-bras filter-highlight filter-sales filter-sexy-intimates filter-sleep-lounge filter-lace filter-sexy filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-17.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-17.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -443,7 +443,7 @@
                                                                 <li class="filterall filter-variable filter-bikinis filter-panties filter-sales filter-sexy-intimates filter-sleep-lounge filter-thongs filter-view-all-panties filter-bikini filter-briefs filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product14.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product14.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -467,7 +467,7 @@
                                                                 <li class="filterall filter-variable filter-bikinis filter-bras filter-bridal filter-essentials filter-pretty-little-world filter-sexy-intimates filter-design filter-luxury filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper" >
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-15.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-15.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -490,7 +490,7 @@
                                                                 <li class="filterall filter-variable filter-highlight filter-sales filter-sexy-intimates filter-sleep-lounge filter-sport filter-swim-wear filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-1.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-1.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -520,7 +520,7 @@
                                                                 <li class="filterall filter-variable filter-bikinis filter-bras filter-highlight filter-sales filter-sexy-intimates filter-sleep-lounge filter-sport filter-swim-wear filter-bikini filter-briefs filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-18.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-18.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -550,7 +550,7 @@
                                                                 <li class="filterall filter-variable filter-333 filter-bras filter-essentials filter-hipsters filter-pretty-little-world filter-sales filter-view-all-panties filter-lace filter-sexy filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper">
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-11.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-11.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -578,7 +578,7 @@
                                                                 <li class="filterall filter-variable filter-bikinis filter-bridal filter-highlight filter-retro-briefs filter-sales filter-sexy-intimates filter-thongs filter-bikini filter-briefs filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper" >
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-16.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-16.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -601,7 +601,7 @@
                                                                 <li  class="filterall filter-variable filter-bras filter-highlight filter-pretty-little-world filter-sales filter-sexy-intimates filter-sleep-lounge filter-sport filter-swim-wear filter-gifts filter-wedding filter-gentle-peach filter-red-passion filter-valiant-violet filter-l filter-m filter-s filter-xl eg-theme-grid-shop-wrapper" >
                                                                     <div class="esg-media-cover-wrapper">
                                                                         <div class="esg-entry-media">
-                                                                            <img src="images/product-19.jpg" width="960" height="1286" alt="" >
+                                                                            <img src="{{URL::asset('assets/store/images/product-19.jpg')}}" width="960" height="1286" alt="" >
                                                                         </div>
                                                                         <div class="esg-entry-cover esg-fade" data-delay="0">
                                                                             <div class="esg-overlay esg-fade eg-theme-grid-shop-container" data-delay="0"></div>
@@ -648,7 +648,7 @@
                                                             <div class="sc_promo_image bg_promo"></div>
                                                             <div class="sc_promo_text w_50per f_right">
                                                                 <div class="sc_promo_text_inner sc_align_center bg_pink">
-                                                                    <img class="top_promo_image" src="images/promo.png" alt="">
+                                                                    <img class="top_promo_image" src="{{URL::asset('assets/store/images/promo.png')}}" alt="">
                                                                     <h2 class="sc_item_title sc_promo_title sc_align_default sc_item_title_style_default">Back<br />
                                                                         to<br />
                                                                         Black</h2>

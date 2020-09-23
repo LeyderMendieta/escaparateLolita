@@ -24,4 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('/products_brands','ProductController@getBrands');
     Route::get('/product_detail/{product}','ProductController@viewProductDetail');
 
-    Route::post('/product','ProductController@store');
+    Route::get('/product_detail/{product}','ProductController@viewProductDetail');
+
+    Route::get('/availableDaysFor/{dia}/{mes}/{ano}','AgendaController@getAvailableFor');
+    Route::post('/asignarAgenda','AgendaController@store');
