@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->text("descripcion");
             $table->text("imagen_main");
             $table->text("imagen_secundaria");
-            $table->json("sizes");
-            $table->json("colores");
+            $table->text("sizes");
+            $table->text("colores");
             $table->timestamps();
         });
     }

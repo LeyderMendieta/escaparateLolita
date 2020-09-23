@@ -24,8 +24,8 @@ class ProductSeeder extends Seeder
             'descripcion' => "General Delivery Information. US Standard: Within 3 working days – $5 or FREE when you spend over $200 US Premium: Order by 12pm Mon – Fri, for delivery the next working day – $10 We also offer the option to add a personalised gift message if you are looking to treat that certain someone. Simply choose the gift message option at checkout and your message will be presented on a branded pink card.",
             'imagen_main' => "product-11-300x410.jpg", //pendiente de Actualizacion
             'imagen_secundaria' => "product-15-300x410.jpg", //pendiente de Actualizacion
-            'sizes' => json_encode(array('M','S')),
-            'colores'=> json_encode(array('Blanco','Negro'))
+            'sizes' => "M;S",
+            'colores'=> "Azul;Blanco"
         ]); 
         array_push($referencias,$product1);
 
@@ -35,8 +35,8 @@ class ProductSeeder extends Seeder
             'descripcion' => "General Delivery Information. US Standard: Within 3 working days – $5 or FREE when you spend over $200 US Premium: Order by 12pm Mon – Fri, for delivery the next working day – $10 We also offer the option to add a personalised gift message if you are looking to treat that certain someone. Simply choose the gift message option at checkout and your message will be presented on a branded pink card.",
             'imagen_main' => "product-17-300x410.jpg",
             'imagen_secundaria' => "product-15-300x410.jpg",
-            'sizes' => json_encode(array('M','S')),
-            'colores'=> json_encode(array('Blanco','Negro'))
+            'sizes' => "M;S",
+            'colores'=> "Azul;Blanco"
         ]);
         array_push($referencias,$product2);
 
@@ -46,8 +46,8 @@ class ProductSeeder extends Seeder
             'descripcion' => "General Delivery Information. US Standard: Within 3 working days – $5 or FREE when you spend over $200 US Premium: Order by 12pm Mon – Fri, for delivery the next working day – $10 We also offer the option to add a personalised gift message if you are looking to treat that certain someone. Simply choose the gift message option at checkout and your message will be presented on a branded pink card.",
             'imagen_main' => "product-11-300x410.jpg",
             'imagen_secundaria' => "product-15-300x410.jpg",
-            'sizes' => json_encode(array('M','S')),
-            'colores'=> json_encode(array('Naranja','Negro'))
+            'sizes' => "M;S",
+            'colores'=> "Azul;Blanco"
         ]);
         array_push($referencias,$product3);
 
@@ -57,8 +57,8 @@ class ProductSeeder extends Seeder
             'descripcion' => "General Delivery Information. US Standard: Within 3 working days – $5 or FREE when you spend over $200 US Premium: Order by 12pm Mon – Fri, for delivery the next working day – $10 We also offer the option to add a personalised gift message if you are looking to treat that certain someone. Simply choose the gift message option at checkout and your message will be presented on a branded pink card.",
             'imagen_main' => "product-11-300x410.jpg",
             'imagen_secundaria' => "product-15-300x410.jpg",
-            'sizes' => json_encode(array('M','S')),
-            'colores'=> json_encode(array('Verde','Negro'))
+            'sizes' => "M;S",
+            'colores'=> "Azul;Blanco"
         ]);
         array_push($referencias,$product4);
 
@@ -68,8 +68,8 @@ class ProductSeeder extends Seeder
             'descripcion' => "General Delivery Information. US Standard: Within 3 working days – $5 or FREE when you spend over $200 US Premium: Order by 12pm Mon – Fri, for delivery the next working day – $10 We also offer the option to add a personalised gift message if you are looking to treat that certain someone. Simply choose the gift message option at checkout and your message will be presented on a branded pink card.",
             'imagen_main' => "product-11-300x410.jpg",
             'imagen_secundaria' => "product-15-300x410.jpg",
-            'sizes' => json_encode(array('M','S')),
-            'colores'=> json_encode(array('Gris','Negro'))
+            'sizes' => "M;S",
+            'colores'=> "Azul;Blanco"
         ]);
         array_push($referencias,$product5);
 
@@ -90,8 +90,8 @@ class ProductSeeder extends Seeder
                 'descripcion' => Str::random(150),
                 'imagen_main' => "product-17-300x410.jpg",
                 'imagen_secundaria' => "product-15-300x410.jpg",
-                'sizes' => json_encode(array('L','S')),
-                'colores'=> json_encode(array('Gris','Negro'))
+                'sizes' => "L;S",
+                'colores'=> "Gris;Negro"
             ]);
             $i++;
         }        
