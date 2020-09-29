@@ -5,10 +5,10 @@ const ProductDetail_Woocommerce = ({ producto,url_images }) => (
     <div className="woocommerce-tabs sc_tabs">
         <ul className="tabs wc-tabs">
             <li className="description_tab">
-                <a href="#tab-description">Description</a>
+                <a href="#tab-description">Descripción</a>
             </li>
             <li className="additional_information_tab">
-                <a href="#tab-additional_information">Additional Information</a>
+                <a href="#tab-additional_information">Información Adicional</a>
             </li>
             <li className="reviews_tab">
                 <a href="#tab-reviews">Reviews (1)</a>
@@ -16,7 +16,7 @@ const ProductDetail_Woocommerce = ({ producto,url_images }) => (
         </ul>
         <div className="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab" id="tab-description">
 
-            <h2>Product Description</h2>
+            <h2>Descripción del Producto</h2>
             <section>
                 <div className="container-fluid"> 
                     <div className="column_row">

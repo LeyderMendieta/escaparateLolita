@@ -38,7 +38,7 @@
                                                             <a href="#trx_addons_login_popup" class="trx_addons_popup_link trx_addons_login_link ">
                                                                 <span class="sc_layouts_item_icon sc_layouts_login_icon trx_addons_icon-user-alt">
                                                                 </span>
-                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Login</span>
+                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Ingreso</span>
                                                             </a>
                                                         </div>
                                                     </div><div class="sc_layouts_item">
@@ -114,39 +114,27 @@
                                                                 </li>
                                                                 <li class="menu-item">
                                                                     <a href="{{ url('/' . $page='about') }}">
-                                                                        <span>About Us</span>
+                                                                        <span>Nosotros</span>
                                                                     </a>
                                                                 </li>
                                                                 <li class="menu-item">
                                                                     <a href="{{ url('/' . $page='features/shortcodes') }}">
-                                                                        <span>Features</span>
+                                                                        <span>Destacados</span>
                                                                     </a>
                                                                 </li>
-                                                                <li class="menu-item  menu-item-has-children">
-                                                                    <a href="#">
-                                                                        <span>Store</span>
+                                                                <li class="menu-item">
+                                                                    <a href="{{ url('/' . $page='shop') }}">
+                                                                        <span>Tienda</span>
                                                                     </a>
-                                                                    <ul class="sub-menu">
-                                                                        <li class="menu-item">
-                                                                            <a href="{{ url('/' . $page='shop') }}">
-                                                                                <span>WooCommerce</span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="menu-item">
-                                                                            <a href="{{ url('/' . $page='shop-grid') }}">
-                                                                                <span>Ess. Grid Store</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
                                                                 </li>
                                                                 <li class="menu-item">
                                                                     <a href="{{ url('/' . $page='gallery') }}">
-                                                                        <span>Gallery</span>
+                                                                        <span>Galeria</span>
                                                                     </a>
                                                                 </li>
                                                                 <li class="menu-item">
                                                                     <a href="{{ url('/' . $page='contacts') }}">
-                                                                        <span>Contacts</span>
+                                                                        <span>Contactos</span>
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -435,9 +423,9 @@
                                                     </div><div class="extra_height column_container column-5_12 sc_layouts_column_icons_position_left scr_xs">
                                                     <div class="column-inner bg_banner">
                                                         <div class="text_column bg_white_with_spaces">
-                                                            <h2 class="fsz_2em m_0 fw_400 align_center"><a href="shop.html"><b><span class="accent">Free Shipping</span></b><br />
-                                                                on all orders<br />
-                                                                over $75!</a>
+                                                            <h2 class="fsz_2em m_0 fw_400 align_center"><a href="shop.html"><b><span class="accent">Envio Gratis</span></b><br />
+                                                                en todas las ordenes<br />
+                                                                mayor a $75!</a>
                                                             </h2>    
                                                         </div>
                                                     </div>

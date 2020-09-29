@@ -9,7 +9,7 @@
                                 <div class="sc_content_container">
                                     <div class="empty_space h-5em h_xs"><span class="empty_space_inner"></span></div>
                                     <div class="text_column">
-                                        <div class="fsz-1_2em fw_600 lspace-0_5px tt_upper"><span class="dark">follow us on</span> 
+                                        <div class="fsz-1_2em fw_600 lspace-0_5px tt_upper"><span class="dark">Siguenos en </span> 
                                             <span class="accent"><a class="accent-imp" href="#">@instagram</a></span>
                                         </div>
                                     </div>

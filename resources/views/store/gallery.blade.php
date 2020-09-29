@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="yes-js js_active js scheme_default">
     <head>
-        <title>Gallery &#8211; Alice&#039;s Lingerie Store</title>
+        <title>Galeria - Escaparate de Lolita</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="format-detection" content="telephone=no">
@@ -38,7 +38,7 @@
                                                             <a href="#trx_addons_login_popup" class="trx_addons_popup_link trx_addons_login_link ">
                                                                 <span class="sc_layouts_item_icon sc_layouts_login_icon trx_addons_icon-user-alt">
                                                                 </span>
-                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Login</span>
+                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Ingreso</span>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -74,10 +74,10 @@
                                                     <div class="sc_layouts_item">
                                                         <!-- .sc_layouts_title -->
                                                         <div class="sc_layouts_title">
-                                                            <div class="sc_layouts_title_title"><h1 class="sc_layouts_title_caption">Gallery</h1></div>
+                                                            <div class="sc_layouts_title_title"><h1 class="sc_layouts_title_caption">Galeria</h1></div>
                                                             <div class="sc_layouts_title_breadcrumbs">
                                                                 <div class="breadcrumbs">
-                                                                    <a class="breadcrumbs_item home" href="index.html">Home</a><span class="breadcrumbs_delimiter"></span><span class="breadcrumbs_item current">Gallery</span>
+                                                                    <a class="breadcrumbs_item home" href="{{ url('/' . $page='home') }}">Home</a><span class="breadcrumbs_delimiter"></span><span class="breadcrumbs_item current">Galeria</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -156,7 +156,7 @@
                                                         <article class="esg-filters esg-singlefilters mb-45px align_center">
                                                             <!-- THE FILTER BUTTONS -->
                                                             <div class="esg-filter-wrapper esg-fgc-1 ml-2_5px mr-2_5px">
-                                                                <div class="esg-filterbutton selected esg-allfilter" data-filter="filterall" data-fid="-1">    <span>All</span>
+                                                                <div class="esg-filterbutton selected esg-allfilter" data-filter="filterall" data-fid="-1">    <span>Todo</span>
                                                                 </div><div class="esg-filterbutton" data-fid="29" data-filter="filter-briefs">
                                                                     <span>briefs</span><span class="esg-filter-checked"><i class="eg-icon-ok-1"></i></span>
                                                                 </div><div class="esg-filterbutton" data-fid="28" data-filter="filter-knickers">           

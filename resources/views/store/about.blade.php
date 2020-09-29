@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="yes-js js_active js scheme_default">
     <head>
-        <title>About - Escaparate Lolita</title>
+        <title>Nosotros - Escaparate Lolita</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="format-detection" content="telephone=no">
@@ -31,7 +31,7 @@
                                                             <a href="#trx_addons_login_popup" class="trx_addons_popup_link trx_addons_login_link ">
                                                                 <span class="sc_layouts_item_icon sc_layouts_login_icon trx_addons_icon-user-alt">
                                                                 </span>
-                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Login</span>
+                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Ingresar</span>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -67,10 +67,10 @@
                                                     <div class="sc_layouts_item">
                                                         <!-- .sc_layouts_title -->
                                                         <div class="sc_layouts_title">
-                                                            <div class="sc_layouts_title_title"><h1 class="sc_layouts_title_caption">About</h1></div>
+                                                            <div class="sc_layouts_title_title"><h1 class="sc_layouts_title_caption">Nosotros</h1></div>
                                                             <div class="sc_layouts_title_breadcrumbs">
                                                                 <div class="breadcrumbs">
-                                                                    <a class="breadcrumbs_item home" href="index.html">Home</a><span class="breadcrumbs_delimiter"></span><span class="breadcrumbs_item current">About</span>
+                                                                    <a class="breadcrumbs_item home" href="{{ url('/' . $page='home') }}">Home</a><span class="breadcrumbs_delimiter"></span><span class="breadcrumbs_item current">Nosotros</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -198,8 +198,8 @@
                                                         <div class="empty_space h-4_6em"><span class="empty_space_inner"></span></div>
                                                         <div class="text_column">
                                                             <div class="sc_title sc_title_default">
-                                                                <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Brands</h2>
-                                                                <div class="sc_item_descr sc_title_descr sc_align_center">a touch of coverage never felt so sexy</div>
+                                                                <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Marcas</h2>
+                                                                <div class="sc_item_descr sc_title_descr sc_align_center">Un toque de cobertura nunca se ha sentido tan sexy</div>
                                                             </div>
                                                             <!-- /.sc_title -->
                                                         </div>
@@ -261,9 +261,9 @@
         <div id="trx_addons_login_popup" class="trx_addons_popup trx_addons_tabs mfp-hide">
             <ul class="trx_addons_tabs_titles">
                 <li class="trx_addons_tabs_title trx_addons_tabs_title_login">
-                    <a href="#trx_addons_login_content"><i class="trx_addons_icon-lock-open"></i>Login</a>
+                    <a href="#trx_addons_login_content"><i class="trx_addons_icon-lock-open"></i>Ingresar</a>
                 </li><li class="trx_addons_tabs_title trx_addons_tabs_title_register" data-disabled="true">
-                <a href="#trx_addons_register_content"><i class="trx_addons_icon-user-plus"></i>Register</a>
+                <a href="#trx_addons_register_content"><i class="trx_addons_icon-user-plus"></i>Registro</a>
                 </li>
             </ul>	
             <div id="trx_addons_login_content" class="trx_addons_tabs_content trx_addons_login_content">
@@ -275,7 +275,7 @@
                                 <label class="sc_form_field sc_form_field_log required">
                                     <span class="sc_form_field_wrap"><input type="text" name="log" id="log" value="" >
                                         <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-user-alt"></i>
-                                            <span class="sc_form_field_content" data-content="Login">Login</span>
+                                            <span class="sc_form_field_content" data-content="Login">Usuario</span>
                                         </span>	
                                     </span>
                                 </label>
@@ -284,18 +284,18 @@
                                 <label class="sc_form_field sc_form_field_pwd required">
                                     <span class="sc_form_field_wrap"><input type="password" name="pwd" id="pwd" value="" >
                                         <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-lock"></i>
-                                            <span class="sc_form_field_content" data-content="Password">Password</span>
+                                            <span class="sc_form_field_content" data-content="Password">Clave</span>
                                         </span>	
                                     </span>
                                 </label>
                             </div>
                             <div class="trx_addons_popup_form_field trx_addons_popup_form_field_remember">
-                                <a href="#" class="trx_addons_popup_form_field_forgot_password">Forgot password?</a>
+                                <a href="#" class="trx_addons_popup_form_field_forgot_password">Olvidaste la Clave?</a>
                                 <input type="checkbox" value="forever" id="rememberme" name="rememberme">
-                                <label for="rememberme"> Remember me</label>
+                                <label for="rememberme"> Recordarme</label>
                             </div>
                             <div class="trx_addons_popup_form_field trx_addons_popup_form_field_submit">
-                                <input type="submit" class="submit_button" value="Login">
+                                <input type="submit" class="submit_button" value="Ingresar">
                             </div>
                             <div class="trx_addons_message_box sc_form_result"></div>
                         </form>

@@ -24,18 +24,18 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
             <table className="variations">
                 <tbody>
                     <tr>
-                        <td className="label"><label htmlFor="pa_size">Size</label></td>
+                        <td className="label"><label htmlFor="pa_size">Talla</label></td>
                         <td className="value">
                             <select id="pa_size" onChange={setValueModel} className="d_none-imp" name="attribute_pa_size" data-attribute_name="attribute_pa_size" data-show_option_none="yes">
-                                <option value="">Choose an option</option>
+                                <option value="">Elige una Opción</option>
                                 <option value="s " >S</option>
                                 <option value="m " >M</option>
                                 <option value="l " >L</option>
                                 <option value="xl " >XL</option>
                             </select>
                             <div id="pa_size_attrib_extended" className="pa_size_attrib_extended trx_addons_attrib_extended " data-attrib="pa_size ">
-                                <span className="trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip trx_addons_attrib_selected " data-value=" " data-tooltip="Choose an option ">
-                                    <span>Choose an option</span>
+                                <span className="trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip trx_addons_attrib_selected " data-value=" " data-tooltip="Elige una Opción ">
+                                    <span>Elige una Opción</span>
                                 </span>
                                 <span className="trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip " data-value="s " data-tooltip="S ">
                                     <span>S</span>
@@ -56,7 +56,7 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
                         <td className="label "><label htmlFor="pa_color">Color</label></td>
                         <td className="value ">
                             <select id="pa_color" className="d_none-imp" name="attribute_pa_color" data-attribute_name="attribute_pa_color" data-show_option_none="yes">
-                                <option value="">Choose an option</option>
+                                <option value="">Elige una Opción</option>
                                 <option value="gentle-peach">Gentle Peach</option>
                                 <option value="red-passion">Red Passion</option>
                                 <option value="valiant-violet">Valiant Violet</option>
@@ -83,7 +83,7 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
             <div className="single_variation_wrap">
                 <div className="woocommerce-variation single_variation"></div>
                 <div className="woocommerce-variation-add-to-cart variations_button">
-                    <button type="button" className="single_add_to_cart_button button disabled" onClick={handleBuyProduct}>Buy now</button>
+                    <button type="button" className="single_add_to_cart_button button disabled" onClick={handleBuyProduct}>Comprar</button>
                 </div>
             </div>
         </form>
@@ -105,7 +105,7 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
             <div className="yith-wcwl-wishlistaddresponse"></div>
         </div>
         <div className="clear"></div>
-        <a href="#" className="compare button" >Compare</a>
+        <a href="#" className="compare button" >Comparar</a>
         <div className="product_meta">
             <span className="sku_wrapper">SKU: <span className="sku">N/A</span></span>
             <span className="posted_in">Categories:

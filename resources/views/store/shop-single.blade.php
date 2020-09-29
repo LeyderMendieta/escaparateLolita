@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js scheme_default">
     <head>
-        <title>Halter Bodysuit &#8211; Alice&#039;s Lingerie Store</title>
+        <title>Producto - Escaparate de Lolita</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="format-detection" content="telephone=no">
@@ -38,7 +38,7 @@
                                                             <a href="#trx_addons_login_popup" class="trx_addons_popup_link trx_addons_login_link ">
                                                                 <span class="sc_layouts_item_icon sc_layouts_login_icon trx_addons_icon-user-alt">
                                                                 </span>
-                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Login</span>
+                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Ingresar</span>
                                                             </a>
                                                         </div>
                                                     </div><div class="sc_layouts_item">
@@ -132,13 +132,13 @@
                         <div class="content">
                             <article class="post_item_single post_type_product">
                                 <nav class="woocommerce-breadcrumb">
-                                    <a href="index.html">Home</a>&nbsp;&#47;&nbsp;<a href="#">Pretty Little World</a>&nbsp;&#47;&nbsp;Halter Bodysuit
+                                    <a href="{{ url('/' . $page='home') }}">Home</a>&nbsp;&#47;&nbsp;<a href="{{ url('/' . $page='shop') }}">Tienda</a>&nbsp;&#47;&nbsp;Halter Bodysuit
                                 </nav>
                                 <div class="product type-product wcspt-has-gallery">                                   
                                     <div id="App_Product_Detail" target="{{$producto}}">
                                     </div>                                
                                     <div class="related products">
-                                        <h2>Related Products</h2>
+                                        <h2>Productos Relacionados</h2>
                                         <ul class="products">
                                             <li class="product type-product column-1_4 wcspt-has-gallery">
                                                 <div class="post_item post_layout_thumbs">
@@ -149,7 +149,7 @@
                                                         </a>
                                                         <div class="mask"></div>
                                                         <div class="icons">
-                                                            <a rel="nofollow" href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy now</a><a href="#" class="shop_link button icon-link">Details</a>
+                                                            <a rel="nofollow" href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Comprar</a><a href="#" class="shop_link button icon-link">Detalles</a>
                                                         </div>
                                                     </div>
                                                     <!-- /.post_featured -->
@@ -164,7 +164,7 @@
                                                             <span class="woocs_price_code"><span class="amount">39<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">49<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
                                                             </span>
                                                         </span>
-                                                        <a href="#" class="button product_type_variable add_to_cart_button">Buy now</a> 
+                                                        <a href="#" class="button product_type_variable add_to_cart_button">Comprar</a> 
                                                     </div>
                                                     <!-- /.post_data -->
                                                 </div>
@@ -181,7 +181,7 @@
                                                         </a>
                                                         <div class="mask"></div>
                                                         <div class="icons">
-                                                            <a href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy now</a><a href="#"  class="shop_link button icon-link">Details</a>
+                                                            <a href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Comprar</a><a href="#"  class="shop_link button icon-link">Detalles</a>
                                                         </div>
                                                     </div>
                                                     <!-- /.post_featured -->
@@ -196,7 +196,7 @@
                                                             <span class="woocs_price_code"><span class="amount">17<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">20<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
                                                             </span>
                                                         </span>
-                                                        <a href="#" class="button product_type_variable add_to_cart_button">Buy now</a> 
+                                                        <a href="#" class="button product_type_variable add_to_cart_button">Comprar</a> 
                                                     </div>
                                                     <!-- /.post_data -->
                                                 </div>
@@ -212,7 +212,7 @@
                                                             <img src="{{ URL::asset('assets/store/images/product-4-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> </a>
                                                         <div class="mask"></div>
                                                         <div class="icons">
-                                                            <a href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy now</a><a href="#" class="shop_link button icon-link">Details</a>
+                                                            <a href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Comprar</a><a href="#" class="shop_link button icon-link">Detalles</a>
                                                         </div>
                                                     </div>
                                                     <!-- /.post_featured -->
@@ -227,7 +227,7 @@
                                                             <span class="woocs_price_code"><span class="amount">36<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">45<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
                                                             </span>
                                                         </span>
-                                                        <a href="#" class="button product_type_variable add_to_cart_button">Buy now</a> 
+                                                        <a href="#" class="button product_type_variable add_to_cart_button">Comprar</a> 
                                                     </div>
                                                     <!-- /.post_data -->
                                                 </div>
@@ -241,7 +241,7 @@
                                                         </a>
                                                         <div class="mask"></div>
                                                         <div class="icons">
-                                                            <a href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy now</a><a href="#" class="shop_link button icon-link">Details</a>
+                                                            <a href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Comprar</a><a href="#" class="shop_link button icon-link">Detalles</a>
                                                         </div>
                                                     </div>
                                                     <!-- /.post_featured -->
@@ -255,7 +255,7 @@
                                                             <span class="woocs_price_code"><span class="amount">22<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">25<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
                                                             </span>
                                                         </span>
-                                                        <a href="#" class="button product_type_variable add_to_cart_button">Buy now</a>
+                                                        <a href="#" class="button product_type_variable add_to_cart_button">Comprar</a>
                                                      </div>
                                                     <!-- /.post_data -->
                                                 </div>
@@ -283,9 +283,9 @@
         <div id="trx_addons_login_popup" class="trx_addons_popup trx_addons_tabs mfp-hide">
             <ul class="trx_addons_tabs_titles">
                 <li class="trx_addons_tabs_title trx_addons_tabs_title_login">
-                    <a href="#trx_addons_login_content"><i class="trx_addons_icon-lock-open"></i>Login</a>
+                    <a href="#trx_addons_login_content"><i class="trx_addons_icon-lock-open"></i>Ingresar</a>
                 </li><li class="trx_addons_tabs_title trx_addons_tabs_title_register" data-disabled="true">
-                <a href="#trx_addons_register_content"><i class="trx_addons_icon-user-plus"></i>Register</a>
+                <a href="#trx_addons_register_content"><i class="trx_addons_icon-user-plus"></i>Registrar</a>
                 </li>
             </ul>	
             <div id="trx_addons_login_content" class="trx_addons_tabs_content trx_addons_login_content">
@@ -297,7 +297,7 @@
                                 <label class="sc_form_field sc_form_field_log required">
                                     <span class="sc_form_field_wrap"><input type="text" name="log" id="log" value="" >
                                         <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-user-alt"></i>
-                                            <span class="sc_form_field_content" data-content="Login">Login</span>
+                                            <span class="sc_form_field_content" data-content="Login">Usuario</span>
                                         </span>	
                                     </span>
                                 </label>
@@ -306,18 +306,18 @@
                                 <label class="sc_form_field sc_form_field_pwd required">
                                     <span class="sc_form_field_wrap"><input type="password" name="pwd" id="pwd" value="" >
                                         <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-lock"></i>
-                                            <span class="sc_form_field_content" data-content="Password">Password</span>
+                                            <span class="sc_form_field_content" data-content="Password">Clave</span>
                                         </span>	
                                     </span>
                                 </label>
                             </div>
                             <div class="trx_addons_popup_form_field trx_addons_popup_form_field_remember">
-                                <a href="#" class="trx_addons_popup_form_field_forgot_password">Forgot password?</a>
+                                <a href="#" class="trx_addons_popup_form_field_forgot_password">Olvido la clave?</a>
                                 <input type="checkbox" value="forever" id="rememberme" name="rememberme">
-                                <label for="rememberme"> Remember me</label>
+                                <label for="rememberme"> Recordar</label>
                             </div>
                             <div class="trx_addons_popup_form_field trx_addons_popup_form_field_submit">
-                                <input type="submit" class="submit_button" value="Login">
+                                <input type="submit" class="submit_button" value="Ingresar">
                             </div>
                             <div class="trx_addons_message_box sc_form_result"></div>
                         </form>

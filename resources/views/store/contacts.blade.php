@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="yes-js js_active js scheme_default">
     <head>
-        <title>Contacts &#8211; Alice&#039;s Lingerie Store</title>
+        <title>Contactanos - Escaparate de Lolita</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="format-detection" content="telephone=no">
@@ -133,17 +133,17 @@
                                                 <div class="sc_form sc_form_detailed sc_align_default">
                                                     <div class="trx_addons_columns_wrap columns_padding_bottom">
                                                         <div class="trx_addons_column-1_3">
-                                                            <h2 class="sc_form_info_title_top">Stay in Touch</h2>
+                                                            <h2 class="sc_form_info_title_top">Mantente en Contacto</h2>
                                                             <div class="sc_form_info">
                                                                 <div class="sc_form_info_item sc_form_info_item_address"> 
                                                                     <span class="sc_form_info_area">                                          
-                                                                        <span class="sc_form_info_title">Address:</span> 
+                                                                        <span class="sc_form_info_title">Dirección:</span> 
                                                                         <span class="sc_form_info_data"><span>Chicago, IL 60606, 123, New Lenox</span></span>
                                                                     </span>
                                                                 </div>
                                                                 <div class="sc_form_info_item sc_form_info_item_phone"> 
                                                                     <span class="sc_form_info_area">
-                                                                        <span class="sc_form_info_title">Phone:</span> 
+                                                                        <span class="sc_form_info_title">Teléfono:</span> 
                                                                         <span class="sc_form_info_data"><span>123-456-7890</span></span>
                                                                     </span>
                                                                 </div>
@@ -162,13 +162,13 @@
                                                                 </span>
                                                             </div>
                                                         </div><div class="trx_addons_column-2_3">
-                                                            <h2 class="sc_form_form_title_top">Contact Us</h2>
+                                                            <h2 class="sc_form_form_title_top">Contactanos</h2>
                                                             <form class="sc_form_form" method="post" action="include/contact-form.php">
                                                                 <div class="trx_addons_columns_wrap">
                                                                     <div class="trx_addons_column-1_2">
                                                                         <label class="sc_form_field sc_form_field_name required"> 
                                                                             <span class="sc_form_field_wrap">
-                                                                                <input type="text" name="name" id="name" value="" placeholder="Name">
+                                                                                <input type="text" name="name" id="name" value="" placeholder="Nombre">
                                                                             </span> 
                                                                         </label>
                                                                     </div><div class="trx_addons_column-1_2">
@@ -181,16 +181,16 @@
                                                                 </div>
                                                                 <label class="sc_form_field sc_form_field_subgect required"> 
                                                                     <span class="sc_form_field_wrap">
-                                                                        <input type="text" name="subgect" id="subgect" value="" placeholder="Subgect">
+                                                                        <input type="text" name="subgect" id="subgect" value="" placeholder="Asunto">
                                                                     </span> 
                                                                 </label>
                                                                 <label class="sc_form_field sc_form_field_message required"> 
                                                                     <span class="sc_form_field_wrap">
-                                                                        <textarea name="message" id="message" aria-required="true" placeholder="Message"></textarea>
+                                                                        <textarea name="message" id="message" aria-required="true" placeholder="Mensaje"></textarea>
                                                                     </span> 
                                                                 </label>
                                                                 <div class="sc_form_field sc_form_field_button">
-                                                                    <button>submit</button>
+                                                                    <button>Enviar</button>
                                                                 </div>
                                                                 <div class="trx_addons_message_box sc_form_result"></div>
                                                             </form>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="yes-js js_active js scheme_default">
     <head>
-        <title>Products &#8211; Alice&#039;s Lingerie Store</title>
+        <title>Tienda - Escaparate de Lolita</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="format-detection" content="telephone=no">
@@ -35,7 +35,7 @@
                                                             <a href="#trx_addons_login_popup" class="trx_addons_popup_link trx_addons_login_link ">
                                                                 <span class="sc_layouts_item_icon sc_layouts_login_icon trx_addons_icon-user-alt">
                                                                 </span>
-                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Login</span>
+                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Ingresar</span>
                                                             </a>
                                                         </div>
                                                     </div><div class="sc_layouts_item">
@@ -129,8 +129,8 @@
                         <div class="content">
                             <div class="list_products shop_mode_thumbs">
                                 <div class="list_products_header">
-                                    <nav class="woocommerce-breadcrumb"><a href="index.html">Home</a>&nbsp;&#47;&nbsp;Shop</nav>
-                                    <h1 class="page-title">Shop</h1> </div>
+                                    <nav class="woocommerce-breadcrumb"><a href="{{ url('/' . $page='home') }}">Home</a>&nbsp;&#47;&nbsp;Tienda</nav>
+                                    <h1 class="page-title">Tienda</h1> </div>
                                 <!-- /.list_products_header -->
                                 <div class="alices_shop_mode_buttons">
                                     <form action="#" method="post">
@@ -147,7 +147,7 @@
                         <div class="sidebar left widget_area scheme_side" role="complementary">
                             <div class="sidebar_inner">
                                 <aside class="widget woocommerce widget_shopping_cart">
-                                    <h5 class="widget_title">Cart</h5>
+                                    <h5 class="widget_title">Mi Carrito</h5>
                                     <div class="widget_shopping_cart_content">
                                         <ul class="cart_list product_list_widget ">
                                             <li class="mini_cart_item">
@@ -156,7 +156,7 @@
                                                     <img src="{{URL::asset('assets/store/images/product-18-180x180.jpg')}}" alt="">Strapless Bikini Top &amp; Bottom&nbsp;
                                                 </a>
                                                 <dl class="variation">
-                                                    <dt class="variation-Size">Size:</dt>
+                                                    <dt class="variation-Size">Talla:</dt>
                                                     <dd class="variation-Size"><p>M</p></dd>
                                                     <dt class="variation-Color">Color:</dt>
                                                     <dd class="variation-Color"><p>Gentle Peach</p></dd>
@@ -169,7 +169,7 @@
                                                     <img src="{{URL::asset('assets/store/images/product-16-180x180.jpg')}}" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;	
                                                 </a>
                                                 <dl class="variation">
-                                                    <dt class="variation-Size">Size:</dt>
+                                                    <dt class="variation-Size">Talla:</dt>
                                                     <dd class="variation-Size"><p>M</p></dd>
                                                     <dt class="variation-Color">Color:</dt>
                                                     <dd class="variation-Color"><p>Gentle Peach</p></dd>
@@ -179,26 +179,26 @@
                                         </ul><!-- end product list -->
                                         <p class="total"><strong>Subtotal:</strong> <span class="amount">115.00<span class="woocommerce-Price-currencySymbol">$</span></span></p>
                                         <p class="buttons">
-                                            <a href="#" class="button wc-forward">View Cart</a>
+                                            <a href="#" class="button wc-forward">Ver Carrito</a>
                                             <a href="#" class="button checkout wc-forward">Checkout</a>
                                         </p>
                                     </div>
                                 </aside><aside class="widget woocommerce widget_price_filter">
-                                    <h5 class="widget_title">Price Filter</h5>
+                                    <h5 class="widget_title">Filtrar por Precio</h5>
                                     <form method="get" action="#">
                                         <div class="price_slider_wrapper">
                                             <div class="price_slider d_none"></div>
                                             <div class="price_slider_amount">
                                                 <input type="text" id="min_price" name="min_price" value="" data-min="13" placeholder="Min price" />
                                                 <input type="text" id="max_price" name="max_price" value="" data-max="85" placeholder="Max price" />
-                                                <button type="submit" class="button">Filter</button>
-                                                <div class="price_label d_none"> Price: <span class="from"></span> &mdash; <span class="to"></span> </div>
+                                                <button type="submit" class="button">Filtro</button>
+                                                <div class="price_label d_none"> Precio: <span class="from"></span> &mdash; <span class="to"></span> </div>
                                                 <div class="clear"></div>
                                             </div>
                                         </div>
                                     </form>
                                 </aside><aside class="widget woocommerce widget_product_categories">
-                                    <h5 class="widget_title">Browse Categories:</h5>
+                                    <h5 class="widget_title">Categorias:</h5>
                                     <ul class="product-categories">
                                         <li class="cat-item"><a href="#">Bras</a></li>
                                         <li class="cat-item"><a href="#">Highlight</a></li>
@@ -222,9 +222,9 @@
                                         <li class="cat-item"><a href="#">Swim Wear</a></li>
                                     </ul>
                                 </aside><aside class="widget woocommerce widget_product_search">
-                                    <h5 class="widget_title">Search</h5>
+                                    <h5 class="widget_title">Busqueda</h5>
                                     <form role="search" method="get" class="search_form" action="#">
-                                        <input type="text" class="search_field" placeholder="Search for products &hellip;" value="" name="s" />
+                                        <input type="text" class="search_field" placeholder="Buscar productos &hellip;" value="" name="s" />
                                         <button class="search_button" type="submit">Search</button>
                                         <input type="hidden" name="post_type" value="product" /> 
                                     </form>
@@ -313,9 +313,9 @@
         <div id="trx_addons_login_popup" class="trx_addons_popup trx_addons_tabs mfp-hide">
             <ul class="trx_addons_tabs_titles">
                 <li class="trx_addons_tabs_title trx_addons_tabs_title_login">
-                    <a href="#trx_addons_login_content"><i class="trx_addons_icon-lock-open"></i>Login</a>
+                    <a href="#trx_addons_login_content"><i class="trx_addons_icon-lock-open"></i>Ingreso</a>
                 </li><li class="trx_addons_tabs_title trx_addons_tabs_title_register" data-disabled="true">
-                <a href="#trx_addons_register_content"><i class="trx_addons_icon-user-plus"></i>Register</a>
+                <a href="#trx_addons_register_content"><i class="trx_addons_icon-user-plus"></i>Registro</a>
                 </li>
             </ul>	
             <div id="trx_addons_login_content" class="trx_addons_tabs_content trx_addons_login_content">
@@ -327,7 +327,7 @@
                                 <label class="sc_form_field sc_form_field_log required">
                                     <span class="sc_form_field_wrap"><input type="text" name="log" id="log" value="" >
                                         <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-user-alt"></i>
-                                            <span class="sc_form_field_content" data-content="Login">Login</span>
+                                            <span class="sc_form_field_content" data-content="Login">Usuario</span>
                                         </span>	
                                     </span>
                                 </label>
@@ -336,18 +336,18 @@
                                 <label class="sc_form_field sc_form_field_pwd required">
                                     <span class="sc_form_field_wrap"><input type="password" name="pwd" id="pwd" value="" >
                                         <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-lock"></i>
-                                            <span class="sc_form_field_content" data-content="Password">Password</span>
+                                            <span class="sc_form_field_content" data-content="Password">Clave</span>
                                         </span>	
                                     </span>
                                 </label>
                             </div>
                             <div class="trx_addons_popup_form_field trx_addons_popup_form_field_remember">
-                                <a href="#" class="trx_addons_popup_form_field_forgot_password">Forgot password?</a>
+                                <a href="#" class="trx_addons_popup_form_field_forgot_password">Olvidaste la clave?</a>
                                 <input type="checkbox" value="forever" id="rememberme" name="rememberme">
-                                <label for="rememberme"> Remember me</label>
+                                <label for="rememberme"> Recordarme</label>
                             </div>
                             <div class="trx_addons_popup_form_field trx_addons_popup_form_field_submit">
-                                <input type="submit" class="submit_button" value="Login">
+                                <input type="submit" class="submit_button" value="Ingresar">
                             </div>
                             <div class="trx_addons_message_box sc_form_result"></div>
                         </form>

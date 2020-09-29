@@ -8,12 +8,12 @@
             </li>
             <li class="menu-item">
                 <a href="{{ url('/' . $page='contacts') }}">
-                    <span>Contacts Us</span>
+                    <span>Contactanos</span>
                 </a>
             </li>
             <li class="color_text_link menu-item">
                 <a href="#">
-                    <span>free shipping over $50</span>
+                    <span>Envio Gratis!</span>
                 </a>
             </li>
         </ul>

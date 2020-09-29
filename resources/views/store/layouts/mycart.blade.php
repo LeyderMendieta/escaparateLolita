@@ -25,7 +25,7 @@
                                 <img src="{{URL::asset('assets/store/images/product-18-180x180.jpg')}}" alt="" >da Bikini Top &amp; Bottom&nbsp;							
                             </a>
                             <dl class="variation">
-                                <dt class="variation-Size">Size:</dt>
+                                <dt class="variation-Size">Talla:</dt>
                                 <dd class="variation-Size"><p>M</p></dd>
                                 <dt class="variation-Color">Color:</dt>
                                 <dd class="variation-Color"><p>Gentle Peach</p></dd>
@@ -39,7 +39,7 @@
                                 <img src="{{URL::asset('assets/store/images/product-16-180x180.jpg')}}" alt="">Sexy Long Line Plunge Bra and Sexy Thong&nbsp;							
                             </a>
                             <dl class="variation">
-                                <dt class="variation-Size">Size:</dt>
+                                <dt class="variation-Size">Talla:</dt>
                                 <dd class="variation-Size"><p>M</p></dd>
                                 <dt class="variation-Color">Color:</dt>
                                 <dd class="variation-Color"><p>Gentle Peach</p></dd>
@@ -49,7 +49,7 @@
                     </ul><!-- end product list -->
                     <p class="total"><strong>Subtotal:</strong> <span class="amount">115.00<span class="woocommerce-Price-currencySymbol">$</span></span></p>
                     <p class="buttons">
-                        <a href="#" class="button wc-forward sc_button_hover_slide_left">View Cart</a>
+                        <a href="#" class="button wc-forward sc_button_hover_slide_left">Ver Carrito</a>
                         <a href="#" class="button checkout wc-forward sc_button_hover_slide_left">Checkout</a>
                     </p>
                 </div>

@@ -2,15 +2,15 @@ import React from 'react';
 
 const ListProducts = ({productos,url_images,url_href,totalItemsCount,from,to}) => (
       <div>
-        <p className="woocommerce-result-count"> Showing {from} - {to} of {totalItemsCount} results</p>
+        <p className="woocommerce-result-count"> Mostrando {from} - {to} de {totalItemsCount} resultados</p>
         <form className="woocommerce-ordering" method="get">
             <div className="select_container">
                 <select name="orderby" className="orderby">
-                    <option value="popularity">Sort by popularity</option>
-                    <option value="rating">Sort by average rating</option>
-                    <option value="date" selected="selected">Sort by newness</option>
-                    <option value="price">Sort by price: low to high</option>
-                    <option value="price-desc">Sort by price: high to low</option>
+                    <option value="popularity">Ordenar por Popilaridad</option>
+                    <option value="rating">Ordenar por Rating</option>
+                    <option value="date" selected="selected">Ordenar por más reciente</option>
+                    <option value="price">Ordenar por precio: menor a mayor</option>
+                    <option value="price-desc">Ordenar por precio: mayor a menor</option>
                 </select>
             </div>
         </form>
@@ -25,8 +25,8 @@ const ListProducts = ({productos,url_images,url_href,totalItemsCount,from,to}) =
                           </a>
                           <div className="mask"></div>
                           <div className="icons">
-                              <a href={url_href+"shop/"+producto.acceso_url} className="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy now</a>
-                              <a href={url_href+"shop/"+producto.acceso_url} className="shop_link button icon-link">Details</a>
+                              <a href={url_href+"shop/"+producto.acceso_url} className="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Comprar</a>
+                              <a href={url_href+"shop/"+producto.acceso_url} className="shop_link button icon-link">Detalles</a>
                           </div>
                       </div>
                       <div className="post_data" style={{height:'9rem'}} >
@@ -36,7 +36,7 @@ const ListProducts = ({productos,url_images,url_href,totalItemsCount,from,to}) =
                           </div>
         
                           <span className="price"><span className="woocs_price_code"><span className="amount">53<span className="decimals">00</span><span className="woocommerce-Price-currencySymbol">$</span></span>–<span className="amount">59<span className="decimals">00</span><span className="woocommerce-Price-currencySymbol">$</span></span></span></span>
-                          <a href={url_href+"shop/"+producto.acceso_url} className="button product_type_variable add_to_cart_button sc_button_hover_slide_left">Buy now</a>			
+                          <a href={url_href+"shop/"+producto.acceso_url} className="button product_type_variable add_to_cart_button sc_button_hover_slide_left">Comprar</a>			
                       </div>
                   </div>
                 </li>

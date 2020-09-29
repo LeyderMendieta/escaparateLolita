@@ -72847,7 +72847,8 @@ if (document.getElementById('App_Product_Detail')) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var url_principal = "http://74.208.128.74/plesk-site-preview/escaparatelolita.com/https/74.208.128.74/";
+//const url_principal = "http://74.208.128.74/plesk-site-preview/escaparatelolita.com/https/74.208.128.74/";
+var url_principal = "http://127.0.0.1:8000/";
 var url_images = url_principal + 'assets/store/images/';
 var Configuracion = {
   url_principal: url_principal,
@@ -72930,7 +72931,7 @@ var ListProducts = function ListProducts(_ref) {
       to = _ref.to;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "woocommerce-result-count"
-  }, " Showing ", from, " - ", to, " of ", totalItemsCount, " results"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+  }, " Mostrando ", from, " - ", to, " de ", totalItemsCount, " resultados"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "woocommerce-ordering",
     method: "get"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -72940,16 +72941,16 @@ var ListProducts = function ListProducts(_ref) {
     className: "orderby"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "popularity"
-  }, "Sort by popularity"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+  }, "Ordenar por Popilaridad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "rating"
-  }, "Sort by average rating"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+  }, "Ordenar por Rating"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "date",
     selected: "selected"
-  }, "Sort by newness"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+  }, "Ordenar por m\xE1s reciente"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "price"
-  }, "Sort by price: low to high"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+  }, "Ordenar por precio: menor a mayor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "price-desc"
-  }, "Sort by price: high to low")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, "Ordenar por precio: mayor a menor")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "products wcspt-products"
   }, productos.map(function (producto) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -72977,10 +72978,10 @@ var ListProducts = function ListProducts(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: url_href + "shop/" + producto.acceso_url,
       className: "shop_cart icon-cart-2 button add_to_cart_button product_type_variable"
-    }, "Buy now"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    }, "Comprar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: url_href + "shop/" + producto.acceso_url,
       className: "shop_link button icon-link"
-    }, "Details"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "Detalles"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_data",
       style: {
         height: '9rem'
@@ -73015,7 +73016,7 @@ var ListProducts = function ListProducts(_ref) {
     }, "$")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: url_href + "shop/" + producto.acceso_url,
       className: "button product_type_variable add_to_cart_button sc_button_hover_slide_left"
-    }, "Buy now"))));
+    }, "Comprar"))));
   })));
 };
 
@@ -73260,7 +73261,7 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     className: "label"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "pa_size"
-  }, "Size")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+  }, "Talla")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     className: "value"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     id: "pa_size",
@@ -73271,7 +73272,7 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     "data-show_option_none": "yes"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: ""
-  }, "Choose an option"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+  }, "Elige una Opci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "s "
   }, "S"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "m "
@@ -73286,8 +73287,8 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip trx_addons_attrib_selected ",
     "data-value": " ",
-    "data-tooltip": "Choose an option "
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Choose an option")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    "data-tooltip": "Elige una Opci\xF3n "
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Elige una Opci\xF3n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip ",
     "data-value": "s ",
     "data-tooltip": "S "
@@ -73317,7 +73318,7 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     "data-show_option_none": "yes"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: ""
-  }, "Choose an option"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+  }, "Elige una Opci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "gentle-peach"
   }, "Gentle Peach"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "red-passion"
@@ -73362,7 +73363,7 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     type: "button",
     className: "single_add_to_cart_button button disabled",
     onClick: handleBuyProduct
-  }, "Buy now")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Comprar")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "yith-wcwl-add-to-wishlist"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "yith-wcwl-add-button show d_block"
@@ -73397,7 +73398,7 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     className: "compare button"
-  }, "Compare"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Comparar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "product_meta"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "sku_wrapper"
@@ -73461,18 +73462,18 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
     className: "description_tab"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#tab-description"
-  }, "Description")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "Descripci\xF3n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "additional_information_tab"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#tab-additional_information"
-  }, "Additional Information")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "Informaci\xF3n Adicional")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "reviews_tab"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#tab-reviews"
   }, "Reviews (1)"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab",
     id: "tab-description"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Product Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Descripci\xF3n del Producto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container-fluid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "column_row"
