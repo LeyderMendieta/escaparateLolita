@@ -262,7 +262,7 @@
                                                         <div class="empty_space h-5em"><span class="empty_space_inner"></span></div>
                                                         <div class="sc_title sc_title_default">
                                                             <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Must Have</h2>
-                                                            <div class="sc_item_descr sc_title_descr sc_align_center">a touch of coverage never felt so sexy</div>
+                                                            <div class="sc_item_descr sc_title_descr sc_align_center">un toque de cobertura nunca se ha sentido tan sexy</div>
                                                         </div>
                                                         <!-- /.sc_title -->
                                                         <div class="empty_space h-2_3em"><span class="empty_space_inner"></span></div>
@@ -310,13 +310,13 @@
                                                         <div class="empty_space hide_on_mobile h-2em"><span class="empty_space_inner"></span></div>
                                                         <div class="empty_space h-4_3em"><span class="empty_space_inner"></span></div>
                                                         <div class="sc_blogger sc_blogger_plain" data-slides-per-view="4" data-slides-min-width="150">
-                                                            <h2 class="sc_item_title sc_blogger_title sc_align_center sc_item_title_style_default">Articles</h2>
+                                                            <h2 class="sc_item_title sc_blogger_title sc_align_center sc_item_title_style_default">Artículos</h2>
                                                             <div class="sc_blogger_columns sc_item_columns trx_addons_columns_wrap">
                                                                 <div class="trx_addons_column-1_4">
                                                                     <div class="sc_blogger_item post type-post">
                                                                         <div class="sc_blogger_item_content entry-content">
                                                                             <h4 class="sc_blogger_item_title entry-title">
-                                                                                <a href="post-standart.html" >A Case for No Shirt, No Problem</a>
+                                                                                <a href="#post-standart.html" >Sin camisa, No hay problema</a>
                                                                             </h4></div>
                                                                         <!-- .entry-content -->
                                                                         <div class="sc_blogger_item_excerpt">
@@ -324,7 +324,7 @@
                                                                                 <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore&hellip;</p>
                                                                             </div>
                                                                             <div class="sc_blogger_item_button sc_item_button">
-                                                                                <a href="post-standart.html" class="sc_button sc_button_simple">Read more</a>
+                                                                                <a href="#post-standart.html" class="sc_button sc_button_simple">Leer Más</a>
                                                                             </div>
                                                                         </div>
                                                                         <!-- .sc_blogger_item_excerpt -->
@@ -334,7 +334,7 @@
                                                                     <div class="sc_blogger_item post type-post">
                                                                         <div class="sc_blogger_item_content entry-content">
                                                                             <h4 class="sc_blogger_item_title entry-title">
-                                                                                <a href="post-standart.html">Emotional Experience of Balconette Bra</a>
+                                                                                <a href="post-standart.html">Experiencia emocial de sujetador Balconette</a>
                                                                             </h4>
                                                                         </div>
                                                                         <!-- .entry-content -->
@@ -343,7 +343,7 @@
                                                                                 <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore&hellip;</p>
                                                                             </div>
                                                                             <div class="sc_blogger_item_button sc_item_button">
-                                                                                <a href="post-standart.html" class="sc_button sc_button_simple">Read more</a>
+                                                                                <a href="#post-standart.html" class="sc_button sc_button_simple">Leer Más</a>
                                                                             </div>
                                                                         </div>
                                                                         <!-- .sc_blogger_item_excerpt -->
@@ -353,7 +353,7 @@
                                                                     <div class="sc_blogger_item post type-post">
                                                                         <div class="sc_blogger_item_content entry-content">
                                                                             <h4 class="sc_blogger_item_title entry-title">
-                                                                                <a href="post-standart.html">6 Tips for Your Sleeping Beauty Rest</a>
+                                                                                <a href="#post-standart.html">6 consejos para el descanso de la bella durmiente</a>
                                                                             </h4>
                                                                         </div>
                                                                         <!-- .entry-content -->
@@ -362,7 +362,7 @@
                                                                                 <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore&hellip;</p>
                                                                             </div>
                                                                             <div class="sc_blogger_item_button sc_item_button">
-                                                                                <a href="post-standart.html" class="sc_button sc_button_simple">Read more</a>
+                                                                                <a href="#post-standart.html" class="sc_button sc_button_simple">Leer Más</a>
                                                                             </div>
                                                                         </div>
                                                                         <!-- .sc_blogger_item_excerpt -->
@@ -372,7 +372,7 @@
                                                                     <div class="sc_blogger_item post type-post">
                                                                         <div class="sc_blogger_item_content entry-content">
                                                                             <h4 class="sc_blogger_item_title entry-title">
-                                                                                <a href="post-standart.html" >Beauty of a Woman is a Matchless Attribute</a>
+                                                                                <a href="post-standart.html" >La belleza de una mujer es un atributo incomparable</a>
                                                                             </h4>
                                                                         </div>
                                                                         <!-- .entry-content -->
@@ -381,7 +381,7 @@
                                                                                 <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore&hellip;</p>
                                                                             </div>
                                                                             <div class="sc_blogger_item_button sc_item_button">
-                                                                                <a href="post-standart.html" class="sc_button sc_button_simple">Read more</a>
+                                                                                <a href="post-standart.html" class="sc_button sc_button_simple">Leer Más</a>
                                                                             </div>
                                                                         </div>
                                                                         <!-- .sc_blogger_item_excerpt -->
