@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class AgendaController extends Controller
 {
-    public function getAvailableFor($dia,$mes,$ano)
+    public function getAvailableFor($type,$dia,$mes,$ano)
     {
         if($dia > 31 || $dia <= 0)
         {
@@ -24,7 +24,7 @@ class AgendaController extends Controller
         }
         else
         {
-            $horarios = DB::select("SELECT ah.* FROM `agenda_horarios` ah LEFT JOIN agendas a ON ah.id=a.id_agenda_horario AND a.fecha='$ano-$mes-$dia' WHERE ah.id_agenda_tipo=1 AND a.id is null");
+            $horarios = DB::select("SELECT ah.* FROM `agenda_horarios` ah LEFT JOIN agendas a ON ah.id=a.id_agenda_horario AND a.fecha='$ano-$mes-$dia' WHERE ah.id_agenda_tipo='$type' AND a.id is null");
             return response()->json($horarios, 200);
         }        
     }

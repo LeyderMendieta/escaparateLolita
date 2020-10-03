@@ -183,7 +183,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -205,7 +205,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -227,7 +227,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -249,7 +249,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -295,7 +295,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -318,7 +318,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -341,7 +341,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -364,7 +364,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -387,7 +387,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -410,7 +410,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -433,7 +433,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -456,7 +456,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -479,7 +479,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -502,7 +502,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -525,7 +525,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -548,7 +548,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -571,7 +571,7 @@
                                                                             </a>
                                                                         </div>
                                                                         <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="#" target="_self">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/1u1NjEDxMJSoGkBMwX3wivrRxjgyhc9HG1pay1lH') }}" target="_self">
                                                                                 <i class="eg-icon-link"></i>
                                                                             </a>
                                                                         </div>
@@ -701,7 +701,7 @@
                         <div class="footer_copyright_inner">
                             <div class="content_wrap">
                                 <div class="copyright_text">
-                                    <a href="#"> ThemeREX </a> &copy;. All Rights Reserved <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
+                                    &copy;2020 El Escaparate de Lolita. All Rights Reserved. <a href="#" >Terms of use</a> and <a href="#">Privacy Policy</a>
                                 </div>
                             </div>
                         </div>

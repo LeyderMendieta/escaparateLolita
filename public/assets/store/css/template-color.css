@@ -1865,79 +1865,79 @@ blockquote a {
 }
 
 .scheme_default .sc_button_hover_slide_left {
-    background: linear-gradient(to right, #141414 50%, #fe7799 50%) no-repeat scroll right bottom/ 210% 100% #fe7799 !important;
+    background: linear-gradient(to right, #141414 50%, #fe7799 50%) no-repeat scroll right bottom/ 210% 100% #fe7799 ;
 }
 
 .scheme_default .sc_button_hover_slide_right {
-    background: linear-gradient(to left, #141414 50%, #fe7799 50%) no-repeat scroll left bottom/ 210% 100% #fe7799 !important;
+    background: linear-gradient(to left, #141414 50%, #fe7799 50%) no-repeat scroll left bottom/ 210% 100% #fe7799 ;
 }
 
 .scheme_default .sc_button_hover_slide_top {
-    background: linear-gradient(to bottom, #141414 50%, #fe7799 50%) no-repeat scroll right bottom/ 100% 210% #fe7799 !important;
+    background: linear-gradient(to bottom, #141414 50%, #fe7799 50%) no-repeat scroll right bottom/ 100% 210% #fe7799 ;
 }
 
 .scheme_default .sc_button_hover_slide_bottom {
-    background: linear-gradient(to top, #141414 50%, #fe7799 50%) no-repeat scroll right top/ 100% 210% #fe7799 !important;
+    background: linear-gradient(to top, #141414 50%, #fe7799 50%) no-repeat scroll right top/ 100% 210% #fe7799 ;
 }
 
 .scheme_default .sc_button_default_inverse.sc_button_hover_slide_left {
-    background: linear-gradient(to right, #fe7799 50%, #141414 50%) no-repeat scroll right bottom/ 210% 100% #141414 !important;
+    background: linear-gradient(to right, #fe7799 50%, #141414 50%) no-repeat scroll right bottom/ 210% 100% #141414 ;
 }
 
 .scheme_default .sc_button_default_inverse.sc_button_hover_slide_right {
-    background: linear-gradient(to left, #fe7799 50%, #141414 50%) no-repeat scroll left bottom/ 210% 100% #141414 !important;
+    background: linear-gradient(to left, #fe7799 50%, #141414 50%) no-repeat scroll left bottom/ 210% 100% #141414 ;
 }
 
 .scheme_default .sc_button_default_inverse.sc_button_hover_slide_top {
-    background: linear-gradient(to bottom, #fe7799 50%, #141414 50%) no-repeat scroll right bottom/ 100% 210% #141414 !important;
+    background: linear-gradient(to bottom, #fe7799 50%, #141414 50%) no-repeat scroll right bottom/ 100% 210% #141414 ;
 }
 
 .scheme_default .sc_button_default_inverse.sc_button_hover_slide_bottom {
-    background: linear-gradient(to top, #fe7799 50%, #141414 50%) no-repeat scroll right top/ 100% 210% #141414 !important;
+    background: linear-gradient(to top, #fe7799 50%, #141414 50%) no-repeat scroll right top/ 100% 210% #141414 ;
 }
 
 .scheme_default .sc_button_hover_style_dark.sc_button_hover_slide_left {
-    background: linear-gradient(to right, #fe7799 50%, #141414 50%) no-repeat scroll right bottom/ 210% 100% #141414 !important;
+    background: linear-gradient(to right, #fe7799 50%, #141414 50%) no-repeat scroll right bottom/ 210% 100% #141414 ;
 }
 
 .scheme_default .sc_button_hover_style_dark.sc_button_hover_slide_right {
-    background: linear-gradient(to left, #fe7799 50%, #141414 50%) no-repeat scroll left bottom/ 210% 100% #141414 !important;
+    background: linear-gradient(to left, #fe7799 50%, #141414 50%) no-repeat scroll left bottom/ 210% 100% #141414 ;
 }
 
 .scheme_default .sc_button_hover_style_dark.sc_button_hover_slide_top {
-    background: linear-gradient(to bottom, #fe7799 50%, #141414 50%) no-repeat scroll right bottom/ 100% 210% #141414 !important;
+    background: linear-gradient(to bottom, #fe7799 50%, #141414 50%) no-repeat scroll right bottom/ 100% 210% #141414 ;
 }
 
 .scheme_default .sc_button_hover_style_dark.sc_button_hover_slide_bottom {
-    background: linear-gradient(to top, #fe7799 50%, #141414 50%) no-repeat scroll right top/ 100% 210% #141414 !important;
+    background: linear-gradient(to top, #fe7799 50%, #141414 50%) no-repeat scroll right top/ 100% 210% #141414 ;
 }
 
 .scheme_default .sc_button_hover_style_inverse.sc_button_hover_slide_left {
-    background: linear-gradient(to right, #ffffff 50%, #fe7799 50%) no-repeat scroll right bottom/ 210% 100% #fe7799 !important;
+    background: linear-gradient(to right, #ffffff 50%, #fe7799 50%) no-repeat scroll right bottom/ 210% 100% #fe7799 ;
 }
 
 .scheme_default .sc_button_hover_style_inverse.sc_button_hover_slide_right {
-    background: linear-gradient(to left, #ffffff 50%, #fe7799 50%) no-repeat scroll left bottom/ 210% 100% #fe7799 !important;
+    background: linear-gradient(to left, #ffffff 50%, #fe7799 50%) no-repeat scroll left bottom/ 210% 100% #fe7799 ;
 }
 
 .scheme_default .sc_button_hover_style_inverse.sc_button_hover_slide_top {
-    background: linear-gradient(to bottom, #ffffff 50%, #fe7799 50%) no-repeat scroll right bottom/ 100% 210% #fe7799 !important;
+    background: linear-gradient(to bottom, #ffffff 50%, #fe7799 50%) no-repeat scroll right bottom/ 100% 210% #fe7799 ;
 }
 
 .scheme_default .sc_button_hover_style_inverse.sc_button_hover_slide_bottom {
-    background: linear-gradient(to top, #ffffff 50%, #fe7799 50%) no-repeat scroll right top/ 100% 210% #fe7799 !important;
+    background: linear-gradient(to top, #ffffff 50%, #fe7799 50%) no-repeat scroll right top/ 100% 210% #fe7799 ;
 }
 
 .scheme_default .sc_button_hover_style_hover.sc_button_hover_slide_left {
-    background: linear-gradient(to right, #141414 50%, #fe7799 50%) no-repeat scroll right bottom/ 210% 100% #fe7799 !important;
+    background: linear-gradient(to right, #141414 50%, #fe7799 50%) no-repeat scroll right bottom/ 210% 100% #fe7799 ;
 }
 
 .scheme_default .sc_button_hover_style_hover.sc_button_hover_slide_right {
-    background: linear-gradient(to left, #141414 50%, #fe7799 50%) no-repeat scroll left bottom/ 210% 100% #fe7799 !important;
+    background: linear-gradient(to left, #141414 50%, #fe7799 50%) no-repeat scroll left bottom/ 210% 100% #fe7799 ;
 }
 
 .scheme_default .sc_button_hover_style_hover.sc_button_hover_slide_top {
-    background: linear-gradient(to bottom, #141414 50%, #fe7799 50%) no-repeat scroll right bottom/ 100% 210% #fe7799 !important;
+    background: linear-gradient(to bottom, #141414 50%, #fe7799 50%) no-repeat scroll right bottom/ 100% 210% #fe7799 ;
 }
 
 .scheme_default .sc_button_hover_style_hover.sc_button_hover_slide_bottom {

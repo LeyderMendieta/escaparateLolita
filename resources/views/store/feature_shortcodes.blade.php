@@ -152,140 +152,8 @@
                                         </div>
                                     </div>
                                 </section> 
-                                <section>
-                                    <div class="content_container"> 
-                                        <div class="column_row">
-                                            <div class="columns_wrap">
-                                                <div class="column_container column-1_2 sc_layouts_column_icons_position_left scr_xs">
-                                                    <div class="column-inner">
-                                                        <div class="text_column">
-                                                            <h2>Video</h2>            
-                                                        </div>
-                                                        <div class="empty_space h-2_9em"><span class="empty_space_inner"></span></div>   
-                                                        <div class="widget_area sc_widget_video">
-                                                            <aside class="widget widget_video">
-                                                                <div class="trx_addons_video_player with_cover hover_play">
-                                                                    <img src="{{URL::asset('assets/store/images/video-870x490.jpg')}}" alt="" width="870" height="490">
-                                                                    <div class="video_mask"></div>
-                                                                    <div class="video_hover" data-video="&lt;iframe src=&quot;https://player.vimeo.com/video/21709803?autoplay=1&quot; width=&quot;640&quot; height=&quot;352&quot; frameborder=&quot;0&quot; title=&quot;Lingerie&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;"></div>
-                                                                    <div class="video_embed video_frame"></div>
-                                                                </div>
-                                                            </aside>
-                                                        </div>
-                                                        <div class="empty_space h-3_2em"><span class="empty_space_inner"></span></div>
-                                                    </div>             
-                                                </div><div class="column_container column-1_2 sc_layouts_column_icons_position_left scr_xs">
-                                                    <div class="column-inner">
-                                                        <div class="text_column">
-                                                            <h2>Slider</h2>            
-                                                        </div>
-                                                        <div class="empty_space h-2_9em"><span class="empty_space_inner"></span></div>   
-                                                        <div class="widget_area sc_widget_slider">
-                                                            <aside class="widget widget_slider">
-                                                                <div class="slider_wrap slider_engine_swiper">
-                                                                    <div class="slider_swiper_outer slider_style_default slider_outer_controls slider_outer_controls_side slider_outer_nopagination slider_outer_titles_center slider_outer_one">
-                                                                        <div class="slider_swiper swiper-slider-container slider_controls slider_controls_side slider_nopagination slider_titles_center slider_one slider_resize slider_height_fixed slider_type_bg h_353px" 
-                                                                        data-ratio="16:9" 
-                                                                        data-interval="7000" 
-                                                                        data-effect="slide" 
-                                                                        data-pagination="bullets" 
-                                                                        data-slides-per-view="1" 
-                                                                        data-slides-space="0">
-
-                                                                            <div class="swiper-wrapper">
-                                                                                <div class="swiper-slide swiper-image-1" data-image="images/post-2-870x490.jpg" ></div>
-                                                                                <div class="swiper-slide swiper-image-2" data-image="images/post-3-870x490.jpg"></div>
-                                                                                <div class="swiper-slide swiper-image-3" data-image="images/post-4-870x490.jpg"></div>
-                                                                            </div>
-                                                                            <div class="slider_controls_wrap">
-                                                                                <a class="slider_prev swiper-button-prev" href="#"></a>
-                                                                                <a class="slider_next swiper-button-next" href="#"></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </aside>
-                                                        </div>
-                                                        <div class="empty_space h-3_2em"><span class="empty_space_inner"></span></div>
-                                                    </div>             
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>  
-                                </section>
-                                <section>
-                                    <div class="content_container"> 
-                                        <div class="column_row">
-                                            <div class="columns_wrap">
-                                                <div class="column_container column-1_2 sc_layouts_column_icons_position_left scr_xs">
-                                                    <div class="column-inner">
-                                                        <div class="empty_space h-1em"><span class="empty_space_inner"></span></div>
-                                                        <div class="text_column">
-                                                            <h2>Audio</h2>            
-                                                        </div>
-                                                        <div class="empty_space h-2_7em"><span class="empty_space_inner"></span></div>   
-                                                        <div class="widget_area sc_widget_audio">
-                                                            <aside class="widget widget_audio">
-                                                                <div class="trx_addons_audio_player without_cover">
-                                                                    <div class="audio_info">
-                                                                        <h6 class="audio_author">Lily Hunter</h6>
-                                                                        <h5 class="audio_caption">Insert Audio Title Here</h5> </div>
-                                                                    <div class="audio_frame audio_local">
-                                                                        <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-                                                                        <audio class="w_100per-imp" preload="none" controls="controls">
-                                                                            <source type="audio/mpeg" src="{{URL::asset('assets/store/audio/sample-melody.mp3')}}" />
-                                                                            <a href="audio/sample-melody.mp3">audio/sample-melody.mp3</a>
-                                                                        </audio>
-                                                                    </div>
-                                                                </div>
-                                                            </aside>
-                                                        </div>
-                                                        <div class="empty_space h-2_2em"><span class="empty_space_inner"></span></div>
-                                                    </div>             
-                                                </div><div class="column_container column-1_2 sc_layouts_column_icons_position_left scr_xs">
-                                                <div class="column-inner">
-                                                    <div class="empty_space h-1em"><span class="empty_space_inner"></span></div>
-                                                    <div class="text_column">
-                                                        <h2>Progress Bar</h2>            
-                                                    </div>
-                                                    <div class="empty_space h-2_7em"><span class="empty_space_inner"></span></div>
-                                                    <div id="sc_skills_diagram" class="sc_skills sc_skills_bar sc_skills_horizontal margin_top_small" data-type="bar" data-caption="Skills" data-dir="horizontal">
-                                                        <div class="sc_skills_info">
-                                                            <div class="sc_skills_label">HTML 5 &amp; CSS </div>
-                                                        </div>
-                                                        <div class="sc_skills_item odd first">
-                                                            <div class="sc_skills_total" data-start="0" data-stop="85" data-step="1" data-max="100" data-speed="36" data-duration="2880" data-ed="%">0%</div>
-                                                            <div class="sc_skills_count"></div>
-                                                        </div>
-                                                        <div class="sc_skills_info">
-                                                            <div class="sc_skills_label">Design </div>
-                                                        </div>
-                                                        <div class="sc_skills_item even">
-                                                            <div class="sc_skills_total" data-start="0" data-stop="100" data-step="1" data-max="100" data-speed="20" data-duration="1300" data-ed="%">0%</div>
-                                                            <div class="sc_skills_count"></div>
-                                                        </div>
-                                                        <div class="sc_skills_info">
-                                                            <div class="sc_skills_label">Marketing </div>
-                                                        </div>
-                                                        <div class="sc_skills_item odd">
-                                                            <div class="sc_skills_total" data-start="0" data-stop="55" data-step="1" data-max="100" data-speed="36" data-duration="2880" data-ed="%">0%</div>
-                                                            <div class="sc_skills_count"></div>
-                                                        </div>
-                                                        <div class="sc_skills_info">
-                                                            <div class="sc_skills_label">WordPress</div>
-                                                        </div>
-                                                        <div class="sc_skills_item  even">
-                                                            <div class="sc_skills_total" data-start="0" data-stop="38" data-step="1" data-max="100" data-speed="36" data-duration="2700" data-ed="%">0%</div>
-                                                            <div class="sc_skills_count"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="empty_space h-2_2em"><span class="empty_space_inner"></span></div>
-                                                </div>             
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>  
-                                </section>
+                                
+                               
                                 <section>
                                     <div class="content_container"> 
                                         <div class="column_row">
@@ -378,7 +246,7 @@
                                                         <div class="text_column">
                                                             <div class="empty_space h-1em"><span class="empty_space_inner"></span></div>
                                                             <div class="sc_title sc_title_default">
-                                                                <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Gift Card</h2>
+                                                                <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Tarjetas de Regalo</h2>
                                                             </div>
                                                             <!-- /.sc_title -->
                                                             <div class="empty_space h-1_6em"><span class="empty_space_inner"></span></div>
@@ -477,85 +345,6 @@
                                     </div>
                                 </section>
                                 <section>
-                                    <div class="container-fluid bg_dark">
-                                        <div class="column_row">
-                                            <div class="content_container">
-                                                <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
-                                                    <div class="column-inner">
-                                                        <div class="empty_space h-3em"><span class="empty_space_inner"></span></div>
-                                                        <div class="empty_space hide_on_mobile h-3_4em"><span class="empty_space_inner"></span></div>
-                                                        <div class="scheme_dark sc_testimonials sc_testimonials_default swiper-slider-container slider_swiper slider_noresize slider_nocontrols slider_pagination" 
-                                                           data-slides-per-view="3" 
-                                                           data-slides-space="30" 
-                                                           data-slides-min-width="150">
-                                                            <h2 class="sc_item_title sc_testimonials_title sc_align_center sc_item_title_style_default">Testimonials</h2>
-                                                            <div class="sc_item_descr sc_testimonials_descr sc_align_center">A touch of coverage never felt so sexy</div>
-                                                            <div class="sc_testimonials_slider sc_item_slider slides swiper-wrapper">
-                                                                <div class="swiper-slide">
-                                                                    <div class="sc_testimonials_item">
-                                                                        <div class="sc_testimonials_item_content">
-                                                                            <p>This is my favorite lingerie store ever. I recommend these guys to all my friends. The service, the products are great!</p>
-                                                                        </div>
-                                                                        <div class="sc_testimonials_item_author">
-                                                                            <div class="sc_testimonials_item_author_data">
-                                                                                <h4 class="sc_testimonials_item_author_title">Jane Freeman</h4>
-                                                                                <div class="sc_testimonials_item_author_subtitle"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="swiper-slide">
-                                                                    <div class="sc_testimonials_item">
-                                                                        <div class="sc_testimonials_item_content">
-                                                                            <p>After shopping at this store, there is no way you go to a different one. Here you will find everything and anything.</p>
-                                                                        </div>
-                                                                        <div class="sc_testimonials_item_author">
-                                                                            <div class="sc_testimonials_item_author_data">
-                                                                                <h4 class="sc_testimonials_item_author_title">Amy Sullivan</h4>
-                                                                                <div class="sc_testimonials_item_author_subtitle"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="swiper-slide">
-                                                                    <div class="sc_testimonials_item">
-                                                                        <div class="sc_testimonials_item_content">
-                                                                            <p>Nothing to make yourself feel better on a rainy day like a piece of elegant underwear. Thank you for being the best!</p>
-                                                                        </div>
-                                                                        <div class="sc_testimonials_item_author">
-                                                                            <div class="sc_testimonials_item_author_data">
-                                                                                <h4 class="sc_testimonials_item_author_title">Jar Rojas</h4>
-                                                                                <div class="sc_testimonials_item_author_subtitle"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="swiper-slide">
-                                                                    <div class="sc_testimonials_item">
-                                                                        <div class="sc_testimonials_item_content">
-                                                                            <p>You definitely feel the difference when putting on this amazing piece of art. The quality is magnificent, really.</p>
-                                                                        </div>
-                                                                        <div class="sc_testimonials_item_author">
-                                                                            <div class="sc_testimonials_item_author_data">
-                                                                                <h4 class="sc_testimonials_item_author_title">Jerry Myers</h4>
-                                                                                <div class="sc_testimonials_item_author_subtitle"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="slider_pagination_wrap swiper-pagination"></div>
-                                                        </div>
-                                                        <!-- /.sc_testimonials -->
-                                                        <div class="empty_space h-3em"><span class="empty_space_inner"></span></div>
-                                                        <div class="empty_space hide_on_mobile h-3_6em"><span class="empty_space_inner"></span></div>
-                                                    </div>             
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section>
                                     <div class="container">
                                         <div class="column_row">
                                             <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
@@ -563,7 +352,7 @@
                                                     <div class="empty_space h-3em"><span class="empty_space_inner"></span></div>
                                                     <div class="empty_space hide_on_mobile h-4_4em"><span class="empty_space_inner"></span></div>
                                                     <div class="sc_title sc_title_default">
-                                                        <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Call To Action</h2>
+                                                        <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Titulo</h2>
                                                     </div>
                                                     <!-- /.sc_title -->
                                                     <div class="empty_space h-2_8em"><span class="empty_space_inner"></span></div>
@@ -601,20 +390,13 @@
                                             <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
                                                 <div class="column-inner">
                                                     <div class="sc_title sc_title_default">
-                                                        <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Map</h2>
+                                                        <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Mapa</h2>
                                                     </div>
                                                     <!-- /.sc_title -->
-                                                    <div class="empty_space h-2_7em"><span class="empty_space_inner"></span></div>
+                                                    <div class="empty_space h-2_7em"><span class="empty_space_inner"></span>
+                                                    </div>
                                                     <div id="sc_googlemap_1_wrap" class="sc_googlemap_wrap">
-                                                        <div id="sc_googlemap_1" class="sc_googlemap sc_googlemap_default w_100per h_688px" data-zoom="16" data-style="extra">
-                                                            <div id="sc_googlemap_1_1" class="sc_googlemap_marker" 
-                                                                data-latlng="" 
-                                                                data-address="350 5th avenue new york ny 10001" 
-                                                                data-description="" 
-                                                                data-title="350 5th avenue new york ny 10001" 
-                                                                data-icon="images/marker.png">
-                                                            </div>
-                                                        </div>
+                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.817772184326!2d-79.50982478521368!3d8.988909793548698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca95ad747390f%3A0x9551762c17c6e4d0!2sEl%20Escaparate%20de%20Lolita!5e0!3m2!1ses-419!2sco!4v1601735164563!5m2!1ses-419!2sco" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                                                     </div>
                                                     <!-- /.sc_googlemap_wrap --> 
                                                 </div>             

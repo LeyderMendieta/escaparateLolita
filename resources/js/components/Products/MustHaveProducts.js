@@ -15,8 +15,8 @@ const MustHaveProducts = ({products,url_images,url_href}) => (
                         </a>
                         <div className="mask"></div>
                         <div className="icons">
-                            <a href={url_href+"shop/"+producto.acceso_url} className="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Buy</a>
-                            <a href={url_href+"shop/"+producto.acceso_url} className="shop_link button icon-link">Details</a>
+                            <a href={url_href+"shop/"+producto.acceso_url} className="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Comprar</a>
+                            <a href={url_href+"shop/"+producto.acceso_url} className="shop_link button icon-link">Detalles</a>
                         </div>
                     </div>
                     <div className="post_data">
@@ -28,7 +28,7 @@ const MustHaveProducts = ({products,url_images,url_href}) => (
                             <span className="woocs_price_code"><span className="amount">59<span className="decimals">00</span><span className="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span className="amount">65<span className="decimals">00</span><span className="woocommerce-Price-currencySymbol">&#36;</span></span>
                             </span>
                         </span>
-                        <a  href="shop-single.html" className="button product_type_variable add_to_cart_button">Buy now</a> 
+                        <a  href="shop-single.html" className="button product_type_variable add_to_cart_button">Comprar</a> 
                     </div>
                 </div>
             </li>

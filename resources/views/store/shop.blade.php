@@ -229,7 +229,7 @@
                                         <input type="hidden" name="post_type" value="product" /> 
                                     </form>
                                 </aside><aside class="widget woocommerce widget_top_rated_products">
-                                    <h5 class="widget_title">Featured Products</h5>
+                                    <h5 class="widget_title">Productos Destacados</h5>
                                     <ul class="product_list_widget">
                                         <li>
                                             <a href="#" title="Halter Bodysuit"> 
@@ -309,7 +309,7 @@
             <!-- /.page_wrap -->
         </div>
         <!-- /.body_wrap -->
-
+        
         <div id="trx_addons_login_popup" class="trx_addons_popup trx_addons_tabs mfp-hide">
             <ul class="trx_addons_tabs_titles">
                 <li class="trx_addons_tabs_title trx_addons_tabs_title_login">

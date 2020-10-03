@@ -1,0 +1,28 @@
+.btn-tile-calendario:disabled
+{
+    background:#F0EDED!important;
+    color:#000!important;
+    text-decoration: none;
+}
+.btn-tile-calendario{
+    border:1px solid #ccc!important;
+}
+abbr{
+    cursor:default;
+    border-bottom:none;
+}
+.react-calendar__navigation__label,.react-calendar__navigation__arrow{
+    color:black!important;
+    background:#fff!important
+}
+.react-calendar__navigation__label:hover,.react-calendar__navigation__arrow:hover{
+    color:black!important;
+    background:#ccc!important;
+}
+
+.contenedor-calendario{
+    margin:0 auto;
+}
+.cursor-pointer{
+    cursor: pointer;
+}

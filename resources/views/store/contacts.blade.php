@@ -138,27 +138,25 @@
                                                                 <div class="sc_form_info_item sc_form_info_item_address"> 
                                                                     <span class="sc_form_info_area">                                          
                                                                         <span class="sc_form_info_title">Dirección:</span> 
-                                                                        <span class="sc_form_info_data"><span>Chicago, IL 60606, 123, New Lenox</span></span>
+                                                                        <span class="sc_form_info_data"><span>Calle 71 Casa No 97 San Francisco Panamá</span></span>
                                                                     </span>
                                                                 </div>
                                                                 <div class="sc_form_info_item sc_form_info_item_phone"> 
                                                                     <span class="sc_form_info_area">
                                                                         <span class="sc_form_info_title">Teléfono:</span> 
-                                                                        <span class="sc_form_info_data"><span>123-456-7890</span></span>
+                                                                        <span class="sc_form_info_data"><span>+507 388-8936 / +507 6324-9894</span></span>
                                                                     </span>
                                                                 </div>
                                                                 <div class="sc_form_info_item sc_form_info_item_email">
                                                                     <span class="sc_form_info_area">
                                                                         <span class="sc_form_info_title">E-mail:</span> 
-                                                                        <span class="sc_form_info_data"><a href="mailto:info@example.com">info@example.com</a></span> 
+                                                                        <span class="sc_form_info_data"><a href="mailto:info@example.com">info@elescaparatedelolita.com</a></span> 
                                                                     </span>
                                                                 </div>
                                                             </div>
                                                             <div class="form_socials socials_wrap">
-                                                                <span class="social_item"><a href="#" class="social_icons social_twitter"><span class="trx_addons_icon-twitter"></span></a>
-                                                                </span><span class="social_item"><a href="#" class="social_icons social_facebook"><span class="trx_addons_icon-facebook"></span></a>
-                                                                </span><span class="social_item"><a href="#" class="social_icons social_gplus"><span class="trx_addons_icon-gplus"></span></a>
-                                                                </span><span class="social_item"><a href="#" class="social_icons social_instagram"><span class="trx_addons_icon-instagram"></span></a>
+                                                                <span class="social_item"><a href="https://www.facebook.com/Elescaparatedelolita" target="_blank" class="social_icons social_facebook"><span class="trx_addons_icon-facebook"></span></a>
+                                                                </span><span class="social_item"><a href="https://www.instagram.com/elescaparatedelolita/?hl=es-la" target="_blank" class="social_icons social_instagram"><span class="trx_addons_icon-instagram"></span></a>
                                                                 </span>
                                                             </div>
                                                         </div><div class="trx_addons_column-2_3">
@@ -222,15 +220,7 @@
                                         <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
                                             <div class="column-inner">
                                                 <div id="sc_googlemap_1590802060_wrap" class="sc_googlemap_wrap">
-                                                    <div id="sc_googlemap_1590802060" class="sc_googlemap sc_googlemap_default w_100per h_685px" data-zoom="16" data-style="extra">
-                                                        <div id="sc_googlemap_1590802060_1" class="sc_googlemap_marker"
-                                                             data-latlng="" 
-                                                             data-address="350 5th avenue new york ny 10001" 
-                                                             data-description="" 
-                                                             data-title="350 5th avenue new york ny 10001" 
-                                                             data-icon="images/marker.png">
-                                                        </div>
-                                                    </div>
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.817772184326!2d-79.50982478521368!3d8.988909793548698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca95ad747390f%3A0x9551762c17c6e4d0!2sEl%20Escaparate%20de%20Lolita!5e0!3m2!1ses-419!2sco!4v1601735164563!5m2!1ses-419!2sco" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                                                 </div>
                                                 <!-- /.sc_googlemap_wrap -->
                                             </div>

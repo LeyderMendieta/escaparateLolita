@@ -13,6 +13,7 @@
         <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/theme.hovers/theme.hovers.css')}}" type='text/css' media='all'/>
         <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/chosen/chosen.min.css')}}" type='text/css' media='all'/>
         <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/css/front.css')}}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{URL::asset('assets/store/css/calendario.css')}}" type='text/css' media='all'/>
 
     </head>
     
@@ -200,201 +201,20 @@
                                             <div class="column_row"> 
                                                 <div class="column_container column-1_1 sc_layouts_column_icons_position_left">   
                                                     <div class="column-inner">
-                                                        <div id="mainslider_1" class="rev_slider_wrapper fullwidthbanner-container rev_slider_global slider_alias_rsl1" data-source="gallery" >
-                                                            <!-- START REVOLUTION SLIDER 5.3.0.2 fullwidth mode -->
-                                                            <div id="rev_slider_1_1" class="rev_slider fullwidthabanner d_none" data-version="5.3.0.2">
-                                                                <ul>
-                                                                    <!-- SLIDE  1-->
-                                                                    <li data-index="rs-1" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="{{URL::asset('assets/store/images/slider_1_bg_1-100x50.jpg')}}" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                                                        <!-- MAIN IMAGE -->
-                                                                        <img src="{{URL::asset('assets/store/images/slider_1_bg_1.jpg')}}" alt="" title="slider_1_bg_1" width="1170" height="652" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                                                                        <!-- LAYERS -->
-                                                                        <!-- LAYER NR. 1 -->
-                                                                        <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme" 
-                                                                             id="slide-1-layer-2" 
-                                                                             data-x="center" 
-                                                                             data-hoffset="-331" 
-                                                                             data-y="center" 
-                                                                             data-voffset="-5" 
-                                                                             data-width="['106']" 
-                                                                             data-height="['506']" 
-                                                                             data-type="shape" 
-                                                                             data-responsive_offset="on" 
-                                                                             data-frames='[{"delay":0,"speed":700,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":700,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' 
-                                                                             data-textAlign="['inherit','inherit','inherit','inherit']" 
-                                                                             data-paddingtop="[0,0,0,0]" 
-                                                                             data-paddingright="[0,0,0,0]" 
-                                                                             data-paddingbottom="[0,0,0,0]" 
-                                                                             data-paddingleft="[0,0,0,0]" > 
-                                                                        </div>
-                                                                        <!-- LAYER NR. 2 -->
-                                                                        <div class="tp-caption trx-main tp-resizeme other-font" 
-                                                                             id="slide-1-layer-1" 
-                                                                             data-x="center" 
-                                                                             data-hoffset="-322" 
-                                                                             data-y="center" 
-                                                                             data-voffset="-3" 
-                                                                             data-width="['auto']" 
-                                                                             data-height="['auto']" 
-                                                                             data-type="text" 
-                                                                             data-responsive_offset="on" 
-                                                                             data-frames='[{"delay":0,"speed":700,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":700,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' 
-                                                                             data-textAlign="['center','center','center','center']" 
-                                                                             data-paddingtop="[0,0,0,0]" 
-                                                                             data-paddingright="[0,0,0,0]" 
-                                                                             data-paddingbottom="[0,0,0,0]" 
-                                                                             data-paddingleft="[0,0,0,0]" >Little<br/> Love<br/> Story 
-                                                                        </div>
-                                                                        <!-- LAYER NR. 3 -->
-                                                                        <div class="tp-caption trx-button-main rev-btn" 
-                                                                             id="slide-1-layer-4" 
-                                                                             data-x="center" 
-                                                                             data-hoffset="-330" 
-                                                                             data-y="center" 
-                                                                             data-voffset="209" 
-                                                                             data-width="['auto']" 
-                                                                             data-height="['auto']" 
-                                                                             data-type="button" 
-                                                                             data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"\/shop.html","delay":""}]' 
-                                                                             data-responsive_offset="on" 
-                                                                             data-responsive="off" 
-                                                                             data-frames='[{"delay":0,"speed":700,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":700,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bs:solid;bw:0 0 0 0;"}]' 
-                                                                             data-textAlign="['center','center','center','center']" 
-                                                                             data-paddingtop="[0,0,0,0]" 
-                                                                             data-paddingright="[0,0,0,0]" 
-                                                                             data-paddingbottom="[0,0,0,0]" 
-                                                                             data-paddingleft="[0,0,0,0]" >browse 
-                                                                        </div>
-                                                                    </li>
-                                                                    <!-- SLIDE 2 -->
-                                                                    <li data-index="rs-2" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="{{URL::asset('assets/store/images/slider_1_bg_2-100x50.jpg')}}" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                                                        <!-- MAIN IMAGE -->
-                                                                        <img src="{{URL::asset('assets/store/images/slider_1_bg_2.jpg')}}" alt="" title="slider_1_bg_2" width="1170" height="652" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                                                                        <!-- LAYERS -->
-                                                                        <!-- LAYER NR. 1 -->
-                                                                        <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme" 
-                                                                             id="slide-2-layer-2" 
-                                                                             data-x="center" 
-                                                                             data-hoffset="-253" 
-                                                                             data-y="center" 
-                                                                             data-voffset="1" 
-                                                                             data-width="['105']" 
-                                                                             data-height="['409']" 
-                                                                             data-type="shape" 
-                                                                             data-responsive_offset="on" 
-                                                                             data-frames='[{"delay":0,"speed":700,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":700,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' 
-                                                                             data-textAlign="['inherit','inherit','inherit','inherit']" 
-                                                                             data-paddingtop="[0,0,0,0]" 
-                                                                             data-paddingright="[0,0,0,0]" 
-                                                                             data-paddingbottom="[0,0,0,0]" 
-                                                                             data-paddingleft="[0,0,0,0]" > 
-                                                                        </div>
-                                                                        <!-- LAYER NR. 2 -->
-                                                                        <div class="tp-caption trx-main tp-resizeme other-font" 
-                                                                             id="slide-2-layer-1" 
-                                                                             data-x="center" 
-                                                                             data-hoffset="-244" 
-                                                                             data-y="center" 
-                                                                             data-voffset="-15" 
-                                                                             data-width="['auto']" 
-                                                                             data-height="['auto']" 
-                                                                             data-type="text" 
-                                                                             data-responsive_offset="on" 
-                                                                             data-frames='[{"delay":0,"speed":700,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":700,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' 
-                                                                             data-textAlign="['center','center','center','center']" 
-                                                                             data-paddingtop="[0,0,0,0]" 
-                                                                             data-paddingright="[0,0,0,0]" 
-                                                                             data-paddingbottom="[0,0,0,0]" 
-                                                                             data-paddingleft="[0,0,0,0]" >Sleeping<br/> Beauty 
-                                                                        </div>
-                                                                        <!-- LAYER NR. 3 -->
-                                                                        <div class="tp-caption trx-button-main rev-btn" 
-                                                                             id="slide-2-layer-4" 
-                                                                             data-x="center" 
-                                                                             data-hoffset="-253" 
-                                                                             data-y="center" 
-                                                                             data-voffset="134" 
-                                                                             data-width="['auto']" 
-                                                                             data-height="['auto']" 
-                                                                             data-type="button" 
-                                                                             data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"\/shop.html","delay":""}]' 
-                                                                             data-responsive_offset="on" 
-                                                                             data-responsive="off" 
-                                                                             data-frames='[{"delay":0,"speed":700,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":700,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bs:solid;bw:0 0 0 0;"}]' 
-                                                                             data-textAlign="['center','center','center','center']" 
-                                                                             data-paddingtop="[0,0,0,0]" 
-                                                                             data-paddingright="[0,0,0,0]" 
-                                                                             data-paddingbottom="[0,0,0,0]" 
-                                                                             data-paddingleft="[0,0,0,0]">browse 
-                                                                        </div>
-                                                                    </li>
-                                                                    <!-- SLIDE  3-->
-                                                                    <li data-index="rs-4" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="{{URL::asset('assets/store/images/slider_1_bg_3-100x50.jpg')}}" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                                                        <!-- MAIN IMAGE --> 
-                                                                        <img src="{{URL::asset('assets/store/images/slider_1_bg_3.jpg')}}" alt="" title="slider_1_bg_3" width="1170" height="652" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                                                                        <!-- LAYERS -->
-                                                                        <!-- LAYER NR. 1 --> 
-                                                                        <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme" 
-                                                                             id="slide-4-layer-2" 
-                                                                             data-x="center" 
-                                                                             data-hoffset="271" 
-                                                                             data-y="center"
-                                                                             data-voffset="-5" 
-                                                                             data-width="['106']" 
-                                                                             data-height="['506']" 
-                                                                             data-type="shape" 
-                                                                             data-responsive_offset="on" 
-                                                                             data-frames='[{"delay":0,"speed":700,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":700,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' 
-                                                                             data-textAlign="['inherit','inherit','inherit','inherit']" 
-                                                                             data-paddingtop="[0,0,0,0]" 
-                                                                             data-paddingright="[0,0,0,0]" 
-                                                                             data-paddingbottom="[0,0,0,0]" 
-                                                                             data-paddingleft="[0,0,0,0]" > 
-                                                                        </div>
-                                                                        <!-- LAYER NR. 2 --> 
-                                                                        <div class="tp-caption trx-main tp-resizeme other-font" 
-                                                                             id="slide-4-layer-1" 
-                                                                             data-x="center" 
-                                                                             data-hoffset="272" 
-                                                                             data-y="center" 
-                                                                             data-voffset="-10" 
-                                                                             data-width="['auto']" 
-                                                                             data-height="['auto']" 
-                                                                             data-type="text" 
-                                                                             data-responsive_offset="on" 
-                                                                             data-frames='[{"delay":0,"speed":700,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":700,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' 
-                                                                             data-textAlign="['center','center','center','center']" 
-                                                                             data-paddingtop="[0,0,0,0]" 
-                                                                             data-paddingright="[0,0,0,0]" 
-                                                                             data-paddingbottom="[0,0,0,0]" 
-                                                                             data-paddingleft="[0,0,0,0]" >Sexy<br/> Little<br/> Things 
-                                                                        </div>
-                                                                        <!-- LAYER NR. 3 --> 
-                                                                        <div class="tp-caption trx-button-main rev-btn" 
-                                                                             id="slide-4-layer-4" 
-                                                                             data-x="center" 
-                                                                             data-hoffset="270" 
-                                                                             data-y="center" 
-                                                                             data-voffset="206" 
-                                                                             data-width="['auto']" 
-                                                                             data-height="['auto']" 
-                                                                             data-type="button" 
-                                                                             data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"\/shop.html","delay":""}]' 
-                                                                             data-responsive_offset="on" 
-                                                                             data-responsive="off" 
-                                                                             data-frames='[{"delay":0,"speed":700,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":700,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","force":true,"to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bs:solid;bw:0 0 0 0;"}]' 
-                                                                             data-textAlign="['center','center','center','center']" 
-                                                                             data-paddingtop="[0,0,0,0]" 
-                                                                             data-paddingright="[0,0,0,0]" 
-                                                                             data-paddingbottom="[0,0,0,0]" 
-                                                                             data-paddingleft="[0,0,0,0]" >browse 
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                                <div class="tp-bannertimer tp-bottom vis_hid"></div>
+                                                        <div class="empty_space hide_on_mobile h-2em"><span class="empty_space_inner"></span></div>
+                                                        <div class="empty_space h-2_3em"><span class="empty_space_inner"></span></div>
+                                                        <div class="text_column">
+                                                            <div class="widget_area sc_widget_video">
+                                                                <aside class="widget widget_video">
+                                                                    <div class="trx_addons_video_player with_cover hover_play">
+                                                                        <img src="{{URL::asset('assets/store/images/bg_video-870x490.jpg')}}" alt="" >
+                                                                        <div class="video_mask"></div>
+                                                                        <div class="video_hover" data-video="&lt;iframe src=&quot;https://player.vimeo.com/video/21709803?autoplay=1&quot; width=&quot;640&quot; height=&quot;352&quot; frameborder=&quot;0&quot; title=&quot;Lingerie&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;"></div>
+                                                                        <div class="video_embed video_frame"></div>
+                                                                    </div>
+                                                                </aside>
                                                             </div>
                                                         </div>
-                                                        <div class="empty_space h_30px"><span class="empty_space_inner"></span></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -464,10 +284,10 @@
                                                                 <div class="sc_promo_text_inner sc_align_center bg_pink">
                                                                     <img class="top_promo_image" src="{{URL::asset('assets/store/images/promo.png')}}" alt="">
                                                                     <h2 class="sc_item_title sc_promo_title sc_align_default sc_item_title_style_default">Retro<br />Briefs</h2>
-                                                                    <div class="sc_item_descr sc_promo_descr sc_align_default">embrace your inner<br />modern pin-up</div>
+                                                                    <div class="sc_item_descr sc_promo_descr sc_align_default">Tenemos hecho a la medida</div>
                                                                     <div class="sc_item_button sc_item_button_simple sc_promo_button sc_align_default sc_button_wrap">
-                                                                        <a href="shop.html" class="sc_button sc_button_simple sc_button_size_normal sc_button_icon_left">
-                                                                            <span class="sc_button_text"><span class="sc_button_title">shop now</span></span><!-- /.sc_button_text -->
+                                                                        <a  href="#trx_addons_calendar_popup"  class="sc_button sc_button_simple sc_button_size_normal sc_button_icon_left trx_addons_popup_link trx_addons_login_link">
+                                                                            <span class="sc_button_text"><span class="sc_button_title">Agendar Cita</span></span><!-- /.sc_button_text -->
                                                                         </a>
                                                                         <!-- /.sc_button -->
                                                                     </div>
@@ -481,12 +301,7 @@
                                                 </div> 
                                             </div>       
                                         </div>                      
-                                    </section>
-                                    <section>
-                                        <div class="content_container">
-                                            <div id="App_Calendar"></div>     
-                                        </div>
-                                    </section>                                   
+                                    </section>                               
                                     <section>
                                         <div class="content_container">
                                             <div class="column_row"> 
@@ -680,6 +495,12 @@
         </div>
         <!-- /.body_wrap -->
 
+        <div id="trx_addons_calendar_popup" class="trx_addons_popup trx_addons_tabs mfp-hide" style='height:350px'>
+            <div style="padding:52px;">
+                <div id="App_Calendar"></div>     
+            </div>
+        </div>
+
         <div id="trx_addons_login_popup" class="trx_addons_popup trx_addons_tabs mfp-hide">
             <ul class="trx_addons_tabs_titles">
                 <li class="trx_addons_tabs_title trx_addons_tabs_title_login">
@@ -736,34 +557,3 @@
         <a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>
     </body>
 </html>  
-<style>
-    .btn-tile-calendario:disabled
-    {
-        background:#F0EDED;
-        color:#000;
-        text-decoration: none;
-    }
-    .btn-tile-calendario{
-        border:1px solid #ccc!important;
-    }
-    abbr{
-        cursor:default;
-        border-bottom:none;
-    }
-    .react-calendar__navigation__label,.react-calendar__navigation__arrow{
-        color:black!important;
-        background:#fff!important;
-    }
-    .react-calendar__navigation__label:hover,.react-calendar__navigation__arrow:hover{
-        color:black!important;
-        background:#ccc!important;
-    }
-
-    .contenedor-calendario{
-        margin:0 auto;
-    }
-    .cursor-pointer{
-        cursor: pointer;
-    }
-
-</style>

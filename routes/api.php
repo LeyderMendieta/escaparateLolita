@@ -26,5 +26,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     Route::get('/product_detail/{product}','ProductController@viewProductDetail');
 
-    Route::get('/availableDaysFor/{dia}/{mes}/{ano}','AgendaController@getAvailableFor');
+    Route::get('/availableDaysFor/{type}/{dia}/{mes}/{ano}','AgendaController@getAvailableFor');
     Route::post('/asignarAgenda','AgendaController@store');

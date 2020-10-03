@@ -72608,7 +72608,7 @@ var App_Calendario = /*#__PURE__*/function (_Component) {
     value: function loadAvailableDates(day, month, year) {
       var _this3 = this;
 
-      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/availableDaysFor/" + day + "/" + month + "/" + year).then(function (res) {
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/availableDaysFor/" + this.props.type + "/" + day + "/" + month + "/" + year).then(function (res) {
         return res.json();
       }).then(function (result) {
         _this3.setState({
@@ -72629,14 +72629,8 @@ var App_Calendario = /*#__PURE__*/function (_Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "contenedor-calendario agendar-cita"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.activeCalendario,
-        type: "button"
-      }, "Agendar Cita"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "calendarData",
-        style: {
-          display: "none"
-        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "calendarData"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_4__["default"], {
         onChange: this.onChange,
         value: this.state.date,
@@ -72709,7 +72703,15 @@ var App_Calendario = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 if (document.getElementById('App_Calendar')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Calendario, null), document.getElementById('App_Calendar'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Calendario, {
+    type: "1"
+  }), document.getElementById('App_Calendar'));
+}
+
+if (document.getElementById('App_Calendar_Tallaje')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Calendario, {
+    type: "2"
+  }), document.getElementById('App_Calendar_Tallaje'));
 }
 
 /***/ }),
@@ -72959,6 +72961,18 @@ var ListProducts = function ListProducts(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_item post_layout_thumbs"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        position: "absolute",
+        right: "25px",
+        top: "8px",
+        fontSize: "16px",
+        zIndex: "10",
+        backgroundColor: "#C85757",
+        padding: "0px 5px",
+        color: "white",
+        fontWeight: "bold"
+      }
+    }, "10%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_featured hover_shop_buttons"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: url_href + "shop/" + producto.acceso_url,
@@ -73072,10 +73086,10 @@ var MustHaveProducts = function MustHaveProducts(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: url_href + "shop/" + producto.acceso_url,
       className: "shop_cart icon-cart-2 button add_to_cart_button product_type_variable"
-    }, "Buy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    }, "Comprar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: url_href + "shop/" + producto.acceso_url,
       className: "shop_link button icon-link"
-    }, "Details"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "Detalles"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_data"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_header entry-header"
@@ -73110,7 +73124,7 @@ var MustHaveProducts = function MustHaveProducts(_ref) {
     }, "$")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "shop-single.html",
       className: "button product_type_variable add_to_cart_button"
-    }, "Buy now"))));
+    }, "Comprar"))));
   }));
 };
 
@@ -73324,7 +73338,9 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     value: "red-passion"
   }, "Red Passion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "valiant-violet"
-  }, "Valiant Violet")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Valiant Violet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "personalizado"
+  }, "Personalizado")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "pa_color_attrib_extended",
     className: "pa_color_attrib_extended trx_addons_attrib_extended",
     "data-attrib": "pa_color"
@@ -73350,7 +73366,16 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     "data-tooltip": "Valiant Violet"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "bg_violet"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "trx_addons_attrib_item trx_addons_attrib_color trx_addons_tooltip",
+    "data-value": "personalizado",
+    "data-tooltip": "Personalizado"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#trx_addons_calendar_popup",
+    className: "trx_addons_popup_link trx_addons_login_link"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://www.flaticon.com/svg/static/icons/svg/1300/1300455.svg"
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "reset_variations",
     href: "#"
   }, "Clear"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -73364,36 +73389,6 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     className: "single_add_to_cart_button button disabled",
     onClick: handleBuyProduct
   }, "Comprar")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "yith-wcwl-add-to-wishlist"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "yith-wcwl-add-button show d_block"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    "data-product-type": "variable",
-    className: "add_to_wishlist"
-  }, "Add to Wishlist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "#",
-    className: "ajax-loading vis_hid",
-    alt: "loading",
-    width: "16",
-    height: "16"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "yith-wcwl-wishlistaddedbrowse hide d_none"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "feedback"
-  }, "Product added!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Browse Wishlist")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "yith-wcwl-wishlistexistsbrowse hide d_none"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "feedback"
-  }, "The product is already in the wishlist!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Browse Wishlist")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "clear_both"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "yith-wcwl-wishlistaddresponse"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "clear"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
@@ -73431,7 +73426,62 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     rel: "tag"
   }, "wedding")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "product_id"
-  }, "Product ID: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, producto.id))));
+  }, "Product ID: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, producto.id))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "yith-wcwl-add-to-wishlist"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "yith-wcwl-add-button show d_block"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    "data-product-type": "variable",
+    className: "add_to_wishlist"
+  }, "Add to Wishlist")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "yith-wcwl-wishlistaddedbrowse hide d_none"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "feedback"
+  }, "Product added!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#"
+  }, "Browse Wishlist")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "yith-wcwl-wishlistexistsbrowse hide d_none"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "feedback"
+  }, "The product is already in the wishlist!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#"
+  }, "Browse Wishlist")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "clear_both"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "yith-wcwl-wishlistaddresponse"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      "float": "left",
+      marginLeft: "8px"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: "button",
+    style: {
+      padding: "6px 13px",
+      fontSize: "11px",
+      fontWeight: "400px",
+      lineHeight: "13px",
+      verticalAlign: "top"
+    }
+  }, "Delivery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      fontSize: "11px",
+      color: "black",
+      padding: "0px",
+      fontWeight: "bold",
+      letterSpacing: "1px"
+    }
+  }, "$5.00 City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      fontSize: "11px",
+      color: "black",
+      padding: "0px",
+      fontWeight: "bold",
+      letterSpacing: "1px"
+    }
+  }, "$6.50 Intercity")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProductDetail_Summary);

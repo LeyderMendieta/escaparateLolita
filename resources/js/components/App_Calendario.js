@@ -92,7 +92,7 @@ class App_Calendario extends Component {
 
       loadAvailableDates(day,month,year)
       {
-        fetch(Configuracion.url_principal+"api/availableDaysFor/"+day+"/"+month+"/"+year)
+        fetch(Configuracion.url_principal+"api/availableDaysFor/"+this.props.type+"/"+day+"/"+month+"/"+year)
         .then(res => res.json())
         .then(
           (result) => {
@@ -116,8 +116,7 @@ class App_Calendario extends Component {
 
         return (
         <div className="contenedor-calendario agendar-cita">
-            <button onClick={this.activeCalendario} type="button">Agendar Cita</button>
-            <div id="calendarData" style={{display: "none"}}>
+            <div id="calendarData">
               <Calendar
                 onChange={this.onChange}
                 value={this.state.date}
@@ -160,5 +159,8 @@ class App_Calendario extends Component {
 }
 
 if (document.getElementById('App_Calendar')) {
-    ReactDOM.render(<App_Calendario />, document.getElementById('App_Calendar'));
+    ReactDOM.render(<App_Calendario type="1"/>, document.getElementById('App_Calendar'));
+}
+if (document.getElementById('App_Calendar_Tallaje')) {
+    ReactDOM.render(<App_Calendario type="2"/>, document.getElementById('App_Calendar_Tallaje'));
 }

@@ -60,6 +60,7 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
                                 <option value="gentle-peach">Gentle Peach</option>
                                 <option value="red-passion">Red Passion</option>
                                 <option value="valiant-violet">Valiant Violet</option>
+                                <option value="personalizado">Personalizado</option>
                             </select>
                             <div id="pa_color_attrib_extended" className="pa_color_attrib_extended trx_addons_attrib_extended" data-attrib="pa_color">
                                 <span className="trx_addons_attrib_item trx_addons_attrib_color trx_addons_tooltip trx_addons_attrib_selected" data-value="" data-tooltip="Choose an option">
@@ -73,6 +74,11 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
                                 </span>
                                 <span className="trx_addons_attrib_item trx_addons_attrib_color trx_addons_tooltip" data-value="valiant-violet" data-tooltip="Valiant Violet">
                                     <span className="bg_violet"></span>
+                                </span>
+                                <span className="trx_addons_attrib_item trx_addons_attrib_color trx_addons_tooltip" data-value="personalizado" data-tooltip="Personalizado">
+                                    <a  href="#trx_addons_calendar_popup" className="trx_addons_popup_link trx_addons_login_link">
+                                    <img src="https://www.flaticon.com/svg/static/icons/svg/1300/1300455.svg"/>
+                                    </a>
                                 </span>
                             </div>
                             <a className="reset_variations" href="#">Clear</a>
@@ -88,22 +94,7 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
             </div>
         </form>
 
-        <div className="yith-wcwl-add-to-wishlist">
-            <div className="yith-wcwl-add-button show d_block">
-                <a href="#" data-product-type="variable" className="add_to_wishlist">Add to Wishlist</a>
-                <img src="#" className="ajax-loading vis_hid" alt="loading" width="16" height="16" />
-            </div>
-            <div className="yith-wcwl-wishlistaddedbrowse hide d_none">
-                <span className="feedback">Product added!</span>
-                <a href="#">Browse Wishlist</a>
-            </div>
-            <div className="yith-wcwl-wishlistexistsbrowse hide d_none">
-                <span className="feedback">The product is already in the wishlist!</span>
-                <a href="#">Browse Wishlist</a>
-            </div>
-            <div className="clear_both"></div>
-            <div className="yith-wcwl-wishlistaddresponse"></div>
-        </div>
+       
         <div className="clear"></div>
         <a href="#" className="compare button" >Comparar</a>
         <div className="product_meta">
@@ -123,6 +114,28 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
                     <a href="#" rel="tag">wedding</a></span>
             <span className="product_id">Product ID: <span>{producto.id}</span></span>
         </div>
+        
+        <div className="yith-wcwl-add-to-wishlist">
+            <div className="yith-wcwl-add-button show d_block">
+                <a href="#" data-product-type="variable" className="add_to_wishlist">Add to Wishlist</a>
+            </div>
+            <div className="yith-wcwl-wishlistaddedbrowse hide d_none">
+                <span className="feedback">Product added!</span>
+                <a href="#">Browse Wishlist</a>
+            </div>
+            <div className="yith-wcwl-wishlistexistsbrowse hide d_none">
+                <span className="feedback">The product is already in the wishlist!</span>
+                <a href="#">Browse Wishlist</a>
+            </div>
+            <div className="clear_both"></div>
+            <div className="yith-wcwl-wishlistaddresponse"></div>
+        </div>
+        <div style={{float: "left",marginLeft:"8px"}}>
+            <a href="#" className="button" style={{padding: "6px 13px",fontSize: "11px",fontWeight: "400px",    lineHeight: "13px",verticalAlign: "top"}} >Delivery</a>
+            <div style={{fontSize:"11px",color:"black",padding:"0px",fontWeight: "bold", letterSpacing: "1px"}}>$5.00 City</div>
+            <div style={{fontSize:"11px",color:"black",padding:"0px",fontWeight: "bold", letterSpacing: "1px"}}>$6.50 Intercity</div>
+        </div>
+        
     </div>
 
 );

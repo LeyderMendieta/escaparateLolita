@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="format-detection" content="telephone=no">
-
+        
         @include('store.layouts.head')    
         <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/wc-secondary-product-thumbnail/assets/css/style.min.css')}}" type='text/css' media='all'/>
         <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/yith-woocommerce-zoom-magnifier/assets/css/frontend.css')}}" type='text/css' media='all'/>
@@ -13,6 +13,9 @@
         <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/theme.hovers/theme.hovers.css')}}" type='text/css' media='all'/>
         <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/chosen/chosen.min.css')}}" type='text/css' media='all'/>
         <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/css/front.css')}}" type='text/css' media='all'/>
+
+        <link rel='newest stylesheet' href="{{URL::asset('assets/store/css/calendario.css')}}" type='text/css' media='all'/>
+        
     </head>
     
     <body class="product-template-default single single-product woocommerce woocommerce-page scheme_default blog_mode_shop body_style_wide is_stream blog_style_excerpt sidebar_hide expand_content header_position_default menu_style_top no_layout">
@@ -138,7 +141,7 @@
                                     <div id="App_Product_Detail" target="{{$producto}}">
                                     </div>                                
                                     <div class="related products">
-                                        <h2>Productos Relacionados</h2>
+                                        <h2>Productos Sugeridos</h2>
                                         <ul class="products">
                                             <li class="product type-product column-1_4 wcspt-has-gallery">
                                                 <div class="post_item post_layout_thumbs">
@@ -279,6 +282,12 @@
             <!-- /.page_wrap -->
         </div>
         <!-- /.body_wrap -->
+
+        <div id="trx_addons_calendar_popup" class="trx_addons_popup trx_addons_tabs mfp-hide" style='height:350px'>
+            <div style="padding:52px;">
+                <div id="App_Calendar_Tallaje"></div>     
+            </div>
+        </div>
 
         <div id="trx_addons_login_popup" class="trx_addons_popup trx_addons_tabs mfp-hide">
             <ul class="trx_addons_tabs_titles">
