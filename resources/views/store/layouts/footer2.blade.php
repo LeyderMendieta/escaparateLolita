@@ -36,7 +36,7 @@
                             <div class="text_column">
                                 <div class="widget widget_text">			
                                     <div class="textwidget">
-                                        <div class="fsz_13px fw_400">&copy;2020 El Escaparate de Lolita. All Rights Reserved. <a href="#" >Terms of use</a> and <a href="#">Privacy Policy</a></div>
+                                        <div class="fsz_13px fw_400">&copy;2020 El Escaparate de Lolita. All Rights Reserved. <a href="{{ url('/' . $page='docs/terminos_condiciones_20201005.pdf') }}" target="_blank">Terminos de Uso</a> y <a href="{{ url('/' . $page='docs/politicas_entrega_domicilio_20201005.pdf') }}" target="_blank">Politicas de Delivery</a></div>
                                     </div>
                                 </div>
                             </div>

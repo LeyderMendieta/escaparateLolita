@@ -501,50 +501,7 @@
             </div>
         </div>
 
-        <div id="trx_addons_login_popup" class="trx_addons_popup trx_addons_tabs mfp-hide">
-            <ul class="trx_addons_tabs_titles">
-                <li class="trx_addons_tabs_title trx_addons_tabs_title_login">
-                    <a href="#trx_addons_login_content"><i class="trx_addons_icon-lock-open"></i>Login</a>
-                </li><li class="trx_addons_tabs_title trx_addons_tabs_title_register" data-disabled="true">
-                <a href="#trx_addons_register_content"><i class="trx_addons_icon-user-plus"></i>Register</a>
-                </li>
-            </ul>	
-            <div id="trx_addons_login_content" class="trx_addons_tabs_content trx_addons_login_content">
-                <div>
-                    <div class="trx_addons_popup_form_wrap trx_addons_popup_form_wrap_login">
-                        <form class="trx_addons_popup_form trx_addons_popup_form_login sc_input_hover_iconed" action="#" method="post" name="trx_addons_login_form">
-                            <input type="hidden" id="redirect_to" name="redirect_to" value="">
-                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_login">
-                                <label class="sc_form_field sc_form_field_log required">
-                                    <span class="sc_form_field_wrap"><input type="text" name="log" id="log" value="" >
-                                        <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-user-alt"></i>
-                                            <span class="sc_form_field_content" data-content="Login">Login</span>
-                                        </span>	
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_password">
-                                <label class="sc_form_field sc_form_field_pwd required">
-                                    <span class="sc_form_field_wrap"><input type="password" name="pwd" id="pwd" value="" >
-                                        <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-lock"></i>
-                                            <span class="sc_form_field_content" data-content="Password">Password</span>
-                                        </span>	
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_remember">
-                                <a href="#" class="trx_addons_popup_form_field_forgot_password">Forgot password?</a>
-                                <input type="checkbox" value="forever" id="rememberme" name="rememberme">
-                                <label for="rememberme"> Remember me</label>
-                            </div>
-                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_submit">
-                                <input type="submit" class="submit_button" value="Login">
-                            </div>
-                            <div class="trx_addons_message_box sc_form_result"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div id='App_Login'>
         </div>
 
         @include('store.layouts.foot')
