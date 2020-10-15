@@ -86,12 +86,16 @@ class ProductSeeder extends Seeder
         {
             $product = Product::create([
                 'acceso_url' => Str::random(20).Str::random(20),
-                'name' => Str::random(20),
+                'name' => "producto ".Str::random(10),
                 'descripcion' => Str::random(150),
                 'imagen_main' => "product-17-300x410.jpg",
                 'imagen_secundaria' => "product-15-300x410.jpg",
                 'sizes' => "L;S",
                 'colores'=> "Gris;Negro"
+            ]);
+            ProductPrices::create([
+                "id_producto" => $product->id,
+                "price" => 1000
             ]);
             $i++;
         }        

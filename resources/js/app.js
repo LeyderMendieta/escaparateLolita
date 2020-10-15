@@ -20,4 +20,5 @@ require('./components/StartApp');
 require('./components/App_Calendario');
 require('./components/App_ProductDetail');
 require('./components/App_Login');
+require('./components/App_mycart');
 

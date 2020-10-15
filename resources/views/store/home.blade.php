@@ -34,42 +34,37 @@
                                             </div><div class="column_container column-1_3 sc_layouts_column sc_layouts_column_align_right sc_layouts_column_icons_position_left">
                                             <div class="column-inner">
                                                 <div class="wpb_wrapper">
+                                                    <div class="sc_layouts_item" id='App_Login_Link'>
+                                                        
+                                                    </div>
                                                     <div class="sc_layouts_item">
-                                                        <div class="sc_layouts_login">
-                                                            <a href="#trx_addons_login_popup" class="trx_addons_popup_link trx_addons_login_link ">
-                                                                <span class="sc_layouts_item_icon sc_layouts_login_icon trx_addons_icon-user-alt">
-                                                                </span>
-                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Ingreso</span>
-                                                            </a>
-                                                        </div>
-                                                    </div><div class="sc_layouts_item">
-                                                    <div class="sc_layouts_currency">
-                                                        <div class="menu_user_currency">
-                                                            <form method="post" action="#" class="woocommerce-currency-switcher-form ">
-                                                                <input type="hidden" name="woocommerce-currency-switcher" value="USD">
-                                                                <div class="select_container">
-                                                                    <select name="woocommerce-currency-switcher w_100per d_none" 
-                                                                            data-width="100%" 
-                                                                            data-flag-position="right" 
-                                                                            class="woocommerce-currency-switcher">
+                                                        <div class="sc_layouts_currency">
+                                                            <div class="menu_user_currency">
+                                                                <form method="post" action="#" class="woocommerce-currency-switcher-form ">
+                                                                    <input type="hidden" name="woocommerce-currency-switcher" value="USD">
+                                                                    <div class="select_container">
+                                                                        <select name="woocommerce-currency-switcher w_100per d_none" 
+                                                                                data-width="100%" 
+                                                                                data-flag-position="right" 
+                                                                                class="woocommerce-currency-switcher">
 
-                                                                        <option value="USD" 
-                                                                                selected="selected" 
-                                                                                data-imagesrc="" 
-                                                                                data-icon="" 
-                                                                                data-description="USA dollar">USD, $
-                                                                        </option>
+                                                                            <option value="USD" 
+                                                                                    selected="selected" 
+                                                                                    data-imagesrc="" 
+                                                                                    data-icon="" 
+                                                                                    data-description="USA dollar">USD, $
+                                                                            </option>
 
-                                                                        <option value="EUR"
-                                                                                data-imagesrc=""
-                                                                                data-icon="" 
-                                                                                data-description="Europian Euro">EUR, €
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div> 
+                                                                            <option value="EUR"
+                                                                                    data-imagesrc=""
+                                                                                    data-icon="" 
+                                                                                    data-description="Europian Euro">EUR, €
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div> 
                                                     </div>
                                                     <div class="sc_layouts_item">
                                                         @include('store.layouts.mycart')

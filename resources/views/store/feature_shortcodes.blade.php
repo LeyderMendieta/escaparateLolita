@@ -28,14 +28,8 @@
                                             </div><div class="column_container column-1_3 sc_layouts_column sc_layouts_column_align_right sc_layouts_column_icons_position_left">
                                             <div class="column-inner">
                                                 <div class="wrapper">
-                                                    <div class="sc_layouts_item">
-                                                        <div class="sc_layouts_login">
-                                                            <a href="#trx_addons_login_popup" class="trx_addons_popup_link trx_addons_login_link ">
-                                                                <span class="sc_layouts_item_icon sc_layouts_login_icon trx_addons_icon-user-alt">
-                                                                </span>
-                                                                <span class="sc_layouts_item_details sc_layouts_login_details">Ingresar</span>
-                                                            </a>
-                                                        </div>
+                                                    <div class="sc_layouts_item" id='App_Login_Link'>
+                                                        
                                                     </div>
                                                     <div class="sc_layouts_item">
                                                         @include('store.layouts.mycart')
@@ -419,50 +413,7 @@
         </div>
         <!-- /.body_wrap -->
 
-        <div id="trx_addons_login_popup" class="trx_addons_popup trx_addons_tabs mfp-hide">
-            <ul class="trx_addons_tabs_titles">
-                <li class="trx_addons_tabs_title trx_addons_tabs_title_login">
-                    <a href="#trx_addons_login_content"><i class="trx_addons_icon-lock-open"></i>Ingresar</a>
-                </li><li class="trx_addons_tabs_title trx_addons_tabs_title_register" data-disabled="true">
-                <a href="#trx_addons_register_content"><i class="trx_addons_icon-user-plus"></i>Registrar</a>
-                </li>
-            </ul>	
-            <div id="trx_addons_login_content" class="trx_addons_tabs_content trx_addons_login_content">
-                <div>
-                    <div class="trx_addons_popup_form_wrap trx_addons_popup_form_wrap_login">
-                        <form class="trx_addons_popup_form trx_addons_popup_form_login sc_input_hover_iconed" action="#" method="post" name="trx_addons_login_form">
-                            <input type="hidden" id="redirect_to" name="redirect_to" value="">
-                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_login">
-                                <label class="sc_form_field sc_form_field_log required">
-                                    <span class="sc_form_field_wrap"><input type="text" name="log" id="log" value="" >
-                                        <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-user-alt"></i>
-                                            <span class="sc_form_field_content" data-content="Login">Usuario</span>
-                                        </span>	
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_password">
-                                <label class="sc_form_field sc_form_field_pwd required">
-                                    <span class="sc_form_field_wrap"><input type="password" name="pwd" id="pwd" value="" >
-                                        <span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-lock"></i>
-                                            <span class="sc_form_field_content" data-content="Password">Clave</span>
-                                        </span>	
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_remember">
-                                <a href="#" class="trx_addons_popup_form_field_forgot_password">Olvidaste la Clave?</a>
-                                <input type="checkbox" value="forever" id="rememberme" name="rememberme">
-                                <label for="rememberme"> Recordarme</label>
-                            </div>
-                            <div class="trx_addons_popup_form_field trx_addons_popup_form_field_submit">
-                                <input type="submit" class="submit_button" value="Ingresar">
-                            </div>
-                            <div class="trx_addons_message_box sc_form_result"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div id='App_Login'>
         </div>
 
         @include('store.layouts.foot')

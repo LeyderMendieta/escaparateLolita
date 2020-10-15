@@ -41,12 +41,43 @@ class App_ProductDetail extends Component {
       {
         e.preventDefault();
         console.log(document.getElementById("pa_size").value);
+
+        try {
+            let config = {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({product_id: this.state.products.id, product_price_id: 2, cantidad: 4})
+            }
+
+            fetch(Configuracion.url_principal+"api/addProductToCart",config)
+            .then(res => res.json())
+            .then(
+              (result) => {
+                console.log(result);
+              },
+              
+              (error) => {
+                this.setState({
+                  isLoaded: true,
+                  error
+                });
+              }
+            );
+
+        } 
+        catch (error) {
+            console.log(error);
+        }
+
+        window.location.reload();
       }
 
       setValueModel(e)
       {
         this.setState({"data": e.target.value});
-        console.log(this.state);
       }
 
     render(){
@@ -59,7 +90,7 @@ class App_ProductDetail extends Component {
                     />       
                     <ProductDetail_Summary 
                         producto={this.state.products}
-                        handleBuyProduct={this.handleBuyProduct}
+                        handleBuyProduct={this.handleBuyProduct.bind(this)}
                         setValueModel={this.setValueModel}
                     />
                     <ProductDetail_Woocommerce
