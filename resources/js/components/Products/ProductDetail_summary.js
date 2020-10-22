@@ -132,8 +132,6 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
         </div>
         <div style={{float: "left",marginLeft:"8px"}}>
             <a href="#" className="button" style={{padding: "6px 13px",fontSize: "11px",fontWeight: "400px",    lineHeight: "13px",verticalAlign: "top"}} >Delivery</a>
-            <div style={{fontSize:"11px",color:"black",padding:"0px",fontWeight: "bold", letterSpacing: "1px"}}>$5.00 City</div>
-            <div style={{fontSize:"11px",color:"black",padding:"0px",fontWeight: "bold", letterSpacing: "1px"}}>$6.50 Intercity</div>
         </div>
         
     </div>

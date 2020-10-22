@@ -24,9 +24,25 @@ class AdminController extends Controller
      //   return view($id);
     }
 
-    public function loadDefault()
+    public function loadAdmonPage($id)
     {
-        return view("index");
+        if(view()->exists("admon.$id")){
+            return view("admon.$id");
+        }
+        else
+        {
+            return view('404');
+        }
+    }
+    public function addToModel($model)
+    {
+        if(view()->exists("admon.form.$model")){
+            return view("admon.form.$model");
+        }
+        else
+        {
+            return view('404');
+        }
     }
     /**
      * Show the form for creating a new resource.

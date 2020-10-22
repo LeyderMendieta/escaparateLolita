@@ -18,7 +18,7 @@ const ListProducts = ({productos,url_images,url_href,totalItemsCount,from,to}) =
             { productos.map((producto) => (
                 <li className="product column-1_4 wcspt-has-gallery" key={producto.id}>
                   <div className="post_item post_layout_thumbs">
-                        <div style={{position: "absolute", right: "25px", top: "8px",fontSize: "16px",zIndex: "10",backgroundColor: "#C85757",padding : "0px 5px",color: "white",fontWeight: "bold"}}>10%</div>
+                        <div className="div_container_descuento" >10%</div>
                       <div className="post_featured hover_shop_buttons">
                           <a href={url_href+"shop/"+producto.acceso_url} className="wcspt-img-link">
                               <img src={url_images+producto.imagen_main}  alt="product-19" title="product-19"/>

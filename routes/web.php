@@ -42,3 +42,6 @@ Route::get('shop/{page}', 'ProductController@verProducto');
 Route::get('admin/', 'AdminController@loadDefault');
 Route::get('admin/{page}', 'AdminController@index');
 
+Route::get('admon/{page}', 'AdminController@loadAdmonPage');
+Route::get('admon/add/{model}', 'AdminController@addToModel');
+

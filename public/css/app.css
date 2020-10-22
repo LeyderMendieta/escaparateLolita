@@ -10899,3 +10899,25 @@ a.text-dark:focus {
   }
 }
 
+.div_container_descuento {
+  position: absolute;
+  right: 25px;
+  top: 8px;
+  font-size: 16px;
+  z-index: 10;
+  background-color: #C85757;
+  padding: 0px 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-facebook {
+  background-color: #4065AD !important;
+  padding: 5px 10px;
+}
+
+.iconface {
+  font-size: 16px;
+  margin-right: 5px;
+}
+

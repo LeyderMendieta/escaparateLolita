@@ -20,12 +20,14 @@
         "popper.js": "^1.12",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
-        "resolve-url-loader": "^3.1.0",
+        "resolve-url-loader": "^3.1.2",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
         "react-calendar": "^3.1.0",
+        "react-facebook-login": "^4.1.1",
+        "react-google-login": "^5.1.22",
         "react-js-pagination": "^3.0.3",
         "react-schedule-calendar": "^0.22.6",
         "scheduler-calendar": "^2.1.3",

@@ -24,8 +24,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('/products_brands','ProductController@getBrands');
     Route::get('/product_detail/{product}','ProductController@viewProductDetail');
 
-    Route::get('/product_detail/{product}','ProductController@viewProductDetail');
-
     Route::get('/availableDaysFor/{type}/{dia}/{mes}/{ano}','AgendaController@getAvailableFor');
 
     Route::get('/getMyCart','CartController@getMyCart');

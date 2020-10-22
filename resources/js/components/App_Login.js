@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Configuracion from './Configuration';
 import Cookies from 'universal-cookie';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 class App_Login extends Component {
 
@@ -96,6 +97,16 @@ class App_Login extends Component {
         }        
       }
 
+      responseFacebook(response)
+      {
+        console.log(response);
+      }
+
+      componentClicked()
+      {
+          console.log("clicked");
+      }
+
       render(){
         
         if (this.state.activeSession != "" && this.state.activeSession != undefined) {
@@ -151,10 +162,21 @@ class App_Login extends Component {
                                     </div>
                                     <div id='messageResult' className="trx_addons_message_box sc_form_result trx_addons_message_box_error"><p className="trx_addons_error_item"></p></div>
                                 </form>
+                                <br/>
+                                <FacebookLogin
+                                    appId="991051508059990"
+                                    autoLoad={false}
+                                    fields="name,email,picture"
+                                    callback={this.responseFacebook}
+                                    render={renderProps => (
+                                        <button onClick={renderProps.onClick} className="btn-facebook"><span className="trx_addons_icon-facebook iconface"></span> Continuar con Facebook</button>
+                                      )}
+                                     />
                             </div>
                         </div>
                     </div>
                 </div>
+
                 
             );
         }        
