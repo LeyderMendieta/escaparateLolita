@@ -74800,8 +74800,8 @@ if (document.getElementById('App_Mycart')) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//const url_principal = "http://74.208.128.74/plesk-site-preview/escaparatelolita.com/https/74.208.128.74/";
-var url_principal = "http://127.0.0.1:8000/";
+var url_principal = "http://74.208.128.74/plesk-site-preview/escaparatelolita.com/https/74.208.128.74/"; //const url_principal = "http://127.0.0.1:8000/";
+
 var url_images = url_principal + 'images/';
 var Configuracion = {
   url_principal: url_principal,
