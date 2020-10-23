@@ -20,7 +20,7 @@
 									</a>
 								</div>
 								<div class="dropdown d-md-flex header-message">
-									<a class="nav-link icon" data-toggle="dropdown">
+									<a class="nav-custom-leyder nav-link icon" data-toggle="dropdown">
 										<i class="fe fe-bell"></i>
 										<span class="nav-unread badge badge-danger badge-pill">4</span>
 									</a>
@@ -77,7 +77,7 @@
 								</div>
 								<!--Navbar -->
 								<div class="dropdown header-profile">
-									<a class="nav-link pr-0 leading-none d-flex pt-1" data-toggle="dropdown" href="#">
+									<a class="nav-custom-leyder nav-link pr-0 leading-none d-flex pt-1" data-toggle="dropdown" href="#">
 										<span class="avatar avatar-md brround cover-image" data-image-src="{{URL::asset('assets/images/users/female/2.jpg')}}"></span>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
@@ -88,19 +88,9 @@
 											</div>
 										</div>
 										<div class="dropdown-divider m-0"></div>
-										<a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-user"></i>Profile</a>
-										<a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-edit"></i>Schedule</a>
-										<a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-mail"></i> Inbox</a>
+										<a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-user"></i>Mi Perfil</a>
 										<a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-unlock"></i> Look Screen</a>
-										<a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-power"></i> Log Out</a>
-										<div class="dropdown-divider"></div>
-										<div class="text-center dropdown-btn pb-3">
-											<div class="btn-list">
-												<a href="#" class="btn btn-icon btn-facebook btn-sm"><i class="icon icon-social-facebook"></i></a>
-												<a href="#" class="btn btn-icon btn-twitter btn-sm"><i class="icon icon-social-twitter"></i></a>
-												<a href="#" class="btn btn-icon btn-instagram btn-sm"><i class="icon icon-social-instagram"></i></a>
-											</div>
-										</div>
+										<a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-power"></i> Salir</a>
 									</div>
 								</div>
 							</div>

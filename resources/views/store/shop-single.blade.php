@@ -132,135 +132,7 @@
                                 <nav class="woocommerce-breadcrumb">
                                     <a href="{{ url('/' . $page='home') }}">Home</a>&nbsp;&#47;&nbsp;<a href="{{ url('/' . $page='shop') }}">Tienda</a>&nbsp;&#47;&nbsp;Halter Bodysuit
                                 </nav>
-                                <div class="product type-product wcspt-has-gallery">                                   
-                                    <div id="App_Product_Detail" target="{{$producto}}">
-                                    </div>                                
-                                    <div class="related products">
-                                        <h2>Productos Sugeridos</h2>
-                                        <ul class="products">
-                                            <li class="product type-product column-1_4 wcspt-has-gallery">
-                                                <div class="post_item post_layout_thumbs">
-                                                    <div class="post_featured hover_shop_buttons">
-                                                        <a href="#">
-                                                            <img src="{{ URL::asset('assets/store/images/product-8-300x410.jpg')}}" alt="product-8" title="product-8" />
-                                                            <img src="{{ URL::asset('assets/store/images/product-7-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
-                                                        </a>
-                                                        <div class="mask"></div>
-                                                        <div class="icons">
-                                                            <a rel="nofollow" href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Comprar</a><a href="#" class="shop_link button icon-link">Detalles</a>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.post_featured -->
-                                                    <div class="post_data">
-                                                        <div class="post_header entry-header">
-                                                            <h3><a href="#">Convertible Longline Strapless Corset</a></h3>
-                                                            <div class="star-rating" title="Rated 4 out of 5"><span class="w_80per"><strong class="rating">4</strong> out of 5</span></div>
-                                                        </div>
-                                                        <!-- /.post_header -->
-
-                                                        <span class="price">
-                                                            <span class="woocs_price_code"><span class="amount">39<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">49<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                                            </span>
-                                                        </span>
-                                                        <a href="#" class="button product_type_variable add_to_cart_button">Comprar</a> 
-                                                    </div>
-                                                    <!-- /.post_data -->
-                                                </div>
-                                                <!-- /.post_item -->
-                                            </li>
-
-
-                                            <li class="product type-produc column-1_4 wcspt-has-gallery">
-                                                <div class="post_item post_layout_thumbs">
-                                                    <div class="post_featured hover_shop_buttons">
-                                                        <a href="#">
-                                                            <img src="{{ URL::asset('assets/store/images/product-1-300x410.jpg')}}" alt="product-1" title="product-1" />
-                                                            <img src="{{ URL::asset('assets/store/images/product-6-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
-                                                        </a>
-                                                        <div class="mask"></div>
-                                                        <div class="icons">
-                                                            <a href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Comprar</a><a href="#"  class="shop_link button icon-link">Detalles</a>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.post_featured -->
-                                                    <div class="post_data">
-                                                        <div class="post_header entry-header">
-                                                            <h3><a href="#">Very Sexy Lace Teddy</a></h3>
-                                                            <div class="star-rating" title="Rated 4 out of 5"><span class="w_80per"><strong class="rating">4</strong> out of 5</span></div>
-                                                        </div>
-                                                        <!-- /.post_header -->
-
-                                                        <span class="price">
-                                                            <span class="woocs_price_code"><span class="amount">17<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">20<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                                            </span>
-                                                        </span>
-                                                        <a href="#" class="button product_type_variable add_to_cart_button">Comprar</a> 
-                                                    </div>
-                                                    <!-- /.post_data -->
-                                                </div>
-                                                <!-- /.post_item -->
-                                            </li>
-
-
-                                            <li class="product type-product column-1_4 wcspt-has-gallery">
-                                                <div class="post_item post_layout_thumbs">
-                                                    <div class="post_featured hover_shop_buttons">
-                                                        <a href="#">
-                                                            <img src="{{ URL::asset('assets/store/images/product-5-300x410.jpg')}}" alt="product-5" title="product-5" />
-                                                            <img src="{{ URL::asset('assets/store/images/product-4-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> </a>
-                                                        <div class="mask"></div>
-                                                        <div class="icons">
-                                                            <a href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Comprar</a><a href="#" class="shop_link button icon-link">Detalles</a>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.post_featured -->
-                                                    <div class="post_data">
-                                                        <div class="post_header entry-header">
-                                                            <h3><a href="#">Heart&#8217;s Desire 2-piece Set</a></h3>
-                                                            <div class="star-rating" title="Rated 3 out of 5"><span class="w_60per"><strong class="rating">3</strong> out of 5</span></div>
-                                                        </div>
-                                                        <!-- /.post_header -->
-
-                                                        <span class="price">
-                                                            <span class="woocs_price_code"><span class="amount">36<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">45<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                                            </span>
-                                                        </span>
-                                                        <a href="#" class="button product_type_variable add_to_cart_button">Comprar</a> 
-                                                    </div>
-                                                    <!-- /.post_data -->
-                                                </div>
-                                                <!-- /.post_item -->
-                                            </li><li class="product type-product column-1_4 wcspt-has-gallery">
-                                                <div class="post_item post_layout_thumbs">
-                                                    <div class="post_featured hover_shop_buttons">
-                                                        <a href="#">
-                                                            <img src="{{ URL::asset('assets/store/images/product-2-300x410.jpg')}}" alt="product-2" title="product-2" />
-                                                            <img src="{{ URL::asset('assets/store/images/product-7-300x410.jpg')}}" class="secondary-thumb wcspt-transition wcspt-ie8-tempfix" alt="" /> 
-                                                        </a>
-                                                        <div class="mask"></div>
-                                                        <div class="icons">
-                                                            <a href="#" class="shop_cart icon-cart-2 button add_to_cart_button product_type_variable">Comprar</a><a href="#" class="shop_link button icon-link">Detalles</a>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.post_featured -->
-                                                    <div class="post_data">
-                                                        <div class="post_header entry-header">
-                                                            <h3><a href="#">Hot Pink Bikini Top Swim Suit</a></h3>
-                                                        </div>
-                                                        <!-- /.post_header -->
-
-                                                        <span class="price">
-                                                            <span class="woocs_price_code"><span class="amount">22<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">25<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                                            </span>
-                                                        </span>
-                                                        <a href="#" class="button product_type_variable add_to_cart_button">Comprar</a>
-                                                     </div>
-                                                    <!-- /.post_data -->
-                                                </div>
-                                                <!-- /.post_item -->
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <div id="App_Product_Detail" target="{{$producto}}" class="product type-product wcspt-has-gallery">                                    
                                 </div>
                                 
                             </article>
@@ -289,15 +161,31 @@
         
         @include('store.layouts.foot')
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/yith-woocommerce-zoom-magnifier/assets/js/yith_magnifier.min.js')}}" async></script>
-        <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/yith-woocommerce-zoom-magnifier/assets/js/frontend.min.js')}}" async></script>
+        <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/yith-woocommerce-zoom-magnifier/assets/js/frontend.min.js')}}"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/skip-link-focus-fix.js')}}"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/single-product.min.js')}}"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/_packed.js')}}"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/accordion.min.js')}}"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/theme.hovers/theme.hovers.js')}}"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/chosen/chosen.jquery.min.js')}}"></script>
-        <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/front.js')}}" async></script>
+        <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/front.js')}}"></script>
 
         <a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>
     </body>
 </html>
+
+<script>
+    $(window).on("load",function(){
+        $('.trx_addons_attrib_item').on("click",function(){
+
+            $(this).parents('.trx_addons_attrib_extended').find('.trx_addons_attrib_selected').removeClass('trx_addons_attrib_selected');
+
+            attrib = $(this).parents('.trx_addons_attrib_extended').attr('data-attrib');
+            $('#'+attrib+" option:selected").removeAttr("selected");
+
+            $(this).addClass('trx_addons_attrib_selected');
+            var optionselect = $(this).attr('data-value');
+            $('#'+attrib).find("option[value='"+optionselect+"']").attr("selected","selected");
+        });
+    });
+</script>

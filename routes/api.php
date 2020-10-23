@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     Route::get('/products/{type}','ProductController@index');
     Route::get('/view_products','ProductController@getProducts');    
+    Route::get('/all_products','ProductController@getAllProducts');    
     Route::get('/products_brands','ProductController@getBrands');
     Route::get('/product_detail/{product}','ProductController@viewProductDetail');
 
@@ -37,4 +38,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('/AuthLogged', 'UsuarioController@userLogged');
 
     Route::post('/asignarAgenda','AgendaController@store');
+
+    //Administración
+    Route::post('/store/producto','ProductController@crearProducto');
+    Route::post('/store/productoImagen','ProductController@guardarFile');
+    Route::get('/remove/producto/{id}','ProductController@removeProduct');
     

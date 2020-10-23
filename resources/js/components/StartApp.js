@@ -137,7 +137,11 @@ class Products_Shop extends Component {
             isLoaded: true,
             products: result.data,
             from: result.from,
-            to: result.to
+            to: result.to,
+            page: {
+              itemPerPage: result.per_page,
+              total: result.total
+            }
           });
         },
         

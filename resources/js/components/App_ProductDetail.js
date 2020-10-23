@@ -13,7 +13,9 @@ class App_ProductDetail extends Component {
         this.state = {
           error: null,
           isLoaded: false,
-          products: []
+          products: [],
+          colores: [],
+          tallas: []
         };
       }
     
@@ -22,10 +24,15 @@ class App_ProductDetail extends Component {
           .then(res => res.json())
           .then(
             (result) => {
-              this.setState({
-                isLoaded: true,
-                products: result[0]
-              });
+              if(result.length > 0)
+              {
+                this.setState({
+                  isLoaded: true,
+                  products: result[0],
+                  tallas: JSON.parse(result[0].sizes),
+                  colores: JSON.parse(result[0].colores)
+                });
+              }              
             },
             
             (error) => {
@@ -78,8 +85,10 @@ class App_ProductDetail extends Component {
       setValueModel(e)
       {
         this.setState({"data": e.target.value});
+        console.log(this.state);
       }
 
+      
     render(){
 
         return (
@@ -92,6 +101,8 @@ class App_ProductDetail extends Component {
                         producto={this.state.products}
                         handleBuyProduct={this.handleBuyProduct.bind(this)}
                         setValueModel={this.setValueModel}
+                        colores={this.state.colores}
+                        tallas={this.state.tallas}
                     />
                     <ProductDetail_Woocommerce
                         producto={this.state.products}

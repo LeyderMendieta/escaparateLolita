@@ -1,6 +1,8 @@
 <!-- Back to top -->
 <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 <!-- Jquery js-->
+<script type='text/javascript' src="{{URL::asset('js/app.js')}}" ></script>
+
 <script src="{{URL::asset('assets/js/jquery-3.4.1.min.js')}}"></script>
 <!--Bootstrap.min js-->
 <script src="{{URL::asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
@@ -30,3 +32,4 @@
 <script src="{{URL::asset('assets/plugins/sidebar/sidebar.js')}}"></script>
 <!-- Custom js-->
 <script src="{{URL::asset('assets/js/custom.js')}}"></script>
+<script src="{{URL::asset('assets/js/administracion.js')}}"></script>

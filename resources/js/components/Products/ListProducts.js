@@ -36,7 +36,10 @@ const ListProducts = ({productos,url_images,url_href,totalItemsCount,from,to}) =
                               <div className="star-rating" title="Rated 5 out of 5"><span className="w_100per"><strong className="rating">5</strong> out of 5</span></div>			
                           </div>
         
-                          <span className="price"><span className="woocs_price_code"><span className="amount">53<span className="decimals">00</span><span className="woocommerce-Price-currencySymbol">$</span></span>–<span className="amount">59<span className="decimals">00</span><span className="woocommerce-Price-currencySymbol">$</span></span></span></span>
+                          <span className="price">
+                                <span className="woocs_price_code"><s className="amount text-muted"><span className="woocommerce-Price-currencySymbol">&#36;</span>59</s> / <span className="amount"><span className="woocommerce-Price-currencySymbol">&#36;</span>65</span>
+                                </span>
+                            </span>
                           <a href={url_href+"shop/"+producto.acceso_url} className="button product_type_variable add_to_cart_button sc_button_hover_slide_left">Comprar</a>			
                       </div>
                   </div>

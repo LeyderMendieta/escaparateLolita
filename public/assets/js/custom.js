@@ -173,6 +173,7 @@
 	});
 	
 	// ______________Search
+	/*
 	$('body, .navbar-collapse form[role="search"] button[type="reset"]').on('click keyup', function(event) {
 		console.log(event.currentTarget);
 		if (event.which == 27 && $('.navbar-collapse form[role="search"]').hasClass('active') ||
@@ -199,6 +200,7 @@
 		$('#showSearchTerm').text($input.val());
 		closeSearch()
 	});
+	*/
 	
 	//Date range as a button
 	$('#daterange-btn').daterangepicker({

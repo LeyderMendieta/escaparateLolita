@@ -60,6 +60,11 @@ class CartController extends Controller
         }
         
         $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
+        if(!isset($mycart->id))
+        {
+            setcookie('session_mycart', '', time() - 3600, '/');
+            return response()->json(array("error" => "Cart not found"));
+        }
 
         $myproducts_cart = DB::select("SELECT t0.id,t0.cantidad,t1.name,t1.descripcion,t1.imagen_main,t2.price FROM cart_products t0 INNER JOIN products t1 ON t0.id_product=t1.id INNER JOIN product_prices t2 ON t0.id_product_price=t2.id AND t2.estado=1 WHERE t0.id_cart=".$mycart->id);
 

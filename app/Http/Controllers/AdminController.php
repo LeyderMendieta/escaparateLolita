@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -24,7 +26,7 @@ class AdminController extends Controller
      //   return view($id);
     }
 
-    public function loadAdmonPage($id)
+    public function loadAdmonPage($id = "dashboard")
     {
         if(view()->exists("admon.$id")){
             return view("admon.$id");
@@ -44,6 +46,7 @@ class AdminController extends Controller
             return view('404');
         }
     }
+
     /**
      * Show the form for creating a new resource.
      *

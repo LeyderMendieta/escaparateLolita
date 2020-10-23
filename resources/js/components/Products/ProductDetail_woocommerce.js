@@ -11,7 +11,7 @@ const ProductDetail_Woocommerce = ({ producto,url_images }) => (
                 <a href="#tab-additional_information">Información Adicional</a>
             </li>
             <li className="reviews_tab">
-                <a href="#tab-reviews">Reviews (1)</a>
+                <a href="#tab-reviews">Criticas (1)</a>
             </li>
         </ul>
         <div className="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab" id="tab-description">
@@ -34,19 +34,19 @@ const ProductDetail_Woocommerce = ({ producto,url_images }) => (
             </section>
             <div className="sc_accordion sc_accordion_style_1 sc_shadow" data-active="0">
                 <div className="sc_accordion_item odd first">
-                    <h4 className="sc_accordion_title">Full Delivery Policy
+                    <h4 className="sc_accordion_title">Politica de Entrega Completa
                         <i className="sc_button_hover_slide_left grad_rev"></i>
                     </h4>
                     <div className="sc_accordion_content">Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                 </div>
                 <div className="sc_accordion_item even">
-                    <h4 className="sc_accordion_title">Delivery
+                    <h4 className="sc_accordion_title">Entrega
                         <i className="sc_button_hover_slide_left grad_rev"></i>
                     </h4>
                     <div className="sc_accordion_content">Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                 </div>
                 <div className="sc_accordion_item odd">
-                    <h4 className="sc_accordion_title">Returns
+                    <h4 className="sc_accordion_title">Devoluciones
                         <i className="sc_button_hover_slide_left grad_rev"></i>
                     </h4>
                     <div className="sc_accordion_content">Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
@@ -55,7 +55,7 @@ const ProductDetail_Woocommerce = ({ producto,url_images }) => (
             
         </div>
         <div className="woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel entry-content wc-tab" id="tab-additional_information">
-            <h2>Additional Information</h2>
+            <h2>Información Adicional</h2>
             <table className="shop_attributes">
                 <tbody>
                 <tr>
@@ -76,7 +76,7 @@ const ProductDetail_Woocommerce = ({ producto,url_images }) => (
         <div className="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab" id="tab-reviews">
             <div id="reviews" className="woocommerce-Reviews">
                 <div id="comments">
-                    <h2 className="woocommerce-Reviews-title">1 review for <span>Halter Bodysuit</span></h2>
+                    <h2 className="woocommerce-Reviews-title">1 Reseñas para <span>{producto.name}</span></h2>
                     <ol className="commentlist">
                         <li className="comment even thread-even depth-1" >
                             <div className="comment_container">
@@ -97,10 +97,10 @@ const ProductDetail_Woocommerce = ({ producto,url_images }) => (
                 <div id="review_form_wrapper">
                     <div id="review_form">
                         <div id="respond" className="comment-respond">
-                            <h3 className="comment-reply-title">Add a review <small><a className="d_none" id="cancel-comment-reply-link" href="#" >Cancel reply</a></small></h3>
+                            <h3 className="comment-reply-title">Agregar Reseña <small><a className="d_none" id="cancel-comment-reply-link" href="#" >Cancel reply</a></small></h3>
                             <form action="#" method="post" id="commentform" className="comment-form" noValidate>
-                                <p className="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span className="required">*</span></p>
-                                <p className="comment-form-rating"><label htmlFor="rating">Your Rating</label><select name="rating" id="rating" aria-required="true" required>
+                                <p className="comment-notes"><span id="email-notes">Tu dirección de correo no será publico</span> Los campos obligatorios estan marcados <span className="required">*</span></p>
+                                <p className="comment-form-rating"><label htmlFor="rating">Tu Calificación</label><select name="rating" id="rating" aria-required="true" required>
                                             <option value="">Rate&hellip;</option>
                                             <option value="5">Perfect</option>
                                             <option value="4">Good</option>
@@ -108,9 +108,9 @@ const ProductDetail_Woocommerce = ({ producto,url_images }) => (
                                             <option value="2">Not that bad</option>
                                             <option value="1">Very Poor</option>
                                             </select></p>
-                                <p className="comment-form-comment"><label htmlFor="comment">Your Review <span className="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required></textarea></p>
-                                <p className="comment-form-author"><label htmlFor="author">Name <span className="required">*</span></label> <input id="author" name="author" type="text" defaultValue="" size="30" aria-required="true" required /></p>
-                                <p className="comment-form-email"><label htmlFor="email">Email <span className="required">*</span></label> <input id="email" name="email" type="email" defaultValue="" size="30" aria-required="true" required /></p>
+                                <p className="comment-form-comment"><label htmlFor="comment">Tu reseña <span className="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required></textarea></p>
+                                <p className="comment-form-author"><label htmlFor="author">Nombre <span className="required">*</span></label> <input id="author" name="author" type="text" defaultValue="" size="30" aria-required="true" required /></p>
+                                <p className="comment-form-email"><label htmlFor="email">Correo Electronico <span className="required">*</span></label> <input id="email" name="email" type="email" defaultValue="" size="30" aria-required="true" required /></p>
                                 <p className="form-submit"><input name="submit" type="submit" className="submit" defaultValue="Submit" /> <input type='hidden' name='comment_post_ID' value='445' id='comment_post_ID' />
                                     <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
                                 </p>

@@ -40,12 +40,20 @@ class App_mycart extends Component {
         .then(res => res.json())
         .then(
             (result) => {
-            this.setState({
-                isLoaded: true,
-                cartProducts: result.products,
-                subtotal: result.subtotal,
-                items: result.items
-            });
+                if(result.error != undefined)
+                {
+                    this.setState({
+                        isLoaded: true,
+                        cartProducts: result.products,
+                        subtotal: result.subtotal,
+                        items: result.items
+                    });
+                }
+                else
+                {
+                    console.log(result.error);
+                }
+            
         });
 
         console.log(this.state.cartProducts);

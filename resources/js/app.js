@@ -22,3 +22,6 @@ require('./components/App_ProductDetail');
 require('./components/App_Login');
 require('./components/App_mycart');
 
+require('./components/Admin/App_Products');
+require('./components/Admin/App_Form_Product');
+

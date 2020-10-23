@@ -1,3 +1,4 @@
+<link rel='stylesheet' href="{{URL::asset('css/app.css')}}" type='text/css' media='all'/>
 <!-- Favicon -->
 <link rel="icon" href="{{URL::asset('assets/images/brand/favicon.ico')}}" type="image/x-icon"/>
 <link rel="shortcut icon" type="image/x-icon" href="{{URL::asset('assets/images/brand/favicon.ico')}}" />
@@ -20,3 +21,4 @@
 <link href="{{URL::asset('assets/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
 <!---Icons css-->
 <link href="{{URL::asset('assets/css/icons.css')}}" rel="stylesheet" />
+

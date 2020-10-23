@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) => (
+const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tallas, colores }) => (
 
     <div className="summary entry-summary">
         <h1 className="product_title entry-title">{producto.name}</h1>
@@ -12,8 +12,9 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
         </div>
 
         <div >
-            <p className="price"><span className="woocs_price_code"><span className="woocommerce-Price-amount amount">53<span className="decimals">00</span><span className="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span className="woocommerce-Price-amount amount">59<span className="decimals">00</span><span className="woocommerce-Price-currencySymbol">&#36;</span></span>
-            </span>
+            <p className="price">
+                <span className="woocs_price_code"><s className="amount text-muted"><span className="woocommerce-Price-currencySymbol">&#36;</span>59</s> / <span className="amount"><span className="woocommerce-Price-currencySymbol">&#36;</span>65</span>
+                </span>
             </p>
         </div>
         <div>
@@ -24,31 +25,23 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
             <table className="variations">
                 <tbody>
                     <tr>
-                        <td className="label"><label htmlFor="pa_size">Talla</label></td>
+                        <td className="label"><label htmlFor="pa_size">Talla Disponible</label></td>
                         <td className="value">
                             <select id="pa_size" onChange={setValueModel} className="d_none-imp" name="attribute_pa_size" data-attribute_name="attribute_pa_size" data-show_option_none="yes">
                                 <option value="">Elige una Opción</option>
-                                <option value="s " >S</option>
-                                <option value="m " >M</option>
-                                <option value="l " >L</option>
-                                <option value="xl " >XL</option>
+                                {tallas.map((talla) => (
+                                    <option value={talla} key={talla}>{talla}</option>
+                                ))}
+
                             </select>
-                            <div id="pa_size_attrib_extended" className="pa_size_attrib_extended trx_addons_attrib_extended " data-attrib="pa_size ">
-                                <span className="trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip trx_addons_attrib_selected " data-value=" " data-tooltip="Elige una Opción ">
-                                    <span>Elige una Opción</span>
-                                </span>
-                                <span className="trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip " data-value="s " data-tooltip="S ">
-                                    <span>S</span>
-                                </span>
-                                <span className="trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip " data-value="m " data-tooltip="M ">
-                                    <span>M</span>
-                                </span>
-                                <span className="trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip " data-value="l " data-tooltip="L ">
-                                    <span>L</span>
-                                </span>
-                                <span className="trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip " data-value="xl " data-tooltip="XL ">
-                                    <span>XL</span>
-                                </span>
+                            <div id="pa_size_attrib_extended" className="pa_size_attrib_extended trx_addons_attrib_extended" data-attrib="pa_size ">
+                                
+                                                  
+                                {tallas.map((talla, index) => (                                    
+                                    <span className="trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip" data-value={talla} data-tooltip={talla} key={index}>
+                                        <span>{talla}</span>
+                                    </span>
+                                ))}
                             </div>
                         </td>
                     </tr>
@@ -56,30 +49,19 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
                         <td className="label "><label htmlFor="pa_color">Color</label></td>
                         <td className="value ">
                             <select id="pa_color" className="d_none-imp" name="attribute_pa_color" data-attribute_name="attribute_pa_color" data-show_option_none="yes">
-                                <option value="">Elige una Opción</option>
-                                <option value="gentle-peach">Gentle Peach</option>
-                                <option value="red-passion">Red Passion</option>
-                                <option value="valiant-violet">Valiant Violet</option>
-                                <option value="personalizado">Personalizado</option>
+
+                               {colores.map((color, index) => (
+                                    <option value={color} key={index}>{color}</option>
+                                ))}
+
                             </select>
                             <div id="pa_color_attrib_extended" className="pa_color_attrib_extended trx_addons_attrib_extended" data-attrib="pa_color">
-                                <span className="trx_addons_attrib_item trx_addons_attrib_color trx_addons_tooltip trx_addons_attrib_selected" data-value="" data-tooltip="Choose an option">
-                                    <span></span>
-                                </span>
-                                <span className="trx_addons_attrib_item trx_addons_attrib_color trx_addons_tooltip" data-value="gentle-peach" data-tooltip="Gentle Peach">
-                                    <span className="bg_red"></span>
-                                </span>
-                                <span className="trx_addons_attrib_item trx_addons_attrib_color trx_addons_tooltip" data-value="red-passion" data-tooltip="Red Passion">
-                                    <span className="bg_red-orange"></span>
-                                </span>
-                                <span className="trx_addons_attrib_item trx_addons_attrib_color trx_addons_tooltip" data-value="valiant-violet" data-tooltip="Valiant Violet">
-                                    <span className="bg_violet"></span>
-                                </span>
-                                <span className="trx_addons_attrib_item trx_addons_attrib_color trx_addons_tooltip" data-value="personalizado" data-tooltip="Personalizado">
-                                    <a  href="#trx_addons_calendar_popup" className="trx_addons_popup_link trx_addons_login_link">
-                                    <img src="https://www.flaticon.com/svg/static/icons/svg/1300/1300455.svg"/>
-                                    </a>
-                                </span>
+                                
+                                {colores.map((color, index) => (
+                                    <span className="trx_addons_attrib_item trx_addons_attrib_color trx_addons_tooltip" data-value={color} data-tooltip={color} key={index}>
+                                        <span className={"bg_"+color}></span>
+                                    </span>
+                                ))}
                             </div>
                             <a className="reset_variations" href="#">Clear</a>
                         </td>
@@ -88,8 +70,12 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel }) =>
             </table>
             <div className="single_variation_wrap">
                 <div className="woocommerce-variation single_variation"></div>
-                <div className="woocommerce-variation-add-to-cart variations_button">
+                <div className="woocommerce-variation-add-to-cart variations_button" style={{display: "inline-grid"}}>
                     <button type="button" className="single_add_to_cart_button button disabled" onClick={handleBuyProduct}>Comprar</button>
+                    <br/>
+                    <a  href="#trx_addons_calendar_popup" className="trx_addons_popup_link trx_addons_login_link btn btn-dark text-white">
+                    Echo a la medida
+                    </a>
                 </div>
             </div>
         </form>

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ProductDetail_Images = ({producto,url_images,url_href}) => (
+const ProductDetail_Images = ({producto,url_images}) => (
 
-    <div className="images" key={producto.id}>
+    <div className="images">
         <a href={url_images+"product-19.jpg"} className="yith_magnifier_zoom woocommerce-main-image" title="product-19">
             <img src={url_images+"product-19-600x650.jpg"} alt="" />
         </a>
