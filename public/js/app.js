@@ -72897,6 +72897,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Configuration */ "./resources/js/components/Configuration.js");
 /* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -72924,6 +72926,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
   _inherits(App_Admon_Add_Product, _Component);
 
@@ -72939,15 +72942,76 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
     _this.state = {
       error: null,
       isLoaded: false,
-      producto: []
+      editing: false,
+      producto: [],
+      tallas: [],
+      colores: []
     };
     return _this;
   }
 
   _createClass(App_Admon_Add_Product, [{
+    key: "setDefaultImagen",
+    value: function setDefaultImagen(input, field) {
+      $('#' + input).siblings('.dropify-preview').find('.dropify-render').html('<img src="' + _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_images + this.state.producto[field] + '">');
+      $('#' + input).siblings('.dropify-preview').find('.dropify-filename-inner').html(this.state.producto.name);
+      $('#' + input).siblings('.dropify-preview').show();
+      $('#' + input).siblings('.dropify-loader').hide();
+      $('#' + input).parents('.dropify-wrapper').addClass("has-preview");
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      if (document.getElementById("tokenEditing").value != "") {
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/product_detail/" + document.getElementById("tokenEditing").value).then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          if (result.length > 0) {
+            _this2.setState({
+              editing: true,
+              producto: result[0],
+              tallas: JSON.parse(result[0].sizes),
+              colores: JSON.parse(result[0].colores)
+            });
+
+            $('#producto_nombre').val(_this2.state.producto.name);
+            $('#producto_descripcion').val(_this2.state.producto.descripcion);
+            $('#producto_precio_antes').val(_this2.state.producto.precio_antes);
+            $('#producto_precio_ahora').val(_this2.state.producto.precio_ahora);
+
+            _this2.setDefaultImagen('producto_imagen_principal', 'imagen_main');
+
+            _this2.setDefaultImagen('producto_imagen_secundaria', 'imagen_secundaria');
+
+            var it = 0;
+
+            while (it < _this2.state.colores.length) {
+              $('.colorinput-input[value="' + _this2.state.colores[it] + '"]').attr('checked', 'checked');
+              it++;
+            }
+
+            var its = 0;
+
+            while (its < _this2.state.tallas.length) {
+              console.log($('#tallas').siblings('.ms-parent').find('.selectItem[value="' + _this2.state.tallas[its] + '"]').parents('li').hasClass('ms-select-all'));
+              $('#tallas').siblings('.ms-parent').find('.selectItem[value="' + _this2.state.tallas[its] + '"]').parents('li').trigger('click');
+              its++;
+            }
+          }
+        }, function (error) {
+          _this2.setState({
+            isLoaded: true,
+            error: error
+          });
+        });
+      }
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      var _this2 = this;
+      var _this3 = this;
 
       var nombre = $('#producto_nombre').val();
       var descripcion = $('#producto_descripcion').val();
@@ -73025,14 +73089,14 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
               alert("Se ha creado el producto");
               location.href = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "admon/productos";
             }, function (error) {
-              _this2.setState({
+              _this3.setState({
                 isLoaded: true,
                 error: error
               });
             });
           }
         }, function (error) {
-          _this2.setState({
+          _this3.setState({
             isLoaded: true,
             error: error
           });
@@ -73415,8 +73479,7 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
         name: "color",
         type: "checkbox",
         value: "negro",
-        className: "colorinput-input",
-        defaultChecked: true
+        className: "colorinput-input"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "colorinput-color bg_negro"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -73516,7 +73579,10 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
         value: "XL"
       }, "XL"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row my-5 text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "btn btn-light mx-auto",
+        href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "admon/productos"
+      }, "Cancelar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-success mx-auto",
         onClick: this.handleSubmit.bind(this)
       }, "Guardar")))));
@@ -73655,6 +73721,12 @@ var App_Admon_Products = /*#__PURE__*/function (_Component) {
       }
     }
   }, {
+    key: "editProducto",
+    value: function editProducto(e) {
+      var foredit = e.target.getAttribute("for");
+      location.href = _Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].url_principal + "admon/edit/producto/" + foredit;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -73666,8 +73738,9 @@ var App_Admon_Products = /*#__PURE__*/function (_Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
           key: producto.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, producto.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-          htmlFor: producto.id,
-          className: "btn btn-info"
+          htmlFor: producto.acceso_url,
+          className: "btn btn-info",
+          onClick: _this3.editProducto
         }, "Editar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           htmlFor: producto.id,
           className: "btn btn-danger ml-3",

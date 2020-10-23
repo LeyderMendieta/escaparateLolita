@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="row align-items-center flex-row-reverse">
 				<div class="col-lg-12 col-sm-12   text-center">
-					Copyright © 2019 <a href="#">IndoUi</a>. Designed by <a href="https://www.spruko.com/">Spruko</a> All rights reserved.
+					Copyright © 2020 El Escaparate de Lolita. All Rights Reserved.
 				</div>
 			</div>
 		</div>

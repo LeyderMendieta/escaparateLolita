@@ -53,6 +53,12 @@ class App_Admon_Products extends Component {
          }
       }
 
+      editProducto(e)
+      {
+        var foredit = e.target.getAttribute("for");
+        location.href = Configuracion.url_principal+"admon/edit/producto/"+foredit;
+      }
+
       render(){
         return (
             
@@ -78,7 +84,7 @@ class App_Admon_Products extends Component {
                         <tr key={producto.id}>
                             <td>{producto.id}</td>                  
                             <td>
-                                <button htmlFor={producto.id} className="btn btn-info">Editar</button>
+                                <button htmlFor={producto.acceso_url} className="btn btn-info" onClick={this.editProducto} >Editar</button>
                                 <button htmlFor={producto.id} className="btn btn-danger ml-3" onClick={this.deleteProducto} >Eliminar</button>
                             </td>                  
                             <td>{producto.name}</td>                            

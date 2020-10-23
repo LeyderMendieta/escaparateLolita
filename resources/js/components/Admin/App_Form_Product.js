@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Configuracion from '../Configuration';
 import Cookies from 'universal-cookie';
+import { set } from 'lodash';
 
 class App_Admon_Add_Product extends Component {
 
@@ -12,10 +13,74 @@ class App_Admon_Add_Product extends Component {
         this.state = {
           error: null,
           isLoaded: false,
-          producto: []
-          
+          editing: false,
+          producto: [],
+          tallas: [],
+          colores: []          
         };
         
+      }
+
+      setDefaultImagen(input,field)
+      {
+        $('#'+input).siblings('.dropify-preview').find('.dropify-render').html('<img src="'+Configuracion.url_images+this.state.producto[field]+'">');
+        $('#'+input).siblings('.dropify-preview').find('.dropify-filename-inner').html(this.state.producto.name);
+        $('#'+input).siblings('.dropify-preview').show();
+        $('#'+input).siblings('.dropify-loader').hide();
+        $('#'+input).parents('.dropify-wrapper').addClass("has-preview");
+      }
+
+      componentDidMount()
+      {
+          if(document.getElementById("tokenEditing").value != "")
+          {
+            fetch(Configuracion.url_principal+"api/product_detail/"+document.getElementById("tokenEditing").value)
+            .then(res => res.json())
+            .then(
+              (result) => {
+                if(result.length > 0)
+                {
+                    this.setState({
+                        editing: true,
+                        producto: result[0],
+                        tallas: JSON.parse(result[0].sizes),
+                        colores: JSON.parse(result[0].colores)
+                    });
+
+                    $('#producto_nombre').val(this.state.producto.name);
+                    $('#producto_descripcion').val(this.state.producto.descripcion);
+                    $('#producto_precio_antes').val(this.state.producto.precio_antes);
+                    $('#producto_precio_ahora').val(this.state.producto.precio_ahora);
+
+                    this.setDefaultImagen('producto_imagen_principal','imagen_main');
+                    this.setDefaultImagen('producto_imagen_secundaria','imagen_secundaria');
+
+                    var it = 0
+                    while(it < this.state.colores.length)
+                    {
+                        $('.colorinput-input[value="'+this.state.colores[it]+'"]').attr('checked','checked');
+                        it++;
+                    }
+
+                    var its = 0
+                    while(its < this.state.tallas.length)
+                    {
+                        console.log($('#tallas').siblings('.ms-parent').find('.selectItem[value="'+this.state.tallas[its]+'"]').parents('li').hasClass('ms-select-all'));
+                        $('#tallas').siblings('.ms-parent').find('.selectItem[value="'+this.state.tallas[its]+'"]').parents('li').trigger('click');
+                        its++;
+                    }
+                }
+              },
+              
+              (error) => {
+                this.setState({
+                  isLoaded: true,
+                  error
+                });
+              }
+            )
+            
+          }
       }
 
       handleSubmit()
@@ -189,7 +254,7 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <input id='producto_imagen_principal' type="file" accept="image/*" className="dropify" />
+                                        <input id='producto_imagen_principal' type="file" accept="image/*" className="dropify"/>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +273,7 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <input id='producto_imagen_secundaria' type="file" accept="image/*" className="dropify" />
+                                        <input id='producto_imagen_secundaria' type="file" accept="image/*" className="dropify"/>
                                     </div>
                                 </div>
                             </div>
@@ -384,7 +449,7 @@ class App_Admon_Add_Product extends Component {
                                     <div className="row gutters-xs">
                                         <div className="col-auto">
                                             <label className="colorinput">
-                                                <input name="color" type="checkbox" value="negro" className="colorinput-input" defaultChecked />
+                                                <input name="color" type="checkbox" value="negro" className="colorinput-input" />
                                                 <span className="colorinput-color bg_negro"></span>
                                             </label>
                                         </div>
@@ -448,6 +513,7 @@ class App_Admon_Add_Product extends Component {
                         </div>
 
                         <div className="row my-5 text-center">
+                            <a className="btn btn-light mx-auto" href={Configuracion.url_principal+"admon/productos"}>Cancelar</a>
                             <button className="btn btn-success mx-auto" onClick={this.handleSubmit.bind(this)}>Guardar</button>
                         </div>
 

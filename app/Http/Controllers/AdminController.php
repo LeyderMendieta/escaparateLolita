@@ -36,10 +36,23 @@ class AdminController extends Controller
             return view('404');
         }
     }
+
     public function addToModel($model)
     {
         if(view()->exists("admon.form.$model")){
-            return view("admon.form.$model");
+            return view("admon.form.$model",array("token_editing" => ""));
+        }
+        else
+        {
+            return view('404');
+        }
+    }
+
+    public function editToModel($model,$token)
+    {
+        if(view()->exists("admon.form.$model")){
+            
+            return view("admon.form.$model",array("token_editing" => $token));
         }
         else
         {

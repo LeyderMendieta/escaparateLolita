@@ -11,7 +11,7 @@
 @section('page-header')
 					    <!-- page-header -->
 						<div class="page-header">
-							<h1 class="page-title"><span class="subpage-title">Welcome To</span> E-Commerce Dashboard</h1>
+							<h1 class="page-title"><span class="subpage-title">Bienvenido al </span> Dashboard</h1>
 							<div class="ml-auto">
 								<div class="input-group">
 									<a  class="btn btn-primary btn-icon text-white mr-2"  id="daterange-btn" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Calendar">

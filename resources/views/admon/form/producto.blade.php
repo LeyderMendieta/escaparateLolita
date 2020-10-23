@@ -25,7 +25,7 @@
 @endsection
 @section('content')
 						
-						
+							<input type="hidden" id="tokenEditing" value="{{$token_editing}}">
 							<div class="row" id="App_Admon_Add_Product">
 								
 							</div>

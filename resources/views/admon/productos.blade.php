@@ -37,7 +37,7 @@
 								<div class="card">
 									<div class="card-header">
 										<div>
-											<h3 class="card-title">Listado de productos</h3>
+											<h3 class="card-title">Todos los productos</h3>
 										</div>
 									</div>
 									<div class="card-body">

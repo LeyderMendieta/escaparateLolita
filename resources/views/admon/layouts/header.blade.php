@@ -3,7 +3,7 @@
 					<div class="container">
 						<div class="d-flex">
 							<a class="animated-arrow hor-toggle horizontal-navtoggle"><span></span></a>
-							<a class="header-brand" href="{{ url('/' . $page='admon/index') }}">
+							<a class="header-brand" href="{{ url('/' . $page='admon/') }}">
 								<img src="{{URL::asset('assets/store/images/logo.svg')}}" class="header-brand-img main-logo" alt="IndoUi logo">
 								<img src="{{URL::asset('assets/store/images/logo.svg')}}" class="header-brand-img dark-main-logo" alt="IndoUi logo">
 								<img src="{{URL::asset('assets/store/images/logo.svg')}}" class="header-brand-img dark-icon-logo" alt="IndoUi logo">
