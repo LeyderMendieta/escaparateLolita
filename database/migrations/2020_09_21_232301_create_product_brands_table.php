@@ -18,6 +18,7 @@ class CreateProductBrandsTable extends Migration
             $table->text("marca");
             $table->text("descripcion");
             $table->text("imagen");
+            $table->text("url");
             $table->timestamps();
         });
     }

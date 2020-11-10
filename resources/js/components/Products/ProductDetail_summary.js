@@ -13,7 +13,7 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tall
 
         <div >
             <p className="price">
-                <span className="woocs_price_code"><s className="amount text-muted"><span className="woocommerce-Price-currencySymbol">&#36;</span>59</s> / <span className="amount"><span className="woocommerce-Price-currencySymbol">&#36;</span>65</span>
+                <span className="woocs_price_code"><s className="amount text-muted"><span className="woocommerce-Price-currencySymbol">&#36;</span>{producto.precio_antes}</s> / <span className="amount"><span className="woocommerce-Price-currencySymbol">&#36;</span>{producto.precio_ahora}</span>
                 </span>
             </p>
         </div>
@@ -73,7 +73,8 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tall
                 <div className="woocommerce-variation-add-to-cart variations_button" style={{display: "inline-grid"}}>
                     <button type="button" className="single_add_to_cart_button button disabled" onClick={handleBuyProduct}>Comprar</button>
                     <br/>
-                    <a  href="#trx_addons_calendar_popup" className="trx_addons_popup_link trx_addons_login_link btn btn-dark text-white">
+                    
+                    <a  href="#trx_addons_calendar_popup" className={producto.entallaje == false ? "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white d-none" : "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white"} >
                     Echo a la medida
                     </a>
                 </div>

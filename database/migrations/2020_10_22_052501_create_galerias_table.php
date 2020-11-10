@@ -17,6 +17,7 @@ class CreateGaleriasTable extends Migration
             $table->id();
             $table->string("nombre",100);
             $table->string("descripcion",300);
+            $table->text("imagen");
             $table->text("url");
             $table->text("tags");
             $table->timestamps();

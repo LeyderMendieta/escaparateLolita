@@ -28,8 +28,19 @@ class ProductSeeder extends Seeder
                 'precio_ahora' => rand(100,1000),
                 'imagen_main' => "product-17-300x410.jpg",
                 'imagen_secundaria' => "product-15-300x410.jpg",
+                'imagen_1_180x180' => "product-19-180x180.jpg",
+                'imagen_1_960x1286' => "product-19.jpg",
+                'imagen_2_180x180' => "product-17-180x180.jpg",
+                'imagen_2_960x1286' => "product-17.jpg",
+                'imagen_3_180x180' => "product-13-180x180.jpg",
+                'imagen_3_960x1286' => "product-13.jpg",
+                'imagen_4_180x180' => "product-15-180x180.jpg",
+                'imagen_4_960x1286' => "product-15.jpg",
                 'sizes' => '["M", "X", "L"]',
-                'colores'=> '["azul", "verde", "rojo"]'
+                'colores'=> '["azul", "verde", "rojo"]',
+                "entallaje" => true,
+                "pieza_unica" => false,
+                "stock" => 20
             ]);
             $i++;
 

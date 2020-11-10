@@ -15,7 +15,7 @@
 							<h1 class="page-title">Galeria</h1>
 							<div class="ml-auto">
 								<div class="input-group">
-									<a href="#" class="btn btn-info btn-icon mr-2" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Agregar Nuevo">
+									<a href="{{ url('/' . $page='admon/add/galeria') }}" class="btn btn-info btn-icon mr-2" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Agregar Nuevo">
 										<span>
 											<i class="fe fe-plus"></i>
 										</span>
@@ -35,19 +35,20 @@
 
 						
 
-						<!-- Row -->
-						<div class="row">
+					<!-- Row -->
+					<div class="row">
 							<div class="col-xl-12">
 								<div class="card">
 									<div class="card-body">
-										
+										<div id="App_Admon_Galeria">
+											
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<!-- End Row -->
+					<!-- End Row -->
 
-					</div>
 @endsection
 @section('js')
 <!-- Data tables js-->
@@ -55,4 +56,24 @@
 <script src="{{URL::asset('assets/plugins/datatable/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/datatable/datatable.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/datatable/dataTables.responsive.min.js')}}"></script>
+<script>
+	$(window).on("load",function() {
+
+		$('#tableProducts').DataTable( {
+			responsive: {
+				details: {
+					display: $.fn.dataTable.Responsive.display.modal( {
+						header: function ( row ) {
+							var data = row.data();
+							return '<b>'+data[0]+' - '+data[2]+'</b><br/><br/>';
+						}
+					} ),
+					renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+						tableClass: 'table table-dark'
+					} )
+				}
+			}
+		} );
+	} );
+</script>
 @endsection

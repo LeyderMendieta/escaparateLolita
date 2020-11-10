@@ -53,12 +53,6 @@ class App_Admon_Products extends Component {
          }
       }
 
-      editProducto(e)
-      {
-        var foredit = e.target.getAttribute("for");
-        location.href = Configuracion.url_principal+"admon/edit/producto/"+foredit;
-      }
-
       render(){
         return (
             
@@ -70,6 +64,7 @@ class App_Admon_Products extends Component {
                         <th>Nombre</th>                        
                         <th>Precio Antes</th>
                         <th>Precio Ahora</th>
+                        <th>Stock</th>
                         <th>Colores</th>
                         <th>Tallas</th>
                         <th>Imagen Tienda</th>
@@ -84,16 +79,17 @@ class App_Admon_Products extends Component {
                         <tr key={producto.id}>
                             <td>{producto.id}</td>                  
                             <td>
-                                <button htmlFor={producto.acceso_url} className="btn btn-info" onClick={this.editProducto} >Editar</button>
+                                <a href={Configuracion.url_principal+"admon/edit/producto/"+producto.acceso_url} className="btn btn-info" target="_parent">Editar</a>
                                 <button htmlFor={producto.id} className="btn btn-danger ml-3" onClick={this.deleteProducto} >Eliminar</button>
                             </td>                  
                             <td>{producto.name}</td>                            
                             <td>${producto.precio_antes}</td>
                             <td>${producto.precio_ahora}</td>
+                            <td>{producto.stock}</td>
                             <td>
                             <span className="tags">
                                 {JSON.parse(producto.colores).map((color,index)=>(
-                                    <span className={"tag bg_"+color} key={index}>{color}</span>
+                                    <span className={"tag bg_"+color} key={index}>{color.replace("_", " ")}</span>
                                 ))}
                             </span>
                             </td>

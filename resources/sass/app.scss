@@ -52,26 +52,55 @@
 }
 .bg_blanco{
     background: #FFFFFF!important;
+    color:black!important;
+}
+.bg_off_white{
+    background: #f2f2f2!important;
+    color:black!important;
 }
 .bg_rojo{
     background: #FF0000!important;
 }
-.bg_lima{
-    background: #00FF00!important;
-}
-.bg_azul{
-    background: blue!important;
+.bg_fucsia{
+    background: #ff0066!important;
 }
 .bg_amarillo{
     background: #FFFF00!important;
 }
-.bg_verde{
-    background: green!important;
+.bg_azul{
+    background: #0000ff!important;
 }
-.bg_verdeClaro{
-    background: greenyellow!important;
+
+.bg_navy{
+    background: #000080!important;
+}
+
+.bg_burgundy{
+    background: #800020!important;
+}
+
+.bg_verde{
+    background: #00b33c!important;
+}
+
+.bg_pink{
+    background: #ffc0cb!important;
+    color:black!important;
+}
+
+.bg_lightblue{
+    background: #add8e6!important;
+    color:black!important;
+}
+
+.bg_lila{
+    background: #ff66ff!important;
 }
 
 .colorinput-colorwhite:before {
     background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='000000' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E") no-repeat center center/50% 50% !important;
+}
+
+.trx_addons_attrib_item:not(.trx_addons_attrib_selected){
+    border-color:#979595!important;
 }

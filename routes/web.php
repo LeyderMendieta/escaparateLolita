@@ -31,9 +31,8 @@ Route::get('/shop', function () {
 Route::get('/shop-grid', function () {
     return view('store.shop_grid');
 });
-Route::get('/gallery', function () {
-    return view('store.gallery');
-});
+Route::get('/gallery', 'GaleriaController@loadGalleryView');
+
 Route::get('/contacts', function () {
     return view('store.contacts');
 });

@@ -41,6 +41,40 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     //Administración
     Route::post('/store/producto','ProductController@crearProducto');
+    Route::post('/update/producto','ProductController@editarProducto');
     Route::post('/store/productoImagen','ProductController@guardarFile');
     Route::get('/remove/producto/{id}','ProductController@removeProduct');
     
+    Route::get('/all_categories','CategoryController@getAll');
+    Route::get('/category_detail/{category}','CategoryController@viewCategoryDetail');    
+    Route::post('/store/categoria','CategoryController@crear');
+    Route::post('/update/categoria','CategoryController@editar');
+    Route::get('/remove/categoria/{id}','CategoryController@remove');
+    
+    Route::get('/all_brands','BrandsController@getAll');
+    Route::get('/brand_detail/{category}','BrandsController@viewBrandDetail');    
+    Route::post('/store/brand','BrandsController@crear');
+    Route::post('/update/brand','BrandsController@editar');
+    Route::get('/remove/brand/{id}','BrandsController@remove');
+    
+    Route::get('/all_giftCards','GiftCardController@getAll');
+    Route::get('/giftCard_detail/{category}','GiftCardController@viewDetail');    
+    Route::post('/store/giftCard','GiftCardController@crear');
+    Route::post('/update/giftCard','GiftCardController@editar');
+    Route::get('/remove/giftCard/{id}','GiftCardController@remove');
+
+    Route::get('/all_tags','GaleriaController@getAllTags');
+    Route::get('/tag_detail/{category}','GaleriaController@viewTagDetail');    
+    Route::post('/store/tag','GaleriaController@crearTag');
+    Route::post('/update/tag','GaleriaController@editarTag');
+    Route::get('/remove/tag/{id}','GaleriaController@removeTag');
+    
+    Route::get('/all_galeria','GaleriaController@getAllGaleria');
+    Route::get('/galeria_detail/{category}','GaleriaController@viewGaleriaDetail');    
+    Route::post('/store/galeria','GaleriaController@crearGaleria');
+    Route::post('/update/galeria','GaleriaController@editarGaleria');
+    Route::get('/remove/galeria/{id}','GaleriaController@removeGaleria');
+    Route::post('/store/guardarImagen','GaleriaController@guardarFile');
+
+    Route::post('/update/productosSugeridos','ProductController@actualizarProductosSugeridos');
+    Route::post('/update/productosMustHave','ProductController@actualizarProductosMustHave');

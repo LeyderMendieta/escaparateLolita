@@ -37,7 +37,7 @@ const ListProducts = ({productos,url_images,url_href,totalItemsCount,from,to}) =
                           </div>
         
                           <span className="price">
-                                <span className="woocs_price_code"><s className="amount text-muted"><span className="woocommerce-Price-currencySymbol">&#36;</span>59</s> / <span className="amount"><span className="woocommerce-Price-currencySymbol">&#36;</span>65</span>
+                                <span className="woocs_price_code"><s className="amount text-muted"><span className="woocommerce-Price-currencySymbol">&#36;</span>{producto.precio_antes}</s> / <span className="amount"><span className="woocommerce-Price-currencySymbol">&#36;</span>{producto.precio_ahora}</span>
                                 </span>
                             </span>
                           <a href={url_href+"shop/"+producto.acceso_url} className="button product_type_variable add_to_cart_button sc_button_hover_slide_left">Comprar</a>			

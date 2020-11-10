@@ -130,7 +130,7 @@
                         <div class="content">
                             <article class="post_item_single post_type_product">
                                 <nav class="woocommerce-breadcrumb">
-                                    <a href="{{ url('/' . $page='home') }}">Home</a>&nbsp;&#47;&nbsp;<a href="{{ url('/' . $page='shop') }}">Tienda</a>&nbsp;&#47;&nbsp;Halter Bodysuit
+                                    <a href="{{ url('/' . $page='home') }}">Home</a>&nbsp;&#47;&nbsp;<a href="{{ url('/' . $page='shop') }}">Tienda</a>&nbsp;&#47;&nbsp;<span id="nombreProductoPage"></span>
                                 </nav>
                                 <div id="App_Product_Detail" target="{{$producto}}" class="product type-product wcspt-has-gallery">                                    
                                 </div>

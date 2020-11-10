@@ -47,13 +47,26 @@ class App_Admon_Add_Product extends Component {
                         colores: JSON.parse(result[0].colores)
                     });
 
+
+                    $('#product_id').val(this.state.producto.id);
                     $('#producto_nombre').val(this.state.producto.name);
                     $('#producto_descripcion').val(this.state.producto.descripcion);
                     $('#producto_precio_antes').val(this.state.producto.precio_antes);
                     $('#producto_precio_ahora').val(this.state.producto.precio_ahora);
+                    $('#permite_entallaje').prop('checked',this.state.producto.entallaje);
+                    $('#unica_pieza').prop('checked',this.state.producto.pieza_unica);
+                    $('#stock').val(this.state.producto.stock);
 
                     this.setDefaultImagen('producto_imagen_principal','imagen_main');
                     this.setDefaultImagen('producto_imagen_secundaria','imagen_secundaria');
+                    this.setDefaultImagen('producto_imagen_peque_1','imagen_1_180x180');
+                    this.setDefaultImagen('producto_imagen_big_1','imagen_1_960x1286');
+                    this.setDefaultImagen('producto_imagen_peque_2','imagen_2_180x180');
+                    this.setDefaultImagen('producto_imagen_big_2','imagen_2_960x1286');
+                    this.setDefaultImagen('producto_imagen_peque_3','imagen_3_180x180');
+                    this.setDefaultImagen('producto_imagen_big_3','imagen_3_960x1286');
+                    this.setDefaultImagen('producto_imagen_peque_4','imagen_4_180x180');
+                    this.setDefaultImagen('producto_imagen_big_4','imagen_4_960x1286');
 
                     var it = 0
                     while(it < this.state.colores.length)
@@ -65,8 +78,7 @@ class App_Admon_Add_Product extends Component {
                     var its = 0
                     while(its < this.state.tallas.length)
                     {
-                        console.log($('#tallas').siblings('.ms-parent').find('.selectItem[value="'+this.state.tallas[its]+'"]').parents('li').hasClass('ms-select-all'));
-                        $('#tallas').siblings('.ms-parent').find('.selectItem[value="'+this.state.tallas[its]+'"]').parents('li').trigger('click');
+                        $('#tallas').siblings('.ms-parent').find('input[value="'+this.state.tallas[its]+'"]').trigger('click');
                         its++;
                     }
                 }
@@ -83,7 +95,7 @@ class App_Admon_Add_Product extends Component {
           }
       }
 
-      handleSubmit()
+      handleSubmitCreate()
       {
           var nombre = $('#producto_nombre').val();
           var descripcion = $('#producto_descripcion').val();
@@ -91,9 +103,31 @@ class App_Admon_Add_Product extends Component {
           var precio_ahora = $('#producto_precio_ahora').val();
           var imagen_principal = $('#producto_imagen_principal').prop('files');
           var imagen_secundaria = $('#producto_imagen_secundaria').prop('files');
-          if(imagen_principal.length == 0 || imagen_secundaria.length == 0)
+          var producto_imagen_peque_1 = $('#producto_imagen_peque_1').prop('files');
+          var producto_imagen_big_1 = $('#producto_imagen_big_1').prop('files');
+          var producto_imagen_peque_2 = $('#producto_imagen_peque_2').prop('files');
+          var producto_imagen_big_2 = $('#producto_imagen_big_2').prop('files');
+          var producto_imagen_peque_3 = $('#producto_imagen_peque_3').prop('files');
+          var producto_imagen_big_3 = $('#producto_imagen_big_3').prop('files');
+          var producto_imagen_peque_4 = $('#producto_imagen_peque_4').prop('files');
+          var producto_imagen_big_4 = $('#producto_imagen_big_4').prop('files');
+          var imagen_secundaria = $('#producto_imagen_secundaria').prop('files');
+          var permite_entallaje = $('#permite_entallaje').prop('checked');
+          var unica_pieza = $('#unica_pieza').prop('checked');
+          var stock = $('#stock').val();
+
+          if(imagen_principal.length == 0 
+            || imagen_secundaria.length == 0 
+            || producto_imagen_peque_1.length == 0
+            || producto_imagen_big_1.length == 0
+            || producto_imagen_peque_2.length == 0
+            || producto_imagen_big_2.length == 0
+            || producto_imagen_peque_3.length == 0
+            || producto_imagen_big_3.length == 0
+            || producto_imagen_peque_4.length == 0
+            || producto_imagen_big_4.length == 0)
           {
-              alert("Imagenes obligtorias");
+              alert("Imagenes obligatorias");
               return false;
           }
 
@@ -115,13 +149,26 @@ class App_Admon_Add_Product extends Component {
           }
           else var tallas = JSON.stringify($('#tallas').val());
 
+          if(stock == undefined)
+          {
+                alert("Es obligatorio colocar el Stock disponible");
+              return false;
+          }
+
           try {
+            $('#global-loader').show();
 
             const formData = new FormData();
             formData.append('imagen_main', imagen_principal[0]);
             formData.append('imagen_secundaria', imagen_secundaria[0]);
-            
-            console.log(formData);
+            formData.append('producto_imagen_peque_1', producto_imagen_peque_1[0]);
+            formData.append('producto_imagen_big_1', producto_imagen_big_1[0]);
+            formData.append('producto_imagen_peque_2', producto_imagen_peque_2[0]);
+            formData.append('producto_imagen_big_2', producto_imagen_big_2[0]);
+            formData.append('producto_imagen_peque_3', producto_imagen_peque_3[0]);
+            formData.append('producto_imagen_big_3', producto_imagen_big_3[0]);
+            formData.append('producto_imagen_peque_4', producto_imagen_peque_4[0]);
+            formData.append('producto_imagen_big_4', producto_imagen_big_4[0]);
 
             let config = {
               method: 'POST',
@@ -145,8 +192,19 @@ class App_Admon_Add_Product extends Component {
                     formData.append('precio_ahora', precio_ahora);
                     formData.append('imagen_main', result.files.imagen_main);
                     formData.append('imagen_secundaria', result.files.imagen_secundaria);
+                    formData.append('producto_imagen_peque_1', result.files.producto_imagen_peque_1);
+                    formData.append('producto_imagen_big_1', result.files.producto_imagen_big_1);
+                    formData.append('producto_imagen_peque_2', result.files.producto_imagen_peque_2);
+                    formData.append('producto_imagen_big_2', result.files.producto_imagen_big_2);
+                    formData.append('producto_imagen_peque_3', result.files.producto_imagen_peque_3);
+                    formData.append('producto_imagen_big_3', result.files.producto_imagen_big_3);
+                    formData.append('producto_imagen_peque_4', result.files.producto_imagen_peque_4);
+                    formData.append('producto_imagen_big_4', result.files.producto_imagen_big_4);
                     formData.append('colores', colores);
                     formData.append('tallas', tallas);
+                    formData.append('permite_entallaje', permite_entallaje);
+                    formData.append('unica_pieza', unica_pieza);
+                    formData.append('stock', stock);
 
                     let config = {
                         method: 'POST',
@@ -161,23 +219,9 @@ class App_Admon_Add_Product extends Component {
                     .then((result) => {
                         alert("Se ha creado el producto");
                         location.href = Configuracion.url_principal+"admon/productos";
-                      },
-                      
-                      (error) => {
-                        this.setState({
-                          isLoaded: true,
-                          error
-                        });
                       }
                     );
                 }
-              },
-              
-              (error) => {
-                this.setState({
-                  isLoaded: true,
-                  error
-                });
               }
             );
 
@@ -188,6 +232,171 @@ class App_Admon_Add_Product extends Component {
 
       }
 
+      handleSubmitEditar()
+      {
+        var id_update = $('#product_id').val();
+        var nombre = $('#producto_nombre').val();
+        var descripcion = $('#producto_descripcion').val();
+        var precio_antes = $('#producto_precio_antes').val();
+        var precio_ahora = $('#producto_precio_ahora').val();
+        var imagen_principal = $('#producto_imagen_principal').prop('files');
+        var imagen_secundaria = $('#producto_imagen_secundaria').prop('files');
+        var imagen_peque_1 = $('#producto_imagen_peque_1').prop('files');
+        var imagen_big_1 = $('#producto_imagen_big_1').prop('files');
+        var imagen_peque_2 = $('#producto_imagen_peque_2').prop('files');
+        var imagen_big_2 = $('#producto_imagen_big_2').prop('files');
+        var imagen_peque_3 = $('#producto_imagen_peque_3').prop('files');
+        var imagen_big_3 = $('#producto_imagen_big_3').prop('files');
+        var imagen_peque_4 = $('#producto_imagen_peque_4').prop('files');
+        var imagen_big_4 = $('#producto_imagen_big_4').prop('files');
+        var permite_entallaje = $('#permite_entallaje').prop('checked');
+        var unica_pieza = $('#unica_pieza').prop('checked');
+        var stock = $('#stock').val();
+
+        var json_colores = [];
+          $('input[name="color"]:checked').each(function(i){
+            json_colores.push($(this).val());
+          });
+          if(json_colores.length == 0)
+          {
+              alert("Es obligatorio elegir minimo un color");
+              return false;
+          }
+          else var colores = JSON.stringify(json_colores);
+
+          if($('#tallas').val().length == 0)
+          {
+              alert("Es obligatorio elegir minimo una talla");
+              return false;
+          }
+          else var tallas = JSON.stringify($('#tallas').val());
+
+          try {
+
+            var imagen_main = "noset";
+            var imagen_secundaria = "noset";
+            var producto_imagen_peque_1 = "noset";
+            var producto_imagen_big_1 = "noset";
+            var producto_imagen_peque_2 = "noset";
+            var producto_imagen_big_2 = "noset";
+            var producto_imagen_peque_3 = "noset";
+            var producto_imagen_big_3 = "noset";
+            var producto_imagen_peque_4 = "noset";
+            var producto_imagen_big_4 = "noset";
+
+            const formData = new FormData();
+
+            if(imagen_principal.length == 0 ) imagen_main = "noset";
+            else formData.append('imagen_main', imagen_principal[0]);
+
+            if(imagen_secundaria.length == 0 ) imagen_secundaria = "noset";
+            else formData.append('imagen_secundaria', imagen_secundaria[0]);
+
+            if(imagen_peque_1.length == 0 ) producto_imagen_peque_1 = "noset";
+            else {formData.append('producto_imagen_peque_1', imagen_peque_1[0]);}
+
+            if(imagen_big_1.length == 0 ) producto_imagen_big_1 = "noset";
+            else formData.append('producto_imagen_big_1', imagen_big_1[0]);
+
+            if(imagen_peque_2.length == 0 ) producto_imagen_peque_2 = "noset";
+            else formData.append('producto_imagen_peque_2', imagen_peque_2[0]);
+
+            if(imagen_big_2.length == 0 ) producto_imagen_big_2 = "noset";
+            else formData.append('producto_imagen_big_2', imagen_big_2[0]);
+
+            if(imagen_peque_3.length == 0 ) producto_imagen_peque_3 = "noset";
+            else formData.append('producto_imagen_peque_3', imagen_peque_3[0]);
+
+            if(imagen_big_3.length == 0 ) producto_imagen_big_3 = "noset";
+            else formData.append('producto_imagen_big_3', imagen_big_3[0]);
+
+            if(producto_imagen_peque_4.length == 0 ) producto_imagen_peque_4 = "noset";
+            else formData.append('producto_imagen_peque_4', imagen_peque_4[0]);
+
+            if(imagen_big_4.length == 0 ) producto_imagen_big_4 = "noset";
+            else formData.append('producto_imagen_big_4', imagen_big_4[0]);
+
+            
+
+            let config = {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json'
+                },
+              body: formData
+            }
+
+            fetch(Configuracion.url_principal+"api/store/productoImagen",config)
+            .then(res => res.json())
+            .then(
+              (result) => {
+
+                if(result.files.imagen_main != undefined) imagen_main = result.files.imagen_main;
+                if(result.files.imagen_secundaria != undefined) imagen_secundaria = result.files.imagen_secundaria;
+
+                if(result.files.producto_imagen_peque_1 != undefined) producto_imagen_peque_1 = result.files.producto_imagen_peque_1;
+                if(result.files.producto_imagen_big_1 != undefined) producto_imagen_big_1 = result.files.producto_imagen_big_1;
+
+                if(result.files.producto_imagen_peque_2 != undefined) producto_imagen_peque_2 = result.files.producto_imagen_peque_2;
+                if(result.files.producto_imagen_big_2 != undefined) producto_imagen_big_2 = result.files.producto_imagen_big_2;
+
+                if(result.files.producto_imagen_peque_3 != undefined) producto_imagen_peque_3 = result.files.producto_imagen_peque_3;
+                if(result.files.producto_imagen_big_3 != undefined) producto_imagen_big_3 = result.files.producto_imagen_big_3;
+
+                if(result.files.producto_imagen_peque_4 != undefined) producto_imagen_peque_4 = result.files.producto_imagen_peque_4;
+                if(result.files.producto_imagen_big_4 != undefined) producto_imagen_big_4 = result.files.producto_imagen_big_4;
+              }
+            );
+
+            $('#global-loader').show();
+
+            setTimeout(() => {
+
+                const formDataUpdate = new FormData();
+                formDataUpdate.append('id', id_update);
+                formDataUpdate.append('nombre', nombre);
+                formDataUpdate.append('descripcion', descripcion);
+                formDataUpdate.append('precio_antes', precio_antes);
+                formDataUpdate.append('precio_ahora', precio_ahora);
+                formDataUpdate.append('imagen_main', imagen_main);
+                formDataUpdate.append('imagen_secundaria', imagen_secundaria);
+                formDataUpdate.append('producto_imagen_peque_1', producto_imagen_peque_1);
+                formDataUpdate.append('producto_imagen_big_1', producto_imagen_big_1);
+                formDataUpdate.append('producto_imagen_peque_2', producto_imagen_peque_2);
+                formDataUpdate.append('producto_imagen_big_2', producto_imagen_big_2);
+                formDataUpdate.append('producto_imagen_peque_3', producto_imagen_peque_3);
+                formDataUpdate.append('producto_imagen_big_3', producto_imagen_big_3);
+                formDataUpdate.append('producto_imagen_peque_4', producto_imagen_peque_4);
+                formDataUpdate.append('producto_imagen_big_4', producto_imagen_big_4);
+                formDataUpdate.append('colores', colores);
+                formDataUpdate.append('tallas', tallas);
+                formDataUpdate.append('permite_entallaje', permite_entallaje);
+                formDataUpdate.append('unica_pieza', unica_pieza);
+                formDataUpdate.append('stock', stock);
+        
+                let config = {
+                    method: 'POST',
+                    headers: {
+                      'Accept': 'application/json'
+                      },
+                    body: formDataUpdate
+                  }
+        
+                fetch(Configuracion.url_principal+"api/update/producto",config)
+                .then(res => res.json())
+                .then((result) => {
+                    alert("Se ha modificado el producto");
+                    location.href = Configuracion.url_principal+"admon/productos";
+                  }
+                );
+
+              }, 3000);
+
+        } catch (error) {
+            console.log(error);
+        }
+
+      }
       
       render(){
 
@@ -199,11 +408,11 @@ class App_Admon_Add_Product extends Component {
                             <div className="col-xl-6">
                                 <div className="form-group">
                                     <label className="form-label">Nombre</label>
-                                    <input id="producto_nombre" type="text" className="form-control" name="nombre" placeholder="Text.." />
+                                    <input id="producto_nombre" type="text" className="form-control" name="nombre" placeholder="Nombre.." />
                                 </div>
                             </div>
                             <div className="col-xl-6">
-
+                                <input  id='product_id' type='hidden'/>
                             </div>
                         </div>
                         <div className="row">
@@ -294,7 +503,7 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <input type="file" accept="image/*" className="dropify" />
+                                        <input id='producto_imagen_peque_1' type="file" accept="image/*" className="dropify" />
                                     </div>
                                 </div>
                             </div>
@@ -313,7 +522,7 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <input type="file" accept="image/*"  className="dropify" />
+                                        <input id='producto_imagen_big_1' type="file" accept="image/*"  className="dropify" />
                                     </div>
                                 </div>
                             </div>
@@ -335,7 +544,7 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <input type="file" accept="image/*" className="dropify" />
+                                        <input id='producto_imagen_peque_2' type="file" accept="image/*" className="dropify" />
                                     </div>
                                 </div>
                             </div>
@@ -354,7 +563,7 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <input type="file" accept="image/*" className="dropify" />
+                                        <input id='producto_imagen_big_2' type="file" accept="image/*" className="dropify" />
                                     </div>
                                 </div>
                             </div>
@@ -376,7 +585,7 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <input type="file" accept="image/*" className="dropify" />
+                                        <input id='producto_imagen_peque_3' type="file" accept="image/*" className="dropify" />
                                     </div>
                                 </div>
                             </div>
@@ -395,7 +604,7 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <input type="file" accept="image/*" className="dropify" />
+                                        <input  id='producto_imagen_big_3' type="file" accept="image/*" className="dropify" />
                                     </div>
                                 </div>
                             </div>
@@ -417,7 +626,7 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <input type="file" accept="image/*" className="dropify" />
+                                        <input id='producto_imagen_peque_4' type="file" accept="image/*" className="dropify" />
                                     </div>
                                 </div>
                             </div>
@@ -436,7 +645,7 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <input type="file" accept="image/*" className="dropify" />
+                                        <input id='producto_imagen_big_4' type="file" accept="image/*" className="dropify" />
                                     </div>
                                 </div>
                             </div>
@@ -461,20 +670,20 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                         <div className="col-auto">
                                             <label className="colorinput">
+                                                <input name="color" type="checkbox" value="off_white" className="colorinput-input"  />
+                                                <span className="colorinput-color bg_off_white"></span>
+                                            </label>
+                                        </div>
+                                        <div className="col-auto">
+                                            <label className="colorinput">
                                                 <input name="color" type="checkbox" value="rojo" className="colorinput-input"  />
                                                 <span className="colorinput-color bg_rojo"></span>
                                             </label>
                                         </div>
                                         <div className="col-auto">
                                             <label className="colorinput">
-                                                <input name="color" type="checkbox" value="lima" className="colorinput-input"  />
-                                                <span className="colorinput-color bg_lima"></span>
-                                            </label>
-                                        </div>
-                                        <div className="col-auto">
-                                            <label className="colorinput">
-                                                <input name="color" type="checkbox" value="azul" className="colorinput-input"  />
-                                                <span className="colorinput-color bg_azul"></span>
+                                                <input name="color" type="checkbox" value="fucsia" className="colorinput-input"  />
+                                                <span className="colorinput-color bg_fucsia"></span>
                                             </label>
                                         </div>
                                         <div className="col-auto">
@@ -485,14 +694,44 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                         <div className="col-auto">
                                             <label className="colorinput">
+                                                <input name="color" type="checkbox" value="azul" className="colorinput-input"  />
+                                                <span className="colorinput-color bg_azul"></span>
+                                            </label>
+                                        </div>
+                                        <div className="col-auto">
+                                            <label className="colorinput">
+                                                <input name="color" type="checkbox" value="navy" className="colorinput-input"  />
+                                                <span className="colorinput-color bg_navy"></span>
+                                            </label>
+                                        </div>
+                                        <div className="col-auto">
+                                            <label className="colorinput">
+                                                <input name="color" type="checkbox" value="burgundy" className="colorinput-input"  />
+                                                <span className="colorinput-color bg_burgundy"></span>
+                                            </label>
+                                        </div>
+                                        <div className="col-auto">
+                                            <label className="colorinput">
                                                 <input name="color" type="checkbox" value="verde" className="colorinput-input"  />
                                                 <span className="colorinput-color bg_verde"></span>
                                             </label>
                                         </div>
                                         <div className="col-auto">
                                             <label className="colorinput">
-                                                <input name="color" type="checkbox" value="verdeClaro" className="colorinput-input"  />
-                                                <span className="colorinput-color bg_verdeClaro"></span>
+                                                <input name="color" type="checkbox" value="pink" className="colorinput-input"  />
+                                                <span className="colorinput-color bg_pink"></span>
+                                            </label>
+                                        </div>
+                                        <div className="col-auto">
+                                            <label className="colorinput">
+                                                <input name="color" type="checkbox" value="lightblue" className="colorinput-input"  />
+                                                <span className="colorinput-color bg_lightblue"></span>
+                                            </label>
+                                        </div>
+                                        <div className="col-auto">
+                                            <label className="colorinput">
+                                                <input name="color" type="checkbox" value="lila" className="colorinput-input"  />
+                                                <span className="colorinput-color bg_lila"></span>
                                             </label>
                                         </div>
                                     </div>
@@ -511,10 +750,40 @@ class App_Admon_Add_Product extends Component {
                                 </div>
                             </div>
                         </div>
+                        <div className="row">
+                            <div className="col-xl-6 col-lg-12 col-md-12">
+                                <ul className="list-group">
+                                    <li className="list-group-item">
+                                        Permite Entallaje
+                                        <div className="material-switch pull-right">
+                                            <input id="permite_entallaje" name="switch1" type="checkbox" />
+                                            <label htmlFor="permite_entallaje" className="label-success"></label>
+                                        </div>
+                                    </li>
+                                    <li className="list-group-item">
+                                        Es única Pieza
+                                        <div className="material-switch pull-right">
+                                            <input id="unica_pieza" name="switch2" type="checkbox"/>
+                                            <label htmlFor="unica_pieza" className="label-success"></label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="col-xl-6 col-lg-12 col-md-12">
+                                <label className="form-label">Stock</label>
+                                <div className="input-group">
+                                    <input id='stock' type="number" className="form-control" />
+                                    <span className="input-group-append">
+                                        <button className="btn btn-primary" type="button">Disponible</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div className="row my-5 text-center">
                             <a className="btn btn-light mx-auto" href={Configuracion.url_principal+"admon/productos"}>Cancelar</a>
-                            <button className="btn btn-success mx-auto" onClick={this.handleSubmit.bind(this)}>Guardar</button>
+                                <button className="btn btn-success mx-auto" onClick={(this.state.editing == false) ? this.handleSubmitCreate.bind(this) : this.handleSubmitEditar.bind(this)}>{(this.state.editing == false) ? "Crear" : "Actualizar"}</button>
                         </div>
 
                     </div>

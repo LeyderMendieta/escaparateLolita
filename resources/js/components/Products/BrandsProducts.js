@@ -10,7 +10,7 @@ const BrandsProducts = ({products,url_images,url_href}) => (
                     <div className="text_column">
                         <div className="brd-1px_grey">
                             <figure className="align_center">
-                                <a href="#"><img src={url_images+producto.imagen} alt="" /></a>
+                                <a href={producto.url} target="_blank"><img src={url_images+producto.imagen} alt="" /></a>
                             </figure>
                         </div>
                         <div className="empty_space h_30px"><span className="empty_space_inner"></span></div> 

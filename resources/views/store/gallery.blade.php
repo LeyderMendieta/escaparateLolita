@@ -144,441 +144,59 @@
                                     <div class="container-fluid">
                                         <div class="column_container column-1_1  sc_layouts_column_icons_position_left">
                                             <div class="column-inner">
-                                                <div class="empty_space h-2_5em" ><span class="empty_space_inner"></span></div>
-                                                <article class="myportfolio-container minimal-light" id="esg-grid-1-1-wrap">
-                                                    <div id="esg-grid-1-1" class="esg-grid esg-grid_global">
-                                                        <article class="esg-filters esg-singlefilters mb-45px align_center">
-                                                            <!-- THE FILTER BUTTONS -->
-                                                            <div class="esg-filter-wrapper esg-fgc-1 ml-2_5px mr-2_5px">
-                                                                <div class="esg-filterbutton selected esg-allfilter" data-filter="filterall" data-fid="-1">    <span>Todo</span>
-                                                                </div><div class="esg-filterbutton" data-fid="29" data-filter="filter-briefs">
-                                                                    <span>briefs</span><span class="esg-filter-checked"><i class="eg-icon-ok-1"></i></span>
-                                                                </div><div class="esg-filterbutton" data-fid="28" data-filter="filter-knickers">           
-                                                                    <span>knickers</span><span class="esg-filter-checked"><i class="eg-icon-ok-1"></i></span>
-                                                                </div><div class="esg-filterbutton" data-fid="30" data-filter="filter-panty-hose">
-                                                                    <span>panty hose</span><span class="esg-filter-checked"><i class="eg-icon-ok-1"></i></span>
-                                                                </div><div class="esg-filterbutton" data-fid="27" data-filter="filter-undershirt">    
-                                                                    <span>undershirt</span><span class="esg-filter-checked"><i class="eg-icon-ok-1"></i></span>
-                                                                </div>
-                                                                <div class="eg-clearfix"></div>
+                                                <div class="empty_space h-2_5em" >
+                                                    <span class="empty_space_inner"></span>
+                                                </div>
+                                                <article class="myportfolio-container minimal-light"  id="esg-grid-1-1-wrap">
+                                                <div id="esg-grid-1-1" class="esg-grid esg-grid_global">
+                                                <article class="esg-filters esg-singlefilters mb-45px align_center">                
+                                                    <div class="esg-filter-wrapper esg-fgc-1 ml-2_5px mr-2_5px">
+                                                        <div class="esg-filterbutton selected esg-allfilter" data-filter="filterall" data-fid="-1">    <span>Todo</span>
+                                                        </div>
+                                                        @foreach ($tags as $fila)
+                                                            <div class="esg-filterbutton" data-fid="{{$fila->id}}" data-filter="filter-{{str_replace(' ','-',$fila->nombre)}}">
+                                                                <span>{{$fila->nombre}}</span><span class="esg-filter-checked"><i class="eg-icon-ok-1"></i></span>
                                                             </div>
-                                                        </article>
-                                                        <div class="esg-clear-no-height"></div>
-                                                        <ul>
-                                                            <li  class="filterall filter-highlights-of-the-runway filter-knickers filter-undershirt eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-28.jpg')}}" alt="" >
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-28.jpg')}}" title="Divide and Conquer"><i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Divide and Conquer</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li  class="filterall filter-beautiful-reclessness filter-briefs filter-panty-hose eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-27.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-27.jpg')}}" title="The Comfort of Sleep is Cruicial"><i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">The Comfort of Sleep is Cruicial</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-beautiful-reclessness filter-knickers filter-undershirt eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-26.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-26.jpg')}}" title="Your Holiday Shop Assistant"><i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Your Holiday Shop Assistant</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-christian-louboutin-show filter-givenchy-fw-2016 filter-highlights-of-the-runway filter-spring-by-gaultier filter-briefs filter-panty-hose eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-25.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-25.jpg')}}" title="Our Gift for Beautiful Brides"><i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Our Gift for Beautiful Brides</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-beautiful-reclessness filter-knickers filter-undershirt eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-24.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-24.jpg')}}" title="Chocolate Passion in Your Master Bedroom">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1 eg-post-121" href="#" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Chocolate Passion in Your Master Bedroom</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-highlights-of-the-runway filter-briefs filter-panty-hose eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-23.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-23.jpg')}}" title="Innocent - a New Collection of Lingerie">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Innocent - a New Collection of Lingerie</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-highlights-of-the-runway filter-knickers filter-undershirt eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-22.jpg')}}" alt="" >
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-22.jpg')}}" title="Lilac Silk, Smooth Textures and Detail">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Lilac Silk, Smooth Textures and Detail</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-beautiful-reclessness filter-comfort-vs-appearance filter-briefs filter-panty-hose eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-21.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-21.jpg')}}" title="Classic Romance Style Today">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Classic Romance Style Today</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-beautiful-reclessness filter-knickers filter-undershirt eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-20.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-20.jpg')}}" title="The Most Expensive Sleepwear">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">The Most Expensive Sleepwear</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li  class="filterall filter-highlights-of-the-runway filter-knickers filter-undershirt eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-19.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-19.jpg')}}" title="Behind the Scenes of the Photoshoot">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-post-111 eg-theme-element-3 esg-flipup" data-delay="0.1">Behind the Scenes of the Photoshoot</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-comfort-vs-appearance filter-briefs filter-panty-hose eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-18.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-18.jpg')}}" title="Underneath It All">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Underneath It All</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-comfort-vs-appearance filter-highlights-of-the-runway filter-knickers filter-undershirt eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-17.jpg')}}" alt="" >
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-17.jpg')}}" title="Always, Your Lady Pink Accessories">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Always, Your Lady Pink Accessories</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-comfort-vs-appearance filter-ladies-secrets filter-briefs filter-panty-hose eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-15.jpg')}}" alt="" >
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-15.jpg')}}" title="Intimate Apparel at Sportswear Stage">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Intimate Apparel at Sportswear Stage</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-comfort-vs-appearance filter-ladies-secrets filter-knickers filter-undershirt eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-14.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-14.jpg')}}" title="Discover Your Inner Girlish Self">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-post-103 eg-theme-element-3 esg-flipup" data-delay="0.1">Discover Your Inner Girlish Self</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li  class="filterall filter-comfort-vs-appearance filter-ladies-secrets filter-knickers filter-undershirt eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-13.jpg')}}" alt="" >
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-13.jpg')}}" title="Spring in the Middle of January">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Spring in the Middle of January</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-comfort-vs-appearance filter-ladies-secrets filter-briefs filter-panty-hose eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/1promo.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/1promo.jpg')}}" title="The Means for Seduction in Fall 2016">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">The Means for Seduction in Fall 2016</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-beautiful-reclessness filter-comfort-vs-appearance filter-ladies-secrets filter-briefs filter-panty-hose eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-12.jpg')}}" alt="" >
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-12.jpg')}}" title="Luxury Plus Size Sleepwear Brand">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">Luxury Plus Size Sleepwear Brand</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="filterall filter-comfort-vs-appearance filter-ladies-secrets filter-knickers filter-undershirt eg-theme-wrapper">
-                                                                <div class="esg-media-cover-wrapper">
-                                                                    <div class="esg-entry-media">
-                                                                        <img src="{{URL::asset('assets/store/images/post-11.jpg')}}" alt="">
-                                                                    </div>
-                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
-                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
-                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
-                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('assets/store/images/post-11.jpg')}}" title="‘Beth’ Is the Most Popular Camisole">
-                                                                                <i class="eg-icon-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
-                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/UCVsWbaqgUZccH0NfI4yu7dUTZV0JoBKJfLY7YUe') }}" target="_self">
-                                                                                <i class="eg-icon-link"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
-                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">‘Beth’ Is the Most Popular Camisole</div>
-                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
+                                                        @endforeach
+                                                        <div class="eg-clearfix"></div>
                                                     </div>
                                                 </article>
-                                                <div class="empty_space h-7em"><span class="empty_space_inner"></span></div>
+                                                <div class="esg-clear-no-height"></div>
+                                                    <ul>
+                                                    @foreach ($galerias as $fila)
+                                                    <li  class="filterall
+                                                        @foreach(json_decode($fila->tags) as $tag)
+                                                            {{'filter-'.str_replace(' ','-',$tag)}}
+                                                        @endforeach
+                                                             ">
+                                                                <div class="esg-media-cover-wrapper">
+                                                                    <div class="esg-entry-media">
+                                                                        <img src="{{URL::asset('images/'.$fila->imagen)}}" alt="" />
+                                                                    </div>
+                                                                    <div class="esg-entry-cover esg-fade" data-delay="0">
+                                                                        <div class="esg-overlay esg-fade eg-theme-container" data-delay="0"></div>
+                                                                        <div class="esg-center eg-theme-element-0-a esg-falldown" data-delay="0.1">
+                                                                            <a class="eg-theme-element-0 esgbox" href="{{URL::asset('images/'.$fila->imagen)}}" title="Divide and Conquer"><i class="eg-icon-search"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="esg-center eg-theme-element-1-a esg-falldown" data-delay="0.2">
+                                                                            <a class="eg-theme-element-1" href="{{ url('/' . $page='shop/'.$fila->url) }}" target="_self">
+                                                                                <i class="eg-icon-link"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="esg-center eg-theme-element-8 esg-none esg-clear h_5px vis_hid"></div>
+                                                                        <div class="esg-center eg-theme-element-3 esg-flipup" data-delay="0.1">{{$fila->nombre}}</div>
+                                                                        <div class="esg-center eg-theme-element-9 esg-none esg-clear h_5px vis_hid"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                    @endforeach                        
+                                                    </ul>
+                                                </div>
+                                                </article>
+                                                <div class="empty_space h-7em">
+                                                    <span class="empty_space_inner"></span>
+                                                </div>
                                                 <div class="separator separator_align_center sep_width_100 sep_pos_align_center separator_no_text mt_0 mb_0">
                                                     <span class="sep_holder sep_holder_l">
                                                         <span class="sep_line brd_light"></span>
@@ -587,7 +205,7 @@
                                                         <span class="sep_line brd_light"></span>
                                                     </span>
                                                 </div>
-                                                <div class="empty_space h-0_8em"><span class="empty_space_inner"></span></div>    
+                                                <div class="empty_space h-0_8em"><span class="empty_space_inner"></span></div>
                                             </div>
                                         </div>
                                     </div>
@@ -713,9 +331,15 @@
         @include('store.layouts.foot')
 
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/essential-grid/public/assets/js/lightbox.js')}}"></script>
+
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/essential-grid/public/assets/js/jquery.themepunch.tools.min.js')}}"></script>
+
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/essential-grid/public/assets/js/jquery.themepunch.essential.js')}}"></script>
+
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/skip-link-focus-fix.js')}}"></script>
+        
+        
+        
 
         <a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>
     </body>

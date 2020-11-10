@@ -223,49 +223,10 @@
                                         <button class="search_button" type="submit">Search</button>
                                         <input type="hidden" name="post_type" value="product" /> 
                                     </form>
-                                </aside><aside class="widget woocommerce widget_top_rated_products">
+                                </aside>
+                                <aside class="widget woocommerce widget_top_rated_products">
                                     <h5 class="widget_title">Productos Destacados</h5>
-                                    <ul class="product_list_widget">
-                                        <li>
-                                            <a href="#" title="Halter Bodysuit"> 
-                                                <img src="{{URL::asset('assets/store/images/product-19-180x180.jpg')}}" alt="" /> 
-                                                <span class="product-title">Halter Bodysuit</span> 
-                                            </a>
-                                            <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span>
-                                            </div> 
-                                            <span class="woocs_price_code"><span class="amount">53<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">59<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Smooth Raw Cut Hiphugger"> 
-                                                <img src="{{URL::asset('assets/store/images/product-11-180x180.jpg')}}" alt="" /> 
-                                                <span class="product-title">Smooth Raw Cut Hiphugger</span> 
-                                            </a>
-                                            <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span>
-                                            </div> 
-                                            <span class="woocs_price_code"><span class="amount">66<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">72<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Victory Contour Hiphugger &amp; Push Up Bra"> 
-                                                <img src="{{URL::asset('assets/store/images/product-17-180x180.jpg')}}" alt="" /> 
-                                                <span class="product-title">Victory Contour Hiphugger &amp; Push Up Bra</span> 
-                                            </a>
-                                            <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span>
-                                            </div> 
-                                            <span class="woocs_price_code"><span class="amount">53<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">56<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Libertine Obsession High Bikinis"> 
-                                                <img src="{{URL::asset('assets/store/images/product-2-180x180.jpg')}}" alt="" /> 
-                                                <span class="product-title">Libertine Obsession High Bikinis</span> 
-                                            </a>
-                                            <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span>
-                                            </div> 
-                                            <span class="woocs_price_code"><span class="amount">16<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>&ndash;<span class="amount">22<span class="decimals">00</span><span class="woocommerce-Price-currencySymbol">&#36;</span></span>
-                                            </span>
-                                        </li>
+                                    <ul class="product_list_widget" id="App_Productos_Sugeridos_Show">
                                     </ul>
                                 </aside><aside class="widget widget_banner">
                                     <a href="#" class="image_wrap">

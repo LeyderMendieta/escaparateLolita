@@ -32,6 +32,7 @@ class App_ProductDetail extends Component {
                   tallas: JSON.parse(result[0].sizes),
                   colores: JSON.parse(result[0].colores)
                 });
+                $('#nombreProductoPage').text(this.state.products.name);
               }              
             },
             
@@ -90,7 +91,6 @@ class App_ProductDetail extends Component {
 
       
     render(){
-
         return (
             <React.Fragment>
                     <ProductDetail_Images 

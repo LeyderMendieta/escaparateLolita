@@ -21,7 +21,20 @@ require('./components/App_Calendario');
 require('./components/App_ProductDetail');
 require('./components/App_Login');
 require('./components/App_mycart');
+require('./components/Products/Productos_sugeridos');
 
 require('./components/Admin/App_Products');
 require('./components/Admin/App_Form_Product');
+require('./components/Admin/App_Categories');
+require('./components/Admin/App_Form_Category');
+require('./components/Admin/App_Tags');
+require('./components/Admin/App_Form_Tag');
+require('./components/Admin/App_Galeria');
+require('./components/Admin/App_Form_Galeria');
+require('./components/Admin/App_Productos_Sugeridos');
+require('./components/Admin/App_Productos_MustHave');
+require('./components/Admin/App_Admon_Brands');
+require('./components/Admin/App_Form_Brand');
+require('./components/Admin/App_Admon_GiftCards');
+require('./components/Admin/App_Form_GiftCard');
 

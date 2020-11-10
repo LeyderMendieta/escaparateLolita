@@ -26,7 +26,7 @@ const MustHaveProducts = ({products,url_images,url_href}) => (
                             <div className="star-rating" title="Rated 4 out of 5"><span className="w_40per"><strong className="rating">4</strong> out of 5</span></div>
                         </div>
                         <span className="price">
-                            <span className="woocs_price_code"><s className="amount text-muted"><span className="woocommerce-Price-currencySymbol">&#36;</span>59</s> / <span className="amount"><span className="woocommerce-Price-currencySymbol">&#36;</span>65</span>
+                            <span className="woocs_price_code"><s className="amount text-muted"><span className="woocommerce-Price-currencySymbol">&#36;</span>{producto.precio_antes}</s> / <span className="amount"><span className="woocommerce-Price-currencySymbol">&#36;</span>{producto.precio_ahora}</span>
                             </span>
                         </span>
                         <a  href="shop-single.html" className="button product_type_variable add_to_cart_button">Comprar</a> 

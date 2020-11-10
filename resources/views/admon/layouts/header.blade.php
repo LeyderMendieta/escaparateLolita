@@ -78,13 +78,13 @@
 								<!--Navbar -->
 								<div class="dropdown header-profile">
 									<a class="nav-custom-leyder nav-link pr-0 leading-none d-flex pt-1" data-toggle="dropdown" href="#">
-										<span class="avatar avatar-md brround cover-image" data-image-src="{{URL::asset('assets/images/users/female/2.jpg')}}"></span>
+										<span class="avatar avatar-md brround cover-image" data-image-src="https://www.spruko.com/demo/indoui/indoui/indoui/assets/images/users/male/1.jpg"></span>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 										<div class="drop-heading">
 											<div class="text-center">
 												<h5 class="text-dark mb-1">Leyder Mendieta</h5>
-												<small class="text-muted">Web Developer</small>
+												<small class="text-muted">Administrador</small>
 											</div>
 										</div>
 										<div class="dropdown-divider m-0"></div>
