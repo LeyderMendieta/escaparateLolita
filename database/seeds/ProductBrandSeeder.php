@@ -20,7 +20,8 @@ class ProductBrandSeeder extends Seeder
             ProductBrand::create([
                 'marca' => "Marca Nombre $i",
                 'descripcion' => Str::random(200),
-                "imagen" => "brand.png"
+                "imagen" => "brand.png",
+                "url" => "https://www.facebook.com/tumarcaqui/"
             ]);
             
         }
