@@ -24,57 +24,98 @@
 						<!-- End page-header -->
 @endsection
 @section('content')
-                        <!-- Row -->
+                        @if(isset($data_response))
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col" colspan='2'>Resultado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($data_response ?? [] as $fila)
+                                <tr>
+                                    <th scope="row">{{$fila["product"]}}</th>
+                                    <td class="bg-{{$fila['class']}} text-center" style="border: 1px solid black;vertical-align:middle">{{$fila["status"]}}</td>
+                                    <td colspan='2'>{!! $fila["response"] !!}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="col-12 text-center p-5">
+							<a href="{{ url('/' . $page='admon/import/products') }}"><button class="btn btn-success mx-auto"><i class="fe fe-upload"></i> Importar Más</button></a>
+                        </div>
+                        @endif
+
+                        @if(empty($data_response))
                         <form class="form-horizontal" method="POST" action="{{ route('import_parse') }}" enctype="multipart/form-data">
-						<div class="row">
-							<div class="col-xl-12">
-								<div class="card">
-									<div class="card-header">
-										<div>
-											<h3 class="card-title">Cargar Archivo para importar</h3>
-										</div>
-									</div>
-									<div class="card-body">
-                                        
-                                        <div class="row">
-                                            <div class="col-xl-6 col-lg-12 col-md-12 mx-auto">
-                                                <div class="card shadow">
-                                                    <div class="card-header">
-                                                        <div>
-                                                            <h3 class="card-title">Carga aqui el archivo plano</h3>
-                                                        </div>
-                                                        <div class="card-options">
-                                                            <a href="" class="mr-4 text-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                                                                <span class="fe fe-more-horizontal fs-20"></span>
-                                                            </a>
-                                                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                                                <li><a href="#"><i class="fe fe-eye mr-2"></i>View</a></li>
-                                                                <li><a href="#"><i class="fe fe-plus-circle mr-2"></i>Add</a></li>
-                                                                <li><a href="#"><i class="fe fe-trash-2 mr-2"></i>Remove</a></li>
-                                                                <li><a href="#"><i class="fe fe-download-cloud mr-2"></i>Download</a></li>
-                                                                <li><a href="#"><i class="fe fe-settings mr-2"></i>More</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <input type="file" class="dropify" accept=".csv" name="csv_file"/>
-                                                    </div>
-                                                </div>
+                            @csrf
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div>
+                                                <h3 class="card-title">Cargar Archivo para importar</h3>
                                             </div>
                                         </div>
-									</div>
-								</div>
-							</div>
-                        </div>
-                        <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Parse CSV
-                                    </button>
+                                        <div class="card-body">
+                                            
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-12 mx-auto">
+                                                    <div class="card shadow">
+                                                        <div class="card-header">
+                                                            <div>
+                                                                <h3 class="card-title">Carga aqui el archivo plano</h3>
+                                                            </div>
+                                                            <div class="card-options">
+                                                                <a href="" class="mr-4 text-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                                                                    <span class="fe fe-more-horizontal fs-20"></span>
+                                                                </a>
+                                                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                                                    <li><a href="#"><i class="fe fe-eye mr-2"></i>View</a></li>
+                                                                    <li><a href="#"><i class="fe fe-plus-circle mr-2"></i>Add</a></li>
+                                                                    <li><a href="#"><i class="fe fe-trash-2 mr-2"></i>Remove</a></li>
+                                                                    <li><a href="#"><i class="fe fe-download-cloud mr-2"></i>Download</a></li>
+                                                                    <li><a href="#"><i class="fe fe-settings mr-2"></i>More</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <input type="file" class="dropify" accept=".csv" name="csv_file" required/>
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-12 mx-auto">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            Tiene Encabezado el CSV
+                                                            <div class="material-switch pull-right">
+                                                                <input id="permite-header" name="header" type="checkbox" />
+                                                                <label for="permite-header" class="label-success"></label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="row text-center">
+                                                <div class="col-md-12 pt-5">
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-primary mx-auto">
+                                                            Cargar Data CSV
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                    </form>
-						<!-- End Row -->
+                                                
+                        </form>
+                        @endif
 
 @endsection
 @section('js')

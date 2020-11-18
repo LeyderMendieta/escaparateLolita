@@ -28,12 +28,12 @@ class AdminController extends Controller
 
     public function viewToImportProducts()
     {
-        if(view()->exists("admon.import-products")){
+        if(!isset($_GET["data_response"])){
             return view("admon.import-products");
         }
         else
         {
-            return view('404');
+            return view("admon.import-products",array("data_response" => $_GET["data_response"]));
         }
     }
 

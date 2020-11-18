@@ -47,6 +47,6 @@ Route::get('admon/{page}', 'AdminController@loadAdmonPage');
 Route::get('admon/add/{model}', 'AdminController@addToModel');
 
 Route::get('admon/edit/{model}/{token}', 'AdminController@editToModel');
-Route::get('admon/import/products', 'AdminController@viewToImportProducts');
-Route::post('import_parse', 'ImportController@parseImport');
+Route::get('admon/import/products', 'AdminController@viewToImportProducts')->name("importing");
+Route::post('admon/import/import_parse', 'ImportController@parseImport')->name("import_parse");
 

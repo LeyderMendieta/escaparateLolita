@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->text("descripcion");
             $table->float("precio_antes",50)->nullable(true);
             $table->float("precio_ahora",50)->nullable(true);
-            $table->text("imagen_main");
-            $table->text("imagen_secundaria");
+            $table->text("imagen_main")->nullable(true);
+            $table->text("imagen_secundaria")->nullable(true);
             $table->text("imagen_1_180x180")->nullable(true);
             $table->text("imagen_1_960x1286")->nullable(true);
             $table->text("imagen_2_180x180")->nullable(true);
