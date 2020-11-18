@@ -25,13 +25,10 @@ class App_Admon_Productos_MustHave extends Component {
 
       componentDidMount()
       {
-        
-
         fetch(Configuracion.url_principal+"api/products/reference_must_have")
         .then(res => res.json())
         .then(
             (result) => {
-            console.log(result);
                 this.setState({
                     productosSugeridos: result,
                     opcion1: result[0],
@@ -54,7 +51,6 @@ class App_Admon_Productos_MustHave extends Component {
         .then(res => res.json())
         .then(
           (result) => {
-            console.log(result);
             this.setState({
                 productos: result
             });

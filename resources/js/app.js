@@ -23,6 +23,9 @@ require('./components/App_Login');
 require('./components/App_mycart');
 require('./components/Products/Productos_sugeridos');
 
+require('./components/Shop/Filtro_Categorias_Shop');
+require('./components/Feature/Gift_cards');
+
 require('./components/Admin/App_Products');
 require('./components/Admin/App_Form_Product');
 require('./components/Admin/App_Categories');

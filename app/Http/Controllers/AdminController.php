@@ -26,6 +26,17 @@ class AdminController extends Controller
      //   return view($id);
     }
 
+    public function viewToImportProducts()
+    {
+        if(view()->exists("admon.import-products")){
+            return view("admon.import-products");
+        }
+        else
+        {
+            return view('404');
+        }
+    }
+
     public function loadAdmonPage($id = "dashboard")
     {
         if(view()->exists("admon.$id")){

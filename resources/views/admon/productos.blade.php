@@ -13,6 +13,9 @@
 					    <!-- page-header -->
 						<div class="page-header">
 							<h1 class="page-title">Productos</h1>
+							<div class="mx-auto">
+							<a href="{{ url('/' . $page='admon/import/products') }}"><button class="btn btn-success mx-auto"><i class="fe fe-upload"></i> Importar por CSV</button></a>
+							</div>
 							<div class="ml-auto">
 								<div class="input-group">
 									<a href="{{ url('/' . $page='admon/add/producto') }}" class="btn btn-info btn-icon mr-2" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Agregar Nuevo">

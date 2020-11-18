@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Configuracion from '../Configuration';
 import Cookies from 'universal-cookie';
-import { set } from 'lodash';
+var Select = require('react-select');
+
 
 class App_Admon_Add_Product extends Component {
 
@@ -16,8 +17,10 @@ class App_Admon_Add_Product extends Component {
           editing: false,
           producto: [],
           tallas: [],
-          colores: []          
-        };
+          colores: [],
+          categorias_selected:"",
+          categorias: [],
+          };
         
       }
 
@@ -32,6 +35,24 @@ class App_Admon_Add_Product extends Component {
 
       componentDidMount()
       {
+        fetch(Configuracion.url_principal+"api/all_categories")
+        .then(res => res.json())
+        .then(
+        (result) => {
+            this.setState({
+                categorias: result
+            });           
+            
+        },
+        
+            (error) => {
+                this.setState({
+                isLoaded: true,
+                error
+                });
+            }
+        );
+
           if(document.getElementById("tokenEditing").value != "")
           {
             fetch(Configuracion.url_principal+"api/product_detail/"+document.getElementById("tokenEditing").value)
@@ -44,9 +65,9 @@ class App_Admon_Add_Product extends Component {
                         editing: true,
                         producto: result[0],
                         tallas: JSON.parse(result[0].sizes),
-                        colores: JSON.parse(result[0].colores)
+                        colores: JSON.parse(result[0].colores),
+                        categorias_selected: JSON.parse(result[0].categorias).join()
                     });
-
 
                     $('#product_id').val(this.state.producto.id);
                     $('#producto_nombre').val(this.state.producto.name);
@@ -80,7 +101,8 @@ class App_Admon_Add_Product extends Component {
                     {
                         $('#tallas').siblings('.ms-parent').find('input[value="'+this.state.tallas[its]+'"]').trigger('click');
                         its++;
-                    }
+                    }                    
+                    
                 }
               },
               
@@ -115,6 +137,7 @@ class App_Admon_Add_Product extends Component {
           var permite_entallaje = $('#permite_entallaje').prop('checked');
           var unica_pieza = $('#unica_pieza').prop('checked');
           var stock = $('#stock').val();
+          var categoria = $('#categorias').val();
 
           if(imagen_principal.length == 0 
             || imagen_secundaria.length == 0 
@@ -148,6 +171,13 @@ class App_Admon_Add_Product extends Component {
               return false;
           }
           else var tallas = JSON.stringify($('#tallas').val());
+
+          if(categoria.length == 0)
+          {
+              alert("Es obligatorio elegir minimo una categoria");
+              return false;
+          }
+          else var categorias = JSON.stringify(categoria);
 
           if(stock == undefined)
           {
@@ -205,6 +235,7 @@ class App_Admon_Add_Product extends Component {
                     formData.append('permite_entallaje', permite_entallaje);
                     formData.append('unica_pieza', unica_pieza);
                     formData.append('stock', stock);
+                    formData.append('categorias', categorias);
 
                     let config = {
                         method: 'POST',
@@ -270,6 +301,13 @@ class App_Admon_Add_Product extends Component {
               return false;
           }
           else var tallas = JSON.stringify($('#tallas').val());
+
+          if(categoria.length == 0)
+          {
+              alert("Es obligatorio elegir minimo una categoria");
+              return false;
+          }
+          else var categorias = JSON.stringify(categoria);
 
           try {
 
@@ -373,6 +411,7 @@ class App_Admon_Add_Product extends Component {
                 formDataUpdate.append('permite_entallaje', permite_entallaje);
                 formDataUpdate.append('unica_pieza', unica_pieza);
                 formDataUpdate.append('stock', stock);
+                formDataUpdate.append('categorias', categorias);
         
                 let config = {
                     method: 'POST',
@@ -752,6 +791,18 @@ class App_Admon_Add_Product extends Component {
                         </div>
                         <div className="row">
                             <div className="col-xl-6 col-lg-12 col-md-12">
+                                <div className="form-group">
+                                    <label>Seleccionar Categoria</label>
+                                    <select id="categorias" multiple="multiple" className="form-control select2-show-search" value={this.state.categorias_selected}>
+                                        {this.state.categorias.map((row) => (
+                                            <option value={row.id} key={row.id}>{row.nombre}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xl-6 col-lg-12 col-md-12">
                                 <ul className="list-group">
                                     <li className="list-group-item">
                                         Permite Entallaje
@@ -761,7 +812,7 @@ class App_Admon_Add_Product extends Component {
                                         </div>
                                     </li>
                                     <li className="list-group-item">
-                                        Es única Pieza
+                                        One Size
                                         <div className="material-switch pull-right">
                                             <input id="unica_pieza" name="switch2" type="checkbox"/>
                                             <label htmlFor="unica_pieza" className="label-success"></label>

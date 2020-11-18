@@ -169,74 +169,8 @@
                                 <section>
                                     <div class=content_container> 
                                         <div class="column_row">
-                                            <div class="columns_wrap">
-                                                <div class="column_container column-1_3 sc_layouts_column_icons_position_left">
-                                                    <div class="column-inner">
-                                                        <div class="text_column">
-                                                            <div class="empty_space h-1em"><span class="empty_space_inner"></span></div>
-                                                            <div class="sc_price sc_price_default">
-                                                                <div class="sc_price_info">
-                                                                    <div class="sc_price_title"><a href="#">Silver Card</a></div>
-                                                                    <div class="sc_price_price"><span class="sc_price_decimals">$</span><span class="sc_price_value">55,99</span></div>
-                                                                    <div class="sc_price_details">
-                                                                        <p></p>
-                                                                        <ul>
-                                                                            <li>Lorem Ipsum</li>
-                                                                            <li>Dolor Sit</li>
-                                                                            <li>Quisque magna</li>
-                                                                        </ul>
-                                                                        <p></p>
-                                                                    </div>
-                                                                    <a href="#" class="sc_price_link">Shop Now</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div><div class="column_container column-1_3 sc_layouts_column_icons_position_left">
-                                                    <div class="column-inner">
-                                                        <div class="text_column">
-                                                            <div class="empty_space h-1em"><span class="empty_space_inner"></span></div>
-                                                            <div class="sc_price sc_price_extra">
-                                                                <div class="sc_price_info">
-                                                                    <div class="sc_price_title"><a href="#">E-Gift Card</a></div>
-                                                                    <div class="sc_price_price"><span class="sc_price_decimals">$</span><span class="sc_price_value">29,00</span></div>
-                                                                    <div class="sc_price_details">
-                                                                        <p></p>
-                                                                        <ul>
-                                                                            <li>Lorem Ipsum</li>
-                                                                            <li>Dolor Sit</li>
-                                                                            <li>Quisque magna</li>
-                                                                        </ul>
-                                                                        <p></p>
-                                                                    </div>
-                                                                    <a href="#" class="sc_price_link">Shop Now</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div><div class="column_container column-1_3 sc_layouts_column_icons_position_left">
-                                                    <div class="column-inner">
-                                                        <div class="text_column">
-                                                            <div class="empty_space h-1em"><span class="empty_space_inner"></span></div>
-                                                            <div class="sc_price sc_price_default">
-                                                                <div class="sc_price_info">
-                                                                    <div class="sc_price_title"><a href="#">Gold Card</a></div>
-                                                                    <div class="sc_price_price"><span class="sc_price_decimals">$</span><span class="sc_price_value">299,99</span></div>
-                                                                    <div class="sc_price_details">
-                                                                        <p></p>
-                                                                        <ul>
-                                                                            <li>Lorem Ipsum</li>
-                                                                            <li>Dolor Sit</li>
-                                                                            <li>Quisque magna</li>
-                                                                        </ul>
-                                                                        <p></p>
-                                                                    </div>
-                                                                    <a href="#" class="sc_price_link">Shop Now</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="columns_wrap" id="App_Feature_GiftCards">
+                                                
                                             </div>
                                         </div>
                                     </div>  
@@ -261,7 +195,7 @@
                                                     <div class="empty_space h-3em"><span class="empty_space_inner"></span></div>
                                                     <div class="empty_space hide_on_mobile h-4_4em"><span class="empty_space_inner"></span></div>
                                                     <div class="sc_title sc_title_default">
-                                                        <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Titulo</h2>
+                                                        <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Encuentra tu estilo</h2>
                                                     </div>
                                                     <!-- /.sc_title -->
                                                     <div class="empty_space h-2_8em"><span class="empty_space_inner"></span></div>

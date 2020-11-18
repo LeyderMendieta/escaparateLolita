@@ -32,6 +32,7 @@ class GiftCardController extends Controller
         $object->nombre = $request->nombre;
         $object->valor = $request->valor;
         $object->etiquetas = $request->etiquetas;
+        $object->color_hex = $request->color;
         $object->save();
                 
         return response()->json(array("gift_card"=> $object));
@@ -44,6 +45,7 @@ class GiftCardController extends Controller
         $object->nombre = $request->nombre;
         $object->valor = $request->valor;
         $object->etiquetas = $request->etiquetas;
+        $object->color_hex = $request->color;
         $object->save();
                 
         return response()->json(array("gift_card"=> $object));

@@ -178,7 +178,8 @@
                                             <a href="#" class="button checkout wc-forward">Checkout</a>
                                         </p>
                                     </div>
-                                </aside><aside class="widget woocommerce widget_price_filter">
+                                </aside>
+                                <aside class="widget woocommerce widget_price_filter">
                                     <h5 class="widget_title">Filtrar por Precio</h5>
                                     <form method="get" action="#">
                                         <div class="price_slider_wrapper">
@@ -192,30 +193,9 @@
                                             </div>
                                         </div>
                                     </form>
-                                </aside><aside class="widget woocommerce widget_product_categories">
-                                    <h5 class="widget_title">Categorias:</h5>
-                                    <ul class="product-categories">
-                                        <li class="cat-item"><a href="#">Bras</a></li>
-                                        <li class="cat-item"><a href="#">Highlight</a></li>
-                                        <li class="cat-item cat-parent"><a href="#">Panties</a>
-                                            <ul class='children'>
-                                                <li class="cat-item"><a href="#">3/$33</a></li>
-                                                <li class="cat-item"><a href="#">Bikinis</a></li>
-                                                <li class="cat-item"><a href="#">Bridal</a></li>
-                                                <li class="cat-item"><a href="#">Essentials</a></li>
-                                                <li class="cat-item"><a href="#">Hipsters</a></li>
-                                                <li class="cat-item"><a href="#">Retro Briefs</a></li>
-                                                <li class="cat-item"><a href="#">Thongs</a></li>
-                                                <li class="cat-item"><a href="#">View All Panties</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="cat-item"><a href="#">Pretty Little World</a></li>
-                                        <li class="cat-item"><a href="#">Sales</a></li>
-                                        <li class="cat-item"><a href="#">Sexy Intimates</a></li>
-                                        <li class="cat-item"><a href="#">Sleep &amp; Lounge</a></li>
-                                        <li class="cat-item"><a href="#">Sport</a></li>
-                                        <li class="cat-item"><a href="#">Swim Wear</a></li>
-                                    </ul>
+                                </aside>
+                                <aside class="widget woocommerce widget_product_categories" id="App_Shop_Filtro_Category">
+                                    
                                 </aside><aside class="widget woocommerce widget_product_search">
                                     <h5 class="widget_title">Busqueda</h5>
                                     <form role="search" method="get" class="search_form" action="#">
@@ -232,7 +212,8 @@
                                     <a href="#" class="image_wrap">
                                         <img src="{{URL::asset('assets/store/images/banner_1.jpg')}}" alt="" >
                                     </a>
-                                </aside><aside class="widget woocommerce widget_product_tag_cloud">
+                                </aside>
+                                <!--<aside class="widget woocommerce widget_product_tag_cloud">
                                     <h5 class="widget_title">Tags</h5>
                                     <div class="tagcloud">
                                         <a href='#' class='fsz-13_38pt' title='9 topics'>briefs</a>
@@ -242,7 +223,9 @@
                                         <a href='#' class='fsz-8pt' title='8 topics'>petite</a>
                                         <a href='#' class='fsz-22pt' title='11 topics'>undershirt</a>   
                                     </div>
-                                </aside><aside  class="widget widget_banner">
+                                </aside>
+                                    -->
+                                <aside  class="widget widget_banner">
                                     <a href="#" class="image_wrap">
                                         <img src="{{URL::asset('assets/store/images/banner_2.jpg')}}" alt="">
                                     </a>

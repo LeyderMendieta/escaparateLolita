@@ -32,9 +32,10 @@ class CreateProductsTable extends Migration
             $table->text("imagen_4_960x1286")->nullable(true);
             $table->text("sizes");
             $table->text("colores");
+            $table->text("categorias");
             $table->boolean("entallaje");
             $table->boolean("pieza_unica");
-            $table->integer("stock");
+            $table->integer("stock");            
             $table->timestamps();
         });
     }

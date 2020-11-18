@@ -18,6 +18,7 @@ class CreateGiftCardsTable extends Migration
             $table->text("nombre");
             $table->float("valor",50);
             $table->text("etiquetas");
+            $table->text("color_hex");
             $table->timestamps();
         });
     }

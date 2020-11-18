@@ -38,6 +38,7 @@ class ProductSeeder extends Seeder
                 'imagen_4_960x1286' => "product-15.jpg",
                 'sizes' => '["M", "X", "L"]',
                 'colores'=> '["azul", "verde", "rojo"]',
+                'categorias'=> '["1"]',
                 "entallaje" => true,
                 "pieza_unica" => false,
                 "stock" => 20

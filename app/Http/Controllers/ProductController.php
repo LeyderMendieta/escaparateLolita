@@ -76,6 +76,7 @@ class ProductController extends Controller
         $producto->entallaje = ($request->permite_entallaje == "true") ? 1 : 0;
         $producto->pieza_unica = ($request->unica_pieza == "true") ? 1 : 0;
         $producto->stock = $request->stock;
+        $producto->categorias = $request->categorias;
         
         $producto->imagen_main = $request->imagen_main;
         $producto->imagen_secundaria = $request->imagen_secundaria;
@@ -105,6 +106,7 @@ class ProductController extends Controller
         $producto->entallaje = ($request->permite_entallaje == "true") ? 1 : 0;
         $producto->pieza_unica = ($request->unica_pieza == "true") ? 1 : 0;
         $producto->stock = $request->stock;
+        $producto->categorias = $request->categorias;
 
         if($request->imagen_main != "noset") $producto->imagen_main = $request->imagen_main;
         if($request->imagen_secundaria != "noset") $producto->imagen_secundaria = $request->imagen_secundaria;

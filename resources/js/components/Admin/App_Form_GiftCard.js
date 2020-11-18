@@ -38,6 +38,7 @@ class App_Admon_Form_Gift_Card extends Component {
                     $('#nombre').val(this.state.cards.nombre);
                     $('#valor').val(this.state.cards.valor);
                     $('#contenido').val(this.state.cards.etiquetas);
+                    $('#color').val(this.state.cards.color_hex);
                 }
               },
               
@@ -57,6 +58,9 @@ class App_Admon_Form_Gift_Card extends Component {
           var nombre = $('#nombre').val();
           var valor = $('#valor').val();
           var contenido = $('#contenido').val();
+          var color = $('#color').val();
+          
+          console.log($('#colorpicker').val());
 
           if(nombre.length == 0)
           {
@@ -76,6 +80,12 @@ class App_Admon_Form_Gift_Card extends Component {
               return false;
           }
 
+          if(color.length == 0)
+          {
+              alert("Es obligatorio el color hexagesimal");
+              return false;
+          }
+
           try {
 
             $('#global-loader').show();
@@ -84,6 +94,7 @@ class App_Admon_Form_Gift_Card extends Component {
             formData.append('nombre', nombre);
             formData.append('valor', valor);
             formData.append('etiquetas', contenido);
+            formData.append('color', color);
 
             let config = {
                 method: 'POST',
@@ -112,6 +123,7 @@ class App_Admon_Form_Gift_Card extends Component {
             var nombre = $('#nombre').val();
             var valor = $('#valor').val();
             var contenido = $('#contenido').val();
+            var color = $('#color').val();
 
           if(nombre.length == 0)
           {
@@ -131,6 +143,12 @@ class App_Admon_Form_Gift_Card extends Component {
               return false;
           }
 
+          if(color.length == 0)
+          {
+              alert("Es obligatorio el color");
+              return false;
+          }
+
           try {
             $('#global-loader').show();
 
@@ -139,6 +157,7 @@ class App_Admon_Form_Gift_Card extends Component {
             formData.append('nombre', nombre);
             formData.append('valor', valor);
             formData.append('etiquetas', contenido);
+            formData.append('color', color);
 
             let config = {
                 method: 'POST',
@@ -176,6 +195,19 @@ class App_Admon_Form_Gift_Card extends Component {
                             </div>
                             <div className="col-xl-6">
                                 <input  id='card_id' type='hidden'/>
+                                <div className="form-group">
+                                    <label className="form-label">Color Hexagesimal (sin el hashtag)</label>
+                                    <div className="row gutters-sm">
+                                        <div className="col">
+                                            <input id="color" type="text" className="form-control" placeholder="Escribelo en Hexagesimal" maxLength="6"/>
+                                        </div>
+                                        <span className="col-auto align-self-center">
+                                            <span className="form-help" data-toggle="popover" data-placement="top" data-content="<p>Escribe porfavor el hexagesimal que se quiere mostrar en el borde de la tarjeta<br/> Ej: #FFFFFF #000000</p>
+                                            <p className='mb-0'><a href='https://htmlcolorcodes.com/es/' target='_blank'>Link para extraer hexagesimales</a></p>
+                                            " data-original-title="" title="">?</span>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="row">
@@ -191,9 +223,18 @@ class App_Admon_Form_Gift_Card extends Component {
                                 </div>
                             </div>
                             <div className="col-xl-6 col-lg-12 col-md-12">
-                                <div className="form-group">
-                                    <label className="form-label">Contenido de la tarjeta</label>
-                                    <textarea className="form-control" id="contenido" rows="3" placeholder="Escribe el contenido de la tarjeta"></textarea>
+                            <div className="form-group">
+                                    <label className="form-label">Contenido de la tarjeta (Ayuda a la derecha)</label>
+                                    <div className="row gutters-sm">
+                                        <div className="col">
+                                            <textarea className="form-control" id="contenido" rows="3" placeholder="Escribe el contenido de la tarjeta"></textarea>
+                                        </div>
+                                        <span className="col-auto align-self-center">
+                                            <span className="form-help" data-toggle="popover" data-placement="top" data-content="<p>Escribe porfavor el contenido de la tarjeta, por cada salto de linea que hagas se genera un nuevo espacio. en forma de listado </p>
+                                            <p className='mb-0'><a href='https://elescaparatedelolita.com/features/shortcodes' target='_blank'>Ver las tarjetas  regalo actuales</a></p>
+                                            " data-original-title="" title="">?</span>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
