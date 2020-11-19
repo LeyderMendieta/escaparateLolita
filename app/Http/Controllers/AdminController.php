@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\AmbienteConfiguration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -71,69 +72,29 @@ class AdminController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function loadSettings()
     {
-        //
+        $settings = AmbienteConfiguration::where("id",">",0)->get();
+
+        return response()->json($settings);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function updateSettings(Request $request)
     {
-        //
-    }
+        $model = AmbienteConfiguration::where("id",">",0)->first();
+        $model->url_embed_video_home = $request->url_embed_video;
+        if($request->imagen_video != "noset") $model->imagen_video_home = $request->imagen_video;
+        $model->url_producto_2_home = $request->url_producto_2;
+        if($request->imagen_2 != "noset") $model->imagen_2_home = $request->imagen_2;
+        $model->url_producto_3_home = $request->url_producto_3;
+        if($request->imagen_3 != "noset") $model->imagen_3_home = $request->imagen_3;
+        $model->url_producto_5_home = $request->url_producto_5;
+        //----imagenes insta
+        $model->url_nueva_colleccion = $request->url_nueva_collection;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $model->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        return response()->json(array("settings"=> $model));
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

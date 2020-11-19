@@ -155,7 +155,7 @@
                 <div class="menu_mobile scheme_dark">
                     <div class="menu_mobile_inner">
                         <a class="menu_mobile_close icon-cancel"></a>
-                        <a class="sc_layouts_logo" href="index.html"><img src="{{URL::asset('assets/store/images/logo_light.png')}}" alt=""></a>
+                        <a class="sc_layouts_logo" href="{{ url('/' . $page='home') }}"><img src="{{URL::asset('assets/store/images/logo.svg')}}" alt=""></a>
                         @include('store.layouts.nav-mobile-menu')
                         <div class="search_wrap search_style_normal search_mobile">
                             <div class="search_form_wrap">
@@ -202,9 +202,9 @@
                                                             <div class="widget_area sc_widget_video">
                                                                 <aside class="widget widget_video">
                                                                     <div class="trx_addons_video_player with_cover hover_play">
-                                                                        <img src="{{URL::asset('assets/store/images/bg_video-870x490.jpg')}}" alt="" >
+                                                                        <img src="{{URL::asset('images/'.$imagen_video_home)}}" alt="" >
                                                                         <div class="video_mask"></div>
-                                                                        <div class="video_hover" data-video="&lt;iframe src=&quot;https://player.vimeo.com/video/21709803?autoplay=1&quot; width=&quot;640&quot; height=&quot;352&quot; frameborder=&quot;0&quot; title=&quot;Lingerie&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;"></div>
+                                                                        <div class="video_hover" data-video="&lt;iframe src=&quot;{{$url_embed_video_home}}&quot; width=&quot;640&quot; height=&quot;352&quot; frameborder=&quot;0&quot; title=&quot;Lingerie&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;"></div>
                                                                         <div class="video_embed video_frame"></div>
                                                                     </div>
                                                                 </aside>
@@ -223,22 +223,21 @@
                                                         <div class="column-inner mb-20px">
                                                             <div class="sc_action sc_action_default" data-slides-min-width="250">
                                                                 <div class="sc_action_content sc_item_content">
-                                                                    <div class="sc_action_item sc_action_item_default with_image sc_action_item_tl bg_promo-2">
+                                                                    <div class="sc_action_item sc_action_item_default with_image sc_action_item_tl" style="background-image:url(../images/{{$imagen_2_home}});">
                                                                         <div class="sc_action_item_mask"></div>
                                                                         <div class="sc_action_item_inner">
-                                                                            <h3 class="sc_action_item_title"><span>Sexy Thongs</span></h3>
-                                                                            <div class="sc_action_item_description"><span>fun and flirty pieces for a<br/></span><span>seamless look</span></div><a href="shop.html" class="sc_action_item_link">browse</a>
+                                                                            <h3 class="sc_action_item_title"><span>Algo Sexy</span></h3>
+                                                                            <div class="sc_action_item_description"><span>Piezas Coquetas para una <br/></span><span>apariencia perfecta</span></div><a href="{{ $url_producto_2_home }}" class="sc_action_item_link">Buscar</a>
                                                                         </div>
-                                                                        <!-- /.sc_action_item_inner -->
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <!-- /.sc_action -->    
                                                         </div>
                                                     </div><div class="extra_height column_container column-5_12 sc_layouts_column_icons_position_left scr_xs">
-                                                    <div class="column-inner bg_banner">
+                                                    <div class="column-inner bg_banner" style="background-image:url(../images/{{$imagen_3_home}})!important;">
                                                         <div class="text_column bg_white_with_spaces">
-                                                            <h2 class="fsz_2em m_0 fw_400 align_center"><a href="shop.html"><b><span class="accent">Envio Gratis</span></b><br />
+                                                            <h2 class="fsz_2em m_0 fw_400 align_center"><a href="{{ $url_producto_3_home }}"><b><span class="accent">Envio Gratis</span></b><br />
                                                                 en todas las ordenes<br />
                                                                 mayor a $75!</a>
                                                             </h2>    
@@ -282,16 +281,12 @@
                                                                     <div class="sc_item_descr sc_promo_descr sc_align_default">Tenemos hecho a la medida</div>
                                                                     <div class="sc_item_button sc_item_button_simple sc_promo_button sc_align_default sc_button_wrap">
                                                                         <a  href="#trx_addons_calendar_popup"  class="sc_button sc_button_simple sc_button_size_normal sc_button_icon_left trx_addons_popup_link trx_addons_login_link">
-                                                                            <span class="sc_button_text"><span class="sc_button_title">Agendar Cita</span></span><!-- /.sc_button_text -->
+                                                                            <span class="sc_button_text"><span class="sc_button_title">Agendar Cita</span></span>
                                                                         </a>
-                                                                        <!-- /.sc_button -->
                                                                     </div>
-                                                                    <!-- /.sc_item_button sc_item_button_simple sc_promo_button sc_align_default -->
                                                                 </div>
                                                             </div>
-                                                            <!-- /.sc_promo_text -->
                                                         </div>
-                                                        <!-- /.sc_promo -->
                                                     </div>
                                                 </div> 
                                             </div>       
@@ -398,7 +393,7 @@
                                                 <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
                                                     <div class="column-inner">
                                                         <figure class="align_center">
-                                                            <a href="shop.html">
+                                                            <a href="{{ $url_producto_5_home }}">
                                                                 <img src="{{URL::asset('assets/store/images/home-style-bg.jpg')}}" alt="" />
                                                             </a>
                                                         </figure>
@@ -417,53 +412,47 @@
                                                         <div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
                                                             <div class="column-inner">
                                                                 <div class="text_column demo-title">
-                                                                    <h2 class="fw_400 fsz-3_2em lh-1em m_0">browse</h2>
-                                                                    <h2 class="fsz-4_53 lh-1em m_0">Lingerie</h2>
-                                                                    <h5 class="fw_400 fsz_12px mt-13px tt_upper lspace-1px"><span class="grey">select a category</span></h5> 
+                                                                    <h2 class="fw_400 fsz-3_2em lh-1em m_0">Busca</h2>
+                                                                    <h2 class="fsz-4_53 lh-1em m_0">Lo tuyo</h2>
+                                                                    <h5 class="fw_400 fsz_12px mt-13px tt_upper lspace-1px"><span class="grey">Seleccionar una categoria</span></h5> 
                                                                 </div>
                                                             </div>
                                                         </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
                                                             <div class="column-inner pt-5px pb-1em pl-3em pl_mid pl_xs">
                                                                 <div class="text_column inverse_link_color">
-                                                                    <div class="tt_upper fsz_11px lspace-1px lh-25px"><a href="#">Babydolls &amp; Slips</a>
+                                                                    <div class="tt_upper fsz_11px lspace-1px lh-25px">
+                                                                        @foreach($categorias as $key => $fila)
+                                                                        @if($key < 5)
+                                                                        <a href='shop/?categoria={{$fila->id}}'>{{$fila->nombre}}</a>
                                                                         <br />
-                                                                        <a href="#">Teddies &amp; Bodysuits</a>
-                                                                        <br />
-                                                                        <a href="#">Corsets &amp; Bustiers</a>
-                                                                        <br />
-                                                                        <a href="#">Kimonos</a>
-                                                                        <br />
-                                                                        <a href="#">Sport Bras</a>
+                                                                        @endif
+                                                                        @endforeach
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
                                                             <div class="column-inner pt-5px pb-1em pl-3em pl_mid pl_xs">
                                                                 <div class="text_column inverse_link_color">
-                                                                    <div class="tt_upper fsz_11px lspace-1px lh-25px"><a href="#">New Arrivals</a>
+                                                                    <div class="tt_upper fsz_11px lspace-1px lh-25px">
+                                                                        @foreach($categorias as $key => $fila)
+                                                                        @if($key > 4 && $key < 10)
+                                                                        <a href='shop/?categoria={{$fila->id}}'>{{$fila->nombre}}</a>
                                                                         <br />
-                                                                        <a href="#">Sexy Little Things</a>
-                                                                        <br />
-                                                                        <a href="#">Shapes Of The Season</a>
-                                                                        <br />
-                                                                        <a href="#">Little Black Lingerie</a>
-                                                                        <br />
-                                                                        <a href="#">Bridal Boutique</a>
+                                                                        @endif
+                                                                        @endforeach
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div><div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
                                                             <div class="column-inner pt-5px pb-1em pl-3em pl_mid pl_xs">
                                                                 <div class="text_column inverse_link_color">
-                                                                    <div class="tt_upper fsz_11px lspace-1px lh-25px"><a href="#">Cheekies &amp; Cheekinis</a>
+                                                                    <div class="tt_upper fsz_11px lspace-1px lh-25px">
+                                                                        @foreach($categorias as $key => $fila)
+                                                                        @if($key > 9 && $key < 15)
+                                                                        <a href='shop/?categoria={{$fila->id}}'>{{$fila->nombre}}</a>
                                                                         <br />
-                                                                        <a href="#">Thongs &amp; V-Strings</a>
-                                                                        <br />
-                                                                        <a href="#">Shorties &amp; Boyshorts</a>
-                                                                        <br />
-                                                                        <a href="#">Hiphuggers</a>
-                                                                        <br />
-                                                                        <a href="#">Bikinis</a>
+                                                                        @endif
+                                                                        @endforeach
                                                                     </div>
                                                                 </div>
                                                             </div>

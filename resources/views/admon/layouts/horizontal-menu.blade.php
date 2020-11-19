@@ -23,6 +23,8 @@
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/gift_cards') }}">Gift Cards</a></li>
 										</ul>
 									</li>
+									<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/settings_enviroment') }}"><i class="fe fe-settings"></i> Configuraciones</a>									
+									</li>
 								</ul>
 							</nav>
 							<!--Nav-->

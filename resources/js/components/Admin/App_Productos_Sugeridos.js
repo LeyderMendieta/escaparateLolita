@@ -29,14 +29,17 @@ class App_Admon_Productos_Sugeridos extends Component {
         .then(res => res.json())
         .then(
             (result) => {
-            console.log(result);
-                this.setState({
-                    productosSugeridos: result,
-                    opcion1: result[0],
-                    opcion2: result[1],
-                    opcion3: result[2],
-                    opcion4: result[3]
-                })
+                if(result.length > 4)
+                {
+                    this.setState({
+                        productosSugeridos: result,
+                        opcion1: result[0],
+                        opcion2: result[1],
+                        opcion3: result[2],
+                        opcion4: result[3]
+                    });
+                }
+                
             },
             
             (error) => {
@@ -114,7 +117,7 @@ class App_Admon_Productos_Sugeridos extends Component {
                             <div className="col-xl-6 col-lg-12 col-md-12">
                                 <div className="form-group ">
                                     <label className="form-label">Producto Sugerido 1</label>
-                                    <select id="target1" className="form-control select2-show-search" data-placeholder="Elige uno" value={this.state.opcion1.id}>
+                                    <select id="target1" className="form-control select2-show-search" data-placeholder="Elige uno" value={(this.state.opcion1.id != undefined) ? this.state.opcion1.id : ""}>
                                         <option label="Choose one">
                                         </option>
                                         {this.state.productos.map((row) => (
@@ -126,7 +129,7 @@ class App_Admon_Productos_Sugeridos extends Component {
                             <div className="col-xl-6 col-lg-12 col-md-12">
                                 <div className="form-group ">
                                     <label className="form-label">Producto Sugerido 2</label>
-                                    <select id="target2" className="form-control select2-show-search" data-placeholder="Elige uno" value={this.state.opcion2.id}>
+                                    <select id="target2" className="form-control select2-show-search" data-placeholder="Elige uno" value={(this.state.opcion2.id != undefined) ? this.state.opcion2.id : ""}>
                                         <option label="Choose one">
                                         </option>
                                         {this.state.productos.map((row) => (
@@ -140,7 +143,7 @@ class App_Admon_Productos_Sugeridos extends Component {
                             <div className="col-xl-6 col-lg-12 col-md-12">
                                 <div className="form-group ">
                                     <label className="form-label">Producto Sugerido 3</label>
-                                    <select id="target3" className="form-control select2-show-search" data-placeholder="Elige uno" value={this.state.opcion3.id}>
+                                    <select id="target3" className="form-control select2-show-search" data-placeholder="Elige uno" value={(this.state.opcion3.id != undefined) ? this.state.opcion3.id : ""}>
                                         <option label="Choose one">
                                         </option>
                                         {this.state.productos.map((row) => (
@@ -152,7 +155,7 @@ class App_Admon_Productos_Sugeridos extends Component {
                             <div className="col-xl-6 col-lg-12 col-md-12">
                                 <div className="form-group ">
                                     <label className="form-label">Producto Sugerido 4</label>
-                                    <select id="target4" className="form-control select2-show-search" data-placeholder="Elige uno" value={this.state.opcion4.id}>
+                                    <select id="target4" className="form-control select2-show-search" data-placeholder="Elige uno" value={(this.state.opcion4.id != undefined) ? this.state.opcion4.id : ""}>
                                         <option label="Choose one">
                                         </option>
                                         {this.state.productos.map((row) => (

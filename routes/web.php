@@ -13,21 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('store.home');
-});
-Route::get('/home', function () {
-    return view('store.home');
-});
+
+Route::get('/','AppController@showHome');
+Route::get('/home','AppController@showHome');
 Route::get('/about', function () {
     return view('store.about');
 });
 Route::get('/features/shortcodes', function () {
     return view('store.feature_shortcodes');
 });
-Route::get('/shop', function () {
-    return view('store.shop');
-});
+Route::get('/shop', 'AppController@showShop');
 Route::get('/shop-grid', function () {
     return view('store.shop_grid');
 });

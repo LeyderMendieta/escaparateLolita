@@ -18,7 +18,7 @@ class App_Admon_Add_Product extends Component {
           producto: [],
           tallas: [],
           colores: [],
-          categorias_selected:"",
+          categorias_producto: [],
           categorias: [],
           };
         
@@ -66,7 +66,7 @@ class App_Admon_Add_Product extends Component {
                         producto: result[0],
                         tallas: JSON.parse(result[0].sizes),
                         colores: JSON.parse(result[0].colores),
-                        categorias_selected: JSON.parse(result[0].categorias).join()
+                        categorias_producto: JSON.parse(result[0].categorias)
                     });
 
                     $('#product_id').val(this.state.producto.id);
@@ -101,7 +101,14 @@ class App_Admon_Add_Product extends Component {
                     {
                         $('#tallas').siblings('.ms-parent').find('input[value="'+this.state.tallas[its]+'"]').trigger('click');
                         its++;
-                    }                    
+                    }              
+                    
+                    var it = 0
+                    while(it < this.state.categorias_producto.length)
+                    {
+                        $('.selectgroup-input[value="'+this.state.categorias_producto[it]+'"]').attr('checked','checked');
+                        it++;
+                    }
                     
                 }
               },
@@ -137,7 +144,6 @@ class App_Admon_Add_Product extends Component {
           var permite_entallaje = $('#permite_entallaje').prop('checked');
           var unica_pieza = $('#unica_pieza').prop('checked');
           var stock = $('#stock').val();
-          var categoria = $('#categorias').val();
 
           if(imagen_principal.length == 0 
             || imagen_secundaria.length == 0 
@@ -172,12 +178,16 @@ class App_Admon_Add_Product extends Component {
           }
           else var tallas = JSON.stringify($('#tallas').val());
 
-          if(categoria.length == 0)
+          var json_categorias = [];
+          $('input[name="categoria"]:checked').each(function(i){
+            json_categorias.push($(this).val());
+          });
+          if(json_categorias.length == 0)
           {
               alert("Es obligatorio elegir minimo una categoria");
               return false;
           }
-          else var categorias = JSON.stringify(categoria);
+          else var categorias = JSON.stringify(json_categorias);
 
           if(stock == undefined)
           {
@@ -302,12 +312,16 @@ class App_Admon_Add_Product extends Component {
           }
           else var tallas = JSON.stringify($('#tallas').val());
 
-          if(categoria.length == 0)
+          var json_categorias = [];
+          $('input[name="categoria"]:checked').each(function(i){
+            json_categorias.push($(this).val());
+          });
+          if(json_categorias.length == 0)
           {
               alert("Es obligatorio elegir minimo una categoria");
               return false;
           }
-          else var categorias = JSON.stringify(categoria);
+          else var categorias = JSON.stringify(json_categorias);
 
           try {
 
@@ -792,12 +806,15 @@ class App_Admon_Add_Product extends Component {
                         <div className="row">
                             <div className="col-xl-6 col-lg-12 col-md-12">
                                 <div className="form-group">
-                                    <label>Seleccionar Categoria</label>
-                                    <select id="categorias" multiple="multiple" className="form-control select2-show-search" value={this.state.categorias_selected}>
+                                    <label className="form-label">Seleccionar Categoria</label>
+                                    <div className="selectgroup selectgroup-pills">
                                         {this.state.categorias.map((row) => (
-                                            <option value={row.id} key={row.id}>{row.nombre}</option>
-                                        ))}
-                                    </select>
+                                            <label className="selectgroup-item" key={row.id}>
+                                                <input type="checkbox" name="categoria" value={row.id} className="selectgroup-input"/>
+                                                <span className="selectgroup-button">{row.nombre}</span>
+                                            </label>
+                                        ))}                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>

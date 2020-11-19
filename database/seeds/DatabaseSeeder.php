@@ -1,6 +1,6 @@
 <?php
 
-
+use App\AmbienteConfiguration;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductBrandSeeder::class);
         $this->call(AgendaTipoSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(AmbienteConfigurationSeeder::class);
     }
 }

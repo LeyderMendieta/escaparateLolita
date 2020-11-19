@@ -5,48 +5,30 @@
                 <span>Home</span>
             </a>
         </li>
+        </li>
         <li class="menu-item">
             <a href="{{ url('/' . $page='about') }}">
-                <span>About Us</span>
+                <span>Nosotros</span>
             </a>
         </li>
-        <li class="menu-item menu-item-has-children">
-            <a href="#">
-                <span>Features</span>
+        <li class="menu-item">
+            <a href="{{ url('/' . $page='features/shortcodes') }}">
+                <span>Destacados</span>
             </a>
-            <ul class="sub-menu">
-                <li class="menu-item">
-                    <a href="{{ url('/' . $page='features/shortcodes') }}">
-                        <span>ShortCodes</span>
-                    </a>
-                </li>
-            </ul>
         </li>
-        <li class="menu-item  menu-item-has-children">
-            <a href="#">
-                <span>Store</span>
+        <li class="menu-item">
+            <a href="{{ url('/' . $page='shop') }}">
+                <span>Tienda</span>
             </a>
-            <ul class="sub-menu">
-                <li class="menu-item">
-                    <a href="{{ url('/' . $page='shop') }}">
-                        <span>WooCommerce</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ url('/' . $page='shop-grid') }}">
-                        <span>Ess. Grid Store</span>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li class="menu-item">
             <a href="{{ url('/' . $page='gallery') }}">
-                <span>Gallery</span>
+                <span>Galeria</span>
             </a>
         </li>
         <li class="menu-item">
             <a href="{{ url('/' . $page='contacts') }}">
-                <span>Contacts</span>
+                <span>Contactos</span>
             </a>
         </li>
     </ul>

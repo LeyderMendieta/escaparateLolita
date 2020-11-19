@@ -88,7 +88,7 @@
                 <div class="menu_mobile scheme_dark">
                     <div class="menu_mobile_inner">
                         <a class="menu_mobile_close icon-cancel"></a>
-                        <a class="sc_layouts_logo" href="index.html"><img src="{{URL::asset('assets/store/images/logo_light.png')}}" alt=""></a>
+                        <a class="sc_layouts_logo" href="index.html"><img src="{{URL::asset('assets/store/images/logo.svg')}}" alt=""></a>
                         @include('store.layouts.nav-mobile-menu')
                         <div class="search_wrap search_style_normal search_mobile">
                             <div class="search_form_wrap">
@@ -209,7 +209,7 @@
                                     <ul class="product_list_widget" id="App_Productos_Sugeridos_Show">
                                     </ul>
                                 </aside><aside class="widget widget_banner">
-                                    <a href="#" class="image_wrap">
+                                    <a href="{{$url_nueva_colleccion}}" class="image_wrap">
                                         <img src="{{URL::asset('assets/store/images/banner_1.jpg')}}" alt="" >
                                     </a>
                                 </aside>

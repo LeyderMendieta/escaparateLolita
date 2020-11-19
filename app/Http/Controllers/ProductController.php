@@ -46,7 +46,7 @@ class ProductController extends Controller
         $resultado = [];
         $uploaddir = __DIR__.'/../../../public/images/';
 
-        $list_images = ["imagen_main","imagen_secundaria","producto_imagen_peque_1","producto_imagen_big_1","producto_imagen_peque_2","producto_imagen_big_2","producto_imagen_peque_3","producto_imagen_big_3","producto_imagen_peque_4","producto_imagen_big_4"];
+        $list_images = ["imagen_main","imagen_secundaria","producto_imagen_peque_1","producto_imagen_big_1","producto_imagen_peque_2","producto_imagen_big_2","producto_imagen_peque_3","producto_imagen_big_3","producto_imagen_peque_4","producto_imagen_big_4","imagen_video","imagen_2","imagen_3"];
         foreach($list_images as $fila)
         {
             if(isset($_FILES[$fila]['name']))

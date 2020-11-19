@@ -21,7 +21,7 @@
                     <!-- .sc_layouts_menu -->
                     <nav class="sc_layouts_menu sc_layouts_menu_default menu_hover_fade hide_on_mobile" data-animation-in="fadeInUpSmall" data-animation-out="fadeOutDownSmall">
                         <ul id="menu-main-menu" class="sc_layouts_menu_nav">
-                            <li class="menu-item menu-item-has-children">
+                            <li class="menu-item">
                                 <li class="menu-item">
                                     <a href="{{ url('/' . $page='home') }}">
                                         <span>Home</span>

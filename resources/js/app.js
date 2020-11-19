@@ -40,4 +40,5 @@ require('./components/Admin/App_Admon_Brands');
 require('./components/Admin/App_Form_Brand');
 require('./components/Admin/App_Admon_GiftCards');
 require('./components/Admin/App_Form_GiftCard');
+require('./components/Admin/App_Admon_Settings_Enviroment');
 

@@ -79823,6 +79823,8 @@ __webpack_require__(/*! ./components/Admin/App_Admon_GiftCards */ "./resources/j
 
 __webpack_require__(/*! ./components/Admin/App_Form_GiftCard */ "./resources/js/components/Admin/App_Form_GiftCard.js");
 
+__webpack_require__(/*! ./components/Admin/App_Admon_Settings_Enviroment */ "./resources/js/components/Admin/App_Admon_Settings_Enviroment.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -80189,6 +80191,379 @@ var App_Admon_GiftCards = /*#__PURE__*/function (_Component) {
 
 if (document.getElementById('App_Admon_GiftCards')) {
   react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(App_Admon_GiftCards, null), document.getElementById('App_Admon_GiftCards'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/App_Admon_Settings_Enviroment.js":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Admin/App_Admon_Settings_Enviroment.js ***!
+  \************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Configuration */ "./resources/js/components/Configuration.js");
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
+  _inherits(App_Admon_Settings_Enviroment, _Component);
+
+  var _super = _createSuper(App_Admon_Settings_Enviroment);
+
+  function App_Admon_Settings_Enviroment(props) {
+    var _this;
+
+    _classCallCheck(this, App_Admon_Settings_Enviroment);
+
+    _this = _super.call(this, props);
+    var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      settings: []
+    };
+    return _this;
+  }
+
+  _createClass(App_Admon_Settings_Enviroment, [{
+    key: "setDefaultImagen",
+    value: function setDefaultImagen(input, field) {
+      $('#' + input).siblings('.dropify-preview').find('.dropify-render').html('<img src="' + _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_images + this.state.settings[field] + '">');
+      $('#' + input).siblings('.dropify-preview').find('.dropify-filename-inner').html("Imagen");
+      $('#' + input).siblings('.dropify-preview').show();
+      $('#' + input).siblings('.dropify-loader').hide();
+      $('#' + input).parents('.dropify-wrapper').addClass("has-preview");
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/getSettingsEnviroment").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        if (result.length > 0) {
+          _this2.setState({
+            settings: result[0]
+          });
+
+          $('#url_embed_video').val(_this2.state.settings.url_embed_video_home);
+
+          _this2.setDefaultImagen('imagen_video', 'imagen_video_home');
+
+          _this2.setDefaultImagen('imagen_2', 'imagen_2_home');
+
+          _this2.setDefaultImagen('imagen_3', 'imagen_3_home');
+
+          $('#url_producto_2').val(_this2.state.settings.url_producto_2_home);
+          $('#url_producto_3').val(_this2.state.settings.url_producto_3_home);
+          $('#url_producto_4').val(_this2.state.settings.url_producto_5_home);
+          $('#url_nueva_collection').val(_this2.state.settings.url_nueva_colleccion);
+        }
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
+    key: "updateSettings",
+    value: function updateSettings() {
+      var url_embed_video = $('#url_embed_video').val();
+      var imagen_video = $('#imagen_video').prop('files');
+      var imagen_2 = $('#imagen_2').prop('files');
+      var imagen_3 = $('#imagen_3').prop('files');
+      var url_producto_2 = $('#url_producto_2').val();
+      var url_producto_3 = $('#url_producto_3').val();
+      var url_producto_4 = $('#url_producto_4').val();
+      var url_nueva_collection = $('#url_nueva_collection').val();
+
+      if (url_embed_video.length == 0) {
+        alert("Es obligatorio el url del Embed Video");
+        return false;
+      }
+
+      if (url_producto_2.length == 0) {
+        alert("Es obligatorio el url de Promo 1");
+        return false;
+      }
+
+      if (url_producto_3.length == 0) {
+        alert("Es obligatorio el url de Promo 2");
+        return false;
+      }
+
+      if (url_producto_4.length == 0) {
+        alert("Es obligatorio el url de Promo 3");
+        return false;
+      }
+
+      if (url_nueva_collection.length == 0) {
+        alert("Es obligatorio el url de la Nueva Colección");
+        return false;
+      }
+
+      try {
+        var load_imagen_video = "noset";
+        var load_imagen_2 = "noset";
+        var load_imagen_3 = "noset";
+        var formData = new FormData();
+        if (imagen_video.length == 0) load_imagen_video = "noset";else formData.append('imagen_video', imagen_video[0]);
+        if (imagen_2.length == 0) load_imagen_2 = "noset";else formData.append('imagen_2', imagen_2[0]);
+        if (imagen_3.length == 0) load_imagen_3 = "noset";else {
+          formData.append('imagen_3', imagen_3[0]);
+        }
+        var config = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        };
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/store/productoImagen", config).then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          if (result.files.imagen_video != undefined) load_imagen_video = result.files.imagen_video;
+          if (result.files.imagen_2 != undefined) load_imagen_2 = result.files.imagen_2;
+          if (result.files.imagen_3 != undefined) load_imagen_3 = result.files.imagen_3;
+        });
+        $('#global-loader').show();
+        setTimeout(function () {
+          var formDataUpdate = new FormData();
+          formDataUpdate.append('url_embed_video', url_embed_video);
+          formDataUpdate.append('imagen_video', load_imagen_video);
+          formDataUpdate.append('imagen_2', load_imagen_2);
+          formDataUpdate.append('imagen_3', load_imagen_3);
+          formDataUpdate.append('url_producto_2', url_producto_2);
+          formDataUpdate.append('url_producto_3', url_producto_3);
+          formDataUpdate.append('url_producto_5', url_producto_4);
+          formDataUpdate.append('url_nueva_collection', url_nueva_collection);
+          var config = {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json'
+            },
+            body: formDataUpdate
+          };
+          fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/updateSettingsEnviroment", config).then(function (res) {
+            return res.json();
+          }).then(function (result) {
+            alert("Se han actualizado las Configuraciones");
+            location.href = "".concat(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal, "admon/settings_enviroment");
+          });
+        }, 3000);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-lg-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Url Embed Video - Pagina Inicio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "url_embed_video",
+        type: "text",
+        className: "form-control",
+        name: "url_embed",
+        placeholder: "Url de video"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Imagen de Video Embed ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 870X490"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "imagen_video",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Imagen Promo 1 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 690X470"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "imagen_2",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Imagen Promo 2 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 470X470"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "imagen_3",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Url Promo 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "url_producto_2",
+        type: "text",
+        className: "form-control",
+        name: "url_producto_2",
+        placeholder: "Url Promo 1"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Url Promo 2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "url_producto_3",
+        type: "text",
+        className: "form-control",
+        name: "url_producto_3",
+        placeholder: "Url Promo 2"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Url Promo 3"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "url_producto_4",
+        type: "text",
+        className: "form-control",
+        name: "url_producto_4",
+        placeholder: "Url Promo 3"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Url Nueva Colecci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "url_nueva_collection",
+        type: "text",
+        className: "form-control",
+        name: "url_nueva_collection",
+        placeholder: "Url Nueva Collecci\xF3n"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row my-5 text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-success mx-auto",
+        onClick: this.updateSettings.bind(this)
+      }, "Actualizar")))));
+    }
+  }]);
+
+  return App_Admon_Settings_Enviroment;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_Admon_Settings_Enviroment')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Admon_Settings_Enviroment, null), document.getElementById('App_Admon_Settings_Enviroment'));
 }
 
 /***/ }),
@@ -81718,7 +82093,7 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
       producto: [],
       tallas: [],
       colores: [],
-      categorias_selected: "",
+      categorias_producto: [],
       categorias: []
     };
     return _this;
@@ -81761,7 +82136,7 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
               producto: result[0],
               tallas: JSON.parse(result[0].sizes),
               colores: JSON.parse(result[0].colores),
-              categorias_selected: JSON.parse(result[0].categorias).join()
+              categorias_producto: JSON.parse(result[0].categorias)
             });
 
             $('#product_id').val(_this2.state.producto.id);
@@ -81806,6 +82181,13 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
               $('#tallas').siblings('.ms-parent').find('input[value="' + _this2.state.tallas[its] + '"]').trigger('click');
               its++;
             }
+
+            var it = 0;
+
+            while (it < _this2.state.categorias_producto.length) {
+              $('.selectgroup-input[value="' + _this2.state.categorias_producto[it] + '"]').attr('checked', 'checked');
+              it++;
+            }
           }
         }, function (error) {
           _this2.setState({
@@ -81836,7 +82218,6 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
       var permite_entallaje = $('#permite_entallaje').prop('checked');
       var unica_pieza = $('#unica_pieza').prop('checked');
       var stock = $('#stock').val();
-      var categoria = $('#categorias').val();
 
       if (imagen_principal.length == 0 || imagen_secundaria.length == 0 || producto_imagen_peque_1.length == 0 || producto_imagen_big_1.length == 0 || producto_imagen_peque_2.length == 0 || producto_imagen_big_2.length == 0 || producto_imagen_peque_3.length == 0 || producto_imagen_big_3.length == 0 || producto_imagen_peque_4.length == 0 || producto_imagen_big_4.length == 0) {
         alert("Imagenes obligatorias");
@@ -81858,10 +82239,15 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
         return false;
       } else var tallas = JSON.stringify($('#tallas').val());
 
-      if (categoria.length == 0) {
+      var json_categorias = [];
+      $('input[name="categoria"]:checked').each(function (i) {
+        json_categorias.push($(this).val());
+      });
+
+      if (json_categorias.length == 0) {
         alert("Es obligatorio elegir minimo una categoria");
         return false;
-      } else var categorias = JSON.stringify(categoria);
+      } else var categorias = JSON.stringify(json_categorias);
 
       if (stock == undefined) {
         alert("Es obligatorio colocar el Stock disponible");
@@ -81991,10 +82377,15 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
         return false;
       } else var tallas = JSON.stringify($('#tallas').val());
 
-      if (categoria.length == 0) {
+      var json_categorias = [];
+      $('input[name="categoria"]:checked').each(function (i) {
+        json_categorias.push($(this).val());
+      });
+
+      if (json_categorias.length == 0) {
         alert("Es obligatorio elegir minimo una categoria");
         return false;
-      } else var categorias = JSON.stringify(categoria);
+      } else var categorias = JSON.stringify(json_categorias);
 
       try {
         var imagen_main = "noset";
@@ -82627,16 +83018,22 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
         className: "col-xl-6 col-lg-12 col-md-12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Seleccionar Categoria"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        id: "categorias",
-        multiple: "multiple",
-        className: "form-control select2-show-search",
-        value: this.state.categorias_selected
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Seleccionar Categoria"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "selectgroup selectgroup-pills"
       }, this.state.categorias.map(function (row) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: row.id,
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "selectgroup-item",
           key: row.id
-        }, row.nombre);
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "checkbox",
+          name: "categoria",
+          value: row.id,
+          className: "selectgroup-input"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "selectgroup-button"
+        }, row.nombre));
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -83429,15 +83826,15 @@ var App_Admon_Productos_Sugeridos = /*#__PURE__*/function (_Component) {
       fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/products/reference_producto_sugerido").then(function (res) {
         return res.json();
       }).then(function (result) {
-        console.log(result);
-
-        _this2.setState({
-          productosSugeridos: result,
-          opcion1: result[0],
-          opcion2: result[1],
-          opcion3: result[2],
-          opcion4: result[3]
-        });
+        if (result.length > 4) {
+          _this2.setState({
+            productosSugeridos: result,
+            opcion1: result[0],
+            opcion2: result[1],
+            opcion3: result[2],
+            opcion4: result[3]
+          });
+        }
       }, function (error) {
         _this2.setState({
           isLoaded: true,
@@ -83508,7 +83905,7 @@ var App_Admon_Productos_Sugeridos = /*#__PURE__*/function (_Component) {
         id: "target1",
         className: "form-control select2-show-search",
         "data-placeholder": "Elige uno",
-        value: this.state.opcion1.id
+        value: this.state.opcion1.id != undefined ? this.state.opcion1.id : ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         label: "Choose one"
       }), this.state.productos.map(function (row) {
@@ -83526,7 +83923,7 @@ var App_Admon_Productos_Sugeridos = /*#__PURE__*/function (_Component) {
         id: "target2",
         className: "form-control select2-show-search",
         "data-placeholder": "Elige uno",
-        value: this.state.opcion2.id
+        value: this.state.opcion2.id != undefined ? this.state.opcion2.id : ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         label: "Choose one"
       }), this.state.productos.map(function (row) {
@@ -83546,7 +83943,7 @@ var App_Admon_Productos_Sugeridos = /*#__PURE__*/function (_Component) {
         id: "target3",
         className: "form-control select2-show-search",
         "data-placeholder": "Elige uno",
-        value: this.state.opcion3.id
+        value: this.state.opcion3.id != undefined ? this.state.opcion3.id : ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         label: "Choose one"
       }), this.state.productos.map(function (row) {
@@ -83564,7 +83961,7 @@ var App_Admon_Productos_Sugeridos = /*#__PURE__*/function (_Component) {
         id: "target4",
         className: "form-control select2-show-search",
         "data-placeholder": "Elige uno",
-        value: this.state.opcion4.id
+        value: this.state.opcion4.id != undefined ? this.state.opcion4.id : ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         label: "Choose one"
       }), this.state.productos.map(function (row) {

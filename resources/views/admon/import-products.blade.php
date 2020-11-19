@@ -49,6 +49,18 @@
                         @endif
 
                         @if(empty($data_response))
+                        <table class="table table-bordered">
+                            <tr>
+                                <td colspan="5" class="text-center">Orden del archivo plano como se debe cargar, debe ser igual para que cargue sin problemas <a href="{{ url('/' . $page='docs/plantilla_importar_productos.csv') }}"><span class="fe fe-download"></span> Descargar Plantilla</a></td>
+                            </tr>
+                            <tr>
+                                <td>Nombre (Texto)</td>
+                                <td>Descripción (Texto)</td>
+                                <td>Precio Antes (Numero, acepta Decimales)</td>
+                                <td>Precio Ahora (Numero, acepta Decimales)</td>
+                                <td>Stock (Numero sin decimales)</td>
+                            </tr>
+                        </table>
                         <form class="form-horizontal" method="POST" action="{{ route('import_parse') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
@@ -67,18 +79,6 @@
                                                         <div class="card-header">
                                                             <div>
                                                                 <h3 class="card-title">Carga aqui el archivo plano</h3>
-                                                            </div>
-                                                            <div class="card-options">
-                                                                <a href="" class="mr-4 text-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                                                                    <span class="fe fe-more-horizontal fs-20"></span>
-                                                                </a>
-                                                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                                                    <li><a href="#"><i class="fe fe-eye mr-2"></i>View</a></li>
-                                                                    <li><a href="#"><i class="fe fe-plus-circle mr-2"></i>Add</a></li>
-                                                                    <li><a href="#"><i class="fe fe-trash-2 mr-2"></i>Remove</a></li>
-                                                                    <li><a href="#"><i class="fe fe-download-cloud mr-2"></i>Download</a></li>
-                                                                    <li><a href="#"><i class="fe fe-settings mr-2"></i>More</a></li>
-                                                                </ul>
                                                             </div>
                                                         </div>
                                                         <div class="card-body">

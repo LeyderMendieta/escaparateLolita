@@ -78,3 +78,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     Route::post('/update/productosSugeridos','ProductController@actualizarProductosSugeridos');
     Route::post('/update/productosMustHave','ProductController@actualizarProductosMustHave');
+
+    Route::get('/getSettingsEnviroment','AdminController@loadSettings');
+    Route::post('/updateSettingsEnviroment','AdminController@updateSettings');
