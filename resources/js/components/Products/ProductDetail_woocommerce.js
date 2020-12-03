@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductDetail_Woocommerce = ({ producto,url_images }) => (
+const ProductDetail_Woocommerce = ({ producto,url_images, colores, tallas }) => (
 
     <div className="woocommerce-tabs sc_tabs">
         <ul className="tabs wc-tabs">
@@ -37,19 +37,19 @@ const ProductDetail_Woocommerce = ({ producto,url_images }) => (
                     <h4 className="sc_accordion_title">Politica de Entrega Completa
                         <i className="sc_button_hover_slide_left grad_rev"></i>
                     </h4>
-                    <div className="sc_accordion_content">Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <div className="sc_accordion_content">{producto.politica_entrega}</div>
                 </div>
                 <div className="sc_accordion_item even">
                     <h4 className="sc_accordion_title">Entrega
                         <i className="sc_button_hover_slide_left grad_rev"></i>
                     </h4>
-                    <div className="sc_accordion_content">Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <div className="sc_accordion_content">{producto.entrega}</div>
                 </div>
                 <div className="sc_accordion_item odd">
                     <h4 className="sc_accordion_title">Devoluciones
                         <i className="sc_button_hover_slide_left grad_rev"></i>
                     </h4>
-                    <div className="sc_accordion_content">Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <div className="sc_accordion_content">{producto.devoluciones}</div>
                 </div>
             </div>
             
@@ -59,15 +59,15 @@ const ProductDetail_Woocommerce = ({ producto,url_images }) => (
             <table className="shop_attributes">
                 <tbody>
                 <tr>
-                    <th>Size</th>
+                    <th>Tallas</th>
                     <td>
-                        <p>S, M, L, XL</p>
+                    <p style={{textTransform: "capitalize"}}>{tallas.map((row,index) => (index == (tallas.length - 1)) ?  row : row+", ")}</p>
                     </td>
                 </tr>
                 <tr className="alt">
                     <th>Color</th>
                     <td>
-                        <p>Gentle Peach, Red Passion, Valiant Violet</p>
+                        <p style={{textTransform: "capitalize"}}>{colores.map((row,index) => (index == (colores.length - 1)) ?  row : row+", ")}</p>
                     </td>
                 </tr>
                 </tbody>

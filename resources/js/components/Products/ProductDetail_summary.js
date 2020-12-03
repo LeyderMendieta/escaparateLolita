@@ -25,9 +25,10 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tall
             <table className="variations">
                 <tbody>
                     <tr>
-                        <td className="label"><label htmlFor="pa_size">Talla Disponible</label></td>
+                        <td className="label"><label htmlFor="pa_size">{(producto.pieza_unica == 1) ? 'Talla Unica' : 'Talla Disponible'}</label></td>
                         <td className="value">
-                            <select id="pa_size" onChange={setValueModel} className="d_none-imp" name="attribute_pa_size" data-attribute_name="attribute_pa_size" data-show_option_none="yes">
+                            <input type="hidden" id='oneSize_target' value={(producto.pieza_unica == 1) ? "active" : "offset"}/>
+                            <select id="pa_size" onChange={setValueModel} className="d_none-imp" name="attribute_pa_size" data-attribute_name="attribute_pa_size" data-show_option_none="yes" >
                                 <option value="">Elige una Opción</option>
                                 {tallas.map((talla) => (
                                     <option value={talla} key={talla}>{talla}</option>
@@ -35,8 +36,6 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tall
 
                             </select>
                             <div id="pa_size_attrib_extended" className="pa_size_attrib_extended trx_addons_attrib_extended" data-attrib="pa_size ">
-                                
-                                                  
                                 {tallas.map((talla, index) => (                                    
                                     <span className="trx_addons_attrib_item trx_addons_attrib_button trx_addons_tooltip" data-value={talla} data-tooltip={talla} key={index}>
                                         <span>{talla}</span>

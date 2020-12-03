@@ -72,11 +72,15 @@ class App_Admon_Add_Product extends Component {
                     $('#product_id').val(this.state.producto.id);
                     $('#producto_nombre').val(this.state.producto.name);
                     $('#producto_descripcion').val(this.state.producto.descripcion);
+                    $('#politica_entrega').val(this.state.producto.politica_entrega);
+                    $('#entrega').val(this.state.producto.entrega);
+                    $('#devoluciones').val(this.state.producto.devoluciones);
                     $('#producto_precio_antes').val(this.state.producto.precio_antes);
                     $('#producto_precio_ahora').val(this.state.producto.precio_ahora);
                     $('#permite_entallaje').prop('checked',this.state.producto.entallaje);
                     $('#unica_pieza').prop('checked',this.state.producto.pieza_unica);
                     $('#stock').val(this.state.producto.stock);
+                    $('#porcentaje_descuento').val(this.state.producto.porcentaje_descuento);
 
                     this.setDefaultImagen('producto_imagen_principal','imagen_main');
                     this.setDefaultImagen('producto_imagen_secundaria','imagen_secundaria');
@@ -128,6 +132,9 @@ class App_Admon_Add_Product extends Component {
       {
           var nombre = $('#producto_nombre').val();
           var descripcion = $('#producto_descripcion').val();
+          var politica_entrega = $('#politica_entrega').val();
+          var entrega = $('#entrega').val();
+          var devoluciones = $('#devoluciones').val();
           var precio_antes = $('#producto_precio_antes').val();
           var precio_ahora = $('#producto_precio_ahora').val();
           var imagen_principal = $('#producto_imagen_principal').prop('files');
@@ -144,17 +151,12 @@ class App_Admon_Add_Product extends Component {
           var permite_entallaje = $('#permite_entallaje').prop('checked');
           var unica_pieza = $('#unica_pieza').prop('checked');
           var stock = $('#stock').val();
+          var porcentaje_descuento = $('#porcentaje_descuento').val();
 
           if(imagen_principal.length == 0 
             || imagen_secundaria.length == 0 
             || producto_imagen_peque_1.length == 0
-            || producto_imagen_big_1.length == 0
-            || producto_imagen_peque_2.length == 0
-            || producto_imagen_big_2.length == 0
-            || producto_imagen_peque_3.length == 0
-            || producto_imagen_big_3.length == 0
-            || producto_imagen_peque_4.length == 0
-            || producto_imagen_big_4.length == 0)
+            || producto_imagen_big_1.length == 0)
           {
               alert("Imagenes obligatorias");
               return false;
@@ -171,10 +173,17 @@ class App_Admon_Add_Product extends Component {
           }
           else var colores = JSON.stringify(json_colores);
 
-          if($('#tallas').val().length == 0)
+          if($('#tallas').val().length == 0 || unica_pieza)
           {
-              alert("Es obligatorio elegir minimo una talla");
-              return false;
+              if(unica_pieza)
+              {
+                  var tallas = "[]";
+              }
+              else
+              {
+                alert("Es obligatorio elegir minimo una talla");
+                return false;
+              }              
           }
           else var tallas = JSON.stringify($('#tallas').val());
 
@@ -203,12 +212,24 @@ class App_Admon_Add_Product extends Component {
             formData.append('imagen_secundaria', imagen_secundaria[0]);
             formData.append('producto_imagen_peque_1', producto_imagen_peque_1[0]);
             formData.append('producto_imagen_big_1', producto_imagen_big_1[0]);
-            formData.append('producto_imagen_peque_2', producto_imagen_peque_2[0]);
-            formData.append('producto_imagen_big_2', producto_imagen_big_2[0]);
-            formData.append('producto_imagen_peque_3', producto_imagen_peque_3[0]);
-            formData.append('producto_imagen_big_3', producto_imagen_big_3[0]);
-            formData.append('producto_imagen_peque_4', producto_imagen_peque_4[0]);
-            formData.append('producto_imagen_big_4', producto_imagen_big_4[0]);
+
+            if(producto_imagen_peque_2.length == 0 ) producto_imagen_peque_2 = "noset";
+            else formData.append('producto_imagen_peque_2', producto_imagen_peque_2[0]);
+
+            if(producto_imagen_big_2.length == 0 ) producto_imagen_big_2 = "noset";
+            else formData.append('producto_imagen_big_2', producto_imagen_big_2[0]);
+
+            if(producto_imagen_peque_3.length == 0 ) producto_imagen_peque_3 = "noset";
+            else formData.append('producto_imagen_peque_3', producto_imagen_peque_3[0]);
+
+            if(producto_imagen_big_3.length == 0 ) producto_imagen_big_3 = "noset";
+            else formData.append('producto_imagen_big_3', producto_imagen_big_3[0]);
+
+            if(producto_imagen_peque_4.length == 0 ) producto_imagen_peque_4 = "noset";
+            else formData.append('producto_imagen_peque_4', producto_imagen_peque_4[0]);
+
+            if(producto_imagen_big_4.length == 0 ) producto_imagen_big_4 = "noset";
+            else formData.append('producto_imagen_big_4', producto_imagen_big_4[0]);
 
             let config = {
               method: 'POST',
@@ -222,29 +243,41 @@ class App_Admon_Add_Product extends Component {
             .then(res => res.json())
             .then(
               (result) => {
-                  console.log(result.files);
                 if(result.files.imagen_main != undefined)
                 {
+                    if(result.files.producto_imagen_peque_2 != undefined) producto_imagen_peque_2 = result.files.producto_imagen_peque_2;
+                    if(result.files.producto_imagen_big_2 != undefined) producto_imagen_big_2 = result.files.producto_imagen_big_2;
+
+                    if(result.files.producto_imagen_peque_3 != undefined) producto_imagen_peque_3 = result.files.producto_imagen_peque_3;
+                    if(result.files.producto_imagen_big_3 != undefined) producto_imagen_big_3 = result.files.producto_imagen_big_3;
+
+                    if(result.files.producto_imagen_peque_4 != undefined) producto_imagen_peque_4 = result.files.producto_imagen_peque_4;
+                    if(result.files.producto_imagen_big_4 != undefined) producto_imagen_big_4 = result.files.producto_imagen_big_4;
+
                     const formData = new FormData();
                     formData.append('nombre', nombre);
                     formData.append('descripcion', descripcion);
+                    formData.append('politica_entrega', politica_entrega);
+                    formData.append('entrega', entrega);
+                    formData.append('devoluciones', devoluciones);
                     formData.append('precio_antes', precio_antes);
                     formData.append('precio_ahora', precio_ahora);
                     formData.append('imagen_main', result.files.imagen_main);
                     formData.append('imagen_secundaria', result.files.imagen_secundaria);
                     formData.append('producto_imagen_peque_1', result.files.producto_imagen_peque_1);
                     formData.append('producto_imagen_big_1', result.files.producto_imagen_big_1);
-                    formData.append('producto_imagen_peque_2', result.files.producto_imagen_peque_2);
-                    formData.append('producto_imagen_big_2', result.files.producto_imagen_big_2);
-                    formData.append('producto_imagen_peque_3', result.files.producto_imagen_peque_3);
-                    formData.append('producto_imagen_big_3', result.files.producto_imagen_big_3);
-                    formData.append('producto_imagen_peque_4', result.files.producto_imagen_peque_4);
-                    formData.append('producto_imagen_big_4', result.files.producto_imagen_big_4);
+                    formData.append('producto_imagen_peque_2', producto_imagen_peque_2);
+                    formData.append('producto_imagen_big_2', producto_imagen_big_2);
+                    formData.append('producto_imagen_peque_3', producto_imagen_peque_3);
+                    formData.append('producto_imagen_big_3', producto_imagen_big_3);
+                    formData.append('producto_imagen_peque_4', producto_imagen_peque_4);
+                    formData.append('producto_imagen_big_4', producto_imagen_big_4);
                     formData.append('colores', colores);
                     formData.append('tallas', tallas);
                     formData.append('permite_entallaje', permite_entallaje);
                     formData.append('unica_pieza', unica_pieza);
                     formData.append('stock', stock);
+                    formData.append('porcentaje_descuento', porcentaje_descuento);
                     formData.append('categorias', categorias);
 
                     let config = {
@@ -278,6 +311,9 @@ class App_Admon_Add_Product extends Component {
         var id_update = $('#product_id').val();
         var nombre = $('#producto_nombre').val();
         var descripcion = $('#producto_descripcion').val();
+        var politica_entrega = $('#politica_entrega').val();
+        var entrega = $('#entrega').val();
+        var devoluciones = $('#devoluciones').val();
         var precio_antes = $('#producto_precio_antes').val();
         var precio_ahora = $('#producto_precio_ahora').val();
         var imagen_principal = $('#producto_imagen_principal').prop('files');
@@ -293,6 +329,7 @@ class App_Admon_Add_Product extends Component {
         var permite_entallaje = $('#permite_entallaje').prop('checked');
         var unica_pieza = $('#unica_pieza').prop('checked');
         var stock = $('#stock').val();
+        var porcentaje_descuento = $('#porcentaje_descuento').val();
 
         var json_colores = [];
           $('input[name="color"]:checked').each(function(i){
@@ -305,10 +342,17 @@ class App_Admon_Add_Product extends Component {
           }
           else var colores = JSON.stringify(json_colores);
 
-          if($('#tallas').val().length == 0)
+          if($('#tallas').val().length == 0 || unica_pieza)
           {
+            if(unica_pieza)
+            {
+                var tallas = "[]";
+            }
+            else
+            {
               alert("Es obligatorio elegir minimo una talla");
               return false;
+            }
           }
           else var tallas = JSON.stringify($('#tallas').val());
 
@@ -408,6 +452,9 @@ class App_Admon_Add_Product extends Component {
                 formDataUpdate.append('id', id_update);
                 formDataUpdate.append('nombre', nombre);
                 formDataUpdate.append('descripcion', descripcion);
+                formDataUpdate.append('politica_entrega', politica_entrega);
+                formDataUpdate.append('entrega', entrega);
+                formDataUpdate.append('devoluciones', devoluciones);
                 formDataUpdate.append('precio_antes', precio_antes);
                 formDataUpdate.append('precio_ahora', precio_ahora);
                 formDataUpdate.append('imagen_main', imagen_main);
@@ -425,6 +472,7 @@ class App_Admon_Add_Product extends Component {
                 formDataUpdate.append('permite_entallaje', permite_entallaje);
                 formDataUpdate.append('unica_pieza', unica_pieza);
                 formDataUpdate.append('stock', stock);
+                formDataUpdate.append('porcentaje_descuento', porcentaje_descuento);
                 formDataUpdate.append('categorias', categorias);
         
                 let config = {
@@ -469,10 +517,30 @@ class App_Admon_Add_Product extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-xl-12">
+                            <div className="col-xl-6 col-lg-12 col-md-12">
                                 <div className="form-group">
                                     <label className="form-label">Descripción</label>
                                     <textarea className="form-control" id="producto_descripcion" rows="3" placeholder="Escribe la descripción del producto"></textarea>
+                                </div>												
+                            </div>
+                            <div className="col-xl-6 col-lg-12 col-md-12">
+                                <div className="form-group">
+                                    <label className="form-label">Politica de Entrega Completa</label>
+                                    <textarea className="form-control" id="politica_entrega" rows="3" placeholder="Escribe la descripción del producto"></textarea>
+                                </div>												
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xl-6 col-lg-12 col-md-12">
+                                <div className="form-group">
+                                    <label className="form-label">Entrega</label>
+                                    <textarea className="form-control" id="entrega" rows="3" placeholder="Escribe la descripción del producto"></textarea>
+                                </div>								
+                            </div>
+                            <div className="col-xl-6 col-lg-12 col-md-12">
+                                <div className="form-group">
+                                    <label className="form-label">Devoluciones</label>
+                                    <textarea className="form-control" id="devoluciones" rows="3" placeholder="Escribe la descripción del producto"></textarea>
                                 </div>												
                             </div>
                         </div>
@@ -815,6 +883,15 @@ class App_Admon_Add_Product extends Component {
                                             </label>
                                         ))}                                        
                                     </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-6 col-lg-12 col-md-12">
+                                <label className="form-label">Porcentaje Descuento (Opcional)</label>
+                                <div className="input-group">
+                                    <input id='porcentaje_descuento' type="number" className="form-control" />
+                                    <span className="input-group-append">
+                                        <button className="btn btn-danger" type="button">%</button>
+                                    </span>
                                 </div>
                             </div>
                         </div>

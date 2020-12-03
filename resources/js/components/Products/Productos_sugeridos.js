@@ -25,7 +25,6 @@ class App_Productos_Sugeridos_Show extends Component {
                 isLoaded: true,
                 productos: result
               });
-              console.log(this.state);
             },
             
             (error) => {
@@ -40,13 +39,13 @@ class App_Productos_Sugeridos_Show extends Component {
       render(){
         return (
             <React.Fragment>
-            {this.state.productos.map((row) => (
-                <li>
+            {this.state.productos.map((row,index) => (
+                <li key={index}>
                     <a href={Configuracion.url_principal+"shop/"+row.acceso_url} title={row.name}> 
                         <img src={Configuracion.url_images+row.imagen_main} alt="" /> 
-                        <span class="product-title">{row.name}</span> 
+                        <span className="product-title">{row.name}</span> 
                     </a>
-                    <div class="star-rating" title="Rated 5 out of 5"><span class="w_100per"><strong class="rating">5</strong> out of 5</span>
+                    <div className="star-rating" title="Rated 5 out of 5"><span className="w_100per"><strong className="rating">5</strong> out of 5</span>
                     </div> 
                     <span className="woocs_price_code"><s className="amount text-muted"><span className="woocommerce-Price-currencySymbol">&#36;</span>{row.precio_antes}</s> / <span className="amount"><span className="woocommerce-Price-currencySymbol">&#36;</span>{row.precio_ahora}</span></span>
                 </li>

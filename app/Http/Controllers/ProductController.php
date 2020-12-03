@@ -69,6 +69,9 @@ class ProductController extends Controller
         $producto->acceso_url = Str::random(20).Str::random(18).date('d');
         $producto->name = $request->nombre;
         $producto->descripcion = $request->descripcion;
+        $producto->politica_entrega = $request->politica_entrega;
+        $producto->entrega = $request->entrega;
+        $producto->devoluciones = $request->devoluciones;
         $producto->precio_antes = $request->precio_antes;
         $producto->precio_ahora = $request->precio_ahora;        
         $producto->sizes = $request->tallas;
@@ -76,18 +79,20 @@ class ProductController extends Controller
         $producto->entallaje = ($request->permite_entallaje == "true") ? 1 : 0;
         $producto->pieza_unica = ($request->unica_pieza == "true") ? 1 : 0;
         $producto->stock = $request->stock;
+        $producto->porcentaje_descuento = $request->porcentaje_descuento;
         $producto->categorias = $request->categorias;
         
         $producto->imagen_main = $request->imagen_main;
         $producto->imagen_secundaria = $request->imagen_secundaria;
         $producto->imagen_1_180x180 = $request->producto_imagen_peque_1;
         $producto->imagen_1_960x1286 = $request->producto_imagen_big_1;
-        $producto->imagen_2_180x180 = $request->producto_imagen_peque_2;
-        $producto->imagen_2_960x1286 = $request->producto_imagen_big_2;
-        $producto->imagen_3_180x180 = $request->producto_imagen_peque_3;
-        $producto->imagen_3_960x1286 = $request->producto_imagen_big_3;
-        $producto->imagen_4_180x180 = $request->producto_imagen_peque_4;
-        $producto->imagen_4_960x1286 = $request->producto_imagen_big_4;
+        
+        if($request->producto_imagen_peque_2 != "noset") $producto->imagen_2_180x180 = $request->producto_imagen_peque_2;
+        if($request->producto_imagen_big_2 != "noset") $producto->imagen_2_960x1286 = $request->producto_imagen_big_2;
+        if($request->producto_imagen_peque_3 != "noset") $producto->imagen_3_180x180 = $request->producto_imagen_peque_3;
+        if($request->producto_imagen_big_3 != "noset") $producto->imagen_3_960x1286 = $request->producto_imagen_big_3;
+        if($request->producto_imagen_peque_4 != "noset") $producto->imagen_4_180x180 = $request->producto_imagen_peque_4;
+        if($request->producto_imagen_big_4 != "noset") $producto->imagen_4_960x1286 = $request->producto_imagen_big_4;
 
         $producto->save();
                 
@@ -99,6 +104,9 @@ class ProductController extends Controller
         $producto = Product::where("id",$request->id)->first();
         $producto->name = $request->nombre;
         $producto->descripcion = $request->descripcion;
+        $producto->politica_entrega = $request->politica_entrega;
+        $producto->entrega = $request->entrega;
+        $producto->devoluciones = $request->devoluciones;
         $producto->precio_antes = $request->precio_antes;
         $producto->precio_ahora = $request->precio_ahora;        
         $producto->sizes = $request->tallas;
@@ -106,6 +114,7 @@ class ProductController extends Controller
         $producto->entallaje = ($request->permite_entallaje == "true") ? 1 : 0;
         $producto->pieza_unica = ($request->unica_pieza == "true") ? 1 : 0;
         $producto->stock = $request->stock;
+        $producto->porcentaje_descuento = $request->porcentaje_descuento;
         $producto->categorias = $request->categorias;
 
         if($request->imagen_main != "noset") $producto->imagen_main = $request->imagen_main;

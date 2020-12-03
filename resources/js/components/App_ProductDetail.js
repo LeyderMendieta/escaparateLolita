@@ -5,6 +5,7 @@ import Configuracion from './Configuration';
 import ProductDetail_Images from './Products/ProductDetail_Images';
 import ProductDetail_Summary from './Products/ProductDetail_summary';
 import ProductDetail_Woocommerce from './Products/ProductDetail_woocommerce';
+import ProductDetail_related from './Products/ProductDetail_related';
 
 class App_ProductDetail extends Component {
 
@@ -15,7 +16,8 @@ class App_ProductDetail extends Component {
           isLoaded: false,
           products: [],
           colores: [],
-          tallas: []
+          tallas: [],
+          productos_sugeridos: []
         };
       }
     
@@ -34,6 +36,24 @@ class App_ProductDetail extends Component {
                 });
                 $('#nombreProductoPage').text(this.state.products.name);
               }              
+            },
+            
+            (error) => {
+              this.setState({
+                isLoaded: true,
+                error
+              });
+            }
+          )
+
+          fetch(Configuracion.url_principal+"api/products/reference_producto_sugerido")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({
+                isLoaded: true,
+                productos_sugeridos: result
+              });
             },
             
             (error) => {
@@ -107,6 +127,13 @@ class App_ProductDetail extends Component {
                     <ProductDetail_Woocommerce
                         producto={this.state.products}
                         url_images={Configuracion.url_images}
+                        colores={this.state.colores}
+                        tallas={this.state.tallas}
+                    />
+                    <ProductDetail_related
+                        productos={this.state.productos_sugeridos}
+                        url_images={Configuracion.url_images}
+                        url_href={Configuracion.url_principal}
                     />
             </React.Fragment>
         );

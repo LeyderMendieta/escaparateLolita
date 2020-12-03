@@ -82142,11 +82142,15 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
             $('#product_id').val(_this2.state.producto.id);
             $('#producto_nombre').val(_this2.state.producto.name);
             $('#producto_descripcion').val(_this2.state.producto.descripcion);
+            $('#politica_entrega').val(_this2.state.producto.politica_entrega);
+            $('#entrega').val(_this2.state.producto.entrega);
+            $('#devoluciones').val(_this2.state.producto.devoluciones);
             $('#producto_precio_antes').val(_this2.state.producto.precio_antes);
             $('#producto_precio_ahora').val(_this2.state.producto.precio_ahora);
             $('#permite_entallaje').prop('checked', _this2.state.producto.entallaje);
             $('#unica_pieza').prop('checked', _this2.state.producto.pieza_unica);
             $('#stock').val(_this2.state.producto.stock);
+            $('#porcentaje_descuento').val(_this2.state.producto.porcentaje_descuento);
 
             _this2.setDefaultImagen('producto_imagen_principal', 'imagen_main');
 
@@ -82202,6 +82206,9 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
     value: function handleSubmitCreate() {
       var nombre = $('#producto_nombre').val();
       var descripcion = $('#producto_descripcion').val();
+      var politica_entrega = $('#politica_entrega').val();
+      var entrega = $('#entrega').val();
+      var devoluciones = $('#devoluciones').val();
       var precio_antes = $('#producto_precio_antes').val();
       var precio_ahora = $('#producto_precio_ahora').val();
       var imagen_principal = $('#producto_imagen_principal').prop('files');
@@ -82218,8 +82225,9 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
       var permite_entallaje = $('#permite_entallaje').prop('checked');
       var unica_pieza = $('#unica_pieza').prop('checked');
       var stock = $('#stock').val();
+      var porcentaje_descuento = $('#porcentaje_descuento').val();
 
-      if (imagen_principal.length == 0 || imagen_secundaria.length == 0 || producto_imagen_peque_1.length == 0 || producto_imagen_big_1.length == 0 || producto_imagen_peque_2.length == 0 || producto_imagen_big_2.length == 0 || producto_imagen_peque_3.length == 0 || producto_imagen_big_3.length == 0 || producto_imagen_peque_4.length == 0 || producto_imagen_big_4.length == 0) {
+      if (imagen_principal.length == 0 || imagen_secundaria.length == 0 || producto_imagen_peque_1.length == 0 || producto_imagen_big_1.length == 0) {
         alert("Imagenes obligatorias");
         return false;
       }
@@ -82234,9 +82242,13 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
         return false;
       } else var colores = JSON.stringify(json_colores);
 
-      if ($('#tallas').val().length == 0) {
-        alert("Es obligatorio elegir minimo una talla");
-        return false;
+      if ($('#tallas').val().length == 0 || unica_pieza) {
+        if (unica_pieza) {
+          var tallas = "[]";
+        } else {
+          alert("Es obligatorio elegir minimo una talla");
+          return false;
+        }
       } else var tallas = JSON.stringify($('#tallas').val());
 
       var json_categorias = [];
@@ -82261,12 +82273,12 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
         formData.append('imagen_secundaria', imagen_secundaria[0]);
         formData.append('producto_imagen_peque_1', producto_imagen_peque_1[0]);
         formData.append('producto_imagen_big_1', producto_imagen_big_1[0]);
-        formData.append('producto_imagen_peque_2', producto_imagen_peque_2[0]);
-        formData.append('producto_imagen_big_2', producto_imagen_big_2[0]);
-        formData.append('producto_imagen_peque_3', producto_imagen_peque_3[0]);
-        formData.append('producto_imagen_big_3', producto_imagen_big_3[0]);
-        formData.append('producto_imagen_peque_4', producto_imagen_peque_4[0]);
-        formData.append('producto_imagen_big_4', producto_imagen_big_4[0]);
+        if (producto_imagen_peque_2.length == 0) producto_imagen_peque_2 = "noset";else formData.append('producto_imagen_peque_2', producto_imagen_peque_2[0]);
+        if (producto_imagen_big_2.length == 0) producto_imagen_big_2 = "noset";else formData.append('producto_imagen_big_2', producto_imagen_big_2[0]);
+        if (producto_imagen_peque_3.length == 0) producto_imagen_peque_3 = "noset";else formData.append('producto_imagen_peque_3', producto_imagen_peque_3[0]);
+        if (producto_imagen_big_3.length == 0) producto_imagen_big_3 = "noset";else formData.append('producto_imagen_big_3', producto_imagen_big_3[0]);
+        if (producto_imagen_peque_4.length == 0) producto_imagen_peque_4 = "noset";else formData.append('producto_imagen_peque_4', producto_imagen_peque_4[0]);
+        if (producto_imagen_big_4.length == 0) producto_imagen_big_4 = "noset";else formData.append('producto_imagen_big_4', producto_imagen_big_4[0]);
         var config = {
           method: 'POST',
           headers: {
@@ -82277,14 +82289,25 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
         fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/store/productoImagen", config).then(function (res) {
           return res.json();
         }).then(function (result) {
-          console.log(result.files);
-
           if (result.files.imagen_main != undefined) {
+            if (result.files.producto_imagen_peque_2 != undefined) producto_imagen_peque_2 = result.files.producto_imagen_peque_2;
+            if (result.files.producto_imagen_big_2 != undefined) producto_imagen_big_2 = result.files.producto_imagen_big_2;
+            if (result.files.producto_imagen_peque_3 != undefined) producto_imagen_peque_3 = result.files.producto_imagen_peque_3;
+            if (result.files.producto_imagen_big_3 != undefined) producto_imagen_big_3 = result.files.producto_imagen_big_3;
+            if (result.files.producto_imagen_peque_4 != undefined) producto_imagen_peque_4 = result.files.producto_imagen_peque_4;
+            if (result.files.producto_imagen_big_4 != undefined) producto_imagen_big_4 = result.files.producto_imagen_big_4;
+
             var _formData = new FormData();
 
             _formData.append('nombre', nombre);
 
             _formData.append('descripcion', descripcion);
+
+            _formData.append('politica_entrega', politica_entrega);
+
+            _formData.append('entrega', entrega);
+
+            _formData.append('devoluciones', devoluciones);
 
             _formData.append('precio_antes', precio_antes);
 
@@ -82298,17 +82321,17 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
 
             _formData.append('producto_imagen_big_1', result.files.producto_imagen_big_1);
 
-            _formData.append('producto_imagen_peque_2', result.files.producto_imagen_peque_2);
+            _formData.append('producto_imagen_peque_2', producto_imagen_peque_2);
 
-            _formData.append('producto_imagen_big_2', result.files.producto_imagen_big_2);
+            _formData.append('producto_imagen_big_2', producto_imagen_big_2);
 
-            _formData.append('producto_imagen_peque_3', result.files.producto_imagen_peque_3);
+            _formData.append('producto_imagen_peque_3', producto_imagen_peque_3);
 
-            _formData.append('producto_imagen_big_3', result.files.producto_imagen_big_3);
+            _formData.append('producto_imagen_big_3', producto_imagen_big_3);
 
-            _formData.append('producto_imagen_peque_4', result.files.producto_imagen_peque_4);
+            _formData.append('producto_imagen_peque_4', producto_imagen_peque_4);
 
-            _formData.append('producto_imagen_big_4', result.files.producto_imagen_big_4);
+            _formData.append('producto_imagen_big_4', producto_imagen_big_4);
 
             _formData.append('colores', colores);
 
@@ -82319,6 +82342,8 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
             _formData.append('unica_pieza', unica_pieza);
 
             _formData.append('stock', stock);
+
+            _formData.append('porcentaje_descuento', porcentaje_descuento);
 
             _formData.append('categorias', categorias);
 
@@ -82347,6 +82372,9 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
       var id_update = $('#product_id').val();
       var nombre = $('#producto_nombre').val();
       var descripcion = $('#producto_descripcion').val();
+      var politica_entrega = $('#politica_entrega').val();
+      var entrega = $('#entrega').val();
+      var devoluciones = $('#devoluciones').val();
       var precio_antes = $('#producto_precio_antes').val();
       var precio_ahora = $('#producto_precio_ahora').val();
       var imagen_principal = $('#producto_imagen_principal').prop('files');
@@ -82362,6 +82390,7 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
       var permite_entallaje = $('#permite_entallaje').prop('checked');
       var unica_pieza = $('#unica_pieza').prop('checked');
       var stock = $('#stock').val();
+      var porcentaje_descuento = $('#porcentaje_descuento').val();
       var json_colores = [];
       $('input[name="color"]:checked').each(function (i) {
         json_colores.push($(this).val());
@@ -82372,9 +82401,13 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
         return false;
       } else var colores = JSON.stringify(json_colores);
 
-      if ($('#tallas').val().length == 0) {
-        alert("Es obligatorio elegir minimo una talla");
-        return false;
+      if ($('#tallas').val().length == 0 || unica_pieza) {
+        if (unica_pieza) {
+          var tallas = "[]";
+        } else {
+          alert("Es obligatorio elegir minimo una talla");
+          return false;
+        }
       } else var tallas = JSON.stringify($('#tallas').val());
 
       var json_categorias = [];
@@ -82438,6 +82471,9 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
           formDataUpdate.append('id', id_update);
           formDataUpdate.append('nombre', nombre);
           formDataUpdate.append('descripcion', descripcion);
+          formDataUpdate.append('politica_entrega', politica_entrega);
+          formDataUpdate.append('entrega', entrega);
+          formDataUpdate.append('devoluciones', devoluciones);
           formDataUpdate.append('precio_antes', precio_antes);
           formDataUpdate.append('precio_ahora', precio_ahora);
           formDataUpdate.append('imagen_main', imagen_main);
@@ -82455,6 +82491,7 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
           formDataUpdate.append('permite_entallaje', permite_entallaje);
           formDataUpdate.append('unica_pieza', unica_pieza);
           formDataUpdate.append('stock', stock);
+          formDataUpdate.append('porcentaje_descuento', porcentaje_descuento);
           formDataUpdate.append('categorias', categorias);
           var config = {
             method: 'POST',
@@ -82505,7 +82542,7 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xl-12"
+        className: "col-xl-6 col-lg-12 col-md-12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -82513,6 +82550,41 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
       }, "Descripci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "form-control",
         id: "producto_descripcion",
+        rows: "3",
+        placeholder: "Escribe la descripci\xF3n del producto"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Politica de Entrega Completa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "form-control",
+        id: "politica_entrega",
+        rows: "3",
+        placeholder: "Escribe la descripci\xF3n del producto"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Entrega"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "form-control",
+        id: "entrega",
+        rows: "3",
+        placeholder: "Escribe la descripci\xF3n del producto"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Devoluciones"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "form-control",
+        id: "devoluciones",
         rows: "3",
         placeholder: "Escribe la descripci\xF3n del producto"
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -83034,7 +83106,22 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "selectgroup-button"
         }, row.nombre));
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Porcentaje Descuento (Opcional)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "porcentaje_descuento",
+        type: "number",
+        className: "form-control"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-danger",
+        type: "button"
+      }, "%"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xl-6 col-lg-12 col-md-12"
@@ -84961,6 +85048,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Products_ProductDetail_Images__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Products/ProductDetail_Images */ "./resources/js/components/Products/ProductDetail_Images.js");
 /* harmony import */ var _Products_ProductDetail_summary__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Products/ProductDetail_summary */ "./resources/js/components/Products/ProductDetail_summary.js");
 /* harmony import */ var _Products_ProductDetail_woocommerce__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Products/ProductDetail_woocommerce */ "./resources/js/components/Products/ProductDetail_woocommerce.js");
+/* harmony import */ var _Products_ProductDetail_related__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Products/ProductDetail_related */ "./resources/js/components/Products/ProductDetail_related.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -84990,6 +85078,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var App_ProductDetail = /*#__PURE__*/function (_Component) {
   _inherits(App_ProductDetail, _Component);
 
@@ -85006,7 +85095,8 @@ var App_ProductDetail = /*#__PURE__*/function (_Component) {
       isLoaded: false,
       products: [],
       colores: [],
-      tallas: []
+      tallas: [],
+      productos_sugeridos: []
     };
     return _this;
   }
@@ -85029,6 +85119,19 @@ var App_ProductDetail = /*#__PURE__*/function (_Component) {
 
           $('#nombreProductoPage').text(_this2.state.products.name);
         }
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/products/reference_producto_sugerido").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          isLoaded: true,
+          productos_sugeridos: result
+        });
       }, function (error) {
         _this2.setState({
           isLoaded: true,
@@ -85095,7 +85198,13 @@ var App_ProductDetail = /*#__PURE__*/function (_Component) {
         tallas: this.state.tallas
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Products_ProductDetail_woocommerce__WEBPACK_IMPORTED_MODULE_5__["default"], {
         producto: this.state.products,
-        url_images: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_images
+        url_images: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_images,
+        colores: this.state.colores,
+        tallas: this.state.tallas
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Products_ProductDetail_related__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        productos: this.state.productos_sugeridos,
+        url_images: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_images,
+        url_href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal
       }));
     }
   }]);
@@ -85582,9 +85691,9 @@ var ListProducts = function ListProducts(_ref) {
       key: producto.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_item post_layout_thumbs"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, producto.porcentaje_descuento != 0 && producto.porcentaje_descuento != null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "div_container_descuento"
-    }, "10%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, producto.porcentaje_descuento, "%") : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_featured hover_shop_buttons"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: url_href + "shop/" + producto.acceso_url,
@@ -85668,15 +85777,15 @@ var MustHaveProducts = function MustHaveProducts(_ref) {
       url_href = _ref.url_href;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "products wcspt-products"
-  }, products.map(function (producto) {
+  }, products.map(function (producto, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "product type-product wcspt-has-gallery",
-      key: producto.id
+      key: index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_item post_layout_thumbs"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, producto.porcentaje_descuento != 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "div_container_descuento"
-    }, "10%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, producto.porcentaje_descuento, "%") : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_featured hover_shop_buttons"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: url_href + "shop/" + producto.acceso_url,
@@ -85814,6 +85923,97 @@ var ProductDetail_Images = function ProductDetail_Images(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Products/ProductDetail_related.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/Products/ProductDetail_related.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var ProductDetail_related = function ProductDetail_related(_ref) {
+  var productos = _ref.productos,
+      url_images = _ref.url_images,
+      url_href = _ref.url_href;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "related products"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Productos Sugeridos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "products wcspt-products"
+  }, productos.map(function (producto, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "product column-1_4 wcspt-has-gallery",
+      key: index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "post_item post_layout_thumbs"
+    }, producto.porcentaje_descuento != 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "div_container_descuento"
+    }, producto.porcentaje_descuento, "%") : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "post_featured hover_shop_buttons"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: url_href + "shop/" + producto.acceso_url,
+      className: "wcspt-img-link"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: url_images + producto.imagen_main,
+      alt: "product-19",
+      title: "product-19"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: url_images + producto.imagen_secundaria,
+      className: "secondary-thumb wcspt-transition",
+      alt: ""
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "mask"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "icons"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: url_href + "shop/" + producto.acceso_url,
+      className: "shop_cart icon-cart-2 button add_to_cart_button product_type_variable"
+    }, "Comprar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: url_href + "shop/" + producto.acceso_url,
+      className: "shop_link button icon-link"
+    }, "Detalles"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "post_data",
+      style: {
+        height: '9rem'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "post_header entry-header"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: url_href + "shop/" + producto.acceso_url
+    }, producto.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "star-rating",
+      title: "Rated 5 out of 5"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "w_100per"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+      className: "rating"
+    }, "5"), " out of 5"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "price"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "woocs_price_code"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("s", {
+      className: "amount text-muted"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "woocommerce-Price-currencySymbol"
+    }, "$"), producto.precio_antes), " / ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "amount"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "woocommerce-Price-currencySymbol"
+    }, "$"), producto.precio_ahora))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: url_href + "shop/" + producto.acceso_url,
+      className: "button product_type_variable add_to_cart_button sc_button_hover_slide_left"
+    }, "Comprar"))));
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ProductDetail_related);
+
+/***/ }),
+
 /***/ "./resources/js/components/Products/ProductDetail_summary.js":
 /*!*******************************************************************!*\
   !*** ./resources/js/components/Products/ProductDetail_summary.js ***!
@@ -85877,9 +86077,13 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     className: "label"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "pa_size"
-  }, "Talla Disponible")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+  }, producto.pieza_unica == 1 ? 'Talla Unica' : 'Talla Disponible')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     className: "value"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "hidden",
+    id: "oneSize_target",
+    value: producto.pieza_unica == 1 ? "active" : "offset"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     id: "pa_size",
     onChange: setValueModel,
     className: "d_none-imp",
@@ -86052,7 +86256,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
   var producto = _ref.producto,
-      url_images = _ref.url_images;
+      url_images = _ref.url_images,
+      colores = _ref.colores,
+      tallas = _ref.tallas;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "woocommerce-tabs sc_tabs"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -86095,7 +86301,7 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
     className: "sc_button_hover_slide_left grad_rev"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sc_accordion_content"
-  }, "Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, producto.politica_entrega)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sc_accordion_item even"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "sc_accordion_title"
@@ -86103,7 +86309,7 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
     className: "sc_button_hover_slide_left grad_rev"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sc_accordion_content"
-  }, "Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, producto.entrega)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sc_accordion_item odd"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "sc_accordion_title"
@@ -86111,14 +86317,26 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
     className: "sc_button_hover_slide_left grad_rev"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sc_accordion_content"
-  }, "Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, producto.devoluciones)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel entry-content wc-tab",
     id: "tab-additional_information"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Informaci\xF3n Adicional"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
     className: "shop_attributes"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Size"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "S, M, L, XL"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Tallas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    style: {
+      textTransform: "capitalize"
+    }
+  }, tallas.map(function (row, index) {
+    return index == tallas.length - 1 ? row : row + ", ";
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
     className: "alt"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Gentle Peach, Red Passion, Valiant Violet")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    style: {
+      textTransform: "capitalize"
+    }
+  }, colores.map(function (row, index) {
+    return index == colores.length - 1 ? row : row + ", ";
+  }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab",
     id: "tab-reviews"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -86336,8 +86554,6 @@ var App_Productos_Sugeridos_Show = /*#__PURE__*/function (_Component) {
           isLoaded: true,
           productos: result
         });
-
-        console.log(_this2.state);
       }, function (error) {
         _this2.setState({
           isLoaded: true,
@@ -86348,22 +86564,24 @@ var App_Productos_Sugeridos_Show = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, this.state.productos.map(function (row) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, this.state.productos.map(function (row, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: index
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "shop/" + row.acceso_url,
           title: row.name
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_images + row.imagen_main,
           alt: ""
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          "class": "product-title"
+          className: "product-title"
         }, row.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "star-rating",
+          className: "star-rating",
           title: "Rated 5 out of 5"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          "class": "w_100per"
+          className: "w_100per"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
-          "class": "rating"
+          className: "rating"
         }, "5"), " out of 5")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "woocs_price_code"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("s", {
