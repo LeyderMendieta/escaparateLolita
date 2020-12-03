@@ -85783,7 +85783,7 @@ var MustHaveProducts = function MustHaveProducts(_ref) {
       key: index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_item post_layout_thumbs"
-    }, producto.porcentaje_descuento != 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, producto.porcentaje_descuento != 0 && producto.porcentaje_descuento != null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "div_container_descuento"
     }, producto.porcentaje_descuento, "%") : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_featured hover_shop_buttons"
@@ -85950,7 +85950,7 @@ var ProductDetail_related = function ProductDetail_related(_ref) {
       key: index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_item post_layout_thumbs"
-    }, producto.porcentaje_descuento != 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, producto.porcentaje_descuento != 0 && producto.porcentaje_descuento != null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "div_container_descuento"
     }, producto.porcentaje_descuento, "%") : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "post_featured hover_shop_buttons"

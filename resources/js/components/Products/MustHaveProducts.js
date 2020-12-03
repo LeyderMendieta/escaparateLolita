@@ -8,7 +8,7 @@ const MustHaveProducts = ({products,url_images,url_href}) => (
            
             <li className="product type-product wcspt-has-gallery" key={index}>
                 <div className="post_item post_layout_thumbs">
-                {(producto.porcentaje_descuento != 0) ? (<div className="div_container_descuento" >{producto.porcentaje_descuento}%</div>) : ""}
+                {(producto.porcentaje_descuento != 0 && producto.porcentaje_descuento != null) ? (<div className="div_container_descuento" >{producto.porcentaje_descuento}%</div>) : ""}
                     <div className="post_featured hover_shop_buttons">
                         <a href={url_href+"shop/"+producto.acceso_url} className="wcspt-img-link">
                             <img src={url_images+producto.imagen_main} alt="product-18" title="product-18" />
