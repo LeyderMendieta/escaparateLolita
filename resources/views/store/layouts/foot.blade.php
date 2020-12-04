@@ -1,5 +1,5 @@
 
-<script type='text/javascript' src="{{URL::asset('js/app.js')}}" ></script>
+<script type='text/javascript' src="{{URL::asset('js/app.js?'.filemtime('js/app.js'))}}" ></script>
 
 
 <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/jquery-3.2.1.min.js')}}" ></script>

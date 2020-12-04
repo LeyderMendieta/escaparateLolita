@@ -1,7 +1,7 @@
 <!-- Back to top -->
 <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 <!-- Jquery js-->
-<script type='text/javascript' src="{{URL::asset('js/app.js')}}" ></script>
+<script type='text/javascript' src="{{URL::asset('js/app.js?'.filemtime('js/app.js'))}}" ></script>
 
 <script src="{{URL::asset('assets/js/jquery-3.4.1.min.js')}}"></script>
 <!--Bootstrap.min js-->
