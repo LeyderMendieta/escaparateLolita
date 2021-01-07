@@ -12,13 +12,13 @@
                                     <div class="cta3_content-container">
                                         <div class="cta3-content">
                                             <div class="cta3-content-header">
-                                                <h2>Let’s Stay Connected!</h2>									
+                                                <h2>Mantente Conectado!</h2>									
                                             </div>
-                                            <p>Sign up today for our newsletter and receive <em>15% OFF</em> your first purchase, and also get our sneak peeks, tips, and exclusive offers.</p>
+                                            <p>Registrate hoy para recibir nuestras noticias y obtener un descuento en tu primera compra, además obtendras tips y ofertas esclusivas.</p>
                                         </div>
                                         <div class="cta3-actions">
                                             <div class="btn3-container btn3-inline">
-                                                <a class="general btn3 btn3-size-md btn3-shape-square btn3-style-classic btn3-color-grey" href="#" title="">sign up</a>
+                                                <a class="general btn3 btn3-size-md btn3-shape-square btn3-style-classic btn3-color-grey" href="#" title="">Registrate</a>
                                             </div>
                                         </div>		
                                     </div>

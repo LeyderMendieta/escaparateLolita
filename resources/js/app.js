@@ -25,6 +25,7 @@ require('./components/Products/Productos_sugeridos');
 
 require('./components/Shop/Filtro_Categorias_Shop');
 require('./components/Feature/Gift_cards');
+require('./components/Feature/Articulos');
 
 require('./components/Admin/App_Products');
 require('./components/Admin/App_Form_Product');
@@ -41,4 +42,6 @@ require('./components/Admin/App_Form_Brand');
 require('./components/Admin/App_Admon_GiftCards');
 require('./components/Admin/App_Form_GiftCard');
 require('./components/Admin/App_Admon_Settings_Enviroment');
+require('./components/Admin/App_Form_Articulo');
+require('./components/Admin/App_Admon_Articulos');
 

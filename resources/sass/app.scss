@@ -104,3 +104,8 @@
 .trx_addons_attrib_item:not(.trx_addons_attrib_selected){
     border-color:#979595!important;
 }
+
+.cat-item.active > a{
+    color:#fe7799!important;
+    font-weight: bold;
+}

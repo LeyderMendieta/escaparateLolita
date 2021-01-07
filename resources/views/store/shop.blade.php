@@ -133,15 +133,17 @@
                                         <a href="#" class="woocommerce_thumbs icon-th" title="Show products as thumbs"></a>
                                         <a href="#" class="woocommerce_list icon-th-list" title="Show products as list"></a>
                                     </form>
-                                </div>                                
+                                </div>
+                                <input type="hidden" id="filterby_min_price" value="{{ $min_price }}">             
+                                <input type="hidden" id="filterby_max_price" value="{{ $max_price }}">             
+                                <input type="hidden" id="filterby_search" value="{{ $search }}">             
+                                <input type="hidden" id="filterby_category" value="{{ $category }}">    
                                 <div id="Shop_Products"></div>
                             </div>
-                            <!-- /.list_products -->
                         </div>
-                        <!-- </.content> -->
                         <div class="sidebar left widget_area scheme_side" role="complementary">
                             <div class="sidebar_inner">
-                                <aside class="widget woocommerce widget_shopping_cart">
+                                <!-- <aside class="widget woocommerce widget_shopping_cart">
                                     <h5 class="widget_title">Mi Carrito</h5>
                                     <div class="widget_shopping_cart_content">
                                         <ul class="cart_list product_list_widget ">
@@ -171,23 +173,37 @@
                                                 </dl>
                                                 <span class="quantity">1 × <span class="amount">54.00<span class="woocommerce-Price-currencySymbol">$</span></span></span>					
                                             </li>
-                                        </ul><!-- end product list -->
+                                        </ul>
                                         <p class="total"><strong>Subtotal:</strong> <span class="amount">115.00<span class="woocommerce-Price-currencySymbol">$</span></span></p>
                                         <p class="buttons">
                                             <a href="#" class="button wc-forward">Ver Carrito</a>
                                             <a href="#" class="button checkout wc-forward">Checkout</a>
                                         </p>
                                     </div>
+                                </aside> -->
+                                <aside class="widget woocommerce">
+                                    <h5>
+                                        @if($min_price != "undefined")
+                                        <small>Filtrado por precio: <b>{{$min_price}} - {{$max_price}} </b></small>
+                                        @endif
+                                        @if($category != "undefined")
+                                        <small>Filtrado por categoria: <b>{{$categoryText}}</b> </small>
+                                        @endif
+                                        @if($search != "undefined")
+                                        <small>Filtrado por: <b>{{$search}}</b> </small>
+                                        @endif
+                                    </h5>
                                 </aside>
                                 <aside class="widget woocommerce widget_price_filter">
                                     <h5 class="widget_title">Filtrar por Precio</h5>
+                                    <div id="App_Shop_Filtro_Precio"></div>
                                     <form method="get" action="#">
                                         <div class="price_slider_wrapper">
                                             <div class="price_slider d_none"></div>
                                             <div class="price_slider_amount">
-                                                <input type="text" id="min_price" name="min_price" value="" data-min="13" placeholder="Min price" />
-                                                <input type="text" id="max_price" name="max_price" value="" data-max="85" placeholder="Max price" />
-                                                <button type="submit" class="button">Filtro</button>
+                                                <input type="text" id="min_price" name="min_price" value="" data-min="{{ $min_value_allow }}" placeholder="Min price" />
+                                                <input type="text" id="max_price" name="max_price" value="" data-max="{{ $max_value_allow }}" placeholder="Max price" />
+                                                <button type="submit" class="button">Filtrar</button>
                                                 <div class="price_label d_none"> Precio: <span class="from"></span> &mdash; <span class="to"></span> </div>
                                                 <div class="clear"></div>
                                             </div>
@@ -224,7 +240,7 @@
                                         <a href='#' class='fsz-22pt' title='11 topics'>undershirt</a>   
                                     </div>
                                 </aside>
-                                    -->
+                                    
                                 <aside  class="widget widget_banner">
                                     <a href="#" class="image_wrap">
                                         <img src="{{URL::asset('assets/store/images/banner_2.jpg')}}" alt="">
@@ -234,14 +250,11 @@
                                         <img src="{{URL::asset('assets/store/images/banner_3.jpg')}}" alt="" >
                                     </a>
                                 </aside>
+                                -->
                             </div>
-                            <!-- /.sidebar_inner -->
                         </div>
-                        <!-- /.sidebar -->
                     </div>
-                    <!-- </.content_wrap> -->
                 </div>
-                <!-- </.page_content_wrap> -->
                 @include('store.layouts.footer2')
                 <!-- /.footer_wrap -->
             </div>

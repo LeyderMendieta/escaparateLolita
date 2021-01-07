@@ -151,7 +151,7 @@
                                                             </div>
                                                             <div class="form_socials socials_wrap">
                                                                 <span class="social_item"><a href="https://www.facebook.com/Elescaparatedelolita" target="_blank" class="social_icons social_facebook"><span class="trx_addons_icon-facebook"></span></a>
-                                                                </span><span class="social_item"><a href="https://www.instagram.com/elescaparatedelolita/?hl=es-la" target="_blank" class="social_icons social_instagram"><span class="trx_addons_icon-instagram"></span></a>
+                                                                </span><span class="social_item"><a href="https://www.instagram.com/elescaparatedelolita/" target="_blank" class="social_icons social_instagram"><span class="trx_addons_icon-instagram"></span></a>
                                                                 </span>
                                                             </div>
                                                         </div><div class="trx_addons_column-2_3">

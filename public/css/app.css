@@ -11001,3 +11001,8 @@ a.text-dark:focus {
   border-color: #979595 !important;
 }
 
+.cat-item.active > a {
+  color: #fe7799 !important;
+  font-weight: bold;
+}
+

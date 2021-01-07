@@ -20,6 +20,11 @@
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/tags') }}">Tags</a></li>
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/galeria') }}">Galeria</a></li>
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/brands') }}">Brands</a></li>
+										</ul>
+									</li>
+									<li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-bar-chart-2"></i> Features <i class="fa fa-angle-down horizontal-icon"></i></a>
+										<ul class="sub-menu">
+											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/articulos') }}">Articulos</a></li>
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/gift_cards') }}">Gift Cards</a></li>
 										</ul>
 									</li>

@@ -68,7 +68,20 @@ class App_ProductDetail extends Component {
       handleBuyProduct(e)
       {
         e.preventDefault();
-        console.log(document.getElementById("pa_size").value);
+        var tallaUnica = $('#oneSize_target').val();
+        var talla = $('#pa_size').val();
+        var color = $('#pa_color').val();
+        if((talla == "" || talla == undefined) && tallaUnica == "offset")
+        {
+          alert("Es obligatorio una talla");
+          return false;
+        }
+        if(tallaUnica == "active") talla = "Unica";
+        if(color == "" || color == undefined)
+        {
+          alert("Es obligatorio un color");
+          return false;
+        }
 
         try {
             let config = {
@@ -77,14 +90,15 @@ class App_ProductDetail extends Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({product_id: this.state.products.id, product_price_id: 2, cantidad: 4})
+              body: JSON.stringify({product_id: this.state.products.id, talla: talla, color: color})
             }
 
             fetch(Configuracion.url_principal+"api/addProductToCart",config)
             .then(res => res.json())
             .then(
               (result) => {
-                console.log(result);
+                alert("Producto Agregado al carrito");
+                window.location.reload();
               },
               
               (error) => {
@@ -99,8 +113,6 @@ class App_ProductDetail extends Component {
         catch (error) {
             console.log(error);
         }
-
-        window.location.reload();
       }
 
       setValueModel(e)

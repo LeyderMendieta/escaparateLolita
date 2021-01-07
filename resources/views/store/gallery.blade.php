@@ -223,55 +223,33 @@
                         <div class="footer_widgets_inner widget_area_inner">
                             <div class="content_wrap">
                                 <div class="columns_wrap">
-                                    <aside id="trx_addons_widget_socials-2" class="column-1_4 widget widget_socials">
-                                        <h5 class="widget_title">Connect</h5>
+                                    <aside id="trx_addons_widget_socials-2" class="column-1_3 widget widget_socials">
+                                        <h5 class="widget_title">Conectate</h5>
                                         <div class="socials_description">
-                                            <p>Donec tortor erat, aliquam sed sollicitudin eget, porttitor a urna. Nulla id tellus at enim tristique vulputate finibus quis neque. </p>
+                                            <p>Al alcance de todos </p>
                                         </div>
-                                        <div class="socials_wrap"><span class="social_item"><a href="#" class="social_icons social_twitter"><span class="trx_addons_icon-twitter"></span></a>
-                                            </span><span class="social_item"><a href="#" class="social_icons social_facebook"><span class="trx_addons_icon-facebook"></span></a>
-                                            </span><span class="social_item"><a href="#" class="social_icons social_gplus"><span class="trx_addons_icon-gplus"></span></a>
-                                            </span><span class="social_item"><a href="#" class="social_icons social_instagram"><span class="trx_addons_icon-instagram"></span></a>
+                                        <div class="socials_wrap">
+                                            <span class="social_item">
+                                                <a href="https://www.facebook.com/Elescaparatedelolita" class="social_icons social_facebook">
+                                                    <span class="trx_addons_icon-facebook"></span>
+                                                </a>                                            
+                                            </span>
+                                            <span class="social_item">
+                                                <a href="https://www.instagram.com/elescaparatedelolita/" class="social_icons social_instagram">
+                                                    <span class="trx_addons_icon-instagram"></span>
+                                                </a>
                                             </span>
                                         </div>
-                                    </aside><aside id="trx_addons_widget_recent_posts-2" class="column-1_4 widget widget_recent_posts">
-                                        <h5 class="widget_title">Recent Posts</h5>
-                                        <article class="post_item with_thumb">
-                                            <div class="post_thumb">
-                                                <a href="#"><img src="{{URL::asset('assets/store/images/post-29-90x90.jpg')}}" alt="Lingerie Supports Fashion Targets Breast Cancer"></a>
-                                            </div>
-                                            <div class="post_content">
-                                                <h6 class="post_title"><a href="#">Lingerie Supports Fashion Targets Breast Cancer</a></h6>
-                                                <div class="post_info"></div>
-                                            </div>
-                                        </article>
-                                        <article class="post_item with_thumb">
-                                            <div class="post_thumb">
-                                                <a href="#"><img src="{{URL::asset('assets/store/images/post-5-90x90.jpg')}}" alt="A Case for No Shirt, No Problem"></a>
-                                            </div>
-                                            <div class="post_content">
-                                                <h6 class="post_title"><a href="#">A Case for No Shirt, No Problem</a></h6>
-                                                <div class="post_info"></div>
-                                            </div>
-                                        </article>
-                                        <article class="post_item with_thumb">
-                                            <div class="post_thumb">
-                                                <a href="#"><img src="{{URL::asset('assets/store/images/post-6-90x90.jpg')}}" alt="Emotional Experience of Balconette Bra"></a>
-                                            </div>
-                                            <div class="post_content">
-                                                <h6 class="post_title"><a href="#">Emotional Experience of Balconette Bra</a></h6>
-                                                <div class="post_info"></div>
-                                            </div>
-                                        </article>
-                                    </aside><aside id="tag_cloud-3" class="column-1_4 widget widget_tag_cloud">
+                                    </aside>
+                                    <aside id="tag_cloud-3" class="column-1_4 widget widget_tag_cloud">
                                         <h5 class="widget_title">Tags</h5>
                                         <div class="tagcloud">
-                                            <a href='#' class='fsz-13_38pt' title='9 topics'>briefs</a>
-                                            <a href='#' class='fsz-22pt' title='11 topics'>knickers</a>
-                                            <a href='#' class='fsz-8pt' title='8 topics'>lingerie</a>
-                                            <a href='#' class='fsz-13_38pt' title='9 topics'>panty hose</a>
-                                            <a href='#' class='fsz-8pt' title='8 topics'>petite</a>
-                                            <a href='#' class='fsz-22pt' title='11 topics'>undershirt</a>
+                                        @foreach ($tags as $fila)
+                                            <div class="esg-filterbutton" data-fid="{{$fila->id}}" data-filter="filter-{{str_replace(' ','-',$fila->nombre)}}">
+                                                <span>{{$fila->nombre}}</span><span class="esg-filter-checked"><i class="eg-icon-ok-1"></i></span>
+                                            </div>
+                                            <a href='#' class='fsz-13_38pt' title='9 topics'>{{$fila->nombre}}</a>
+                                        @endforeach                                        
                                         </div>
                                     </aside><aside id="trx_addons_widget_recent_posts-3" class="column-1_4 widget widget_recent_posts">
                                         <h5 class="widget_title">Blog</h5>

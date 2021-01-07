@@ -57,6 +57,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('/update/brand','BrandsController@editar');
     Route::get('/remove/brand/{id}','BrandsController@remove');
     
+    Route::get('/all_articulos','ArticuloController@getAll');
+    Route::get('/articulo_detail/{category}','ArticuloController@viewDetail');    
+    Route::post('/store/articulo','ArticuloController@crear');
+    Route::post('/update/articulo','ArticuloController@editar');
+    Route::get('/remove/articulo/{id}','ArticuloController@remove');
+    
     Route::get('/all_giftCards','GiftCardController@getAll');
     Route::get('/giftCard_detail/{category}','GiftCardController@viewDetail');    
     Route::post('/store/giftCard','GiftCardController@crear');

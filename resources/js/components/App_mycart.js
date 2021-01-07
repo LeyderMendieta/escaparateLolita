@@ -40,7 +40,7 @@ class App_mycart extends Component {
         .then(res => res.json())
         .then(
             (result) => {
-                if(result.error != undefined)
+                if(result.error == undefined)
                 {
                     this.setState({
                         isLoaded: true,
@@ -48,6 +48,7 @@ class App_mycart extends Component {
                         subtotal: result.subtotal,
                         items: result.items
                     });
+                    console.log(this.state);
                 }
                 else
                 {
@@ -55,8 +56,6 @@ class App_mycart extends Component {
                 }
             
         });
-
-        console.log(this.state.cartProducts);
       }
 
       removeFromCart(e)
@@ -70,9 +69,8 @@ class App_mycart extends Component {
             (result) => {
                 console.log(result+" deleted");
         });
-        
 
-        var subtotal = e.target.getAttribute("data-value");
+        var subtotal = e.target.getAttribute("data-valor");
         var nuevoItems = this.state.items - 1;
         var nuevoSubtotal = this.state.subtotal - subtotal;
         this.setState({items: nuevoItems,subtotal: nuevoSubtotal});
@@ -86,9 +84,9 @@ class App_mycart extends Component {
                 <span className="sc_zlayouts_item_icon sc_layouts_cart_icon trx_addons_icon-basket">
                 </span>
                 <span className="sc_layouts_item_details sc_layouts_cart_details">
-                    <span className="sc_layouts_item_details_line1 sc_layouts_cart_label">Shopping Cart</span>
+                    <span className="sc_layouts_item_details_line1 sc_layouts_cart_label">Carrito de Compras</span>
                     <span className="sc_layouts_item_details_line2 sc_layouts_cart_totals">
-                        <span className="sc_layouts_cart_items">{this.state.items} items</span>
+                        <span className="sc_layouts_cart_items">{this.state.items} Productos</span>
                         -
                         <span className="sc_layouts_cart_summa">{this.state.subtotal}&#36;</span>
                     </span>
@@ -102,18 +100,18 @@ class App_mycart extends Component {
                             <div className="widget_shopping_cart_content">
                                 <ul className="cart_list product_list_widget ">
                                     { this.state.cartProducts.map((producto) => (
-                                        <li className="mini_cart_item" aria-controls={producto.id} key={producto.id}>
-                                            <a href="#" data-id={producto.id} data-value={producto.cantidad * producto.price} className="remove" onClick={this.removeFromCart.bind(this)} title="Remove this item" style={{display:"block",marginTop:"0px"}}>×</a>			
-                                            <a href="#" style={{whiteSpace: "nowrap"}}>
-                                                <img src={Configuracion.url_images+"product-18-180x180.jpg"} alt="" /> {producto.name}							
+                                        <li className="mini_cart_item" aria-controls={producto.cartId} key={producto.cartId}>
+                                            <a href="#" data-id={producto.cartId} data-valor={producto.cantidad * producto.precio_ahora} className="remove" onClick={this.removeFromCart.bind(this)} title="Remove this item" style={{display:"block",marginTop:"0px"}}>×</a>			
+                                            <a href={Configuracion.url_principal+"shop/"+producto.acceso_url} style={{whiteSpace: "nowrap"}}>
+                                                <img src={Configuracion.url_images+producto.imagen_main} alt="" /> {producto.name}							
                                             </a>
                                             <dl className="variation">
                                                 <dt className="variation-Size">Talla:</dt>
-                                                <dd className="variation-Size"><p>M</p></dd><br/>
+                                                <dd className="variation-Size"><p> {producto.talla_selected}</p></dd><br/>
                                                 <dt className="variation-Color">Color:</dt>
-                                                <dd className="variation-Color"><p>Gentle Peach</p></dd>
+                                                <dd className="variation-Color"><p> {producto.color_selected}</p></dd>
                                             </dl>
-                                            <span className="quantity">{producto.cantidad} × <span className="amount">{producto.price}.00<span className="woocommerce-Price-currencySymbol">$</span></span>
+                                            <span className="quantity">{producto.cantidad} × <span className="amount">{producto.precio_ahora}.00<span className="woocommerce-Price-currencySymbol">$</span></span>
                                             </span>					
                                         </li>
                                     ))}

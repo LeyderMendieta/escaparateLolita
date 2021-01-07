@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
-
 import Configuracion from './Configuration';
-//import ErrorBoundary from './ErrorBoundary';
 import MustHaveProducts from './Products/MustHaveProducts';
 import BrandsProducts from './Products/BrandsProducts';
 import ListProducts from './Products/ListProducts';
@@ -106,7 +103,7 @@ if (document.getElementById('Products_Brands')) {
 class Products_Shop extends Component {
 
   constructor(props) {
-      super(props);
+    super(props);
       this.state = {
         error: null,
         isLoaded: false,
@@ -129,10 +126,23 @@ class Products_Shop extends Component {
 
     async loadProducts(page = 1)
     {
-      await fetch(Configuracion.url_principal+"api/view_products?page="+page)
+      var filterby_min_price = document.getElementById('filterby_min_price').getAttribute("value");
+      var filterby_max_price = document.getElementById('filterby_max_price').getAttribute("value");
+      var filterby_search = document.getElementById('filterby_search').getAttribute("value");
+      var filterby_category = document.getElementById('filterby_category').getAttribute("value");
+
+      var filters = "";
+      if(filterby_min_price != "undefined") filters += "&min_price="+filterby_min_price;
+      if(filterby_max_price != "undefined") filters += "&max_price="+filterby_max_price;
+      if(filterby_search != "undefined") filters += "&s="+filterby_search;
+      if(filterby_category != "undefined") filters += "&category="+filterby_category;
+      await fetch(Configuracion.url_principal+"api/view_products?page="+page+filters)
       .then(res => res.json())
       .then(
-        (result) => {
+        (response) => {
+          $('#filter_pmin').val(response.filters.min);
+          $('#filter_pmax').val(response.filters.max);
+          var result = response.productos;
           this.setState({
             isLoaded: true,
             products: result.data,
@@ -189,7 +199,7 @@ class Products_Shop extends Component {
   }
 }
 
-
+export default Products_Shop;
 if (document.getElementById('Shop_Products')) {
   ReactDOM.render(<Products_Shop />, document.getElementById('Shop_Products'));
 }

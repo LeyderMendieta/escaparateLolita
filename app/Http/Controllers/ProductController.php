@@ -22,9 +22,26 @@ class ProductController extends Controller
 
     public function getProducts()
     {
-        $products = Product::query()->orderBy('id', 'DESC')->paginate(10);
+        $min_price = (isset($_GET["min_price"])) ? $_GET["min_price"] : "undefined";
+        $max_price = (isset($_GET["max_price"])) ? $_GET["max_price"] : "undefined";
+        $search = (isset($_GET["s"])) ? $_GET["s"] : "undefined";
+        $category = (isset($_GET["category"])) ? $_GET["category"] : "undefined";
+        $search_query = [];
+        $search_queryor = [];
+        if($min_price != "undefined") array_push($search_query,['precio_ahora', '>=', $min_price]);
+        if($max_price != "undefined") array_push($search_query,['precio_ahora', '<=', $max_price]);
+        if($search != "undefined") {
+            array_push($search_query,['descripcion', 'like', "%$search%"]);
+            array_push($search_queryor,['name', 'like', "%$search%"]);
+        }
+        if($category != "undefined") array_push($search_query,['categorias', 'like', '%"'.$category.'"%']);
+        
+        $products = DB::table('products')->where($search_query)->orWhere($search_queryor)->orderBy('id', 'DESC')->paginate(10);
+        $max = DB::table('products')->where($search_query)->orWhere($search_queryor)->orderBy('id', 'DESC')->max('precio_ahora');
+        $min = DB::table('products')->where($search_query)->orWhere($search_queryor)->orderBy('id', 'DESC')->min('precio_ahora');
+        $filters = array("max" => $max,"min" => $min);
 
-        return response()->json($products, 200);
+        return response()->json(array("productos" => $products,"filters" => $filters), 200);
     }
 
     public function getAllProducts()

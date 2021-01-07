@@ -137,11 +137,8 @@
                                 
                             </article>
                         </div>
-                        <!-- </.content> -->
                     </div>
-                    <!-- </.content_wrap> -->
                 </div>
-                <!-- </.page_content_wrap> -->
                 
                 @include('store.layouts.footer2')
                 <!-- /.footer_wrap -->

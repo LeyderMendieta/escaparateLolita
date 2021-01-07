@@ -210,6 +210,7 @@
                                                                 </aside>
                                                             </div>
                                                         </div>
+                                                        <div class="empty_space h-2_3em"><span class="empty_space_inner"></span></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -301,14 +302,14 @@
                                                         <div class="empty_space h-4_3em"><span class="empty_space_inner"></span></div>
                                                         <div class="sc_blogger sc_blogger_plain" data-slides-per-view="4" data-slides-min-width="150">
                                                             <h2 class="sc_item_title sc_blogger_title sc_align_center sc_item_title_style_default">Artículos</h2>
-                                                            <div class="sc_blogger_columns sc_item_columns trx_addons_columns_wrap">
-                                                                <div class="trx_addons_column-1_4">
+                                                            <div class="sc_blogger_columns sc_item_columns trx_addons_columns_wrap" id="App_Feature_Articles">
+
+                                                                <!-- <div class="trx_addons_column-1_4">
                                                                     <div class="sc_blogger_item post type-post">
                                                                         <div class="sc_blogger_item_content entry-content">
                                                                             <h4 class="sc_blogger_item_title entry-title">
                                                                                 <a href="#post-standart.html" >Sin camisa, No hay problema</a>
                                                                             </h4></div>
-                                                                        <!-- .entry-content -->
                                                                         <div class="sc_blogger_item_excerpt">
                                                                             <div class="sc_blogger_item_excerpt_text">
                                                                                 <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore&hellip;</p>
@@ -317,67 +318,8 @@
                                                                                 <a href="#post-standart.html" class="sc_button sc_button_simple">Leer Más</a>
                                                                             </div>
                                                                         </div>
-                                                                        <!-- .sc_blogger_item_excerpt -->
                                                                     </div>
-                                                                    <!-- .sc_blogger_item -->
-                                                                </div><div class="trx_addons_column-1_4">
-                                                                    <div class="sc_blogger_item post type-post">
-                                                                        <div class="sc_blogger_item_content entry-content">
-                                                                            <h4 class="sc_blogger_item_title entry-title">
-                                                                                <a href="post-standart.html">Experiencia emocial de sujetador Balconette</a>
-                                                                            </h4>
-                                                                        </div>
-                                                                        <!-- .entry-content -->
-                                                                        <div class="sc_blogger_item_excerpt">
-                                                                            <div class="sc_blogger_item_excerpt_text">
-                                                                                <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore&hellip;</p>
-                                                                            </div>
-                                                                            <div class="sc_blogger_item_button sc_item_button">
-                                                                                <a href="#post-standart.html" class="sc_button sc_button_simple">Leer Más</a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- .sc_blogger_item_excerpt -->
-                                                                    </div>
-                                                                    <!-- .sc_blogger_item -->
-                                                                </div><div class="trx_addons_column-1_4">
-                                                                    <div class="sc_blogger_item post type-post">
-                                                                        <div class="sc_blogger_item_content entry-content">
-                                                                            <h4 class="sc_blogger_item_title entry-title">
-                                                                                <a href="#post-standart.html">6 consejos para el descanso de la bella durmiente</a>
-                                                                            </h4>
-                                                                        </div>
-                                                                        <!-- .entry-content -->
-                                                                        <div class="sc_blogger_item_excerpt">
-                                                                            <div class="sc_blogger_item_excerpt_text">
-                                                                                <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore&hellip;</p>
-                                                                            </div>
-                                                                            <div class="sc_blogger_item_button sc_item_button">
-                                                                                <a href="#post-standart.html" class="sc_button sc_button_simple">Leer Más</a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- .sc_blogger_item_excerpt -->
-                                                                    </div>
-                                                                    <!-- .sc_blogger_item -->
-                                                                </div><div class="trx_addons_column-1_4">
-                                                                    <div class="sc_blogger_item post type-post">
-                                                                        <div class="sc_blogger_item_content entry-content">
-                                                                            <h4 class="sc_blogger_item_title entry-title">
-                                                                                <a href="post-standart.html" >La belleza de una mujer es un atributo incomparable</a>
-                                                                            </h4>
-                                                                        </div>
-                                                                        <!-- .entry-content -->
-                                                                        <div class="sc_blogger_item_excerpt">
-                                                                            <div class="sc_blogger_item_excerpt_text">
-                                                                                <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore&hellip;</p>
-                                                                            </div>
-                                                                            <div class="sc_blogger_item_button sc_item_button">
-                                                                                <a href="post-standart.html" class="sc_button sc_button_simple">Leer Más</a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- .sc_blogger_item_excerpt -->
-                                                                    </div>
-                                                                    <!-- .sc_blogger_item -->
-                                                                </div>
+                                                                </div> -->
                                                             </div>
                                                         </div>
                                                         <!-- /.sc_blogger -->

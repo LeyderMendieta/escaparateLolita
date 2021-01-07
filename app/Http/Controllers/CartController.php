@@ -44,8 +44,6 @@ class CartController extends Controller
             ]);
 
             $mycart->generateToken();
-
-            //setcookie("session_mycart",$mycart->api_token,time()+36000,"/");
         }
 
         return response()->json(array("cart" => $mycart->api_token));
@@ -66,24 +64,22 @@ class CartController extends Controller
             return response()->json(array("error" => "Cart not found"));
         }
 
-        $myproducts_cart = DB::select("SELECT t0.id,t0.cantidad,t1.name,t1.descripcion,t1.imagen_main,t2.price FROM cart_products t0 INNER JOIN products t1 ON t0.id_product=t1.id INNER JOIN product_prices t2 ON t0.id_product_price=t2.id AND t2.estado=1 WHERE t0.id_cart=".$mycart->id);
+        $myproducts_cart = DB::select("SELECT t0.id as cartId,t0.talla_selected,t0.color_selected,t0.cantidad,t1.* FROM cart_products t0 INNER JOIN products t1 ON t0.id_product=t1.id WHERE t0.id_cart=".$mycart->id);
 
         $subtotal = 0;
 
         foreach($myproducts_cart as $fila)
         {
-            $subtotal += $fila->price * $fila->cantidad;
+            $subtotal += $fila->precio_ahora * $fila->cantidad;
         }
 
         return response()->json(array("products" => $myproducts_cart,"subtotal" => $subtotal,"items" => count($myproducts_cart)));
     }
 
     public function addProductToCart(Request $request)
-    {
+    {   
         if(!isset($_COOKIE["session_mycart"])) $error = "No Cart found";
         if($request->product_id == null || $request->product_id == "") $error = "Producto Necessary";
-        if($request->product_price_id == null || $request->product_price_id == "") $error = "Producto Precio Necessary";
-        if($request->cantidad == null || $request->cantidad == "") $error = "Producto Cantidad Necessary";
 
         if(isset($error)) return response()->json(array("error" => $error));
         
@@ -93,8 +89,9 @@ class CartController extends Controller
         $myproduct_added = cartProduct::create([
             "id_cart" => $mycart->id,
             "id_product" => $request->product_id,
-            "id_product_price" => $request->product_price_id,
-            "cantidad" => $request->cantidad
+            "talla_selected" => $request->talla,
+            "color_selected" => $request->color,
+            "cantidad" => 1
         ]);
 
         return response()->json($myproduct_added);
