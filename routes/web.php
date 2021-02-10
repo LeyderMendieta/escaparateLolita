@@ -26,6 +26,12 @@ Route::get('/shop', 'AppController@showShop');
 Route::get('/shop-grid', function () {
     return view('store.shop_grid');
 });
+Route::get('/carrito', function () {
+    return view('store.carrito');
+});
+Route::get('/checkout', function () {
+    return view('store.checkout');
+});
 Route::get('/gallery', 'GaleriaController@loadGalleryView');
 
 Route::get('/contacts', function () {

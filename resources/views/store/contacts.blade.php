@@ -194,21 +194,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </section>
-                                <section>
-                                    <div class="container-fluid">
-                                        <div class="column_container column-1_1  sc_layouts_column_icons_position_left">
-                                            <div class="column-inner">
-                                                <div class="fl_single_image aligncenter">
-                                                    <figure class="fl_figure">
-                                                        <div class="fl_single_image-wrapper">
-                                                            <img src="images/contacts.jpg" alt="">
-                                                        </div>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </section>  
                                 <section>
                                     <div class="container-fluid">

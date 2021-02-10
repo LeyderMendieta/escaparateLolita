@@ -24,6 +24,8 @@ require('./components/App_mycart');
 require('./components/Products/Productos_sugeridos');
 
 require('./components/Shop/Filtro_Categorias_Shop');
+require('./components/Shop/Ver_Carrito_Shop');
+require('./components/Shop/Checkout_Compra_Shop');
 require('./components/Feature/Gift_cards');
 require('./components/Feature/Articulos');
 

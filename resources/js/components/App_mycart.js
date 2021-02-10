@@ -119,7 +119,8 @@ class App_mycart extends Component {
                                 <p className="total"><strong>Subtotal:</strong> <span className="amount">{this.state.subtotal}<span className="woocommerce-Price-currencySymbol">$</span></span></p>
                                 <p className="buttons">
                                     
-                                    <a href="#" className="button checkout wc-forward sc_button_hover_slide_left">Checkout</a>
+                                    <a href={Configuracion.url_principal+"carrito"} className="button checkout wc-forward sc_button_hover_slide_left">Ver Carrito</a>
+                                    <a href={Configuracion.url_principal+"checkout"}  className="button checkout wc-forward sc_button_hover_slide_left">Checkout</a>
                                 </p>
                             </div>
                         </div>
