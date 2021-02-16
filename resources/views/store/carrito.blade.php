@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="yes-js js_active js scheme_default">
     <head>
-        <title>Tienda - Escaparate de Lolita</title>
+        <title>Mi Carrito - Escaparate de Lolita</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="format-detection" content="telephone=no">
@@ -35,38 +35,11 @@
                                                     <div class="sc_layouts_item"  id='App_Login_Link'>
                                                         
                                                     </div>
-                                                    <div class="sc_layouts_item">
-                                                        <div class="sc_layouts_currency">
-                                                            <div class="menu_user_currency">
-                                                                <form method="post" action="#" class="woocommerce-currency-switcher-form ">
-                                                                    <input type="hidden" name="woocommerce-currency-switcher" value="USD">
-                                                                    <div class="select_container">
-                                                                        <select name="woocommerce-currency-switcher w_100per d_none" 
-                                                                        data-width="100%" 
-                                                                        data-flag-position="right" 
-                                                                        class="woocommerce-currency-switcher">
-                                                                        
-                                                                            <option value="USD" 
-                                                                                    selected="selected" 
-                                                                                    data-imagesrc="" 
-                                                                                    data-icon="" 
-                                                                                    data-description="USA dollar">USD, $
-                                                                            </option>
-
-                                                                            <option value="EUR"
-                                                                                    data-imagesrc=""
-                                                                                    data-icon="" 
-                                                                                    data-description="Europian Euro">EUR, €
-                                                                            </option>
-                                                                        </select>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
+                                                    <!--
                                                     <div class="sc_layouts_item">
                                                         @include('store.layouts.mycart')
                                                     </div>
+                                                    -->
                                                 </div>
                                             </div>
                                             </div>
@@ -125,35 +98,35 @@
 
                 
                 <div class="page_content_wrap scheme_default">
-                <div class="content_wrap">
-                    <div class="content" style="width:100%">
-                        <article class="post_item_single post_type_page page type-page">
-                            <div class="post_content entry-content">
+                    <div class="content_wrap">
+                        <div class="content" style="width:100%">
+                            <article class="post_item_single post_type_page page type-page">
+                                <div class="post_content entry-content">
 
-                                <section>
-                                    <div class="content_container">
+                                    <section>
+                                        <div class="content_container">
 
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <article>
-                                                    <h2 class="title-page">Carrito</h2>
-                                                    <div class="entry-content">
-                                                        <div class="woocommerce">
-                                                            <div class="woocommerce-notices-wrapper mt-4"></div>
-                                                            <form class="woocommerce-cart-form" action="#" method="post" id="App_Shop_Ver_Carrito">
-                                                            </form>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <article>
+                                                        <h2 class="title-page">Carrito</h2>
+                                                        <div class="entry-content">
+                                                            <div class="woocommerce">
+                                                                <div class="woocommerce-notices-wrapper mt-4"></div>
+                                                                <form class="woocommerce-cart-form" action="#" method="post" id="App_Shop_Ver_Carrito">
+                                                                </form>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </article>
+                                                    </article>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </article>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
                     </div>
                 </div>
-            </div>
                 @include('store.layouts.footer2')
             </div>
             <!-- /.page_wrap -->

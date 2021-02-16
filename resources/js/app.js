@@ -29,6 +29,10 @@ require('./components/Shop/Checkout_Compra_Shop');
 require('./components/Feature/Gift_cards');
 require('./components/Feature/Articulos');
 
+require('./components/Users/EditDetallesCuenta');
+require('./components/Users/UserTarjetas');
+require('./components/Users/MyDirecciones');
+
 require('./components/Admin/App_Products');
 require('./components/Admin/App_Form_Product');
 require('./components/Admin/App_Categories');

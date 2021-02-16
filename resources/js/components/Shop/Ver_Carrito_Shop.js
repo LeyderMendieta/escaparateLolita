@@ -10,6 +10,7 @@ class Ver_Carrito_Shop extends Component {
         this.state = {
           error: null,
           isLoaded: false,
+          cantidadProductsUpdate: [],
           productos: [],
           cartProducts: [],
           subtotal: 0,
@@ -41,6 +42,75 @@ class Ver_Carrito_Shop extends Component {
         });
       }
 
+      changeCantidadProduct(event)
+      {
+        $('#btnUpdateCart').removeClass("d-none");
+        if(this.state.cantidadProductsUpdate.indexOf(event.target.id) < 0)
+            this.state.cantidadProductsUpdate.push(event.target.id);
+      }
+
+      changeCantidadProductsHandler()
+      {
+        $('#btnUpdateCart').addClass("d-none");
+        var updates = [];
+        this.state.cantidadProductsUpdate.forEach(element => {
+            var $valor = $("#"+element).val(); 
+            var updateElement = {producto: element,cantidad: $valor};
+            updates.push(updateElement);
+        });
+        
+        try {
+            let config = {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({updates: updates})
+            }
+
+            fetch(Configuracion.url_principal+"api/changeCantidadProducts",config)
+            .then(res => res.json())
+            .then(
+              (result) => {
+                this.setState({
+                    isLoaded: true,
+                    cartProducts: result.products,
+                    subtotal: result.subtotal,
+                    items: result.items
+                });
+              },
+              
+              (error) => {
+                this.setState({
+                  isLoaded: true,
+                  error
+                });
+              }
+            );
+
+        } 
+        catch (error) {
+            console.log(error);
+        }
+      }
+
+      removeFromCartHandler(event)
+      {
+        var fordelete = event.target.getAttribute("data-product_id");
+        fetch(Configuracion.url_principal+"api/cartProduct/del/"+fordelete)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                this.setState({
+                    cartProducts: result.products,
+                    subtotal: result.subtotal,
+                    items: result.items
+                });
+        });
+
+      }
+
       render(){
         return (
             <React.Fragment>
@@ -56,16 +126,16 @@ class Ver_Carrito_Shop extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.cartProducts.map((row) => (
-                        <tr className="woocommerce-cart-form__cart-item cart_item" key={row.id}>
-                            <td className="product-remove">
-                                <a href="" className="remove" aria-label="Borrar este artículo" data-product_id="2811" data-product_sku="">×</a>
+                    {this.state.cartProducts.map((row,index) => (
+                        <tr className="woocommerce-cart-form__cart-item cart_item" aria-controls={row.cartId} key={index}>
+                            <td className="product-remove" >
+                                <span className="remove" aria-label="Borrar este artículo" data-product_id={row.cartId} onClick={this.removeFromCartHandler.bind(this)}>×</span>
                             </td>
                             <td className="product-thumbnail">
-                                <a href="#"><img width="300" height="300" src={Configuracion.url_images+row.imagen_main}  className="" alt="" /></a>
+                                <a href={Configuracion.url_principal+"shop/"+row.acceso_url} target="_blank"><img width="300" height="300" src={Configuracion.url_images+row.imagen_main}  className="" alt="" /></a>
                             </td>
                             <td className="product-name">
-                                <a href="#">{row.name}</a>
+                                <a href={Configuracion.url_principal+"shop/"+row.acceso_url} target="_blank">{row.name}</a>
                             </td>
                             <td className="product-price">
                                 <span className="woocommerce-Price-amount amount"><bdi><span
@@ -75,7 +145,7 @@ class Ver_Carrito_Shop extends Component {
                             <td className="product-quantity">
                                 <div className="quantity detail-qty">
                                     <a href="#" className="qty-down silver"><i className="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
-                                    <input type="number" id="" className="input-text qty text" step="1" min="0" max="" name="" defaultValue={row.cantidad} title="Qty" size="4" pattern="[0-9]*" inputMode="numeric" />
+                                    <input type="number" id={"cartproduct_"+row.cartId} className="input-text qty text" step="1" min="0" max="" name="" defaultValue={row.cantidad} title="Qty" size="4" pattern="[0-9]*" inputMode="numeric" onChange={this.changeCantidadProduct.bind(this)} />
                                     <a href="#" className="qty-up silver"><i className="fa fa-arrow-circle-up" aria-hidden="true"></i></a>
                                 </div>
                             </td>
@@ -96,7 +166,7 @@ class Ver_Carrito_Shop extends Component {
                                     cupón</button>
                             </div>
 
-                            <button type="button" className="button" disabled aria-disabled="true">Actualizar
+                            <button id="btnUpdateCart" type="button" className="button d-none" aria-disabled="true" onClick={this.changeCantidadProductsHandler.bind(this)} >Actualizar
                                 carrito</button>
                         </td>
                     </tr>
@@ -129,8 +199,8 @@ class Ver_Carrito_Shop extends Component {
                         </tr>
                     </tbody>
                 </table>
-                <div className="wc-proceed-to-checkout">
-                    <a href={Configuracion.url_principal+"checkout"} className="checkout-button button alt wc-forward" type="button">Finalizar compra</a>
+                <div className="wc-proceed-to-checkout" style={{display: (this.state.subtotal) == 0 ? "none" : ""}}>
+                    <a href={Configuracion.url_principal+"checkout"} className="checkout-button button alt wc-forward"   type="button">Finalizar compra</a>
                 </div>
             </div>
         </div>

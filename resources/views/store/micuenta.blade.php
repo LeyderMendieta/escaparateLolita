@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="yes-js js_active js scheme_default">
     <head>
-        <title>Checkout - Escaparate de Lolita</title>
+        <title>Mi Cuenta - Escaparate de Lolita</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="format-detection" content="telephone=no">
@@ -35,7 +35,6 @@
                                                     <div class="sc_layouts_item"  id='App_Login_Link'>
                                                         
                                                     </div>
-                                                    
                                                     <div class="sc_layouts_item">
                                                         @include('store.layouts.mycart')
                                                     </div>
@@ -93,26 +92,49 @@
                         </div>	
                     </div>
                 </div>
+
+
+                
                 <div class="page_content_wrap scheme_default">
-                <div class="content_wrap">
-                    <div class="content" style="width:100%">
-                        <article class="post_item_single post_type_page page type-page">
-                            <div class="post_content entry-content">
+                    <div class="content_wrap">
+                        <div class="content"  style="width:100%">
+                            <article class="post_item_single">
+                                <div class="post_content entry-content">
+                                    <section>
+                                        <div class="content_container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <article>
+                                                        <h2 class="title-page">Bienvenido a tu cuenta !!!</h2>
+                                                        <div class="entry-content">
+                                                            <div class="woocommerce">
+                                                                @include('store.layouts.nav-cuenta-user')
+                                                                <div class="woocommerce-MyAccount-content">
+                                                                    <p>
+                                                                        Hola <strong>Bienvenido</strong> </p>
+                                                                    <p>
+                                                                        Desde el panel de control de tu cuenta puedes ver tus <a href="{{ url('/' . $page='pedidos') }}">pedidos recientes</a>, gestionar tus <a href="{{ url('/' . $page='misdirecciones') }}">direcciones de envío y facturación</a> y
+                                                                        <a href="{{ url('/' . $page='detallescuenta') }}">editar tu contraseña y los detalles de tu cuenta</a>.</p>
 
-                                <section>
-                                    <div class="content_container" id="App_Shop_Checkout_Compra">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </article>
 
-                                    </div>
-                                </section>
-
-                            </div>
-                        </article>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
                     </div>
                 </div>
-            </div>
                 @include('store.layouts.footer2')
             </div>
+            <!-- /.page_wrap -->
         </div>
+        <!-- /.body_wrap -->
         
         <div id='App_Login'>
         </div>
@@ -125,13 +147,9 @@
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/chosen/chosen.jquery.min.js')}}"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/front.js')}}"></script>
         <script>
-        function country(country) {
-            if (country === 'Panama') {
-                $('#con-provincia').addClass("d-block");
-            } else {
-                $('#con-provincia').removeClass("d-block");
-            }
-        }
+            $(document).ready(function(){
+                $('#li_nav1').addClass("is-active");
+            });
         </script>
         <a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>
     </body>

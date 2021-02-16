@@ -18,7 +18,7 @@ class CartController extends Controller
             return response()->json(array("cart" => $_COOKIE["session_mycart"]));
         }
 
-        $session = (isset($_COOKIE["session_user"])) ? $_COOKIE["session_user"] : "null";
+        $session = (isset($_COOKIE["authlog"])) ? $_COOKIE["authlog"] : "null";
         
         $user = User::where('api_token',$session)->whereNotNull('api_token')->first();
         if($user)
@@ -106,7 +106,33 @@ class CartController extends Controller
 
         $result = DB::table('cart_products')->where('id', $id)->delete();
 
-        return response()->json($result);
+        return $this->getMyCartProducts();
 
+    }
+
+    public function changeCantidadProducts(Request $request)
+    {
+        if(!isset($_COOKIE["session_mycart"])){
+            $error = "No Cart found";
+            return response()->json(array("error" => $error));
+        }
+
+        $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
+
+        $cambios = 0;
+        foreach($request->updates as $fila)
+        {
+            $cart = cartProduct::where(["id" => str_replace("cartproduct_","",$fila["producto"]),"id_cart" => $mycart->id])->first();
+            if($cart)
+            {
+                $cart->cantidad = $fila["cantidad"];
+                $cart->save();
+                $cambios++;
+            }
+        }
+       
+        $result = "Se han echo $cambios Cambios";
+
+        return $this->getMyCartProducts();
     }
 }

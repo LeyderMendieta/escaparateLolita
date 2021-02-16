@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Redirect;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +33,41 @@ Route::get('/carrito', function () {
 Route::get('/checkout', function () {
     return view('store.checkout');
 });
+
+//-----------Mi cuenta Procesos
+Route::get('/micuenta', function () {
+    if(!isset($_COOKIE["authlog"]))    
+        return Redirect::to('home');
+    else
+        return view('store.micuenta');
+});
+Route::get('/pedidos', function () {
+    if(!isset($_COOKIE["authlog"]))    
+        return Redirect::to('home');
+    else
+        return view('store.pedidos');
+});
+Route::get('/misdirecciones', function () {
+    if(!isset($_COOKIE["authlog"]))    
+        return Redirect::to('home');
+    else
+        return view('store.misdirecciones');
+});
+Route::get('/detallescuenta', function () {
+    if(!isset($_COOKIE["authlog"]))    
+        return Redirect::to('home');
+    else
+        return view('store.detallescuenta');
+});
+Route::get('/metodospago', function () {
+    if(!isset($_COOKIE["authlog"]))    
+        return Redirect::to('home');
+    else
+        return view('store.metodospago');
+});
+
+//-----------------------------------
+
 Route::get('/gallery', 'GaleriaController@loadGalleryView');
 
 Route::get('/contacts', function () {

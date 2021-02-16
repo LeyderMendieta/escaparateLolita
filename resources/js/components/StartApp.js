@@ -165,7 +165,6 @@ class Products_Shop extends Component {
     }
 
     async handlePageChange(pageNumber) {
-      console.log(`active page is ${pageNumber}`);
       this.setState({activePage: pageNumber});
       await this.loadProducts(pageNumber);
       

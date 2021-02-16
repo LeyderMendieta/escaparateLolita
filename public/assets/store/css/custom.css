@@ -1,0 +1,87 @@
+span.title18 {
+    font-size: 18px;
+}
+
+a.shop-button {
+    display: inline-block;
+    color: #ffffff !important;
+    border-radius: 18px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 18px;
+    text-align: center;
+    position: relative;
+    background: #FE7799;
+    border: none;
+}
+
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
+
+.credit-card {
+    position: relative;
+    padding: 30px 20px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-weight: 300;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shallow-shadow);
+    transition: all .25s ease-in-out;
+    cursor: pointer;
+}
+
+/* .credit-card::after {
+    content: "X";
+    font-size: 1.4em;
+    font-weight: bold;
+    top: 5px;
+    right: 5px;
+    position: absolute;
+    transition: all .25s ease-in-out;
+    opacity: 0;
+} */
+
+.credit-card:hover {
+    transform: scale(1.02);
+}
+
+/* .credit-card:hover::after {
+    opacity: 1;
+    transition: all .25s ease-in-out;
+} */
+
+.credit-card--purple {
+    background: linear-gradient(to right, #bf9eff, #8092fc);
+}
+
+.credit-card--blue {
+    background: linear-gradient(to right, #79b9e9, #31bfad);
+}
+
+.credit-card--pink {
+    background: linear-gradient(to right, #f0819f, #f47d76);
+}
+
+.credit-card__number {
+    margin-bottom: 20px;
+    font-family: 'Anonymous Pro', monospace;
+    font-size: 20px;
+    letter-spacing: 6px;
+}
+
+.credit-card__name {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.credit-card__footer {
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+svg.icon_custom {
+    color: #FE7799 !important;
+}

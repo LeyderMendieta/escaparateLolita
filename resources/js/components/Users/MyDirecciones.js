@@ -2,148 +2,293 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Configuracion from '../Configuration';
 
-class Checkout_Compra_Shop extends Component {
+class MyDirecciones extends Component {
 
     constructor(props) {
         super(props);
-        
-        this.state = {
-          error: null,
-          isLoaded: false,
-          productos: [],
-          cartProducts: [],
-          subtotal: 0,
-          items: 0    
-        };
-        
-      }
 
-      componentDidMount() {
-        
-        fetch(Configuracion.url_principal+"api/getMyCartProducts")
+        this.state = {
+            error: null,
+            isLoaded: false,
+            direccionesT1: [],
+            direccionesT2: [],
+            contadorT1: 0,
+            contadorT2: 0
+        };
+
+    }
+
+    componentDidMount() {
+        fetch(Configuracion.url_principal + "api/getMyDirecciones")
         .then(res => res.json())
         .then(
+        (result) => {
+            console.log(result);
+            if (result.error == undefined) {
+                this.setState({
+                    isLoaded: true,
+                    direccionesT1: result.direccionesT1,
+                    direccionesT2: result.direccionesT2,
+                    contadorT1: result.contadorT1,
+                    contadorT2: result.contadorT2
+                });
+                
+            }
+            else {
+                console.log(result.error);
+            }
+
+        });
+    }
+
+    agregarHandler() {
+        
+        var tipo = $('#field_tipo').val();
+        if(tipo == "envio")
+        {
+            if(this.state.contadorT2 == 3) 
+            {
+                alert("SOLO SE PERMITEN 3 Direcciones maximo para Envio");
+                return false;
+            }
+        }
+        if(tipo == "facturacion")
+        {
+            if(this.state.contadorT1 == 3) 
+            {
+                alert("SOLO SE PERMITEN 3 Direcciones maximo para Facturación");
+                return false;
+            }
+        }
+        var referencia = $('#field_referencia').val();
+        var direccion = $('#field_direccion').val();
+        var apartamento = $('#field_apartamento').val();
+        var ciudad = $('#field_ciudad').val();
+        var pais = $('#field_pais').val();
+        var codigo_postal = $('#field_postal').val();
+        var telefono = $('#field_telefono').val();
+        
+        var errorfound = "";
+        if(referencia == "" || direccion == "" || apartamento == "" || pais == "" || codigo_postal == "" || telefono == "")
+        {
+            errorfound = "Todos los campos son obligatorios *";
+        }
+        if(errorfound != "")
+        {
+            $('#resultAdding').html("<h5 className='text-danger'> "+errorfound+" *</h5>");
+            setTimeout(() => {
+                $('#resultAdding').html("");
+            }, 3000);
+            return false;
+        }
+        
+        try {
+            let config = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ tipo: tipo, referencia: referencia, direccion: direccion, apartamento: apartamento, ciudad: ciudad, pais: pais, codigo_postal: codigo_postal,telefono: telefono })
+            }
+
+            fetch(Configuracion.url_principal + "api/addNewAddressU", config)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                       
+                        if (result.error == undefined) {
+
+                            $('#field_referencia').val("");
+                            $('#field_direccion').val("");
+                            $('#field_apartamento').val("");
+                            $('#field_ciudad').val("");
+                            $('#field_pais').val("");
+                            $('#field_postal').val("");
+                            $('#field_telefono').val("");
+                            this.setState({
+                                direccionesT1: result.direccionesT1,
+                                direccionesT2: result.direccionesT2,
+                                contadorT1: result.contadorT1,
+                                contadorT2: result.contadorT2
+                            });
+                            $('#resultAdding').html("<h5 className='text-success'> se ha agregado</h5>");
+                            $('#form-direccion').addClass("d-none");
+                        }
+                        else {
+                            
+                                $('#resultAdding').html("<h5 className='text-danger'> ha ocurrido un error</h5>");
+                            
+                        }
+                        setTimeout(() => {
+                            $('#resultAdding').html("");
+                        }, 3000);
+                    },
+
+                    (error) => {
+                        this.setState({
+                            isLoaded: true,
+                            error
+                        });
+                    }
+                );
+
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    removeHandler(target) {
+        if(confirm("¿Estas seguro de Eliminar la dirección?"))
+        {
+            fetch(Configuracion.url_principal + "api/myDireccionudel/" + target)
+            .then(res => res.json())
+            .then(
             (result) => {
-                if(result.error == undefined)
-                {
+                if (result.error == undefined) {
                     this.setState({
                         isLoaded: true,
-                        cartProducts: result.products,
-                        subtotal: result.subtotal,
-                        items: result.items
+                        direccionesT1: result.direccionesT1,
+                        direccionesT2: result.direccionesT2,
+                        contadorT1: result.contadorT1,
+                        contadorT2: result.contadorT2
                     });
                 }
-                else
-                {
+                else {
                     console.log(result.error);
                 }
-            
-        });
-      }
+            });
+        }        
+    }
 
-      render(){
+    addDireccionHandler(event)
+    {
+        $('#field_tipo').val(event.target.getAttribute("data-tipo"));
+        $('#form-direccion').removeClass("d-none");
+    }
+
+    render() {
         return (
-            <div className="row">
-                <div className="col-md-4 order-md-2 mb-4">
-                    <h4 className="d-flex justify-content-between align-items-center mb-3">
-                        <span className="text-muted">tus compras</span>
-                        <span className="badge badge-secondary badge-pill">{this.state.items}</span>
-                    </h4>
-                    <ul className="list-group mb-3">
-                    {this.state.cartProducts.map((row) => (
-                        <li className="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 className="my-0">{row.name}</h6>
-                                <small className="text-muted">{row.descripcion.substring(0,35)}</small>
-                            </div>
-                            <span className="text-muted">${row.precio_ahora} ({row.cantidad})</span>
-                        </li>
-                    ))}
+            <React.Fragment>
+                <p className="mb-4"> Las siguientes direcciones se utilizarán por defecto en la página de pago.</p>
+                <div className="row">
+                    <div className="col-md-6 pl-4 pr-4">
+                        <header className="woocommerce-Address-title title mb-3">
+                            <h3>Dirección de facturación</h3>
+                            <a href="#form-add" className="edit" onClick={this.addDireccionHandler.bind(this)} data-tipo="facturacion" >Añadir</a>
+                        </header>
+                        {this.state.direccionesT1.map((row) => (
+                            <address style={{position: "relative"}} key={row.id} >
+                                <strong>
+                                    {row.referencia}<br/>
+                                    {row.direccion} - {row.apartamento}<br/>
+                                    {row.pais} {row.ciudad}<br/>
+                                    {row.codigo_postal}<br/>
+                                    {row.telefono}
+                                </strong>
+                                <hr/>
+                                <div style={{position: "absolute", "top": 0, right: 0}}>
+                                    <ul className="list-unstyled">
+                                        <li>
+                                            <a href="#" className="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                <svg className="icon_custom" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit-2 text-success">
+                                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#li_nav1" className="bs-tooltip" data-placement="top" data-toggle="tooltip" data-original-title="Delete" aria-label={row.id} onClick={this.removeHandler.bind(this, row.id)} >
+                                                <svg className="icon_custom" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-trash-2 text-danger">
+                                                    <polyline points="3 6 5 6 21 6">
+                                                    </polyline>
+                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                    </path>
+                                                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </address>
+                        ))}
                     
-                        <li className="list-group-item d-none justify-content-between bg-light">
-                            <div className="text-success">
-                                <h6 className="my-0"> Cupón: <span>promololita</span> </h6>
-
-                                <span><a href="" style={{color: "#FE7799"}}>eliminar</a></span>
-                            </div>
-                            <span className="text-success">-$5</span>
-                        </li>
-
-                        <li className="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 className="my-0"> Precio de Envío</h6>
-                                <small className="text-muted">seleccionar</small>
-                            </div>
-
-                            <div className="d-block my-3">
-                                <div className="custom-control custom-radio">
-                                    <input id="panamaenvio" name="envio" type="radio" className="custom-control-input" checked required />
-                                    <label className="custom-control-label" htmlFor="panamaenvio">Panamá / Panamá <span> $5</span></label>
-                                </div>
-                                <div className="custom-control custom-radio">
-                                    <input id="panamaprovincia" name="envio" type="radio" className="custom-control-input" required />
-                                    <label className="custom-control-label" htmlFor="panamaprovincia">Panamá / Provincia <span> $12</span></label>
-                                </div>
-
-                                <div className="custom-control custom-radio">
-                                    <input id="panamalocal" name="envio" type="radio" className="custom-control-input" required />
-                                    <label className="custom-control-label" htmlFor="panamalocal">Recogida Local <span> $0</span></label>
-                                </div>
-
-                            </div>
-
-                        </li>
-
-                        <li className="list-group-item d-flex justify-content-between">
-                            <span>Total (USD)</span>
-                            <strong>${this.state.subtotal + 5}</strong>
-                        </li>
-                    </ul>
-
-                    <form className="card p-2 mb-3">
-                        <div className="input-group">
-                            <h6 className="my-0 mb-2">Si tienes un código de cupón, por favor, aplícalo abajo.</h6>
-                            <input type="text" className="form-control" placeholder="código promocional" />
-                            <div className="input-group-append">
-                                <button type="submit" className="btn btn-secondary">Usar</button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <div className="card p-2 mb-3">
-                        <p>Tus datos personales se utilizarán para procesar tu pedido, mejorar tu experiencia en esta web y otros propósitos descritos en nuestra <a href="#" className="woocommerce-privacy-policy-link" target="_blank">política de privacidad</a>.</p>
                     </div>
-
+                    <div className="col-md-6  pl-4 pr-4">
+                    <header className="woocommerce-Address-title title">
+                        <h3>Dirección de envío</h3>
+                        <a href="#form-add" className="edit" onClick={this.addDireccionHandler.bind(this)} data-tipo="envio">Añadir</a>
+                    </header>
+                    {this.state.direccionesT2.map((row) => (
+                        <address style={{position: "relative"}} key={row.id}>
+                            <strong>
+                                {row.referencia}<br/>
+                                {row.direccion} - {row.apartamento}<br/>
+                                {row.pais} {row.ciudad}<br/>
+                                {row.codigo_postal}<br/>
+                                {row.telefono}
+                            </strong>
+                            <hr/>
+                            <div style={{position: "absolute", "top": 0, right: 0}}>
+                                <ul className="list-unstyled">
+                                    <li>
+                                        <a href="#" className="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <svg className="icon_custom" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit-2 text-success">
+                                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
+                                                </path>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#li_nav1" className="bs-tooltip" data-placement="top" data-toggle="tooltip" data-original-title="Delete" data-address={row.id} onClick={this.removeHandler.bind(this)} >
+                                            <svg className="icon_custom" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-trash-2 text-danger">
+                                                <polyline points="3 6 5 6 21 6">
+                                                </polyline>
+                                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                </path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </address>
+                    ))}
                 </div>
-                <div className="col-md-8 order-md-1">
-                    <h4 className="mb-3">Checkout</h4>
-                    <form className="needs-validation" action="" method="post" noValidate>
-                        <div className="row">
-                            <div className="col-md-6 mb-3  pl-0">
-                                <label htmlFor="firstName">Nombre <span className="text-muted">*</span></label>
-                                <input type="text" className="form-control" id="nombre" placeholder=""  required />
-                                <div className="invalid-feedback">
-                                    Valida, el nombre es requerido
-                                </div>
-                            </div>
-                            <div className="col-md-6 mb-3 pr-0">
-                                <label htmlFor="lastName">Apellidos <span className="text-muted">*</span></label>
-                                <input type="text" className="form-control" id="apellido" placeholder=""  required />
-                                <div className="invalid-feedback">
-                                    Valida, el apellido es requerido
-                                </div>
-                            </div>
+                </div>
+                <hr id="form-add"/>
+                <form action="#" method="post" className="mt-5 pt-5 d-none" id="form-direccion">
+                    <div className="row">
+                        <h5 className="modal-title" id="exampleModalLongTitle">Nueva dirección de facturación</h5>                                                                    
+                    </div>
+                    <div className="row mb-3">
+                        <div className="col-md-6">
+                            <label htmlFor="nombre" className="">Nombres de Contacto&nbsp;</label>
+                            <input type="text" className="form-control" name="" placeholder="" id="field_referencia" autoComplete="completar nombre" />
                         </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="empresa">Nombre de la empresa <span className="text-muted">(Optional)</span></label>
-                            <input type="text" className="form-control" id="empresa" placeholder=""  />
-
+                        <div className="col-md-6">
+                            <label htmlFor="nombre" className="">Tipo de Dirección</label>
+                            <input type="text" className="form-control" name="tipo" id="field_tipo" disabled />
                         </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="pais">País / Región <span className="text-muted">*</span></label><br />
-                            <select onchange="country(this.value)" className="form-control w-100 border  p-0" id="pais" required>
+                    </div>
+                    <div className="row mb-3">
+                        <div className="col-md-6">
+                            <label htmlFor="billing_address_1" className="">Dirección de la calle&nbsp;<span className="required" title="obligatorio">(si su país no es Panamá, agregue la dirección y el estado) </span></label>
+                            <input type="text" className="form-control" id="field_direccion" placeholder="Número de la casa y nombre de la calle" autoComplete="direccion de la calle" />
+                        </div>
+                        <div className="col-md-6">
+                            <label htmlFor="billing_com" className="">Apartamento<span className="optional">(numero de apartamento, referencia</span></label>
+                            <input type="text" className="form-control" id="field_apartamento" />
+                        </div>                                                                        
+                    </div>
+                    <div className="row mb-3">
+                        <div className="col-md-6">
+                            <label htmlFor="billing_country" className="">País / Región&nbsp;</label>
+                            <select name="" id="" className="form-control border p-2" data-placeholder="Seleccionar pais / region…" tabIndex="-1" aria-hidden="true" defaultValue="" id="field_pais">
+                                <option value="">Seleccionar...</option>
                                 <option value="Afghanistan">Afghanistan</option>
                                 <option value="Åland Islands">Åland Islands</option>
                                 <option value="Albania">Albania</option>
@@ -313,7 +458,7 @@ class Checkout_Compra_Shop extends Component {
                                 <option value="Pakistan">Pakistan</option>
                                 <option value="Palau">Palau</option>
                                 <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
-                                <option value="Panama">Panamá</option>
+                                <option value="Panama">Panama</option>
                                 <option value="Papua New Guinea">Papua New Guinea</option>
                                 <option value="Paraguay">Paraguay</option>
                                 <option value="Peru">Peru</option>
@@ -388,145 +533,55 @@ class Checkout_Compra_Shop extends Component {
                                 <option value="Yemen">Yemen</option>
                                 <option value="Zambia">Zambia</option>
                                 <option value="Zimbabwe">Zimbabwe</option>
-                                </select>
-                            <div className="invalid-feedback">
-                                Es requerido, selecciona un país
-                            </div>
-                        </div>
-
-
-                        <div id="con-provincia" className="mb-3 d-none">
-                            <label htmlFor="pais">Estado / Provincia<span className="text-muted">*</span></label>
-                            <br />
-                            <select className="form-control w-100 border p-0" id="" required>
-                                <option >Selecciona...</option>
-                                <option  value="Bocas del Toro">Bocas del Toro</option>
-                                <option  value="Coclé">Cocle</option>
-                                <option  value="Colon">Colón</option>
-                                <option  value="Panama">Panamá</option>
-                                <option  value="Chiriquí">Chiriqui</option>
-                                <option  value="Darién">Darien</option>
-                                <option  value="Herrera">Herrera</option>
-                                <option  value="Los Santos">Los Santos</option>
-                                <option  value="Veraguas">Veraguas</option>
-                                <option  value="Panamá Oeste">Panama Oeste</option>
                             </select>
-
-                            <div className="invalid-feedback">
-                                Es requerido, selecciona un estado / provincia
-                            </div>
                         </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="email">Correo Electrónico <span className="text-muted">*</span></label>
-                            <input type="email" className="form-control" id="email" placeholder="you@example.com" required />
-                            <div className="invalid-feedback">
-                                Ingrese una dirección de correo electrónico válida para recibir actualizaciones de envío.
-                            </div>
-                        </div>
-
-
-                        <div className="mb-3">
-                            <label htmlFor="direccion">Dirección <span className="text-muted">* (si su país no es Panamá, agregue la dirección y el estado al que pertenece aquí)</span></label>
-                            <input type="text" className="form-control" id="direccion" placeholder="parque central panamá" required />
-                            <div className="invalid-feedback">
-                                Porfavor ingrese direccion de envío
-                            </div>
-                        </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="direccion2">Direccion 2 <span className="text-muted">(Optional)</span></label>
-                            <input type="text" className="form-control" id="direccion2" placeholder="parque central panamá" />
-                        </div>
-
-
-                        <div className="mb-3">
-                            <label htmlFor="telefono">Teléfono Fijo ó Whatsapp <span className="text-muted">*</span></label>
-                            <input type="text" className="form-control" id="telefono" placeholder="#" />
-                        </div>
-
-                        <hr className="mb-4" />
-
-                        <div className="custom-control custom-checkbox">
-                            <input type="checkbox" className="custom-control-input" id="same-address" />
-                            <label className="custom-control-label" htmlFor="same-address">La dirección de envío es la misma que mi dirección de facturación</label>
-                        </div>
-                        <div className="custom-control custom-checkbox">
-                            <input type="checkbox" className="custom-control-input" id="save-info" />
-                            <label className="custom-control-label" htmlFor="save-info">Guarde esta información para la próxima vez</label>
-                        </div>
-                        
-                        <hr className="mb-4" />
-
-                        <h4 className="mb-3">Métodos de pago</h4>
-                        <div className="d-block my-3">
-                            <div className="custom-control custom-radio">
-                                <input id="credit" name="paymentMethod" type="radio" className="custom-control-input" checked required />
-                                <label className="custom-control-label" htmlFor="credit">Tarjeta de crédito</label>
-                            </div>
-                            <div className="custom-control custom-radio">
-                                <input id="debit" name="paymentMethod" type="radio" className="custom-control-input" required />
-                                <label className="custom-control-label" htmlFor="debit">Tarjeta de débito</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-6 mb-3">
-                                <label htmlFor="cc-name">Nombre en la tarjeta</label>
-                                <input type="text" className="form-control" id="cc-name" placeholder="" required />
-                                <small className="text-muted">Nombre completo como se muestra en la tarjeta</small>
+                        <div className="col-md-6">
+                            <div id="con-provincia" className="form-group d-none">
+                                <label htmlFor="pais">Estado / Provincia<span className="text-muted">*</span></label><br/>
+                                <select className="form-control w-100 border  p-2" id="field_ciudad" defaultValue="">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="Bocas del Toro">Bocas del Toro</option>
+                                    <option value="Coclé">Cocle</option>
+                                    <option value="Colon">Colón</option>
+                                    <option value="Panama">Panamá</option>
+                                    <option value="Chiriquí">Chiriqui</option>
+                                    <option value="Darién">Darien</option>
+                                    <option value="Herrera">Herrera</option>
+                                    <option value="Los Santos">Los Santos</option>
+                                    <option value="Veraguas">Veraguas</option>
+                                    <option value="Panamá Oeste">Panama Oeste</option>
+                                </select>
                                 <div className="invalid-feedback">
-                                    Name on card is required
+                                    Es requerido, selecciona un estado / provincia
                                 </div>
                             </div>
-                            <div className="col-md-6 mb-3">
-                                <label htmlFor="cc-number">Número de tarjeta de crédito</label>
-                                <input type="text" className="form-control" id="cc-number" placeholder="" required />
-                                <div className="invalid-feedback">
-                                    Credit card number is required
-                                </div>
-                            </div>
+                        </div>                                                                        
+                    </div>
+                    <div className="row mb-3">
+                        <div className="col-md-6">
+                            <label htmlFor="numbers" className="">Codigo Postal&nbsp;</label>
+                            <input type="number" className="form-control" id="field_postal" />
                         </div>
-                        <div className="row">
-                            <div className="col-md-3 mb-3">
-                                <label htmlFor="cc-expiration">Vencimiento</label>
-                                <input type="text" className="form-control" id="cc-expiration" placeholder="" required />
-                                <div className="invalid-feedback">
-                                    Expiration date required
-                                </div>
+                        <div className="col-md-6">
+                            <label htmlFor="billing_phone" className="">Teléfono&nbsp; ó Whatsapp</label>
+                            <input type="tel" className="form-control" id="field_telefono" />
+                            <div className="invalid-feedback">
+                                Es requerido, poner el número telefonico
                             </div>
-                            <div className="col-md-3 mb-3">
-                                <label htmlFor="cc-expiration">CVV</label>
-                                <input type="text" className="form-control" id="cc-cvv" placeholder="" required />
-                                <div className="invalid-feedbac">
-                                    Código de seguridad requerido
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr className="mb-4" />
-
-                        <div className="woocommerce-additional-fields p-2 mb-3">
-                            <h3>Información adicional</h3>
-                            <div className="">
-                                <p className="form-row notes" id="order_comments_field" data-priority=""><label htmlFor="order_comments" className="">Notas del pedido&nbsp;<span className="optional">(opcional)</span></label><span className="woocommerce-input-wrapper"></span></p>
-                                <textarea name="order_comments" className="form-control" id="order_comments" placeholder="Notas sobre tu pedido, por ejemplo, notas especiales para la entrega." rows="2" cols="5"></textarea>
-                            </div>
-                        </div>
-
-                        <hr className="mb-4" />
-
-                        <div className=" p-2 mb-3">
-                            <input type="checkbox" className="custom-control-input" id="confirmar-terminos-condiciones" />
-                            <label className="custom-control-label" htmlFor="confirmar-terminos-condiciones"><span className="woocommerce-terms-and-conditions-checkbox-text">He leído y estoy de acuerdo con los <a href="#" className="woocommerce-terms-and-conditions-link" target="_blank">términos y condiciones</a> de la web</span>&nbsp;<span className="required">*</span></label>
-                        </div>
-                        <button className="btn btn-primary btn-lg btn-block" type="submit">Finalizar Compra</button>
-                    </form>
-                </div>
-            </div>
-        );  
+                        </div>                                                                        
+                    </div>
+                    <div className="row">
+                        <span id="resultAdding"></span>
+                    </div>
+                    <div className="row ">
+                        <button type="button" className="btn btn-primary mx-auto" onClick={this.agregarHandler.bind(this)} >Agregar</button>
+                    </div>
+                </form>
+            </React.Fragment>
+        );
     }
 }
 
-if (document.getElementById('App_Shop_Checkout_Compra')) {
-    ReactDOM.render(<Checkout_Compra_Shop />, document.getElementById('App_Shop_Checkout_Compra'));
+if (document.getElementById('App_User_Direcciones')) {
+    ReactDOM.render(<MyDirecciones />, document.getElementById('App_User_Direcciones'));
 }

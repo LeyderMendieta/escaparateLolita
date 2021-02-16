@@ -32,10 +32,25 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('/cartProduct/del/{id}','CartController@removeProductCart');
 
     Route::post('/addProductToCart','CartController@addProductToCart');
-    
+    Route::post('/changeCantidadProducts','CartController@changeCantidadProducts');
+    // USUARIOS -----------------------
     Route::post('/login', 'UsuarioController@login');
     Route::post('/register', 'UsuarioController@register');
     Route::post('/AuthLogged', 'UsuarioController@userLogged');
+
+    Route::get('/AuthInfoLogged', 'UsuarioController@getUserInfo');
+    Route::post('/UpInfoLogged', 'UsuarioController@updateUserInfo');
+
+    Route::get('/getMyCards', 'UsuarioController@getTarjetasUsuario');
+    Route::post('/addNewCard', 'UsuarioController@addNewCardUser');
+    Route::get('/myCardsdel/{id}','UsuarioController@removeCardsUser');
+
+    Route::get('/getMyDirecciones', 'UsuarioController@getDireccionesUsuario');
+    Route::post('/addNewAddressU', 'UsuarioController@addNewDireccionUser');
+    Route::get('/myDireccionudel/{id}','UsuarioController@removeDireccionUser');
+    Route::post('/editAddressU', 'UsuarioController@editDireccionUser');
+
+    Route::get("/datingTesting","UsuarioController@gettingDTO");
 
     Route::post('/asignarAgenda','AgendaController@store');
 

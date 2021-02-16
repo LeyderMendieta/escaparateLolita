@@ -13,7 +13,7 @@ class App_Login extends Component {
         this.state = {
           error: null,
           isLoaded: false,
-          activeSession: cookies.get('session_user')
+          activeSession: cookies.get('authlog')
           
         };
 
@@ -64,7 +64,7 @@ class App_Login extends Component {
                     if(result.api_token != undefined)
                     {
                         const cookies = new Cookies();
-                        cookies.set('session_user', result.api_token, { path: '/' });
+                        cookies.set('authlog', result.api_token, { path: '/' });
                         location.reload();
                     }
                     else
@@ -196,7 +196,7 @@ class App_Login_Link extends Component {
         this.state = {
           error: null,
           isLoaded: false,
-          activeSession: cookies.get('session_user'),
+          activeSession: cookies.get('authlog'),
           user_name: ""
           
         };
@@ -243,7 +243,7 @@ class App_Login_Link extends Component {
       cerrarSesion()
       {
         const cookies = new Cookies();
-        cookies.remove('session_user',{ path: '/' });
+        cookies.remove('authlog',{ path: '/' });
         location.reload();
       }
 
@@ -251,7 +251,7 @@ class App_Login_Link extends Component {
         
         if (this.state.activeSession != "" && this.state.activeSession != undefined) {            
             return (
-                <div><i className="sc_form_field_icon trx_addons_icon-user-alt mr-1"></i><span id="span_name_user"></span> <button onClick={this.cerrarSesion.bind(this)} className="btn btn-sm ml-1 text-white" >Salir <i className="sc_form_field_icon trx_addons_icon-off"></i></button></div>
+                <div><i className="sc_form_field_icon trx_addons_icon-user-alt mr-1"></i><a href={Configuracion.url_principal+"micuenta"}> <span id="span_name_user"></span></a> <button onClick={this.cerrarSesion.bind(this)} className="btn btn-sm ml-1 text-white" >Salir <i className="sc_form_field_icon trx_addons_icon-off"></i></button></div>
             );
         }
         else
@@ -272,3 +272,45 @@ class App_Login_Link extends Component {
 if (document.getElementById('App_Login_Link')) {
     ReactDOM.render(<App_Login_Link />, document.getElementById('App_Login_Link'));
 }
+
+class App_Close_Session extends Component {
+
+    constructor(props) {
+        super(props);
+        const cookies = new Cookies();
+        
+        this.state = {
+          isLoaded: false       
+        };
+        
+      }
+                
+      cerrarSesion()
+      {
+        const cookies = new Cookies();
+        cookies.remove('authlog',{ path: '/' });
+        location.reload();
+      }
+
+      render(){
+                  
+        return (
+            <a href="#" onClick={this.cerrarSesion.bind(this)}><span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-log-out">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4">
+                        </path>
+                        <polyline points="16 17 21 12 16 7">
+                        </polyline>
+                        <line x1="21" y1="12" x2="9" y2="12">
+                        </line>
+                    </svg></span>
+                Salir</a>
+        );    
+    }
+}
+
+
+if (document.getElementById('App_Login_CloseSesion')) {
+    ReactDOM.render(<App_Close_Session />, document.getElementById('App_Login_CloseSesion'));
+}
+

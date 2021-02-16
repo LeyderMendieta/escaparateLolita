@@ -67,7 +67,7 @@ class App_mycart extends Component {
         .then(res => res.json())
         .then(
             (result) => {
-                console.log(result+" deleted");
+                //console.log(result);
         });
 
         var subtotal = e.target.getAttribute("data-valor");

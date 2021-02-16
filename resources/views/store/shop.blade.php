@@ -34,35 +34,6 @@
                                                         
                                                     </div>
                                                     <div class="sc_layouts_item">
-                                                        <div class="sc_layouts_currency">
-                                                            <div class="menu_user_currency">
-                                                                <form method="post" action="#" class="woocommerce-currency-switcher-form ">
-                                                                    <input type="hidden" name="woocommerce-currency-switcher" value="USD">
-                                                                    <div class="select_container">
-                                                                        <select name="woocommerce-currency-switcher w_100per d_none" 
-                                                                        data-width="100%" 
-                                                                        data-flag-position="right" 
-                                                                        class="woocommerce-currency-switcher">
-                                                                        
-                                                                            <option value="USD" 
-                                                                                    selected="selected" 
-                                                                                    data-imagesrc="" 
-                                                                                    data-icon="" 
-                                                                                    data-description="USA dollar">USD, $
-                                                                            </option>
-
-                                                                            <option value="EUR"
-                                                                                    data-imagesrc=""
-                                                                                    data-icon="" 
-                                                                                    data-description="Europian Euro">EUR, €
-                                                                            </option>
-                                                                        </select>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                    <div class="sc_layouts_item">
                                                         @include('store.layouts.mycart')
                                                     </div>
                                                 </div>
