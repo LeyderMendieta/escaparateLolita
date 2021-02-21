@@ -16,6 +16,6 @@ class cart extends Model
     }
 
     protected $fillable = [
-        'id_usuario', 'api_token',
+        'id_usuario', 'api_token', "id_cupon"
     ];
 }

@@ -65,6 +65,12 @@ Route::get('/metodospago', function () {
     else
         return view('store.metodospago');
 });
+Route::get('/cupones', function () {
+    if(!isset($_COOKIE["authlog"]))    
+        return Redirect::to('home');
+    else
+        return view('store.cupones');
+});
 
 //-----------------------------------
 

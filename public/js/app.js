@@ -79807,6 +79807,8 @@ __webpack_require__(/*! ./components/Users/UserTarjetas */ "./resources/js/compo
 
 __webpack_require__(/*! ./components/Users/MyDirecciones */ "./resources/js/components/Users/MyDirecciones.js");
 
+__webpack_require__(/*! ./components/Users/MisCupones */ "./resources/js/components/Users/MisCupones.js");
+
 __webpack_require__(/*! ./components/Admin/App_Products */ "./resources/js/components/Admin/App_Products.js");
 
 __webpack_require__(/*! ./components/Admin/App_Form_Product */ "./resources/js/components/Admin/App_Form_Product.js");
@@ -79840,6 +79842,10 @@ __webpack_require__(/*! ./components/Admin/App_Admon_Settings_Enviroment */ "./r
 __webpack_require__(/*! ./components/Admin/App_Form_Articulo */ "./resources/js/components/Admin/App_Form_Articulo.js");
 
 __webpack_require__(/*! ./components/Admin/App_Admon_Articulos */ "./resources/js/components/Admin/App_Admon_Articulos.js");
+
+__webpack_require__(/*! ./components/Admin/App_Form_Cupon */ "./resources/js/components/Admin/App_Form_Cupon.js");
+
+__webpack_require__(/*! ./components/Admin/App_Admon_Cupones */ "./resources/js/components/Admin/App_Admon_Cupones.js");
 
 /***/ }),
 
@@ -80212,6 +80218,171 @@ var App_Admon_Brands = /*#__PURE__*/function (_Component) {
 
 if (document.getElementById('App_Admon_Brands')) {
   react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(App_Admon_Brands, null), document.getElementById('App_Admon_Brands'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/App_Admon_Cupones.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/Admin/App_Admon_Cupones.js ***!
+  \************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Configuration */ "./resources/js/components/Configuration.js");
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var App_Admon_Cupones = /*#__PURE__*/function (_Component) {
+  _inherits(App_Admon_Cupones, _Component);
+
+  var _super = _createSuper(App_Admon_Cupones);
+
+  function App_Admon_Cupones(props) {
+    var _this;
+
+    _classCallCheck(this, App_Admon_Cupones);
+
+    _this = _super.call(this, props);
+    var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_4__["default"]();
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      cupones: []
+    };
+    return _this;
+  }
+
+  _createClass(App_Admon_Cupones, [{
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _this2 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return fetch(_Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].url_principal + "api/admin/cupones").then(function (res) {
+                  return res.json();
+                }).then(function (result) {
+                  _this2.setState({
+                    isLoaded: true,
+                    cupones: result.cupones
+                  });
+                }, function (error) {
+                  _this2.setState({
+                    isLoaded: true,
+                    error: error
+                  });
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function componentDidMount() {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: "deleteRecord",
+    value: function deleteRecord(toDelete) {
+      if (confirm("Estas Seguro de Eliminar la categoria <b>" + toDelete + "</b>")) {
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].url_principal + "api/remove/cupon/" + toDelete).then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          if (result) {
+            $('#zc-record_' + toDelete).remove();
+            alert("se ha eliminado el cupon");
+          } else {
+            alert("error en el proceso de eliminación");
+          }
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
+        id: "tableProducts",
+        className: "table table-striped table-bordered text-nowrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Opciones"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Codigo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Tipo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Aplica para"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Importe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Descripci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Fecha de Caducidad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Usado"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, this.state.cupones.map(function (row, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
+          id: "zc-record_" + row.id,
+          key: index
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, row.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+          href: _Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].url_principal + "admon/edit/cupon/" + row.id,
+          className: "btn btn-info",
+          target: "_parent"
+        }, "Editar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+          htmlFor: row.id,
+          className: "btn btn-danger ml-3",
+          onClick: _this3.deleteRecord.bind(_this3, row.id)
+        }, "Eliminar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, row.codigo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, row.tipo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, row.target.nombre == undefined ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+          href: _Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].url_principal + "shop/" + row.target.acceso_url,
+          target: "_blank"
+        }, row.target.name) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+          href: _Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].url_principal + "shop?category=" + row.target.id,
+          target: "_blank"
+        }, row.target.nombre)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, row.importe, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, row.descripcion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, row.fecha_caducidad), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, row.usado == 0 ? "NO" : "SI"));
+      })));
+    }
+  }]);
+
+  return App_Admon_Cupones;
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+
+if (document.getElementById('App_Admon_Cupones')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(App_Admon_Cupones, null), document.getElementById('App_Admon_Cupones'));
 }
 
 /***/ }),
@@ -81731,6 +81902,369 @@ var App_Admon_Form_Category = /*#__PURE__*/function (_Component) {
 
 if (document.getElementById('App_Admon_Form_Category')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Admon_Form_Category, null), document.getElementById('App_Admon_Form_Category'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/App_Form_Cupon.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/Admin/App_Form_Cupon.js ***!
+  \*********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Configuration */ "./resources/js/components/Configuration.js");
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var App_Admon_Form_Cupon = /*#__PURE__*/function (_Component) {
+  _inherits(App_Admon_Form_Cupon, _Component);
+
+  var _super = _createSuper(App_Admon_Form_Cupon);
+
+  function App_Admon_Form_Cupon(props) {
+    var _this;
+
+    _classCallCheck(this, App_Admon_Form_Cupon);
+
+    _this = _super.call(this, props);
+    var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      editing: false,
+      codigo: "",
+      tipo: "",
+      target: null,
+      importe: "",
+      descripcion: "",
+      fecha_caducidad: "",
+      targetsAvailable: []
+    };
+    return _this;
+  }
+
+  _createClass(App_Admon_Form_Cupon, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      document.getElementById('fecha_caduca').min = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
+
+      if (document.getElementById("tokenEditing").value != "") {
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/admin/cupones/" + document.getElementById("tokenEditing").value).then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          document.getElementById("zc-codigo").disabled = true;
+
+          _this2.setState({
+            isLoaded: true,
+            editing: true,
+            codigo: result.cupon.codigo,
+            tipo: result.cupon.tipo,
+            target: result.cupon.id_target,
+            importe: result.cupon.importe,
+            descripcion: result.cupon.descripcion,
+            fecha_caducidad: result.cupon.fecha_caducidad
+          });
+
+          $('#zc-tipo').val(_this2.state.tipo);
+
+          if (_this2.state.tipo == "Cupon de Producto") {
+            fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/all_products").then(function (res) {
+              return res.json();
+            }).then(function (result) {
+              _this2.setState({
+                targetsAvailable: result
+              });
+
+              $('#zc-target').val(_this2.state.target);
+            });
+          } else if (_this2.state.tipo == "Cupon de Categoria") {
+            fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/all_categories").then(function (res) {
+              return res.json();
+            }).then(function (result) {
+              _this2.setState({
+                targetsAvailable: result
+              });
+
+              $('#zc-target').val(_this2.state.target);
+            });
+          } else {
+            _this2.setState({
+              targetsAvailable: []
+            });
+          }
+        }, function (error) {
+          _this2.setState({
+            isLoaded: true,
+            error: error
+          });
+        });
+      }
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(linked) {
+      var _this3 = this;
+
+      if (this.state.codigo == "" || this.state.tipo == "" || this.state.importe == "" || this.state.descripcion == "" || this.state.fecha_caducidad == "") {
+        alert("Todos los campos son obligatorios");
+        return false;
+      }
+
+      if (this.state.importe > 100) {
+        alert("El importe no puede ser mayor al 100%");
+        return false;
+      }
+
+      try {
+        $('#global-loader').show();
+        var formData = new FormData();
+        formData.append('codigo', this.state.codigo);
+        formData.append('tipo', this.state.tipo);
+        formData.append('target', this.state.target);
+        formData.append('importe', this.state.importe);
+        formData.append('descripcion', this.state.descripcion);
+        formData.append('fecha', this.state.fecha_caducidad);
+
+        if (this.state.editing) {
+          formData.append('id', document.getElementById("tokenEditing").value);
+        }
+
+        var config = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        };
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/" + linked + "/cupon", config).then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          $('#global-loader').hide();
+
+          if (result.error == undefined) {
+            if (_this3.state.editing) alert("Se ha actualizado el cupon");else alert("Se ha creado el cupon");
+            location.href = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "admon/cupones";
+          } else {
+            if (result.error == "failed used") {
+              if (_this3.state.editing) {
+                alert("Este cupon no puede ser modificado, porque ya esta usado por un usuario");
+                location.href = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "admon/cupones";
+              } else {
+                _this3.setState({
+                  codigo: ""
+                });
+
+                alert("El codigo de cupon no esta disponible, intenta con otro");
+              }
+            } else {
+              alert("Fallo en el proceso, intenta más tarde");
+            }
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, {
+    key: "setTargetsAvailable",
+    value: function setTargetsAvailable(event) {
+      var _this4 = this;
+
+      var aplica = event.target.value;
+      this.setState({
+        tipo: aplica
+      });
+
+      if (aplica == "Cupon de Producto") {
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/all_products").then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          _this4.setState({
+            targetsAvailable: result
+          });
+        });
+      } else if (aplica == "Cupon de Categoria") {
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/all_categories").then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          _this4.setState({
+            targetsAvailable: result
+          });
+        });
+      } else {
+        this.setState({
+          targetsAvailable: []
+        });
+      }
+
+      this.setState({
+        target: ""
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this5 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-lg-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row py-2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Tipo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "zc-tipo",
+        className: "form-control",
+        onChange: this.setTargetsAvailable.bind(this),
+        defaultValue: this.state.tipo
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: ""
+      }, "Seleccionar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Cupon de Producto"
+      }, "Cupon de Producto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Cupon de Categoria"
+      }, "Cupon de Categoria"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Cupon Global"
+      }, "Cupon Global"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6",
+        style: {
+          display: this.state.targetsAvailable.length == 0 ? "none" : ""
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Aplica para"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "zc-target",
+        className: "form-control",
+        onChange: function onChange(e) {
+          return _this5.setState({
+            target: e.target.value
+          });
+        },
+        defaultValue: this.state.target
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: ""
+      }, "Seleccionar"), this.state.targetsAvailable.map(function (row, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: row.id,
+          key: index
+        }, row.nombre == undefined ? row.name : row.nombre);
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Codigo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zc-codigo",
+        className: "form-control",
+        onChange: function onChange(e) {
+          return _this5.setState({
+            codigo: e.target.value.toUpperCase()
+          });
+        },
+        value: this.state.codigo,
+        maxLength: "5"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Descripci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control",
+        onChange: function onChange(e) {
+          return _this5.setState({
+            descripcion: e.target.value
+          });
+        },
+        value: this.state.descripcion,
+        maxLength: "250"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Importe (%)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        className: "form-control",
+        onChange: function onChange(e) {
+          return _this5.setState({
+            importe: e.target.value
+          });
+        },
+        defaultValue: this.state.importe
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Fecha de Caducidad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "fecha_caduca",
+        type: "date",
+        className: "form-control",
+        onChange: function onChange(e) {
+          return _this5.setState({
+            fecha_caducidad: e.target.value
+          });
+        },
+        defaultValue: this.state.fecha_caducidad
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row my-5 text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "btn btn-light mx-auto",
+        href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "admon/cupones"
+      }, "Cancelar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-success mx-auto",
+        onClick: this.state.editing == false ? this.handleSubmit.bind(this, "new") : this.handleSubmit.bind(this, "edit")
+      }, this.state.editing == false ? "Crear" : "Actualizar")))));
+    }
+  }]);
+
+  return App_Admon_Form_Cupon;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_Admon_Form_Cupon')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Admon_Form_Cupon, null), document.getElementById('App_Admon_Form_Cupon'));
 }
 
 /***/ }),
@@ -88395,7 +88929,9 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
       productos: [],
       cartProducts: [],
       subtotal: 0,
-      items: 0
+      items: 0,
+      cuponAplicar: "",
+      resultAplicarCupon: ""
     };
     return _this;
   }
@@ -88404,6 +88940,14 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
+
+      var urlParams = new URLSearchParams(window.location.search);
+
+      if (urlParams.get("cupon") != null) {
+        this.setState({
+          cuponAplicar: urlParams.get("cupon")
+        });
+      }
 
       fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/getMyCartProducts").then(function (res) {
         return res.json();
@@ -88489,9 +89033,57 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "aplicarCuponHandler",
+    value: function aplicarCuponHandler() {
+      var _this5 = this;
+
+      try {
+        var errorShow = {
+          "error found": "Error encontrado",
+          "cupno-found": "El cupón no se encuentra",
+          "cupno-asocToUser": "No se posible aplicar el cupón",
+          "cupno-dateused": "El cupón ya fue usado anteriormente",
+          "cookino-mycart": "Error durante el proceso, intenta más tarde",
+          "cartno-setter": "Error durante el proceso del carrito, intenta más tarde",
+          "producno-asocToCart": "No tiene ningún producto/categoria asociado al cupón, Agregue alguno para poder efectura el cupón"
+        };
+        var formData = new FormData();
+        formData.append('codigo', this.state.cuponAplicar);
+        var config = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        };
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/aplicarCuponCarrito", config).then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          if (result.error == undefined) {
+            _this5.setState({
+              cuponAplicar: "",
+              resultAplicarCupon: ""
+            });
+
+            alert("Se ha agregado el cupón exitosamente");
+          } else {
+            _this5.setState({
+              resultAplicarCupon: errorShow[result.error] + " - (" + _this5.state.cuponAplicar + ")"
+            });
+
+            _this5.setState({
+              cuponAplicar: ""
+            });
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "shop_table shop_table_responsive cart woocommerce-cart-form__contents",
@@ -88521,7 +89113,7 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
           className: "remove",
           "aria-label": "Borrar este art\xEDculo",
           "data-product_id": row.cartId,
-          onClick: _this5.removeFromCartHandler.bind(_this5)
+          onClick: _this6.removeFromCartHandler.bind(_this6)
         }, "\xD7")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
           className: "product-thumbnail"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -88567,7 +89159,7 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
           size: "4",
           pattern: "[0-9]*",
           inputMode: "numeric",
-          onChange: _this5.changeCantidadProduct.bind(_this5)
+          onChange: _this6.changeCantidadProduct.bind(_this6)
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "#",
           className: "qty-up silver"
@@ -88593,17 +89185,31 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
         name: "coupon_code",
         className: "input-text",
         id: "coupon_code",
-        placeholder: "C\xF3digo de cup\xF3n"
+        placeholder: "C\xF3digo de cup\xF3n",
+        onChange: function onChange(e) {
+          return _this6.setState({
+            cuponAplicar: e.target.value.toUpperCase()
+          });
+        },
+        value: this.state.cuponAplicar
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "button"
+        className: "button",
+        onClick: this.aplicarCuponHandler.bind(this)
       }, "Aplicar cup\xF3n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "btnUpdateCart",
         type: "button",
         className: "button d-none",
         "aria-disabled": "true",
         onClick: this.changeCantidadProductsHandler.bind(this)
-      }, "Actualizar carrito"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Actualizar carrito"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "bg-light"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        colSpan: "6",
+        className: "text-left"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-danger"
+      }, this.state.resultAplicarCupon))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-collaterals"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart_totals "
@@ -89399,6 +90005,229 @@ var EditDetallesCuenta = /*#__PURE__*/function (_Component) {
 
 if (document.getElementById('App_Form_Detalles_Cuenta')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(EditDetallesCuenta, null), document.getElementById('App_Form_Detalles_Cuenta'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Users/MisCupones.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/Users/MisCupones.js ***!
+  \*****************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Configuration */ "./resources/js/components/Configuration.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var MisCupones = /*#__PURE__*/function (_Component) {
+  _inherits(MisCupones, _Component);
+
+  var _super = _createSuper(MisCupones);
+
+  function MisCupones(props) {
+    var _this;
+
+    _classCallCheck(this, MisCupones);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      cupones: [],
+      newCupon: "",
+      statusLoad: ""
+    };
+    return _this;
+  }
+
+  _createClass(MisCupones, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/getMyCupones").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        console.log(result);
+
+        if (result.error == undefined) {
+          _this2.setState({
+            isLoaded: true,
+            cupones: result.cupones
+          });
+        } else {
+          console.log(result.error);
+        }
+      });
+    }
+  }, {
+    key: "addCuponHandler",
+    value: function addCuponHandler(event) {
+      var _this3 = this;
+
+      try {
+        var formData = new FormData();
+        formData.append('codigo', this.state.newCupon);
+        var config = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        };
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/addCupon", config).then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          if (result.error == undefined) {
+            _this3.setState({
+              statusLoad: "",
+              newCupon: ""
+            });
+
+            _this3.componentDidMount();
+          } else {
+            if (result.error == "noavailable") {
+              _this3.setState({
+                statusLoad: "El codigo no esta disponible",
+                newCupon: ""
+              });
+            } else {
+              alert("Fallo en el proceso, intenta más tarde");
+            }
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-12 pl-4 pr-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "table-responsive"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table table-hover"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: ""
+      }, "C\xF3digo")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Tipo de cup\xF3n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Aplica para")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Importe del cup\xF3n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Descripci\xF3n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Fecha de Caducidad")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Acciones")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.cupones.map(function (row) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: row.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "codigo"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "#"
+        }, row.codigo)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "tipo-cupon"
+        }, row.tipo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "tipo-cupon"
+        }, row.target.nombre == undefined ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "shop/" + row.target.acceso_url,
+          target: "_blank"
+        }, row.target.name) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "shop?category=" + row.target.id,
+          target: "_blank"
+        }, row.target.nombre)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "importe"
+        }, row.importe, " %"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "descripcion"
+        }, row.descripcion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "Fecha"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", {
+          dateTime: "2021-01-29T15:41:51+00:00"
+        }, row.fecha_caducidad)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "Acciones"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "carrito?cupon=" + row.codigo,
+          className: "woocommerce-button button view"
+        }, "utilizar")));
+      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "coupon"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "coupon_code",
+        className: "input-text",
+        id: "coupon_code",
+        placeholder: "C\xF3digo",
+        onChange: function onChange(e) {
+          return _this4.setState({
+            newCupon: e.target.value.toUpperCase()
+          });
+        },
+        value: this.state.newCupon
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "button ml-2",
+        onClick: this.addCuponHandler.bind(this)
+      }, "Agregar cup\xF3n"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.statusLoad)));
+    }
+  }]);
+
+  return MisCupones;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_Mis_Cupones')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MisCupones, null), document.getElementById('App_Mis_Cupones'));
 }
 
 /***/ }),

@@ -1,11 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Cupon;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\UserAddress;
 use App\UserCards;
+use App\UserCupon;
 use App\UserInfo;
+use App\Product;
+use App\Category;
+use App\cart;
+use COM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -313,5 +320,140 @@ class UsuarioController extends Controller
             return response()->json(array("error" => "error found"));
     }
 
+    public function getMyCupones()
+    {
+        $session = (isset($_COOKIE["authlog"])) ? $_COOKIE["authlog"] : "null";
 
+        if($session == "null") 
+            return response()->json(array("error" => "oauthlogged"));
+
+        $user = User::where(['api_token' => $session])->whereNotNull("api_token")->first();       
+        if($user)
+        {
+            $userCupons = UserCupon::where(["id_user" => $user->id])->get();
+
+            $cupons = [];
+
+            foreach($userCupons as $cupon)
+            {
+                array_push($cupons,Cupon::where(["id" => $cupon->id_cupon])->first());
+            }
+            $data = [];
+            foreach($cupons as $fila)
+            {
+                if($fila->tipo == "Cupon de Producto")
+                    $target = Product::where("id",$fila->id_target)->first();
+                else if($fila->tipo == "Cupon de Categoria")
+                    $target = Category::where("id",$fila->id_target)->first();
+                else $target = ["empty" => true];
+                array_push($data,["id" => $fila->id,"codigo" => $fila->codigo, "tipo" => $fila->tipo, "target" => $target, "importe" => $fila->importe, "descripcion" => $fila->descripcion, "fecha_caducidad" => $fila->fecha_caducidad, "usado" => $fila->usado]);
+            }
+
+            return response()->json(["cupones" => $data]);
+        }
+        else 
+            return response()->json(array("error" => "error found"));
+    }
+
+    public function addNewCuponUser(Request $request)
+    {
+        $session = (isset($_COOKIE["authlog"])) ? $_COOKIE["authlog"] : "null";
+
+        if($session == "null") 
+            return response()->json(array("error" => "oauthlogged"));
+
+        $user = User::where(['api_token' => $session])->whereNotNull("api_token")->first();       
+        if($user && isset($request->codigo))
+        {
+            $cupon = Cupon::where(["codigo" => $request->codigo, "usado" => 0])->first();
+            if($cupon)
+            {
+                $cuponadd = new UserCupon();
+                $cuponadd->id_user = $user->id;
+                $cuponadd->id_cupon = $cupon->id;
+                $cuponadd->save();
+
+                if($cuponadd)
+                {
+                    $cupon->usado = 1;
+                    $cupon->save();
+                    return response()->json(array("success" => "done"));
+                }
+                else return response()->json(array("error" => "failedsaving"));
+            }
+            else
+            {
+                return response()->json(array("error" => "noavailable"));
+            }            
+        }
+        else 
+            return response()->json(array("error" => "error found"));
+    }
+
+    public function aplicarCuponCarrito(Request $request)
+    {
+        $session = (isset($_COOKIE["authlog"])) ? $_COOKIE["authlog"] : "null";
+
+        if($session == "null") 
+            return response()->json(array("error" => "oauthlogged"));
+
+        $user = User::where(['api_token' => $session])->whereNotNull("api_token")->first();       
+        if($user && isset($request->codigo))
+        {
+            $cupon = Cupon::where(["codigo" => $request->codigo])->first();
+            if($cupon)
+            {
+                $cuponUser = UserCupon::where(["id_user" => $user->id, "id_cupon" => $cupon->id])->first();
+                if($cuponUser)
+                {
+                    if($cuponUser->fecha_uso == null) 
+                    {
+                        if(isset($_COOKIE["session_mycart"]))
+                        {
+                            $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
+                            if($mycart)
+                            {
+                                $myproducts_cart = DB::select("SELECT t0.id as cartId,t0.talla_selected,t0.color_selected,t0.cantidad,t1.* FROM cart_products t0 INNER JOIN products t1 ON t0.id_product=t1.id WHERE t0.id_cart=".$mycart->id);
+
+                                $status = false;                                
+                                foreach($myproducts_cart as $fila)
+                                {
+                                    if($cupon->tipo == "Cupon de Categoria")
+                                    {
+                                        $categorias = json_decode($fila->categorias);
+                                        foreach($categorias as $filacategoria)
+                                        {
+                                            if($cupon->id_target == $filacategoria) $status = true;
+                                        }
+                                    }
+                                    if($cupon->tipo == "Cupon de Producto")
+                                    {
+                                        if($cupon->id_target == $fila->id) $status = true;
+                                    }
+                                }
+                                if($cupon->tipo == "Cupon Global") $status = true;
+
+                                if($status)
+                                {
+                                    $mycart->id_cupon = $cupon->id;
+                                    $mycart->save();
+                                    return response()->json(array("success" => "added"));
+                                }
+                                else $error = "producno-asocToCart";
+                            }
+                            else $error ="cartno-setter";
+                        }
+                        else $error = "cookino-mycart";
+                    }
+                    else $error = "cupno-dateused";
+                } 
+                else $error = "cupno-asocToUser";
+            }
+            else $error = "cupno-found";
+        }
+        else  $error = "error found";
+
+        return response()->json(array("error" => $error));
+            
+    }
 }

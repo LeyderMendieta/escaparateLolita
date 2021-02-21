@@ -32,6 +32,7 @@ require('./components/Feature/Articulos');
 require('./components/Users/EditDetallesCuenta');
 require('./components/Users/UserTarjetas');
 require('./components/Users/MyDirecciones');
+require('./components/Users/MisCupones');
 
 require('./components/Admin/App_Products');
 require('./components/Admin/App_Form_Product');
@@ -50,4 +51,6 @@ require('./components/Admin/App_Form_GiftCard');
 require('./components/Admin/App_Admon_Settings_Enviroment');
 require('./components/Admin/App_Form_Articulo');
 require('./components/Admin/App_Admon_Articulos');
+require('./components/Admin/App_Form_Cupon');
+require('./components/Admin/App_Admon_Cupones');
 

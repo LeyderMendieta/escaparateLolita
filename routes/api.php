@@ -50,15 +50,26 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('/myDireccionudel/{id}','UsuarioController@removeDireccionUser');
     Route::post('/editAddressU', 'UsuarioController@editDireccionUser');
 
-    Route::get("/datingTesting","UsuarioController@gettingDTO");
+    Route::get('/getMyCupones', 'UsuarioController@getMyCupones');
+    Route::post('/addCupon', 'UsuarioController@addNewCuponUser');
+    Route::post('/aplicarCuponCarrito', 'UsuarioController@aplicarCuponCarrito');
 
     Route::post('/asignarAgenda','AgendaController@store');
 
     //Administración
+    Route::get("/admin/cupones","CuponController@index");
+    Route::get("/admin/cupones/{cupon}","CuponController@show");
+    Route::post("/new/cupon","CuponController@store");
+    Route::post("/edit/cupon","CuponController@update");
+    Route::get("/remove/cupon/{cupon}","CuponController@destroy");
+
+    Route::get("/admin/producto/{producto}","ProductController@show");
     Route::post('/store/producto','ProductController@crearProducto');
     Route::post('/update/producto','ProductController@editarProducto');
     Route::post('/store/productoImagen','ProductController@guardarFile');
     Route::get('/remove/producto/{id}','ProductController@removeProduct');
+   
+    
     
     Route::get('/all_categories','CategoryController@getAll');
     Route::get('/category_detail/{category}','CategoryController@viewCategoryDetail');    

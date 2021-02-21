@@ -26,6 +26,7 @@
 										<ul class="sub-menu">
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/articulos') }}">Articulos</a></li>
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/gift_cards') }}">Gift Cards</a></li>
+											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/cupones') }}">Cupones</a></li>
 										</ul>
 									</li>
 									<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/settings_enviroment') }}"><i class="fe fe-settings"></i> Configuraciones</a>									

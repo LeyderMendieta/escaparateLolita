@@ -235,5 +235,11 @@ class ProductController extends Controller
 
         return response()->json(array("result"=>$updatingmasive));
     }
+
+    public function show($id)
+    {
+        $producto = Product::where("id",$id)->first();
+        return response()->json(["producto" => $producto]);
+    }
 }
 

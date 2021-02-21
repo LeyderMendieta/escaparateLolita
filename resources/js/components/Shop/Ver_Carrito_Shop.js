@@ -14,13 +14,21 @@ class Ver_Carrito_Shop extends Component {
           productos: [],
           cartProducts: [],
           subtotal: 0,
-          items: 0    
+          items: 0,
+          cuponAplicar: "",
+          resultAplicarCupon: ""
         };
         
       }
 
       componentDidMount() {
         
+        const urlParams = new URLSearchParams(window.location.search);
+        if(urlParams.get("cupon") != null)
+        {
+            this.setState({cuponAplicar: urlParams.get("cupon")})
+        }
+
         fetch(Configuracion.url_principal+"api/getMyCartProducts")
         .then(res => res.json())
         .then(
@@ -111,6 +119,56 @@ class Ver_Carrito_Shop extends Component {
 
       }
 
+      aplicarCuponHandler()
+      {
+        try {
+
+            const errorShow = {
+                "error found":"Error encontrado",
+                "cupno-found":"El cupón no se encuentra",
+                "cupno-asocToUser":"No se posible aplicar el cupón",
+                "cupno-dateused":"El cupón ya fue usado anteriormente",
+                "cookino-mycart":"Error durante el proceso, intenta más tarde",
+                "cartno-setter":"Error durante el proceso del carrito, intenta más tarde",
+                "producno-asocToCart":"No tiene ningún producto/categoria asociado al cupón, Agregue alguno para poder efectura el cupón",
+            };
+        
+            const formData = new FormData();
+            formData.append('codigo', this.state.cuponAplicar);
+
+            let config = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json'
+                    },
+                body: formData
+                }
+
+            fetch(Configuracion.url_principal+"api/aplicarCuponCarrito",config)
+            .then(res => res.json())
+            .then((result) => {
+                    if(result.error == undefined)
+                    {
+                        this.setState({cuponAplicar: "",resultAplicarCupon:""});
+                        alert("Se ha agregado el cupón exitosamente");
+                    }
+                    else 
+                    {
+                        
+                        this.setState({
+                            resultAplicarCupon: errorShow[result.error]+" - ("+this.state.cuponAplicar+")"
+                        });
+                        this.setState({cuponAplicar: ""});
+                    }
+                }
+            );
+
+        } catch (error) {
+            console.log(error);
+        }
+          
+      }
+
       render(){
         return (
             <React.Fragment>
@@ -161,13 +219,18 @@ class Ver_Carrito_Shop extends Component {
                         <td colSpan="6" className="actions">
                             <div className="coupon">
                                 <label htmlFor="coupon_code">Cupón:</label>
-                                <input type="text" name="coupon_code" className="input-text" id="coupon_code"  placeholder="Código de cupón" />
-                                <button type="button" className="button">Aplicar
+                                <input type="text" name="coupon_code" className="input-text" id="coupon_code"  placeholder="Código de cupón" onChange={(e) => (this.setState({cuponAplicar: e.target.value.toUpperCase()}))} value={this.state.cuponAplicar} />
+                                <button type="button" className="button" onClick={this.aplicarCuponHandler.bind(this)}>Aplicar
                                     cupón</button>
                             </div>
 
                             <button id="btnUpdateCart" type="button" className="button d-none" aria-disabled="true" onClick={this.changeCantidadProductsHandler.bind(this)} >Actualizar
                                 carrito</button>
+                        </td>
+                    </tr>
+                    <tr className="bg-light">
+                        <td colSpan="6" className="text-left">
+                            <span className="text-danger">{this.state.resultAplicarCupon}</span>
                         </td>
                     </tr>
                 </tbody>
