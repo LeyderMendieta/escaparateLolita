@@ -12,18 +12,22 @@ use App\UserInfo;
 use App\Product;
 use App\Category;
 use App\cart;
-use COM;
+use App\UserPedido;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\Cookie;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\VerificaTuCuenta;
 
 class UsuarioController extends Controller
 {
 
     public function gettingDTO()
     {
-        var_dump($_COOKIE["authlog"]);
+        $user = User::where(['email' => "leyder154611@gmail.com"])->first();
+        Mail::to($user)->send(new VerificaTuCuenta("pepe"));
+        
     }
 
     public function login(Request $request)
@@ -32,8 +36,10 @@ class UsuarioController extends Controller
 
         if($user)
         {
+            
             if(hash::check($request->password,$user->password))
             {
+                Auth::login($user,true);
                 $user->generateToken();
                 setCookie ("authlog",$user->api_token);
                 return $user;
@@ -44,15 +50,86 @@ class UsuarioController extends Controller
         else return response()->json(["error" => "nofound"]);  
     }
 
-    public function register(Request $request)
+    public function registerUser(Request $request)
     {
-        $user = User::create([
-            "name" => $request->name,
-            "password" => Hash::make($request->password),
-            "email" => $request->email
-        ]);
+        if(isset($request->name) && isset($request->nuevoPass) && isset($request->correo) && isset($request->nombres) && isset($request->apellidos) && isset($request->ubicacion) && isset($request->apartamento) && isset($request->celular))
+        {
+            $userExists = User::where(["email" => $request->correo])->first();
+            if($userExists) return response()->json(["error" => "mailkey"]);
+            else
+            {
+                $user = User::create([
+                    "name" => $request->name,
+                    "password" => $request->nuevoPass,
+                    "email" => $request->correo,
+                    "AccessToken" => Str::random(240),
+                    "api_token" => Str::random(20)
+                ]);
+        
+                UserInfo::create([
+                    "id_user" => $user->id,
+                    "nombres" => $request->nombres,
+                    "apellidos" => $request->apellidos,
+                    "ubicacion" => $request->ubicacion,
+                    "apartamento" => $request->apartamento,
+                    "telefono" => $request->telefono,
+                    "celular" => $request->celular,
+                ]);
+        
+                $user->generateToken();
+                setCookie ("authlog",$user->api_token);
+        
+                return response()->json($user);
+            }
+           
+        }
+        else return response()->json(["error" => "jobfailed"]);
+    }
 
-        return response()->json($user);
+    public function handlerLoginFromPlatform(Request $request)
+    {
+        if(isset($request->accessToken) && isset($request->email) && isset($request->graphDomain) && isset($request->id) && isset($request->name))
+        {
+            $user = User::where(["graphDomain" => $request->graphDomain,"idPlatform" => $request->id,"email" => $request->email])->first();
+            if($user)
+            {
+                $user->generateToken();
+                setCookie ("authlog",$user->api_token);
+                return response()->json(["user" => $user,"method" => "exist"]);
+            }
+            else
+            {
+                $userValidator = User::where(["email" => $request->email])->first();
+                if($userValidator)
+                {
+                    return response()->json(array("error" => "assocExistMail"));
+                }
+                else
+                {
+                    $user = User::create([
+                        "name" => $request->name,
+                        "password" => "noset",
+                        "email" => $request->email,
+                        "email_verified_at" => now(),
+                        "graphDomain" => $request->graphDomain,
+                        "AccessToken" => $request->accessToken,
+                        "idPlatform" => $request->id,
+                        "api_token" => Str::random(20)
+                    ]);
+
+                    UserInfo::create([
+                        "id_user" => $user->id,
+                        "nombres" => $request->first_name,
+                        "apellidos" => $request->last_name
+                    ]);
+
+                    $user->generateToken();
+                    setCookie ("authlog",$user->api_token);
+                    return response()->json(["user" => $user,"method" => "new"]);
+                }
+            }
+        }
+        else return response()->json(array("error" => "failed"));
     }
 
     public function userLogged(Request $request)
@@ -80,7 +157,11 @@ class UsuarioController extends Controller
         if($user)
         {
             $userinfo = UserInfo::where(['id_user' => $user->id])->first();
-            $response = array("iduser" => $userinfo->id_user,"nombres" => $userinfo->nombres, "apellidos" => $userinfo->apellidos, "ubicacion" => $userinfo->ubicacion, "apartamento" => $userinfo->apartamento, "telefono" => $userinfo->telefono, "celular" => $userinfo->celular,"name" => $user->name,"correo" => $user->email);
+
+            if($user->password == "noset") $nosetPsw = true;
+            else $nosetPsw = false;
+
+            $response = array("iduser" => $userinfo->id_user,"nombres" => $userinfo->nombres, "apellidos" => $userinfo->apellidos, "ubicacion" => $userinfo->ubicacion, "apartamento" => $userinfo->apartamento, "telefono" => $userinfo->telefono, "celular" => $userinfo->celular,"name" => $user->name,"correo" => $user->email,"nosetPsw" => $nosetPsw);
             return response()->json(array("user" => $response));
         }
         else 
@@ -112,7 +193,7 @@ class UsuarioController extends Controller
                 }
                 if($request->updates["nuevoPass"] != "")
                 {
-                    if(hash::check($request->updates["pass"],$user->password))
+                    if(hash::check($request->updates["pass"],$user->password) || $user->password == "noset")
                     {
                         $user->password = Hash::make($request->updates["nuevoPass"]);
                     }
@@ -385,6 +466,30 @@ class UsuarioController extends Controller
             {
                 return response()->json(array("error" => "noavailable"));
             }            
+        }
+        else 
+            return response()->json(array("error" => "error found"));
+    }
+
+    public function getMyPedidos()
+    {
+        $session = (isset($_COOKIE["authlog"])) ? $_COOKIE["authlog"] : "null";
+
+        if($session == "null") 
+            return response()->json(array("error" => "oauthlogged"));
+
+        $user = User::where(['api_token' => $session])->whereNotNull("api_token")->first();       
+        if($user)
+        {
+            $userPedidos = UserPedido::where(["id_user" => $user->id])->get();
+
+            $data = [];
+            foreach($userPedidos as $fila)
+            {
+                array_push($data,["id" => $fila->id,"card" => $fila->id_user_card , "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "total" => $fila->total]);
+            }
+
+            return response()->json(["pedidos" => $data]);
         }
         else 
             return response()->json(array("error" => "error found"));

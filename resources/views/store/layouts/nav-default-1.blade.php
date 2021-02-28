@@ -12,8 +12,8 @@
                 </a>
             </li>
             <li class="color_text_link menu-item">
-                <a href="#">
-                    <span>Envio Gratis!</span>
+                <a href="{{ url('/' . $page='shop') }}">
+                    <span>Envio Gratis por compras mayor a $500!</span>
                 </a>
             </li>
         </ul>

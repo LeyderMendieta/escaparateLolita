@@ -13,8 +13,9 @@ class App_Login extends Component {
         this.state = {
           error: null,
           isLoaded: false,
-          activeSession: cookies.get('authlog')
-          
+          activeSession: cookies.get('authlog'),
+          activeResetPassword: false,
+          correoRestablecer: ""
         };
 
         
@@ -97,14 +98,85 @@ class App_Login extends Component {
         }        
       }
 
-      responseFacebook(response)
+      restablecerPassword()
       {
-        console.log(response);
+        if(this.state.correoRestablecer == "" || this.state.correoRestablecer == null)
+        {
+            $('#correoRestablecer').addClass('trx_addons_field_error');
+            $('#messageResult').css({"display":"block"});
+            $('#messageResult').find('.trx_addons_error_item').text("Es obligatorio un correo");
+
+            setTimeout(function() { 
+                $('#messageResult').css({"display":"none"});
+            }, 2000);
+        }
+        else
+        {
+            var validator = Configuracion.validateEmail(this.state.correoRestablecer);
+            if(validator)
+            {
+                alert("sender");
+            }
+            else
+            {
+                $('#messageResult').css({"display":"block"});
+                $('#messageResult').find('.trx_addons_error_item').text("Correo electronico no valido");
+                setTimeout(function() { 
+                    $('#messageResult').css({"display":"none"});
+                }, 2000);
+            }
+        }
       }
 
-      componentClicked()
+      responseFacebook(response)
       {
-          console.log("clicked");
+        if(response.accessToken != undefined)
+        {
+            try {
+                const formData = new FormData();
+                formData.append('accessToken', response.accessToken);
+                formData.append("email",response.email);
+                formData.append("graphDomain",response.graphDomain);
+                formData.append("id",response.id);
+                formData.append("name",response.name);
+                formData.append("first_name",response.first_name);
+                formData.append("last_name",response.last_name);
+
+                let config = {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json'
+                        },
+                    body: formData
+                    }
+
+                fetch(Configuracion.url_principal+"api/handlerLoginFromPlatform",config)
+                .then(res => res.json())
+                .then((result) => {
+                        if(result.user != undefined)
+                        {
+                            const cookies = new Cookies();
+                            cookies.set('authlog', result.user.api_token, { path: '/' });
+                            if(result.method == "new") location.href = Configuracion.url_principal+"detallescuenta";
+                            else location.reload();
+                        }
+                        else 
+                        {
+                            if(result.error == "assocExistMail")
+                            {
+                                alert("Hubo un problema en la conexión de Facebook.")
+                            }
+                            else
+                            {
+                                alert("Fallo en el proceso, intenta más tarde");
+                            }
+                        }
+                    }
+                );
+            } catch (error) {
+                console.log(error);
+            }
+        }
       }
 
       render(){
@@ -114,15 +186,16 @@ class App_Login extends Component {
             <div>Logged</div>
             );
         }
-        else
+        else if (this.state.activeResetPassword)
         {
             return (
                 <div id="trx_addons_login_popup" className="trx_addons_popup trx_addons_tabs mfp-hide">
                     <ul className="trx_addons_tabs_titles">
                         <li className="trx_addons_tabs_title trx_addons_tabs_title_login">
-                            <a href="#trx_addons_login_content"><i className="trx_addons_icon-lock-open"></i>Ingreso</a>
-                        </li><li className="trx_addons_tabs_title trx_addons_tabs_title_register" data-disabled="true">
-                        <a href="#trx_addons_register_content"><i className="trx_addons_icon-user-plus"></i>Registro</a>
+                            <a href="#restablecer">Restablecer Contraseña</a>
+                        </li>
+                        <li className="trx_addons_tabs_title trx_addons_tabs_title_login">
+                        <a href="#ingresar" onClick={(e) => (this.setState({activeResetPassword:false}))}><i className="trx_addons_icon-user-alt"></i>Ingresar</a>
                         </li>
                     </ul>
                     <div id="trx_addons_login_content" className="trx_addons_tabs_content trx_addons_login_content">
@@ -133,7 +206,46 @@ class App_Login extends Component {
                                     <div className="trx_addons_popup_form_field trx_addons_popup_form_field_login">
                                         <label className="sc_form_field sc_form_field_log required">
                                             <span className="sc_form_field_wrap">
-                                                <input type="text" id="val_user" aria-controls="user" onChange={this.changeInput.bind(this)} />
+                                                <input type="text" id="correoRestablecer" aria-controls="correoRestablecer" onChange={this.changeInput.bind(this)} />
+                                                <span className="sc_form_field_hover">
+                                                    <i className="sc_form_field_icon trx_addons_icon-mail"></i>
+                                                    <span className="sc_form_field_content" data-content="User">Correo Electronico</span>
+                                                </span>	
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div className="trx_addons_popup_form_field trx_addons_popup_form_field_submit">
+                                        <button type="button" className="submit_button" onClick={this.restablecerPassword.bind(this) }>Restablecer Contraseña</button>
+                                    </div>
+                                    <div id='messageResult' className="trx_addons_message_box sc_form_result trx_addons_message_box_error" style={{padding: "1rem"}}><p className="trx_addons_error_item"></p></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        else
+        {
+            return (
+                <div id="trx_addons_login_popup" className="trx_addons_popup trx_addons_tabs mfp-hide">
+                    <ul className="trx_addons_tabs_titles">
+                        <li className="trx_addons_tabs_title trx_addons_tabs_title_login">
+                            <a href="#trx_addons_login_content"><i className="trx_addons_icon-lock-open"></i>Ingreso</a>
+                        </li>
+                        <li className="trx_addons_tabs_title trx_addons_tabs_title_register" aria-disabled="true">
+                        <a href="#" onClick={(e) => (location.href = Configuracion.url_principal+"registro")}><i className="trx_addons_icon-user-plus"></i>Registro</a>
+                        </li>
+                    </ul>
+                    <div id="trx_addons_login_content" className="trx_addons_tabs_content trx_addons_login_content">
+                        <div>
+                            <div className="trx_addons_popup_form_wrap trx_addons_popup_form_wrap_login">
+                                <form className="trx_addons_popup_form trx_addons_popup_form_login sc_input_hover_iconed" action="#" method="post" name="trx_addons_login_form">
+                                    <input type="hidden" id="redirect_to" name="redirect_to" value="" />
+                                    <div className="trx_addons_popup_form_field trx_addons_popup_form_field_login">
+                                        <label className="sc_form_field sc_form_field_log required">
+                                            <span className="sc_form_field_wrap">
+                                                <input type="text" id="val_user" aria-controls="user" onChange={this.changeInput.bind(this)} autoComplete="username" />
                                                 <span className="sc_form_field_hover">
                                                     <i className="sc_form_field_icon trx_addons_icon-user-alt"></i>
                                                     <span className="sc_form_field_content" data-content="User">Usuario</span>
@@ -144,7 +256,7 @@ class App_Login extends Component {
                                     <div className="trx_addons_popup_form_field trx_addons_popup_form_field_password">
                                         <label className="sc_form_field sc_form_field_pwd required">
                                             <span className="sc_form_field_wrap">
-                                                <input type="password" id="val_clave" aria-controls="clave" onChange={this.changeInput.bind(this)} />
+                                                <input type="password" id="val_clave" aria-controls="clave" onChange={this.changeInput.bind(this)} autoComplete="current-password"/>
                                                 <span className="sc_form_field_hover">
                                                     <i className="sc_form_field_icon trx_addons_icon-lock"></i>
                                                     <span className="sc_form_field_content" data-content="Contraseña">Contraseña</span>
@@ -153,9 +265,7 @@ class App_Login extends Component {
                                         </label>
                                     </div>
                                     <div className="trx_addons_popup_form_field trx_addons_popup_form_field_remember">
-                                        <a href="#" className="trx_addons_popup_form_field_forgot_password">¿Olvidaste la contraseña?</a>
-                                        <input type="checkbox" value="forever" name="recordarme" />
-                                        <label htmlFor="recordarme"> Recordarme</label>
+                                        <a href="#" className="trx_addons_popup_form_field_forgot_password" onClick={(e) => (this.setState({activeResetPassword: true}))}>¿Olvidaste la contraseña?</a>
                                     </div>
                                     <div className="trx_addons_popup_form_field trx_addons_popup_form_field_submit">
                                         <button type="button" className="submit_button" onClick={this.loginUser.bind(this)}>Login</button>
@@ -166,8 +276,8 @@ class App_Login extends Component {
                                 <FacebookLogin
                                     appId="991051508059990"
                                     autoLoad={false}
-                                    fields="name,email,picture"
-                                    callback={this.responseFacebook}
+                                    fields="name,email,picture,first_name,last_name"
+                                    callback={this.responseFacebook.bind(this)}
                                     render={renderProps => (
                                         <button onClick={renderProps.onClick} className="btn-facebook"><span className="trx_addons_icon-facebook iconface"></span> Continuar con Facebook</button>
                                       )}
@@ -176,7 +286,6 @@ class App_Login extends Component {
                         </div>
                     </div>
                 </div>
-
                 
             );
         }        

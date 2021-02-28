@@ -20,6 +20,10 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string("graphDomain",50)->default("Esparate Lolita");
+            $table->string("AccessToken",250);
+            $table->bigInteger("idPlatform")->default(1);
+            $table->string("api_token",60)->unique();
             $table->timestamps();
         });
     }

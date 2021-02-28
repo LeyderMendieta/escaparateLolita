@@ -3,16 +3,14 @@ import ReactDOM from 'react-dom';
 import Configuracion from '../Configuration';
 import Cookies from 'universal-cookie';
 
-class EditDetallesCuenta extends Component {
+class RegistrarAccount extends Component {
 
     constructor(props) {
         super(props);
-        const cookies = new Cookies();
         
         this.state = {
             error: null,
             isLoaded: false,
-            iduser: "",
             name: "",
             nombres: "",
             apellidos: "",
@@ -21,43 +19,10 @@ class EditDetallesCuenta extends Component {
             telefono: "",
             apartamento: "",
             correo: "",
-            pass: "",
             nuevoPass: "",
-            confPass: "",
-            nosetpsw: false
+            confPass: ""
         };
         
-      }
-
-      componentDidMount(){
-        fetch(Configuracion.url_principal+"api/AuthInfoLogged")
-        .then(res => res.json())
-        .then(
-            (result) => {
-                if(result.error == undefined)
-                {
-                    if(result.user.nosetPsw) window.location.hash = "section_setPass";
-                    this.setState({
-                        isLoaded: true,                   
-                        iduser: result.user.iduser,
-                        name: result.user.name,
-                        nombres: result.user.nombres,
-                        apellidos: result.user.apellidos,
-                        ubicacion: result.user.ubicacion,
-                        apartamento: result.user.apartamento,
-                        telefono: result.user.telefono,
-                        celular: result.user.celular,
-                        correo: result.user.correo,
-                        nosetpsw: result.user.nosetPsw
-                    });
-                }
-                else
-                {
-                    if(result.error == "oauthlogged") location.href = Configuracion.url_principal;
-                    console.log(result.error);
-                }
-            
-        });
       }
       
       componentDidUpdate()
@@ -65,34 +30,27 @@ class EditDetallesCuenta extends Component {
         $('#resultSaving').html("");
       }
 
-      updateInfoHandler()
+      registrarUserHandler()
       {
-        if(this.state.nuevoPass != "" || this.state.confPass != "")
-        {
-            if(this.state.nuevoPass != this.state.confPass)
-            {
-                $('#resultSaving').html("Las contraseñas no coinciden");
-                return false;
-            }
-            if(this.state.pass == "" && this.state.nosetpsw == false)
-            {
-                $('#resultSaving').html("Es necesario la contraseña actual");
-                return false;
-            }
-        }
-        if(this.state.nosetpsw && this.state.nuevoPass == "")
-        {
-            alert("Porfavor, asignar una nueva contraseña para tu cuenta");
-            return false;
-        }
         if(this.state.name == "" || this.state.nombres == "" || this.state.apellidos == "")
         {
             $('#resultSaving').html("Los campos de Usuario y Nombres son obligatorios");
             return false;
         }
-        if(this.state.nosetpsw == false && (this.state.ubicacion == "" || this.state.apartamento == "" || this.state.celular == "" || this.state.ubicacion == null || this.state.apartamento == null ||  this.state.celular == null))
+        if(this.state.ubicacion == "" || this.state.apartamento == "" || this.state.celular == "" || this.state.ubicacion == null || this.state.apartamento == null ||  this.state.celular == null)
         {
             $('#resultSaving').html("Todos los campos son obligatorios Ubicacion, Celular y Apartamento");
+            return false;
+        }
+        if(this.state.nuevoPass == "" || this.state.confPass == "")
+        {
+            $('#resultSaving').html("Es necesario asignar la contraseña");
+            return false;
+        }
+
+        if(this.state.nuevoPass != this.state.confPass)
+        {
+            $('#resultSaving').html("Las contraseñas no coinciden");
             return false;
         }
         try {
@@ -102,37 +60,27 @@ class EditDetallesCuenta extends Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({updates: this.state})
+              body: JSON.stringify(this.state)
             }
 
-            fetch(Configuracion.url_principal+"api/UpInfoLogged",config)
+            fetch(Configuracion.url_principal+"api/registrarUserProccess",config)
             .then(res => res.json())
             .then(
               (result) => {
-               if(result.success != undefined)
-               {
-                    $('body, html').animate({
-                        scrollTop: '0px'
-                    }, 300);
-                    alert("Se han actualizado los datos personales");
-                    window.location.reload();
-               }
-               if(result.warning != undefined)
-               {
-                   if(result.warning == "mailkey")
-                   {
-                        $('#resultSaving').html("El nuevo correo no se encuentra disponible");
-                   }
-                   if(result.warning == "pswcurrent")
-                   {
-                        $('#resultSaving').html("La contraseña actual incorrecta");
-                   }
-               }
                 if(result.error != undefined)
                 {
-                    alert(result.error);
+                    if(result.error == "mailkey")
+                    {
+                            $('#resultSaving').html("El correo no se encuentra disponible");
+                    }
+                    else  console.log(result.error);
                 }
-                
+                else
+                {
+                    const cookies = new Cookies();
+                    cookies.set('authlog', result.api_token, { path: '/' });
+                    location.href = Configuracion.url_principal+"micuenta";
+                }
               },
               
               (error) => {
@@ -152,7 +100,7 @@ class EditDetallesCuenta extends Component {
       render(){        
        
         return (
-            <form className="woocommerce-EditAccountForm edit-account" action="#" method="post" style={{display: (!this.state.isLoaded) ? "none":""}}>
+            <form className="woocommerce-EditAccountForm edit-account" action="#" method="post">
                 <p className="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
                     <label htmlFor="account_first_name">Nombre&nbsp;<span className="required">*</span></label>
                     <input type="text" className="woocommerce-Input woocommerce-Input--text input-text" onChange={(e) => this.setState({nombres : e.target.value})} value={this.state.nombres} />
@@ -189,15 +137,11 @@ class EditDetallesCuenta extends Component {
                 <div className="clear"></div>
                 <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                     <label htmlFor="account_email">Correo electrónico&nbsp;<i className="text-danger">(Usuario para ingresar al sistema, debe ser un correo verificado)</i><span className="required">*</span></label>
-                    <input type="email" className="woocommerce-Input woocommerce-Input--email input-text" name="account_email" id="account_email" onChange={(e) => this.setState({correo : e.target.value})} value={this.state.correo} disabled/>
+                    <input type="email" className="woocommerce-Input woocommerce-Input--email input-text" name="account_email" id="account_email" onChange={(e) => this.setState({correo : e.target.value})} value={this.state.correo} />
                 </p>
-                <legend>{(this.state.nosetpsw) ? "Asigna una Contraseña a tu cuenta" : "Cambio de Contraseña"}</legend>
-                <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide" style={{display: (this.state.nosetpsw) ? "none" : ""}}>
-                    <label htmlFor="password_current">Contraseña actual (déjalo en blanco para no cambiarla)</label>
-                    <input type="password" className="woocommerce-Input woocommerce-Input--password input-text" name="password_current" id="password_current" autoComplete="off" onChange={(e) => this.setState({pass : e.target.value})} /><span className="show-password-input"></span>
-                </p>
+                <legend>Asigna una Contraseña a tu cuenta</legend>
                 <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                    <label htmlFor="password_1">Nueva contraseña</label><br/>
+                    <label htmlFor="password_1">Contraseña</label><br/>
                     <input type="password" className="woocommerce-Input woocommerce-Input--password input-text" autoComplete="off" onChange={(e) => this.setState({nuevoPass : e.target.value})} /><span className="show-password-input" ></span>
                 </p>
                 <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
@@ -207,14 +151,14 @@ class EditDetallesCuenta extends Component {
                 <div className="clear"></div>
                 <h5 id='resultSaving' className="text-danger"></h5>
                 <p>
-                    <input type="hidden" id="save-account-details-nonce" name="save-account-details-nonce" value="cea4a49b91" /><input type="hidden" name="_wp_http_referer" value="/mi-cuenta/edit-account/" />                                                                        <button type="button" className="woocommerce-Button button" name="save_account_details" value="Guardar los cambios" onClick={this.updateInfoHandler.bind(this)}>Guardar los cambios</button>
-                    
+                    <input type="hidden" id="save-account-details-nonce" name="save-account-details-nonce" value="cea4a49b91" />
+                    <button type="button" className="woocommerce-Button button" name="save_account_details" value="Guardar los cambios" onClick={this.registrarUserHandler.bind(this)}>Crear Cuenta</button>                    
                 </p>
             </form>
         );    
     }
 }
 
-if (document.getElementById('App_Form_Detalles_Cuenta')) {
-    ReactDOM.render(<EditDetallesCuenta />, document.getElementById('App_Form_Detalles_Cuenta'));
+if (document.getElementById('App_Registro_UserSystem')) {
+    ReactDOM.render(<RegistrarAccount />, document.getElementById('App_Registro_UserSystem'));
 }

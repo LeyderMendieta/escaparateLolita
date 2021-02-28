@@ -18,10 +18,10 @@ class CreateUserInfosTable extends Migration
             $table->integer('id_user')->unique();
             $table->string("nombres");
             $table->string("apellidos");
-            $table->string("ubicacion");
-            $table->string("apartamento");
-            $table->string("telefono");
-            $table->string("celular");
+            $table->string("ubicacion")->nullable();
+            $table->string("apartamento")->nullable();
+            $table->string("telefono")->nullable();
+            $table->string("celular")->nullable();
             $table->timestamps();
         });
     }

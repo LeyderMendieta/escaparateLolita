@@ -34,7 +34,15 @@ Route::get('/checkout', function () {
     return view('store.checkout');
 });
 
+Route::get('/registro', function () {
+    if(isset($_COOKIE["authlog"]))    
+        return Redirect::to('home');
+    else
+        return view('store.registro');
+});
+
 //-----------Mi cuenta Procesos
+
 Route::get('/micuenta', function () {
     if(!isset($_COOKIE["authlog"]))    
         return Redirect::to('home');

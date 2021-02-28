@@ -460,7 +460,7 @@ class UserTarjetas extends Component {
                                     <div className="row">
                                         <fieldset className="name">
                                             <label className="ccjs-name">Nombre de la tarjeta
-                                                <input id="field_nombre" className="ccjs-name" name="cc-name" placeholder="Derick Alejandro" />
+                                                <input id="field_nombre" className="ccjs-name" name="cc-name"/>
                                             </label>
                                         </fieldset>
                                     </div>

@@ -35,8 +35,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('/changeCantidadProducts','CartController@changeCantidadProducts');
     // USUARIOS -----------------------
     Route::post('/login', 'UsuarioController@login');
-    Route::post('/register', 'UsuarioController@register');
+    Route::post('/registrarUserProccess', 'UsuarioController@registerUser');
     Route::post('/AuthLogged', 'UsuarioController@userLogged');
+
+    Route::get('/testMailer', 'UsuarioController@gettingDTO');
+
+    Route::post('/handlerLoginFromPlatform', 'UsuarioController@handlerLoginFromPlatform');
 
     Route::get('/AuthInfoLogged', 'UsuarioController@getUserInfo');
     Route::post('/UpInfoLogged', 'UsuarioController@updateUserInfo');
@@ -53,6 +57,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('/getMyCupones', 'UsuarioController@getMyCupones');
     Route::post('/addCupon', 'UsuarioController@addNewCuponUser');
     Route::post('/aplicarCuponCarrito', 'UsuarioController@aplicarCuponCarrito');
+
+    Route::get("/getMyPedidos","UsuarioController@getMyPedidos");
 
     Route::post('/asignarAgenda','AgendaController@store');
 

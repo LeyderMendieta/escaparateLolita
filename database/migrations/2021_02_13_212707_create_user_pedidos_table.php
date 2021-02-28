@@ -18,7 +18,7 @@ class CreateUserPedidosTable extends Migration
             $table->integer('id_user')->index();
             $table->integer('id_user_card')->index();
             $table->integer('id_user_address')->index();
-            $table->integer("id_cupon")->index();
+            $table->integer("id_cupon")->index()->nullable();
             $table->float("subtotal",50);
             $table->float("total",50);
             $table->integer("iva");

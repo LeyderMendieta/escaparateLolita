@@ -111,183 +111,12 @@
                                                     <div class="entry-content">
                                                         <div class="woocommerce">
                                                             @include('store.layouts.nav-cuenta-user')
-                                                            <div class="woocommerce-MyAccount-content pt-4">
-                                                                <div class="row">
-                                                                    <div class="col-md-12 pl-4 pr-4">
-
-                                                                        <div class="table-responsive">
-
-                                                                            <table class="table table-hover">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th class="">
-                                                                                            <span class="">Pedido</span>
-                                                                                        </th>
-                                                                                        <th class="">
-                                                                                            <span>Fecha</span>
-                                                                                        </th>
-                                                                                        <th class="">
-                                                                                            <span>Estado</span>
-                                                                                        </th>
-                                                                                        <th class="">
-                                                                                            <span>Total</span>
-                                                                                        </th>
-                                                                                        <th class="">
-                                                                                            <span>Acciones</span>
-                                                                                        </th>
-                                                                                    </tr>
-                                                                                </thead>
-
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td class="text-center" data-title="Pedido">
-                                                                                            <a href="detalle-pedido.html">
-                                                                                                #3237 </a>
-
-                                                                                        </td>
-                                                                                        <td class="text-center" data-title="Fecha">
-                                                                                            <time datetime="2021-01-29T15:41:51+00:00">29
-                                                                                                enero, 2021</time>
-
-                                                                                        </td>
-                                                                                        <td class="text-center" data-title="Estado">
-                                                                                            En espera
-                                                                                        </td>
-                                                                                        <td class="text-center" data-title="Total">
-                                                                                            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>644.00</span>
-                                                                                            para 5 elementos
-                                                                                        </td>
-                                                                                        <td class="text-center" data-title="Acciones">
-                                                                                            <a href="detalle-pedido.html" class="woocommerce-button button view">Ver</a>
-                                                                                        </td>
-                                                                                    </tr>
-
-                                                                                    <tr>
-                                                                                        <td class="text-center" data-title="Pedido">
-                                                                                            <a href="detalle-pedido.html">
-                                                                                                #3237 </a>
-
-                                                                                        </td>
-                                                                                        <td class="text-center" data-title="Fecha">
-                                                                                            <time datetime="2021-01-29T15:41:51+00:00">29
-                                                                                                enero, 2021</time>
-
-                                                                                        </td>
-                                                                                        <td class="text-center" data-title="Estado">
-                                                                                            En espera
-                                                                                        </td>
-                                                                                        <td class="text-center" data-title="Total">
-                                                                                            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>644.00</span>
-                                                                                            para 5 elementos
-                                                                                        </td>
-                                                                                        <td class="text-center" data-title="Acciones">
-                                                                                            <a href="detalle-pedido.html" class="woocommerce-button button view">Ver</a>
-                                                                                        </td>
-                                                                                    </tr>
-
-                                                                                    <tr>
-                                                                                        <td class="text-center" data-title="Pedido">
-                                                                                            <a href="detalle-pedido.html">
-                                                                                                #3237 </a>
-                                                                                        </td>
-
-                                                                                        <td class="text-center" data-title="Fecha">
-                                                                                            <time datetime="2021-01-29T15:41:51+00:00">29
-                                                                                                enero, 2021</time>
-                                                                                        </td>
-
-                                                                                        <td class="text-center" data-title="Estado">
-                                                                                            En espera
-                                                                                        </td>
-
-                                                                                        <td class="text-center" data-title="Total">
-                                                                                            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>644.00</span>
-                                                                                            para 5 elementos
-                                                                                        </td>
-
-                                                                                        <td class="text-center" data-title="Acciones">
-                                                                                            <a href="detalle-pedido.html" class="woocommerce-button button view">Ver</a>
-                                                                                        </td>
-
-                                                                                    </tr>
-
-
-                                                                                </tbody>
-                                                                            </table>
-
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                </div>
+                                                            <div class="woocommerce-MyAccount-content pt-4" id="App_User_Pedidos">
+                                                                
                                                             </div>
-                                                            <div class="woocommerce-MyAccount-content pt-4">
-
-
-                                                                <div class="row">
-
-                                                                    <div class="col-md-12 pl-4 pr-4">
-
-                                                                        <h2 class="title-page">Productos Abandonados !!!</h2>
-                                                                        <div class="table-responsive mt-4">
-
-                                                                            <table class="table table-hover">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th class="">
-                                                                                            <span class="">Producto</span>
-                                                                                        </th>
-                                                                                        <th class="">
-                                                                                            <span>Fecha</span>
-                                                                                        </th>
-
-                                                                                        <th class="">
-                                                                                            <span>Total</span>
-                                                                                        </th>
-                                                                                        <th class="">
-                                                                                            <span>Acciones</span>
-                                                                                        </th>
-                                                                                    </tr>
-                                                                                </thead>
-
-                                                                                <tbody>
-                                                                                    <tr>
-
-                                                                                        <td class="product-name" style="position: relative;">
-
-                                                                                            <div class="float-left"> <a href="">×</a> </div>
-
-                                                                                            <div class="float-left pl-2"> <img width="60" height="60" src="images/logo.svg" class="" alt=""> </div>
-
-                                                                                            <div> <a href="#">Product #1</a> </div>
-                                                                                        </td>
-                                                                                        <td class="text-center" data-title="Fecha">
-                                                                                            <time datetime="2021-01-29T15:41:51+00:00">29
-                                                                                                enero, 2021</time>
-                                                                                        </td>
-                                                                                        <td class="text-center" data-title="Total">
-                                                                                            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>644.00</span>
-                                                                                            para 5 elementos
-                                                                                        </td>
-                                                                                        <td class="text-center" data-title="Acciones">
-                                                                                            <a href="" class="woocommerce-button button">Borrar</a>
-                                                                                            <a href="" class="woocommerce-button button ">Comprar</a>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-
                                                         </div>
                                                     </div>
                                                 </article>
-
                                             </div>
                                         </div>
                                     </div>
@@ -299,9 +128,7 @@
             </div>
             @include('store.layouts.footer2')
         </div>
-        <!-- /.page_wrap -->
-    </div>
-    <!-- /.body_wrap -->
+    </div>   
 
     <div id='App_Login'>
     </div>

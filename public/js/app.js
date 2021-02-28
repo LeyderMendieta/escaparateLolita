@@ -79801,6 +79801,8 @@ __webpack_require__(/*! ./components/Feature/Gift_cards */ "./resources/js/compo
 
 __webpack_require__(/*! ./components/Feature/Articulos */ "./resources/js/components/Feature/Articulos.js");
 
+__webpack_require__(/*! ./components/Users/RegistrarAccount */ "./resources/js/components/Users/RegistrarAccount.js");
+
 __webpack_require__(/*! ./components/Users/EditDetallesCuenta */ "./resources/js/components/Users/EditDetallesCuenta.js");
 
 __webpack_require__(/*! ./components/Users/UserTarjetas */ "./resources/js/components/Users/UserTarjetas.js");
@@ -79808,6 +79810,8 @@ __webpack_require__(/*! ./components/Users/UserTarjetas */ "./resources/js/compo
 __webpack_require__(/*! ./components/Users/MyDirecciones */ "./resources/js/components/Users/MyDirecciones.js");
 
 __webpack_require__(/*! ./components/Users/MisCupones */ "./resources/js/components/Users/MisCupones.js");
+
+__webpack_require__(/*! ./components/Users/MyPedidos */ "./resources/js/components/Users/MyPedidos.js");
 
 __webpack_require__(/*! ./components/Admin/App_Products */ "./resources/js/components/Admin/App_Products.js");
 
@@ -85691,7 +85695,9 @@ var App_Login = /*#__PURE__*/function (_Component) {
     _this.state = {
       error: null,
       isLoaded: false,
-      activeSession: cookies.get('authlog')
+      activeSession: cookies.get('authlog'),
+      activeResetPassword: false,
+      correoRestablecer: ""
     };
     return _this;
   }
@@ -85772,20 +85778,155 @@ var App_Login = /*#__PURE__*/function (_Component) {
       }
     }
   }, {
-    key: "responseFacebook",
-    value: function responseFacebook(response) {
-      console.log(response);
+    key: "restablecerPassword",
+    value: function restablecerPassword() {
+      if (this.state.correoRestablecer == "" || this.state.correoRestablecer == null) {
+        $('#correoRestablecer').addClass('trx_addons_field_error');
+        $('#messageResult').css({
+          "display": "block"
+        });
+        $('#messageResult').find('.trx_addons_error_item').text("Es obligatorio un correo");
+        setTimeout(function () {
+          $('#messageResult').css({
+            "display": "none"
+          });
+        }, 2000);
+      } else {
+        var validator = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].validateEmail(this.state.correoRestablecer);
+
+        if (validator) {
+          alert("sender");
+        } else {
+          $('#messageResult').css({
+            "display": "block"
+          });
+          $('#messageResult').find('.trx_addons_error_item').text("Correo electronico no valido");
+          setTimeout(function () {
+            $('#messageResult').css({
+              "display": "none"
+            });
+          }, 2000);
+        }
+      }
     }
   }, {
-    key: "componentClicked",
-    value: function componentClicked() {
-      console.log("clicked");
+    key: "responseFacebook",
+    value: function responseFacebook(response) {
+      if (response.accessToken != undefined) {
+        try {
+          var formData = new FormData();
+          formData.append('accessToken', response.accessToken);
+          formData.append("email", response.email);
+          formData.append("graphDomain", response.graphDomain);
+          formData.append("id", response.id);
+          formData.append("name", response.name);
+          formData.append("first_name", response.first_name);
+          formData.append("last_name", response.last_name);
+          var config = {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json'
+            },
+            body: formData
+          };
+          fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/handlerLoginFromPlatform", config).then(function (res) {
+            return res.json();
+          }).then(function (result) {
+            if (result.user != undefined) {
+              var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
+              cookies.set('authlog', result.user.api_token, {
+                path: '/'
+              });
+              if (result.method == "new") location.href = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "detallescuenta";else location.reload();
+            } else {
+              if (result.error == "assocExistMail") {
+                alert("Hubo un problema en la conexión de Facebook.");
+              } else {
+                alert("Fallo en el proceso, intenta más tarde");
+              }
+            }
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      }
     }
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       if (this.state.activeSession != "" && this.state.activeSession != undefined) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Logged");
+      } else if (this.state.activeResetPassword) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "trx_addons_login_popup",
+          className: "trx_addons_popup trx_addons_tabs mfp-hide"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "trx_addons_tabs_titles"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "trx_addons_tabs_title trx_addons_tabs_title_login"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "#restablecer"
+        }, "Restablecer Contrase\xF1a")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "trx_addons_tabs_title trx_addons_tabs_title_login"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "#ingresar",
+          onClick: function onClick(e) {
+            return _this3.setState({
+              activeResetPassword: false
+            });
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "trx_addons_icon-user-alt"
+        }), "Ingresar"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "trx_addons_login_content",
+          className: "trx_addons_tabs_content trx_addons_login_content"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "trx_addons_popup_form_wrap trx_addons_popup_form_wrap_login"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          className: "trx_addons_popup_form trx_addons_popup_form_login sc_input_hover_iconed",
+          action: "#",
+          method: "post",
+          name: "trx_addons_login_form"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "hidden",
+          id: "redirect_to",
+          name: "redirect_to",
+          value: ""
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "trx_addons_popup_form_field trx_addons_popup_form_field_login"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "sc_form_field sc_form_field_log required"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "sc_form_field_wrap"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          id: "correoRestablecer",
+          "aria-controls": "correoRestablecer",
+          onChange: this.changeInput.bind(this)
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "sc_form_field_hover"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "sc_form_field_icon trx_addons_icon-mail"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "sc_form_field_content",
+          "data-content": "User"
+        }, "Correo Electronico"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "trx_addons_popup_form_field trx_addons_popup_form_field_submit"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "submit_button",
+          onClick: this.restablecerPassword.bind(this)
+        }, "Restablecer Contrase\xF1a")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "messageResult",
+          className: "trx_addons_message_box sc_form_result trx_addons_message_box_error",
+          style: {
+            padding: "1rem"
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "trx_addons_error_item"
+        })))))));
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "trx_addons_login_popup",
@@ -85800,9 +85941,12 @@ var App_Login = /*#__PURE__*/function (_Component) {
           className: "trx_addons_icon-lock-open"
         }), "Ingreso")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "trx_addons_tabs_title trx_addons_tabs_title_register",
-          "data-disabled": "true"
+          "aria-disabled": "true"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "#trx_addons_register_content"
+          href: "#",
+          onClick: function onClick(e) {
+            return location.href = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "registro";
+          }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "trx_addons_icon-user-plus"
         }), "Registro"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -85830,7 +85974,8 @@ var App_Login = /*#__PURE__*/function (_Component) {
           type: "text",
           id: "val_user",
           "aria-controls": "user",
-          onChange: this.changeInput.bind(this)
+          onChange: this.changeInput.bind(this),
+          autoComplete: "username"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "sc_form_field_hover"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -85848,7 +85993,8 @@ var App_Login = /*#__PURE__*/function (_Component) {
           type: "password",
           id: "val_clave",
           "aria-controls": "clave",
-          onChange: this.changeInput.bind(this)
+          onChange: this.changeInput.bind(this),
+          autoComplete: "current-password"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "sc_form_field_hover"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -85860,14 +86006,13 @@ var App_Login = /*#__PURE__*/function (_Component) {
           className: "trx_addons_popup_form_field trx_addons_popup_form_field_remember"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "#",
-          className: "trx_addons_popup_form_field_forgot_password"
-        }, "\xBFOlvidaste la contrase\xF1a?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          type: "checkbox",
-          value: "forever",
-          name: "recordarme"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-          htmlFor: "recordarme"
-        }, " Recordarme")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "trx_addons_popup_form_field_forgot_password",
+          onClick: function onClick(e) {
+            return _this3.setState({
+              activeResetPassword: true
+            });
+          }
+        }, "\xBFOlvidaste la contrase\xF1a?")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "trx_addons_popup_form_field trx_addons_popup_form_field_submit"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
@@ -85881,8 +86026,8 @@ var App_Login = /*#__PURE__*/function (_Component) {
         }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_facebook_login_dist_facebook_login_render_props__WEBPACK_IMPORTED_MODULE_4___default.a, {
           appId: "991051508059990",
           autoLoad: false,
-          fields: "name,email,picture",
-          callback: this.responseFacebook,
+          fields: "name,email,picture,first_name,last_name",
+          callback: this.responseFacebook.bind(this),
           render: function render(renderProps) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
               onClick: renderProps.onClick,
@@ -85909,25 +86054,25 @@ var App_Login_Link = /*#__PURE__*/function (_Component2) {
   var _super2 = _createSuper(App_Login_Link);
 
   function App_Login_Link(props) {
-    var _this3;
+    var _this4;
 
     _classCallCheck(this, App_Login_Link);
 
-    _this3 = _super2.call(this, props);
+    _this4 = _super2.call(this, props);
     var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
-    _this3.state = {
+    _this4.state = {
       error: null,
       isLoaded: false,
       activeSession: cookies.get('authlog'),
       user_name: ""
     };
-    return _this3;
+    return _this4;
   }
 
   _createClass(App_Login_Link, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this4 = this;
+      var _this5 = this;
 
       if (this.state.activeSession != undefined && this.state.activeSession != "") {
         var config = {
@@ -85944,13 +86089,13 @@ var App_Login_Link = /*#__PURE__*/function (_Component2) {
           return res.json();
         }).then(function (result) {
           if (result.name != undefined) {
-            _this4.state.user_name = result.name;
-            $('#span_name_user').text(_this4.state.user_name);
+            _this5.state.user_name = result.name;
+            $('#span_name_user').text(_this5.state.user_name);
           } else {
-            _this4.cerrarSesion();
+            _this5.cerrarSesion();
           }
         }, function (error) {
-          _this4.setState({
+          _this5.setState({
             isLoaded: true,
             error: error
           });
@@ -86010,16 +86155,16 @@ var App_Close_Session = /*#__PURE__*/function (_Component3) {
   var _super3 = _createSuper(App_Close_Session);
 
   function App_Close_Session(props) {
-    var _this5;
+    var _this6;
 
     _classCallCheck(this, App_Close_Session);
 
-    _this5 = _super3.call(this, props);
+    _this6 = _super3.call(this, props);
     var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
-    _this5.state = {
+    _this6.state = {
       isLoaded: false
     };
-    return _this5;
+    return _this6;
   }
 
   _createClass(App_Close_Session, [{
@@ -86504,12 +86649,17 @@ if (document.getElementById('App_Mycart')) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//const url_principal = "https://elescaparatedelolita.com/";
-var url_principal = "http://127.0.0.1:8000/";
+var url_principal = "https://elescaparatedelolita.com/"; //const url_principal = "http://127.0.0.1:8000/";
+//const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
+
 var url_images = url_principal + 'images/';
 var Configuracion = {
   url_principal: url_principal,
-  url_images: url_images
+  url_images: url_images,
+  validateEmail: function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
 };
 /* harmony default export */ __webpack_exports__["default"] = (Configuracion);
 
@@ -89686,7 +89836,8 @@ var EditDetallesCuenta = /*#__PURE__*/function (_Component) {
       correo: "",
       pass: "",
       nuevoPass: "",
-      confPass: ""
+      confPass: "",
+      nosetpsw: false
     };
     return _this;
   }
@@ -89700,6 +89851,8 @@ var EditDetallesCuenta = /*#__PURE__*/function (_Component) {
         return res.json();
       }).then(function (result) {
         if (result.error == undefined) {
+          if (result.user.nosetPsw) window.location.hash = "section_setPass";
+
           _this2.setState({
             isLoaded: true,
             iduser: result.user.iduser,
@@ -89710,7 +89863,8 @@ var EditDetallesCuenta = /*#__PURE__*/function (_Component) {
             apartamento: result.user.apartamento,
             telefono: result.user.telefono,
             celular: result.user.celular,
-            correo: result.user.correo
+            correo: result.user.correo,
+            nosetpsw: result.user.nosetPsw
           });
         } else {
           if (result.error == "oauthlogged") location.href = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal;
@@ -89734,10 +89888,25 @@ var EditDetallesCuenta = /*#__PURE__*/function (_Component) {
           return false;
         }
 
-        if (this.state.pass == "") {
+        if (this.state.pass == "" && this.state.nosetpsw == false) {
           $('#resultSaving').html("Es necesario la contraseña actual");
           return false;
         }
+      }
+
+      if (this.state.nosetpsw && this.state.nuevoPass == "") {
+        alert("Porfavor, asignar una nueva contraseña para tu cuenta");
+        return false;
+      }
+
+      if (this.state.name == "" || this.state.nombres == "" || this.state.apellidos == "") {
+        $('#resultSaving').html("Los campos de Usuario y Nombres son obligatorios");
+        return false;
+      }
+
+      if (this.state.nosetpsw == false && (this.state.ubicacion == "" || this.state.apartamento == "" || this.state.celular == "" || this.state.ubicacion == null || this.state.apartamento == null || this.state.celular == null)) {
+        $('#resultSaving').html("Todos los campos son obligatorios Ubicacion, Celular y Apartamento");
+        return false;
       }
 
       try {
@@ -89908,7 +90077,9 @@ var EditDetallesCuenta = /*#__PURE__*/function (_Component) {
           });
         },
         value: this.state.celular
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "section_setPass"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "clear"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
@@ -89928,9 +90099,13 @@ var EditDetallesCuenta = /*#__PURE__*/function (_Component) {
             correo: e.target.value
           });
         },
-        value: this.state.correo
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("legend", null, "Cambio de contrase\xF1a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
+        value: this.state.correo,
+        disabled: true
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("legend", null, this.state.nosetpsw ? "Asigna una Contraseña a tu cuenta" : "Cambio de Contraseña"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide",
+        style: {
+          display: this.state.nosetpsw ? "none" : ""
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "password_current"
       }, "Contrase\xF1a actual (d\xE9jalo en blanco para no cambiarla)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -89950,7 +90125,7 @@ var EditDetallesCuenta = /*#__PURE__*/function (_Component) {
         className: "woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "password_1"
-      }, "Nueva contrase\xF1a (d\xE9jalo en blanco para no cambiarla)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Nueva contrase\xF1a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         className: "woocommerce-Input woocommerce-Input--password input-text",
         autoComplete: "off",
@@ -89965,7 +90140,7 @@ var EditDetallesCuenta = /*#__PURE__*/function (_Component) {
         className: "woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "password_2"
-      }, "Confirmar nueva contrase\xF1a (d\xE9jalo en blanco para no cambiarla)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Confirmar nueva contrase\xF1a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         className: "woocommerce-Input woocommerce-Input--password input-text",
         autoComplete: "off",
@@ -91260,6 +91435,477 @@ if (document.getElementById('App_User_Direcciones')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Users/MyPedidos.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/Users/MyPedidos.js ***!
+  \****************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Configuration */ "./resources/js/components/Configuration.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var MyPedidos = /*#__PURE__*/function (_Component) {
+  _inherits(MyPedidos, _Component);
+
+  var _super = _createSuper(MyPedidos);
+
+  function MyPedidos(props) {
+    var _this;
+
+    _classCallCheck(this, MyPedidos);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      pedidos: []
+    };
+    return _this;
+  }
+
+  _createClass(MyPedidos, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/getMyPedidos").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        if (result.error == undefined) {
+          _this2.setState({
+            isLoaded: true,
+            pedidos: result.pedidos
+          });
+        } else {
+          console.log(result.error);
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-12 pl-4 pr-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "table-responsive"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table table-hover"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Pedido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Fecha")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Estado")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Total")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Acciones")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.pedidos.map(function (row) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: row.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "Pedido"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "detalle-pedido.html"
+        }, " #", row.id, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "Fecha"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", {
+          dateTime: row.fecha
+        }, row.fecha)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "Estado"
+        }, row.estado), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "Total"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "woocommerce-Price-amount amount"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "woocommerce-Price-currencySymbol"
+        }, "$"), row.total)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "Acciones"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "#",
+          className: "woocommerce-button button view"
+        }, "Ver")));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "alert alert-info text-center",
+        style: {
+          display: this.state.pedidos.length > 0 || this.state.isLoaded == false ? "none" : ""
+        }
+      }, "A\xFAn no tienes ningun pedido"))));
+    }
+  }]);
+
+  return MyPedidos;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_User_Pedidos')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MyPedidos, null), document.getElementById('App_User_Pedidos'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Users/RegistrarAccount.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/Users/RegistrarAccount.js ***!
+  \***********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Configuration */ "./resources/js/components/Configuration.js");
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var RegistrarAccount = /*#__PURE__*/function (_Component) {
+  _inherits(RegistrarAccount, _Component);
+
+  var _super = _createSuper(RegistrarAccount);
+
+  function RegistrarAccount(props) {
+    var _this;
+
+    _classCallCheck(this, RegistrarAccount);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      name: "",
+      nombres: "",
+      apellidos: "",
+      ubicacion: "",
+      celular: "",
+      telefono: "",
+      apartamento: "",
+      correo: "",
+      nuevoPass: "",
+      confPass: ""
+    };
+    return _this;
+  }
+
+  _createClass(RegistrarAccount, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      $('#resultSaving').html("");
+    }
+  }, {
+    key: "registrarUserHandler",
+    value: function registrarUserHandler() {
+      var _this2 = this;
+
+      if (this.state.name == "" || this.state.nombres == "" || this.state.apellidos == "") {
+        $('#resultSaving').html("Los campos de Usuario y Nombres son obligatorios");
+        return false;
+      }
+
+      if (this.state.ubicacion == "" || this.state.apartamento == "" || this.state.celular == "" || this.state.ubicacion == null || this.state.apartamento == null || this.state.celular == null) {
+        $('#resultSaving').html("Todos los campos son obligatorios Ubicacion, Celular y Apartamento");
+        return false;
+      }
+
+      if (this.state.nuevoPass == "" || this.state.confPass == "") {
+        $('#resultSaving').html("Es necesario asignar la contraseña");
+        return false;
+      }
+
+      if (this.state.nuevoPass != this.state.confPass) {
+        $('#resultSaving').html("Las contraseñas no coinciden");
+        return false;
+      }
+
+      try {
+        var config = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(this.state)
+        };
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/registrarUserProccess", config).then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          if (result.error != undefined) {
+            if (result.error == "mailkey") {
+              $('#resultSaving').html("El correo no se encuentra disponible");
+            } else console.log(result.error);
+          } else {
+            var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
+            cookies.set('authlog', result.api_token, {
+              path: '/'
+            });
+            location.href = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "micuenta";
+          }
+        }, function (error) {
+          _this2.setState({
+            isLoaded: true,
+            error: error
+          });
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "woocommerce-EditAccountForm edit-account",
+        action: "#",
+        method: "post"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "woocommerce-form-row woocommerce-form-row--first form-row form-row-first"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "account_first_name"
+      }, "Nombre\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "required"
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "woocommerce-Input woocommerce-Input--text input-text",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            nombres: e.target.value
+          });
+        },
+        value: this.state.nombres
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "woocommerce-form-row woocommerce-form-row--last form-row form-row-last"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "account_last_name"
+      }, "Apellidos\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "required"
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "woocommerce-Input woocommerce-Input--text input-text",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            apellidos: e.target.value
+          });
+        },
+        value: this.state.apellidos
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clear"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "account_display_name"
+      }, "Nombre Usuario\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "required"
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "woocommerce-Input woocommerce-Input--text input-text",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            name: e.target.value
+          });
+        },
+        value: this.state.name
+      }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, "As\xED ser\xE1 como se mostrar\xE1 tu nombre en la secci\xF3n de tu cuenta y en las valoraciones"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clear"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "woocommerce-form-row woocommerce-form-row--first form-row form-row-first"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "account_last_name"
+      }, "Ubicaci\xF3n de tu domicilio\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "required"
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "woocommerce-Input woocommerce-Input--text input-text",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            ubicacion: e.target.value
+          });
+        },
+        value: this.state.ubicacion
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "woocommerce-form-row woocommerce-form-row--last form-row form-row-last"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "account_first_name"
+      }, "Numero de apartamento, casa o condominio\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "required"
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "woocommerce-Input woocommerce-Input--text input-text",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            apartamento: e.target.value
+          });
+        },
+        value: this.state.apartamento
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clear"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "woocommerce-form-row woocommerce-form-row--first form-row form-row-first"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "account_first_name"
+      }, "Tel\xE9fono local con prefijo\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "required"
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "woocommerce-Input woocommerce-Input--text input-text",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            telefono: e.target.value
+          });
+        },
+        value: this.state.telefono
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "woocommerce-form-row woocommerce-form-row--last form-row form-row-last"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "account_last_name"
+      }, "M\xF3vil Whatsapp\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "required"
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "woocommerce-Input woocommerce-Input--text input-text",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            celular: e.target.value
+          });
+        },
+        value: this.state.celular
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "section_setPass"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clear"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "account_email"
+      }, "Correo electr\xF3nico\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "text-danger"
+      }, "(Usuario para ingresar al sistema, debe ser un correo verificado)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "required"
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "email",
+        className: "woocommerce-Input woocommerce-Input--email input-text",
+        name: "account_email",
+        id: "account_email",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            correo: e.target.value
+          });
+        },
+        value: this.state.correo
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("legend", null, "Asigna una Contrase\xF1a a tu cuenta"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "password_1"
+      }, "Contrase\xF1a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "woocommerce-Input woocommerce-Input--password input-text",
+        autoComplete: "off",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            nuevoPass: e.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "show-password-input"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "password_2"
+      }, "Confirmar nueva contrase\xF1a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "woocommerce-Input woocommerce-Input--password input-text",
+        autoComplete: "off",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            confPass: e.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "show-password-input"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clear"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        id: "resultSaving",
+        className: "text-danger"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        id: "save-account-details-nonce",
+        name: "save-account-details-nonce",
+        value: "cea4a49b91"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "woocommerce-Button button",
+        name: "save_account_details",
+        value: "Guardar los cambios",
+        onClick: this.registrarUserHandler.bind(this)
+      }, "Crear Cuenta")));
+    }
+  }]);
+
+  return RegistrarAccount;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_Registro_UserSystem')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RegistrarAccount, null), document.getElementById('App_Registro_UserSystem'));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/Users/UserTarjetas.js":
 /*!*******************************************************!*\
   !*** ./resources/js/components/Users/UserTarjetas.js ***!
@@ -92049,8 +92695,7 @@ var UserTarjetas = /*#__PURE__*/function (_Component) {
       }, "Nombre de la tarjeta", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "field_nombre",
         className: "ccjs-name",
-        name: "cc-name",
-        placeholder: "Derick Alejandro"
+        name: "cc-name"
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
