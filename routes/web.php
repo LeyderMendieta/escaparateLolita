@@ -24,6 +24,7 @@ Route::get('/features/shortcodes', function () {
     return view('store.feature_shortcodes');
 });
 Route::get('/shop', 'AppController@showShop');
+Route::get('shop/{page}', 'ProductController@verProducto');
 Route::get('/shop-grid', function () {
     return view('store.shop_grid');
 });
@@ -87,7 +88,7 @@ Route::get('/gallery', 'GaleriaController@loadGalleryView');
 Route::get('/contacts', function () {
     return view('store.contacts');
 });
-Route::get('shop/{page}', 'ProductController@verProducto');
+
 
 Route::get('admin/', 'AdminController@loadDefault');
 Route::get('admin/{page}', 'AdminController@index');

@@ -69543,6 +69543,17 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-google-login/dist/google-login.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/react-google-login/dist/google-login.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t(__webpack_require__(/*! react */ "./node_modules/react/index.js")):undefined}("undefined"!=typeof self?self:this,(function(e){return o={},t.m=n=[function(t){t.exports=e},function(e,t,n){e.exports=n(2)()},function(e,t,n){"use strict";function o(){}function r(){}var i=n(3);r.resetWarningCache=o,e.exports=function(){function e(e,t,n,o,r,a){if(a!==i){var c=Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw c.name="Invariant Violation",c}}function t(){return e}var n={array:e.isRequired=e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:r,resetWarningCache:o};return n.PropTypes=n}},function(e){"use strict";e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},function(e,t,n){"use strict";function o(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e)){var n=[],o=!0,r=!1,i=void 0;try{for(var a,c=e[Symbol.iterator]();!(o=(a=c.next()).done)&&(n.push(a.value),!t||n.length!==t);o=!0);}catch(e){r=!0,i=e}finally{try{o||null==c.return||c.return()}finally{if(r)throw i}}return n}}(e,t)||function(e,t){if(e){if("string"==typeof e)return r(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(n):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?r(e,t):void 0}}(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function r(e,t){null!=t&&t<=e.length||(t=e.length);for(var n=0,o=Array(t);n<t;n++)o[n]=e[n];return o}function i(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e)){var n=[],o=!0,r=!1,i=void 0;try{for(var a,c=e[Symbol.iterator]();!(o=(a=c.next()).done)&&(n.push(a.value),!t||n.length!==t);o=!0);}catch(e){r=!0,i=e}finally{try{o||null==c.return||c.return()}finally{if(r)throw i}}return n}}(e,t)||function(e,t){if(e){if("string"==typeof e)return a(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(n):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?a(e,t):void 0}}(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function a(e,t){null!=t&&t<=e.length||(t=e.length);for(var n=0,o=Array(t);n<t;n++)o[n]=e[n];return o}function c(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e)){var n=[],o=!0,r=!1,i=void 0;try{for(var a,c=e[Symbol.iterator]();!(o=(a=c.next()).done)&&(n.push(a.value),!t||n.length!==t);o=!0);}catch(e){r=!0,i=e}finally{try{o||null==c.return||c.return()}finally{if(r)throw i}}return n}}(e,t)||function(e,t){if(e){if("string"==typeof e)return u(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(n):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?u(e,t):void 0}}(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function u(e,t){null!=t&&t<=e.length||(t=e.length);for(var n=0,o=Array(t);n<t;n++)o[n]=e[n];return o}function s(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e)){var n=[],o=!0,r=!1,i=void 0;try{for(var a,c=e[Symbol.iterator]();!(o=(a=c.next()).done)&&(n.push(a.value),!t||n.length!==t);o=!0);}catch(e){r=!0,i=e}finally{try{o||null==c.return||c.return()}finally{if(r)throw i}}return n}}(e,t)||function(e,t){if(e){if("string"==typeof e)return l(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(n):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?l(e,t):void 0}}(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function l(e,t){null!=t&&t<=e.length||(t=e.length);for(var n=0,o=Array(t);n<t;n++)o[n]=e[n];return o}function f(e,t,n,o,r){var i=e.getElementsByTagName(t)[0],a=i,c=i;(c=e.createElement(t)).id=n,c.src=o,a&&a.parentNode?a.parentNode.insertBefore(c,a):e.head.appendChild(c),c.onload=r}function d(e,t){var n=e.getElementById(t);n&&n.parentNode.removeChild(n)}function p(e){return b.a.createElement("span",{style:{paddingRight:10,fontWeight:500,paddingLeft:e.icon?0:10,paddingTop:10,paddingBottom:10}},e.children)}function g(e){return b.a.createElement("div",{style:{marginRight:10,background:e.active?"#eee":"#fff",padding:10,borderRadius:2}},b.a.createElement("svg",{width:"18",height:"18",xmlns:"http://www.w3.org/2000/svg"},b.a.createElement("g",{fill:"#000",fillRule:"evenodd"},b.a.createElement("path",{d:"M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z",fill:"#EA4335"}),b.a.createElement("path",{d:"M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z",fill:"#4285F4"}),b.a.createElement("path",{d:"M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z",fill:"#FBBC05"}),b.a.createElement("path",{d:"M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z",fill:"#34A853"}),b.a.createElement("path",{fill:"none",d:"M0 0h18v18H0z"}))))}function y(e){var t=i(Object(m.useState)(!1),2),n=t[0],o=t[1],r=i(Object(m.useState)(!1),2),a=r[0],c=r[1],u=e.tag,s=e.type,l=e.className,f=e.disabledStyle,d=e.buttonText,y=e.children,v=e.render,S=e.theme,j=e.icon,O=e.disabled,x=h({onSuccess:e.onSuccess,onAutoLoadFinished:e.onAutoLoadFinished,onRequest:e.onRequest,onFailure:e.onFailure,clientId:e.clientId,cookiePolicy:e.cookiePolicy,loginHint:e.loginHint,hostedDomain:e.hostedDomain,autoLoad:e.autoLoad,isSignedIn:e.isSignedIn,fetchBasicProfile:e.fetchBasicProfile,redirectUri:e.redirectUri,discoveryDocs:e.discoveryDocs,uxMode:e.uxMode,scope:e.scope,accessType:e.accessType,responseType:e.responseType,jsSrc:e.jsSrc,prompt:e.prompt}),I=x.signIn,w=O||!x.loaded;if(v)return v({onClick:I,disabled:w});var k={backgroundColor:"dark"===S?"rgb(66, 133, 244)":"#fff",display:"inline-flex",alignItems:"center",color:"dark"===S?"#fff":"rgba(0, 0, 0, .54)",boxShadow:"0 2px 2px 0 rgba(0, 0, 0, .24), 0 0 1px 0 rgba(0, 0, 0, .24)",padding:0,borderRadius:2,border:"1px solid transparent",fontSize:14,fontWeight:"500",fontFamily:"Roboto, sans-serif"},A={cursor:"pointer",backgroundColor:"dark"===S?"#3367D6":"#eee",color:"dark"===S?"#fff":"rgba(0, 0, 0, .54)",opacity:1},_=w?Object.assign({},k,f):a?Object.assign({},k,A):n?Object.assign({},k,{cursor:"pointer",opacity:.9}):k;return b.a.createElement(u,{onMouseEnter:function(){return o(!0)},onMouseLeave:function(){o(!1),c(!1)},onMouseDown:function(){return c(!0)},onMouseUp:function(){return c(!1)},onClick:I,style:_,type:s,disabled:w,className:l},[j&&b.a.createElement(g,{key:1,active:a}),b.a.createElement(p,{icon:j,key:2},y||d)])}n.r(t),n.d(t,"default",(function(){return S})),n.d(t,"GoogleLogin",(function(){return S})),n.d(t,"GoogleLogout",(function(){return O})),n.d(t,"useGoogleLogin",(function(){return h})),n.d(t,"useGoogleLogout",(function(){return j}));var m=n(0),b=n.n(m),h=(n(1),function(e){function t(e){var t=e.getBasicProfile(),n=e.getAuthResponse();e.googleId=t.getId(),e.tokenObj=n,e.tokenId=n.id_token,e.accessToken=n.access_token,e.profileObj={googleId:t.getId(),imageUrl:t.getImageUrl(),email:t.getEmail(),name:t.getName(),givenName:t.getGivenName(),familyName:t.getFamilyName()},i(e)}function n(e){if(e&&e.preventDefault(),P){var n=window.gapi.auth2.getAuthInstance(),o={prompt:T};p(),"code"===A?n.grantOfflineAccess(o).then((function(e){return i(e)}),(function(e){return s(e)})):n.signIn(o).then((function(e){return t(e)}),(function(e){return s(e)}))}}var r=e.onSuccess,i=void 0===r?function(){}:r,a=e.onAutoLoadFinished,c=void 0===a?function(){}:a,u=e.onFailure,s=void 0===u?function(){}:u,l=e.onRequest,p=void 0===l?function(){}:l,g=e.clientId,y=e.cookiePolicy,b=e.loginHint,h=e.hostedDomain,v=e.autoLoad,S=e.isSignedIn,j=e.fetchBasicProfile,O=e.redirectUri,x=e.discoveryDocs,I=e.uxMode,w=e.scope,k=e.accessType,A=e.responseType,_=e.jsSrc,E=void 0===_?"https://apis.google.com/js/api.js":_,T=e.prompt,M=o(Object(m.useState)(!1),2),P=M[0],C=M[1];return Object(m.useEffect)((function(){var e=!1;return f(document,"script","google-login",E,(function(){var n={client_id:g,cookie_policy:y,login_hint:b,hosted_domain:h,fetch_basic_profile:j,discoveryDocs:x,ux_mode:I,redirect_uri:O,scope:w,access_type:k};"code"===A&&(n.access_type="offline"),window.gapi.load("auth2",(function(){var o=window.gapi.auth2.getAuthInstance();o?o.then((function(){e||(S&&o.isSignedIn.get()?(C(!0),c(!0),t(o.currentUser.get())):(C(!0),c(!1)))}),(function(e){s(e)})):window.gapi.auth2.init(n).then((function(n){if(!e){C(!0);var o=S&&n.isSignedIn.get();c(o),o&&t(n.currentUser.get())}}),(function(e){C(!0),c(!1),s(e)}))}))})),function(){e=!0,d(document,"google-login")}}),[]),Object(m.useEffect)((function(){v&&n()}),[P]),{signIn:n,loaded:P}});function v(e){var t=s(Object(m.useState)(!1),2),n=t[0],o=t[1],r=s(Object(m.useState)(!1),2),i=r[0],a=r[1],c=e.tag,u=e.type,l=e.className,f=e.disabledStyle,d=e.buttonText,y=e.children,h=e.render,v=e.theme,S=e.icon,O=e.disabled,x=j({jsSrc:e.jsSrc,onFailure:e.onFailure,clientId:e.clientId,cookiePolicy:e.cookiePolicy,loginHint:e.loginHint,hostedDomain:e.hostedDomain,fetchBasicProfile:e.fetchBasicProfile,discoveryDocs:e.discoveryDocs,uxMode:e.uxMode,redirectUri:e.redirectUri,scope:e.scope,accessType:e.accessType,onLogoutSuccess:e.onLogoutSuccess}),I=x.signOut,w=O||!x.loaded;if(h)return h({onClick:I,disabled:w});var k={backgroundColor:"dark"===v?"rgb(66, 133, 244)":"#fff",display:"inline-flex",alignItems:"center",color:"dark"===v?"#fff":"rgba(0, 0, 0, .54)",boxShadow:"0 2px 2px 0 rgba(0, 0, 0, .24), 0 0 1px 0 rgba(0, 0, 0, .24)",padding:0,borderRadius:2,border:"1px solid transparent",fontSize:14,fontWeight:"500",fontFamily:"Roboto, sans-serif"},A={cursor:"pointer",backgroundColor:"dark"===v?"#3367D6":"#eee",color:"dark"===v?"#fff":"rgba(0, 0, 0, .54)",opacity:1},_=w?Object.assign({},k,f):i?Object.assign({},k,A):n?Object.assign({},k,{cursor:"pointer",opacity:.9}):k;return b.a.createElement(c,{onMouseEnter:function(){return o(!0)},onMouseLeave:function(){o(!1),a(!1)},onMouseDown:function(){return a(!0)},onMouseUp:function(){return a(!1)},onClick:I,style:_,type:u,disabled:w,className:l},[S&&b.a.createElement(g,{key:1,active:i}),b.a.createElement(p,{icon:S,key:2},y||d)])}y.defaultProps={type:"button",tag:"button",buttonText:"Sign in with Google",scope:"profile email",accessType:"online",prompt:"",cookiePolicy:"single_host_origin",fetchBasicProfile:!0,isSignedIn:!1,uxMode:"popup",disabledStyle:{opacity:.6},icon:!0,theme:"light",onRequest:function(){}};var S=y,j=function(e){var t=e.jsSrc,n=void 0===t?"https://apis.google.com/js/api.js":t,o=e.onFailure,r=e.clientId,i=e.cookiePolicy,a=e.loginHint,u=e.hostedDomain,s=e.fetchBasicProfile,l=e.discoveryDocs,p=e.uxMode,g=e.redirectUri,y=e.scope,b=e.accessType,h=e.onLogoutSuccess,v=c(Object(m.useState)(!1),2),S=v[0],j=v[1],O=Object(m.useCallback)((function(){if(window.gapi){var e=window.gapi.auth2.getAuthInstance();null!=e&&e.then((function(){e.signOut().then((function(){e.disconnect(),h()}))}),(function(e){return o(e)}))}}),[h]);return Object(m.useEffect)((function(){return f(document,"script","google-login",n,(function(){var e={client_id:r,cookie_policy:i,login_hint:a,hosted_domain:u,fetch_basic_profile:s,discoveryDocs:l,ux_mode:p,redirect_uri:g,scope:y,access_type:b};window.gapi.load("auth2",(function(){window.gapi.auth2.getAuthInstance()?j(!0):window.gapi.auth2.init(e).then((function(){return j(!0)}),(function(e){return o(e)}))}))})),function(){d(document,"google-login")}}),[]),{signOut:O,loaded:S}};v.defaultProps={type:"button",tag:"button",buttonText:"Logout of Google",disabledStyle:{opacity:.6},icon:!0,theme:"light",jsSrc:"https://apis.google.com/js/api.js"};var O=v}],t.c=o,t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{enumerable:!0,get:o})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,n){if(1&n&&(e=t(e)),8&n)return e;if(4&n&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(t.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&n&&"string"!=typeof e)for(var r in e)t.d(o,r,function(t){return e[t]}.bind(null,r));return o},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=4);function t(e){if(o[e])return o[e].exports;var r=o[e]={i:e,l:!1,exports:{}};return n[e].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n,o}));
+
+/***/ }),
+
 /***/ "./node_modules/react-input-autosize/lib/AutosizeInput.js":
 /*!****************************************************************!*\
   !*** ./node_modules/react-input-autosize/lib/AutosizeInput.js ***!
@@ -79769,6 +79780,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
+__webpack_require__(/*! ./components/App_Contactanos */ "./resources/js/components/App_Contactanos.js");
+
 __webpack_require__(/*! ./components/Configuration */ "./resources/js/components/Configuration.js");
 
 __webpack_require__(/*! ./components/Products/ListProducts */ "./resources/js/components/Products/ListProducts.js");
@@ -79850,6 +79863,8 @@ __webpack_require__(/*! ./components/Admin/App_Admon_Articulos */ "./resources/j
 __webpack_require__(/*! ./components/Admin/App_Form_Cupon */ "./resources/js/components/Admin/App_Form_Cupon.js");
 
 __webpack_require__(/*! ./components/Admin/App_Admon_Cupones */ "./resources/js/components/Admin/App_Admon_Cupones.js");
+
+__webpack_require__(/*! ./components/Admin/solicitudes/App_solicitud_contactos */ "./resources/js/components/Admin/solicitudes/App_solicitud_contactos.js");
 
 /***/ }),
 
@@ -80607,7 +80622,10 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
     _this.state = {
       error: null,
       isLoaded: false,
-      settings: []
+      settings: [],
+      politica_entrega_completa: [],
+      politica_entrega: [],
+      politica_devoluciones: []
     };
     return _this;
   }
@@ -80647,16 +80665,22 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           $('#url_producto_4').val(_this2.state.settings.url_producto_5_home);
           $('#url_nueva_collection').val(_this2.state.settings.url_nueva_colleccion);
         }
-      }, function (error) {
+      });
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/getConfigurationField/all").then(function (res) {
+        return res.json();
+      }).then(function (result) {
         _this2.setState({
-          isLoaded: true,
-          error: error
+          politica_entrega_completa: result.politica_entrega_completa.valor_caracter,
+          politica_entrega: result.politica_entrega.valor_caracter,
+          politica_devoluciones: result.politica_devoluciones.valor_caracter
         });
       });
     }
   }, {
     key: "updateSettings",
     value: function updateSettings() {
+      var _this3 = this;
+
       var url_embed_video = $('#url_embed_video').val();
       var imagen_video = $('#imagen_video').prop('files');
       var imagen_2 = $('#imagen_2').prop('files');
@@ -80701,6 +80725,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         if (imagen_3.length == 0) load_imagen_3 = "noset";else {
           formData.append('imagen_3', imagen_3[0]);
         }
+        $('#global-loader').show();
         var config = {
           method: 'POST',
           headers: {
@@ -80714,9 +80739,6 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           if (result.files.imagen_video != undefined) load_imagen_video = result.files.imagen_video;
           if (result.files.imagen_2 != undefined) load_imagen_2 = result.files.imagen_2;
           if (result.files.imagen_3 != undefined) load_imagen_3 = result.files.imagen_3;
-        });
-        $('#global-loader').show();
-        setTimeout(function () {
           var formDataUpdate = new FormData();
           formDataUpdate.append('url_embed_video', url_embed_video);
           formDataUpdate.append('imagen_video', load_imagen_video);
@@ -80726,6 +80748,10 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           formDataUpdate.append('url_producto_3', url_producto_3);
           formDataUpdate.append('url_producto_5', url_producto_4);
           formDataUpdate.append('url_nueva_collection', url_nueva_collection);
+          formDataUpdate.append("configurations", ["politica_entrega_completa", "politica_entrega", "politica_devoluciones"]);
+          formDataUpdate.append('politica_entrega_completa', _this3.state.politica_entrega_completa);
+          formDataUpdate.append('politica_entrega', _this3.state.politica_entrega);
+          formDataUpdate.append('politica_devoluciones', _this3.state.politica_devoluciones);
           var config = {
             method: 'POST',
             headers: {
@@ -80739,7 +80765,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
             alert("Se han actualizado las Configuraciones");
             location.href = "".concat(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal, "admon/settings_enviroment");
           });
-        }, 3000);
+        });
       } catch (error) {
         console.log(error);
       }
@@ -80747,6 +80773,8 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -80905,6 +80933,55 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         className: "form-control",
         name: "url_nueva_collection",
         placeholder: "Url Nueva Collecci\xF3n"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Politica de Entrega Completa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        onChange: function onChange(e) {
+          return _this4.setState({
+            politica_entrega_completa: e.target.value
+          });
+        },
+        className: "form-control",
+        name: "politic1",
+        value: this.state.politica_entrega_completa
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Politica de Entrega"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        onChange: function onChange(e) {
+          return _this4.setState({
+            politica_entrega: e.target.value
+          });
+        },
+        className: "form-control",
+        name: "politic2",
+        value: this.state.politica_entrega
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Politica de Devoluciones"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        onChange: function onChange(e) {
+          return _this4.setState({
+            politica_devoluciones: e.target.value
+          });
+        },
+        className: "form-control",
+        name: "politic3",
+        value: this.state.politica_devoluciones
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row my-5 text-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -83119,9 +83196,6 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
             $('#product_id').val(_this2.state.producto.id);
             $('#producto_nombre').val(_this2.state.producto.name);
             $('#producto_descripcion').val(_this2.state.producto.descripcion);
-            $('#politica_entrega').val(_this2.state.producto.politica_entrega);
-            $('#entrega').val(_this2.state.producto.entrega);
-            $('#devoluciones').val(_this2.state.producto.devoluciones);
             $('#producto_precio_antes').val(_this2.state.producto.precio_antes);
             $('#producto_precio_ahora').val(_this2.state.producto.precio_ahora);
             $('#permite_entallaje').prop('checked', _this2.state.producto.entallaje);
@@ -83183,9 +83257,6 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
     value: function handleSubmitCreate() {
       var nombre = $('#producto_nombre').val();
       var descripcion = $('#producto_descripcion').val();
-      var politica_entrega = $('#politica_entrega').val();
-      var entrega = $('#entrega').val();
-      var devoluciones = $('#devoluciones').val();
       var precio_antes = $('#producto_precio_antes').val();
       var precio_ahora = $('#producto_precio_ahora').val();
       var imagen_principal = $('#producto_imagen_principal').prop('files');
@@ -83280,12 +83351,6 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
 
             _formData.append('descripcion', descripcion);
 
-            _formData.append('politica_entrega', politica_entrega);
-
-            _formData.append('entrega', entrega);
-
-            _formData.append('devoluciones', devoluciones);
-
             _formData.append('precio_antes', precio_antes);
 
             _formData.append('precio_ahora', precio_ahora);
@@ -83349,9 +83414,6 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
       var id_update = $('#product_id').val();
       var nombre = $('#producto_nombre').val();
       var descripcion = $('#producto_descripcion').val();
-      var politica_entrega = $('#politica_entrega').val();
-      var entrega = $('#entrega').val();
-      var devoluciones = $('#devoluciones').val();
       var precio_antes = $('#producto_precio_antes').val();
       var precio_ahora = $('#producto_precio_ahora').val();
       var imagen_principal = $('#producto_imagen_principal').prop('files');
@@ -83448,9 +83510,6 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
           formDataUpdate.append('id', id_update);
           formDataUpdate.append('nombre', nombre);
           formDataUpdate.append('descripcion', descripcion);
-          formDataUpdate.append('politica_entrega', politica_entrega);
-          formDataUpdate.append('entrega', entrega);
-          formDataUpdate.append('devoluciones', devoluciones);
           formDataUpdate.append('precio_antes', precio_antes);
           formDataUpdate.append('precio_ahora', precio_ahora);
           formDataUpdate.append('imagen_main', imagen_main);
@@ -83527,41 +83586,6 @@ var App_Admon_Add_Product = /*#__PURE__*/function (_Component) {
       }, "Descripci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "form-control",
         id: "producto_descripcion",
-        rows: "3",
-        placeholder: "Escribe la descripci\xF3n del producto"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xl-6 col-lg-12 col-md-12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "form-label"
-      }, "Politica de Entrega Completa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        className: "form-control",
-        id: "politica_entrega",
-        rows: "3",
-        placeholder: "Escribe la descripci\xF3n del producto"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xl-6 col-lg-12 col-md-12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "form-label"
-      }, "Entrega"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        className: "form-control",
-        id: "entrega",
-        rows: "3",
-        placeholder: "Escribe la descripci\xF3n del producto"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xl-6 col-lg-12 col-md-12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "form-label"
-      }, "Devoluciones"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        className: "form-control",
-        id: "devoluciones",
         rows: "3",
         placeholder: "Escribe la descripci\xF3n del producto"
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -85138,6 +85162,22 @@ var App_Admon_Products = /*#__PURE__*/function (_Component) {
                   _this2.setState({
                     products: result
                   });
+
+                  $('#tableProducts').DataTable({
+                    responsive: {
+                      details: {
+                        display: $.fn.dataTable.Responsive.display.modal({
+                          header: function header(row) {
+                            var data = row.data();
+                            return '<b>' + data[0] + ' - ' + data[2] + '</b><br/><br/>';
+                          }
+                        }),
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                          tableClass: 'table table-dark'
+                        })
+                      }
+                    }
+                  });
                 }, function (error) {
                   _this2.setState({
                     isLoaded: true,
@@ -85383,6 +85423,117 @@ var App_Admon_Tags = /*#__PURE__*/function (_Component) {
 
 if (document.getElementById('App_Admon_Tags')) {
   react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(App_Admon_Tags, null), document.getElementById('App_Admon_Tags'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/solicitudes/App_solicitud_contactos.js":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/Admin/solicitudes/App_solicitud_contactos.js ***!
+  \******************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Configuration */ "./resources/js/components/Configuration.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var App_solicitud_contactos = /*#__PURE__*/function (_Component) {
+  _inherits(App_solicitud_contactos, _Component);
+
+  var _super = _createSuper(App_solicitud_contactos);
+
+  function App_solicitud_contactos(props) {
+    var _this;
+
+    _classCallCheck(this, App_solicitud_contactos);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      contacts: []
+    };
+    return _this;
+  }
+
+  _createClass(App_solicitud_contactos, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/getContactsList").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          contacts: result
+        });
+
+        $('#tableProducts').DataTable({
+          responsive: {
+            details: {
+              display: $.fn.dataTable.Responsive.display.modal({
+                header: function header(row) {
+                  var data = row.data();
+                  return '<b>' + data[0] + ' - ' + data[2] + '</b><br/><br/>';
+                }
+              }),
+              renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                tableClass: 'table table-dark'
+              })
+            }
+          }
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        id: "tableProducts",
+        className: "table table-striped table-bordered text-nowrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Marca"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Descripci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Url"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Creado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Actualizado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Actualizado"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.contacts.map(function (row) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: row.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.nombre), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.correo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.asunto), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.mensaje), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.estado), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.created_at));
+      })));
+    }
+  }]);
+
+  return App_solicitud_contactos;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_admsolicitud_contactos')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_solicitud_contactos, null), document.getElementById('App_admsolicitud_contactos'));
 }
 
 /***/ }),
@@ -85635,10 +85786,10 @@ if (document.getElementById('App_Calendar_Tallaje')) {
 
 /***/ }),
 
-/***/ "./resources/js/components/App_Login.js":
-/*!**********************************************!*\
-  !*** ./resources/js/components/App_Login.js ***!
-  \**********************************************/
+/***/ "./resources/js/components/App_Contactanos.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/App_Contactanos.js ***!
+  \****************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -85649,9 +85800,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Configuration */ "./resources/js/components/Configuration.js");
-/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
-/* harmony import */ var react_facebook_login_dist_facebook_login_render_props__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-facebook-login/dist/facebook-login-render-props */ "./node_modules/react-facebook-login/dist/facebook-login-render-props.js");
-/* harmony import */ var react_facebook_login_dist_facebook_login_render_props__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_facebook_login_dist_facebook_login_render_props__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-calendar/dist/Calendar.css */ "./node_modules/react-calendar/dist/Calendar.css");
+/* harmony import */ var react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_calendar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-calendar */ "./node_modules/react-calendar/dist/esm/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -85673,6 +85824,207 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+var App_Contactanos = /*#__PURE__*/function (_Component) {
+  _inherits(App_Contactanos, _Component);
+
+  var _super = _createSuper(App_Contactanos);
+
+  function App_Contactanos(props) {
+    var _this;
+
+    _classCallCheck(this, App_Contactanos);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      nombres: "",
+      email: "",
+      asunto: "",
+      mensaje: ""
+    };
+    return _this;
+  }
+
+  _createClass(App_Contactanos, [{
+    key: "saveSolicitud",
+    value: function saveSolicitud() {
+      if (this.state.nombres == "") $('#name').addClass("trx_addons_field_error");
+      if (this.state.email == "") $('#email').addClass("trx_addons_field_error");
+      if (this.state.asunto == "") $('#subject').addClass("trx_addons_field_error");
+      if (this.state.mensaje == "") $('#message').addClass("trx_addons_field_error");
+
+      if (this.state.nombres == "" || this.state.email == "" || this.state.asunto == "" || this.state.mensaje == "") {
+        alert("Todos los campos son obligatorios");
+        return false;
+      }
+
+      var formData = new FormData();
+      formData.append('nombres', this.state.nombres);
+      formData.append("email", this.state.email);
+      formData.append("asunto", this.state.asunto);
+      formData.append("mensaje", this.state.mensaje);
+      var config = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      };
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/addNewContact", config).then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        if (result.id != undefined) {
+          alert("Gracias, pronto nos comunicaremos contigo");
+          location.reload();
+        } else alert("Error en el proceso de guardado");
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "sc_form_form_title_top"
+      }, "Contactanos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "sc_form_form",
+        method: "post",
+        action: "#"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "trx_addons_columns_wrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "trx_addons_column-1_2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "sc_form_field sc_form_field_name required"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "sc_form_field_wrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "name",
+        id: "name",
+        onChange: function onChange(e) {
+          return _this2.setState({
+            nombres: e.target.value
+          });
+        },
+        value: this.state.nombres,
+        placeholder: "Nombre"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "trx_addons_column-1_2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "sc_form_field sc_form_field_email required"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "sc_form_field_wrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "email",
+        id: "email",
+        onChange: function onChange(e) {
+          return _this2.setState({
+            email: e.target.value
+          });
+        },
+        value: this.state.email,
+        placeholder: "E-mail"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "sc_form_field sc_form_field_subgect required"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "sc_form_field_wrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "subject",
+        id: "subject",
+        onChange: function onChange(e) {
+          return _this2.setState({
+            asunto: e.target.value
+          });
+        },
+        value: this.state.asunto,
+        placeholder: "Asunto"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "sc_form_field sc_form_field_message required"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "sc_form_field_wrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        name: "message",
+        id: "message",
+        "aria-required": "true",
+        placeholder: "Mensaje",
+        onChange: function onChange(e) {
+          return _this2.setState({
+            mensaje: e.target.value
+          });
+        },
+        value: this.state.mensaje
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sc_form_field sc_form_field_button"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        onClick: this.saveSolicitud.bind(this)
+      }, "Enviar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "trx_addons_message_box sc_form_result"
+      })));
+    }
+  }]);
+
+  return App_Contactanos;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_Contactanos')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Contactanos, null), document.getElementById('App_Contactanos'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/App_Login.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/App_Login.js ***!
+  \**********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Configuration */ "./resources/js/components/Configuration.js");
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
+/* harmony import */ var react_facebook_login_dist_facebook_login_render_props__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-facebook-login/dist/facebook-login-render-props */ "./node_modules/react-facebook-login/dist/facebook-login-render-props.js");
+/* harmony import */ var react_facebook_login_dist_facebook_login_render_props__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_facebook_login_dist_facebook_login_render_props__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_google_login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-google-login */ "./node_modules/react-google-login/dist/google-login.js");
+/* harmony import */ var react_google_login__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_google_login__WEBPACK_IMPORTED_MODULE_5__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -85849,7 +86201,53 @@ var App_Login = /*#__PURE__*/function (_Component) {
         } catch (error) {
           console.log(error);
         }
-      }
+      } else alert("Error en el proceso, intente más tarde");
+    }
+  }, {
+    key: "responseGoogle",
+    value: function responseGoogle(response) {
+      //ID 317123491034-cj589tn7k9nb8l4espljjju8hkfnoekr.apps.googleusercontent.com
+      //Secreto xiKnFH9yce0DZZfFeCZRVM2h
+      if (response.profileObj != undefined) {
+        var dataResponse = response.profileObj;
+
+        try {
+          var formData = new FormData();
+          formData.append('accessToken', response.accessToken);
+          formData.append("email", dataResponse.email);
+          formData.append("graphDomain", "Google");
+          formData.append("id", dataResponse.googleId);
+          formData.append("name", dataResponse.name);
+          formData.append("first_name", dataResponse.givenName);
+          formData.append("last_name", dataResponse.familyName);
+          var config = {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json'
+            },
+            body: formData
+          };
+          fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/handlerLoginFromPlatform", config).then(function (res) {
+            return res.json();
+          }).then(function (result) {
+            if (result.user != undefined) {
+              var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
+              cookies.set('authlog', result.user.api_token, {
+                path: '/'
+              });
+              if (result.method == "new") location.href = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "detallescuenta";else location.reload();
+            } else {
+              if (result.error == "assocExistMail") {
+                alert("Hubo un problema en la conexión de Facebook.");
+              } else {
+                alert("Fallo en el proceso, intenta más tarde");
+              }
+            }
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      } else alert("Error en el proceso, intente más tarde");
     }
   }, {
     key: "render",
@@ -86031,11 +86429,17 @@ var App_Login = /*#__PURE__*/function (_Component) {
           render: function render(renderProps) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
               onClick: renderProps.onClick,
-              className: "btn-facebook"
+              className: "btn-facebook mr-2 py-2 rounded"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
               className: "trx_addons_icon-facebook iconface"
             }), " Continuar con Facebook");
           }
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_google_login__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          clientId: "317123491034-cj589tn7k9nb8l4espljjju8hkfnoekr.apps.googleusercontent.com",
+          buttonText: "Continuar con Google",
+          onSuccess: this.responseGoogle.bind(this),
+          onFailure: this.responseGoogle.bind(this),
+          cookiePolicy: 'single_host_origin'
         })))));
       }
     }
@@ -86280,12 +86684,30 @@ var App_ProductDetail = /*#__PURE__*/function (_Component) {
       products: [],
       colores: [],
       tallas: [],
-      productos_sugeridos: []
+      productos_sugeridos: [],
+      politica_entrega_completa: "",
+      politica_entrega: "",
+      politica_devoluciones: "",
+      comentarios: [],
+      ratingTotal: 0
     };
     return _this;
   }
 
   _createClass(App_ProductDetail, [{
+    key: "loadRatingTotal",
+    value: function loadRatingTotal() {
+      var dividendo = 0;
+      var rating = 0;
+      this.state.comentarios.forEach(function (element) {
+        dividendo++;
+        rating += element.rating;
+      });
+      this.setState({
+        ratingTotal: rating / dividendo * 20
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -86301,12 +86723,31 @@ var App_ProductDetail = /*#__PURE__*/function (_Component) {
             colores: JSON.parse(result[0].colores)
           });
 
-          $('#nombreProductoPage').text(_this2.state.products.name);
+          $('#nombreProductoPage').text(_this2.state.products.name); //Getting Comentarios
+
+          fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/getRatingsProduct/" + _this2.state.products.id).then(function (res) {
+            return res.json();
+          }).then(function (result) {
+            _this2.setState({
+              comentarios: result
+            });
+
+            _this2.loadRatingTotal();
+          });
         }
       }, function (error) {
         _this2.setState({
           isLoaded: true,
           error: error
+        });
+      });
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/getConfigurationField/all").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          politica_entrega_completa: result.politica_entrega_completa.valor_caracter,
+          politica_entrega: result.politica_entrega.valor_caracter,
+          politica_devoluciones: result.politica_devoluciones.valor_caracter
         });
       });
       fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/products/reference_producto_sugerido").then(function (res) {
@@ -86374,6 +86815,70 @@ var App_ProductDetail = /*#__PURE__*/function (_Component) {
       }
     }
   }, {
+    key: "agregarResena",
+    value: function agregarResena(producto) {
+      var _this4 = this;
+
+      var rating = $('#rating').val();
+      var comment = $('#field_comment').val();
+      var correo = $("#field_email").val();
+      var author = $('#field_author').val();
+
+      if (rating == "") {
+        alert("Es obligatorio tu Calificación!");
+        return false;
+      }
+
+      if (comment == "") {
+        alert("Es obligatorio tu Comentario!");
+        return false;
+      }
+
+      if (correo == "") {
+        alert("Es obligatorio tu Correo!");
+        return false;
+      }
+
+      if (author == "") {
+        alert("Es obligatorio tu Autor!");
+        return false;
+      }
+
+      var formData = new FormData();
+      formData.append('id_producto', producto);
+      formData.append('rating', rating);
+      formData.append('comment', comment);
+      formData.append('email', correo);
+      formData.append('author', author);
+      var config = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      };
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/addRatingToProduct", config).then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this4.setState({
+          comentarios: result
+        });
+
+        _this4.loadRatingTotal();
+
+        $('.stars a.active').removeClass("active");
+        $('.stars.selected').removeClass("selected");
+        $('#rating').val("");
+        $('#field_comment').val("");
+        location.href = "#menu-detalle";
+      }, function (error) {
+        _this4.setState({
+          isLoaded: true,
+          error: error
+        });
+      });
+    }
+  }, {
     key: "setValueModel",
     value: function setValueModel(e) {
       this.setState({
@@ -86392,12 +86897,18 @@ var App_ProductDetail = /*#__PURE__*/function (_Component) {
         handleBuyProduct: this.handleBuyProduct.bind(this),
         setValueModel: this.setValueModel,
         colores: this.state.colores,
-        tallas: this.state.tallas
+        tallas: this.state.tallas,
+        rating: this.state.ratingTotal
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Products_ProductDetail_woocommerce__WEBPACK_IMPORTED_MODULE_5__["default"], {
         producto: this.state.products,
         url_images: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_images,
         colores: this.state.colores,
-        tallas: this.state.tallas
+        tallas: this.state.tallas,
+        agregarResena: this.agregarResena.bind(this),
+        comentarios: this.state.comentarios,
+        politica_entrega_completa: this.state.politica_entrega_completa,
+        politica_entrega: this.state.politica_entrega,
+        politica_devoluciones: this.state.politica_devoluciones
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Products_ProductDetail_related__WEBPACK_IMPORTED_MODULE_6__["default"], {
         productos: this.state.productos_sugeridos,
         url_images: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_images,
@@ -86649,8 +87160,8 @@ if (document.getElementById('App_Mycart')) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var url_principal = "https://elescaparatedelolita.com/"; //const url_principal = "http://127.0.0.1:8000/";
-//const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
+//const url_principal = "https://elescaparatedelolita.com/";
+var url_principal = "http://127.0.0.1:8000/"; //const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
 
 var url_images = url_principal + 'images/';
 var Configuracion = {
@@ -87354,7 +87865,8 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
       handleBuyProduct = _ref.handleBuyProduct,
       setValueModel = _ref.setValueModel,
       tallas = _ref.tallas,
-      colores = _ref.colores;
+      colores = _ref.colores,
+      rating = _ref.rating;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "summary entry-summary"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -87365,7 +87877,9 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     className: "star-rating",
     title: "Rated 5 out of 5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "w_100per"
+    style: {
+      width: rating + "%"
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
     className: "rating"
   }, "5"), " out of ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "5"), " based on ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -87481,10 +87995,7 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     className: producto.entallaje == false ? "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white d-none" : "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white"
   }, "Echo a la medida")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "clear"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    className: "compare button"
-  }, "Comparar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "product_meta"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "sku_wrapper"
@@ -87517,46 +88028,7 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     rel: "tag"
   }, "wedding")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "product_id"
-  }, "Product ID: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, producto.id))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "yith-wcwl-add-to-wishlist"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "yith-wcwl-add-button show d_block"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    "data-product-type": "variable",
-    className: "add_to_wishlist"
-  }, "Add to Wishlist")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "yith-wcwl-wishlistaddedbrowse hide d_none"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "feedback"
-  }, "Product added!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Browse Wishlist")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "yith-wcwl-wishlistexistsbrowse hide d_none"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "feedback"
-  }, "The product is already in the wishlist!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Browse Wishlist")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "clear_both"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "yith-wcwl-wishlistaddresponse"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      "float": "left",
-      marginLeft: "8px"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    className: "button",
-    style: {
-      padding: "6px 13px",
-      fontSize: "11px",
-      fontWeight: "400px",
-      lineHeight: "13px",
-      verticalAlign: "top"
-    }
-  }, "Delivery")));
+  }, "Product ID: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, producto.id))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProductDetail_Summary);
@@ -87574,15 +88046,23 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _this = undefined;
+
 
 
 var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
   var producto = _ref.producto,
       url_images = _ref.url_images,
       colores = _ref.colores,
-      tallas = _ref.tallas;
+      tallas = _ref.tallas,
+      agregarResena = _ref.agregarResena,
+      comentarios = _ref.comentarios,
+      politica_entrega_completa = _ref.politica_entrega_completa,
+      politica_entrega = _ref.politica_entrega,
+      politica_devoluciones = _ref.politica_devoluciones;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "woocommerce-tabs sc_tabs"
+    className: "woocommerce-tabs sc_tabs",
+    id: "menu-detalle"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "tabs wc-tabs"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -87597,7 +88077,7 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
     className: "reviews_tab"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#tab-reviews"
-  }, "Criticas (1)"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Criticas (", comentarios.length, ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab",
     id: "tab-description"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Descripci\xF3n del Producto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -87623,7 +88103,7 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
     className: "sc_button_hover_slide_left grad_rev"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sc_accordion_content"
-  }, producto.politica_entrega)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, politica_entrega_completa)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sc_accordion_item even"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "sc_accordion_title"
@@ -87631,7 +88111,7 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
     className: "sc_button_hover_slide_left grad_rev"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sc_accordion_content"
-  }, producto.entrega)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, politica_entrega)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sc_accordion_item odd"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "sc_accordion_title"
@@ -87639,7 +88119,7 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
     className: "sc_button_hover_slide_left grad_rev"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sc_accordion_content"
-  }, producto.devoluciones)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, politica_devoluciones)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel entry-content wc-tab",
     id: "tab-additional_information"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Informaci\xF3n Adicional"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
@@ -87668,31 +88148,34 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
     id: "comments"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "woocommerce-Reviews-title"
-  }, "1 Rese\xF1as para ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, producto.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
+  }, comentarios.length, " Rese\xF1as para ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, producto.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
     className: "commentlist"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "comment even thread-even depth-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "comment_container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    alt: "",
-    src: url_images + producto.imagen_main,
-    srcSet: url_images + producto.imagen_main,
-    className: "avatar photo"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "comment-text"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "star-rating",
-    title: "Rated 5 out of 5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "w_100per"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "5"), " out of 5")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "meta"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Miki Williams"), " \u2013 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", {
-    dateTime: "2016-11-28T15:10:43+00:00"
-  }, "November 28, 2016"), ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "description"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Nice!"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, comentarios.map(function (fila) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "comment even thread-even depth-1",
+      key: fila.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "comment_container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      alt: "",
+      src: url_images + producto.imagen_main,
+      srcSet: url_images + producto.imagen_main,
+      className: "avatar photo"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "comment-text"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "star-rating",
+      title: "Rated 5 out of 5"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      style: {
+        width: fila.rating * 20 + "%"
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, fila.rating), " out of 5")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "meta"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, fila.autor), " \u2013 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", null, fila.created_at), ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "description"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, fila.comentario)))));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "review_form_wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "review_form"
@@ -87745,7 +88228,7 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
   }, "Tu rese\xF1a ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "required"
   }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-    id: "comment",
+    id: "field_comment",
     name: "comment",
     cols: "45",
     rows: "8",
@@ -87758,7 +88241,7 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
   }, "Nombre ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "required"
   }, "*")), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    id: "author",
+    id: "field_author",
     name: "author",
     type: "text",
     defaultValue: "",
@@ -87772,7 +88255,7 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
   }, "Correo Electronico ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "required"
   }, "*")), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    id: "email",
+    id: "field_email",
     name: "email",
     type: "email",
     defaultValue: "",
@@ -87783,10 +88266,11 @@ var ProductDetail_Woocommerce = function ProductDetail_Woocommerce(_ref) {
     className: "form-submit"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "submit",
-    type: "submit",
+    type: "button",
     className: "submit",
-    defaultValue: "Submit"
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    defaultValue: "Enviar",
+    onClick: agregarResena.bind(_this, producto.id)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "hidden",
     name: "comment_post_ID",
     value: "445",

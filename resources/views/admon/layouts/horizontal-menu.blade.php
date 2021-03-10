@@ -1,8 +1,7 @@
-<!--Horizontal-main -->
+
 				<div class="sticky">
 					<div class="horizontal-main hor-menu clearfix">
 						<div class="horizontal-mainwrapper container clearfix">
-							<!--Nav-->
 							<nav class="horizontalMenu clearfix">
 								<ul class="horizontalMenu-list">
 									<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/') }}"><i class="fe fe-airplay"></i> Dashboard</a>									
@@ -29,12 +28,15 @@
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/cupones') }}">Cupones</a></li>
 										</ul>
 									</li>
+									<li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-bar-chart-2"></i> Solicitudes <i class="fa fa-angle-down horizontal-icon"></i></a>
+										<ul class="sub-menu">
+											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/contactos') }}">Contactos</a></li>
+										</ul>
+									</li>
 									<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/settings_enviroment') }}"><i class="fe fe-settings"></i> Configuraciones</a>									
 									</li>
 								</ul>
 							</nav>
-							<!--Nav-->
 						</div>
 					</div>
 				</div>
-<!--Horizontal-main -->

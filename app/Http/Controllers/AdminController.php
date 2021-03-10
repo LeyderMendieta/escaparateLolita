@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\AmbienteConfiguration;
+use App\Configuration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -91,8 +92,18 @@ class AdminController extends Controller
         $model->url_producto_5_home = $request->url_producto_5;
         //----imagenes insta
         $model->url_nueva_colleccion = $request->url_nueva_collection;
-
         $model->save();
+
+        $models = explode(",",$request->configurations);
+        foreach($models as $fila)
+        {
+            $confVariable = Configuration::where("campo",$fila)->first();
+            if($confVariable)
+            {
+                $confVariable->valor_caracter = $request->{$fila};
+                $confVariable->save();
+            }
+        }
 
         return response()->json(array("settings"=> $model));
 

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Configuracion from './Configuration';
 import Cookies from 'universal-cookie';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import GoogleLogin from 'react-google-login';
 
 class App_Login extends Component {
 
@@ -177,13 +178,68 @@ class App_Login extends Component {
                 console.log(error);
             }
         }
+        else alert("Error en el proceso, intente más tarde");
       }
 
+      responseGoogle(response)
+      {
+          //ID 317123491034-cj589tn7k9nb8l4espljjju8hkfnoekr.apps.googleusercontent.com
+          //Secreto xiKnFH9yce0DZZfFeCZRVM2h
+          if(response.profileObj != undefined)
+        {
+            var dataResponse = response.profileObj;
+            try {
+                const formData = new FormData();
+                formData.append('accessToken', response.accessToken);
+                formData.append("email",dataResponse.email);
+                formData.append("graphDomain","Google");
+                formData.append("id",dataResponse.googleId);
+                formData.append("name",dataResponse.name);
+                formData.append("first_name",dataResponse.givenName);
+                formData.append("last_name",dataResponse.familyName);
+
+                let config = {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json'
+                        },
+                    body: formData
+                    }
+
+                fetch(Configuracion.url_principal+"api/handlerLoginFromPlatform",config)
+                .then(res => res.json())
+                .then((result) => {
+                        if(result.user != undefined)
+                        {
+                            const cookies = new Cookies();
+                            cookies.set('authlog', result.user.api_token, { path: '/' });
+                            if(result.method == "new") location.href = Configuracion.url_principal+"detallescuenta";
+                            else location.reload();
+                        }
+                        else 
+                        {
+                            if(result.error == "assocExistMail")
+                            {
+                                alert("Hubo un problema en la conexión de Facebook.")
+                            }
+                            else
+                            {
+                                alert("Fallo en el proceso, intenta más tarde");
+                            }
+                        }
+                    }
+                );
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        else alert("Error en el proceso, intente más tarde");
+      }
       render(){
         
         if (this.state.activeSession != "" && this.state.activeSession != undefined) {
             return (
-            <div>Logged</div>
+                <div>Logged</div>
             );
         }
         else if (this.state.activeResetPassword)
@@ -279,9 +335,17 @@ class App_Login extends Component {
                                     fields="name,email,picture,first_name,last_name"
                                     callback={this.responseFacebook.bind(this)}
                                     render={renderProps => (
-                                        <button onClick={renderProps.onClick} className="btn-facebook"><span className="trx_addons_icon-facebook iconface"></span> Continuar con Facebook</button>
+                                        <button onClick={renderProps.onClick} className="btn-facebook mr-2 py-2 rounded"><span className="trx_addons_icon-facebook iconface"></span> Continuar con Facebook</button>
                                       )}
-                                     />
+                                    />
+                                     
+                                <GoogleLogin
+                                    clientId="317123491034-cj589tn7k9nb8l4espljjju8hkfnoekr.apps.googleusercontent.com"
+                                    buttonText="Continuar con Google"
+                                    onSuccess={this.responseGoogle.bind(this)}
+                                    onFailure={this.responseGoogle.bind(this)}
+                                    cookiePolicy={'single_host_origin'}
+                                />
                             </div>
                         </div>
                     </div>

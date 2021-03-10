@@ -60,7 +60,7 @@ class UsuarioController extends Controller
             {
                 $user = User::create([
                     "name" => $request->name,
-                    "password" => $request->nuevoPass,
+                    "password" => Hash::make($request->nuevoPass),
                     "email" => $request->correo,
                     "AccessToken" => Str::random(240),
                     "api_token" => Str::random(20)

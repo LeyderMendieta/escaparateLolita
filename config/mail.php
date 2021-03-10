@@ -36,11 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.gmail.com'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('sistemas@labora.com.co'),
-            'password' => env('Labora!2020'),
+            'host' => env('MAIL_HOST'),
+            'port' => env('MAIL_PORT'),
+            'encryption' => env('MAIL_ENCRYPTION'),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env("MAIL_PASSWORD"),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -84,7 +84,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'sistemas@labora.com.co'),
+        'address' => env('MAIL_FROM_ADDRESS'),
         'name' => env('MAIL_FROM_NAME', 'El escaparate de Lolita'),
     ],
 
@@ -98,7 +98,13 @@ return [
     | of the emails. Or, you may simply stick with the Laravel defaults!
     |
     */
-
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+        ],
+    ],
     'markdown' => [
         'theme' => 'default',
 

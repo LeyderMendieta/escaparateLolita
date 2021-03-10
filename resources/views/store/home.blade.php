@@ -211,7 +211,7 @@
                                                         <div class="text_column bg_white_with_spaces">
                                                             <h2 class="fsz_2em m_0 fw_400 align_center"><a href="{{ $url_producto_3_home }}"><b><span class="accent">Envio Gratis</span></b><br />
                                                                 en todas las ordenes<br />
-                                                                mayor a $75!</a>
+                                                                mayor a $300!</a>
                                                             </h2>    
                                                         </div>
                                                     </div>

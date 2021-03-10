@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Configuration;
 use Illuminate\Http\Request;
 use App\Product;
 use App\ProductTarget;
+use App\RatingProduct;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -86,9 +88,6 @@ class ProductController extends Controller
         $producto->acceso_url = Str::random(20).Str::random(18).date('d');
         $producto->name = $request->nombre;
         $producto->descripcion = $request->descripcion;
-        $producto->politica_entrega = $request->politica_entrega;
-        $producto->entrega = $request->entrega;
-        $producto->devoluciones = $request->devoluciones;
         $producto->precio_antes = $request->precio_antes;
         $producto->precio_ahora = $request->precio_ahora;        
         $producto->sizes = $request->tallas;
@@ -121,9 +120,6 @@ class ProductController extends Controller
         $producto = Product::where("id",$request->id)->first();
         $producto->name = $request->nombre;
         $producto->descripcion = $request->descripcion;
-        $producto->politica_entrega = $request->politica_entrega;
-        $producto->entrega = $request->entrega;
-        $producto->devoluciones = $request->devoluciones;
         $producto->precio_antes = $request->precio_antes;
         $producto->precio_ahora = $request->precio_ahora;        
         $producto->sizes = $request->tallas;
@@ -163,6 +159,7 @@ class ProductController extends Controller
         $product = DB::table('products')
             ->where('acceso_url',$producto)
             ->get();
+        
         if(!isset($product[0])) return view("404");
         else return view("store.shop-single",["producto" => $producto,"info_product" => $product[0]]);
     }
@@ -240,6 +237,24 @@ class ProductController extends Controller
     {
         $producto = Product::where("id",$id)->first();
         return response()->json(["producto" => $producto]);
+    }
+
+    public function addRatingToProduct(Request $request)
+    {
+        $rating = new RatingProduct();
+        $rating->id_producto = $request->id_producto;
+        $rating->rating = $request->rating;
+        $rating->comentario = $request->comment;
+        $rating->correo = $request->email;
+        $rating->autor = $request->author;
+        $rating->save();
+        return $this->getRatingProduct($request->id_producto);
+    }
+
+    public function getRatingProduct($id)
+    {
+        $ratings = DB::table('rating_products')->where("id_producto",$id)->orderBy('created_at', 'desc')->get();
+        return response()->json($ratings);
     }
 }
 

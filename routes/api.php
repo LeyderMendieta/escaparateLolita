@@ -13,17 +13,18 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-/*
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-*/
+
+    Route::post('/addNewContact','ContactController@store');
+    Route::get('/getContactsList','ContactController@index');
 
     Route::get('/products/{type}','ProductController@index');
     Route::get('/view_products','ProductController@getProducts');    
     Route::get('/all_products','ProductController@getAllProducts');    
     Route::get('/products_brands','ProductController@getBrands');
     Route::get('/product_detail/{product}','ProductController@viewProductDetail');
+    Route::get("/getConfigurationField/{field}","AppController@getConfigurationField");
+    Route::post("/addRatingToProduct","ProductController@addRatingToProduct");
+    Route::get("/getRatingsProduct/{id}","ProductController@getRatingProduct");
 
     Route::get('/availableDaysFor/{type}/{dia}/{mes}/{ano}','AgendaController@getAvailableFor');
 

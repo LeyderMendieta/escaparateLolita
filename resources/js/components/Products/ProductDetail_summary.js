@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tallas, colores }) => (
+const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tallas, colores, rating }) => (
 
     <div className="summary entry-summary">
         <h1 className="product_title entry-title">{producto.name}</h1>
         <div className="woocommerce-product-rating">
             <div className="star-rating" title="Rated 5 out of 5">
-                <span className="w_100per"><strong className="rating">5</strong> out of <span>5</span> based on <span className="rating">1</span> customer rating </span>
+                <span style={{width: rating+"%"}}><strong className="rating">5</strong> out of <span>5</span> based on <span className="rating">1</span> customer rating </span>
             </div>
             <a href="#reviews" className="woocommerce-review-link" rel="nofollow">(<span className="count">1</span> customer review)</a>
         </div>
@@ -82,7 +82,6 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tall
 
        
         <div className="clear"></div>
-        <a href="#" className="compare button" >Comparar</a>
         <div className="product_meta">
             <span className="sku_wrapper">SKU: <span className="sku">N/A</span></span>
             <span className="posted_in">Categories:
@@ -99,25 +98,6 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tall
                     <a href="#">gifts</a>,
                     <a href="#" rel="tag">wedding</a></span>
             <span className="product_id">Product ID: <span>{producto.id}</span></span>
-        </div>
-        
-        <div className="yith-wcwl-add-to-wishlist">
-            <div className="yith-wcwl-add-button show d_block">
-                <a href="#" data-product-type="variable" className="add_to_wishlist">Add to Wishlist</a>
-            </div>
-            <div className="yith-wcwl-wishlistaddedbrowse hide d_none">
-                <span className="feedback">Product added!</span>
-                <a href="#">Browse Wishlist</a>
-            </div>
-            <div className="yith-wcwl-wishlistexistsbrowse hide d_none">
-                <span className="feedback">The product is already in the wishlist!</span>
-                <a href="#">Browse Wishlist</a>
-            </div>
-            <div className="clear_both"></div>
-            <div className="yith-wcwl-wishlistaddresponse"></div>
-        </div>
-        <div style={{float: "left",marginLeft:"8px"}}>
-            <a href="#" className="button" style={{padding: "6px 13px",fontSize: "11px",fontWeight: "400px",    lineHeight: "13px",verticalAlign: "top"}} >Delivery</a>
         </div>
         
     </div>

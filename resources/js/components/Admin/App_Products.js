@@ -27,6 +27,21 @@ class App_Admon_Products extends Component {
                 this.setState({
                     products: result
                 });
+                $('#tableProducts').DataTable( {
+                    responsive: {
+                        details: {
+                            display: $.fn.dataTable.Responsive.display.modal( {
+                                header: function ( row ) {
+                                    var data = row.data();
+                                    return '<b>'+data[0]+' - '+data[2]+'</b><br/><br/>';
+                                }
+                            } ),
+                            renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                                tableClass: 'table table-dark'
+                            } )
+                        }
+                    }
+                } );
             },
             
             (error) => {

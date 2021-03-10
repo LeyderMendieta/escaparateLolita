@@ -241,7 +241,7 @@
                                             </span>
                                         </div>
                                     </aside>
-                                    <aside id="tag_cloud-3" class="column-1_4 widget widget_tag_cloud">
+                                    <aside id="tag_cloud-3" class="column-1_3 widget widget_tag_cloud">
                                         <h5 class="widget_title">Tags</h5>
                                         <div class="tagcloud">
                                         @foreach ($tags as $fila)
@@ -251,41 +251,11 @@
                                             <a href='#' class='fsz-13_38pt' title='9 topics'>{{$fila->nombre}}</a>
                                         @endforeach                                        
                                         </div>
-                                    </aside><aside id="trx_addons_widget_recent_posts-3" class="column-1_4 widget widget_recent_posts">
-                                        <h5 class="widget_title">Blog</h5>
-                                        <article class="post_item with_thumb">
-                                            <div class="post_content">
-                                                <h6 class="post_title"><a href="#">Lingerie Supports Fashion Targets Breast Cancer</a></h6>
-                                                <div class="post_info"></div>
-                                            </div>
-                                        </article>
-                                        <article class="post_item with_thumb">
-                                            <div class="post_content">
-                                                <h6 class="post_title"><a href="#">A Case for No Shirt, No Problem</a></h6>
-                                                <div class="post_info"></div>
-                                            </div>
-                                        </article>
-                                        <article class="post_item with_thumb">
-                                            <div class="post_content">
-                                                <h6 class="post_title"><a href="#">Emotional Experience of Balconette Bra</a></h6>
-                                                <div class="post_info"></div>
-                                            </div>
-                                        </article>
-                                        <article class="post_item with_thumb">
-                                            <div class="post_content">
-                                                <h6 class="post_title"><a href="#">6 Tips for Your Sleeping Beauty Rest</a></h6>
-                                                <div class="post_info"></div>
-                                            </div>
-                                        </article>
                                     </aside>
                                 </div>
-                                <!-- /.columns_wrap -->
                             </div>
-                            <!-- /.content_wrap -->
                         </div>
-                        <!-- /.footer_widgets_inner -->
-                    </div>
-                    <!-- /.footer_widgets_wrap -->                    
+                    </div>                  
                    
                     <div class="footer_copyright_wrap scheme_">
                         <div class="footer_copyright_inner">

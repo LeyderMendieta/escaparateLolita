@@ -95,77 +95,42 @@
                             <div class="post_content entry-content">
                                 <section>
                                     <div class="content_container">
-                                        <div class="column_container column-1_1 sc_layouts_column sc_layouts_column_icons_position_left">
-                                            <div class="column-inner">
-                                                <div class="empty_space h-3em"><span class="empty_space_inner"></span></div>
-                                                <div class="sc_form sc_form_detailed sc_align_default">
-                                                    <div class="trx_addons_columns_wrap columns_padding_bottom">
-                                                        <div class="trx_addons_column-1_3">
-                                                            <h2 class="sc_form_info_title_top">Mantente en Contacto</h2>
-                                                            <div class="sc_form_info">
-                                                                <div class="sc_form_info_item sc_form_info_item_address"> 
-                                                                    <span class="sc_form_info_area">                                          
-                                                                        <span class="sc_form_info_title">Dirección:</span> 
-                                                                        <span class="sc_form_info_data"><span>Calle 71 Casa No 97 San Francisco Panamá</span></span>
-                                                                    </span>
-                                                                </div>
-                                                                <div class="sc_form_info_item sc_form_info_item_phone"> 
-                                                                    <span class="sc_form_info_area">
-                                                                        <span class="sc_form_info_title">Teléfono:</span> 
-                                                                        <span class="sc_form_info_data"><span>+507 388-8936 / +507 6324-9894</span></span>
-                                                                    </span>
-                                                                </div>
-                                                                <div class="sc_form_info_item sc_form_info_item_email">
-                                                                    <span class="sc_form_info_area">
-                                                                        <span class="sc_form_info_title">E-mail:</span> 
-                                                                        <span class="sc_form_info_data"><a href="mailto:info@example.com">info@elescaparatedelolita.com</a></span> 
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form_socials socials_wrap">
-                                                                <span class="social_item"><a href="https://www.facebook.com/Elescaparatedelolita" target="_blank" class="social_icons social_facebook"><span class="trx_addons_icon-facebook"></span></a>
-                                                                </span><span class="social_item"><a href="https://www.instagram.com/elescaparatedelolita/" target="_blank" class="social_icons social_instagram"><span class="trx_addons_icon-instagram"></span></a>
-                                                                </span>
-                                                            </div>
-                                                        </div><div class="trx_addons_column-2_3">
-                                                            <h2 class="sc_form_form_title_top">Contactanos</h2>
-                                                            <form class="sc_form_form" method="post" action="include/contact-form.php">
-                                                                <div class="trx_addons_columns_wrap">
-                                                                    <div class="trx_addons_column-1_2">
-                                                                        <label class="sc_form_field sc_form_field_name required"> 
-                                                                            <span class="sc_form_field_wrap">
-                                                                                <input type="text" name="name" id="name" value="" placeholder="Nombre">
-                                                                            </span> 
-                                                                        </label>
-                                                                    </div><div class="trx_addons_column-1_2">
-                                                                        <label class="sc_form_field sc_form_field_email required"> 
-                                                                            <span class="sc_form_field_wrap">
-                                                                                <input type="text" name="email" id="email" value="" placeholder="E-mail">
-                                                                            </span> 
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <label class="sc_form_field sc_form_field_subgect required"> 
-                                                                    <span class="sc_form_field_wrap">
-                                                                        <input type="text" name="subgect" id="subgect" value="" placeholder="Asunto">
-                                                                    </span> 
-                                                                </label>
-                                                                <label class="sc_form_field sc_form_field_message required"> 
-                                                                    <span class="sc_form_field_wrap">
-                                                                        <textarea name="message" id="message" aria-required="true" placeholder="Mensaje"></textarea>
-                                                                    </span> 
-                                                                </label>
-                                                                <div class="sc_form_field sc_form_field_button">
-                                                                    <button>Enviar</button>
-                                                                </div>
-                                                                <div class="trx_addons_message_box sc_form_result"></div>
-                                                            </form>
+                                        <div class="empty_space h-3em"><span class="empty_space_inner"></span></div>
+                                        <div class="sc_form sc_form_detailed sc_align_default">
+                                            <div class="trx_addons_columns_wrap columns_padding_bottom" style="width:100%;display:-webkit-box">
+                                                <div style="display:block;width:50%">
+                                                    <h2 class="sc_form_info_title_top">Mantente en Contacto</h2>
+                                                    <div class="sc_form_info">
+                                                        <div class="sc_form_info_item sc_form_info_item_address"> 
+                                                            <span class="sc_form_info_area">                                          
+                                                                <span class="sc_form_info_title">Dirección:</span> 
+                                                                <span class="sc_form_info_data"><span>Calle 71 Casa No 97 San Francisco Panamá</span></span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="sc_form_info_item sc_form_info_item_phone"> 
+                                                            <span class="sc_form_info_area">
+                                                                <span class="sc_form_info_title">Teléfono:</span> 
+                                                                <span class="sc_form_info_data"><span>+507 388-8936 / +507 6324-9894</span></span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="sc_form_info_item sc_form_info_item_email">
+                                                            <span class="sc_form_info_area">
+                                                                <span class="sc_form_info_title">E-mail:</span> 
+                                                                <span class="sc_form_info_data"><a href="mailto:info@example.com">info@elescaparatedelolita.com</a></span> 
+                                                            </span>
                                                         </div>
                                                     </div>
+                                                    <div class="form_socials socials_wrap">
+                                                        <span class="social_item"><a href="https://www.facebook.com/Elescaparatedelolita" target="_blank" class="social_icons social_facebook"><span class="trx_addons_icon-facebook"></span></a>
+                                                        </span><span class="social_item"><a href="https://www.instagram.com/elescaparatedelolita/" target="_blank" class="social_icons social_instagram"><span class="trx_addons_icon-instagram"></span></a>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <!-- /.sc_form --> 
+                                                <div style="display:block;width:50%" id="App_Contactanos">
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="empty_space h-3em"><span class="empty_space_inner"></span></div>
                                     </div>
                                 </section>  
                                 <section>
@@ -191,9 +156,7 @@
                 @include('store.layouts.footer2')
                 <!-- /.footer_wrap -->
             </div>
-            <!-- /.page_wrap -->
         </div>
-        <!-- /.body_wrap -->
         <div id='App_Login'>
         </div>
 

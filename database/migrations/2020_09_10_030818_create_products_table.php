@@ -18,9 +18,6 @@ class CreateProductsTable extends Migration
             $table->string('acceso_url', 100)->unique();
             $table->text("name");
             $table->text("descripcion");
-            $table->text("politica_entrega");
-            $table->text("entrega");
-            $table->text("devoluciones");
             $table->float("precio_antes",50)->nullable(true);
             $table->float("precio_ahora",50)->nullable(true);
             $table->text("imagen_main")->nullable(true);

@@ -27,7 +27,6 @@ class CreateAmbienteConfigurationsTable extends Migration
             $table->text("imagen_instagram_3_home");
             $table->text("imagen_instagram_4_home");
             $table->text("url_nueva_colleccion");
-
             $table->timestamps();
         });
     }

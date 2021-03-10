@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AmbienteConfiguration;
 use App\Category;
+use App\Configuration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,5 +34,20 @@ class AppController extends Controller
         else $categoryText = "";
         return view('store.shop',array("url_nueva_colleccion"=> $settings->url_nueva_colleccion,"min_price" => $min_price, "max_price" => $max_price, "search" => $search, "category" => $category, "categoryText" => $categoryText, "min_value_allow" => $min,"max_value_allow" => $max));
         
+    }
+
+    public function getConfigurationField($field)
+    {
+        if($field == "all")
+        {
+            $lasConfigurations = Configuration::where("id",">",0)->get();
+            $configurations = [];
+            foreach($lasConfigurations as $fila)
+            {
+                $configurations[$fila->campo] = ["valor_numerico" => $fila->valor_numerico, "valor_caracter" => $fila->valor_caracter];
+            }
+        }
+        else $configurations = Configuration::where("campo","$field")->first();
+        return response()->json($configurations);
     }
 }

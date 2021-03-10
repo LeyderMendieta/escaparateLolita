@@ -12,7 +12,10 @@ class App_Admon_Settings_Enviroment extends Component {
         this.state = {
           error: null,
           isLoaded: false,
-          settings: []          
+          settings: [],
+          politica_entrega_completa: [],
+          politica_entrega: [],
+          politica_devoluciones: [],
         };        
       }
 
@@ -46,14 +49,19 @@ class App_Admon_Settings_Enviroment extends Component {
                     $('#url_producto_4').val(this.state.settings.url_producto_5_home);
                     $('#url_nueva_collection').val(this.state.settings.url_nueva_colleccion);
                 }
-            },
-            
-            (error) => {
-                this.setState({
-                isLoaded: true,
-                error
-                });
             });
+
+            fetch(Configuracion.url_principal+"api/getConfigurationField/all")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                this.setState({
+                    politica_entrega_completa: result.politica_entrega_completa.valor_caracter,
+                    politica_entrega: result.politica_entrega.valor_caracter,
+                    politica_devoluciones: result.politica_devoluciones.valor_caracter
+                });
+                },
+            );
       }
 
       updateSettings()
@@ -115,13 +123,15 @@ class App_Admon_Settings_Enviroment extends Component {
             else {formData.append('imagen_3', imagen_3[0]);}
             
 
+            $('#global-loader').show();
+
             let config = {
               method: 'POST',
               headers: {
                 'Accept': 'application/json'
                 },
               body: formData
-            }
+            }           
 
             fetch(Configuracion.url_principal+"api/store/productoImagen",config)
             .then(res => res.json())
@@ -131,12 +141,6 @@ class App_Admon_Settings_Enviroment extends Component {
                 if(result.files.imagen_video != undefined) load_imagen_video = result.files.imagen_video;
                 if(result.files.imagen_2 != undefined) load_imagen_2 = result.files.imagen_2;
                 if(result.files.imagen_3 != undefined) load_imagen_3 = result.files.imagen_3;
-              }
-            );
-
-            $('#global-loader').show();
-
-            setTimeout(() => {
 
                 const formDataUpdate = new FormData();
                 formDataUpdate.append('url_embed_video', url_embed_video);
@@ -147,6 +151,10 @@ class App_Admon_Settings_Enviroment extends Component {
                 formDataUpdate.append('url_producto_3', url_producto_3);
                 formDataUpdate.append('url_producto_5', url_producto_4);
                 formDataUpdate.append('url_nueva_collection', url_nueva_collection);
+                formDataUpdate.append("configurations",["politica_entrega_completa","politica_entrega","politica_devoluciones"]);
+                formDataUpdate.append('politica_entrega_completa', this.state.politica_entrega_completa);
+                formDataUpdate.append('politica_entrega', this.state.politica_entrega);
+                formDataUpdate.append('politica_devoluciones', this.state.politica_devoluciones);
         
                 let config = {
                     method: 'POST',
@@ -164,7 +172,8 @@ class App_Admon_Settings_Enviroment extends Component {
                   }
                 );
 
-              }, 3000);
+              }
+            );
 
         } catch (error) {
             console.log(error);
@@ -269,6 +278,28 @@ class App_Admon_Settings_Enviroment extends Component {
                                 <div className="form-group">
                                     <label className="form-label">Url Nueva Colección</label>
                                     <input id="url_nueva_collection" type="text" className="form-control" name="url_nueva_collection" placeholder="Url Nueva Collección" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xl-6 col-lg-12 col-md-12">
+                                <div className="form-group">
+                                    <label className="form-label">Politica de Entrega Completa</label>
+                                    <textarea onChange={(e) => (this.setState({politica_entrega_completa: e.target.value}))} className="form-control" name="politic1" value={this.state.politica_entrega_completa} ></textarea>
+                                </div>
+                            </div>
+                            <div className="col-xl-6 col-lg-12 col-md-12">
+                                <div className="form-group">
+                                    <label className="form-label">Politica de Entrega</label>
+                                    <textarea onChange={(e) => (this.setState({politica_entrega: e.target.value}))} className="form-control" name="politic2" value={this.state.politica_entrega} ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xl-6 col-lg-12 col-md-12">
+                                <div className="form-group">
+                                    <label className="form-label">Politica de Devoluciones</label>
+                                    <textarea onChange={(e) => (this.setState({politica_devoluciones: e.target.value}))} className="form-control" name="politic3" value={this.state.politica_devoluciones} ></textarea>
                                 </div>
                             </div>
                         </div>

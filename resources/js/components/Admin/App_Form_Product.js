@@ -72,9 +72,6 @@ class App_Admon_Add_Product extends Component {
                     $('#product_id').val(this.state.producto.id);
                     $('#producto_nombre').val(this.state.producto.name);
                     $('#producto_descripcion').val(this.state.producto.descripcion);
-                    $('#politica_entrega').val(this.state.producto.politica_entrega);
-                    $('#entrega').val(this.state.producto.entrega);
-                    $('#devoluciones').val(this.state.producto.devoluciones);
                     $('#producto_precio_antes').val(this.state.producto.precio_antes);
                     $('#producto_precio_ahora').val(this.state.producto.precio_ahora);
                     $('#permite_entallaje').prop('checked',this.state.producto.entallaje);
@@ -132,9 +129,6 @@ class App_Admon_Add_Product extends Component {
       {
           var nombre = $('#producto_nombre').val();
           var descripcion = $('#producto_descripcion').val();
-          var politica_entrega = $('#politica_entrega').val();
-          var entrega = $('#entrega').val();
-          var devoluciones = $('#devoluciones').val();
           var precio_antes = $('#producto_precio_antes').val();
           var precio_ahora = $('#producto_precio_ahora').val();
           var imagen_principal = $('#producto_imagen_principal').prop('files');
@@ -257,9 +251,6 @@ class App_Admon_Add_Product extends Component {
                     const formData = new FormData();
                     formData.append('nombre', nombre);
                     formData.append('descripcion', descripcion);
-                    formData.append('politica_entrega', politica_entrega);
-                    formData.append('entrega', entrega);
-                    formData.append('devoluciones', devoluciones);
                     formData.append('precio_antes', precio_antes);
                     formData.append('precio_ahora', precio_ahora);
                     formData.append('imagen_main', result.files.imagen_main);
@@ -311,9 +302,6 @@ class App_Admon_Add_Product extends Component {
         var id_update = $('#product_id').val();
         var nombre = $('#producto_nombre').val();
         var descripcion = $('#producto_descripcion').val();
-        var politica_entrega = $('#politica_entrega').val();
-        var entrega = $('#entrega').val();
-        var devoluciones = $('#devoluciones').val();
         var precio_antes = $('#producto_precio_antes').val();
         var precio_ahora = $('#producto_precio_ahora').val();
         var imagen_principal = $('#producto_imagen_principal').prop('files');
@@ -452,9 +440,6 @@ class App_Admon_Add_Product extends Component {
                 formDataUpdate.append('id', id_update);
                 formDataUpdate.append('nombre', nombre);
                 formDataUpdate.append('descripcion', descripcion);
-                formDataUpdate.append('politica_entrega', politica_entrega);
-                formDataUpdate.append('entrega', entrega);
-                formDataUpdate.append('devoluciones', devoluciones);
                 formDataUpdate.append('precio_antes', precio_antes);
                 formDataUpdate.append('precio_ahora', precio_ahora);
                 formDataUpdate.append('imagen_main', imagen_main);
@@ -521,26 +506,6 @@ class App_Admon_Add_Product extends Component {
                                 <div className="form-group">
                                     <label className="form-label">Descripción</label>
                                     <textarea className="form-control" id="producto_descripcion" rows="3" placeholder="Escribe la descripción del producto"></textarea>
-                                </div>												
-                            </div>
-                            <div className="col-xl-6 col-lg-12 col-md-12">
-                                <div className="form-group">
-                                    <label className="form-label">Politica de Entrega Completa</label>
-                                    <textarea className="form-control" id="politica_entrega" rows="3" placeholder="Escribe la descripción del producto"></textarea>
-                                </div>												
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-xl-6 col-lg-12 col-md-12">
-                                <div className="form-group">
-                                    <label className="form-label">Entrega</label>
-                                    <textarea className="form-control" id="entrega" rows="3" placeholder="Escribe la descripción del producto"></textarea>
-                                </div>								
-                            </div>
-                            <div className="col-xl-6 col-lg-12 col-md-12">
-                                <div className="form-group">
-                                    <label className="form-label">Devoluciones</label>
-                                    <textarea className="form-control" id="devoluciones" rows="3" placeholder="Escribe la descripción del producto"></textarea>
                                 </div>												
                             </div>
                         </div>
