@@ -49,12 +49,12 @@ class App_solicitud_contactos extends Component {
                 <thead>
                     <tr>
                         <th>ID</th>             
-                        <th>Marca</th>      
-                        <th>Descripción</th>
-                        <th>Url</th>      
-                        <th>Creado</th>
-                        <th>Actualizado</th>
-                        <th>Actualizado</th>
+                        <th>Nombre</th>      
+                        <th>Correo</th>
+                        <th>Asunto</th>      
+                        <th>Mensaje</th>
+                        <th>Estado</th>
+                        <th>Fecha de Registro</th>
                     </tr>
                 </thead>
                 <tbody>
