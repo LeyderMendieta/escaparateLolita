@@ -23,19 +23,71 @@ use App\Mail\VerificaTuCuenta;
 
 class UsuarioController extends Controller
 {
-
-    public function restablecerContrasena(Request $request)
+    public function restablecerContrasenaAdm(Request $request)
     {
-        $user = User::where(['email' => $request->email])->first();
-        $user->generateToken();
+        $user = User::where(['email' => $request->user,"graphDomain" => "Administrador"])->first();
         if($user)
         {
-            $sendStatus = Mail::to($user)->send(new RestablecerPasswordStore($user->nombres,url("/restartPasswordAccount/oauth/".$user->api_token)));
+            $user->generateToken();
+            $sendStatus = Mail::to($user)->send(new RestablecerPasswordStore($user->nombres,url("admin/restartPassword/".$user->api_token)));
             return response()->json($sendStatus);
         }
         else return response()->json(["error" => "matching_nfound"]);
     }
 
+    public function loginAdm(Request $request)
+    {
+        $user = User::where(['email' => $request->user,"graphDomain" => "Administrador"])->first();
+        if($user)
+        {
+            
+            if(hash::check($request->password,$user->password))
+            {
+                Auth::login($user,true);
+                $user->generateToken();
+                setCookie ("USADM-OAUTH",$user->api_token);
+                return $user;
+            }
+            else 
+            return response()->json(["error" => "userpsw"]);
+        }
+        else return response()->json(["error" => "nofound"]);  
+    }
+
+    public function procederCambioContrasenaAdm($token)
+    {
+        $user = User::where(["api_token" => $token,"graphDomain" => "Administrador"])->first();
+        if($user)
+        {
+            return view("admon.newPassword",["token" => $token]);
+        }
+        else return view("error",["message" => "El enlace no se encuentra disponible"]);
+    }
+    public function doRestablecerContrasenaAdm(Request $request)
+    {
+        $user = User::where(['api_token' => $request->token,"graphDomain" => "Administrador"])->first();
+        if($user)
+        {
+            $user->password = Hash::make($request->newPass);
+            $user->save();
+            $user->generateToken();
+            return response()->json(["success" => "done"]);
+        }
+        else return response()->json(["error" => "matching_nfound"]);
+    }
+    //---------------------------------------
+    public function restablecerContrasena(Request $request)
+    {
+        $user = User::where(['email' => $request->email])->first();        
+        if($user)
+        {
+            $user->generateToken();
+            $sendStatus = Mail::to($user)->send(new RestablecerPasswordStore($user->nombres,url("/restartPasswordAccount/oauth/".$user->api_token)));
+            return response()->json($sendStatus);
+        }
+        else return response()->json(["error" => "matching_nfound"]);
+    }
+    
     public function doRestablecerContrasena(Request $request)
     {
         $user = User::where(['api_token' => $request->token])->first();
@@ -79,6 +131,7 @@ class UsuarioController extends Controller
         else return response()->json(["error" => "nofound"]);  
     }
 
+    
     public function registerUser(Request $request)
     {
         if(isset($request->name) && isset($request->nuevoPass) && isset($request->correo) && isset($request->nombres) && isset($request->apellidos) && isset($request->ubicacion) && isset($request->apartamento) && isset($request->celular))

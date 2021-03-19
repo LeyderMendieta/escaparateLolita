@@ -12,7 +12,7 @@
 						<div class="col-lg-4 d-block mx-auto">
 							<div class="row">
 								<div class="col-xl-12 col-md-12 col-md-12">
-									<div class="card" id="App_Adm_ResetPsw_Admon">
+									<div class="card" id="App_Adm_NewPsw_Admon" data-target="{{$token}}">
 										
 									</div>
 								</div>

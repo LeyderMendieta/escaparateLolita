@@ -83,14 +83,14 @@
 									<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 										<div class="drop-heading">
 											<div class="text-center">
-												<h5 class="text-dark mb-1">Leyder Mendieta</h5>
+												<h5 class="text-dark mb-1">El escaparate de Lolita</h5>
 												<small class="text-muted">Administrador</small>
 											</div>
 										</div>
 										<div class="dropdown-divider m-0"></div>
 										<a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-user"></i>Mi Perfil</a>
 										<a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-unlock"></i> Look Screen</a>
-										<a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-power"></i> Salir</a>
+										<a class="dropdown-item" href="{{ url('/' . $page='admin/logout/oauth') }}"><i class="dropdown-icon fe fe-power"></i> Salir</a>
 									</div>
 								</div>
 							</div>

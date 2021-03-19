@@ -79828,6 +79828,8 @@ __webpack_require__(/*! ./components/Users/MyPedidos */ "./resources/js/componen
 
 __webpack_require__(/*! ./components/Users/RestablecerPassword */ "./resources/js/components/Users/RestablecerPassword.js");
 
+__webpack_require__(/*! ./components/Admin/procesos/App_Login_Admon */ "./resources/js/components/Admin/procesos/App_Login_Admon.js");
+
 __webpack_require__(/*! ./components/Admin/procesos/App_Admon_Usuarios */ "./resources/js/components/Admin/procesos/App_Admon_Usuarios.js");
 
 __webpack_require__(/*! ./components/Admin/App_Products */ "./resources/js/components/Admin/App_Products.js");
@@ -85580,6 +85582,440 @@ var App_Admon_Usuarios = /*#__PURE__*/function (_Component) {
 
 if (document.getElementById('App_admusers')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Admon_Usuarios, null), document.getElementById('App_admusers'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/procesos/App_Login_Admon.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/Admin/procesos/App_Login_Admon.js ***!
+  \*******************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Configuration */ "./resources/js/components/Configuration.js");
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var App_Login_Admon = /*#__PURE__*/function (_Component) {
+  _inherits(App_Login_Admon, _Component);
+
+  var _super = _createSuper(App_Login_Admon);
+
+  function App_Login_Admon(props) {
+    var _this;
+
+    _classCallCheck(this, App_Login_Admon);
+
+    _this = _super.call(this, props);
+    var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      user: "",
+      password: ""
+    };
+    return _this;
+  }
+
+  _createClass(App_Login_Admon, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      $('#resultingInfo').html("");
+    }
+  }, {
+    key: "login",
+    value: function login() {
+      var _this2 = this;
+
+      if (this.state.user == "" || this.state.password == "") {
+        $('#resultingInfo').html("<div className='alert alert-warning mx-auto'>Todos los campos son obligatorios</div>");
+        return false;
+      }
+
+      var config = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.state)
+      };
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/admin/login", config).then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        if (result.api_token != undefined) {
+          var cookie = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
+          cookie.set('USADM-OAUTH', result.api_token, {
+            path: '/'
+          });
+          location.reload();
+        } else {
+          _this2.setState({
+            password: ""
+          });
+
+          $('#resultingInfo').html("<div className='alert alert-danger mx-auto'>Usuario y/o Contraseña Incorrecta</div>");
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-center mb-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "assets/store/images/logo.svg",
+        className: "header-brand-img main-logo",
+        alt: "IndoUi logo"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "assets/store/images/logo.svg",
+        className: "header-brand-img dark-main-logo",
+        alt: "IndoUi logo"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted"
+      }, "Ingresa a tu cuenta"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-addon bg-white"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        placeholder: "Usuario",
+        value: this.state.user,
+        onChange: function onChange(e) {
+          return _this3.setState({
+            user: e.target.value
+          });
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group mb-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-addon bg-white"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-unlock-alt"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        placeholder: "Contrase\xF1a",
+        value: this.state.password,
+        onChange: function onChange(e) {
+          return _this3.setState({
+            password: e.target.value
+          });
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row",
+        id: "resultingInfo"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-primary btn-block",
+        onClick: this.login.bind(this)
+      }, "Ingresar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "admin/forgotPassword/reset",
+        className: "btn btn-link box-shadow-0 px-0"
+      }, "\xBFOlvidaste tu contrase\xF1a?"))));
+    }
+  }]);
+
+  return App_Login_Admon;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_Adm_Login_Admon')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Login_Admon, null), document.getElementById('App_Adm_Login_Admon'));
+}
+
+var App_NewPassword_Admon = /*#__PURE__*/function (_Component2) {
+  _inherits(App_NewPassword_Admon, _Component2);
+
+  var _super2 = _createSuper(App_NewPassword_Admon);
+
+  function App_NewPassword_Admon(props) {
+    var _this4;
+
+    _classCallCheck(this, App_NewPassword_Admon);
+
+    _this4 = _super2.call(this, props);
+    var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
+    _this4.state = {
+      error: null,
+      isLoaded: false,
+      token: $("#App_Adm_NewPsw_Admon").data("target"),
+      newPass: "",
+      confPass: ""
+    };
+    return _this4;
+  }
+
+  _createClass(App_NewPassword_Admon, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      $('#resultingInfo').html("");
+    }
+  }, {
+    key: "cambiarPassword",
+    value: function cambiarPassword() {
+      if (this.state.newPass == "" || this.state.confPass == "") {
+        $('#resultingInfo').html("<div class='alert alert-warning mx-auto'>Todos los campos son obligatorios</div>");
+        return false;
+      }
+
+      if (this.state.newPass != this.state.confPass) {
+        $('#resultingInfo').html("<div class='alert alert-warning mx-auto'>Las Contraseñas No Coinciden</div>");
+        return false;
+      }
+
+      var config = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.state)
+      };
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/admin/doResetPassword", config).then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        if (result.error != undefined) {
+          $('#resultingInfo').html("<div class='alert alert-danger'>Ha ocurrido un error en el cambio de contraseña</div>");
+        } else {
+          $('.fieldForm').hide();
+          $('#resultingInfo').html("<div class='alert alert-success w-100'>Se ha cambiado la contraseña</div><br/><a class='btn btn-info btn-block' href='" + _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "admon/'>Ir a Inicio</a>");
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this5 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-center mb-6 fieldForm"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "assets/store/images/logo.svg",
+        className: "header-brand-img main-logo",
+        alt: "IndoUi logo"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "assets/store/images/logo.svg",
+        className: "header-brand-img dark-main-logo",
+        alt: "IndoUi logo"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "fieldForm"
+      }, "Restablecer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted fieldForm"
+      }, "Asigna tu nueva contrase\xF1a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group mb-3 fieldForm"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-addon bg-white"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-unlock-alt"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        placeholder: "Nueva Contrase\xF1a",
+        value: this.state.newPass,
+        onChange: function onChange(e) {
+          return _this5.setState({
+            newPass: e.target.value
+          });
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group mb-4 fieldForm"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-addon bg-white"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-unlock-alt"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        placeholder: "Confirmar Contrase\xF1a",
+        value: this.state.confPass,
+        onChange: function onChange(e) {
+          return _this5.setState({
+            confPass: e.target.value
+          });
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row",
+        id: "resultingInfo"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row fieldForm"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-primary btn-block",
+        onClick: this.cambiarPassword.bind(this)
+      }, "Confirmar"))));
+    }
+  }]);
+
+  return App_NewPassword_Admon;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_Adm_NewPsw_Admon')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_NewPassword_Admon, null), document.getElementById('App_Adm_NewPsw_Admon'));
+}
+
+var App_ResetPassword_Admon = /*#__PURE__*/function (_Component3) {
+  _inherits(App_ResetPassword_Admon, _Component3);
+
+  var _super3 = _createSuper(App_ResetPassword_Admon);
+
+  function App_ResetPassword_Admon(props) {
+    var _this6;
+
+    _classCallCheck(this, App_ResetPassword_Admon);
+
+    _this6 = _super3.call(this, props);
+    var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
+    _this6.state = {
+      error: null,
+      isLoaded: false,
+      user: ""
+    };
+    return _this6;
+  }
+
+  _createClass(App_ResetPassword_Admon, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      $('#resultingInfo').html("");
+    }
+  }, {
+    key: "restablecerPassword",
+    value: function restablecerPassword() {
+      if (this.state.user == "") {
+        $('#resultingInfo').html("<div class='alert alert-warning mx-auto'>Todos los campos son obligatorios</div>");
+        return false;
+      }
+
+      $('#btnReset').prop('disabled', true);
+      $('#btnReset').html("Procesando...");
+      var config = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.state)
+      };
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/admin/restablecerPassword", config).then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        $('#btnReset').prop('disabled', false);
+        $('#btnReset').html("Enviar");
+
+        if (result.error != undefined) {
+          $('#resultingInfo').html("<div class='alert alert-danger w-100'>No se encuentra un usuario</div>");
+        } else {
+          $('.formbuilder').hide();
+          $('#resultingInfo').html("<div class='alert alert-success w-100'>Se ha enviado el correo electronico, Revisa tu bandeja o el Spam</div>");
+        }
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this7 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-center mb-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "assets/store/images/logo.svg",
+        className: "header-brand-img main-logo",
+        alt: "El escaparate de Lolita"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "assets/store/images/logo.svg",
+        className: "header-brand-img dark-main-logo",
+        alt: "El escaparate de Lolita"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Recuperar Contrase\xF1a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group  mr-auto ml-auto mb-4 formbuilder"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "input-group-addon bg-white"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-envelope"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "email",
+        className: "form-control",
+        placeholder: "Correo Electronico",
+        value: this.state.user,
+        onChange: function onChange(e) {
+          return _this7.setState({
+            user: e.target.value
+          });
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row",
+        id: "resultingInfo"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-center formbuilder"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "btnReset",
+        type: "button",
+        className: "btn btn-primary btn-block",
+        onClick: this.restablecerPassword.bind(this)
+      }, "Enviar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-12 formbuilder"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + 'admin/login/oauth',
+        className: "btn btn-link box-shadow-0 px-0"
+      }, "Ingresar a mi cuenta")));
+    }
+  }]);
+
+  return App_ResetPassword_Admon;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_Adm_ResetPsw_Admon')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_ResetPassword_Admon, null), document.getElementById('App_Adm_ResetPsw_Admon'));
 }
 
 /***/ }),

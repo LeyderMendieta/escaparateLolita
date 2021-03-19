@@ -38,6 +38,7 @@ require('./components/Users/MisCupones');
 require('./components/Users/MyPedidos');
 require('./components/Users/RestablecerPassword');
 
+require('./components/Admin/procesos/App_Login_Admon');
 require('./components/Admin/procesos/App_Admon_Usuarios');
 require('./components/Admin/App_Products');
 require('./components/Admin/App_Form_Product');

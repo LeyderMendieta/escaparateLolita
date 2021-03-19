@@ -89,16 +89,20 @@ Route::get('/gallery', 'GaleriaController@loadGalleryView');
 Route::get('/contacts', function () {
     return view('store.contacts');
 });
-
-
+//--------------Administration
 Route::get('admon/', 'AdminController@loadAdmonPage');
 Route::get('admon/{page}', 'AdminController@loadAdmonPage');
-Route::get('admin/login/{type}', 'AdminController@loginUser');
-Route::get('admin/forgotPassword/{type}', 'AdminController@loginUser');
-
 Route::get('admon/add/{model}', 'AdminController@addToModel');
-
 Route::get('admon/edit/{model}/{token}', 'AdminController@editToModel');
 Route::get('admon/import/products', 'AdminController@viewToImportProducts')->name("importing");
 Route::post('admon/import/import_parse', 'ImportController@parseImport')->name("import_parse");
+//------------------------------
+Route::get('admin/login/{type}', 'AdminController@loginUser');
+Route::get('admin/logout/{type}', function () {
+    setcookie("USADM-OAUTH",null,time() - 3600,'/');
+    return Redirect::to("admin/login/oauth");
+});
+Route::get('admin/forgotPassword/{type}', 'AdminController@loginUser');
+Route::get('admin/restartPassword/{token}', 'UsuarioController@procederCambioContrasenaAdm');
+
 

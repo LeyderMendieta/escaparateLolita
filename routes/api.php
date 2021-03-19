@@ -34,8 +34,14 @@ use Illuminate\Support\Facades\Route;
 
     Route::post('/addProductToCart','CartController@addProductToCart');
     Route::post('/changeCantidadProducts','CartController@changeCantidadProducts');
-    // USUARIOS -----------------------
+    // USUARIOS ADMIN -----------------------
+    Route::post('/admin/login', 'UsuarioController@loginAdm');
+    Route::post('/admin/restablecerPassword', 'UsuarioController@restablecerContrasenaAdm');
+    Route::post('/admin/doResetPassword', 'UsuarioController@doRestablecerContrasenaAdm');
+
+    //USUARIOS STORE
     Route::post('/login', 'UsuarioController@login');
+    
     Route::post('/registrarUserProccess', 'UsuarioController@registerUser');
     Route::post('/AuthLogged', 'UsuarioController@userLogged');
 
