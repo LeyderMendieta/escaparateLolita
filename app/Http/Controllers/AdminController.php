@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\User;
 use App\AmbienteConfiguration;
 use App\Configuration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -42,11 +45,38 @@ class AdminController extends Controller
     public function loadAdmonPage($id = "dashboard")
     {
         if(view()->exists("admon.$id")){
-            return view("admon.$id");
+            if(isset($_COOKIE["USADM-OAUTH"]))
+            {
+                $user = User::where(["api_token" => $_COOKIE["USADM-OAUTH"],"graphDomain" => "Administrador"])->first();
+                if($user) return view("admon.$id",["user_name" => $user->name]);
+                else return view('500');
+            }
+            else 
+            {
+                return Redirect::to('admin/login/oauth');
+                
+            }
         }
         else
         {
             return view('404');
+        }
+    }
+
+    public function loginUser($type)
+    {
+        if(isset($_COOKIE["USADM-OAUTH"]))
+        {
+            $user = User::where(["api_token" => $_COOKIE["USADM-OAUTH"],"graphDomain" => "Administrador"])->first();
+            if($user) return Redirect::to('admon');
+            else {
+                if($type == "reset") return view('admon.resetPassword');
+                else  return view('admon.login');
+            }
+        }
+        else {
+            if($type == "reset") return view('admon.resetPassword');
+            else  return view('admon.login');
         }
     }
 
@@ -90,6 +120,8 @@ class AdminController extends Controller
         $model->url_producto_3_home = $request->url_producto_3;
         if($request->imagen_3 != "noset") $model->imagen_3_home = $request->imagen_3;
         $model->url_producto_5_home = $request->url_producto_5;
+        
+        
         //----imagenes insta
         $model->url_nueva_colleccion = $request->url_nueva_collection;
         $model->save();
@@ -107,5 +139,14 @@ class AdminController extends Controller
 
         return response()->json(array("settings"=> $model));
 
+    }
+
+    public function getUsers()
+    {
+        $users = DB::table('users')
+            ->join('user_infos', 'users.id', '=', 'user_infos.id_user')
+            ->select('user_infos.*', 'users.name','users.email' , 'users.graphDomain', 'users.created_at','users.AccessToken')
+            ->get();
+        return response()->json($users);
     }
 }

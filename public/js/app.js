@@ -79826,6 +79826,10 @@ __webpack_require__(/*! ./components/Users/MisCupones */ "./resources/js/compone
 
 __webpack_require__(/*! ./components/Users/MyPedidos */ "./resources/js/components/Users/MyPedidos.js");
 
+__webpack_require__(/*! ./components/Users/RestablecerPassword */ "./resources/js/components/Users/RestablecerPassword.js");
+
+__webpack_require__(/*! ./components/Admin/procesos/App_Admon_Usuarios */ "./resources/js/components/Admin/procesos/App_Admon_Usuarios.js");
+
 __webpack_require__(/*! ./components/Admin/App_Products */ "./resources/js/components/Admin/App_Products.js");
 
 __webpack_require__(/*! ./components/Admin/App_Form_Product */ "./resources/js/components/Admin/App_Form_Product.js");
@@ -80633,7 +80637,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
   _createClass(App_Admon_Settings_Enviroment, [{
     key: "setDefaultImagen",
     value: function setDefaultImagen(input, field) {
-      $('#' + input).siblings('.dropify-preview').find('.dropify-render').html('<img src="' + _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_images + this.state.settings[field] + '">');
+      $('#' + input).siblings('.dropify-preview').find('.dropify-render').html('<img src="' + _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_images + field + '">');
       $('#' + input).siblings('.dropify-preview').find('.dropify-filename-inner').html("Imagen");
       $('#' + input).siblings('.dropify-preview').show();
       $('#' + input).siblings('.dropify-loader').hide();
@@ -80654,11 +80658,11 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
 
           $('#url_embed_video').val(_this2.state.settings.url_embed_video_home);
 
-          _this2.setDefaultImagen('imagen_video', 'imagen_video_home');
+          _this2.setDefaultImagen('imagen_video', _this2.state.settings.imagen_video_home);
 
-          _this2.setDefaultImagen('imagen_2', 'imagen_2_home');
+          _this2.setDefaultImagen('imagen_2', _this2.state.settings.imagen_2_home);
 
-          _this2.setDefaultImagen('imagen_3', 'imagen_3_home');
+          _this2.setDefaultImagen('imagen_3', _this2.state.settings.imagen_3_home);
 
           $('#url_producto_2').val(_this2.state.settings.url_producto_2_home);
           $('#url_producto_3').val(_this2.state.settings.url_producto_3_home);
@@ -80674,6 +80678,10 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           politica_entrega: result.politica_entrega.valor_caracter,
           politica_devoluciones: result.politica_devoluciones.valor_caracter
         });
+
+        _this2.setDefaultImagen('imagen_nueva_coleccion', result.imagen_nueva_coleccion.valor_caracter);
+
+        $('#url_producto_2').val(result.imagen_nueva_coleccion.valor_caracter);
       });
     }
   }, {
@@ -80685,6 +80693,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
       var imagen_video = $('#imagen_video').prop('files');
       var imagen_2 = $('#imagen_2').prop('files');
       var imagen_3 = $('#imagen_3').prop('files');
+      var imagen_nueva_coleccion = $('#imagen_nueva_coleccion').prop('files');
       var url_producto_2 = $('#url_producto_2').val();
       var url_producto_3 = $('#url_producto_3').val();
       var url_producto_4 = $('#url_producto_4').val();
@@ -80719,13 +80728,17 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         var load_imagen_video = "noset";
         var load_imagen_2 = "noset";
         var load_imagen_3 = "noset";
+        var load_imagen_nueva_coleccion = "noset";
         var formData = new FormData();
         if (imagen_video.length == 0) load_imagen_video = "noset";else formData.append('imagen_video', imagen_video[0]);
         if (imagen_2.length == 0) load_imagen_2 = "noset";else formData.append('imagen_2', imagen_2[0]);
         if (imagen_3.length == 0) load_imagen_3 = "noset";else {
           formData.append('imagen_3', imagen_3[0]);
         }
-        $('#global-loader').show();
+        if (imagen_nueva_coleccion.length == 0) load_imagen_nueva_coleccion = "noset";else {
+          formData.append('imagen_nueva_coleccion', imagen_nueva_coleccion[0]);
+        } //$('#global-loader').show();
+
         var config = {
           method: 'POST',
           headers: {
@@ -80739,6 +80752,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           if (result.files.imagen_video != undefined) load_imagen_video = result.files.imagen_video;
           if (result.files.imagen_2 != undefined) load_imagen_2 = result.files.imagen_2;
           if (result.files.imagen_3 != undefined) load_imagen_3 = result.files.imagen_3;
+          if (result.files.imagen_nueva_coleccion != undefined) load_imagen_nueva_coleccion = result.files.imagen_nueva_coleccion;
           var formDataUpdate = new FormData();
           formDataUpdate.append('url_embed_video', url_embed_video);
           formDataUpdate.append('imagen_video', load_imagen_video);
@@ -80747,11 +80761,13 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           formDataUpdate.append('url_producto_2', url_producto_2);
           formDataUpdate.append('url_producto_3', url_producto_3);
           formDataUpdate.append('url_producto_5', url_producto_4);
-          formDataUpdate.append('url_nueva_collection', url_nueva_collection);
-          formDataUpdate.append("configurations", ["politica_entrega_completa", "politica_entrega", "politica_devoluciones"]);
+          formDataUpdate.append('url_nueva_collection', url_nueva_collection); //-------------Configuracions New Model
+
+          formDataUpdate.append("configurations", ["politica_entrega_completa", "politica_entrega", "politica_devoluciones", "imagen_nueva_coleccion"]);
           formDataUpdate.append('politica_entrega_completa', _this3.state.politica_entrega_completa);
           formDataUpdate.append('politica_entrega', _this3.state.politica_entrega);
           formDataUpdate.append('politica_devoluciones', _this3.state.politica_devoluciones);
+          formDataUpdate.append('imagen_nueva_coleccion', load_imagen_nueva_coleccion);
           var config = {
             method: 'POST',
             headers: {
@@ -80762,8 +80778,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/updateSettingsEnviroment", config).then(function (res) {
             return res.json();
           }).then(function (result) {
-            alert("Se han actualizado las Configuraciones");
-            location.href = "".concat(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal, "admon/settings_enviroment");
+            alert("Se han actualizado las Configuraciones"); //location.href = `${Configuracion.url_principal}admon/settings_enviroment`;
           });
         });
       } catch (error) {
@@ -80878,6 +80893,36 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         className: "card-body"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "imagen_3",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Imagen Nueva Colecci\xF3n ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 270X380"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "imagen_nueva_coleccion",
         type: "file",
         accept: "image/*",
         className: "dropify"
@@ -85427,6 +85472,118 @@ if (document.getElementById('App_Admon_Tags')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Admin/procesos/App_Admon_Usuarios.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Admin/procesos/App_Admon_Usuarios.js ***!
+  \**********************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Configuration */ "./resources/js/components/Configuration.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var App_Admon_Usuarios = /*#__PURE__*/function (_Component) {
+  _inherits(App_Admon_Usuarios, _Component);
+
+  var _super = _createSuper(App_Admon_Usuarios);
+
+  function App_Admon_Usuarios(props) {
+    var _this;
+
+    _classCallCheck(this, App_Admon_Usuarios);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      users: []
+    };
+    return _this;
+  }
+
+  _createClass(App_Admon_Usuarios, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/admin/usersList").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          users: result,
+          isLoaded: true
+        });
+
+        $('#tableProducts').DataTable({
+          responsive: {
+            details: {
+              display: $.fn.dataTable.Responsive.display.modal({
+                header: function header(row) {
+                  var data = row.data();
+                  return '<b>' + data[0] + ' - ' + data[2] + '</b><br/><br/>';
+                }
+              }),
+              renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                tableClass: 'table table-dark'
+              })
+            }
+          }
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        id: "tableProducts",
+        className: "table table-striped table-bordered text-nowrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Usuario"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Correo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Nombres"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Apellidos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Ubicaci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Celular"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fuente Registro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fecha de Registro"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.users.map(function (row) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: row.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.nombres), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.apellidos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.ubicacion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.celular), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.graphDomain), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.created_at));
+      })));
+    }
+  }]);
+
+  return App_Admon_Usuarios;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_admusers')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Admon_Usuarios, null), document.getElementById('App_admusers'));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/Admin/solicitudes/App_solicitud_contactos.js":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/Admin/solicitudes/App_solicitud_contactos.js ***!
@@ -86055,6 +86212,13 @@ var App_Login = /*#__PURE__*/function (_Component) {
   }
 
   _createClass(App_Login, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      $('#messageResult').css({
+        "display": "none"
+      });
+    }
+  }, {
     key: "changeInput",
     value: function changeInput(e) {
       var variable = e.target.getAttribute("aria-controls");
@@ -86138,16 +86302,27 @@ var App_Login = /*#__PURE__*/function (_Component) {
           "display": "block"
         });
         $('#messageResult').find('.trx_addons_error_item').text("Es obligatorio un correo");
-        setTimeout(function () {
-          $('#messageResult').css({
-            "display": "none"
-          });
-        }, 2000);
       } else {
         var validator = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].validateEmail(this.state.correoRestablecer);
 
         if (validator) {
-          alert("sender");
+          $('#btn-reset').hide();
+          $('#btn-reset').after("<div>Procesando...");
+          var formData = new FormData();
+          formData.append('email', this.state.correoRestablecer);
+          var config = {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json'
+            },
+            body: formData
+          };
+          fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/restablecerPassword", config).then(function (res) {
+            return res.json();
+          }).then(function (result) {
+            alert("Se ha enviado el correo, revisa tu Buzon o Spam");
+            location.reload();
+          });
         } else {
           $('#messageResult').css({
             "display": "block"
@@ -86313,6 +86488,7 @@ var App_Login = /*#__PURE__*/function (_Component) {
         }, "Correo Electronico"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "trx_addons_popup_form_field trx_addons_popup_form_field_submit"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "btn-reset",
           type: "button",
           className: "submit_button",
           onClick: this.restablecerPassword.bind(this)
@@ -87160,8 +87336,8 @@ if (document.getElementById('App_Mycart')) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var url_principal = "https://elescaparatedelolita.com/"; //const url_principal = "http://127.0.0.1:8000/";
-//const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
+//const url_principal = "https://elescaparatedelolita.com/";
+var url_principal = "http://127.0.0.1:8000/"; //const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
 
 var url_images = url_principal + 'images/';
 var Configuracion = {
@@ -87504,14 +87680,14 @@ var ListProducts = function ListProducts(_ref) {
     className: "select_container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     name: "orderby",
-    className: "orderby"
+    className: "orderby",
+    defaultValue: "date"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "popularity"
   }, "Ordenar por Popilaridad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "rating"
   }, "Ordenar por Rating"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "date",
-    selected: "selected"
+    value: "date"
   }, "Ordenar por m\xE1s reciente"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "price"
   }, "Ordenar por precio: menor a mayor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -92386,6 +92562,182 @@ var RegistrarAccount = /*#__PURE__*/function (_Component) {
 
 if (document.getElementById('App_Registro_UserSystem')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RegistrarAccount, null), document.getElementById('App_Registro_UserSystem'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Users/RestablecerPassword.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/Users/RestablecerPassword.js ***!
+  \**************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Configuration */ "./resources/js/components/Configuration.js");
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var RestablecerPassword = /*#__PURE__*/function (_Component) {
+  _inherits(RestablecerPassword, _Component);
+
+  var _super = _createSuper(RestablecerPassword);
+
+  function RestablecerPassword(props) {
+    var _this;
+
+    _classCallCheck(this, RestablecerPassword);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      nuevaPass: "",
+      confPass: "",
+      token: $("#App_Restablecer_Password").data("target")
+    };
+    return _this;
+  }
+
+  _createClass(RestablecerPassword, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      $('#resultSaving').html("");
+    }
+  }, {
+    key: "cambiarPassword",
+    value: function cambiarPassword() {
+      var _this2 = this;
+
+      if (this.state.nuevaPass == "" || this.state.confPass == "") {
+        $('#resultSaving').html("<div class='alert alert-warning'>Los campos de Usuario y Nombres son obligatorios</div>");
+        return false;
+      }
+
+      if (this.state.nuevaPass != this.state.confPass) {
+        $('#resultSaving').html("<div class='alert alert-danger'>Las contraseñas no coinciden</div>");
+        return false;
+      }
+
+      try {
+        var config = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(this.state)
+        };
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/doResetPassword", config).then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          if (result.error != undefined) {
+            $('#resultSaving').html("<div class='alert alert-danger'>Ha ocurrido un error en el cambio de contraseña</div>");
+          } else {
+            $('.fieldForm').hide();
+            $('#resultSaving').html("<div class='alert alert-success'>Se ha cambiado la contraseña</div><br/><a class='btn btn-info' href='" + _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "'>Regresar al Inicio</a>");
+          }
+        }, function (error) {
+          _this2.setState({
+            isLoaded: true,
+            error: error
+          });
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "text-center mx-auto col-md-6",
+        action: "#",
+        method: "post"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "newps"
+      }, "Nueva Contrase\xF1a\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "required"
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            nuevaPass: e.target.value
+          });
+        },
+        value: this.state.nuevaPass
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clear"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "confps"
+      }, "Confirmar Contrase\xF1a\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "required"
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            confPass: e.target.value
+          });
+        },
+        value: this.state.confPass
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clear"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        id: "resultSaving"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "fieldForm"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn button",
+        value: "Guardar los cambios",
+        onClick: this.cambiarPassword.bind(this)
+      }, "Cambiar Contrase\xF1a")));
+    }
+  }]);
+
+  return RestablecerPassword;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_Restablecer_Password')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RestablecerPassword, null), document.getElementById('App_Restablecer_Password'));
 }
 
 /***/ }),

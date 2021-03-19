@@ -20,6 +20,7 @@ class AppController extends Controller
     public function showShop()
     {
         $settings = AmbienteConfiguration::first();
+        $configuraciones = Configuration::where("campo","imagen_nueva_coleccion")->first();
         $max = DB::table('products')->orderBy('id', 'DESC')->max('precio_ahora');
         $min = DB::table('products')->orderBy('id', 'DESC')->min('precio_ahora');
         $min_price = (isset($_GET["min_price"])) ? $_GET["min_price"] : "undefined";
@@ -32,7 +33,7 @@ class AppController extends Controller
             $categoryText = $categoria_result[0]["nombre"];
         }
         else $categoryText = "";
-        return view('store.shop',array("url_nueva_colleccion"=> $settings->url_nueva_colleccion,"min_price" => $min_price, "max_price" => $max_price, "search" => $search, "category" => $category, "categoryText" => $categoryText, "min_value_allow" => $min,"max_value_allow" => $max));
+        return view('store.shop',array("url_nueva_colleccion"=> $settings->url_nueva_colleccion, "imagen_nueva_coleccion" => $configuraciones->valor_caracter,"min_price" => $min_price, "max_price" => $max_price, "search" => $search, "category" => $category, "categoryText" => $categoryText, "min_value_allow" => $min,"max_value_allow" => $max));
         
     }
 

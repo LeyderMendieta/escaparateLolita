@@ -22,6 +22,11 @@ class App_Login extends Component {
         
       }
 
+      componentDidUpdate()
+      {
+        $('#messageResult').css({"display":"none"});
+      }
+
       changeInput(e)
       {
         var variable = e.target.getAttribute("aria-controls");
@@ -106,17 +111,31 @@ class App_Login extends Component {
             $('#correoRestablecer').addClass('trx_addons_field_error');
             $('#messageResult').css({"display":"block"});
             $('#messageResult').find('.trx_addons_error_item').text("Es obligatorio un correo");
-
-            setTimeout(function() { 
-                $('#messageResult').css({"display":"none"});
-            }, 2000);
         }
         else
         {
             var validator = Configuracion.validateEmail(this.state.correoRestablecer);
             if(validator)
             {
-                alert("sender");
+                $('#btn-reset').hide();
+                $('#btn-reset').after("<div>Procesando...");
+                const formData = new FormData();
+                formData.append('email', this.state.correoRestablecer);
+
+                let config = {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json'
+                        },
+                    body: formData
+                }
+
+                fetch(Configuracion.url_principal+"api/restablecerPassword",config)
+                .then(res => res.json())
+                .then((result) => {
+                   alert("Se ha enviado el correo, revisa tu Buzon o Spam");
+                   location.reload();
+                });
             }
             else
             {
@@ -271,7 +290,7 @@ class App_Login extends Component {
                                         </label>
                                     </div>
                                     <div className="trx_addons_popup_form_field trx_addons_popup_form_field_submit">
-                                        <button type="button" className="submit_button" onClick={this.restablecerPassword.bind(this) }>Restablecer Contraseña</button>
+                                        <button id="btn-reset" type="button" className="submit_button" onClick={this.restablecerPassword.bind(this) }>Restablecer Contraseña</button>
                                     </div>
                                     <div id='messageResult' className="trx_addons_message_box sc_form_result trx_addons_message_box_error" style={{padding: "1rem"}}><p className="trx_addons_error_item"></p></div>
                                 </form>

@@ -12,6 +12,7 @@ use App\UserInfo;
 use App\Product;
 use App\Category;
 use App\cart;
+use App\Mail\RestablecerPasswordStore;
 use App\UserPedido;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -23,11 +24,39 @@ use App\Mail\VerificaTuCuenta;
 class UsuarioController extends Controller
 {
 
-    public function gettingDTO()
+    public function restablecerContrasena(Request $request)
     {
-        $user = User::where(['email' => "leyder154611@gmail.com"])->first();
-        Mail::to($user)->send(new VerificaTuCuenta("pepe"));
-        
+        $user = User::where(['email' => $request->email])->first();
+        $user->generateToken();
+        if($user)
+        {
+            $sendStatus = Mail::to($user)->send(new RestablecerPasswordStore($user->nombres,url("/restartPasswordAccount/oauth/".$user->api_token)));
+            return response()->json($sendStatus);
+        }
+        else return response()->json(["error" => "matching_nfound"]);
+    }
+
+    public function doRestablecerContrasena(Request $request)
+    {
+        $user = User::where(['api_token' => $request->token])->first();
+        if($user)
+        {
+            $user->password = Hash::make($request->nuevaPass);
+            $user->save();
+            $user->generateToken();
+            return response()->json(["success" => "done"]);
+        }
+        else return response()->json(["error" => "matching_nfound"]);
+    }
+
+    public function procederCambioContrasena($token)
+    {
+        $user = User::where(["api_token" => $token])->first();
+        if($user)
+        {
+            return view("store.restablecerPassword",["token" => $token]);
+        }
+        else return view("error",["message" => "El enlace no se encuentra disponible"]);
     }
 
     public function login(Request $request)

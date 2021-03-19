@@ -12,6 +12,7 @@ class ConfigurationSeeder extends Seeder
      */
     public function run()
     {
+        /*
         Configuration::create([
             "campo" => "politica_entrega_completa",
             "valor_numerico" => 1,
@@ -26,6 +27,12 @@ class ConfigurationSeeder extends Seeder
             "campo" => "politica_devoluciones",
             "valor_numerico" => 1,
             "valor_caracter" => "La devolucion es esta"
+        ]);
+        */
+        Configuration::create([
+            "campo" => "imagen_nueva_coleccion",
+            "valor_numerico" => 1,
+            "valor_caracter" => "banner_1.jpg"
         ]);
     }
 }

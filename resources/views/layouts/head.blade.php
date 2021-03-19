@@ -2,7 +2,7 @@
 <link rel="icon" href="{{URL::asset('assets/images/brand/favicon.ico')}}" type="image/x-icon"/>
 <link rel="shortcut icon" type="image/x-icon" href="{{URL::asset('assets/images/brand/favicon.ico')}}" />
 <!-- Title -->
-<title>IndoUi – Bootstrap 4 Admin Dashboard HTML Template</title>
+<title>El Escaparate de Lolita</title>
 <!--Bootstrap css-->
 <link rel="stylesheet" href="{{URL::asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}">
 <!--Style css -->

@@ -39,7 +39,8 @@ use Illuminate\Support\Facades\Route;
     Route::post('/registrarUserProccess', 'UsuarioController@registerUser');
     Route::post('/AuthLogged', 'UsuarioController@userLogged');
 
-    Route::get('/testMailer', 'UsuarioController@gettingDTO');
+    Route::post('/restablecerPassword', 'UsuarioController@restablecerContrasena');
+    Route::post('/doResetPassword', 'UsuarioController@doRestablecerContrasena');
 
     Route::post('/handlerLoginFromPlatform', 'UsuarioController@handlerLoginFromPlatform');
 
@@ -64,6 +65,9 @@ use Illuminate\Support\Facades\Route;
     Route::post('/asignarAgenda','AgendaController@store');
 
     //Administración
+    Route::get("/admin/usersList","AdminController@getUsers");
+
+
     Route::get("/admin/cupones","CuponController@index");
     Route::get("/admin/cupones/{cupon}","CuponController@show");
     Route::post("/new/cupon","CuponController@store");
@@ -75,8 +79,6 @@ use Illuminate\Support\Facades\Route;
     Route::post('/update/producto','ProductController@editarProducto');
     Route::post('/store/productoImagen','ProductController@guardarFile');
     Route::get('/remove/producto/{id}','ProductController@removeProduct');
-   
-    
     
     Route::get('/all_categories','CategoryController@getAll');
     Route::get('/category_detail/{category}','CategoryController@viewCategoryDetail');    

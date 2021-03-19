@@ -6,9 +6,10 @@
 								<ul class="horizontalMenu-list">
 									<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/') }}"><i class="fe fe-airplay"></i> Dashboard</a>									
 									</li>
-									<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/productos') }}" class=""><i class="fe fe-codepen"></i> Productos</a></li>
-									<li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-bar-chart-2"></i> Productos Conf <i class="fa fa-angle-down horizontal-icon"></i></a>
+									
+									<li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-codepen"></i>Productos <i class="fa fa-angle-down horizontal-icon"></i></a>
 										<ul class="sub-menu">
+											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/productos') }}" class="">Todos los Productos</a></li>
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/productos_sugeridos') }}">Destacados - Sugeridos</a></li>
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/must_have') }}">Must Have</a></li>
 										</ul>
@@ -33,7 +34,8 @@
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/contactos') }}">Contactos</a></li>
 										</ul>
 									</li>
-									<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/settings_enviroment') }}"><i class="fe fe-settings"></i> Configuraciones</a>									
+									<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/users') }}"><i class="fe fe-user"></i> Usuarios</a>
+									<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/settings_enviroment') }}"><i class="fe fe-settings"></i> Configuraciones</a>
 									</li>
 								</ul>
 							</nav>

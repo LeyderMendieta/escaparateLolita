@@ -5,10 +5,10 @@ const ListProducts = ({productos,url_images,url_href,totalItemsCount,from,to}) =
         <p className="woocommerce-result-count"> Mostrando {from} - {to} de {totalItemsCount} resultados</p>
         <form className="woocommerce-ordering" method="get">
             <div className="select_container">
-                <select name="orderby" className="orderby">
+                <select name="orderby" className="orderby" defaultValue="date">
                     <option value="popularity">Ordenar por Popilaridad</option>
                     <option value="rating">Ordenar por Rating</option>
-                    <option value="date" selected="selected">Ordenar por más reciente</option>
+                    <option value="date">Ordenar por más reciente</option>
                     <option value="price">Ordenar por precio: menor a mayor</option>
                     <option value="price-desc">Ordenar por precio: mayor a menor</option>
                 </select>

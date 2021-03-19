@@ -21,7 +21,7 @@ class App_Admon_Settings_Enviroment extends Component {
 
       setDefaultImagen(input,field)
       {
-        $('#'+input).siblings('.dropify-preview').find('.dropify-render').html('<img src="'+Configuracion.url_images+this.state.settings[field]+'">');
+        $('#'+input).siblings('.dropify-preview').find('.dropify-render').html('<img src="'+Configuracion.url_images+field+'">');
         $('#'+input).siblings('.dropify-preview').find('.dropify-filename-inner').html("Imagen");
         $('#'+input).siblings('.dropify-preview').show();
         $('#'+input).siblings('.dropify-loader').hide();
@@ -41,9 +41,9 @@ class App_Admon_Settings_Enviroment extends Component {
                     });
 
                     $('#url_embed_video').val(this.state.settings.url_embed_video_home);
-                    this.setDefaultImagen('imagen_video','imagen_video_home');
-                    this.setDefaultImagen('imagen_2','imagen_2_home');
-                    this.setDefaultImagen('imagen_3','imagen_3_home');
+                    this.setDefaultImagen('imagen_video',this.state.settings.imagen_video_home);
+                    this.setDefaultImagen('imagen_2',this.state.settings.imagen_2_home);
+                    this.setDefaultImagen('imagen_3',this.state.settings.imagen_3_home);
                     $('#url_producto_2').val(this.state.settings.url_producto_2_home);
                     $('#url_producto_3').val(this.state.settings.url_producto_3_home);
                     $('#url_producto_4').val(this.state.settings.url_producto_5_home);
@@ -55,11 +55,13 @@ class App_Admon_Settings_Enviroment extends Component {
             .then(res => res.json())
             .then(
                 (result) => {
-                this.setState({
-                    politica_entrega_completa: result.politica_entrega_completa.valor_caracter,
-                    politica_entrega: result.politica_entrega.valor_caracter,
-                    politica_devoluciones: result.politica_devoluciones.valor_caracter
-                });
+                    this.setState({
+                        politica_entrega_completa: result.politica_entrega_completa.valor_caracter,
+                        politica_entrega: result.politica_entrega.valor_caracter,
+                        politica_devoluciones: result.politica_devoluciones.valor_caracter
+                    });
+                    this.setDefaultImagen('imagen_nueva_coleccion',result.imagen_nueva_coleccion.valor_caracter);
+                    $('#url_producto_2').val(result.imagen_nueva_coleccion.valor_caracter);
                 },
             );
       }
@@ -70,6 +72,7 @@ class App_Admon_Settings_Enviroment extends Component {
         var imagen_video = $('#imagen_video').prop('files');
         var imagen_2 = $('#imagen_2').prop('files');
         var imagen_3 = $('#imagen_3').prop('files');
+        var imagen_nueva_coleccion = $('#imagen_nueva_coleccion').prop('files');
         var url_producto_2 = $('#url_producto_2').val();
         var url_producto_3 = $('#url_producto_3').val();
         var url_producto_4 = $('#url_producto_4').val();
@@ -110,6 +113,7 @@ class App_Admon_Settings_Enviroment extends Component {
             var load_imagen_video = "noset";
             var load_imagen_2 = "noset";
             var load_imagen_3 = "noset";
+            var load_imagen_nueva_coleccion = "noset";
 
             const formData = new FormData();
 
@@ -121,9 +125,12 @@ class App_Admon_Settings_Enviroment extends Component {
 
             if(imagen_3.length == 0 ) load_imagen_3 = "noset";
             else {formData.append('imagen_3', imagen_3[0]);}
+
+            if(imagen_nueva_coleccion.length == 0 ) load_imagen_nueva_coleccion = "noset";
+            else {formData.append('imagen_nueva_coleccion', imagen_nueva_coleccion[0]);}
             
 
-            $('#global-loader').show();
+            //$('#global-loader').show();
 
             let config = {
               method: 'POST',
@@ -141,20 +148,24 @@ class App_Admon_Settings_Enviroment extends Component {
                 if(result.files.imagen_video != undefined) load_imagen_video = result.files.imagen_video;
                 if(result.files.imagen_2 != undefined) load_imagen_2 = result.files.imagen_2;
                 if(result.files.imagen_3 != undefined) load_imagen_3 = result.files.imagen_3;
+                if(result.files.imagen_nueva_coleccion != undefined) load_imagen_nueva_coleccion = result.files.imagen_nueva_coleccion;
 
                 const formDataUpdate = new FormData();
                 formDataUpdate.append('url_embed_video', url_embed_video);
                 formDataUpdate.append('imagen_video', load_imagen_video);
                 formDataUpdate.append('imagen_2', load_imagen_2);
-                formDataUpdate.append('imagen_3', load_imagen_3);
+                formDataUpdate.append('imagen_3', load_imagen_3);                
+
                 formDataUpdate.append('url_producto_2', url_producto_2);
                 formDataUpdate.append('url_producto_3', url_producto_3);
                 formDataUpdate.append('url_producto_5', url_producto_4);
                 formDataUpdate.append('url_nueva_collection', url_nueva_collection);
-                formDataUpdate.append("configurations",["politica_entrega_completa","politica_entrega","politica_devoluciones"]);
+                //-------------Configuracions New Model
+                formDataUpdate.append("configurations",["politica_entrega_completa","politica_entrega","politica_devoluciones","imagen_nueva_coleccion"]);
                 formDataUpdate.append('politica_entrega_completa', this.state.politica_entrega_completa);
                 formDataUpdate.append('politica_entrega', this.state.politica_entrega);
                 formDataUpdate.append('politica_devoluciones', this.state.politica_devoluciones);
+                formDataUpdate.append('imagen_nueva_coleccion', load_imagen_nueva_coleccion);
         
                 let config = {
                     method: 'POST',
@@ -168,7 +179,7 @@ class App_Admon_Settings_Enviroment extends Component {
                 .then(res => res.json())
                 .then((result) => {
                     alert("Se han actualizado las Configuraciones");
-                    location.href = `${Configuracion.url_principal}admon/settings_enviroment`;
+                    //location.href = `${Configuracion.url_principal}admon/settings_enviroment`;
                   }
                 );
 
@@ -249,6 +260,27 @@ class App_Admon_Settings_Enviroment extends Component {
                                     </div>
                                     <div className="card-body">
                                         <input id='imagen_3' type="file" accept="image/*" className="dropify" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xl-6 col-lg-12 col-md-12">
+                            <div className="card shadow">
+                                    <div className="card-header">
+                                        <div>
+                                            <h3 className="card-title">Imagen Nueva Colección <u className='small ml-3'>Tamaño: 270X380</u></h3>
+                                        </div>
+                                        <div className="card-options">
+                                            <span className="col-auto align-self-center">
+                                                <span className="form-help" data-toggle="popover" data-placement="top" data-content="<p>Se recomienda usar el tamaño adecuado en las imagenes para una visibilidad nitida dentro del app</p>
+                                                <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>
+                                                " data-original-title="" title="">?</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="card-body">
+                                        <input id='imagen_nueva_coleccion' type="file" accept="image/*" className="dropify" />
                                     </div>
                                 </div>
                             </div>
