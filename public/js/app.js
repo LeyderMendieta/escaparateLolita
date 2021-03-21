@@ -79828,6 +79828,8 @@ __webpack_require__(/*! ./components/Users/MyPedidos */ "./resources/js/componen
 
 __webpack_require__(/*! ./components/Users/RestablecerPassword */ "./resources/js/components/Users/RestablecerPassword.js");
 
+__webpack_require__(/*! ./components/Admin/solicitudes/App_solicitud_agenda */ "./resources/js/components/Admin/solicitudes/App_solicitud_agenda.js");
+
 __webpack_require__(/*! ./components/Admin/procesos/App_Login_Admon */ "./resources/js/components/Admin/procesos/App_Login_Admon.js");
 
 __webpack_require__(/*! ./components/Admin/procesos/App_Admon_Usuarios */ "./resources/js/components/Admin/procesos/App_Admon_Usuarios.js");
@@ -85210,21 +85212,7 @@ var App_Admon_Products = /*#__PURE__*/function (_Component) {
                     products: result
                   });
 
-                  $('#tableProducts').DataTable({
-                    responsive: {
-                      details: {
-                        display: $.fn.dataTable.Responsive.display.modal({
-                          header: function header(row) {
-                            var data = row.data();
-                            return '<b>' + data[0] + ' - ' + data[2] + '</b><br/><br/>';
-                          }
-                        }),
-                        renderer: $.fn.dataTable.Responsive.renderer.tableAll({
-                          tableClass: 'table table-dark'
-                        })
-                      }
-                    }
-                  });
+                  _Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].loadDatatable();
                 }, function (error) {
                   _this2.setState({
                     isLoaded: true,
@@ -85268,7 +85256,7 @@ var App_Admon_Products = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
         id: "tableProducts",
         className: "table table-striped table-bordered text-nowrap"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Opciones"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Nombre"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Precio Antes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Precio Ahora"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Stock"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Colores"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Tallas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Imagen Tienda"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Imagen Tienda Hover"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Descripcion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Creado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Actualizado"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, this.state.products.map(function (producto) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Opciones"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Nombre"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Precio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Stock"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Rating"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Colores"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Tallas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Imagen Tienda"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Imagen Tienda Hover"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Descripcion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Creado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Actualizado"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, this.state.products.map(function (producto) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
           key: producto.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, producto.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
@@ -85279,7 +85267,14 @@ var App_Admon_Products = /*#__PURE__*/function (_Component) {
           htmlFor: producto.id,
           className: "btn btn-danger ml-3",
           onClick: _this3.deleteProducto
-        }, "Eliminar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, producto.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "$", producto.precio_antes), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "$", producto.precio_ahora), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, producto.stock), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+        }, "Eliminar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, producto.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, "$", producto.precio_ahora), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, producto.stock), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, producto.rating == 0 ? "Sin Calificación" : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          "class": "progress progress-md"
+        }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          "class": "progress-bar progress-bar-striped progress-bar-animated bg-blue",
+          style: {
+            width: Math.ceil(producto.rating)
+          }
+        }, Math.ceil(producto.rating), "%"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
           className: "tags"
         }, JSON.parse(producto.colores).map(function (color, index) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
@@ -86020,6 +86015,106 @@ if (document.getElementById('App_Adm_ResetPsw_Admon')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Admin/solicitudes/App_solicitud_agenda.js":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Admin/solicitudes/App_solicitud_agenda.js ***!
+  \***************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Configuration */ "./resources/js/components/Configuration.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var App_solicitud_agenda = /*#__PURE__*/function (_Component) {
+  _inherits(App_solicitud_agenda, _Component);
+
+  var _super = _createSuper(App_solicitud_agenda);
+
+  function App_solicitud_agenda(props) {
+    var _this;
+
+    _classCallCheck(this, App_solicitud_agenda);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      agendas: []
+    };
+    return _this;
+  }
+
+  _createClass(App_solicitud_agenda, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/admin/getAgendasList").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          agendas: result
+        });
+
+        _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].loadDatatable();
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        id: "tableProducts",
+        className: "table table-striped table-bordered text-nowrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fecha"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Hora"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Tipo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Producto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Usuario"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Correo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fecha de Registro"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.agendas.map(function (row) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: row.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.fecha), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.horario), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.tipo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.producto != 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "shop/" + row.productoAcceso,
+          target: "_blank"
+        }, row.nombreProducto) : "Ninguno"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.usuario), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.created_at));
+      })));
+    }
+  }]);
+
+  return App_solicitud_agenda;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_admsolicitud_agenda')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_solicitud_agenda, null), document.getElementById('App_admsolicitud_agenda'));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/Admin/solicitudes/App_solicitud_contactos.js":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/Admin/solicitudes/App_solicitud_contactos.js ***!
@@ -86091,21 +86186,7 @@ var App_solicitud_contactos = /*#__PURE__*/function (_Component) {
           contacts: result
         });
 
-        $('#tableProducts').DataTable({
-          responsive: {
-            details: {
-              display: $.fn.dataTable.Responsive.display.modal({
-                header: function header(row) {
-                  var data = row.data();
-                  return '<b>' + data[0] + ' - ' + data[2] + '</b><br/><br/>';
-                }
-              }),
-              renderer: $.fn.dataTable.Responsive.renderer.tableAll({
-                tableClass: 'table table-dark'
-              })
-            }
-          }
-        });
+        _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].loadDatatable();
       });
     }
   }, {
@@ -86144,10 +86225,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Configuration */ "./resources/js/components/Configuration.js");
-/* harmony import */ var react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-calendar/dist/Calendar.css */ "./node_modules/react-calendar/dist/Calendar.css");
-/* harmony import */ var react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_calendar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-calendar */ "./node_modules/react-calendar/dist/esm/index.js");
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Configuration */ "./resources/js/components/Configuration.js");
+/* harmony import */ var react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-calendar/dist/Calendar.css */ "./node_modules/react-calendar/dist/Calendar.css");
+/* harmony import */ var react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_calendar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-calendar */ "./node_modules/react-calendar/dist/esm/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -86176,6 +86258,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var App_Calendario = /*#__PURE__*/function (_Component) {
   _inherits(App_Calendario, _Component);
 
@@ -86187,9 +86270,11 @@ var App_Calendario = /*#__PURE__*/function (_Component) {
     _classCallCheck(this, App_Calendario);
 
     _this = _super.call(this, props);
+    var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_2__["default"]();
     _this.state = {
       error: null,
       isLoaded: false,
+      activeSession: cookies.get('authlog'),
       dateSelected: "",
       titleModal: "",
       availableToEvent: []
@@ -86200,19 +86285,27 @@ var App_Calendario = /*#__PURE__*/function (_Component) {
   _createClass(App_Calendario, [{
     key: "onClickday",
     value: function onClickday(e) {
-      document.getElementById("btnModal").click();
-      console.log(e.getDate(), e.getMonth() + 1, e.getFullYear());
-      var mes = e.getMonth() + 1;
-      this.setState({
-        dateSelected: e.getFullYear() + "-" + mes + "-" + e.getDate(),
-        titleModal: e.getDate() + "-" + mes + "-" + e.getFullYear()
-      });
-      this.loadAvailableDates(e.getDate(), e.getMonth() + 1, e.getFullYear());
+      if (this.state.activeSession != "" && this.state.activeSession != undefined) {
+        document.getElementById("btnModal").click();
+        console.log(e.getDate(), e.getMonth() + 1, e.getFullYear());
+        var mes = e.getMonth() + 1;
+        this.setState({
+          dateSelected: e.getFullYear() + "-" + mes + "-" + e.getDate(),
+          titleModal: e.getDate() + "-" + mes + "-" + e.getFullYear()
+        });
+        this.loadAvailableDates(e.getDate(), e.getMonth() + 1, e.getFullYear());
+      } else {
+        alert("Debes estas Logeado para poder agendar");
+      }
     }
   }, {
     key: "activeCalendario",
     value: function activeCalendario() {
-      document.getElementById("calendarData").style.display = "block";
+      if (this.state.activeSession != "" && this.state.activeSession != undefined) {
+        document.getElementById("calendarData").style.display = "block";
+      } else {
+        alert("Debes estas Logeado para poder agendar");
+      }
     }
   }, {
     key: "removeItem",
@@ -86235,35 +86328,42 @@ var App_Calendario = /*#__PURE__*/function (_Component) {
     value: function asignarCita(e) {
       var _this2 = this;
 
-      var horario = e.target.getAttribute("data-id");
-      var fecha = e.target.getAttribute("data-fecha");
-      e.preventDefault();
+      if (this.state.activeSession != "" && this.state.activeSession != undefined) {
+        var horario = e.target.getAttribute("data-id");
+        var fecha = e.target.getAttribute("data-fecha");
+        var producto = $("#spanProductID").text();
+        if (producto == "" || producto == undefined) producto = 0;
+        e.preventDefault();
 
-      try {
-        var config = {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            horario: horario,
-            fecha: fecha
-          })
-        };
-        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/asignarAgenda", config).then(function (res) {
-          return res.json();
-        }).then(function (result) {
-          alert("Agendado para " + result.fecha);
-          document.getElementById("closeModal").click();
-        }, function (error) {
-          _this2.setState({
-            isLoaded: true,
-            error: error
+        try {
+          var config = {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              horario: horario,
+              fecha: fecha,
+              producto: producto
+            })
+          };
+          fetch(_Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].url_principal + "api/asignarAgenda", config).then(function (res) {
+            return res.json();
+          }).then(function (result) {
+            alert("Agendado para " + result.fecha);
+            document.getElementById("closeModal").click();
+          }, function (error) {
+            _this2.setState({
+              isLoaded: true,
+              error: error
+            });
           });
-        });
-      } catch (error) {
-        console.log(error);
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        alert("Debes estas Logeado para poder agendar");
       }
     }
   }, {
@@ -86271,19 +86371,23 @@ var App_Calendario = /*#__PURE__*/function (_Component) {
     value: function loadAvailableDates(day, month, year) {
       var _this3 = this;
 
-      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/availableDaysFor/" + this.props.type + "/" + day + "/" + month + "/" + year).then(function (res) {
-        return res.json();
-      }).then(function (result) {
-        _this3.setState({
-          isLoaded: true,
-          availableToEvent: result
+      if (this.state.activeSession != "" && this.state.activeSession != undefined) {
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].url_principal + "api/availableDaysFor/" + this.props.type + "/" + day + "/" + month + "/" + year).then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          _this3.setState({
+            isLoaded: true,
+            availableToEvent: result
+          });
+        }, function (error) {
+          _this3.setState({
+            isLoaded: true,
+            error: error
+          });
         });
-      }, function (error) {
-        _this3.setState({
-          isLoaded: true,
-          error: error
-        });
-      });
+      } else {
+        alert("Debes estas Logeado para poder agendar");
+      }
     }
   }, {
     key: "render",
@@ -86294,7 +86398,7 @@ var App_Calendario = /*#__PURE__*/function (_Component) {
         className: "contenedor-calendario agendar-cita"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "calendarData"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_5__["default"], {
         onChange: this.onChange,
         value: this.state.date,
         onClickDay: this.onClickday.bind(this),
@@ -87779,9 +87883,51 @@ var url_images = url_principal + 'images/';
 var Configuracion = {
   url_principal: url_principal,
   url_images: url_images,
+  languageDataTable: {
+    "decimal": "",
+    "emptyTable": "No hay registros",
+    "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+    "infoEmpty": "Mostrando 0 a 0 de 0 registros",
+    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+    "infoPostFix": "",
+    "thousands": ",",
+    "lengthMenu": "Mostrar _MENU_ registros",
+    "loadingRecords": "Cargando...",
+    "processing": "Processing...",
+    "search": "Buscar:",
+    "zeroRecords": "No se encontraron resultados",
+    "paginate": {
+      "first": "Primera",
+      "last": "Ultima",
+      "next": "Siguiente",
+      "previous": "Anterior"
+    },
+    "aria": {
+      "sortAscending": ": activate to sort column ascending",
+      "sortDescending": ": activate to sort column descending"
+    }
+  },
   validateEmail: function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
+  },
+  loadDatatable: function loadDatatable() {
+    $('#tableProducts').DataTable({
+      responsive: {
+        details: {
+          display: $.fn.dataTable.Responsive.display.modal({
+            header: function header(row) {
+              var data = row.data();
+              return '<b>' + data[0] + ' - ' + data[2] + '</b><br/><br/>';
+            }
+          }),
+          renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+            tableClass: 'table table-dark'
+          })
+        }
+      },
+      language: this.languageDataTable
+    });
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (Configuracion);
@@ -88470,6 +88616,8 @@ var ProductDetail_related = function ProductDetail_related(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _this = undefined;
+
 
 
 var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
@@ -88589,7 +88737,9 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "reset_variations",
     href: "#"
-  }, "Clear"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Clear"))))), producto.stock == 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "alert alert-danger"
+  }, "Lo sentimos el producto se encuentra Agotado!") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "single_variation_wrap"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "woocommerce-variation single_variation"
@@ -88601,7 +88751,7 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
     className: "single_add_to_cart_button button disabled",
-    onClick: handleBuyProduct
+    onClick: handleBuyProduct.bind(_this)
   }, "Comprar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#trx_addons_calendar_popup",
     className: producto.entallaje == false ? "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white d-none" : "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white"
@@ -88640,7 +88790,9 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
     rel: "tag"
   }, "wedding")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "product_id"
-  }, "Product ID: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, producto.id))));
+  }, "Product ID: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    id: "spanProductID"
+  }, producto.id))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProductDetail_Summary);

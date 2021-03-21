@@ -67,17 +67,20 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tall
                     </tr>
                 </tbody>
             </table>
-            <div className="single_variation_wrap">
-                <div className="woocommerce-variation single_variation"></div>
-                <div className="woocommerce-variation-add-to-cart variations_button" style={{display: "inline-grid"}}>
-                    <button type="button" className="single_add_to_cart_button button disabled" onClick={handleBuyProduct}>Comprar</button>
-                    <br/>
-                    
-                    <a  href="#trx_addons_calendar_popup" className={producto.entallaje == false ? "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white d-none" : "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white"} >
-                    Echo a la medida
-                    </a>
+            {(producto.stock == 0) ? <div className="alert alert-danger">Lo sentimos el producto se encuentra Agotado!</div> :
+                <div className="single_variation_wrap">
+                    <div className="woocommerce-variation single_variation"></div>
+                    <div className="woocommerce-variation-add-to-cart variations_button" style={{display: "inline-grid"}}>
+                        <button type="button" className="single_add_to_cart_button button disabled" onClick={handleBuyProduct.bind(this)}>Comprar</button>
+                        
+                        <br/>
+                        
+                        <a  href="#trx_addons_calendar_popup" className={producto.entallaje == false ? "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white d-none" : "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white"} >
+                        Echo a la medida
+                        </a>
+                    </div>
                 </div>
-            </div>
+            }
         </form>
 
        
@@ -97,7 +100,7 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tall
             <span className="tagged_as">Tags:
                     <a href="#">gifts</a>,
                     <a href="#" rel="tag">wedding</a></span>
-            <span className="product_id">Product ID: <span>{producto.id}</span></span>
+            <span className="product_id">Product ID: <span id="spanProductID">{producto.id}</span></span>
         </div>
         
     </div>

@@ -27,21 +27,7 @@ class App_Admon_Products extends Component {
                 this.setState({
                     products: result
                 });
-                $('#tableProducts').DataTable( {
-                    responsive: {
-                        details: {
-                            display: $.fn.dataTable.Responsive.display.modal( {
-                                header: function ( row ) {
-                                    var data = row.data();
-                                    return '<b>'+data[0]+' - '+data[2]+'</b><br/><br/>';
-                                }
-                            } ),
-                            renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-                                tableClass: 'table table-dark'
-                            } )
-                        }
-                    }
-                } );
+               Configuracion.loadDatatable();
             },
             
             (error) => {
@@ -76,10 +62,10 @@ class App_Admon_Products extends Component {
                     <tr>
                         <th>ID</th>                        
                         <th>Opciones</th>                        
-                        <th>Nombre</th>                        
-                        <th>Precio Antes</th>
-                        <th>Precio Ahora</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
                         <th>Stock</th>
+                        <th>Rating</th>
                         <th>Colores</th>
                         <th>Tallas</th>
                         <th>Imagen Tienda</th>
@@ -97,10 +83,10 @@ class App_Admon_Products extends Component {
                                 <a href={Configuracion.url_principal+"admon/edit/producto/"+producto.acceso_url} className="btn btn-info" target="_parent">Editar</a>
                                 <button htmlFor={producto.id} className="btn btn-danger ml-3" onClick={this.deleteProducto} >Eliminar</button>
                             </td>                  
-                            <td>{producto.name}</td>                            
-                            <td>${producto.precio_antes}</td>
+                            <td>{producto.name}</td>
                             <td>${producto.precio_ahora}</td>
                             <td>{producto.stock}</td>
+                            <td>{(producto.rating == 0) ? "Sin Calificación": <div class="progress progress-md"> <div class="progress-bar progress-bar-striped progress-bar-animated bg-blue" style={{width: Math.ceil(producto.rating)}}>{Math.ceil(producto.rating)}%</div></div>}</td>
                             <td>
                             <span className="tags">
                                 {JSON.parse(producto.colores).map((color,index)=>(

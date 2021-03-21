@@ -49,8 +49,23 @@ class ProductController extends Controller
     public function getAllProducts()
     {
         $products = DB::table('products')->orderBy('id', 'DESC')->get();
-
-        return response()->json($products, 200);
+        $retorno = [];
+        foreach($products as $fila)
+        {
+            $ratings = RatingProduct::where("id_producto",$fila->id)->orderBy('created_at', 'desc')->get();
+            $counter = 0;
+            $dividendo = 0;
+            $resultRating = 0;
+            foreach($ratings as $rating)
+            {
+                $counter += $rating->rating;
+                $dividendo++;
+            }
+            if($dividendo > 0) $resultRating = ($counter/$dividendo)*20;
+            $fila->rating = $resultRating;
+            array_push($retorno, $fila);     
+        }
+        return response()->json($retorno, 200);
     }
 
     public function getBrands()

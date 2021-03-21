@@ -34,38 +34,49 @@ class ImportController extends Controller
                     $numero1 = floatval(str_replace(",",".",$fila[2]));
                     $numero2 = floatval(str_replace(",",".",$fila[3]));
                     $numero3 = intval($fila[4]);
+                    $response = "Data:  <span class='text-info'>Nombre: <i>".$fila[0]."</i>, Descripcion: <i>".$fila[1].", Precio Antes: <i>".$fila[2].", Precio Ahora: <i>".$fila[3].", Stock: <i>".$fila[4]."</i></span><br/>";
                     if(is_float($numero1) && is_float($numero2) && is_integer($numero3) && $numero2 > 0 && $numero3 > 0)
                     {
-                        $csv_data_file = Product::create([
-                            'acceso_url' => Str::random(20).Str::random(20),
-                            'name' => $fila[0],
-                            'descripcion' => $fila[1],
-                            'precio_antes' => $numero1,
-                            'precio_ahora' => $numero2,
-                            'sizes' => "[]",
-                            'colores'=> '[]',
-                            'categorias'=> '[]',
-                            "entallaje" => false,
-                            "pieza_unica" => false,
-                            "stock" => $numero3
-                        ]);
-
-                        $classbg = "success";
-                        $status = "success";
-                        $response = "Link: ".$csv_data_file->acceso_url."<br/>Nombre: ".$csv_data_file->name."<br/>Precio Antes: ".$csv_data_file->precio_antes."<br/>Precio Ahora: ".$csv_data_file->precio_ahora.$csv_data_file->precio_antes."<br/>Stock: ".$csv_data_file->stock;
+                        $existProduct = Product::where("name",$fila[0])->first();
+                        if($existProduct) 
+                        {
+                            $classbg = "danger";
+                            $status = "Error";
+                            $response .= "Error Duplicado: El producto <u class='text-danger'>".$fila[0]."</u> ya se encuentra en el sistema";
+                        }
+                        else
+                        {
+                            $csv_data_file = Product::create([
+                                'acceso_url' => Str::random(20).Str::random(20),
+                                'name' => $fila[0],
+                                'descripcion' => $fila[1],
+                                'precio_antes' => $numero1,
+                                'precio_ahora' => $numero2,
+                                'sizes' => "[]",
+                                'colores'=> '[]',
+                                'categorias'=> '[]',
+                                "entallaje" => false,
+                                "pieza_unica" => false,
+                                "stock" => $numero3
+                            ]);
+    
+                            $classbg = "success";
+                            $status = "success";
+                            $response = "Link: ".$csv_data_file->acceso_url."<br/>Nombre: ".$csv_data_file->name."<br/>Precio Antes: ".$csv_data_file->precio_antes."<br/>Precio Ahora: ".$csv_data_file->precio_ahora.$csv_data_file->precio_antes."<br/>Stock: ".$csv_data_file->stock;
+                        }                       
                     }
                     else
                     {
                         $classbg = "danger";
-                        $status = "error";
-                        $response = "El Precio Antes, Ahora y el Stock debe ser Numerico, El precio ahora debe ser mayor a cero, al igual que el stock";
+                        $status = "Error";
+                        $response .= "El Precio Antes, Ahora y el Stock debe ser Numerico, El precio ahora debe ser mayor a cero, al igual que el stock";
                     }
                     
                 }
                 else
                 {
                     $classbg = "danger";
-                    $status = "error";
+                    $status = "Error";
                     $response = "Son los 5 campos obligatorios";
                 }
                 

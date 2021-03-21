@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Agenda;
+use App\User;
 use Illuminate\Support\Facades\DB;
 
 class AgendaController extends Controller
@@ -31,12 +32,36 @@ class AgendaController extends Controller
 
     public function store(Request $request)
     {
-        $agenda = new Agenda();
-        $agenda->id_agenda_horario = $request->horario;
-        $agenda->fecha = $request->fecha;
-        $agenda->estado = 1;
-        $agenda->save();
+        $session = (isset($_COOKIE["authlog"])) ? $_COOKIE["authlog"] : "null";
 
-        return response()->json($agenda, 201);
+        if($session == "null") 
+            return response()->json(array("error" => "oauthlogged"));
+
+        $user = User::where(['api_token' => $session])->whereNotNull("api_token")->first();
+        if($user)
+        {
+            $agenda = new Agenda();
+            $agenda->id_agenda_horario = $request->horario;
+            $agenda->fecha = $request->fecha;
+            $agenda->estado = 1;
+            $agenda->id_user = $user->id;
+            $agenda->id_producto = $request->producto;
+            $agenda->save();
+    
+            return response()->json($agenda, 201);
+        }
+        else return response()->json(["error" => "notlogged"]);
+    }
+
+    //-----Administrator
+    public function verListadoAgendas()
+    {
+        $agendas = DB::table("agendas")
+        ->join("agenda_horarios","agendas.id_agenda_horario","=","agenda_horarios.id")
+        ->join("agenda_tipos","agenda_horarios.id_agenda_tipo","=","agenda_tipos.id")
+        ->join("users","agendas.id_user","=","users.id")
+        ->leftJoin("products","agendas.id_producto","=","products.id")
+        ->select('agendas.*', 'agenda_horarios.horario', 'agenda_tipos.tipo','users.name as usuario','users.email','products.acceso_url as productoAcceso','products.name as nombreProducto')->get();
+        return response()->json($agendas);
     }
 }

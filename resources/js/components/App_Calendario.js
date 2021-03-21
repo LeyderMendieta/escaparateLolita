@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
+import Cookies from 'universal-cookie';
 import Configuracion from './Configuration';
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar';
@@ -9,9 +9,12 @@ class App_Calendario extends Component {
 
     constructor(props) {
         super(props);
+        const cookies = new Cookies();
+
         this.state = {
           error: null,
           isLoaded: false,
+          activeSession: cookies.get('authlog'),
           dateSelected: "",
           titleModal: "",
           availableToEvent: []
@@ -20,20 +23,31 @@ class App_Calendario extends Component {
 
       onClickday(e)
       {       
-
-        document.getElementById("btnModal").click();
-        console.log(e.getDate(),e.getMonth()+1,e.getFullYear());
-        var mes = e.getMonth()+1;
-        this.setState({
-          dateSelected: e.getFullYear()+"-"+mes+"-"+e.getDate(),
-          titleModal: e.getDate()+"-"+mes+"-"+e.getFullYear()
-        });
-        this.loadAvailableDates(e.getDate(),e.getMonth()+1,e.getFullYear());        
+        if (this.state.activeSession != "" && this.state.activeSession != undefined) {   
+          document.getElementById("btnModal").click();
+          console.log(e.getDate(),e.getMonth()+1,e.getFullYear());
+          var mes = e.getMonth()+1;
+          this.setState({
+            dateSelected: e.getFullYear()+"-"+mes+"-"+e.getDate(),
+            titleModal: e.getDate()+"-"+mes+"-"+e.getFullYear()
+          });
+          this.loadAvailableDates(e.getDate(),e.getMonth()+1,e.getFullYear());  
+        } 
+        else
+        {
+          alert("Debes estas Logeado para poder agendar");
+        }     
       }
 
       activeCalendario()
-      {        
-        document.getElementById("calendarData").style.display = "block";
+      {     
+        if (this.state.activeSession != "" && this.state.activeSession != undefined) {   
+          document.getElementById("calendarData").style.display = "block";
+        }
+        else
+        {
+          alert("Debes estas Logeado para poder agendar");
+        }
       }
 
       removeItem(button) {
@@ -54,61 +68,75 @@ class App_Calendario extends Component {
 
       asignarCita(e)
       {
-        var horario = e.target.getAttribute("data-id");
-        var fecha = e.target.getAttribute("data-fecha");
-        e.preventDefault();
-        try {
+        if (this.state.activeSession != "" && this.state.activeSession != undefined) { 
+          var horario = e.target.getAttribute("data-id");
+          var fecha = e.target.getAttribute("data-fecha");
+          var producto = $("#spanProductID").text();
+          if(producto == "" || producto == undefined) producto = 0;
+          e.preventDefault();
+          try {
 
-            let config = {
-              method: 'POST',
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({horario: horario,fecha: fecha})
-            }
-
-            fetch(Configuracion.url_principal+"api/asignarAgenda",config)
-            .then(res => res.json())
-            .then(
-              (result) => {
-                alert("Agendado para "+result.fecha);
-
-                document.getElementById("closeModal").click();
-              },
-              
-              (error) => {
-                this.setState({
-                  isLoaded: true,
-                  error
-                });
+              let config = {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({horario: horario,fecha: fecha,producto: producto})
               }
-            );
 
-        } catch (error) {
-            console.log(error);
+              fetch(Configuracion.url_principal+"api/asignarAgenda",config)
+              .then(res => res.json())
+              .then(
+                (result) => {
+                  alert("Agendado para "+result.fecha);
+
+                  document.getElementById("closeModal").click();
+                },
+                
+                (error) => {
+                  this.setState({
+                    isLoaded: true,
+                    error
+                  });
+                }
+              );
+
+          } catch (error) {
+              console.log(error);
+          }
+        }
+        else
+        {
+          alert("Debes estas Logeado para poder agendar");
         }
       }
 
       loadAvailableDates(day,month,year)
       {
-        fetch(Configuracion.url_principal+"api/availableDaysFor/"+this.props.type+"/"+day+"/"+month+"/"+year)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            this.setState({
-              isLoaded: true,
-              availableToEvent: result
-            });
-          },
-          
-          (error) => {
-            this.setState({
-              isLoaded: true,
-              error
-            });
-          }
-        )
+        if (this.state.activeSession != "" && this.state.activeSession != undefined) { 
+          fetch(Configuracion.url_principal+"api/availableDaysFor/"+this.props.type+"/"+day+"/"+month+"/"+year)
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({
+                isLoaded: true,
+                availableToEvent: result
+              });
+            },
+            
+            (error) => {
+              this.setState({
+                isLoaded: true,
+                error
+              });
+            }
+          );
+        }
+        else
+        {
+          alert("Debes estas Logeado para poder agendar");
+        }
       }
 
 

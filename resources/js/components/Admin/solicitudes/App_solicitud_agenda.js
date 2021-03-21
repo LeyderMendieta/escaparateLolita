@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Configuracion from '../../Configuration';
 
-class App_solicitud_contactos extends Component {
+class App_solicitud_agenda extends Component {
 
     constructor(props) {
         super(props);        
         this.state = {
           error: null,
           isLoaded: false,
-          contacts: []
+          agendas: []
           
         };
         
@@ -17,12 +17,12 @@ class App_solicitud_contactos extends Component {
 
       componentDidMount(){
            
-            fetch(Configuracion.url_principal+"api/getContactsList")
+            fetch(Configuracion.url_principal+"api/admin/getAgendasList")
             .then(res => res.json())
             .then(
             (result) => {
                 this.setState({
-                    contacts: result
+                    agendas: result
                 });
                 Configuracion.loadDatatable();
             });
@@ -35,23 +35,26 @@ class App_solicitud_contactos extends Component {
                 <thead>
                     <tr>
                         <th>ID</th>             
-                        <th>Nombre</th>      
+                        <th>Fecha</th>      
+                        <th>Hora</th>      
+                        <th>Tipo</th>
+                        <th>Producto</th>
+                        <th>Usuario</th>
                         <th>Correo</th>
-                        <th>Asunto</th>      
-                        <th>Mensaje</th>
-                        <th>Estado</th>
                         <th>Fecha de Registro</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.contacts.map((row) => (
+                    {this.state.agendas.map((row) => (
                         <tr key={row.id}>
-                            <td>{row.id}</td>              
-                            <td>{row.nombre}</td>                            
-                            <td>{row.correo}</td>
-                            <td>{row.asunto}</td>
-                            <td>{row.mensaje}</td>
-                            <td>{row.estado}</td>
+                            <td>{row.id}</td>
+                            <td>{row.fecha}</td>
+                            <td>{row.horario}</td>
+                            <td>{row.tipo}</td>
+                            <td>{(row.producto != 0) ? <a href={Configuracion.url_principal+"shop/" +row.productoAcceso} target='_blank'>{row.nombreProducto}</a> : "Ninguno"}
+                            </td>
+                            <td>{row.usuario}</td>
+                            <td>{row.email}</td>
                             <td>{row.created_at}</td>
                         </tr>
                     ))}                    
@@ -61,6 +64,6 @@ class App_solicitud_contactos extends Component {
     }
 }
 
-if (document.getElementById('App_admsolicitud_contactos')) {
-    ReactDOM.render(<App_solicitud_contactos />, document.getElementById('App_admsolicitud_contactos'));
+if (document.getElementById('App_admsolicitud_agenda')) {
+    ReactDOM.render(<App_solicitud_agenda />, document.getElementById('App_admsolicitud_agenda'));
 }

@@ -122,7 +122,7 @@ class UsuarioController extends Controller
             {
                 Auth::login($user,true);
                 $user->generateToken();
-                setCookie ("authlog",$user->api_token);
+                setCookie ("authlog",$user->api_token,0,"/");
                 return $user;
             }
             else 
@@ -176,7 +176,7 @@ class UsuarioController extends Controller
             if($user)
             {
                 $user->generateToken();
-                setCookie ("authlog",$user->api_token);
+                setCookie ("authlog",$user->api_token,0,"/");
                 return response()->json(["user" => $user,"method" => "exist"]);
             }
             else
@@ -206,7 +206,7 @@ class UsuarioController extends Controller
                     ]);
 
                     $user->generateToken();
-                    setCookie ("authlog",$user->api_token);
+                    setCookie ("authlog",$user->api_token,0,"/");
                     return response()->json(["user" => $user,"method" => "new"]);
                 }
             }
