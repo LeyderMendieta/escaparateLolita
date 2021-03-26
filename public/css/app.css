@@ -11015,3 +11015,9 @@ a.text-dark:focus {
   transition: all 0.25s ease-in-out;
 }
 
+#notify_dropdown .dropdown-item.active {
+  background: #262A30 !important;
+  border-left: 5px solid lightblue !important;
+  padding-left: 1.2rem;
+}
+

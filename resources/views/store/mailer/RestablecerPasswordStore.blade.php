@@ -646,7 +646,7 @@
                                                         <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
                                                             <tr>
                                                                 <td align="center" style="font-size: 0px">
-                                                                    <img class="adapt-img" width="150px" src="https://elescaparatedelolita.com/assets/store/images/logo.png"  alt style="display: block" layout="responsive"></img>
+                                                                    <img class="adapt-img" width="150px" src="https://elescaparatedelolita.com/images/logo.png"  alt style="display: block" layout="responsive"></img>
                                                                 </td>
                                                             </tr>
                                                         </table>

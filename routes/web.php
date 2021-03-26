@@ -92,6 +92,7 @@ Route::get('/contacts', function () {
 //--------------Administration
 Route::get('admon/', 'AdminController@loadAdmonPage');
 Route::get('admon/{page}', 'AdminController@loadAdmonPage');
+Route::get('admon/viewDetails/{page}/{token}', 'AdminController@viewDetailsModel');
 Route::get('admon/add/{model}', 'AdminController@addToModel');
 Route::get('admon/edit/{model}/{token}', 'AdminController@editToModel');
 Route::get('admon/import/products', 'AdminController@viewToImportProducts')->name("importing");

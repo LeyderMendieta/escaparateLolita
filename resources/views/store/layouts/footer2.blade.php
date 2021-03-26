@@ -18,7 +18,7 @@
                                         </div>
                                         <div class="cta3-actions">
                                             <div class="btn3-container btn3-inline">
-                                                <a class="general btn3 btn3-size-md btn3-shape-square btn3-style-classic btn3-color-grey" href="#" title="">Registrate</a>
+                                                <a class="general btn3 btn3-size-md btn3-shape-square btn3-style-classic btn3-color-grey" href="{{ url('/' . $page='registro') }}" title="">Registrate</a>
                                             </div>
                                         </div>		
                                     </div>

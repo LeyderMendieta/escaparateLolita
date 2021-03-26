@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\notification;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -43,7 +44,19 @@ class ContactController extends Controller
         $contacto->mensaje = $request->mensaje;
         $contacto->estado = "Pendiente";
         $contacto->save();
-        return response()->json($contacto);
+
+        if($contacto)
+        {
+            $noticacion = new notification();
+            $noticacion->tipo = "Admin";
+            $noticacion->texto = "Nuevo Mensaje de Contacto";
+            $noticacion->logo = "fe fe-mail";
+            $noticacion->link = url("/admon/viewDetails/contactos/".$contacto->id);
+            $noticacion->save();
+            return response()->json($contacto);
+        }
+        else return response()->json(["error" => "internalserve"]);
+        
     }
 
     /**
@@ -54,7 +67,10 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+        $contacto = Contact::where("id",$id)->first();
+        $contacto->estado = "Visto";
+        $contacto->save();
+        return response()->json($contacto);
     }
 
     /**

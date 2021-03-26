@@ -19,61 +19,8 @@
 										<i class="fe fe-minimize fullscreen-button"></i>
 									</a>
 								</div>
-								<div class="dropdown d-md-flex header-message">
-									<a class="nav-custom-leyder nav-link icon" data-toggle="dropdown">
-										<i class="fe fe-bell"></i>
-										<span class="nav-unread badge badge-danger badge-pill">4</span>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-										<a class="dropdown-item text-center" href="#">Notifications</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item d-flex pb-4" href="#">
-											<span class="avatar mr-3 br-3 align-self-center avatar-md cover-image bg-primary-transparent text-primary"><i class="fe fe-mail"></i></span>
-											<div>
-												<span class="font-weight-bold"> Commented on your post </span>
-												<div class="small text-muted d-flex">
-													3 hours ago
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item d-flex pb-4" href="#">
-											<span class="avatar avatar-md br-3 mr-3 align-self-center cover-image bg-secondary-transparent text-secondary"><i class="fe fe-download"></i>
-											</span>
-											<div>
-												<span class="font-weight-bold"> New file has been Uploaded </span>
-												<div class="small text-muted d-flex">
-													5 hour ago
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item d-flex pb-4" href="#">
-											<span class="avatar avatar-md br-3 mr-3 align-self-center cover-image bg-warning-transparent text-warning"><i class="fe fe-user"></i>
-											</span>
-											<div>
-												<span class="font-weight-bold"> User account has Updated</span>
-												<div class="small text-muted d-flex">
-													20 mins ago
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item d-flex pb-4" href="#">
-											<span class="avatar avatar-md br-3 mr-3 align-self-center cover-image bg-info-transparent text-info"><i class="fe fe-shopping-cart"></i>
-											</span>
-											<div>
-												<span class="font-weight-bold"> New Order Recevied</span>
-												<div class="small text-muted d-flex">
-													1 hour ago
-
-												</div>
-											</div>
-										</a>
-										<div class="dropdown-divider"></div>
-										<div class="text-center dropdown-btn pb-3">
-											<div class="btn-list">
-												<a href="#" class=" btn btn-secondary btn-sm"><i class="fe fe-eye mr-1"></i>View All</a>
-											</div>
-										</div>
-									</div>
+								<div class="dropdown d-md-flex header-message" id="AppFeatureNotifications">
+									
 								</div>
 								<!--Navbar -->
 								<div class="dropdown header-profile">

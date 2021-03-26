@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Configuracion from '../../Configuration';
 
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+
 
 class App_Admon_Usuarios extends Component {
 
@@ -18,36 +20,34 @@ class App_Admon_Usuarios extends Component {
 
       componentDidMount(){
            
-            fetch(Configuracion.url_principal+"api/admin/usersList")
-            .then(res => res.json())
-            .then(
-            (result) => {
-                this.setState({
-                    users: result,
-                    isLoaded: true
-                });
-
-                $('#tableProducts').DataTable( {
-                    responsive: {
-                        details: {
-                            display: $.fn.dataTable.Responsive.display.modal( {
-                                header: function ( row ) {
-                                    var data = row.data();
-                                    return '<b>'+data[0]+' - '+data[2]+'</b><br/><br/>';
-                                }
-                            } ),
-                            renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-                                tableClass: 'table table-dark'
-                            } )
-                        }
-                    }
-                } );
+        fetch(Configuracion.url_principal+"api/admin/usersList")
+        .then(res => res.json())
+        .then(
+        (result) => {
+            this.setState({
+                users: result,
+                isLoaded: true
             });
+
+            
+            Configuracion.loadDatatable();
+        });
+
+        $('#download-xls').append("<i class='fa fa-download'></i> Descargar Excel");
       }
 
       render(){
         return (
-            
+            <React.Fragment>
+            <div className="row text-right">
+           <ReactHTMLTableToExcel
+                    id="download-xls"
+                    className="btn btn-success my-3 mb-5"
+                    table="tableProducts"
+                    filename="ListadoUsuarios_EscaparatedeLolita"
+                    sheet="Usuairos"
+                    buttonText=""/>
+            </div>
             <table id="tableProducts" className="table table-striped table-bordered text-nowrap" >
                 <thead>
                     <tr>
@@ -78,6 +78,7 @@ class App_Admon_Usuarios extends Component {
                     ))}                    
                 </tbody>
             </table>
+            </React.Fragment>
         );  
     }
 }

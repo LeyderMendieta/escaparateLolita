@@ -91,6 +91,17 @@ class AdminController extends Controller
         }
     }
 
+    public function viewDetailsModel($model,$token)
+    {
+        if(view()->exists("admon.details.$model")){
+            return view("admon.details.$model",array("tokenAccess" => $token));
+        }
+        else
+        {
+            return view('404');
+        }
+    }
+
     public function editToModel($model,$token)
     {
         if(view()->exists("admon.form.$model")){
@@ -148,5 +159,12 @@ class AdminController extends Controller
             ->select('user_infos.*', 'users.name','users.email' , 'users.graphDomain', 'users.created_at','users.AccessToken')
             ->get();
         return response()->json($users);
+    }
+
+    public function getTotalSect1()
+    {
+        $productTotal = DB::table("products")->count();
+        $usersTotal = DB::table("users")->count();
+        return response()->json(["products" => $productTotal,"users" => $usersTotal]);
     }
 }

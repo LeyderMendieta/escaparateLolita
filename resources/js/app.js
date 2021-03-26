@@ -11,6 +11,7 @@ require('./bootstrap');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
 require('./components/App_Contactanos');
 require('./components/Configuration');
 require('./components/Products/ListProducts');
@@ -27,8 +28,10 @@ require('./components/Products/Productos_sugeridos');
 require('./components/Shop/Filtro_Categorias_Shop');
 require('./components/Shop/Ver_Carrito_Shop');
 require('./components/Shop/Checkout_Compra_Shop');
+
 require('./components/Feature/Gift_cards');
 require('./components/Feature/Articulos');
+require('./components/Feature/Notifications');
 
 require('./components/Users/RegistrarAccount');
 require('./components/Users/EditDetallesCuenta');
@@ -61,4 +64,7 @@ require('./components/Admin/App_Admon_Articulos');
 require('./components/Admin/App_Form_Cupon');
 require('./components/Admin/App_Admon_Cupones');
 require('./components/Admin/solicitudes/App_solicitud_contactos');
+require('./components/Admin/solicitudes/App_solicitud_detalleContacto');
+
+require('./components/Admin/dashboard/App_Admon_Section1');
 

@@ -60,8 +60,9 @@ class AgendaController extends Controller
         ->join("agenda_horarios","agendas.id_agenda_horario","=","agenda_horarios.id")
         ->join("agenda_tipos","agenda_horarios.id_agenda_tipo","=","agenda_tipos.id")
         ->join("users","agendas.id_user","=","users.id")
+        ->join("user_infos","users.id","=","user_infos.id_user")
         ->leftJoin("products","agendas.id_producto","=","products.id")
-        ->select('agendas.*', 'agenda_horarios.horario', 'agenda_tipos.tipo','users.name as usuario','users.email','products.acceso_url as productoAcceso','products.name as nombreProducto')->get();
+        ->select('agendas.*', 'agenda_horarios.horario', 'agenda_tipos.tipo','users.name as usuario','users.email','products.acceso_url as productoAcceso','products.name as nombreProducto','user_infos.telefono',"user_infos.celular")->get();
         return response()->json($agendas);
     }
 }

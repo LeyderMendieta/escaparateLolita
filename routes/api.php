@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::post('/addNewContact','ContactController@store');
     Route::get('/getContactsList','ContactController@index');
+    Route::get('/getContact/{id}','ContactController@show');
 
     Route::get('/products/{type}','ProductController@index');
     Route::get('/view_products','ProductController@getProducts');    
@@ -70,9 +71,14 @@ use Illuminate\Support\Facades\Route;
 
     Route::post('/asignarAgenda','AgendaController@store');
 
+    Route::get("/getNotifications/{type}","NotificationController@getNotifications");
+    Route::get("/updateNotifySeen/{type}/{id}","NotificationController@updateNotifySeen");
+
     //Administración
     Route::get("/admin/usersList","AdminController@getUsers");
     Route::get("/admin/getAgendasList","AgendaController@verListadoAgendas");
+
+    Route::get("/admin/getTotalSect1","AdminController@getTotalSect1");
 
 
     Route::get("/admin/cupones","CuponController@index");

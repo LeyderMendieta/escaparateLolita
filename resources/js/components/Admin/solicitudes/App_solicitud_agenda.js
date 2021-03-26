@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Configuracion from '../../Configuration';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 class App_solicitud_agenda extends Component {
 
@@ -25,12 +26,22 @@ class App_solicitud_agenda extends Component {
                     agendas: result
                 });
                 Configuracion.loadDatatable();
-            });
+            });            
+        $('#download-xls').append("<i class='fa fa-download'></i> Descargar Excel");
       }
 
       render(){
         return (
-            
+            <React.Fragment>
+            <div className="row text-right">
+           <ReactHTMLTableToExcel
+                    id="download-xls"
+                    className="btn btn-success my-3 mb-5"
+                    table="tableProducts"
+                    filename="Agenda_EscaparatedeLolita"
+                    sheet="Usuarios"
+                    buttonText=""/>
+            </div>
             <table id="tableProducts" className="table table-striped table-bordered text-nowrap" >
                 <thead>
                     <tr>
@@ -41,7 +52,9 @@ class App_solicitud_agenda extends Component {
                         <th>Producto</th>
                         <th>Usuario</th>
                         <th>Correo</th>
-                        <th>Fecha de Registro</th>
+                        <th>Celular</th>
+                        <th>Telefono</th>
+                        <th>Creado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,11 +68,14 @@ class App_solicitud_agenda extends Component {
                             </td>
                             <td>{row.usuario}</td>
                             <td>{row.email}</td>
+                            <td>{row.celular}</td>
+                            <td>{row.telefono}</td>
                             <td>{row.created_at}</td>
                         </tr>
                     ))}                    
                 </tbody>
             </table>
+            </React.Fragment>
         );  
     }
 }
