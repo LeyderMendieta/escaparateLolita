@@ -8,12 +8,48 @@ class Checkout_Compra_Shop extends Component {
         super(props);
         
         this.state = {
-          error: null,
-          isLoaded: false,
-          productos: [],
-          cartProducts: [],
-          subtotal: 0,
-          items: 0    
+            error: null,
+            isLoaded: false,
+            cartProducts: [],
+            subtotal: 0,
+            items: 0,
+            total: 0,
+            paises: [],
+
+            numeroReferencia: 0,
+            signedFielsExtra: "",
+            mismaDireccionParaTodo: false,
+
+            ipAddress: "",
+            userPo: "",
+            device_fingerprint_id: "",
+
+            //CONTACTO (campos de facturación/billing)			
+            zcNombres: "",
+            zcApellidos: "",
+            zcCorreo: "",
+            zcTelefono: "", //Numerico
+
+            //DIRECCION (campos de facturación/billing)			
+            zcDireccion1: "",
+            zcDireccion2: "",
+            zcCiudad: "",
+            zcEstado: "",          
+            zcPais: "",
+            zcPostal: "",
+            
+            //CONTACTO (campos de entrega/shipping)			
+            zcShippingNombres: "",
+            zcShippingApellidos: "",
+            zcShippingTelefono: "", //Numerico
+
+            //DIRECCION (campos de entrega/shipping)
+            zcShippingDireccion1: "",
+            zcShippingDireccion2: "",
+            zcShippingCiudad: "",
+            zcShippingEstado: "",          
+            zcShippingPais: "",
+            zcShippingPostal: ""
         };
         
       }
@@ -24,21 +60,175 @@ class Checkout_Compra_Shop extends Component {
         .then(res => res.json())
         .then(
             (result) => {
+                
                 if(result.error == undefined)
                 {
                     this.setState({
                         isLoaded: true,
                         cartProducts: result.products,
                         subtotal: result.subtotal,
-                        items: result.items
+                        total: result.subtotal + 5,
+                        items: result.items,
+                        numeroReferencia: result.reference,
+                        paises: result.paises,
+                        userPo: result.userPo
                     });
-                }
-                else
-                {
-                    console.log(result.error);
+
+                    for (let index = 0; index < this.state.cartProducts.length; index++) {
+                        this.setState({
+                            signedFielsExtra: this.state.signedFielsExtra+",item_"+index.toString()+"_code,item_"+index.toString()+"_sku,item_"+index.toString()+"_name,item_"+index.toString()+"_unit_price,item_"+index.toString()+"_quantity"
+                        });
+                        //,item_"+index.toString()+"_tax_amount
+                    };
+
+                    this.cybs_dfprofiler("tc_pa_016026821","test");
                 }
             
         });
+
+        fetch(Configuracion.url_principal+"api/AuthInfoLogged")
+        .then(res => res.json())
+        .then(
+            (result) => {
+                
+            if(result.error == undefined)
+            {
+                this.setState({
+                    zcNombres: result.user.nombres,
+                    zcApellidos: result.user.apellidos,
+                    zcCorreo: result.user.correo,
+                    zcTelefono: parseInt(result.user.celular),
+                    zcDireccion1: result.user.ubicacion,                    
+                });
+            }
+            
+        });
+        
+        fetch("http://api.ipify.org/?format=json")
+        .then(res => res.json())
+        .then(
+            (result) =>
+            {
+                this.setState({
+                    ipAddress: result.ip
+                });
+            }
+        );
+      }
+
+      cybs_dfprofiler(merchantID, environment) {
+
+        if (environment.toLowerCase() == 'live') {
+            var org_id = 'k8vif92e';
+        } else {
+            var org_id = '1snn5n9w';
+        }
+
+        var sessionID =   new Date().getTime();
+        var str = "";
+        str = "https://h.online-metrix.net/fp/tags.js?org_id=" + org_id + "&session_id=" + merchantID + sessionID + "&m=2";
+
+        var paragraphTM = document.createElement("p");
+        str = "background:url(https://h.online-metrix.net/fp/clear.png?org_id=" + org_id + "&session_id=" + merchantID + sessionID + "&m=1)";            
+
+        paragraphTM.styleSheets = str;
+        paragraphTM.height = "0";
+        paragraphTM.width = "0";
+        paragraphTM.hidden = "true";
+
+        document.body.appendChild(paragraphTM);
+
+        var img = document.createElement("img");
+
+        str = "https://h.online-metrix.net/fp/clear.png?org_id=" + org_id + "&session_id=" + merchantID + sessionID + "&m=2";
+        img.src = str;
+        
+        document.body.appendChild(img);            
+
+        var tmscript = document.createElement("script");
+        tmscript.src = "https://h.online-metrix.net/fp/check.js?org_id=" + org_id + "&session_id=" + merchantID + sessionID;
+        tmscript.type = "text/javascript";
+
+        document.body.appendChild(tmscript);
+
+        var objectTM = document.createElement("object");
+        objectTM.data = "https://h.online-metrix.net/fp/fp.swf?org_id=" + org_id + "&session_id=" + merchantID + sessionID;
+        objectTM.width = "1";
+        objectTM.height = "1";
+        objectTM.id = "thm_fp";
+
+        var param = document.createElement("param");
+        param.name = "movie";
+        param.value = "https://h.online-metrix.net/fp/fp.swf?org_id=" + org_id + "&session_id=" + merchantID + sessionID;
+        objectTM.appendChild(param);
+
+        str = "https://h.online-metrix.net/fp/tags.js?org_id=" + org_id + "&session_id=" + merchantID + sessionID + "";
+
+        document.body.appendChild(objectTM);
+    
+        this.setState({
+            device_fingerprint_id: sessionID
+        });
+        return merchantID + merchantID + sessionID;
+    } 
+
+
+      submitCheckout(e)
+      {
+          if(this.state.mismaDireccionParaTodo)
+          {            
+            this.setState({
+                zcShippingNombres: this.state.zcNombres,
+                zcShippingApellidos: this.state.zcApellidos,
+                zcShippingTelefono: this.state.zcTelefono, 
+                
+                zcShippingDireccion1: this.state.zcDireccion1,
+                zcShippingDireccion2: this.state.zcDireccion2,
+                zcShippingCiudad: this.state.zcCiudad,
+                zcShippingEstado: this.state.zcEstado,          
+                zcShippingPais: this.state.zcPais,
+                zcShippingPostal: this.state.zcPostal
+            });
+            var validators = ["zcNombres","zcApellidos","zcCorreo","zcTelefono","zcDireccion1","zcCiudad","zcEstado","zcPais","zcPostal"];
+          }
+          else
+          {
+            var validators = ["zcNombres","zcApellidos","zcCorreo","zcTelefono","zcDireccion1","zcCiudad","zcEstado","zcPais","zcPostal","zcShippingNombres","zcShippingApellidos","zcShippingTelefono","zcShippingDireccion1","zcShippingCiudad","zcShippingEstado","zcShippingPais","zcShippingPostal"];
+          }
+          
+          var stopProcess = false;
+          
+          validators.forEach(element => {
+                var valor = $("#"+element).val();
+                if(valor == "" || valor == undefined)
+                {
+                    $("#"+element).siblings(".invalid-feedback").addClass("d-block");
+                    stopProcess = true;
+                }
+                if($("#"+element).data("pattern") != undefined)
+                {
+                    var patt = new RegExp($("#"+element).data("pattern"));
+                    var res = patt.test(valor);
+                    if(res == false) {
+                        $("#"+element).siblings(".invalid-feedback").addClass("d-block");
+                        $("#"+element).siblings(".invalid-feedback").text($("#"+element).data("textdanger"));
+                        stopProcess = true;
+                    }
+                }
+               
+          });
+       
+          if(stopProcess)
+          {
+            alert("Verifica los campos obligatorios e intenta nuevamente");
+            e.preventDefault();
+          }          
+      }
+
+      switchSameDireccion()
+      {
+        this.setState({mismaDireccionParaTodo: (this.state.mismaDireccionParaTodo) ? false : true});
+        $('.scEnvio').toggleClass("d-none");
       }
 
       render(){
@@ -50,8 +240,8 @@ class Checkout_Compra_Shop extends Component {
                         <span className="badge badge-secondary badge-pill">{this.state.items}</span>
                     </h4>
                     <ul className="list-group mb-3">
-                    {this.state.cartProducts.map((row) => (
-                        <li className="list-group-item d-flex justify-content-between lh-condensed">
+                    {this.state.cartProducts.map((row, index) => (
+                        <li className="list-group-item d-flex justify-content-between lh-condensed" key={index}>
                             <div>
                                 <h6 className="my-0">{row.name}</h6>
                                 <small className="text-muted">{row.descripcion.substring(0,35)}</small>
@@ -75,18 +265,18 @@ class Checkout_Compra_Shop extends Component {
                                 <small className="text-muted">seleccionar</small>
                             </div>
 
-                            <div className="d-block my-3">
+                            <div className="d-block my-3" onChange={(e) => (this.setState({total: parseInt(e.target.value) + parseInt(this.state.subtotal)}))}>
                                 <div className="custom-control custom-radio">
-                                    <input id="panamaenvio" name="envio" type="radio" className="custom-control-input" checked required />
+                                    <input id="panamaenvio" name="envio" type="radio" className="custom-control-input" value="5" defaultChecked />
                                     <label className="custom-control-label" htmlFor="panamaenvio">Panamá / Panamá <span> $5</span></label>
                                 </div>
                                 <div className="custom-control custom-radio">
-                                    <input id="panamaprovincia" name="envio" type="radio" className="custom-control-input" required />
+                                    <input id="panamaprovincia" name="envio" type="radio" className="custom-control-input" value="12" />
                                     <label className="custom-control-label" htmlFor="panamaprovincia">Panamá / Provincia <span> $12</span></label>
                                 </div>
 
                                 <div className="custom-control custom-radio">
-                                    <input id="panamalocal" name="envio" type="radio" className="custom-control-input" required />
+                                    <input id="panamalocal" name="envio" type="radio" className="custom-control-input" value="0" />
                                     <label className="custom-control-label" htmlFor="panamalocal">Recogida Local <span> $0</span></label>
                                 </div>
 
@@ -96,7 +286,7 @@ class Checkout_Compra_Shop extends Component {
 
                         <li className="list-group-item d-flex justify-content-between">
                             <span>Total (USD)</span>
-                            <strong>${this.state.subtotal + 5}</strong>
+                            <strong>${this.state.total}</strong>
                         </li>
                     </ul>
 
@@ -116,405 +306,216 @@ class Checkout_Compra_Shop extends Component {
 
                 </div>
                 <div className="col-md-8 order-md-1">
-                    <h4 className="mb-3">Checkout</h4>
-                    <form className="needs-validation" action="" method="post" noValidate>
+
+                    <h5 className="mb-3">Datos Facturación</h5>
+                    <form className="needs-validation" method="post" action={Configuracion.url_principal+"checkout/confirm"} onSubmit={this.submitCheckout.bind(this)}>
+                        <div className="row setparamsg">
+                        <input type="hidden" name="access_key" value="e4c15fd430d9361dabc777dc872fa3d2" />
+                        <input type="hidden" name="profile_id" value="52EC2BD8-DC18-467C-BF84-EAAA8777495F" />
+                        <input type="hidden" name="transaction_type" value="sale" />
+                        <input type="hidden" name="transaction_uuid" value={Configuracion.uniqid("bill")} />
+                        <input type="hidden" name="signed_field_names" value={"access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,payment_method,bill_to_forename,bill_to_surname,bill_to_email,bill_to_phone,bill_to_address_line1,bill_to_address_city,bill_to_address_state,bill_to_address_country,bill_to_address_postal_code,ship_to_forename,ship_to_surname,ship_to_phone,ship_to_address_line1,ship_to_address_city,ship_to_address_state,ship_to_address_country,ship_to_address_postal_code,override_custom_receipt_page,device_fingerprint_id,merchant_defined_data2,merchant_defined_data3,user_po,customer_ip_address,line_item_count"+this.state.signedFielsExtra} />
+                        <input type="hidden" name="unsigned_field_names" value="card_type,card_number,card_expiry_date,card_cvn" />
+                        <input type="hidden" name="signed_date_time" value={Configuracion.getDateTimeTZ()} />
+                        <input type="hidden" name="reference_number" value={this.state.numeroReferencia} />
+                        <input type="hidden" name="locale" value="en" />
+                        <input type="hidden" name="currency" value="USD" />
+                        <input type="hidden" name="payment_method" value="card" />
+                        <input type="hidden" name="amount" value={this.state.total} />
+                        <input type="hidden" name="line_item_count" value={this.state.cartProducts.length} />
+                        <input type="hidden" name="device_fingerprint_id" value={this.state.device_fingerprint_id} />
+                        <input type="hidden" name="customer_ip_address" id="customer_ip_address" value={this.state.ipAddress} />
+                        <input type="hidden" name="user_po" value={this.state.userPo} />
+                        <input type="hidden" name="merchant_defined_data3" value= "https://elescaparatedelolita.com/" />
+                        <input type="hidden" name="merchant_defined_data2" value= "El Escaparate de Lolita" />
+                        <input type="hidden" name="override_custom_receipt_page" value={Configuracion.url_principal+"billing/response"} />
+                        {this.state.cartProducts.map((row,index) => (                            
+                            <fieldset key={index}>                                
+                                <input type="hidden" name={"item_"+index.toString()+"_code"} value={row.id} />
+                                <input type="hidden" name={"item_"+index.toString()+"_sku"} value={row.id+"C_"+row.color_selected+"T_"+row.talla_selected} />
+                                <input type="hidden" name={"item_"+index.toString()+"_name"} value={row.name} />
+                                <input type="hidden" name={"item_"+index.toString()+"_quantity"} value={row.cantidad} />
+                                <input type="hidden" name={"item_"+index.toString()+"_unit_price"} value={row.precio_ahora} />
+                            </fieldset>
+                        ))}
+                        </div>
                         <div className="row">
                             <div className="col-md-6 mb-3  pl-0">
-                                <label htmlFor="firstName">Nombre <span className="text-muted">*</span></label>
-                                <input type="text" className="form-control" id="nombre" placeholder=""  required />
+                                <label htmlFor="zcNombres">Nombre *</label>
+                                <input id="zcNombres" type="text" className="form-control" name="bill_to_forename" pattern=".{1,60}" maxLength="60" value={this.state.zcNombres} onChange={(e) => {this.setState({zcNombres: e.target.value})}} required />                                
                                 <div className="invalid-feedback">
-                                    Valida, el nombre es requerido
+                                    El Nombre es requerido
                                 </div>
                             </div>
                             <div className="col-md-6 mb-3 pr-0">
-                                <label htmlFor="lastName">Apellidos <span className="text-muted">*</span></label>
-                                <input type="text" className="form-control" id="apellido" placeholder=""  required />
+                                <label htmlFor="zcApellidos">Apellidos *</label>
+                                <input id="zcApellidos" type="text" className="form-control" name="bill_to_surname" pattern=".{1,60}" maxLength="60" value={this.state.zcApellidos} onChange={(e) => {this.setState({zcApellidos: e.target.value})}} required />
                                 <div className="invalid-feedback">
-                                    Valida, el apellido es requerido
+                                    El Apellido es requerido
+                                </div>
+                            </div>
+                        </div>                        
+                        <div className="row">
+                            <div className="col-md-6 mb-3  pl-0">
+                                <label htmlFor="zcCorreo">Correo *</label>
+                                <input id="zcCorreo" type="email" className="form-control" name="bill_to_email" maxLength="255" value={this.state.zcCorreo} onChange={(e) => {this.setState({zcCorreo: e.target.value})}} required />
+                                
+                                <div className="invalid-feedback">
+                                    Valida, el Correo es requerido
+                                </div>
+                            </div>
+                            <div className="col-md-6 mb-3 pr-0">
+                                <label htmlFor="zcTelefono">Teléfono *</label>
+                                <input id="zcTelefono" type="number" className="form-control" name="bill_to_phone" data-pattern=".{6,15}" data-textdanger="Debe ser numerico de longitud minimo de 6 y maxima de 15" value={this.state.zcTelefono} onChange={(e) => {this.setState({zcTelefono: e.target.value})}} />
+                                <div className="invalid-feedback">
+                                    Valida, el Teléfono es requerido
                                 </div>
                             </div>
                         </div>
-
+                        <h5 className="mb-3">Dirección Facturación</h5>
                         <div className="mb-3">
-                            <label htmlFor="empresa">Nombre de la empresa <span className="text-muted">(Optional)</span></label>
-                            <input type="text" className="form-control" id="empresa" placeholder=""  />
-
-                        </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="pais">País / Región <span className="text-muted">*</span></label><br />
-                            <select onchange="country(this.value)" className="form-control w-100 border  p-0" id="pais" required>
-                                <option value="Afghanistan">Afghanistan</option>
-                                <option value="Åland Islands">Åland Islands</option>
-                                <option value="Albania">Albania</option>
-                                <option value="Algeria">Algeria</option>
-                                <option value="American Samoa">American Samoa</option>
-                                <option value="Andorra">Andorra</option>
-                                <option value="Angola">Angola</option>
-                                <option value="Anguilla">Anguilla</option>
-                                <option value="Antarctica">Antarctica</option>
-                                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                <option value="Argentina">Argentina</option>
-                                <option value="Armenia">Armenia</option>
-                                <option value="Aruba">Aruba</option>
-                                <option value="Australia">Australia</option>
-                                <option value="Austria">Austria</option>
-                                <option value="Azerbaijan">Azerbaijan</option>
-                                <option value="Bahamas">Bahamas</option>
-                                <option value="Bahrain">Bahrain</option>
-                                <option value="Bangladesh">Bangladesh</option>
-                                <option value="Barbados">Barbados</option>
-                                <option value="Belarus">Belarus</option>
-                                <option value="Belgium">Belgium</option>
-                                <option value="Belize">Belize</option>
-                                <option value="Benin">Benin</option>
-                                <option value="Bermuda">Bermuda</option>
-                                <option value="Bhutan">Bhutan</option>
-                                <option value="Bolivia">Bolivia</option>
-                                <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                                <option value="Botswana">Botswana</option>
-                                <option value="Bouvet Island">Bouvet Island</option>
-                                <option value="Brazil">Brazil</option>
-                                <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
-                                <option value="Brunei Darussalam">Brunei Darussalam</option>
-                                <option value="Bulgaria">Bulgaria</option>
-                                <option value="Burkina Faso">Burkina Faso</option>
-                                <option value="Burundi">Burundi</option>
-                                <option value="Cambodia">Cambodia</option>
-                                <option value="Cameroon">Cameroon</option>
-                                <option value="Canada">Canada</option>
-                                <option value="Cape Verde">Cape Verde</option>
-                                <option value="Cayman Islands">Cayman Islands</option>
-                                <option value="Central African Republic">Central African Republic</option>
-                                <option value="Chad">Chad</option>
-                                <option value="Chile">Chile</option>
-                                <option value="China">China</option>
-                                <option value="Christmas Island">Christmas Island</option>
-                                <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
-                                <option value="Colombia">Colombia</option>
-                                <option value="Comoros">Comoros</option>
-                                <option value="Congo">Congo</option>
-                                <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
-                                <option value="Cook Islands">Cook Islands</option>
-                                <option value="Costa Rica">Costa Rica</option>
-                                <option value="Cote D'ivoire">Cote D'ivoire</option>
-                                <option value="Croatia">Croatia</option>
-                                <option value="Cuba">Cuba</option>
-                                <option value="Cyprus">Cyprus</option>
-                                <option value="Czech Republic">Czech Republic</option>
-                                <option value="Denmark">Denmark</option>
-                                <option value="Djibouti">Djibouti</option>
-                                <option value="Dominica">Dominica</option>
-                                <option value="Dominican Republic">Dominican Republic</option>
-                                <option value="Ecuador">Ecuador</option>
-                                <option value="Egypt">Egypt</option>
-                                <option value="El Salvador">El Salvador</option>
-                                <option value="Equatorial Guinea">Equatorial Guinea</option>
-                                <option value="Eritrea">Eritrea</option>
-                                <option value="Estonia">Estonia</option>
-                                <option value="Ethiopia">Ethiopia</option>
-                                <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
-                                <option value="Faroe Islands">Faroe Islands</option>
-                                <option value="Fiji">Fiji</option>
-                                <option value="Finland">Finland</option>
-                                <option value="France">France</option>
-                                <option value="French Guiana">French Guiana</option>
-                                <option value="French Polynesia">French Polynesia</option>
-                                <option value="French Southern Territories">French Southern Territories</option>
-                                <option value="Gabon">Gabon</option>
-                                <option value="Gambia">Gambia</option>
-                                <option value="Georgia">Georgia</option>
-                                <option value="Germany">Germany</option>
-                                <option value="Ghana">Ghana</option>
-                                <option value="Gibraltar">Gibraltar</option>
-                                <option value="Greece">Greece</option>
-                                <option value="Greenland">Greenland</option>
-                                <option value="Grenada">Grenada</option>
-                                <option value="Guadeloupe">Guadeloupe</option>
-                                <option value="Guam">Guam</option>
-                                <option value="Guatemala">Guatemala</option>
-                                <option value="Guernsey">Guernsey</option>
-                                <option value="Guinea">Guinea</option>
-                                <option value="Guinea-bissau">Guinea-bissau</option>
-                                <option value="Guyana">Guyana</option>
-                                <option value="Haiti">Haiti</option>
-                                <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
-                                <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Hong Kong">Hong Kong</option>
-                                <option value="Hungary">Hungary</option>
-                                <option value="Iceland">Iceland</option>
-                                <option value="India">India</option>
-                                <option value="Indonesia">Indonesia</option>
-                                <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
-                                <option value="Iraq">Iraq</option>
-                                <option value="Ireland">Ireland</option>
-                                <option value="Isle of Man">Isle of Man</option>
-                                <option value="Israel">Israel</option>
-                                <option value="Italy">Italy</option>
-                                <option value="Jamaica">Jamaica</option>
-                                <option value="Japan">Japan</option>
-                                <option value="Jersey">Jersey</option>
-                                <option value="Jordan">Jordan</option>
-                                <option value="Kazakhstan">Kazakhstan</option>
-                                <option value="Kenya">Kenya</option>
-                                <option value="Kiribati">Kiribati</option>
-                                <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
-                                <option value="Korea, Republic of">Korea, Republic of</option>
-                                <option value="Kuwait">Kuwait</option>
-                                <option value="Kyrgyzstan">Kyrgyzstan</option>
-                                <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
-                                <option value="Latvia">Latvia</option>
-                                <option value="Lebanon">Lebanon</option>
-                                <option value="Lesotho">Lesotho</option>
-                                <option value="Liberia">Liberia</option>
-                                <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
-                                <option value="Liechtenstein">Liechtenstein</option>
-                                <option value="Lithuania">Lithuania</option>
-                                <option value="Luxembourg">Luxembourg</option>
-                                <option value="Macao">Macao</option>
-                                <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
-                                <option value="Madagascar">Madagascar</option>
-                                <option value="Malawi">Malawi</option>
-                                <option value="Malaysia">Malaysia</option>
-                                <option value="Maldives">Maldives</option>
-                                <option value="Mali">Mali</option>
-                                <option value="Malta">Malta</option>
-                                <option value="Marshall Islands">Marshall Islands</option>
-                                <option value="Martinique">Martinique</option>
-                                <option value="Mauritania">Mauritania</option>
-                                <option value="Mauritius">Mauritius</option>
-                                <option value="Mayotte">Mayotte</option>
-                                <option value="Mexico">Mexico</option>
-                                <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
-                                <option value="Moldova, Republic of">Moldova, Republic of</option>
-                                <option value="Monaco">Monaco</option>
-                                <option value="Mongolia">Mongolia</option>
-                                <option value="Montenegro">Montenegro</option>
-                                <option value="Montserrat">Montserrat</option>
-                                <option value="Morocco">Morocco</option>
-                                <option value="Mozambique">Mozambique</option>
-                                <option value="Myanmar">Myanmar</option>
-                                <option value="Namibia">Namibia</option>
-                                <option value="Nauru">Nauru</option>
-                                <option value="Nepal">Nepal</option>
-                                <option value="Netherlands">Netherlands</option>
-                                <option value="Netherlands Antilles">Netherlands Antilles</option>
-                                <option value="New Caledonia">New Caledonia</option>
-                                <option value="New Zealand">New Zealand</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Niger">Niger</option>
-                                <option value="Nigeria">Nigeria</option>
-                                <option value="Niue">Niue</option>
-                                <option value="Norfolk Island">Norfolk Island</option>
-                                <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-                                <option value="Norway">Norway</option>
-                                <option value="Oman">Oman</option>
-                                <option value="Pakistan">Pakistan</option>
-                                <option value="Palau">Palau</option>
-                                <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
-                                <option value="Panama">Panamá</option>
-                                <option value="Papua New Guinea">Papua New Guinea</option>
-                                <option value="Paraguay">Paraguay</option>
-                                <option value="Peru">Peru</option>
-                                <option value="Philippines">Philippines</option>
-                                <option value="Pitcairn">Pitcairn</option>
-                                <option value="Poland">Poland</option>
-                                <option value="Portugal">Portugal</option>
-                                <option value="Puerto Rico">Puerto Rico</option>
-                                <option value="Qatar">Qatar</option>
-                                <option value="Reunion">Reunion</option>
-                                <option value="Romania">Romania</option>
-                                <option value="Russian Federation">Russian Federation</option>
-                                <option value="Rwanda">Rwanda</option>
-                                <option value="Saint Helena">Saint Helena</option>
-                                <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
-                                <option value="Saint Lucia">Saint Lucia</option>
-                                <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
-                                <option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
-                                <option value="Samoa">Samoa</option>
-                                <option value="San Marino">San Marino</option>
-                                <option value="Sao Tome and Principe">Sao Tome and Principe</option>
-                                <option value="Saudi Arabia">Saudi Arabia</option>
-                                <option value="Senegal">Senegal</option>
-                                <option value="Serbia">Serbia</option>
-                                <option value="Seychelles">Seychelles</option>
-                                <option value="Sierra Leone">Sierra Leone</option>
-                                <option value="Singapore">Singapore</option>
-                                <option value="Slovakia">Slovakia</option>
-                                <option value="Slovenia">Slovenia</option>
-                                <option value="Solomon Islands">Solomon Islands</option>
-                                <option value="Somalia">Somalia</option>
-                                <option value="South Africa">South Africa</option>
-                                <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
-                                <option value="Spain">Spain</option>
-                                <option value="Sri Lanka">Sri Lanka</option>
-                                <option value="Sudan">Sudan</option>
-                                <option value="Suriname">Suriname</option>
-                                <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
-                                <option value="Swaziland">Swaziland</option>
-                                <option value="Sweden">Sweden</option>
-                                <option value="Switzerland">Switzerland</option>
-                                <option value="Syrian Arab Republic">Syrian Arab Republic</option>
-                                <option value="Taiwan, Province of China">Taiwan, Province of China</option>
-                                <option value="Tajikistan">Tajikistan</option>
-                                <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
-                                <option value="Thailand">Thailand</option>
-                                <option value="Timor-leste">Timor-leste</option>
-                                <option value="Togo">Togo</option>
-                                <option value="Tokelau">Tokelau</option>
-                                <option value="Tonga">Tonga</option>
-                                <option value="Trinidad and Tobago">Trinidad and Tobago</option>
-                                <option value="Tunisia">Tunisia</option>
-                                <option value="Turkey">Turkey</option>
-                                <option value="Turkmenistan">Turkmenistan</option>
-                                <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
-                                <option value="Tuvalu">Tuvalu</option>
-                                <option value="Uganda">Uganda</option>
-                                <option value="Ukraine">Ukraine</option>
-                                <option value="United Arab Emirates">United Arab Emirates</option>
-                                <option value="United Kingdom">United Kingdom</option>
-                                <option value="United States">United States</option>
-                                <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
-                                <option value="Uruguay">Uruguay</option>
-                                <option value="Uzbekistan">Uzbekistan</option>
-                                <option value="Vanuatu">Vanuatu</option>
-                                <option value="Venezuela">Venezuela</option>
-                                <option value="Viet Nam">Viet Nam</option>
-                                <option value="Virgin Islands, British">Virgin Islands, British</option>
-                                <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
-                                <option value="Wallis and Futuna">Wallis and Futuna</option>
-                                <option value="Western Sahara">Western Sahara</option>
-                                <option value="Yemen">Yemen</option>
-                                <option value="Zambia">Zambia</option>
-                                <option value="Zimbabwe">Zimbabwe</option>
-                                </select>
+                            <label htmlFor="zcDireccion1">Dirección *</label>
+                            <input id="zcDireccion1" type="text" className="form-control" name="bill_to_address_line1" pattern=".{1,60}" maxLength="60" value={this.state.zcDireccion1} onChange={(e) => {this.setState({zcDireccion1: e.target.value})}} required />
                             <div className="invalid-feedback">
-                                Es requerido, selecciona un país
+                                Porfavor ingrese direccion de facturación
                             </div>
                         </div>
+                        <div className="mb-3">
+                            <label htmlFor="zcDireccion2">Direccion 2 (Opcional)</label>
+                            <input id="zcDireccion2" type="text" className="form-control" name="bill_to_address_line2" pattern=".{1,60}" maxLength="60" value={this.state.zcDireccion2} onChange={(e) => {this.setState({zcDireccion2: e.target.value})}} />
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6 mb-3 pl-0">
+                                <label htmlFor="zcPais">País / Región *</label><br />
+                                <select id="zcPais" className="form-control w-100 border p-0 pl-3" name="bill_to_address_country" defaultValue={this.state.zcPais} onChange={(e) => {this.setState({zcPais: e.target.value})}} required>
 
-
-                        <div id="con-provincia" className="mb-3 d-none">
-                            <label htmlFor="pais">Estado / Provincia<span className="text-muted">*</span></label>
-                            <br />
-                            <select className="form-control w-100 border p-0" id="" required>
-                                <option >Selecciona...</option>
-                                <option  value="Bocas del Toro">Bocas del Toro</option>
-                                <option  value="Coclé">Cocle</option>
-                                <option  value="Colon">Colón</option>
-                                <option  value="Panama">Panamá</option>
-                                <option  value="Chiriquí">Chiriqui</option>
-                                <option  value="Darién">Darien</option>
-                                <option  value="Herrera">Herrera</option>
-                                <option  value="Los Santos">Los Santos</option>
-                                <option  value="Veraguas">Veraguas</option>
-                                <option  value="Panamá Oeste">Panama Oeste</option>
-                            </select>
-
-                            <div className="invalid-feedback">
-                                Es requerido, selecciona un estado / provincia
+                                    <option value="" disabled>Seleccionar...</option>
+                                    {this.state.paises.map((row => (
+                                        <option value={row.ISO2} key={row.UNI}> {row.nombre}</option>
+                                    )))}
+                                </select>                                        
+                                <div className="invalid-feedback">
+                                    Elige el Pais
+                                </div>
+                            </div>
+                            <div className="col-md-6 mb-3 pr-0">
+                                <label htmlFor="zcEstado">Estado *</label>
+                                <input id="zcEstado" type="text" className="form-control" name="bill_to_address_state" value={this.state.zcEstado} onChange={(e) => {this.setState({zcEstado: e.target.value})}} required />
+                                <div className="invalid-feedback">
+                                    Escribe el Estado, <small>ej. Ciudad de Panama</small>
+                                </div>
                             </div>
                         </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="email">Correo Electrónico <span className="text-muted">*</span></label>
-                            <input type="email" className="form-control" id="email" placeholder="you@example.com" required />
-                            <div className="invalid-feedback">
-                                Ingrese una dirección de correo electrónico válida para recibir actualizaciones de envío.
+                        <div className="row">
+                            <div className="col-md-6 mb-3 pl-0">
+                                <label htmlFor="zcCiudad">Ciudad</label>
+                                <input id="zcCiudad" type="text" className="form-control" name="bill_to_address_city" pattern=".{1,50}" maxLength="50" value={this.state.zcCiudad} onChange={(e) => {this.setState({zcCiudad: e.target.value})}} required />
+                                <div className="invalid-feedback">
+                                    La Ciudad es obligatoria
+                                </div>
+                            </div>
+                             <div className="col-md-6 mb-3 pr-0">
+                                <label htmlFor="zcPostal">Codigo Postal</label>
+                                <input id="zcPostal" type="number" className="form-control" name="bill_to_address_postal_code" max="100000000" value={this.state.zcPostal} onChange={(e) => {this.setState({zcPostal: e.target.value})}} required />
+                                <div className="invalid-feedback">
+                                    El codigo postal el Obligatorio
+                                </div>
                             </div>
                         </div>
-
-
-                        <div className="mb-3">
-                            <label htmlFor="direccion">Dirección <span className="text-muted">* (si su país no es Panamá, agregue la dirección y el estado al que pertenece aquí)</span></label>
-                            <input type="text" className="form-control" id="direccion" placeholder="parque central panamá" required />
-                            <div className="invalid-feedback">
-                                Porfavor ingrese direccion de envío
-                            </div>
-                        </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="direccion2">Direccion 2 <span className="text-muted">(Optional)</span></label>
-                            <input type="text" className="form-control" id="direccion2" placeholder="parque central panamá" />
-                        </div>
-
-
-                        <div className="mb-3">
-                            <label htmlFor="telefono">Teléfono Fijo ó Whatsapp <span className="text-muted">*</span></label>
-                            <input type="text" className="form-control" id="telefono" placeholder="#" />
-                        </div>
-
                         <hr className="mb-4" />
-
                         <div className="custom-control custom-checkbox">
-                            <input type="checkbox" className="custom-control-input" id="same-address" />
+                            <input id="same-address" type="checkbox" className="custom-control-input" onClick={this.switchSameDireccion.bind(this)} />
                             <label className="custom-control-label" htmlFor="same-address">La dirección de envío es la misma que mi dirección de facturación</label>
-                        </div>
-                        <div className="custom-control custom-checkbox">
-                            <input type="checkbox" className="custom-control-input" id="save-info" />
-                            <label className="custom-control-label" htmlFor="save-info">Guarde esta información para la próxima vez</label>
-                        </div>
-                        
+                        </div>                        
                         <hr className="mb-4" />
-
-                        <h4 className="mb-3">Métodos de pago</h4>
-                        <div className="d-block my-3">
-                            <div className="custom-control custom-radio">
-                                <input id="credit" name="paymentMethod" type="radio" className="custom-control-input" checked required />
-                                <label className="custom-control-label" htmlFor="credit">Tarjeta de crédito</label>
-                            </div>
-                            <div className="custom-control custom-radio">
-                                <input id="debit" name="paymentMethod" type="radio" className="custom-control-input" required />
-                                <label className="custom-control-label" htmlFor="debit">Tarjeta de débito</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-6 mb-3">
-                                <label htmlFor="cc-name">Nombre en la tarjeta</label>
-                                <input type="text" className="form-control" id="cc-name" placeholder="" required />
-                                <small className="text-muted">Nombre completo como se muestra en la tarjeta</small>
-                                <div className="invalid-feedback">
-                                    Name on card is required
-                                </div>
-                            </div>
-                            <div className="col-md-6 mb-3">
-                                <label htmlFor="cc-number">Número de tarjeta de crédito</label>
-                                <input type="text" className="form-control" id="cc-number" placeholder="" required />
-                                <div className="invalid-feedback">
-                                    Credit card number is required
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-3 mb-3">
-                                <label htmlFor="cc-expiration">Vencimiento</label>
-                                <input type="text" className="form-control" id="cc-expiration" placeholder="" required />
-                                <div className="invalid-feedback">
-                                    Expiration date required
-                                </div>
-                            </div>
-                            <div className="col-md-3 mb-3">
-                                <label htmlFor="cc-expiration">CVV</label>
-                                <input type="text" className="form-control" id="cc-cvv" placeholder="" required />
-                                <div className="invalid-feedbac">
-                                    Código de seguridad requerido
-                                </div>
-                            </div>
-                        </div>
-
                         <hr className="mb-4" />
-
+                        <h5 className="mb-3 scEnvio">Datos Envio</h5>
+                        <div className="row scEnvio">
+                            <div className="col-md-6 mb-3  pl-0">
+                                <label htmlFor="zcShippingNombres">Nombre <span className="text-muted">*</span></label>
+                                <input id="zcShippingNombres" type="text" className="form-control" name="ship_to_forename" value={this.state.zcShippingNombres} onChange={(e) => {this.setState({zcShippingNombres: e.target.value})}} />
+                                
+                                <div className="invalid-feedback">
+                                    El Nombre es requerido
+                                </div>
+                            </div>
+                            <div className="col-md-6 mb-3 pr-0">
+                                <label htmlFor="zcShippingApellidos">Apellidos <span className="text-muted">*</span></label>
+                                <input id="zcShippingApellidos" type="text" className="form-control" name="ship_to_surname" value={this.state.zcShippingApellidos} onChange={(e) => {this.setState({zcShippingApellidos: e.target.value})}} />
+                                <div className="invalid-feedback">
+                                    El Apellido es requerido
+                                </div>
+                            </div>
+                        </div>                        
+                        <div className="row scEnvio">
+                            <div className="col-md-6 mb-3  pl-0">
+                                <label htmlFor="zcShippingTelefono">Telefono *</label>
+                                <input id="zcShippingTelefono" type="number" className="form-control" name="ship_to_phone" value={this.state.zcShippingTelefono} onChange={(e) => {this.setState({zcShippingTelefono: e.target.value})}} />
+                                
+                                <div className="invalid-feedback">
+                                    El Telefono es requerido
+                                </div>
+                            </div>
+                        </div>
+                        <h5 className="mb-3 scEnvio">Dirección Envio</h5>
+                        <div className="mb-3 scEnvio">
+                            <label htmlFor="zcShippingDireccion1">Dirección *</label>
+                            <input id="zcShippingDireccion1" type="text" className="form-control" name="ship_to_address_line1" value={this.state.zcShippingDireccion1} onChange={(e) => {this.setState({zcShippingDireccion1: e.target.value})}} />
+                            <div className="invalid-feedback">
+                                Porfavor ingrese direccion de facturación
+                            </div>
+                        </div>
+                        <div className="mb-3 scEnvio">
+                            <label htmlFor="zcShippingDireccion2">Direccion 2 <span className="text-muted">(Optional)</span></label>
+                            <input id="zcShippingDireccion2" type="text" className="form-control" name="ship_to_address_line2" value={this.state.zcShippingDireccion2} onChange={(e) => {this.setState({zcShippingDireccion2: e.target.value})}} />                            
+                        </div>
+                        <div className="row scEnvio">
+                            <div className="col-md-6 mb-3 pl-0">
+                                <label htmlFor="zcShippingPais">País / Región </label><br />
+                                <select id="zcShippingPais" className="form-control w-100 border p-0 pl-3"  onChange={(e) => {this.setState({zcShippingPais: e.target.value})}}>
+                                    <option value="" disabled>Seleccionar...</option>
+                                    {this.state.paises.map((row => (
+                                        <option value={row.ISO2} key={row.UNI}> {row.nombre}</option>
+                                    )))}
+                                </select>
+                                <input type="hidden" name="ship_to_address_country" value={this.state.zcShippingPais} />
+                                <div className="invalid-feedback">
+                                    Selecciona el Pais
+                                </div>
+                            </div>
+                            <div className="col-md-6 mb-3 pr-0">
+                                <label htmlFor="zcShippingEstado">Estado</label>
+                                <input id="zcShippingEstado" type="text" className="form-control" name="ship_to_address_state" value={this.state.zcShippingEstado} onChange={(e) => {this.setState({zcShippingEstado: e.target.value})}} />
+                                <div className="invalid-feedback">
+                                    Escribe el estado
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row scEnvio">
+                            <div className="col-md-6 mb-3 pl-0">
+                                <label htmlFor="zcShippingCiudad">Ciudad</label>
+                                <input id="zcShippingCiudad" type="text" className="form-control" name="ship_to_address_city" value={this.state.zcShippingCiudad} onChange={(e) => {this.setState({zcShippingCiudad: e.target.value})}} />
+                                <div className="invalid-feedback">
+                                    La Ciudad es obligatoria
+                                </div>
+                            </div>
+                             <div className="col-md-6 mb-3 pr-0">
+                                <label htmlFor="zcShippingPostal">Codigo Postal</label>
+                                <input id="zcShippingPostal" type="text" className="form-control" name="ship_to_address_postal_code" value={this.state.zcShippingPostal} onChange={(e) => {this.setState({zcShippingPostal: e.target.value})}} />
+                                <div className="invalid-feedback">
+                                    El Codigo Postal es obligatorio
+                                </div>
+                            </div>
+                        </div>
+                        <hr className="mb-4" />
                         <div className="woocommerce-additional-fields p-2 mb-3">
                             <h3>Información adicional</h3>
                             <div className="">
                                 <p className="form-row notes" id="order_comments_field" data-priority=""><label htmlFor="order_comments" className="">Notas del pedido&nbsp;<span className="optional">(opcional)</span></label><span className="woocommerce-input-wrapper"></span></p>
-                                <textarea name="order_comments" className="form-control" id="order_comments" placeholder="Notas sobre tu pedido, por ejemplo, notas especiales para la entrega." rows="2" cols="5"></textarea>
+                                <textarea className="form-control" id="order_comments" placeholder="Notas sobre tu pedido, por ejemplo, notas especiales para la entrega." rows="2" cols="5"></textarea>
                             </div>
                         </div>
-
                         <hr className="mb-4" />
-
                         <div className=" p-2 mb-3">
                             <input type="checkbox" className="custom-control-input" id="confirmar-terminos-condiciones" />
                             <label className="custom-control-label" htmlFor="confirmar-terminos-condiciones"><span className="woocommerce-terms-and-conditions-checkbox-text">He leído y estoy de acuerdo con los <a href="#" className="woocommerce-terms-and-conditions-link" target="_blank">términos y condiciones</a> de la web</span>&nbsp;<span className="required">*</span></label>
@@ -530,3 +531,11 @@ class Checkout_Compra_Shop extends Component {
 if (document.getElementById('App_Shop_Checkout_Compra')) {
     ReactDOM.render(<Checkout_Compra_Shop />, document.getElementById('App_Shop_Checkout_Compra'));
 }
+
+$("input.form-control").change(function(){
+    $(this).siblings(".invalid-feedback").removeClass("d-block");
+    if($(this).val() == "" || $(this).val() == undefined)
+    {
+        $(this).siblings(".invalid-feedback").addClass("d-block");
+    }
+});

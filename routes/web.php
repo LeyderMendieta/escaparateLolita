@@ -34,7 +34,11 @@ Route::get('/carrito', function () {
 Route::get('/checkout', function () {
     return view('store.checkout');
 });
-
+Route::post('/checkout/confirm', function () {
+    return view('store.confirmPago');
+});
+Route::post("/billing/response", 'PagosController@billingResponse');
+Route::get("/invoice/{id_transaccion}/{uuid}", 'PagosController@verFactura');
 Route::get('/registro', function () {
     if(isset($_COOKIE["authlog"]))    
         return Redirect::to('home');

@@ -73,7 +73,9 @@ class CartController extends Controller
             $subtotal += $fila->precio_ahora * $fila->cantidad;
         }
 
-        return response()->json(array("products" => $myproducts_cart,"subtotal" => $subtotal,"items" => count($myproducts_cart)));
+        $paises = DB::select("SELECT * FROM app_paises");
+
+        return response()->json(array("products" => $myproducts_cart,"subtotal" => $subtotal,"items" => count($myproducts_cart),"reference" => "Cart$mycart->id-USR$mycart->id_usuario", "paises" => $paises,"userPo" => $mycart->id_usuario));
     }
 
     public function addProductToCart(Request $request)

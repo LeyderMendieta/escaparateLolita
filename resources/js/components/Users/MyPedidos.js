@@ -63,7 +63,7 @@ class MyPedidos extends Component {
                             {this.state.pedidos.map((row) => (
                                 <tr key={row.id}>
                                 <td className="text-center" data-title="Pedido">
-                                    <a href="detalle-pedido.html"> #{row.id} </a>
+                                    <a href="#"> #{row.id} </a>
                                 </td>
                                 <td className="text-center" data-title="Fecha">
                                     <time dateTime={row.fecha}>{row.fecha}</time>
@@ -75,7 +75,7 @@ class MyPedidos extends Component {
                                     <span className="woocommerce-Price-amount amount"><span className="woocommerce-Price-currencySymbol">$</span>{row.total}</span>                                    
                                 </td>
                                 <td className="text-center" data-title="Acciones">
-                                    <a href="#" className="woocommerce-button button view">Ver</a>
+                                    <a href={Configuracion.url_principal+"invoice/"+row.transferencia.transaction_id+"/"+row.transferencia.req_transaction_uuid} target="_blank" className="btn btn-info text-light" style={{display: (row.estado == "ACCEPT") ? "" : "none"}}>Ver Factura</a>
                                 </td>
                             </tr>
                             ))}

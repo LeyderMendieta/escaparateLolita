@@ -121,6 +121,14 @@ class UsuarioController extends Controller
             if(hash::check($request->password,$user->password))
             {
                 Auth::login($user,true);
+
+                if(isset($_COOKIE["session_mycart"]))
+                {
+                    $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
+                    $mycart->id_usuario = $user->id;
+                    $mycart->save();
+                }                
+
                 $user->generateToken();
                 setCookie ("authlog",$user->api_token,0,"/");
                 return $user;
@@ -564,11 +572,13 @@ class UsuarioController extends Controller
         if($user)
         {
             $userPedidos = UserPedido::where(["id_user" => $user->id])->get();
+            
 
             $data = [];
             foreach($userPedidos as $fila)
             {
-                array_push($data,["id" => $fila->id,"card" => $fila->id_user_card , "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "total" => $fila->total]);
+                $dbFactura = DB::select("SELECT * FROM transferencias WHERE id_pedido='$fila->id' ");
+                array_push($data,["id" => $fila->id,"card" => $fila->id_user_card , "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "total" => $fila->total, "transferencia" => $dbFactura[0] ]);
             }
 
             return response()->json(["pedidos" => $data]);

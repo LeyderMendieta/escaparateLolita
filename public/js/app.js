@@ -88441,8 +88441,8 @@ if (document.getElementById('App_Mycart')) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var url_principal = "https://elescaparatedelolita.com/"; //const url_principal = "http://127.0.0.1:8000/";
-//const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
+//const url_principal = "https://elescaparatedelolita.com/";
+var url_principal = "http://127.0.0.1:8000/"; //const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
 
 var url_images = url_principal + 'images/';
 var Configuracion = {
@@ -88499,6 +88499,19 @@ var Configuracion = {
         language: _this.languageDataTable
       });
     }(responsive);
+  },
+  getDateTimeTZ: function getDateTimeTZ() {
+    var now = new Date().toJSON();
+    var strToReplace = now.substring(now.length - 5, now.length - 1);
+    var time = now.replace(strToReplace, "");
+    return time;
+  },
+  uniqid: function uniqid() {
+    var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var random = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var sec = Date.now() * 100000 + Math.random() * 1000;
+    var id = sec.toString(16).replace(/\./g, "").padEnd(14, "0");
+    return "".concat(prefix).concat(id).concat(random ? ".".concat(Math.trunc(Math.random() * 100000000)) : "");
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (Configuracion);
@@ -89965,10 +89978,42 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
     _this.state = {
       error: null,
       isLoaded: false,
-      productos: [],
       cartProducts: [],
       subtotal: 0,
-      items: 0
+      items: 0,
+      total: 0,
+      paises: [],
+      numeroReferencia: 0,
+      signedFielsExtra: "",
+      mismaDireccionParaTodo: false,
+      ipAddress: "",
+      userPo: "",
+      device_fingerprint_id: "",
+      //CONTACTO (campos de facturación/billing)			
+      zcNombres: "",
+      zcApellidos: "",
+      zcCorreo: "",
+      zcTelefono: "",
+      //Numerico
+      //DIRECCION (campos de facturación/billing)			
+      zcDireccion1: "",
+      zcDireccion2: "",
+      zcCiudad: "",
+      zcEstado: "",
+      zcPais: "",
+      zcPostal: "",
+      //CONTACTO (campos de entrega/shipping)			
+      zcShippingNombres: "",
+      zcShippingApellidos: "",
+      zcShippingTelefono: "",
+      //Numerico
+      //DIRECCION (campos de entrega/shipping)
+      zcShippingDireccion1: "",
+      zcShippingDireccion2: "",
+      zcShippingCiudad: "",
+      zcShippingEstado: "",
+      zcShippingPais: "",
+      zcShippingPostal: ""
     };
     return _this;
   }
@@ -89986,16 +90031,148 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
             isLoaded: true,
             cartProducts: result.products,
             subtotal: result.subtotal,
-            items: result.items
+            total: result.subtotal + 5,
+            items: result.items,
+            numeroReferencia: result.reference,
+            paises: result.paises,
+            userPo: result.userPo
           });
-        } else {
-          console.log(result.error);
+
+          for (var index = 0; index < _this2.state.cartProducts.length; index++) {
+            _this2.setState({
+              signedFielsExtra: _this2.state.signedFielsExtra + ",item_" + index.toString() + "_code,item_" + index.toString() + "_sku,item_" + index.toString() + "_name,item_" + index.toString() + "_unit_price,item_" + index.toString() + "_quantity"
+            }); //,item_"+index.toString()+"_tax_amount
+
+          }
+
+          ;
+
+          _this2.cybs_dfprofiler("tc_pa_016026821", "test");
         }
       });
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/AuthInfoLogged").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        if (result.error == undefined) {
+          _this2.setState({
+            zcNombres: result.user.nombres,
+            zcApellidos: result.user.apellidos,
+            zcCorreo: result.user.correo,
+            zcTelefono: parseInt(result.user.celular),
+            zcDireccion1: result.user.ubicacion
+          });
+        }
+      });
+      fetch("http://api.ipify.org/?format=json").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          ipAddress: result.ip
+        });
+      });
+    }
+  }, {
+    key: "cybs_dfprofiler",
+    value: function cybs_dfprofiler(merchantID, environment) {
+      if (environment.toLowerCase() == 'live') {
+        var org_id = 'k8vif92e';
+      } else {
+        var org_id = '1snn5n9w';
+      }
+
+      var sessionID = new Date().getTime();
+      var str = "";
+      str = "https://h.online-metrix.net/fp/tags.js?org_id=" + org_id + "&session_id=" + merchantID + sessionID + "&m=2";
+      var paragraphTM = document.createElement("p");
+      str = "background:url(https://h.online-metrix.net/fp/clear.png?org_id=" + org_id + "&session_id=" + merchantID + sessionID + "&m=1)";
+      paragraphTM.styleSheets = str;
+      paragraphTM.height = "0";
+      paragraphTM.width = "0";
+      paragraphTM.hidden = "true";
+      document.body.appendChild(paragraphTM);
+      var img = document.createElement("img");
+      str = "https://h.online-metrix.net/fp/clear.png?org_id=" + org_id + "&session_id=" + merchantID + sessionID + "&m=2";
+      img.src = str;
+      document.body.appendChild(img);
+      var tmscript = document.createElement("script");
+      tmscript.src = "https://h.online-metrix.net/fp/check.js?org_id=" + org_id + "&session_id=" + merchantID + sessionID;
+      tmscript.type = "text/javascript";
+      document.body.appendChild(tmscript);
+      var objectTM = document.createElement("object");
+      objectTM.data = "https://h.online-metrix.net/fp/fp.swf?org_id=" + org_id + "&session_id=" + merchantID + sessionID;
+      objectTM.width = "1";
+      objectTM.height = "1";
+      objectTM.id = "thm_fp";
+      var param = document.createElement("param");
+      param.name = "movie";
+      param.value = "https://h.online-metrix.net/fp/fp.swf?org_id=" + org_id + "&session_id=" + merchantID + sessionID;
+      objectTM.appendChild(param);
+      str = "https://h.online-metrix.net/fp/tags.js?org_id=" + org_id + "&session_id=" + merchantID + sessionID + "";
+      document.body.appendChild(objectTM);
+      this.setState({
+        device_fingerprint_id: sessionID
+      });
+      return merchantID + merchantID + sessionID;
+    }
+  }, {
+    key: "submitCheckout",
+    value: function submitCheckout(e) {
+      if (this.state.mismaDireccionParaTodo) {
+        this.setState({
+          zcShippingNombres: this.state.zcNombres,
+          zcShippingApellidos: this.state.zcApellidos,
+          zcShippingTelefono: this.state.zcTelefono,
+          zcShippingDireccion1: this.state.zcDireccion1,
+          zcShippingDireccion2: this.state.zcDireccion2,
+          zcShippingCiudad: this.state.zcCiudad,
+          zcShippingEstado: this.state.zcEstado,
+          zcShippingPais: this.state.zcPais,
+          zcShippingPostal: this.state.zcPostal
+        });
+        var validators = ["zcNombres", "zcApellidos", "zcCorreo", "zcTelefono", "zcDireccion1", "zcCiudad", "zcEstado", "zcPais", "zcPostal"];
+      } else {
+        var validators = ["zcNombres", "zcApellidos", "zcCorreo", "zcTelefono", "zcDireccion1", "zcCiudad", "zcEstado", "zcPais", "zcPostal", "zcShippingNombres", "zcShippingApellidos", "zcShippingTelefono", "zcShippingDireccion1", "zcShippingCiudad", "zcShippingEstado", "zcShippingPais", "zcShippingPostal"];
+      }
+
+      var stopProcess = false;
+      validators.forEach(function (element) {
+        var valor = $("#" + element).val();
+
+        if (valor == "" || valor == undefined) {
+          $("#" + element).siblings(".invalid-feedback").addClass("d-block");
+          stopProcess = true;
+        }
+
+        if ($("#" + element).data("pattern") != undefined) {
+          var patt = new RegExp($("#" + element).data("pattern"));
+          var res = patt.test(valor);
+
+          if (res == false) {
+            $("#" + element).siblings(".invalid-feedback").addClass("d-block");
+            $("#" + element).siblings(".invalid-feedback").text($("#" + element).data("textdanger"));
+            stopProcess = true;
+          }
+        }
+      });
+
+      if (stopProcess) {
+        alert("Verifica los campos obligatorios e intenta nuevamente");
+        e.preventDefault();
+      }
+    }
+  }, {
+    key: "switchSameDireccion",
+    value: function switchSameDireccion() {
+      this.setState({
+        mismaDireccionParaTodo: this.state.mismaDireccionParaTodo ? false : true
+      });
+      $('.scEnvio').toggleClass("d-none");
     }
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -90008,9 +90185,10 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         className: "badge badge-secondary badge-pill"
       }, this.state.items)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "list-group mb-3"
-      }, this.state.cartProducts.map(function (row) {
+      }, this.state.cartProducts.map(function (row, index) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          className: "list-group-item d-flex justify-content-between lh-condensed"
+          className: "list-group-item d-flex justify-content-between lh-condensed",
+          key: index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
           className: "my-0"
         }, row.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
@@ -90038,7 +90216,12 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
       }, " Precio de Env\xEDo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
         className: "text-muted"
       }, "seleccionar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-block my-3"
+        className: "d-block my-3",
+        onChange: function onChange(e) {
+          return _this3.setState({
+            total: parseInt(e.target.value) + parseInt(_this3.state.subtotal)
+          });
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "custom-control custom-radio"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -90046,8 +90229,8 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         name: "envio",
         type: "radio",
         className: "custom-control-input",
-        checked: true,
-        required: true
+        value: "5",
+        defaultChecked: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "custom-control-label",
         htmlFor: "panamaenvio"
@@ -90058,7 +90241,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         name: "envio",
         type: "radio",
         className: "custom-control-input",
-        required: true
+        value: "12"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "custom-control-label",
         htmlFor: "panamaprovincia"
@@ -90069,13 +90252,13 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         name: "envio",
         type: "radio",
         className: "custom-control-input",
-        required: true
+        value: "0"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "custom-control-label",
         htmlFor: "panamalocal"
       }, "Recogida Local ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " $0"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "list-group-item d-flex justify-content-between"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Total (USD)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "$", this.state.subtotal + 5))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Total (USD)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "$", this.state.total))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "card p-2 mb-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-group"
@@ -90098,742 +90281,518 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         target: "_blank"
       }, "pol\xEDtica de privacidad"), "."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-8 order-md-1"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "mb-3"
-      }, "Checkout"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "Datos Facturaci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "needs-validation",
-        action: "",
         method: "post",
-        noValidate: true
+        action: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "checkout/confirm",
+        onSubmit: this.submitCheckout.bind(this)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row setparamsg"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "access_key",
+        value: "e4c15fd430d9361dabc777dc872fa3d2"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "profile_id",
+        value: "52EC2BD8-DC18-467C-BF84-EAAA8777495F"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "transaction_type",
+        value: "sale"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "transaction_uuid",
+        value: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].uniqid("bill")
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "signed_field_names",
+        value: "access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,payment_method,bill_to_forename,bill_to_surname,bill_to_email,bill_to_phone,bill_to_address_line1,bill_to_address_city,bill_to_address_state,bill_to_address_country,bill_to_address_postal_code,ship_to_forename,ship_to_surname,ship_to_phone,ship_to_address_line1,ship_to_address_city,ship_to_address_state,ship_to_address_country,ship_to_address_postal_code,override_custom_receipt_page,device_fingerprint_id,merchant_defined_data2,merchant_defined_data3,user_po,customer_ip_address,line_item_count" + this.state.signedFielsExtra
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "unsigned_field_names",
+        value: "card_type,card_number,card_expiry_date,card_cvn"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "signed_date_time",
+        value: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].getDateTimeTZ()
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "reference_number",
+        value: this.state.numeroReferencia
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "locale",
+        value: "en"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "currency",
+        value: "USD"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "payment_method",
+        value: "card"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "amount",
+        value: this.state.total
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "line_item_count",
+        value: this.state.cartProducts.length
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "device_fingerprint_id",
+        value: this.state.device_fingerprint_id
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "customer_ip_address",
+        id: "customer_ip_address",
+        value: this.state.ipAddress
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "user_po",
+        value: this.state.userPo
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "merchant_defined_data3",
+        value: "https://elescaparatedelolita.com/"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "merchant_defined_data2",
+        value: "El Escaparate de Lolita"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "override_custom_receipt_page",
+        value: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "billing/response"
+      }), this.state.cartProducts.map(function (row, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
+          key: index
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "hidden",
+          name: "item_" + index.toString() + "_code",
+          value: row.id
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "hidden",
+          name: "item_" + index.toString() + "_sku",
+          value: row.id + "C_" + row.color_selected + "T_" + row.talla_selected
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "hidden",
+          name: "item_" + index.toString() + "_name",
+          value: row.name
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "hidden",
+          name: "item_" + index.toString() + "_quantity",
+          value: row.cantidad
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "hidden",
+          name: "item_" + index.toString() + "_unit_price",
+          value: row.precio_ahora
+        }));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-6 mb-3  pl-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "firstName"
-      }, "Nombre ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        htmlFor: "zcNombres"
+      }, "Nombre *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcNombres",
         type: "text",
         className: "form-control",
-        id: "nombre",
-        placeholder: "",
+        name: "bill_to_forename",
+        pattern: ".{1,60}",
+        maxLength: "60",
+        value: this.state.zcNombres,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcNombres: e.target.value
+          });
+        },
         required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "invalid-feedback"
-      }, "Valida, el nombre es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "El Nombre es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-6 mb-3 pr-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "lastName"
-      }, "Apellidos ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        htmlFor: "zcApellidos"
+      }, "Apellidos *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcApellidos",
         type: "text",
         className: "form-control",
-        id: "apellido",
-        placeholder: "",
+        name: "bill_to_surname",
+        pattern: ".{1,60}",
+        maxLength: "60",
+        value: this.state.zcApellidos,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcApellidos: e.target.value
+          });
+        },
         required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "invalid-feedback"
-      }, "Valida, el apellido es requerido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3"
+      }, "El Apellido es requerido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mb-3  pl-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "empresa"
-      }, "Nombre de la empresa ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "(Optional)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "empresa",
-        placeholder: ""
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "pais"
-      }, "Pa\xEDs / Regi\xF3n ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        onchange: "country(this.value)",
-        className: "form-control w-100 border  p-0",
-        id: "pais",
-        required: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Afghanistan"
-      }, "Afghanistan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "\xC5land Islands"
-      }, "\xC5land Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Albania"
-      }, "Albania"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Algeria"
-      }, "Algeria"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "American Samoa"
-      }, "American Samoa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Andorra"
-      }, "Andorra"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Angola"
-      }, "Angola"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Anguilla"
-      }, "Anguilla"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Antarctica"
-      }, "Antarctica"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Antigua and Barbuda"
-      }, "Antigua and Barbuda"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Argentina"
-      }, "Argentina"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Armenia"
-      }, "Armenia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Aruba"
-      }, "Aruba"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Australia"
-      }, "Australia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Austria"
-      }, "Austria"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Azerbaijan"
-      }, "Azerbaijan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bahamas"
-      }, "Bahamas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bahrain"
-      }, "Bahrain"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bangladesh"
-      }, "Bangladesh"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Barbados"
-      }, "Barbados"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Belarus"
-      }, "Belarus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Belgium"
-      }, "Belgium"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Belize"
-      }, "Belize"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Benin"
-      }, "Benin"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bermuda"
-      }, "Bermuda"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bhutan"
-      }, "Bhutan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bolivia"
-      }, "Bolivia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bosnia and Herzegovina"
-      }, "Bosnia and Herzegovina"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Botswana"
-      }, "Botswana"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bouvet Island"
-      }, "Bouvet Island"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Brazil"
-      }, "Brazil"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "British Indian Ocean Territory"
-      }, "British Indian Ocean Territory"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Brunei Darussalam"
-      }, "Brunei Darussalam"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bulgaria"
-      }, "Bulgaria"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Burkina Faso"
-      }, "Burkina Faso"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Burundi"
-      }, "Burundi"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Cambodia"
-      }, "Cambodia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Cameroon"
-      }, "Cameroon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Canada"
-      }, "Canada"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Cape Verde"
-      }, "Cape Verde"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Cayman Islands"
-      }, "Cayman Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Central African Republic"
-      }, "Central African Republic"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Chad"
-      }, "Chad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Chile"
-      }, "Chile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "China"
-      }, "China"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Christmas Island"
-      }, "Christmas Island"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Cocos (Keeling) Islands"
-      }, "Cocos (Keeling) Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Colombia"
-      }, "Colombia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Comoros"
-      }, "Comoros"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Congo"
-      }, "Congo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Congo, The Democratic Republic of The"
-      }, "Congo, The Democratic Republic of The"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Cook Islands"
-      }, "Cook Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Costa Rica"
-      }, "Costa Rica"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Cote D'ivoire"
-      }, "Cote D'ivoire"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Croatia"
-      }, "Croatia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Cuba"
-      }, "Cuba"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Cyprus"
-      }, "Cyprus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Czech Republic"
-      }, "Czech Republic"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Denmark"
-      }, "Denmark"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Djibouti"
-      }, "Djibouti"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Dominica"
-      }, "Dominica"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Dominican Republic"
-      }, "Dominican Republic"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Ecuador"
-      }, "Ecuador"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Egypt"
-      }, "Egypt"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "El Salvador"
-      }, "El Salvador"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Equatorial Guinea"
-      }, "Equatorial Guinea"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Eritrea"
-      }, "Eritrea"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Estonia"
-      }, "Estonia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Ethiopia"
-      }, "Ethiopia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Falkland Islands (Malvinas)"
-      }, "Falkland Islands (Malvinas)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Faroe Islands"
-      }, "Faroe Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Fiji"
-      }, "Fiji"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Finland"
-      }, "Finland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "France"
-      }, "France"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "French Guiana"
-      }, "French Guiana"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "French Polynesia"
-      }, "French Polynesia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "French Southern Territories"
-      }, "French Southern Territories"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Gabon"
-      }, "Gabon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Gambia"
-      }, "Gambia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Georgia"
-      }, "Georgia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Germany"
-      }, "Germany"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Ghana"
-      }, "Ghana"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Gibraltar"
-      }, "Gibraltar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Greece"
-      }, "Greece"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Greenland"
-      }, "Greenland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Grenada"
-      }, "Grenada"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Guadeloupe"
-      }, "Guadeloupe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Guam"
-      }, "Guam"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Guatemala"
-      }, "Guatemala"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Guernsey"
-      }, "Guernsey"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Guinea"
-      }, "Guinea"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Guinea-bissau"
-      }, "Guinea-bissau"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Guyana"
-      }, "Guyana"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Haiti"
-      }, "Haiti"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Heard Island and Mcdonald Islands"
-      }, "Heard Island and Mcdonald Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Holy See (Vatican City State)"
-      }, "Holy See (Vatican City State)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Honduras"
-      }, "Honduras"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Hong Kong"
-      }, "Hong Kong"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Hungary"
-      }, "Hungary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Iceland"
-      }, "Iceland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "India"
-      }, "India"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Indonesia"
-      }, "Indonesia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Iran, Islamic Republic of"
-      }, "Iran, Islamic Republic of"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Iraq"
-      }, "Iraq"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Ireland"
-      }, "Ireland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Isle of Man"
-      }, "Isle of Man"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Israel"
-      }, "Israel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Italy"
-      }, "Italy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Jamaica"
-      }, "Jamaica"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Japan"
-      }, "Japan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Jersey"
-      }, "Jersey"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Jordan"
-      }, "Jordan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Kazakhstan"
-      }, "Kazakhstan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Kenya"
-      }, "Kenya"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Kiribati"
-      }, "Kiribati"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Korea, Democratic People's Republic of"
-      }, "Korea, Democratic People's Republic of"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Korea, Republic of"
-      }, "Korea, Republic of"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Kuwait"
-      }, "Kuwait"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Kyrgyzstan"
-      }, "Kyrgyzstan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Lao People's Democratic Republic"
-      }, "Lao People's Democratic Republic"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Latvia"
-      }, "Latvia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Lebanon"
-      }, "Lebanon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Lesotho"
-      }, "Lesotho"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Liberia"
-      }, "Liberia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Libyan Arab Jamahiriya"
-      }, "Libyan Arab Jamahiriya"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Liechtenstein"
-      }, "Liechtenstein"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Lithuania"
-      }, "Lithuania"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Luxembourg"
-      }, "Luxembourg"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Macao"
-      }, "Macao"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Macedonia, The Former Yugoslav Republic of"
-      }, "Macedonia, The Former Yugoslav Republic of"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Madagascar"
-      }, "Madagascar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Malawi"
-      }, "Malawi"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Malaysia"
-      }, "Malaysia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Maldives"
-      }, "Maldives"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Mali"
-      }, "Mali"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Malta"
-      }, "Malta"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Marshall Islands"
-      }, "Marshall Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Martinique"
-      }, "Martinique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Mauritania"
-      }, "Mauritania"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Mauritius"
-      }, "Mauritius"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Mayotte"
-      }, "Mayotte"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Mexico"
-      }, "Mexico"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Micronesia, Federated States of"
-      }, "Micronesia, Federated States of"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Moldova, Republic of"
-      }, "Moldova, Republic of"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Monaco"
-      }, "Monaco"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Mongolia"
-      }, "Mongolia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Montenegro"
-      }, "Montenegro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Montserrat"
-      }, "Montserrat"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Morocco"
-      }, "Morocco"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Mozambique"
-      }, "Mozambique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Myanmar"
-      }, "Myanmar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Namibia"
-      }, "Namibia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Nauru"
-      }, "Nauru"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Nepal"
-      }, "Nepal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Netherlands"
-      }, "Netherlands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Netherlands Antilles"
-      }, "Netherlands Antilles"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "New Caledonia"
-      }, "New Caledonia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "New Zealand"
-      }, "New Zealand"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Nicaragua"
-      }, "Nicaragua"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Niger"
-      }, "Niger"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Nigeria"
-      }, "Nigeria"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Niue"
-      }, "Niue"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Norfolk Island"
-      }, "Norfolk Island"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Northern Mariana Islands"
-      }, "Northern Mariana Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Norway"
-      }, "Norway"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Oman"
-      }, "Oman"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Pakistan"
-      }, "Pakistan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Palau"
-      }, "Palau"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Palestinian Territory, Occupied"
-      }, "Palestinian Territory, Occupied"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Panama"
-      }, "Panam\xE1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Papua New Guinea"
-      }, "Papua New Guinea"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Paraguay"
-      }, "Paraguay"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Peru"
-      }, "Peru"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Philippines"
-      }, "Philippines"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Pitcairn"
-      }, "Pitcairn"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Poland"
-      }, "Poland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Portugal"
-      }, "Portugal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Puerto Rico"
-      }, "Puerto Rico"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Qatar"
-      }, "Qatar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Reunion"
-      }, "Reunion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Romania"
-      }, "Romania"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Russian Federation"
-      }, "Russian Federation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Rwanda"
-      }, "Rwanda"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Saint Helena"
-      }, "Saint Helena"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Saint Kitts and Nevis"
-      }, "Saint Kitts and Nevis"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Saint Lucia"
-      }, "Saint Lucia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Saint Pierre and Miquelon"
-      }, "Saint Pierre and Miquelon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Saint Vincent and The Grenadines"
-      }, "Saint Vincent and The Grenadines"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Samoa"
-      }, "Samoa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "San Marino"
-      }, "San Marino"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Sao Tome and Principe"
-      }, "Sao Tome and Principe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Saudi Arabia"
-      }, "Saudi Arabia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Senegal"
-      }, "Senegal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Serbia"
-      }, "Serbia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Seychelles"
-      }, "Seychelles"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Sierra Leone"
-      }, "Sierra Leone"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Singapore"
-      }, "Singapore"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Slovakia"
-      }, "Slovakia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Slovenia"
-      }, "Slovenia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Solomon Islands"
-      }, "Solomon Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Somalia"
-      }, "Somalia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "South Africa"
-      }, "South Africa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "South Georgia and The South Sandwich Islands"
-      }, "South Georgia and The South Sandwich Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Spain"
-      }, "Spain"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Sri Lanka"
-      }, "Sri Lanka"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Sudan"
-      }, "Sudan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Suriname"
-      }, "Suriname"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Svalbard and Jan Mayen"
-      }, "Svalbard and Jan Mayen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Swaziland"
-      }, "Swaziland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Sweden"
-      }, "Sweden"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Switzerland"
-      }, "Switzerland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Syrian Arab Republic"
-      }, "Syrian Arab Republic"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Taiwan, Province of China"
-      }, "Taiwan, Province of China"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Tajikistan"
-      }, "Tajikistan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Tanzania, United Republic of"
-      }, "Tanzania, United Republic of"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Thailand"
-      }, "Thailand"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Timor-leste"
-      }, "Timor-leste"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Togo"
-      }, "Togo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Tokelau"
-      }, "Tokelau"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Tonga"
-      }, "Tonga"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Trinidad and Tobago"
-      }, "Trinidad and Tobago"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Tunisia"
-      }, "Tunisia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Turkey"
-      }, "Turkey"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Turkmenistan"
-      }, "Turkmenistan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Turks and Caicos Islands"
-      }, "Turks and Caicos Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Tuvalu"
-      }, "Tuvalu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Uganda"
-      }, "Uganda"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Ukraine"
-      }, "Ukraine"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "United Arab Emirates"
-      }, "United Arab Emirates"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "United Kingdom"
-      }, "United Kingdom"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "United States"
-      }, "United States"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "United States Minor Outlying Islands"
-      }, "United States Minor Outlying Islands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Uruguay"
-      }, "Uruguay"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Uzbekistan"
-      }, "Uzbekistan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Vanuatu"
-      }, "Vanuatu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Venezuela"
-      }, "Venezuela"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Viet Nam"
-      }, "Viet Nam"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Virgin Islands, British"
-      }, "Virgin Islands, British"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Virgin Islands, U.S."
-      }, "Virgin Islands, U.S."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Wallis and Futuna"
-      }, "Wallis and Futuna"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Western Sahara"
-      }, "Western Sahara"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Yemen"
-      }, "Yemen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Zambia"
-      }, "Zambia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Zimbabwe"
-      }, "Zimbabwe")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "invalid-feedback"
-      }, "Es requerido, selecciona un pa\xEDs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "con-provincia",
-        className: "mb-3 d-none"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "pais"
-      }, "Estado / Provincia", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "form-control w-100 border p-0",
-        id: "",
-        required: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Selecciona..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bocas del Toro"
-      }, "Bocas del Toro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Cocl\xE9"
-      }, "Cocle"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Colon"
-      }, "Col\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Panama"
-      }, "Panam\xE1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Chiriqu\xED"
-      }, "Chiriqui"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Dari\xE9n"
-      }, "Darien"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Herrera"
-      }, "Herrera"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Los Santos"
-      }, "Los Santos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Veraguas"
-      }, "Veraguas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Panam\xE1 Oeste"
-      }, "Panama Oeste")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "invalid-feedback"
-      }, "Es requerido, selecciona un estado / provincia")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "email"
-      }, "Correo Electr\xF3nico ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        htmlFor: "zcCorreo"
+      }, "Correo *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcCorreo",
         type: "email",
         className: "form-control",
-        id: "email",
-        placeholder: "you@example.com",
+        name: "bill_to_email",
+        maxLength: "255",
+        value: this.state.zcCorreo,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcCorreo: e.target.value
+          });
+        },
         required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "invalid-feedback"
-      }, "Ingrese una direcci\xF3n de correo electr\xF3nico v\xE1lida para recibir actualizaciones de env\xEDo.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Valida, el Correo es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mb-3 pr-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "zcTelefono"
+      }, "Tel\xE9fono *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcTelefono",
+        type: "number",
+        className: "form-control",
+        name: "bill_to_phone",
+        "data-pattern": ".{6,15}",
+        "data-textdanger": "Debe ser numerico de longitud minimo de 6 y maxima de 15",
+        value: this.state.zcTelefono,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcTelefono: e.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid-feedback"
+      }, "Valida, el Tel\xE9fono es requerido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mb-3"
+      }, "Direcci\xF3n Facturaci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mb-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "direccion"
-      }, "Direcci\xF3n ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "* (si su pa\xEDs no es Panam\xE1, agregue la direcci\xF3n y el estado al que pertenece aqu\xED)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        htmlFor: "zcDireccion1"
+      }, "Direcci\xF3n *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcDireccion1",
         type: "text",
         className: "form-control",
-        id: "direccion",
-        placeholder: "parque central panam\xE1",
+        name: "bill_to_address_line1",
+        pattern: ".{1,60}",
+        maxLength: "60",
+        value: this.state.zcDireccion1,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcDireccion1: e.target.value
+          });
+        },
         required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "invalid-feedback"
-      }, "Porfavor ingrese direccion de env\xEDo")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Porfavor ingrese direccion de facturaci\xF3n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mb-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "direccion2"
-      }, "Direccion 2 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "(Optional)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        htmlFor: "zcDireccion2"
+      }, "Direccion 2 (Opcional)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcDireccion2",
         type: "text",
         className: "form-control",
-        id: "direccion2",
-        placeholder: "parque central panam\xE1"
+        name: "bill_to_address_line2",
+        pattern: ".{1,60}",
+        maxLength: "60",
+        value: this.state.zcDireccion2,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcDireccion2: e.target.value
+          });
+        }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3"
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mb-3 pl-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "telefono"
-      }, "Tel\xE9fono Fijo \xF3 Whatsapp ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted"
-      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        htmlFor: "zcPais"
+      }, "Pa\xEDs / Regi\xF3n *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "zcPais",
+        className: "form-control w-100 border p-0 pl-3",
+        name: "bill_to_address_country",
+        defaultValue: this.state.zcPais,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcPais: e.target.value
+          });
+        },
+        required: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "",
+        disabled: true
+      }, "Seleccionar..."), this.state.paises.map(function (row) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: row.ISO2,
+          key: row.UNI
+        }, " ", row.nombre);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid-feedback"
+      }, "Elige el Pais")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mb-3 pr-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "zcEstado"
+      }, "Estado *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcEstado",
         type: "text",
         className: "form-control",
-        id: "telefono",
-        placeholder: "#"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        name: "bill_to_address_state",
+        value: this.state.zcEstado,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcEstado: e.target.value
+          });
+        },
+        required: true
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid-feedback"
+      }, "Escribe el Estado, ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "ej. Ciudad de Panama")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mb-3 pl-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "zcCiudad"
+      }, "Ciudad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcCiudad",
+        type: "text",
+        className: "form-control",
+        name: "bill_to_address_city",
+        pattern: ".{1,50}",
+        maxLength: "50",
+        value: this.state.zcCiudad,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcCiudad: e.target.value
+          });
+        },
+        required: true
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid-feedback"
+      }, "La Ciudad es obligatoria")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mb-3 pr-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "zcPostal"
+      }, "Codigo Postal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcPostal",
+        type: "number",
+        className: "form-control",
+        name: "bill_to_address_postal_code",
+        max: "100000000",
+        value: this.state.zcPostal,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcPostal: e.target.value
+          });
+        },
+        required: true
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid-feedback"
+      }, "El codigo postal el Obligatorio"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         className: "mb-4"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "custom-control custom-checkbox"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "same-address",
         type: "checkbox",
         className: "custom-control-input",
-        id: "same-address"
+        onClick: this.switchSameDireccion.bind(this)
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "custom-control-label",
         htmlFor: "same-address"
-      }, "La direcci\xF3n de env\xEDo es la misma que mi direcci\xF3n de facturaci\xF3n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-control custom-checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "checkbox",
-        className: "custom-control-input",
-        id: "save-info"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "custom-control-label",
-        htmlFor: "save-info"
-      }, "Guarde esta informaci\xF3n para la pr\xF3xima vez")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+      }, "La direcci\xF3n de env\xEDo es la misma que mi direcci\xF3n de facturaci\xF3n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         className: "mb-4"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "mb-3"
-      }, "M\xE9todos de pago"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-block my-3"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        className: "mb-4"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mb-3 scEnvio"
+      }, "Datos Envio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row scEnvio"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-control custom-radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "credit",
-        name: "paymentMethod",
-        type: "radio",
-        className: "custom-control-input",
-        checked: true,
-        required: true
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "custom-control-label",
-        htmlFor: "credit"
-      }, "Tarjeta de cr\xE9dito")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-control custom-radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "debit",
-        name: "paymentMethod",
-        type: "radio",
-        className: "custom-control-input",
-        required: true
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "custom-control-label",
-        htmlFor: "debit"
-      }, "Tarjeta de d\xE9bito"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-6 mb-3"
+        className: "col-md-6 mb-3  pl-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "cc-name"
-      }, "Nombre en la tarjeta"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "cc-name",
-        placeholder: "",
-        required: true
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        htmlFor: "zcShippingNombres"
+      }, "Nombre ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "text-muted"
-      }, "Nombre completo como se muestra en la tarjeta"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "invalid-feedback"
-      }, "Name on card is required")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-6 mb-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "cc-number"
-      }, "N\xFAmero de tarjeta de cr\xE9dito"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcShippingNombres",
         type: "text",
         className: "form-control",
-        id: "cc-number",
-        placeholder: "",
-        required: true
+        name: "ship_to_forename",
+        value: this.state.zcShippingNombres,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcShippingNombres: e.target.value
+          });
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "invalid-feedback"
-      }, "Credit card number is required"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
+      }, "El Nombre es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mb-3 pr-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "zcShippingApellidos"
+      }, "Apellidos ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-muted"
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcShippingApellidos",
+        type: "text",
+        className: "form-control",
+        name: "ship_to_surname",
+        value: this.state.zcShippingApellidos,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcShippingApellidos: e.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid-feedback"
+      }, "El Apellido es requerido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row scEnvio"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-3 mb-3"
+        className: "col-md-6 mb-3  pl-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "cc-expiration"
-      }, "Vencimiento"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
+        htmlFor: "zcShippingTelefono"
+      }, "Telefono *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcShippingTelefono",
+        type: "number",
         className: "form-control",
-        id: "cc-expiration",
-        placeholder: "",
-        required: true
+        name: "ship_to_phone",
+        value: this.state.zcShippingTelefono,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcShippingTelefono: e.target.value
+          });
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "invalid-feedback"
-      }, "Expiration date required")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-3 mb-3"
+      }, "El Telefono es requerido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mb-3 scEnvio"
+      }, "Direcci\xF3n Envio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-3 scEnvio"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "cc-expiration"
-      }, "CVV"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        htmlFor: "zcShippingDireccion1"
+      }, "Direcci\xF3n *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcShippingDireccion1",
         type: "text",
         className: "form-control",
-        id: "cc-cvv",
-        placeholder: "",
-        required: true
+        name: "ship_to_address_line1",
+        value: this.state.zcShippingDireccion1,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcShippingDireccion1: e.target.value
+          });
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "invalid-feedbac"
-      }, "C\xF3digo de seguridad requerido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        className: "invalid-feedback"
+      }, "Porfavor ingrese direccion de facturaci\xF3n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-3 scEnvio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "zcShippingDireccion2"
+      }, "Direccion 2 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-muted"
+      }, "(Optional)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcShippingDireccion2",
+        type: "text",
+        className: "form-control",
+        name: "ship_to_address_line2",
+        value: this.state.zcShippingDireccion2,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcShippingDireccion2: e.target.value
+          });
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row scEnvio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mb-3 pl-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "zcShippingPais"
+      }, "Pa\xEDs / Regi\xF3n "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "zcShippingPais",
+        className: "form-control w-100 border p-0 pl-3",
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcShippingPais: e.target.value
+          });
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "",
+        disabled: true
+      }, "Seleccionar..."), this.state.paises.map(function (row) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: row.ISO2,
+          key: row.UNI
+        }, " ", row.nombre);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "ship_to_address_country",
+        value: this.state.zcShippingPais
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid-feedback"
+      }, "Selecciona el Pais")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mb-3 pr-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "zcShippingEstado"
+      }, "Estado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcShippingEstado",
+        type: "text",
+        className: "form-control",
+        name: "ship_to_address_state",
+        value: this.state.zcShippingEstado,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcShippingEstado: e.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid-feedback"
+      }, "Escribe el estado"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row scEnvio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mb-3 pl-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "zcShippingCiudad"
+      }, "Ciudad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcShippingCiudad",
+        type: "text",
+        className: "form-control",
+        name: "ship_to_address_city",
+        value: this.state.zcShippingCiudad,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcShippingCiudad: e.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid-feedback"
+      }, "La Ciudad es obligatoria")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mb-3 pr-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "zcShippingPostal"
+      }, "Codigo Postal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "zcShippingPostal",
+        type: "text",
+        className: "form-control",
+        name: "ship_to_address_postal_code",
+        value: this.state.zcShippingPostal,
+        onChange: function onChange(e) {
+          _this3.setState({
+            zcShippingPostal: e.target.value
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid-feedback"
+      }, "El Codigo Postal es obligatorio"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         className: "mb-4"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "woocommerce-additional-fields p-2 mb-3"
@@ -90851,7 +90810,6 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
       }, "(opcional)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "woocommerce-input-wrapper"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        name: "order_comments",
         className: "form-control",
         id: "order_comments",
         placeholder: "Notas sobre tu pedido, por ejemplo, notas especiales para la entrega.",
@@ -90889,6 +90847,14 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
 if (document.getElementById('App_Shop_Checkout_Compra')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Checkout_Compra_Shop, null), document.getElementById('App_Shop_Checkout_Compra'));
 }
+
+$("input.form-control").change(function () {
+  $(this).siblings(".invalid-feedback").removeClass("d-block");
+
+  if ($(this).val() == "" || $(this).val() == undefined) {
+    $(this).siblings(".invalid-feedback").addClass("d-block");
+  }
+});
 
 /***/ }),
 
@@ -93513,7 +93479,7 @@ var MyPedidos = /*#__PURE__*/function (_Component) {
           className: "text-center",
           "data-title": "Pedido"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "detalle-pedido.html"
+          href: "#"
         }, " #", row.id, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
           className: "text-center",
           "data-title": "Fecha"
@@ -93533,9 +93499,13 @@ var MyPedidos = /*#__PURE__*/function (_Component) {
           className: "text-center",
           "data-title": "Acciones"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "#",
-          className: "woocommerce-button button view"
-        }, "Ver")));
+          href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "invoice/" + row.transferencia.transaction_id + "/" + row.transferencia.req_transaction_uuid,
+          target: "_blank",
+          className: "btn btn-info text-light",
+          style: {
+            display: row.estado == "ACCEPT" ? "" : "none"
+          }
+        }, "Ver Factura")));
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "alert alert-info text-center",
         style: {
