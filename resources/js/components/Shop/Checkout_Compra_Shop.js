@@ -14,6 +14,8 @@ class Checkout_Compra_Shop extends Component {
             subtotal: 0,
             items: 0,
             total: 0,
+            delivery: 5,
+            tax_total: 0,
             paises: [],
 
             numeroReferencia: 0,
@@ -67,18 +69,18 @@ class Checkout_Compra_Shop extends Component {
                         isLoaded: true,
                         cartProducts: result.products,
                         subtotal: result.subtotal,
-                        total: result.subtotal + 5,
+                        total: result.subtotal + this.state.delivery,
                         items: result.items,
                         numeroReferencia: result.reference,
                         paises: result.paises,
-                        userPo: result.userPo
+                        userPo: result.userPo,
+                        tax_total: (result.subtotal * 7)/100
                     });
 
                     for (let index = 0; index < this.state.cartProducts.length; index++) {
                         this.setState({
-                            signedFielsExtra: this.state.signedFielsExtra+",item_"+index.toString()+"_code,item_"+index.toString()+"_sku,item_"+index.toString()+"_name,item_"+index.toString()+"_unit_price,item_"+index.toString()+"_quantity"
+                            signedFielsExtra: this.state.signedFielsExtra+",item_"+index.toString()+"_code,item_"+index.toString()+"_sku,item_"+index.toString()+"_name,item_"+index.toString()+"_unit_price,item_"+index.toString()+"_quantity,item_"+index.toString()+"_tax_amount"
                         });
-                        //,item_"+index.toString()+"_tax_amount
                     };
 
                     this.cybs_dfprofiler("tc_pa_016026821","test");
@@ -116,6 +118,18 @@ class Checkout_Compra_Shop extends Component {
         );
       }
 
+      componentDidUpdate(){
+          var newVal1 = this.state.subtotal + this.state.delivery;
+          
+          if(this.state.total != newVal1)
+          {
+            this.setState({
+                total: newVal1
+            });
+          }
+        
+      }
+      
       cybs_dfprofiler(merchantID, environment) {
 
         if (environment.toLowerCase() == 'live') {
@@ -265,7 +279,7 @@ class Checkout_Compra_Shop extends Component {
                                 <small className="text-muted">seleccionar</small>
                             </div>
 
-                            <div className="d-block my-3" onChange={(e) => (this.setState({total: parseInt(e.target.value) + parseInt(this.state.subtotal)}))}>
+                            <div className="d-block my-3" onChange={(e) => (this.setState({delivery: parseInt(e.target.value)}))}>
                                 <div className="custom-control custom-radio">
                                     <input id="panamaenvio" name="envio" type="radio" className="custom-control-input" value="5" defaultChecked />
                                     <label className="custom-control-label" htmlFor="panamaenvio">Panamá / Panamá <span> $5</span></label>
@@ -314,13 +328,15 @@ class Checkout_Compra_Shop extends Component {
                         <input type="hidden" name="profile_id" value="52EC2BD8-DC18-467C-BF84-EAAA8777495F" />
                         <input type="hidden" name="transaction_type" value="sale" />
                         <input type="hidden" name="transaction_uuid" value={Configuracion.uniqid("bill")} />
-                        <input type="hidden" name="signed_field_names" value={"access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,payment_method,bill_to_forename,bill_to_surname,bill_to_email,bill_to_phone,bill_to_address_line1,bill_to_address_city,bill_to_address_state,bill_to_address_country,bill_to_address_postal_code,ship_to_forename,ship_to_surname,ship_to_phone,ship_to_address_line1,ship_to_address_city,ship_to_address_state,ship_to_address_country,ship_to_address_postal_code,override_custom_receipt_page,device_fingerprint_id,merchant_defined_data2,merchant_defined_data3,user_po,customer_ip_address,line_item_count"+this.state.signedFielsExtra} />
+                        <input type="hidden" name="signed_field_names" value={"access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,payment_method,bill_to_forename,bill_to_surname,bill_to_email,bill_to_phone,bill_to_address_line1,bill_to_address_city,bill_to_address_state,bill_to_address_country,bill_to_address_postal_code,ship_to_forename,ship_to_surname,ship_to_phone,ship_to_address_line1,ship_to_address_city,ship_to_address_state,ship_to_address_country,ship_to_address_postal_code,override_custom_receipt_page,device_fingerprint_id,merchant_defined_data2,merchant_defined_data3,user_po,customer_ip_address,line_item_count,tax_indicator,tax_amount"+this.state.signedFielsExtra} />
                         <input type="hidden" name="unsigned_field_names" value="card_type,card_number,card_expiry_date,card_cvn" />
                         <input type="hidden" name="signed_date_time" value={Configuracion.getDateTimeTZ()} />
                         <input type="hidden" name="reference_number" value={this.state.numeroReferencia} />
                         <input type="hidden" name="locale" value="en" />
                         <input type="hidden" name="currency" value="USD" />
                         <input type="hidden" name="payment_method" value="card" />
+                        <input type="hidden" name="tax_indicator" value="Y" />
+                        <input type="hidden" name="tax_amount" value={this.state.tax_total} />
                         <input type="hidden" name="amount" value={this.state.total} />
                         <input type="hidden" name="line_item_count" value={this.state.cartProducts.length} />
                         <input type="hidden" name="device_fingerprint_id" value={this.state.device_fingerprint_id} />
@@ -336,6 +352,7 @@ class Checkout_Compra_Shop extends Component {
                                 <input type="hidden" name={"item_"+index.toString()+"_name"} value={row.name} />
                                 <input type="hidden" name={"item_"+index.toString()+"_quantity"} value={row.cantidad} />
                                 <input type="hidden" name={"item_"+index.toString()+"_unit_price"} value={row.precio_ahora} />
+                                <input type="hidden" name={"item_"+index.toString()+"_tax_amount"} value={(row.precio_ahora*7)/100} />
                             </fieldset>
                         ))}
                         </div>

@@ -88441,8 +88441,8 @@ if (document.getElementById('App_Mycart')) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var url_principal = "https://elescaparatedelolita.com/"; //const url_principal = "http://127.0.0.1:8000/";
-//const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
+//const url_principal = "https://elescaparatedelolita.com/";
+var url_principal = "http://127.0.0.1:8000/"; //const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
 
 var url_images = url_principal + 'images/';
 var Configuracion = {
@@ -89982,6 +89982,8 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
       subtotal: 0,
       items: 0,
       total: 0,
+      delivery: 5,
+      tax_total: 0,
       paises: [],
       numeroReferencia: 0,
       signedFielsExtra: "",
@@ -90031,18 +90033,18 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
             isLoaded: true,
             cartProducts: result.products,
             subtotal: result.subtotal,
-            total: result.subtotal + 5,
+            total: result.subtotal + _this2.state.delivery,
             items: result.items,
             numeroReferencia: result.reference,
             paises: result.paises,
-            userPo: result.userPo
+            userPo: result.userPo,
+            tax_total: result.subtotal * 7 / 100
           });
 
           for (var index = 0; index < _this2.state.cartProducts.length; index++) {
             _this2.setState({
-              signedFielsExtra: _this2.state.signedFielsExtra + ",item_" + index.toString() + "_code,item_" + index.toString() + "_sku,item_" + index.toString() + "_name,item_" + index.toString() + "_unit_price,item_" + index.toString() + "_quantity"
-            }); //,item_"+index.toString()+"_tax_amount
-
+              signedFielsExtra: _this2.state.signedFielsExtra + ",item_" + index.toString() + "_code,item_" + index.toString() + "_sku,item_" + index.toString() + "_name,item_" + index.toString() + "_unit_price,item_" + index.toString() + "_quantity,item_" + index.toString() + "_tax_amount"
+            });
           }
 
           ;
@@ -90070,6 +90072,17 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
           ipAddress: result.ip
         });
       });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var newVal1 = this.state.subtotal + this.state.delivery;
+
+      if (this.state.total != newVal1) {
+        this.setState({
+          total: newVal1
+        });
+      }
     }
   }, {
     key: "cybs_dfprofiler",
@@ -90219,7 +90232,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         className: "d-block my-3",
         onChange: function onChange(e) {
           return _this3.setState({
-            total: parseInt(e.target.value) + parseInt(_this3.state.subtotal)
+            delivery: parseInt(e.target.value)
           });
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -90309,7 +90322,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "hidden",
         name: "signed_field_names",
-        value: "access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,payment_method,bill_to_forename,bill_to_surname,bill_to_email,bill_to_phone,bill_to_address_line1,bill_to_address_city,bill_to_address_state,bill_to_address_country,bill_to_address_postal_code,ship_to_forename,ship_to_surname,ship_to_phone,ship_to_address_line1,ship_to_address_city,ship_to_address_state,ship_to_address_country,ship_to_address_postal_code,override_custom_receipt_page,device_fingerprint_id,merchant_defined_data2,merchant_defined_data3,user_po,customer_ip_address,line_item_count" + this.state.signedFielsExtra
+        value: "access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,payment_method,bill_to_forename,bill_to_surname,bill_to_email,bill_to_phone,bill_to_address_line1,bill_to_address_city,bill_to_address_state,bill_to_address_country,bill_to_address_postal_code,ship_to_forename,ship_to_surname,ship_to_phone,ship_to_address_line1,ship_to_address_city,ship_to_address_state,ship_to_address_country,ship_to_address_postal_code,override_custom_receipt_page,device_fingerprint_id,merchant_defined_data2,merchant_defined_data3,user_po,customer_ip_address,line_item_count,tax_indicator,tax_amount" + this.state.signedFielsExtra
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "hidden",
         name: "unsigned_field_names",
@@ -90334,6 +90347,14 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         type: "hidden",
         name: "payment_method",
         value: "card"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "tax_indicator",
+        value: "Y"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "tax_amount",
+        value: this.state.tax_total
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "hidden",
         name: "amount",
@@ -90390,6 +90411,10 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
           type: "hidden",
           name: "item_" + index.toString() + "_unit_price",
           value: row.precio_ahora
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "hidden",
+          name: "item_" + index.toString() + "_tax_amount",
+          value: row.precio_ahora * 7 / 100
         }));
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"

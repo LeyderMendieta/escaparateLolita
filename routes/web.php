@@ -13,13 +13,22 @@ use Illuminate\Support\Facades\Redirect;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
+Route::get('/test', function () {
+    return view('store.mailer.UsuarioPorFacturacionAnonima',array(
+        "nombres" => "Leyder Mendieta", 
+        "usuario" => "leiderpresiado@gmail.com", 
+        "clave" => "das514"
+    ));
+});
+*/
 
 Route::get('/','AppController@showHome');
 Route::get('/home','AppController@showHome');
 Route::get('/about', function () {
     return view('store.about');
 });
+
 Route::get('/features/shortcodes', function () {
     return view('store.feature_shortcodes');
 });

@@ -7,6 +7,7 @@ use App\UserPedido;
 use App\UserPedidoProducto;
 use App\cart;
 use App\cartProduct;
+use App\Mail\CrearUsuarioPorFacturacionAnonima;
 use App\Mail\EnviarFacturaRecibo;
 use App\User;
 use App\UserInfo;
@@ -145,11 +146,17 @@ class PagosController extends Controller
                     "celular" => $request->req_bill_to_phone,
                 ]);
 
-                $newUserUpdate->id_user = $newUser->id_usuario;
+                $newUserUpdate->id_user = $newUser->id;
                 $newUserUpdate->save();
                 //----------Cart
-                $mycart->id_usuario = $newUser->id_usuario;
+                $mycart->id_usuario = $newUser->id;
                 $mycart->save();
+
+                $sender = Mail::to($newUser)->send(new CrearUsuarioPorFacturacionAnonima(array(
+                    "nombres" =>  $newUser->name, 
+                    "usuario" => $newUser->email, 
+                    "clave" => $createdPassword
+                )));
             }
             else
             {

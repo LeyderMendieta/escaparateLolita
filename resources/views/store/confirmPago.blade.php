@@ -100,15 +100,17 @@
                                                 
                                                 <div class="section w-50">
                                                     <div class="row form-group">
-                                                        <label for="card_type">Tipo Tarjeta</label>
-                                                        <select id="tipoTarjeta" name="card_type" class="form-control p-0 pl-3 border" required>
+                                                        <input type="hidden" name="card_type" id="card_type">
+                                                        <label for="card_type">Tarjeta</label>
+                                                        <select id="tipoTarjeta" class="form-control p-0 pl-3 border" required disabled>
+                                                            <option value="" selected>...</option> 
                                                             <option value="001">Visa</option>
                                                             <option value="002">Mastercard</option>
                                                         </select>
                                                     </div>
                                                     <div class="row form-group">
                                                         <label for="card_number">Numero Tarjeta</label>
-                                                        <input id="numeroTarjeta" type="text" class="form-control border" name="card_number" minlength="16" maxlength="16" required />
+                                                        <input id="numeroTarjeta" type="text" class="form-control border fieldhide" name="card_number" minlength="16" maxlength="16" required />
                                                         <div class="invalid-field text-danger d-none">
                                                             <span class="invalid-cardtype"></span> Numero de Tarjeta no valido
                                                         </div>
@@ -155,7 +157,7 @@
                                                     </div>
                                                     <div class="row form-group">
                                                         <label for="card_cvn">cvn</label>
-                                                        <input type="number" class="form-control border" name="card_cvn" id="cvn" required />
+                                                        <input type="text" class="form-control border" name="card_cvn" id="cvn" required />
                                                         <div class="invalid-field text-danger d-none">
                                                             Digita el CVN de la tarjeta
                                                         </div>
@@ -177,6 +179,7 @@
         </div>
     
         @include('store.layouts.foot')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/skip-link-focus-fix.js')}}"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/_packed.js')}}"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/theme.hovers/theme.hovers.js')}}"></script>
@@ -189,40 +192,49 @@
 <script>
     $(document).ready(function(){
 
+        var nTarjeta = "";
+
         $(".form-control").change(function(){
             $(this).siblings(".invalid-field").addClass("d-none");
             $(this).parents(".col-6").find(".invalid-field-mes").addClass("d-none");
             $(this).parents(".col-6").find(".invalid-field-year").addClass("d-none");
         });
-        
+
+        $('#cvn').mask("999",{placeholder:"_"});
+
+        $('#numeroTarjeta').click(function(){
+            $(this).val("");
+        });
 
         $('#numeroTarjeta').change(function(){
-            var $tipo = $("#tipoTarjeta").val();
+            
             var numeroTarjeta = $(this).val();
+            var substr_tarjeta = str.substring(str.length - 4, str.length);
             var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
             var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
+            var passed = true;
+            if (visaRegEx.test(numeroTarjeta) === true ){
+                $('#card_type').val("001");
+            }
+            else if (mastercardRegEx.test(numeroTarjeta) === true ){ 
+                $('#card_type').val("002");
+            }
+            else {
+                $(this).siblings(".invalid-field").removeClass("d-none");
+                passed = false;
+            }
 
-            if($tipo == "001")
-            {
-                if (visaRegEx.test(numeroTarjeta) === false ){ 
-                    $(this).siblings(".invalid-field").removeClass("d-none");
-                }
-            }
-            else
-            {
-                if (mastercardRegEx.test(numeroTarjeta) === false ){ 
-                    $(this).siblings(".invalid-field").removeClass("d-none");
-                } 
-            }
+            if(passed) $(this).val("xxxx-xxxx-xxxx-"+substr_tarjeta);
+
+            nTarjeta = numeroTarjeta;
         });
 
         $('#realizarPago').click(function(){
 
-            var $tipo = $("#tipoTarjeta").val();
-            var numeroTarjeta = $('#numeroTarjeta').val();
+            var $tipo = $("#card_type").val();
+            var numeroTarjeta = nTarjeta;
             var mes = $('#mesField').val();
             var year = $('#yearField').val();
-            console.log("mes: ["+year+"]");
             var cvn = $('#cvn').val();
             var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
             var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
@@ -276,7 +288,7 @@
             {
                 return false;
             }
-            else $(this).parents("form").submit();
+            else { $('#numeroTarjeta').val(nTarjeta);$(this).parents("form").submit();}
         });
     });
     function cybs_dfprofiler(merchantID, environment) {
