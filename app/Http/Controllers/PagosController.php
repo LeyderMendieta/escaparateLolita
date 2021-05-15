@@ -164,7 +164,7 @@ class PagosController extends Controller
                 $newUserUpdate->id_user = $validateMail[0]->id;
                 $newUserUpdate->save();
                 //----------Cart
-                $mycart->id_usuario = $validateMail->id_usuario;
+                $mycart->id_usuario = $validateMail[0]->id;
                 $mycart->save();
             }
         }
