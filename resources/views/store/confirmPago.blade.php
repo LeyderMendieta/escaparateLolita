@@ -110,7 +110,7 @@
                                                     </div>
                                                     <div class="row form-group">
                                                         <label for="card_number">Numero Tarjeta</label>
-                                                        <input id="numeroTarjeta" type="text" class="form-control border fieldhide" name="card_number" minlength="16" maxlength="16" required />
+                                                        <input id="numeroTarjeta" type="text" class="form-control border clnfield" name="card_number" minlength="16" maxlength="16" required js-maxinput='16' onkeypress='validate(event)' />
                                                         <div class="invalid-field text-danger d-none">
                                                             <span class="invalid-cardtype"></span> Numero de Tarjeta no valido
                                                         </div>
@@ -157,7 +157,7 @@
                                                     </div>
                                                     <div class="row form-group">
                                                         <label for="card_cvn">cvn</label>
-                                                        <input type="text" class="form-control border" name="card_cvn" id="cvn" required />
+                                                        <input type="text" class="form-control border clnfield" name="card_cvn" id="cvn" required  onkeypress='validate(event)' js-maxinput='3' />
                                                         <div class="invalid-field text-danger d-none">
                                                             Digita el CVN de la tarjeta
                                                         </div>
@@ -190,9 +190,28 @@
     </body>
 </html>
 <script>
+function validate(evt) {
+  var theEvent = evt || window.event;
+
+  // Handle paste
+  if (theEvent.type === 'paste') {
+      key = event.clipboardData.getData('text/plain');
+  } else {
+  // Handle key press
+      var key = theEvent.keyCode || theEvent.which;
+      key = String.fromCharCode(key);
+  }
+  var regex = /[0-9]|\./;
+  if( !regex.test(key) || (theEvent.target.value.length > theEvent.target.getAttribute("js-maxinput")) ) {
+    theEvent.returnValue = false;
+    if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+}
+
     $(document).ready(function(){
 
         var nTarjeta = "";
+        var nCVN = "";
 
         $(".form-control").change(function(){
             $(this).siblings(".invalid-field").addClass("d-none");
@@ -200,23 +219,29 @@
             $(this).parents(".col-6").find(".invalid-field-year").addClass("d-none");
         });
 
-        $('#cvn').mask("999",{placeholder:"_"});
+        $('#cvn').change(function(){
+            var numeroCVN = $(this).val();
+            $(this).val("xxxx");
+            nCVN = numeroCVN;
+        });
 
-        $('#numeroTarjeta').click(function(){
+        $('.clnfield').click(function(){
             $(this).val("");
         });
 
         $('#numeroTarjeta').change(function(){
             
             var numeroTarjeta = $(this).val();
-            var substr_tarjeta = str.substring(str.length - 4, str.length);
+            var substr_tarjeta = numeroTarjeta.substring(numeroTarjeta.length - 4, numeroTarjeta.length);
             var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
             var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
             var passed = true;
             if (visaRegEx.test(numeroTarjeta) === true ){
+                $('#tipoTarjeta').val("001");
                 $('#card_type').val("001");
             }
             else if (mastercardRegEx.test(numeroTarjeta) === true ){ 
+                $('#tipoTarjeta').val("002");
                 $('#card_type').val("002");
             }
             else {
@@ -225,6 +250,7 @@
             }
 
             if(passed) $(this).val("xxxx-xxxx-xxxx-"+substr_tarjeta);
+            else $(this).val("xxxx-xxxx-xxxx-xxxx");
 
             nTarjeta = numeroTarjeta;
         });
@@ -235,7 +261,7 @@
             var numeroTarjeta = nTarjeta;
             var mes = $('#mesField').val();
             var year = $('#yearField').val();
-            var cvn = $('#cvn').val();
+            var cvn = nCVN;
             var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
             var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
             var cvnValidator = /^(?:[0-9]{3,4})$/;
@@ -288,7 +314,7 @@
             {
                 return false;
             }
-            else { $('#numeroTarjeta').val(nTarjeta);$(this).parents("form").submit();}
+            else { $('#numeroTarjeta').val(nTarjeta);$('#cvn').val(nCVN);$(this).parents("form").submit();}
         });
     });
     function cybs_dfprofiler(merchantID, environment) {
