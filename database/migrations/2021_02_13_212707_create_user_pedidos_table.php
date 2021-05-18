@@ -18,6 +18,7 @@ class CreateUserPedidosTable extends Migration
             $table->integer('id_user')->index();
             $table->integer("id_cupon")->index()->nullable();
             $table->integer("costoDomicilio")->nullable();
+            $table->float("impuesto",50);
             $table->float("total",50);
             $table->string("estado",50);
             $table->timestamps();

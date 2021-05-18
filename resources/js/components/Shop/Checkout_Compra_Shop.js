@@ -69,7 +69,7 @@ class Checkout_Compra_Shop extends Component {
                         isLoaded: true,
                         cartProducts: result.products,
                         subtotal: result.subtotal,
-                        total: result.subtotal + this.state.delivery,
+                        total: result.subtotal + this.state.delivery + ( (result.subtotal * 7)/100 ),
                         items: result.items,
                         numeroReferencia: result.reference,
                         paises: result.paises,
@@ -77,7 +77,7 @@ class Checkout_Compra_Shop extends Component {
                         tax_total: (result.subtotal * 7)/100
                     });
 
-                    for (let index = 0; index < this.state.cartProducts.length; index++) {
+                    for (let index = 0; index <= this.state.cartProducts.length; index++) {
                         this.setState({
                             signedFielsExtra: this.state.signedFielsExtra+",item_"+index.toString()+"_code,item_"+index.toString()+"_sku,item_"+index.toString()+"_name,item_"+index.toString()+"_unit_price,item_"+index.toString()+"_quantity,item_"+index.toString()+"_tax_amount"
                         });
@@ -119,12 +119,12 @@ class Checkout_Compra_Shop extends Component {
       }
 
       componentDidUpdate(){
-          var newVal1 = this.state.subtotal + this.state.delivery;
+          var newVal1 = this.state.subtotal + this.state.delivery + ((this.state.subtotal * 7)/100);
           
           if(this.state.total != newVal1)
           {
             this.setState({
-                total: newVal1
+                total: newVal1 
             });
           }
         
@@ -338,23 +338,29 @@ class Checkout_Compra_Shop extends Component {
                         <input type="hidden" name="tax_indicator" value="Y" />
                         <input type="hidden" name="tax_amount" value={this.state.tax_total} />
                         <input type="hidden" name="amount" value={this.state.total} />
-                        <input type="hidden" name="line_item_count" value={this.state.cartProducts.length} />
+                        <input type="hidden" name="line_item_count" value={this.state.cartProducts.length + 1} />
                         <input type="hidden" name="device_fingerprint_id" value={this.state.device_fingerprint_id} />
                         <input type="hidden" name="customer_ip_address" id="customer_ip_address" value={this.state.ipAddress} />
                         <input type="hidden" name="user_po" value={this.state.userPo} />
                         <input type="hidden" name="merchant_defined_data3" value= "https://elescaparatedelolita.com/" />
                         <input type="hidden" name="merchant_defined_data2" value= "El Escaparate de Lolita" />
                         <input type="hidden" name="override_custom_receipt_page" value={Configuracion.url_principal+"billing/response"} />
-                        {this.state.cartProducts.map((row,index) => (                            
-                            <fieldset key={index}>                                
-                                <input type="hidden" name={"item_"+index.toString()+"_code"} value={row.id} />
-                                <input type="hidden" name={"item_"+index.toString()+"_sku"} value={row.id+"C_"+row.color_selected+"T_"+row.talla_selected} />
-                                <input type="hidden" name={"item_"+index.toString()+"_name"} value={row.name} />
-                                <input type="hidden" name={"item_"+index.toString()+"_quantity"} value={row.cantidad} />
-                                <input type="hidden" name={"item_"+index.toString()+"_unit_price"} value={row.precio_ahora} />
-                                <input type="hidden" name={"item_"+index.toString()+"_tax_amount"} value={(row.precio_ahora*7)/100} />
-                            </fieldset>
-                        ))}
+                            {this.state.cartProducts.map((row,index) => (                            
+                                <fieldset key={index}>                                
+                                    <input type="hidden" name={"item_"+index.toString()+"_code"} value={row.id} />
+                                    <input type="hidden" name={"item_"+index.toString()+"_sku"} value={row.id+"C_"+row.color_selected+"T_"+row.talla_selected} />
+                                    <input type="hidden" name={"item_"+index.toString()+"_name"} value={row.name} />
+                                    <input type="hidden" name={"item_"+index.toString()+"_quantity"} value={row.cantidad} />
+                                    <input type="hidden" name={"item_"+index.toString()+"_unit_price"} value={row.precio_ahora} />
+                                    <input type="hidden" name={"item_"+index.toString()+"_tax_amount"} value={(row.precio_ahora*7)/100} />
+                                </fieldset>
+                            ))}                          
+                            <input type="hidden" name={"item_"+this.state.cartProducts.length.toString()+"_code"} value="CE" />
+                            <input type="hidden" name={"item_"+this.state.cartProducts.length.toString()+"_sku"} value={"CE_"+this.state.cartProducts.length.toString()} />
+                            <input type="hidden" name={"item_"+this.state.cartProducts.length.toString()+"_name"} value="Costo de Envío" />
+                            <input type="hidden" name={"item_"+this.state.cartProducts.length.toString()+"_quantity"} value="1" />
+                            <input type="hidden" name={"item_"+this.state.cartProducts.length.toString()+"_unit_price"} value={this.state.delivery} />
+                            <input type="hidden" name={"item_"+this.state.cartProducts.length.toString()+"_tax_amount"} value="0" />
                         </div>
                         <div className="row">
                             <div className="col-md-6 mb-3  pl-0">

@@ -6,6 +6,8 @@ use App\Product;
 use App\User;
 use App\AmbienteConfiguration;
 use App\Configuration;
+use App\UserPedido;
+use App\UserPedidoProducto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -161,10 +163,30 @@ class AdminController extends Controller
         return response()->json($users);
     }
 
+    public function getPedidos()
+    {
+        $userPedidos = UserPedido::where("id",">",0)->orderBy('id', 'desc')->get(); 
+
+        $data = [];
+        foreach($userPedidos as $fila)
+        {
+            $dbFactura = DB::select("SELECT * FROM transferencias WHERE id_pedido='$fila->id'");
+            $productos = UserPedidoProducto::where("id_user_pedido",$fila->id)->get();
+            if(count($dbFactura) > 0)
+            {
+                array_push($data,["id" => $fila->id, "id_usuario" => $fila->id_user, "card" => $fila->id_user_card, "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "total" => $fila->total, "impuesto" => $fila->impuesto, "transferencia" => $dbFactura[0], "productos" => $productos ]);
+            }            
+        }
+
+        return response()->json($data);
+    }
+
     public function getTotalSect1()
     {
         $productTotal = DB::table("products")->count();
         $usersTotal = DB::table("users")->count();
-        return response()->json(["products" => $productTotal,"users" => $usersTotal]);
+        $pedidosTotal = DB::table("user_pedidos")->count();
+        $pagosTotal = DB::table("user_pedidos")->sum("total");
+        return response()->json(["products" => $productTotal,"users" => $usersTotal,"pedidos" => $pedidosTotal,"pagos" => $pagosTotal]);
     }
 }

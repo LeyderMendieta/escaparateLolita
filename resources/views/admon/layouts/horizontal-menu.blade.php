@@ -35,7 +35,13 @@
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/agenda') }}">Agenda</a></li>
 										</ul>
 									</li>
-									<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/users') }}"><i class="fe fe-user"></i> Usuarios</a>
+									<li aria-haspopup="true"><a href="#" class="sub-icon"><i class="fe fe-bar-chart-2"></i> Informes <i class="fa fa-angle-down horizontal-icon"></i></a>
+										<ul class="sub-menu">
+											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/users') }}">Usuarios</a>
+											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/pedidos') }}">Pedidos</a></li>
+										</ul>
+									</li>
+									
 									<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/settings_enviroment') }}"><i class="fe fe-settings"></i> Configuraciones</a>
 									</li>
 								</ul>

@@ -564,27 +564,23 @@ class UsuarioController extends Controller
     public function getMyPedidos()
     {
         $session = (isset($_COOKIE["authlog"])) ? $_COOKIE["authlog"] : "null";
-
-        if($session == "null") 
-            return response()->json(array("error" => "oauthlogged"));
+        if($session == "null") return response()->json(array("error" => "oauthlogged"));
 
         $user = User::where(['api_token' => $session])->whereNotNull("api_token")->first();       
         if($user)
         {
-            $userPedidos = UserPedido::where(["id_user" => $user->id])->get();
-            
+            $userPedidos = UserPedido::where(["id_user" => $user->id]) ->orderBy('id', 'desc')->get(); 
 
             $data = [];
             foreach($userPedidos as $fila)
             {
-                $dbFactura = DB::select("SELECT * FROM transferencias WHERE id_pedido='$fila->id' ");
-                array_push($data,["id" => $fila->id,"card" => $fila->id_user_card , "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "total" => $fila->total, "transferencia" => $dbFactura[0] ]);
+                $dbFactura = DB::select("SELECT * FROM transferencias WHERE id_pedido='$fila->id'");
+                array_push($data,["id" => $fila->id, "card" => $fila->id_user_card, "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "total" => $fila->total, "impuesto" => $fila->impuesto, "transferencia" => $dbFactura[0] ]);
             }
 
             return response()->json(["pedidos" => $data]);
         }
-        else 
-            return response()->json(array("error" => "error found"));
+        else return response()->json(array("error" => "error found"));
     }
 
     public function aplicarCuponCarrito(Request $request)

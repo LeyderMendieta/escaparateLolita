@@ -44,6 +44,7 @@ require('./components/Users/RestablecerPassword');
 require('./components/Admin/solicitudes/App_solicitud_agenda');
 require('./components/Admin/procesos/App_Login_Admon');
 require('./components/Admin/procesos/App_Admon_Usuarios');
+require('./components/Admin/procesos/App_Admon_Pedidos');
 require('./components/Admin/App_Products');
 require('./components/Admin/App_Form_Product');
 require('./components/Admin/App_Categories');

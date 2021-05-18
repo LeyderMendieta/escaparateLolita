@@ -21,6 +21,7 @@ class CreateUserPedidoProductosTable extends Migration
             $table->text('color_selected');
             $table->integer('cantidad');
             $table->float("precio",50);
+            $table->float("impuesto",50);
             $table->float("total",50);
             $table->timestamps();
         });

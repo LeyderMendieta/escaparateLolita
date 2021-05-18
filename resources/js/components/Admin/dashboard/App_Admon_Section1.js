@@ -10,10 +10,11 @@ class App_Admon_Dashboard_Section1 extends Component {
         this.state = {
           error: null,
           isLoaded: false,
+          totalPedidos: 0,
           totalProducts: 0,
+          totalPagos: "",
           totalUsers: 0
         };
-        
       }
 
       componentDidMount(){
@@ -21,9 +22,12 @@ class App_Admon_Dashboard_Section1 extends Component {
         .then(res => res.json())
         .then(
         (result) => {
+            
             this.setState({
                 totalProducts: result.products,
                 totalUsers: result.users,
+                totalPedidos: result.pedidos,
+                totalPagos: Configuracion.formatterCurrency.format(result.pagos),
                 isLoaded: true
             });
         });
@@ -46,7 +50,7 @@ class App_Admon_Dashboard_Section1 extends Component {
                         <div className="card-body">
                             <div>
                                 <p className="card-text text-muted mb-1">Total</p>
-                                <h2 className="mb-2 number-font">0</h2>
+                                <h2 className="mb-2 number-font">{this.state.totalPedidos}</h2>
                                 <div className="progress progress-md h-1 mb-1">
                                     <div className="progress-bar progress-bar-striped progress-bar-animated bg-primary w-60"></div>
                                 </div>
@@ -84,13 +88,13 @@ class App_Admon_Dashboard_Section1 extends Component {
                                 <span className="avatar mr-3 br-3 align-self-center avatar-sm cover-image bg-success-transparent text-success">
                                     <i className="fe fe-dollar-sign"></i>
                                 </span>
-                                <h3 className="card-title mt-1">Devoluciones</h3>
+                                <h3 className="card-title mt-1">Pagos</h3>
                             </div>
                         </div>
                         <div className="card-body">
                             <div>
                                 <p className="card-text text-muted mb-1">Total</p>
-                                <h2 className="mb-2 number-font">0</h2>
+                                <h2 className="mb-2 number-font">{this.state.totalPagos}</h2>
                                 <div className="progress progress-md h-1 mb-1">
                                     <div className="progress-bar progress-bar-striped progress-bar-animated bg-success w-20"></div>
                                 </div>

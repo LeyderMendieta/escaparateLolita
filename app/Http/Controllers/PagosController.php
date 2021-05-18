@@ -36,18 +36,30 @@ class PagosController extends Controller
             return response()->json(array("error" => "Fallo en la conexión con el carrito"));
         }
 
-        $myproducts_cart = DB::select("SELECT t0.id as cartId,t0.talla_selected,t0.color_selected,t0.cantidad,t1.* FROM cart_products t0 INNER JOIN products t1 ON t0.id_product=t1.id WHERE t0.id_cart=".$mycart->id);
-
+        /** ----------------- Guardar Pedido */
         $user_pedido = new UserPedido();
         $user_pedido->id_user = $mycart->id_usuario;
         $user_pedido->id_cupon = $mycart->id_cupon;
-        $user_pedido->costoDomicilio = 5;
-        $user_pedido->total = $request->req_amount;
+        if(isset($request->req_line_item_count))
+        {
+            $arreglo = $request->req_line_item_count - 1;
+            if(isset($request->{"req_item_".$arreglo."_unit_price"}))
+            {
+                $user_pedido->costoDomicilio = $request->{"req_item_".$arreglo."_unit_price"}; 
+            }
+            else $user_pedido->costoDomicilio = 0;
+        }
+        else $user_pedido->costoDomicilio = 0;
+        $user_pedido->impuesto = (isset($request->req_tax_amount)) ? $request->req_tax_amount : 0;
+        $user_pedido->total = (isset($request->req_amount)) ? $request->req_amount : 0;
         $user_pedido->estado = $request->decision;
         $user_pedido->save();
 
+        $myproducts_cart = DB::select("SELECT t0.id as cartId,t0.talla_selected,t0.color_selected,t0.cantidad,t1.* FROM cart_products t0 INNER JOIN products t1 ON t0.id_product=t1.id WHERE t0.id_cart=".$mycart->id);
+
         foreach($myproducts_cart as $producto)
         {
+            $impuestox = ($producto->precio_ahora * $producto->cantidad) * 7 / 100;
             $user_pedido_producto = new UserPedidoProducto();
             $user_pedido_producto->id_user_pedido = $user_pedido->id;
             $user_pedido_producto->id_product = $producto->id;
@@ -55,11 +67,15 @@ class PagosController extends Controller
             $user_pedido_producto->color_selected = $producto->color_selected;
             $user_pedido_producto->cantidad = $producto->cantidad;
             $user_pedido_producto->precio = $producto->precio_ahora;
-            $user_pedido_producto->total = $producto->precio_ahora * $producto->cantidad;
+            $user_pedido_producto->impuesto = $impuestox;
+            $user_pedido_producto->total = ($producto->precio_ahora * $producto->cantidad) + $impuestox;
             $user_pedido_producto->save();
         }
 
         DB::table('cart_products')->where('id_cart', $mycart->id)->delete();
+
+        /**----------END Guardar Pedido */
+       
 
         $transferencia = new Transferencia();
         $transferencia->id_pedido = $user_pedido->id;
@@ -116,10 +132,11 @@ class PagosController extends Controller
             $transferencia->message = $request->message;
             $transferencia->req_transaction_uuid = $request->req_transaction_uuid;
             $transferencia->req_reference_number = $request->req_reference_number;
-        }
-        
+        }       
         $transferencia->save();
+
         
+    
         $user = User::where("id",$mycart->id_usuario)->get();
         if(count($user) == 0)
         {

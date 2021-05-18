@@ -52,6 +52,9 @@ class MyPedidos extends Component {
                                     <span>Estado</span>
                                 </th>
                                 <th>
+                                    <span>Impuesto</span>
+                                </th>
+                                <th>
                                     <span>Total</span>
                                 </th>
                                 <th>
@@ -68,8 +71,11 @@ class MyPedidos extends Component {
                                 <td className="text-center" data-title="Fecha">
                                     <time dateTime={row.fecha}>{row.fecha}</time>
                                 </td>
-                                <td className="text-center" data-title="Estado">
+                                <td className="text-center" data-title="Estado" style={{fontWeight:"550",color: (row.estado == "ACCEPT") ? "green" : "red"}} >
                                     {row.estado}
+                                </td>
+                                <td className="text-center" data-title="Impuesto">
+                                    <span className="woocommerce-Price-amount amount"><span className="woocommerce-Price-currencySymbol">$</span>{row.impuesto}</span>                                    
                                 </td>
                                 <td className="text-center" data-title="Total">
                                     <span className="woocommerce-Price-amount amount"><span className="woocommerce-Price-currencySymbol">$</span>{row.total}</span>                                    

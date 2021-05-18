@@ -80033,6 +80033,8 @@ __webpack_require__(/*! ./components/Admin/procesos/App_Login_Admon */ "./resour
 
 __webpack_require__(/*! ./components/Admin/procesos/App_Admon_Usuarios */ "./resources/js/components/Admin/procesos/App_Admon_Usuarios.js");
 
+__webpack_require__(/*! ./components/Admin/procesos/App_Admon_Pedidos */ "./resources/js/components/Admin/procesos/App_Admon_Pedidos.js");
+
 __webpack_require__(/*! ./components/Admin/App_Products */ "./resources/js/components/Admin/App_Products.js");
 
 __webpack_require__(/*! ./components/Admin/App_Form_Product */ "./resources/js/components/Admin/App_Form_Product.js");
@@ -85726,7 +85728,9 @@ var App_Admon_Dashboard_Section1 = /*#__PURE__*/function (_Component) {
     _this.state = {
       error: null,
       isLoaded: false,
+      totalPedidos: 0,
       totalProducts: 0,
+      totalPagos: "",
       totalUsers: 0
     };
     return _this;
@@ -85743,6 +85747,8 @@ var App_Admon_Dashboard_Section1 = /*#__PURE__*/function (_Component) {
         _this2.setState({
           totalProducts: result.products,
           totalUsers: result.users,
+          totalPedidos: result.pedidos,
+          totalPagos: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].formatterCurrency.format(result.pagos),
           isLoaded: true
         });
       });
@@ -85770,7 +85776,7 @@ var App_Admon_Dashboard_Section1 = /*#__PURE__*/function (_Component) {
         className: "card-text text-muted mb-1"
       }, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "mb-2 number-font"
-      }, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.totalPedidos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "progress progress-md h-1 mb-1"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "progress-bar progress-bar-striped progress-bar-animated bg-primary w-60"
@@ -85824,13 +85830,13 @@ var App_Admon_Dashboard_Section1 = /*#__PURE__*/function (_Component) {
         className: "fe fe-dollar-sign"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "card-title mt-1"
-      }, "Devoluciones"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Pagos"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "card-text text-muted mb-1"
       }, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "mb-2 number-font"
-      }, "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.totalPagos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "progress progress-md h-1 mb-1"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "progress-bar progress-bar-striped progress-bar-animated bg-success w-20"
@@ -85879,6 +85885,136 @@ var App_Admon_Dashboard_Section1 = /*#__PURE__*/function (_Component) {
 
 if (document.getElementById('App_admdashboards_sect1')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Admon_Dashboard_Section1, null), document.getElementById('App_admdashboards_sect1'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/procesos/App_Admon_Pedidos.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Admin/procesos/App_Admon_Pedidos.js ***!
+  \*********************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Configuration */ "./resources/js/components/Configuration.js");
+/* harmony import */ var react_html_table_to_excel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-html-table-to-excel */ "./node_modules/react-html-table-to-excel/index.js");
+/* harmony import */ var react_html_table_to_excel__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_html_table_to_excel__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var App_Admon_Pedidos = /*#__PURE__*/function (_Component) {
+  _inherits(App_Admon_Pedidos, _Component);
+
+  var _super = _createSuper(App_Admon_Pedidos);
+
+  function App_Admon_Pedidos(props) {
+    var _this;
+
+    _classCallCheck(this, App_Admon_Pedidos);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      pedidos: []
+    };
+    return _this;
+  }
+
+  _createClass(App_Admon_Pedidos, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/admin/pedidosList").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          pedidos: result,
+          isLoaded: true
+        });
+
+        $('#tableProducts').DataTable({
+          responsive: {
+            details: {
+              display: $.fn.dataTable.Responsive.display.modal({
+                header: function header(row) {
+                  var data = row.data();
+                  return '<b>' + data[0] + ' - ' + data[2] + '</b><br/><br/>';
+                }
+              }),
+              renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                tableClass: 'table table-dark'
+              })
+            }
+          },
+          language: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].languageDataTable
+        });
+      });
+      $('#download-xls').append("<i class='fa fa-download'></i> Descargar Excel");
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row text-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_html_table_to_excel__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        id: "download-xls",
+        className: "btn btn-success my-3 mb-5",
+        table: "tableProducts",
+        filename: "ListadoUsuarios_EscaparatedeLolita",
+        sheet: "Usuairos",
+        buttonText: ""
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        id: "tableProducts",
+        className: "table table-striped table-bordered text-nowrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fecha"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Usuario"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Estado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Impuesto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Transacci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Productos"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.pedidos.map(function (row) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: row.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.fecha), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.id_usuario), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.estado), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.impuesto), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.transferencia.transaction_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, row.productos.map(function (rowx, index) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: index
+          }, " Producto: ", rowx.id_product, " Precio: ", rowx.precio);
+        }))));
+      }))));
+    }
+  }]);
+
+  return App_Admon_Pedidos;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_admpedidos')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Admon_Pedidos, null), document.getElementById('App_admpedidos'));
 }
 
 /***/ }),
@@ -88446,6 +88582,10 @@ var url_principal = "https://elescaparatedelolita.com/"; //const url_principal =
 
 var url_images = url_principal + 'images/';
 var Configuracion = {
+  formatterCurrency: new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  }),
   url_principal: url_principal,
   url_images: url_images,
   languageDataTable: {
@@ -90033,7 +90173,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
             isLoaded: true,
             cartProducts: result.products,
             subtotal: result.subtotal,
-            total: result.subtotal + _this2.state.delivery,
+            total: result.subtotal + _this2.state.delivery + result.subtotal * 7 / 100,
             items: result.items,
             numeroReferencia: result.reference,
             paises: result.paises,
@@ -90041,7 +90181,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
             tax_total: result.subtotal * 7 / 100
           });
 
-          for (var index = 0; index < _this2.state.cartProducts.length; index++) {
+          for (var index = 0; index <= _this2.state.cartProducts.length; index++) {
             _this2.setState({
               signedFielsExtra: _this2.state.signedFielsExtra + ",item_" + index.toString() + "_code,item_" + index.toString() + "_sku,item_" + index.toString() + "_name,item_" + index.toString() + "_unit_price,item_" + index.toString() + "_quantity,item_" + index.toString() + "_tax_amount"
             });
@@ -90076,7 +90216,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      var newVal1 = this.state.subtotal + this.state.delivery;
+      var newVal1 = this.state.subtotal + this.state.delivery + this.state.subtotal * 7 / 100;
 
       if (this.state.total != newVal1) {
         this.setState({
@@ -90362,7 +90502,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "hidden",
         name: "line_item_count",
-        value: this.state.cartProducts.length
+        value: this.state.cartProducts.length + 1
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "hidden",
         name: "device_fingerprint_id",
@@ -90416,6 +90556,30 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
           name: "item_" + index.toString() + "_tax_amount",
           value: row.precio_ahora * 7 / 100
         }));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "item_" + this.state.cartProducts.length.toString() + "_code",
+        value: "CE"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "item_" + this.state.cartProducts.length.toString() + "_sku",
+        value: "CE_" + this.state.cartProducts.length.toString()
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "item_" + this.state.cartProducts.length.toString() + "_name",
+        value: "Costo de Env\xEDo"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "item_" + this.state.cartProducts.length.toString() + "_quantity",
+        value: "1"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "item_" + this.state.cartProducts.length.toString() + "_unit_price",
+        value: this.state.delivery
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "item_" + this.state.cartProducts.length.toString() + "_tax_amount",
+        value: "0"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -93497,7 +93661,7 @@ var MyPedidos = /*#__PURE__*/function (_Component) {
         className: "table-responsive"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table table-hover"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Pedido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Fecha")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Estado")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Total")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Acciones")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.pedidos.map(function (row) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Pedido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Fecha")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Estado")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Impuesto")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Total")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Acciones")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.pedidos.map(function (row) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: row.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
@@ -93512,8 +93676,19 @@ var MyPedidos = /*#__PURE__*/function (_Component) {
           dateTime: row.fecha
         }, row.fecha)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
           className: "text-center",
-          "data-title": "Estado"
+          "data-title": "Estado",
+          style: {
+            fontWeight: "550",
+            color: row.estado == "ACCEPT" ? "green" : "red"
+          }
         }, row.estado), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-center",
+          "data-title": "Impuesto"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "woocommerce-Price-amount amount"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "woocommerce-Price-currencySymbol"
+        }, "$"), row.impuesto)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
           className: "text-center",
           "data-title": "Total"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {

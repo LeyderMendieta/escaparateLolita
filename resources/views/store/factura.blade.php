@@ -171,21 +171,21 @@ td.align-right {
                         <table class="table" role="presentation"> 
                          <thead> 
                           <tr> 
-                           <th>ID</th> 
                            <th>Producto</th> 
                            <th>Color</th>
                            <th>Cantidad</th>
-                           <th>Precio</th>
+                           <th>C/U</th>
+                           <th>Impuesto</th>
                            <th>Total</th>
                           </tr> 
                          </thead> 
                          @foreach($productos as $fila)
                             <tr> 
-                                <td>{{$fila->productoID}}</td> 
-                                <td class="align-left">{{$fila->name}}</td> 
+                                <td class="align-left">{{$fila->productoID}} - {{$fila->name}}</td> 
                                 <td>{{$fila->color_selected}}</td> 
                                 <td>{{$fila->cantidad}}</td> 
                                 <td>${{$fila->precio}}</td> 
+                                <td>${{$fila->impuesto}}</td> 
                                 <td>${{$fila->total}}</td> 
                             </tr> 
                          @endforeach
