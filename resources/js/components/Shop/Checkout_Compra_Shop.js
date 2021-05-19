@@ -255,7 +255,7 @@ class Checkout_Compra_Shop extends Component {
         $('#'+tokenParam).toggleClass("credit-card--white").toggleClass("credit-card--green");
         if($('#'+tokenParam).hasClass("credit-card--green")) 
         {
-            $(".selectCardPayment:not(#"+tokenParam+")").toggleClass("credit-card--white").toggleClass("credit-card--green");
+            $(".selectCardPayment:not(#"+tokenParam+")").addClass("credit-card--white").removeClass("credit-card--green");
             alert("Ha seleccionado el medio de Pago");
 
             this.setState({
