@@ -25,8 +25,7 @@ a.shop-button {
     padding: 30px 20px;
     margin-top: 15px;
     display: flex;
-    flex-direction: column;
-    color: #fff;
+    flex-direction: column;    
     font-weight: 300;
     border-radius: var(--border-radius);
     box-shadow: var(--shallow-shadow);
@@ -56,6 +55,16 @@ a.shop-button {
 
 .credit-card--purple {
     background: linear-gradient(to right, #bf9eff, #8092fc);
+}
+
+.credit-card--white {
+    background: linear-gradient(to right, #E6E8EA, #bebebe);
+    color: #464747;
+}
+
+.credit-card--green {
+    background: linear-gradient(to right, #9ff0aa, #4bf3a5);
+    color: green;
 }
 
 .credit-card--blue {

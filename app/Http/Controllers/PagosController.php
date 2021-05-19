@@ -40,6 +40,7 @@ class PagosController extends Controller
         $user_pedido = new UserPedido();
         $user_pedido->id_user = $mycart->id_usuario;
         $user_pedido->id_cupon = $mycart->id_cupon;
+        $user_pedido->id_cart = $mycart->id;
         if(isset($request->req_line_item_count))
         {
             $arreglo = $request->req_line_item_count - 1;
@@ -72,8 +73,6 @@ class PagosController extends Controller
             $user_pedido_producto->save();
         }
 
-        DB::table('cart_products')->where('id_cart', $mycart->id)->delete();
-
         /**----------END Guardar Pedido */
        
 
@@ -81,7 +80,7 @@ class PagosController extends Controller
         $transferencia->id_pedido = $user_pedido->id;
         if($request->decision == "ACCEPT")
         {
-            $transferencia->auth_cv_result = $request->auth_cv_result;  
+            $transferencia->auth_cv_result = (isset($request->auth_cv_result)) ? $request->auth_cv_result : "T";  
             $transferencia->auth_trans_ref_no = $request->auth_trans_ref_no;
             $transferencia->auth_amount = $request->auth_amount;
             $transferencia->auth_response = $request->auth_response;
@@ -142,6 +141,7 @@ class PagosController extends Controller
         {
             $validateMail = User::where("email",$request->req_bill_to_email)->get();
             $newUserUpdate = UserPedido::where("id",$user_pedido->id)->first();
+            $userKey = 0;
             if(count($validateMail) == 0)
             {
                 $createdPassword = strtoupper(Str::random(6));
@@ -169,6 +169,8 @@ class PagosController extends Controller
                 $mycart->id_usuario = $newUser->id;
                 $mycart->save();
 
+                $userKey = $newUser->id;
+
                 $sender = Mail::to($newUser)->send(new CrearUsuarioPorFacturacionAnonima(array(
                     "nombres" =>  $newUser->name, 
                     "usuario" => $newUser->email, 
@@ -183,7 +185,22 @@ class PagosController extends Controller
                 //----------Cart
                 $mycart->id_usuario = $validateMail[0]->id;
                 $mycart->save();
+
+                $userKey = $validateMail[0]->id;
             }
+        }
+        else $userKey = $user[0]->id;
+
+        if($request->decision == "ACCEPT" && $request->req_transaction_type == "sale,create_payment_token")
+        {
+            DB::table('user_payment_tokens')->insert([
+                'id_user' => $userKey,
+                'nombre_card' => $request->req_bill_to_surname." ".$request->req_bill_to_forename,
+                'card_type_name' => $request->card_type_name,
+                'req_card_number' => $request->req_card_number,
+                'req_card_expiry_date' => $request->req_card_expiry_date,
+                'payment_token' => $request->payment_token,
+            ]);
         }
 
         /** Send Notification Rules */
@@ -199,6 +216,9 @@ class PagosController extends Controller
         else if(count($validateMail) > 0) $userToMail = $validateMail ; 
         else $userToMail = $newUser;
         
+        /**Delete Productos del Carrito */
+        DB::table('cart_products')->where('id_cart', $mycart->id)->delete();
+
         if(isset($transferencia->transaction_id))
         {
             $sendStatus = Mail::to($userToMail)->send(new EnviarFacturaRecibo(array(

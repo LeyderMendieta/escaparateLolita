@@ -17,6 +17,10 @@ class Checkout_Compra_Shop extends Component {
             delivery: 5,
             tax_total: 0,
             paises: [],
+            paymentsData: [],
+            paymentToken: "",
+            transactionType: ",create_payment_token",
+            unsignedFields: "card_type,card_number,card_expiry_date,card_cvn",
 
             numeroReferencia: 0,
             signedFielsExtra: "",
@@ -74,6 +78,7 @@ class Checkout_Compra_Shop extends Component {
                         numeroReferencia: result.reference,
                         paises: result.paises,
                         userPo: result.userPo,
+                        paymentsData: result.paymentsData,
                         tax_total: (result.subtotal * 7)/100
                     });
 
@@ -245,6 +250,30 @@ class Checkout_Compra_Shop extends Component {
         $('.scEnvio').toggleClass("d-none");
       }
 
+      selectCard(tokenParam,event)
+      {
+        $('#'+tokenParam).toggleClass("credit-card--white").toggleClass("credit-card--green");
+        if($('#'+tokenParam).hasClass("credit-card--green")) 
+        {
+            $(".selectCardPayment:not(#"+tokenParam+")").toggleClass("credit-card--white").toggleClass("credit-card--green");
+            alert("Ha seleccionado el medio de Pago");
+
+            this.setState({
+                paymentToken: tokenParam,
+                transactionType: "",
+                unsignedFields: ""
+            });
+        }
+        else
+        {
+            this.setState({
+                paymentToken: "",
+                transactionType: ",create_payment_token",
+                unsignedFields: "card_type,card_number,card_expiry_date,card_cvn"
+            });
+        }
+      }
+
       render(){
         return (
             <div className="row">
@@ -326,10 +355,10 @@ class Checkout_Compra_Shop extends Component {
                         <div className="row setparamsg">
                         <input type="hidden" name="access_key" value="e4c15fd430d9361dabc777dc872fa3d2" />
                         <input type="hidden" name="profile_id" value="52EC2BD8-DC18-467C-BF84-EAAA8777495F" />
-                        <input type="hidden" name="transaction_type" value="sale" />
+                        <input type="hidden" name="transaction_type" value={"sale"+this.state.transactionType} />
                         <input type="hidden" name="transaction_uuid" value={Configuracion.uniqid("bill")} />
-                        <input type="hidden" name="signed_field_names" value={"access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,payment_method,bill_to_forename,bill_to_surname,bill_to_email,bill_to_phone,bill_to_address_line1,bill_to_address_city,bill_to_address_state,bill_to_address_country,bill_to_address_postal_code,ship_to_forename,ship_to_surname,ship_to_phone,ship_to_address_line1,ship_to_address_city,ship_to_address_state,ship_to_address_country,ship_to_address_postal_code,override_custom_receipt_page,device_fingerprint_id,merchant_defined_data2,merchant_defined_data3,user_po,customer_ip_address,line_item_count,tax_indicator,tax_amount"+this.state.signedFielsExtra} />
-                        <input type="hidden" name="unsigned_field_names" value="card_type,card_number,card_expiry_date,card_cvn" />
+                        <input type="hidden" name="signed_field_names" value={"access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,payment_token,reference_number,amount,currency,payment_method,bill_to_forename,bill_to_surname,bill_to_email,bill_to_phone,bill_to_address_line1,bill_to_address_city,bill_to_address_state,bill_to_address_country,bill_to_address_postal_code,ship_to_forename,ship_to_surname,ship_to_phone,ship_to_address_line1,ship_to_address_city,ship_to_address_state,ship_to_address_country,ship_to_address_postal_code,override_custom_receipt_page,device_fingerprint_id,merchant_defined_data2,merchant_defined_data3,user_po,customer_ip_address,line_item_count,tax_indicator,tax_amount"+this.state.signedFielsExtra} />
+                        <input type="hidden" name="unsigned_field_names" value={this.state.unsignedFields} />
                         <input type="hidden" name="signed_date_time" value={Configuracion.getDateTimeTZ()} />
                         <input type="hidden" name="reference_number" value={this.state.numeroReferencia} />
                         <input type="hidden" name="locale" value="en" />
@@ -344,6 +373,7 @@ class Checkout_Compra_Shop extends Component {
                         <input type="hidden" name="user_po" value={this.state.userPo} />
                         <input type="hidden" name="merchant_defined_data3" value= "https://elescaparatedelolita.com/" />
                         <input type="hidden" name="merchant_defined_data2" value= "El Escaparate de Lolita" />
+                        <input type="hidden" name="payment_token" value={this.state.paymentToken} />
                         <input type="hidden" name="override_custom_receipt_page" value={Configuracion.url_principal+"billing/response"} />
                             {this.state.cartProducts.map((row,index) => (                            
                                 <fieldset key={index}>                                
@@ -530,9 +560,21 @@ class Checkout_Compra_Shop extends Component {
                                 </div>
                             </div>
                         </div>
+                        <div className="mb-3">
+                            <h6 className={(this.state.paymentsData.length > 0) ? "d-block" : "d-none"}>Elige un Medio de Pago previo</h6>
+                            <ul className="credit-cards">
+                                {this.state.paymentsData.map((row) => (
+                                    <li className="selectCardPayment credit-card credit-card--white" onClick={this.selectCard.bind(this, row.payment_token)} id={row.payment_token} key={row.id}>
+                                        <div className="credit-card__number">{row.req_card_number}</div>
+                                        <div className="credit-card__name h5">{row.nombre_card}</div>
+                                        <div className="credit-card__footer">Expiración: {row.req_card_expiry_date}<span className="pull-right text-capitalize h5">{row.card_type_name}</span></div>
+                                    </li>
+                                ))}                                
+                            </ul>
+                        </div>
                         <hr className="mb-4" />
                         <div className="woocommerce-additional-fields p-2 mb-3">
-                            <h3>Información adicional</h3>
+                            <h5>Información adicional</h5>
                             <div className="">
                                 <p className="form-row notes" id="order_comments_field" data-priority=""><label htmlFor="order_comments" className="">Notas del pedido&nbsp;<span className="optional">(opcional)</span></label><span className="woocommerce-input-wrapper"></span></p>
                                 <textarea className="form-control" id="order_comments" placeholder="Notas sobre tu pedido, por ejemplo, notas especiales para la entrega." rows="2" cols="5"></textarea>

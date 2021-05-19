@@ -80,6 +80,7 @@
                                                         foreach($_REQUEST as $name => $value) {
                                                             $params[$name] = $value;
                                                         }
+                                                        
                                                         /*
                                                         foreach($params as $name => $value) {
                                                             echo "<div>";
@@ -95,75 +96,90 @@
                                                     echo "<input type=\"hidden\" id=\"" . $name . "\" name=\"" . $name . "\" value=\"" . $value . "\"/>\n";
                                                 }
                                                 echo "<input type=\"hidden\" id=\"signature\" name=\"signature\" value=\"" . sign($params) . "\"/>\n";
-                                            ?>
-                                            <fieldset>
                                                 
-                                                <div class="section w-50">
-                                                    <div class="row form-group">
-                                                        <input type="hidden" name="card_type" id="card_type">
-                                                        <label for="card_type">Tarjeta</label>
-                                                        <select id="tipoTarjeta" class="form-control p-0 pl-3 border" required disabled>
-                                                            <option value="" selected>...</option> 
-                                                            <option value="001">Visa</option>
-                                                            <option value="002">Mastercard</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label for="card_number">Numero Tarjeta</label>
-                                                        <input id="numeroTarjeta" type="text" class="form-control border clnfield" name="card_number" minlength="16" maxlength="16" required js-maxinput='16' onkeypress='validate(event)' />
-                                                        <div class="invalid-field text-danger d-none">
-                                                            <span class="invalid-cardtype"></span> Numero de Tarjeta no valido
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <label for="card_expiry_date">Mes de Expiración</label>
-                                                            <select id="mesField" class="form-control p-0 pl-3 border" required>
-                                                                <option value="">Seleccionar...</option>
-                                                                <?php 
-                                                                $mes = 1;
-                                                                while($mes < 13)
-                                                                {
-                                                                    if($mes < 10) $dato = "0".$mes;
-                                                                    else $dato = $mes;
-                                                                    echo "<option value='$dato'>$mes</option>";
-                                                                    $mes++;
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                            <div class="invalid-field-mes text-danger d-none">
-                                                                Elige el Mes de Expiración
+                                                /**Validate if exist Token Payment */
+                                                if($params["transaction_type"] == "sale" )
+                                                {
+                                                    echo "<span id='typeSale' style='display:none'>payment</span>";
+                                                    ?>
+                                                        <span>Confirmar el pago para finalizar la compra</span> <br/><br/>
+                                                    <?php
+                                                }
+                                                else
+                                                {
+                                                    echo "<span id='typeSale' style='display:none'>card</span>";
+                                                    ?>
+                                                        <fieldset id="nuevoMetodoPago">
+                                                            <div class="section w-50">
+                                                                <div class="row form-group">
+                                                                    <input type="hidden" name="card_type" id="card_type">
+                                                                    <label for="card_type">Tarjeta</label>
+                                                                    <select id="tipoTarjeta" class="form-control p-0 pl-3 border" disabled>
+                                                                        <option value="" selected>...</option> 
+                                                                        <option value="001">Visa</option>
+                                                                        <option value="002">Mastercard</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="row form-group">
+                                                                    <label for="card_number">Numero Tarjeta</label>
+                                                                    <input id="numeroTarjeta" type="text" class="form-control border clnfield" name="card_number" minlength="16" maxlength="16" js-maxinput='16' onkeypress='validate(event)' />
+                                                                    <div class="invalid-field text-danger d-none">
+                                                                        <span class="invalid-cardtype"></span> Numero de Tarjeta no valido
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <label for="card_expiry_date">Mes de Expiración</label>
+                                                                        <select id="mesField" class="form-control p-0 pl-3 border">
+                                                                            <option value="">Seleccionar...</option>
+                                                                            <?php 
+                                                                            $mes = 1;
+                                                                            while($mes < 13)
+                                                                            {
+                                                                                if($mes < 10) $dato = "0".$mes;
+                                                                                else $dato = $mes;
+                                                                                echo "<option value='$dato'>$mes</option>";
+                                                                                $mes++;
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                        <div class="invalid-field-mes text-danger d-none">
+                                                                            Elige el Mes de Expiración
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <label for="card_expiry_date">Año de Expiración</label>
+                                                                        <select id="yearField" class="form-control p-0 pl-3 border">
+                                                                            <option value="">Seleccionar...</option>
+                                                                            <?php 
+                                                                            $year = date("Y");
+                                                                            $limit = date("Y") + 40;
+                                                                            while($year < $limit)
+                                                                            {
+                                                                                echo "<option value='$year'>$year</option>";
+                                                                                $year++;
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                        <div class="invalid-field-year text-danger d-none">
+                                                                            Elige el Año de Expiración
+                                                                        </div>
+                                                                    </div>
+                                                                    <input type="hidden" id="card_expiry_date"  name="card_expiry_date" placeholder="09-2022" />
+                                                                </div>
+                                                                <div class="row form-group">
+                                                                    <label for="card_cvn">cvn</label>
+                                                                    <input type="text" class="form-control border clnfield" name="card_cvn" id="cvn"  onkeypress='validate(event)' js-maxinput='3' />
+                                                                    <div class="invalid-field text-danger d-none">
+                                                                        Digita el CVN de la tarjeta
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <label for="card_expiry_date">Año de Expiración</label>
-                                                            <select id="yearField" class="form-control p-0 pl-3 border" required>
-                                                                <option value="">Seleccionar...</option>
-                                                                <?php 
-                                                                $year = date("Y");
-                                                                $limit = date("Y") + 40;
-                                                                while($year < $limit)
-                                                                {
-                                                                    echo "<option value='$year'>$year</option>";
-                                                                    $year++;
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                            <div class="invalid-field-year text-danger d-none">
-                                                                Elige el Año de Expiración
-                                                            </div>
-                                                        </div>
-                                                        <input type="hidden" id="card_expiry_date"  name="card_expiry_date" placeholder="09-2022" required />
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label for="card_cvn">cvn</label>
-                                                        <input type="text" class="form-control border clnfield" name="card_cvn" id="cvn" required  onkeypress='validate(event)' js-maxinput='3' />
-                                                        <div class="invalid-field text-danger d-none">
-                                                            Digita el CVN de la tarjeta
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
+                                                        </fieldset>
+                                                    <?php
+                                                }
+                                            ?>
+                                            
                                         <button type="button" id="realizarPago" role="button">Realizar Pago</button>
                                         </form>
                                     </div>
@@ -256,6 +272,11 @@ function validate(evt) {
         });
 
         $('#realizarPago').click(function(){
+            if($('#typeSale').text() == "payment")
+            {
+                $(this).parents("form").submit();
+                return false;
+            }
 
             var $tipo = $("#card_type").val();
             var numeroTarjeta = nTarjeta;

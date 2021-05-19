@@ -575,7 +575,10 @@ class UsuarioController extends Controller
             foreach($userPedidos as $fila)
             {
                 $dbFactura = DB::select("SELECT * FROM transferencias WHERE id_pedido='$fila->id'");
-                array_push($data,["id" => $fila->id, "card" => $fila->id_user_card, "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "total" => $fila->total, "impuesto" => $fila->impuesto, "transferencia" => $dbFactura[0] ]);
+                if(isset($dbFactura[0]))
+                {
+                    array_push($data,["id" => $fila->id, "card" => $fila->id_user_card, "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "total" => $fila->total, "impuesto" => $fila->impuesto, "transferencia" => $dbFactura[0] ]);
+                }
             }
 
             return response()->json(["pedidos" => $data]);

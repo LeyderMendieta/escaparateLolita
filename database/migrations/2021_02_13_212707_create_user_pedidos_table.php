@@ -16,6 +16,7 @@ class CreateUserPedidosTable extends Migration
         Schema::create('user_pedidos', function (Blueprint $table) {
             $table->id();
             $table->integer('id_user')->index();
+            $table->integer('id_cart')->index()->nullable();
             $table->integer("id_cupon")->index()->nullable();
             $table->integer("costoDomicilio")->nullable();
             $table->float("impuesto",50);
