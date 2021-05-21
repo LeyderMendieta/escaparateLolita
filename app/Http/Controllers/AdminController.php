@@ -181,6 +181,24 @@ class AdminController extends Controller
         return response()->json($data);
     }
 
+    public function getPedidoDetalle($pedido)
+    {
+        $userPedido = UserPedido::where("id",$pedido)->orderBy('id', 'desc')->first(); 
+
+        $data = [];
+
+        if(!isset($userPedido->id)) return response()->json(["error" => "nofound"]);
+
+        $dbFactura = DB::select("SELECT * FROM transferencias WHERE id_pedido='$userPedido->id'");
+        $userPedidoProductos =  DB::select("SELECT *,t1.id as productoID FROM user_pedido_productos t0 INNER JOIN products t1 ON t0.id_product = t1.id WHERE  t0.id_user_pedido='$userPedido->id'");
+        if(count($dbFactura) > 0)
+        {
+            array_push($data,["id" => $userPedido->id, "id_usuario" => $userPedido->id_user, "card" => $userPedido->id_user_card, "fecha" => $userPedido->created_at->format('d-m-Y h:s a'), "estado" => $userPedido->estado, "domicilio" => $userPedido->costoDomicilio, "total" => $userPedido->total, "impuesto" => $userPedido->impuesto, "transferencia" => $dbFactura[0], "productos" => $userPedidoProductos ]);
+        }    
+
+        return response()->json($data);
+    }
+
     public function getTotalSect1()
     {
         $productTotal = DB::table("products")->count();

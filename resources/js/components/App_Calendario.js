@@ -35,7 +35,7 @@ class App_Calendario extends Component {
         } 
         else
         {
-          alert("Debes estas Logeado para poder agendar");
+          alert("Debes ingresar o crear una cuenta para poder agendar.");
         }     
       }
 
@@ -46,7 +46,7 @@ class App_Calendario extends Component {
         }
         else
         {
-          alert("Debes estas Logeado para poder agendar");
+          alert("Debes ingresar o crear una cuenta para poder agendar.");
         }
       }
 
@@ -108,7 +108,7 @@ class App_Calendario extends Component {
         }
         else
         {
-          alert("Debes estas Logeado para poder agendar");
+          alert("Debes ingresar o crear una cuenta para poder agendar.");
         }
       }
 
@@ -135,7 +135,7 @@ class App_Calendario extends Component {
         }
         else
         {
-          alert("Debes estas Logeado para poder agendar");
+          alert("Debes ingresar o crear una cuenta para poder agendar.");
         }
       }
 

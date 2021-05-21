@@ -65,6 +65,7 @@ require('./components/Admin/App_Admon_Articulos');
 require('./components/Admin/App_Form_Cupon');
 require('./components/Admin/App_Admon_Cupones');
 require('./components/Admin/solicitudes/App_solicitud_contactos');
+require('./components/Admin/solicitudes/App_solicitud_detallePedido');
 require('./components/Admin/solicitudes/App_solicitud_detalleContacto');
 
 require('./components/Admin/dashboard/App_Admon_Section1');

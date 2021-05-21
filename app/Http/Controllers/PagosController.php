@@ -11,6 +11,7 @@ use App\Mail\CrearUsuarioPorFacturacionAnonima;
 use App\Mail\EnviarFacturaRecibo;
 use App\User;
 use App\UserInfo;
+use App\notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -80,7 +81,14 @@ class PagosController extends Controller
         $transferencia->id_pedido = $user_pedido->id;
         if($request->decision == "ACCEPT")
         {
-            $transferencia->auth_cv_result = (isset($request->auth_cv_result)) ? $request->auth_cv_result : "T";  
+            $noticacion = new notification();
+            $noticacion->tipo = "Admin";
+            $noticacion->texto = "Nuevo Pedido";
+            $noticacion->logo = "fe fe-dollar-sign";
+            $noticacion->link = url("/admon/viewDetails/pedido/".$user_pedido->id);
+            $noticacion->save();
+
+            $transferencia->auth_cv_result = (isset($request->auth_cv_result)) ? "M" : "T";  
             $transferencia->auth_trans_ref_no = $request->auth_trans_ref_no;
             $transferencia->auth_amount = $request->auth_amount;
             $transferencia->auth_response = $request->auth_response;

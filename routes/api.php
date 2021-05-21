@@ -77,6 +77,7 @@ use Illuminate\Support\Facades\Route;
     //Administración
     Route::get("/admin/usersList","AdminController@getUsers");
     Route::get("/admin/pedidosList","AdminController@getPedidos");
+    Route::get("/admin/pedidosDetalle/{pedido}","AdminController@getPedidoDetalle");
     Route::get("/admin/getAgendasList","AgendaController@verListadoAgendas");
 
     Route::get("/admin/getTotalSect1","AdminController@getTotalSect1");

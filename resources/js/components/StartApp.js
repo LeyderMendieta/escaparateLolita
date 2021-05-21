@@ -18,6 +18,10 @@ class Product_MustHave extends Component {
       }
     
       componentDidMount() {
+
+       
+            setTimeout(function(){$('iframe[title="Instagram widgets for website"]').addClass("iframe-instagram"); }, 1000);
+
         fetch(Configuracion.url_principal+"api/products/reference_must_have")
           .then(res => res.json())
           .then(

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\notification;
+use App\User;
 use Illuminate\Support\Facades\DB;
 
 class NotificationController extends Controller
@@ -26,9 +27,17 @@ class NotificationController extends Controller
            $notification = notification::where("id",$id)->first();
            if($notification)
            {
-            $notification->visto = 1;
-            $notification->save();
-            return response()->json(["success" => "done"]);
+                $userkey = 0;
+                if(isset($_COOKIE["USADM-OAUTH"]))
+                {
+                        $user = User::where(["api_token" => $_COOKIE["USADM-OAUTH"],"graphDomain" => "Administrador"])->first();
+                        $userkey = $user->id;                    
+                }
+                $notification->visto = 1;
+                $notification->id_usuario_lectura = $userkey;
+                $notification->fecha_lectura = DB::raw('now()');
+                $notification->save();
+                return response()->json(["success" => "done"]);
            }
            else return response()->json(["error" => "nofound"]);
         }

@@ -66,10 +66,12 @@ class App_Admon_Pedidos extends Component {
             <table id="tableProducts" className="table table-striped table-bordered text-nowrap" >
                 <thead>
                     <tr>
-                        <th>ID</th>             
+                        <th>ID</th>        
+                        <th></th>        
                         <th>Fecha</th>      
                         <th>Usuario</th>      
-                        <th>Estado</th>
+                        <th>Transferencia</th>
+                        <th>Envio</th>
                         <th>Total</th>      
                         <th>Impuesto</th>
                         <th>Transacción</th>
@@ -79,10 +81,12 @@ class App_Admon_Pedidos extends Component {
                 <tbody>
                     {this.state.pedidos.map((row) => (
                         <tr key={row.id}>
-                            <td>{row.id}</td>              
+                            <td>{row.id}</td>      
+                            <td><a href={Configuracion.url_principal+"admon/viewDetails/pedido/"+row.id} className="btn btn-info" style={{display: (row.estado == "ACCEPT") ? "block" : "none"}}>Ver Detalle</a></td>     
                             <td>{row.fecha}</td>                            
                             <td>{row.id_usuario}</td>                            
-                            <td>{row.estado}</td>
+                            <td style={{color: (row.estado == "ACCEPT") ? "lightgreen" : "red"}} >{row.estado}</td>
+                            <td></td>
                             <td>{row.total}</td>
                             <td>{row.impuesto}</td>
                             <td>{row.transferencia.transaction_id}</td>
