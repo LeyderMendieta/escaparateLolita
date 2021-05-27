@@ -81616,7 +81616,7 @@ var App_Admon_Form_Articulo = /*#__PURE__*/function (_Component) {
         type: "text",
         className: "form-control",
         name: "Titulo",
-        placeholder: "Titulo del Articulo"
+        placeholder: "Titulo del Atajo"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xl-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -87691,6 +87691,8 @@ var App_Login = /*#__PURE__*/function (_Component) {
     value: function loginUser(e) {
       var _this2 = this;
 
+      $('#loginbtn').hide();
+
       if (this.state.user == undefined || this.state.clave == undefined || this.state.user == "" || this.state.clave == "") {
         if (this.state.user == undefined || this.state.user == "") {
           $('#val_user').addClass('trx_addons_field_error');
@@ -87704,6 +87706,7 @@ var App_Login = /*#__PURE__*/function (_Component) {
           "display": "block"
         });
         $('#messageResult').find('.trx_addons_error_item').text("El usuario y contraseña son obligatorios");
+        $('#loginbtn').show();
         setTimeout(function () {
           $('#messageResult').css({
             "display": "none"
@@ -87725,6 +87728,8 @@ var App_Login = /*#__PURE__*/function (_Component) {
           fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/login", config).then(function (res) {
             return res.json();
           }).then(function (result) {
+            $('#loginbtn').show();
+
             if (result.api_token != undefined) {
               var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
               cookies.set('authlog', result.api_token, {
@@ -87734,15 +87739,20 @@ var App_Login = /*#__PURE__*/function (_Component) {
             } else {
               $('#val_clave').val('');
               _this2.state.clave = "";
-              $('#messageResult').css({
-                "display": "block"
-              });
-              $('#messageResult').find('.trx_addons_error_item').text("Usuario y/o Contraseña incorrecta");
-              setTimeout(function () {
+
+              if (result.error == "no_verified") {
+                location.href = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "requestResponse/verificarCuenta-D95ACAD839799A0B085540510FD1A977351A5C2F";
+              } else {
                 $('#messageResult').css({
-                  "display": "none"
+                  "display": "block"
                 });
-              }, 3000);
+                $('#messageResult').find('.trx_addons_error_item').text("Usuario y/o Contraseña incorrecta");
+                setTimeout(function () {
+                  $('#messageResult').css({
+                    "display": "none"
+                  });
+                }, 3000);
+              }
             }
           }, function (error) {
             _this2.setState({
@@ -87751,7 +87761,8 @@ var App_Login = /*#__PURE__*/function (_Component) {
             });
           });
         } catch (error) {
-          console.log(error);
+          $('#loginbtn').show();
+          alert(error);
         }
       }
     }
@@ -88051,6 +88062,7 @@ var App_Login = /*#__PURE__*/function (_Component) {
         }, "\xBFOlvidaste la contrase\xF1a?")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "trx_addons_popup_form_field trx_addons_popup_form_field_submit"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "loginbtn",
           type: "button",
           className: "submit_button",
           onClick: this.loginUser.bind(this)
@@ -88798,8 +88810,8 @@ if (document.getElementById('App_Mycart')) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var url_principal = "https://elescaparatedelolita.com/"; //const url_principal = "http://127.0.0.1:8000/";
-//const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
+//const url_principal = "https://elescaparatedelolita.com/";
+var url_principal = "http://127.0.0.1:8000/"; //const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
 
 var url_images = url_principal + 'images/';
 var Configuracion = {
@@ -88950,6 +88962,8 @@ var App_Feature_Articles = /*#__PURE__*/function (_Component) {
           isLoaded: true,
           articulos: result
         });
+
+        _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].loadDatatable();
       }, function (error) {
         _this2.setState({
           isLoaded: true,
@@ -90496,6 +90510,11 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
   }, {
     key: "submitCheckout",
     value: function submitCheckout(e) {
+      if ($('#confirmar-terminos-condiciones').prop("checked") == false) {
+        $('#confirmar-terminos-condiciones').siblings(".invalid-feedback").addClass("d-block");
+        e.preventDefault();
+      } else $('#confirmar-terminos-condiciones').siblings(".invalid-feedback").removeClass("d-block");
+
       if (this.state.mismaDireccionParaTodo) {
         this.setState({
           zcShippingNombres: this.state.zcNombres,
@@ -90523,7 +90542,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         }
 
         if ($("#" + element).data("pattern") != undefined) {
-          var patt = new RegExp($("#" + element).data("pattern"));
+          if (element == "zcCorreo") var patt = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;else var patt = new RegExp($("#" + element).data("pattern"));
           var res = patt.test(valor);
 
           if (res == false) {
@@ -90884,6 +90903,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         type: "email",
         className: "form-control",
         name: "bill_to_email",
+        "data-pattern": "email",
         maxLength: "255",
         value: this.state.zcCorreo,
         onChange: function onChange(e) {
@@ -90894,7 +90914,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "invalid-feedback"
-      }, "Valida, el Correo es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Valida, Correo eletronico no valido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-6 mb-3 pr-0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "zcTelefono"
@@ -91290,12 +91310,14 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "woocommerce-terms-and-conditions-checkbox-text"
       }, "He le\xEDdo y estoy de acuerdo con los ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
+        href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "docs/terminos_condiciones_20201005.pdf",
         className: "woocommerce-terms-and-conditions-link",
         target: "_blank"
       }, "t\xE9rminos y condiciones"), " de la web"), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "required"
-      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid-feedback"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Es necesario aceptar terminos y condiciones para continuar"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary btn-lg btn-block",
         type: "submit"
       }, "Finalizar Compra"))));

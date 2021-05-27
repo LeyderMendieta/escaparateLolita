@@ -157,6 +157,7 @@ class PagosController extends Controller
                     "name" => $request->req_bill_to_forename." ".$request->req_bill_to_surname,
                     "password" => Hash::make($createdPassword),
                     "email" => $request->req_bill_to_email,
+                    "email_verified_at" => now(),
                     "AccessToken" => Str::random(240),
                     "api_token" => Str::random(20)
                 ]);

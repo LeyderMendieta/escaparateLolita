@@ -301,8 +301,8 @@
 			display: block;
 		}
 
-		.es-menu amp-img,
-		.es-button amp-img {
+		.es-menu img,
+		.es-button img {
 			vertical-align: middle;
 		}
 
@@ -502,15 +502,15 @@
 				text-align: left
 			}
 
-			.es-m-txt-r amp-img {
+			.es-m-txt-r img {
 				float: right
 			}
 
-			.es-m-txt-c amp-img {
+			.es-m-txt-c img {
 				margin: 0 auto
 			}
 
-			.es-m-txt-l amp-img {
+			.es-m-txt-l img {
 				float: left
 			}
 
@@ -631,7 +631,6 @@
 
 <body>
 	<div class="es-wrapper-color">
-		<!--[if gte mso 9]><v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t"> <v:fill type="tile" color="#f6f6f6"></v:fill> </v:background><![endif]-->
 		<table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0">
 			<tr>
 				<td valign="top">
@@ -640,15 +639,15 @@
 							<td align="center">
 								<table bgcolor="#ffffff" class="es-header-body" align="center" cellpadding="0" cellspacing="0" width="600">
 									<tr>
-										<td class="es-p20t es-p20r es-p20l" align="left" bgcolor="#ffffff" style="background-color: #ffffff">
+										<td class="es-p20t es-p20r es-p20l" align="left">
 											<table cellpadding="0" cellspacing="0" width="100%">
 												<tr>
 													<td width="560" align="center" valign="top">
 														<table cellpadding="0" cellspacing="0" width="100%" role="presentation">
 															<tr>
-																<td align="center" style="font-size: 0px">
-																	<amp-img src="images/95061610397528536.png" alt style="display: block"></amp-img>
-																</td>
+																<td align="center" class="es-p5b" style="font-size: 0px"><a href="#" target="_blank">
+																	<img src="{{URL::asset('images/95061610397528536.png')}}" alt="Logo" style="display: block" />
+																	</a></td>
 															</tr>
 														</table>
 													</td>
@@ -657,14 +656,14 @@
 										</td>
 									</tr>
 									<tr>
-										<td class="es-p20t es-p10b es-p20r es-p20l" align="left" bgcolor="#efefef" style="background-color: #efefef">
+										<td class="es-p20t es-p10b es-p20r es-p20l" align="left" bgcolor="#DC97AA" style="background-color: #dc97aa">
 											<table cellpadding="0" cellspacing="0" width="100%">
 												<tr>
 													<td width="560" align="center" valign="top">
 														<table cellpadding="0" cellspacing="0" width="100%" role="presentation">
 															<tr>
 																<td align="center">
-																	<h2 style="color: #666666;font-family: arial, 'helvetica neue', helvetica, sans-serif"><em>Completa tu registro</em></h2>
+																	<p style="font-size: 25px;color: #ffffff"><strong>Confirma tu direccion de correo electronico</strong></p>
 																</td>
 															</tr>
 														</table>
@@ -681,7 +680,7 @@
 														<table cellpadding="0" cellspacing="0" width="100%" role="presentation">
 															<tr>
 																<td align="left">
-																	<p style="font-size: 15px"><strong>Hola!!! {{$nombres}}</strong></p>
+																	<p>Hola <b>{{$nombres}}</b>, Dale clic al siguiente boton para verificar el correo electronico de tu cuenta de el escaparatedelolita.<br><br>Saludos, elescaparatedelolita</p>
 																</td>
 															</tr>
 														</table>
@@ -697,46 +696,12 @@
 													<td width="560" align="center" valign="top">
 														<table cellpadding="0" cellspacing="0" width="100%" role="presentation">
 															<tr>
-																<td align="left">
-																	<p style="color: #020202">Gracias por comprar nuestros productos en nuestra tienda online a partir de este momento nuestro tienda lo a pre-registrado.<br><br></p>
-																</td>
+																<td align="center"><span class="es-button-border" style="border-radius: 7px;border-width: 0px;background: #dc97aa;border-color: #2cb543"><a href="{{$url}}" class="es-button" target="_blank" style="border-radius: 7px;border-width: 10px 40px;background: #dc97aa;border-color: #dc97aa">Verificar</a></span></td>
 															</tr>
 														</table>
 													</td>
 												</tr>
 											</table>
-										</td>
-									</tr>
-									<tr>
-										<td class="es-p20t es-p20r es-p20l" align="left">
-											<!--[if mso]><table width="560" cellpadding="0" cellspacing="0"><tr><td width="270" valign="top"><![endif]-->
-											<table cellpadding="0" cellspacing="0" class="es-left" align="left">
-												<tr>
-													<td width="270" class="es-m-p20b" align="left">
-														<table cellpadding="0" cellspacing="0" width="100%" role="presentation">
-															<tr>
-																<td align="left">
-																	<p>Nuestro sistema le ha asignado la siguiente contraseña:&nbsp;</p>
-																</td>
-															</tr>
-														</table>
-													</td>
-												</tr>
-											</table>
-											<!--[if mso]></td><td width="20"></td>
-<td width="270" valign="top"><![endif]-->
-											<table cellpadding="0" cellspacing="0" class="es-right" align="right">
-												<tr>
-													<td width="270" align="left">
-														<table cellpadding="0" cellspacing="0" width="100%" role="presentation">
-															<tr>
-																<td align="center"><span class="es-button-border" style="border-width: 0px;border-radius: 7px;background: #999999;border-color: #2cb543"><a href="" class="es-button" target="_blank" style="font-size: 14px;border-radius: 7px;font-weight: normal;background: #999999;border-color: #999999;color: #000000">AZrtUY</a></span></td>
-															</tr>
-														</table>
-													</td>
-												</tr>
-											</table>
-											<!--[if mso]></td></tr></table><![endif]-->
 										</td>
 									</tr>
 									<tr>
@@ -748,53 +713,14 @@
 															<tr>
 																<td align="left">
 																	<p>
-																		Si desea completar el registro de clic en el boton.</p>
+																		Si tienes problemas al utilizar el&nbsp;botón, copia el URL&nbsp;y&nbsp;pégalo&nbsp;en tu navegador para verificar tu correo electrónico:</p>
 																</td>
 															</tr>
-														</table>
-													</td>
-												</tr>
-											</table>
-										</td>
-									</tr>
-									<tr>
-										<td class="es-p20t es-p20r es-p20l" align="left">
-											<table cellpadding="0" cellspacing="0" width="100%">
-												<tr>
-													<td width="560" align="center" valign="top">
-														<table cellpadding="0" cellspacing="0" width="100%" role="presentation">
 															<tr>
-																<td align="center"><span class="es-button-border" style="border-width: 0px;border-radius: 7px;background: #dc97aa;border-color: #2cb543"><a href="https://elescaparatedelolita.com/contacts#trx_addons_register_content" class="es-button" target="_blank" style="font-size: 14px;font-weight: normal;border-radius: 7px;background: #dc97aa;border-color: #dc97aa">Completar registro</a></span></td>
-															</tr>
-														</table>
-													</td>
-												</tr>
-											</table>
-										</td>
-									</tr>
-									<tr>
-										<td class="es-p20t es-p20r es-p20l" align="left">
-											<table cellpadding="0" cellspacing="0" width="100%">
-												<tr>
-													<td width="560" align="center" valign="top">
-														<table cellpadding="0" cellspacing="0" width="100%" role="presentation">
-															<tr>
-																<td align="center" class="es-p5t es-p5b" bgcolor="#efefef">
-																	<p style="font-size: 12px;color: #020202"><em>Beneficios de completar tu registro:<br>Podrás disfrutar de las agendas de nuestra tienda "entalle", "tu ropa a la medida"; códigos promocionales, descuentos y&nbsp;ofertas.</em></p>
+																<td align="left">
+																	<p><a href="{{$url}}" target="_blank" style="color: #dc97aa">{{$url}}</a></p>
 																</td>
 															</tr>
-														</table>
-													</td>
-												</tr>
-											</table>
-										</td>
-									</tr>
-									<tr>
-										<td class="es-p20t es-p20r es-p20l" align="left">
-											<table cellpadding="0" cellspacing="0" width="100%">
-												<tr>
-													<td width="560" align="center" valign="top">
-														<table cellpadding="0" cellspacing="0" width="100%" role="presentation">
 															<tr>
 																<td align="center" class="es-p20" style="font-size:0">
 																	<table border="0" width="100%" cellpadding="0" cellspacing="0" role="presentation">
@@ -805,8 +731,26 @@
 																</td>
 															</tr>
 															<tr>
+																<td align="center" style="font-size: 0px"><a href="https://elescaparatedelolita.com/contacts" target="_blank">
+																<img class="adapt-img" src="{{URL::asset('assets/store/images/6791610215347634.png')}}" alt style="display: block" width="150" height="124" layout="responsive" />
+																		</img>
+																	</a></td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td class="es-p20t es-p20r es-p20l" align="left">
+											<table cellpadding="0" cellspacing="0" width="100%">
+												<tr>
+													<td width="560" align="center" valign="top">
+														<table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+															<tr>
 																<td align="center">
-																	<p style="line-height: 120%;color: #090909">Contáctanos +507 388-8936 / +507 6324-9894 /&nbsp;Calle 71 Casa No 97 San Francisco Panamá&nbsp;/e-mail:<a href="mailto:E-mail:info@elescaparatedelolita.com">info@elescaparatedelolita.com</a>&nbsp;</p>
+																	<p style="color: #000000;line-height: 120%">Los horarios de nuestra tienda Lunes a Viernes 10:00 am a 05:00 pm&nbsp;<br>Sabados 10:30 am a 04:30&nbsp;pm<br>escribirnos a nuestro correo&nbsp;<a target="_blank" href="mailto:info@escaparatedelolita.com" style="color: #01090e">info@escaparatedelolita.com</a></p>
 																</td>
 															</tr>
 															<tr>
@@ -814,13 +758,47 @@
 																	<table cellpadding="0" cellspacing="0" class="es-table-not-adapt es-social" role="presentation">
 																		<tr>
 																			<td align="center" valign="top" class="es-p0r"><a target="_blank" href="https://www.instagram.com/elescaparatedelolita/">
-																					<amp-img src="images/instagram-logo-black.png" alt="Ig" title="Instagram" width="32" height="32"></amp-img>
+                                                                                    <img src="{{URL::asset('images/instagram-logo-black.png')}}" alt="Ig" title="Instagram" width="32" height="32" />
 																				</a></td>
 																			<td align="center" valign="top"><a target="_blank" href="https://www.facebook.com/Elescaparatedelolita">
-																					<amp-img src="images/facebook-logo-black.png" alt="Fb" title="Facebook" width="32" height="32"></amp-img>
+																				<img src="{{URL::asset('images/facebook-logo-black.png')}}" alt="Fb" title="Facebook" width="32" height="32" />
 																				</a></td>
 																		</tr>
 																	</table>
+																</td>
+															</tr>
+															<tr>
+																<td align="center" class="es-p20" style="font-size:0">
+																	<table border="0" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+																		<tr>
+																			<td style="border-bottom: 1px solid #cccccc;background:none;height:1px;width:100%;margin:0px 0px 0px 0px"></td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<table class="es-content" cellspacing="0" cellpadding="0" align="center">
+						<tr>
+							<td align="center">
+								<table class="es-content-body" style="background-color: #ffffff" width="600" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center">
+									<tr>
+										<td class="es-p20t es-p20r es-p20l" align="left">
+											<table width="100%" cellspacing="0" cellpadding="0">
+												<tr>
+													<td class="es-m-p0r es-m-p20b" width="560" valign="top" align="center">
+														<table width="100%" cellspacing="0" cellpadding="0" role="presentation">
+															<tr>
+																<td align="center">
+																	<p style="line-height: 120%"><br></p>
 																</td>
 															</tr>
 														</table>

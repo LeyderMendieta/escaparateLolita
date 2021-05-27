@@ -1,7 +1,7 @@
 @extends('admon.layouts.principal')
 
 @section('titulo')
-<title>{{($token_editing) == "" ? "Nuevo" : "Actualizar"}} Articulo - Administración Escaparate</title>
+<title>{{($token_editing) == "" ? "Nuevo" : "Actualizar"}} Atajo - Administración Escaparate</title>
 @endsection
 
 @section('css')
@@ -19,7 +19,7 @@
 @section('page-header')
 					    <!-- page-header -->
 						<div class="page-header">
-							<h1 class="page-title">{{($token_editing) == "" ? "Nuevo" : "Actualizar"}} Articulo</h1>
+							<h1 class="page-title">{{($token_editing) == "" ? "Nuevo" : "Actualizar"}} Atajo</h1>
 						</div>
 						<!-- End page-header -->
 @endsection

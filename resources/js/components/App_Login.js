@@ -35,6 +35,7 @@ class App_Login extends Component {
 
       loginUser(e)
       {
+        $('#loginbtn').hide();
         if(this.state.user == undefined || this.state.clave == undefined || this.state.user == "" || this.state.clave == "" )
         {
             if(this.state.user == undefined || this.state.user == "")
@@ -48,6 +49,8 @@ class App_Login extends Component {
 
             $('#messageResult').css({"display":"block"});
             $('#messageResult').find('.trx_addons_error_item').text("El usuario y contraseña son obligatorios");
+
+            $('#loginbtn').show(); 
 
             setTimeout(function() { 
                 $('#messageResult').css({"display":"none"});
@@ -68,6 +71,9 @@ class App_Login extends Component {
                 .then(res => res.json())
                 .then(
                   (result) => {
+
+                    $('#loginbtn').show();
+
                     if(result.api_token != undefined)
                     {
                         const cookies = new Cookies();
@@ -79,13 +85,19 @@ class App_Login extends Component {
                         $('#val_clave').val('');
                         this.state.clave = "";
 
-                        $('#messageResult').css({"display":"block"});
-                        $('#messageResult').find('.trx_addons_error_item').text("Usuario y/o Contraseña incorrecta");
-    
-                        setTimeout(function() { 
-                            $('#messageResult').css({"display":"none"});
-                        }, 3000);
-                        
+                        if(result.error == "no_verified")
+                        {
+                            location.href = Configuracion.url_principal+"requestResponse/verificarCuenta-D95ACAD839799A0B085540510FD1A977351A5C2F";
+                        }
+                        else
+                        {
+                            $('#messageResult').css({"display":"block"});
+                            $('#messageResult').find('.trx_addons_error_item').text("Usuario y/o Contraseña incorrecta");
+        
+                            setTimeout(function() { 
+                                $('#messageResult').css({"display":"none"});
+                            }, 3000);
+                        }
                     }
                   },
                   
@@ -99,9 +111,11 @@ class App_Login extends Component {
     
             } 
             catch (error) {
-                console.log(error);
+                $('#loginbtn').show();
+                alert(error);
             }
-        }        
+        }   
+         
       }
 
       restablecerPassword()
@@ -254,6 +268,7 @@ class App_Login extends Component {
         }
         else alert("Error en el proceso, intente más tarde");
       }
+      
       render(){
         
         if (this.state.activeSession != "" && this.state.activeSession != undefined) {
@@ -343,7 +358,7 @@ class App_Login extends Component {
                                         <a href="#" className="trx_addons_popup_form_field_forgot_password" onClick={(e) => (this.setState({activeResetPassword: true}))}>¿Olvidaste la contraseña?</a>
                                     </div>
                                     <div className="trx_addons_popup_form_field trx_addons_popup_form_field_submit">
-                                        <button type="button" className="submit_button" onClick={this.loginUser.bind(this)}>Login</button>
+                                        <button id="loginbtn" type="button" className="submit_button" onClick={this.loginUser.bind(this)}>Login</button>
                                     </div>
                                     <div id='messageResult' className="trx_addons_message_box sc_form_result trx_addons_message_box_error"><p className="trx_addons_error_item"></p></div>
                                 </form>

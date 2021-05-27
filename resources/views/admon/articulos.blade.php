@@ -1,7 +1,7 @@
 @extends('admon.layouts.principal')
 
 @section('titulo')
-<title>Articulos - Administración Escaparate</title>
+<title>Atajos Rápidos - Administración Escaparate</title>
 @endsection
 
 @section('css')
@@ -12,8 +12,8 @@
 @section('page-header')
 					    <!-- page-header -->
 						<div class="page-header">
-							<h1 class="page-title">Articulos</h1>
-							<p class="mx-5">Maximo 4 Articulos</p>
+							<h1 class="page-title">Atajos Rápidos</h1>
+							<p class="mx-5">Maximo 4 Atajos Rápidos</p>
 							<div class="ml-auto">
 								<div class="input-group">
 									<a id="add_new_cardbtn" href="{{ url('/' . $page='admon/add/articulo') }}" class="btn btn-info btn-icon mr-2" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="Agregar Nuevo">
@@ -49,24 +49,4 @@
 <script src="{{URL::asset('assets/plugins/datatable/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/datatable/datatable.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/datatable/dataTables.responsive.min.js')}}"></script>
-<script>
-	$(window).on("load",function() {
-
-		$('#tableProducts').DataTable( {
-			responsive: {
-				details: {
-					display: $.fn.dataTable.Responsive.display.modal( {
-						header: function ( row ) {
-							var data = row.data();
-							return '<b>'+data[0]+' - '+data[2]+'</b><br/><br/>';
-						}
-					} ),
-					renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-						tableClass: 'table table-dark'
-					} )
-				}
-			}
-		} );
-	} );
-</script>
 @endsection

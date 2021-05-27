@@ -131,8 +131,7 @@ class Checkout_Compra_Shop extends Component {
             this.setState({
                 total: newVal1 
             });
-          }
-        
+          }        
       }
       
       cybs_dfprofiler(merchantID, environment) {
@@ -194,6 +193,12 @@ class Checkout_Compra_Shop extends Component {
 
       submitCheckout(e)
       {
+          if($('#confirmar-terminos-condiciones').prop("checked") == false)
+          {
+            $('#confirmar-terminos-condiciones').siblings(".invalid-feedback").addClass("d-block");
+            e.preventDefault();
+          }
+          else $('#confirmar-terminos-condiciones').siblings(".invalid-feedback").removeClass("d-block");
           if(this.state.mismaDireccionParaTodo)
           {            
             this.setState({
@@ -226,7 +231,8 @@ class Checkout_Compra_Shop extends Component {
                 }
                 if($("#"+element).data("pattern") != undefined)
                 {
-                    var patt = new RegExp($("#"+element).data("pattern"));
+                    if(element == "zcCorreo") var patt = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+                    else var patt = new RegExp($("#"+element).data("pattern"));
                     var res = patt.test(valor);
                     if(res == false) {
                         $("#"+element).siblings(".invalid-feedback").addClass("d-block");
@@ -351,7 +357,7 @@ class Checkout_Compra_Shop extends Component {
                 <div className="col-md-8 order-md-1">
 
                     <h5 className="mb-3">Datos Facturación</h5>
-                    <form className="needs-validation" method="post" action={Configuracion.url_principal+"checkout/confirm"} onSubmit={this.submitCheckout.bind(this)}>
+                    <form className="needs-validation" method="post" action={Configuracion.url_principal+"checkout/confirm"} onSubmit={this.submitCheckout.bind(this)} >
                         <div className="row setparamsg">
                         <input type="hidden" name="access_key" value="e4c15fd430d9361dabc777dc872fa3d2" />
                         <input type="hidden" name="profile_id" value="52EC2BD8-DC18-467C-BF84-EAAA8777495F" />
@@ -411,10 +417,10 @@ class Checkout_Compra_Shop extends Component {
                         <div className="row">
                             <div className="col-md-6 mb-3  pl-0">
                                 <label htmlFor="zcCorreo">Correo *</label>
-                                <input id="zcCorreo" type="email" className="form-control" name="bill_to_email" maxLength="255" value={this.state.zcCorreo} onChange={(e) => {this.setState({zcCorreo: e.target.value})}} required />
+                                <input id="zcCorreo" type="email" className="form-control" name="bill_to_email" data-pattern="email" maxLength="255" value={this.state.zcCorreo} onChange={(e) => {this.setState({zcCorreo: e.target.value})}} required />
                                 
                                 <div className="invalid-feedback">
-                                    Valida, el Correo es requerido
+                                    Valida, Correo eletronico no valido
                                 </div>
                             </div>
                             <div className="col-md-6 mb-3 pr-0">
@@ -440,7 +446,7 @@ class Checkout_Compra_Shop extends Component {
                         <div className="row">
                             <div className="col-md-6 mb-3 pl-0">
                                 <label htmlFor="zcPais">País / Región *</label><br />
-                                <select id="zcPais" className="form-control w-100 border p-0 pl-3" name="bill_to_address_country" defaultValue={this.state.zcPais} onChange={(e) => {this.setState({zcPais: e.target.value})}} required>
+                                <select id="zcPais" className="form-control w-100 border p-0 pl-3" name="bill_to_address_country" defaultValue={this.state.zcPais} onChange={(e) => {this.setState({zcPais: e.target.value})}} required >
 
                                     <option value="" disabled>Seleccionar...</option>
                                     {this.state.paises.map((row => (
@@ -583,7 +589,10 @@ class Checkout_Compra_Shop extends Component {
                         <hr className="mb-4" />
                         <div className=" p-2 mb-3">
                             <input type="checkbox" className="custom-control-input" id="confirmar-terminos-condiciones" />
-                            <label className="custom-control-label" htmlFor="confirmar-terminos-condiciones"><span className="woocommerce-terms-and-conditions-checkbox-text">He leído y estoy de acuerdo con los <a href="#" className="woocommerce-terms-and-conditions-link" target="_blank">términos y condiciones</a> de la web</span>&nbsp;<span className="required">*</span></label>
+                            <label className="custom-control-label" htmlFor="confirmar-terminos-condiciones"><span className="woocommerce-terms-and-conditions-checkbox-text">He leído y estoy de acuerdo con los <a href={Configuracion.url_principal+"docs/terminos_condiciones_20201005.pdf"} className="woocommerce-terms-and-conditions-link" target="_blank">términos y condiciones</a> de la web</span>&nbsp;<span className="required">*</span></label>
+                            <div className="invalid-feedback">
+                                <b>Es necesario aceptar terminos y condiciones para continuar</b>
+                            </div>
                         </div>
                         <button className="btn btn-primary btn-lg btn-block" type="submit">Finalizar Compra</button>
                     </form>

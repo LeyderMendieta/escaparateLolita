@@ -171,7 +171,7 @@ class App_Admon_Form_Articulo extends Component {
                             <div className="col-xl-6">
                                 <div className="form-group">
                                     <label className="form-label">Titulo</label>
-                                    <input id="titulo" type="text" className="form-control" name="Titulo" placeholder="Titulo del Articulo" />
+                                    <input id="titulo" type="text" className="form-control" name="Titulo" placeholder="Titulo del Atajo" />
                                 </div>
                             </div>
                             <div className="col-xl-6">

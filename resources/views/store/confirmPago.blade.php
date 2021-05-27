@@ -122,7 +122,8 @@
                                                                 </div>
                                                                 <div class="row form-group">
                                                                     <label for="card_number">Numero Tarjeta</label>
-                                                                    <input id="numeroTarjeta" type="text" class="form-control border clnfield" name="card_number" minlength="16" maxlength="16" js-maxinput='16' onkeypress='validate(event)' />
+                                                                    <input type="hidden" name="card_number" id="card_number">
+                                                                    <input id="numeroTarjeta" type="text" class="form-control border clnfield"  minlength="16" maxlength="16" js-maxinput='16' onkeypress='validate(event)' />
                                                                     <div class="invalid-field text-danger d-none">
                                                                         <span class="invalid-cardtype"></span> Numero de Tarjeta no valido
                                                                     </div>
@@ -169,7 +170,8 @@
                                                                 </div>
                                                                 <div class="row form-group">
                                                                     <label for="card_cvn">cvn</label>
-                                                                    <input type="text" class="form-control border clnfield" name="card_cvn" id="cvn"  onkeypress='validate(event)' js-maxinput='3' />
+                                                                    <input type="hidden" name="card_cvn" id="card_cvn">
+                                                                    <input type="text" class="form-control border clnfield" id="cvn"  onkeypress='validate(event)' js-maxinput='3' />
                                                                     <div class="invalid-field text-danger d-none">
                                                                         Digita el CVN de la tarjeta
                                                                     </div>
@@ -181,10 +183,12 @@
                                             ?>
                                             
                                         <button type="button" id="realizarPago" role="button">Realizar Pago</button>
+                                        <h6 id="msgProcesando" class="text-info d-none">Procesando el pago...</h6>
                                         </form>
                                     </div>
+                                    <div class=" mt-4 alert alert-danger jsinfo-result-valCard d-none"></div>
                                 </section>
-
+                                <input type="hidden" class="apiCardVerify" value="{{ url('/' . $page='api/verifyCardAvailable/') }}">
                             </div>
                         </article>
                     </div>
@@ -272,6 +276,10 @@ function validate(evt) {
         });
 
         $('#realizarPago').click(function(){
+
+            $(this).hide();
+            $('#msgProcesando').removeClass("d-none");
+            
             if($('#typeSale').text() == "payment")
             {
                 $(this).parents("form").submit();
@@ -330,12 +338,45 @@ function validate(evt) {
             {
                 $('#card_expiry_date').val(mes+"-"+year);
             }
+
             //----------------------result
             if(stopProcess)
             {
+                $('#msgProcesando').addClass("d-none");
+                $(this).show();
                 return false;
             }
-            else { $('#numeroTarjeta').val(nTarjeta);$('#cvn').val(nCVN);$(this).parents("form").submit();}
+            else 
+            { 
+                fetch($('.apiCardVerify').val()+"/"+nTarjeta)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                    if(result == 4111 || result == 4100)
+                    {
+                        $('#realizarPago').show();
+                        $('#msgProcesando').addClass("d-none");
+                        nTarjeta = "0";
+                    }
+                    //------------------
+                    if(result == 4111)
+                    {
+                        $('.jsinfo-result-valCard').removeClass("d-none");
+                        $('.jsinfo-result-valCard').html("Ya tienes asociada esta tarjeta tokenizada, regresa al checkout y elige la tarjeta para proceder con el pago!");                        
+                    }
+                    else if(result == 4100)
+                    {
+                        $('.jsinfo-result-valCard').removeClass("d-none");
+                        $('.jsinfo-result-valCard').html("Esta tarjeta no se encuentra disponible, esta asociada a otra cuenta!");
+                    }
+                    else
+                    {
+                        $('#card_number').val(nTarjeta);
+                        $('#card_cvn').val(nCVN);
+                        $(this).parents("form").submit();
+                    }                    
+                });                
+            }
         });
     });
     function cybs_dfprofiler(merchantID, environment) {

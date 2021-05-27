@@ -24,6 +24,7 @@ class App_Feature_Articles extends Component {
                 isLoaded: true,
                 articulos: result
               });
+              Configuracion.loadDatatable();
             },
             
             (error) => {

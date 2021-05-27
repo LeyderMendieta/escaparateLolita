@@ -7,22 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class VerificaTuCuenta extends Mailable
+class CarritoAbadonado extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $nombres;
-    public $url;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($nombres,$url)
+    public function __construct()
     {
-        $this->nombres = $nombres;
-        $this->url = $url;
+        //
     }
 
     /**
@@ -32,10 +28,6 @@ class VerificaTuCuenta extends Mailable
      */
     public function build()
     {
-        return $this->view('store.mailer.VerificaTuCuenta')
-            ->with([
-                "nombres" => $this->nombres, 
-                "url" => $this->url
-            ]);
+        return $this->view('view.name');
     }
 }

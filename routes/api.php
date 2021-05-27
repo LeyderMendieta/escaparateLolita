@@ -57,6 +57,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/getMyCards', 'UsuarioController@getTarjetasUsuario');
     Route::post('/addNewCard', 'UsuarioController@addNewCardUser');
     Route::get('/myCardsdel/{id}','UsuarioController@removeCardsUser');
+    Route::get('/verifyCardAvailable/{cardNumber}','UsuarioController@verifyCardAvailable');
 
     Route::get('/getMyDirecciones', 'UsuarioController@getDireccionesUsuario');
     Route::post('/addNewAddressU', 'UsuarioController@addNewDireccionUser');

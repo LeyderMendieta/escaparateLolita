@@ -13,15 +13,14 @@ use Illuminate\Support\Facades\Redirect;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
+
 Route::get('/test', function () {
-    return view('store.mailer.UsuarioPorFacturacionAnonima',array(
+    return view('store.mailer.VerificaTuCuenta',array(
         "nombres" => "Leyder Mendieta", 
-        "usuario" => "leiderpresiado@gmail.com", 
-        "clave" => "das514"
+        "url" => "leiderpresiado@gmail.com"
     ));
 });
-*/
+
 
 Route::get('/','AppController@showHome');
 Route::get('/home','AppController@showHome');
@@ -55,6 +54,10 @@ Route::get('/registro', function () {
         return view('store.registro');
 });
 Route::get('/restartPasswordAccount/oauth/{token}', 'UsuarioController@procederCambioContrasena');
+Route::get('/confirmAccount/oauth/{token}', 'UsuarioController@procederConfirmarCuenta');
+
+
+Route::get('/requestResponse/{type}', 'AppController@showRequestResponse');
 
 //-----------Mi cuenta Procesos
 

@@ -51,4 +51,27 @@ class AppController extends Controller
         else $configurations = Configuration::where("campo","$field")->first();
         return response()->json($configurations);
     }
+
+    public function showRequestResponse($type)
+    {
+        if($type == "verificarCuenta-D95ACAD839799A0B085540510FD1A977351A5C2F")
+        {
+            $logo = "ti-email mr-1";
+            $titulo = "Verificar Cuenta";
+            $message = "Se ha enviado un mensaje para confirmar la cuenta, verifica tu bandeja de entrada y/o correo no deseado, para proceder con la verificación de la cuenta";
+        }
+        else if($type == "cuentaVerificadaSuccess-4B1DC2F3CBB785B7D5FEA655C6C4E0927B384A9B")
+        {
+            $logo = "ti-face-smile mr-1";
+            $titulo = "Felicidades";
+            $message = "Se ha confirmado tu correo electronico";
+        }
+        else
+        {
+            $logo = "ti-face-sad mr-1";
+            $titulo = "Error";
+            $message = "Page Not Found";
+        }
+        return view('message',array("titulo" => $titulo, "logo" => $logo, "message" => $message));
+    }
 }

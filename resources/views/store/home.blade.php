@@ -272,7 +272,7 @@
                                                         <div class="empty_space hide_on_mobile h-2em"><span class="empty_space_inner"></span></div>
                                                         <div class="empty_space h-4_3em"><span class="empty_space_inner"></span></div>
                                                         <div class="sc_blogger sc_blogger_plain" data-slides-per-view="4" data-slides-min-width="150">
-                                                            <h2 class="sc_item_title sc_blogger_title sc_align_center sc_item_title_style_default">Artículos</h2>
+                                                            <h2 class="sc_item_title sc_blogger_title sc_align_center sc_item_title_style_default">Atajos Rápidos</h2>
                                                             <div class="sc_blogger_columns sc_item_columns trx_addons_columns_wrap" id="App_Feature_Articles">
 
                                                                 <!-- <div class="trx_addons_column-1_4">

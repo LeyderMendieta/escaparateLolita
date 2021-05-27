@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+
 use App\Cupon;
-use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\UserAddress;
 use App\UserCards;
@@ -15,10 +16,12 @@ use App\cart;
 use App\Mail\RestablecerPasswordStore;
 use App\UserPedido;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use App\Mail\VerificaTuCuenta;
 
 class UsuarioController extends Controller
@@ -111,6 +114,18 @@ class UsuarioController extends Controller
         else return view("error",["message" => "El enlace no se encuentra disponible"]);
     }
 
+    public function procederConfirmarCuenta($token)
+    {
+        $user = User::where(["AccessToken" => $token, "email_verified_at" => NULL])->first();
+        if($user)
+        {
+            $user->email_verified_at = now();
+            $user->save();
+            return Redirect::to('/requestResponse/cuentaVerificadaSuccess-4B1DC2F3CBB785B7D5FEA655C6C4E0927B384A9B');
+        }
+        else return view("error",["message" => "El enlace no se encuentra disponible"]);
+    }
+
     public function login(Request $request)
     {
         $user = User::where(['email' => $request->email])->first();
@@ -127,11 +142,19 @@ class UsuarioController extends Controller
                     $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
                     $mycart->id_usuario = $user->id;
                     $mycart->save();
-                }                
-
-                $user->generateToken();
-                setCookie ("authlog",$user->api_token,0,"/");
-                return $user;
+                }           
+                
+                if($user->email_verified_at == NULL)
+                {
+                    Mail::to($user)->send(new VerificaTuCuenta($user->name,url("/confirmAccount/oauth/".$user->AccessToken)));
+                    return response()->json(["error" => "no_verified"]);
+                }
+                else
+                {
+                    $user->generateToken();
+                    setCookie ("authlog",$user->api_token,0,"/");
+                    return $user;
+                }
             }
             else 
             return response()->json(["error" => "userpsw"]);
@@ -167,7 +190,7 @@ class UsuarioController extends Controller
                 ]);
         
                 $user->generateToken();
-                setCookie ("authlog",$user->api_token);
+                setCookie ("authlog",$user->api_token,0,"/");
         
                 return response()->json($user);
             }
@@ -651,5 +674,22 @@ class UsuarioController extends Controller
 
         return response()->json(array("error" => $error));
             
+    }
+
+    public function verifyCardAvailable($cardNumber)
+    {
+        $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
+
+        $firstNumbers = substr($cardNumber,0,6);
+        $lastNumbers = substr($cardNumber,-4);
+        $validate = DB::select("SELECT * FROM user_payment_tokens WHERE req_card_number like '$firstNumbers%' AND req_card_number like '%$lastNumbers'");
+
+        if(count($validate) > 0){ 
+            if( $mycart->id_usuario == $validate[0]->id_user ) $return = 4111;
+            else $return = 4100; 
+        }
+        else $return = 250;
+
+        return response()->json($return);
     }
 }
