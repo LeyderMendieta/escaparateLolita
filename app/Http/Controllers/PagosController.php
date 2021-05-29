@@ -135,6 +135,8 @@ class PagosController extends Controller
         }
         else
         {
+            $user_pedido->estadoPedido = "Rechazado";
+            $user_pedido->save();
             $transferencia->decision = $request->decision;
             $transferencia->message = $request->message;
             $transferencia->req_transaction_uuid = $request->req_transaction_uuid;

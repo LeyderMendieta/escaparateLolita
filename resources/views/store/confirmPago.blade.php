@@ -49,7 +49,7 @@
                                     <?php
 
                                         define ('HMAC_SHA256', 'sha256');
-                                        define ('SECRET_KEY', 'ef1f70f811824a199c668669825b87a4c54ff57ccc9c4ddb8f0c6d90e8dd623cac09d3aa07b1465ba2bccc5ba241132cf5108a6e69dd463cae4295a45889e000bb614b7d648f4b6b9d0f7110cc6005feff18265b2ca94ad69e2081701fdcc804d22651b3b54140e480895becaa9ea96b74a2b6530550421dbf1dae51b26af6cf');
+                                        define ('SECRET_KEY', '9ef3e26c4bb94d48bbb6442cb8a980417ca7ce4c44914affb2716530ab6f655a194bda16d35c445f868596accff4a0a675f3191d29de44c28e7c6595378d3c5e2e002350dd2a4730b1bc7f10d02451a2f41a76be73a54d8287e0d69db606f84ac923f3d70d7447a5ac94402d71b823ab431b60b19bba460a92f0fe491d37f653');
 
                                         function sign ($params) {
                                         return signData(buildDataToSign($params), SECRET_KEY);
@@ -435,5 +435,5 @@ function validate(evt) {
 
         return sessionID;
     } 
-    cybs_dfprofiler("tc_pa_016026821", "test");
+    cybs_dfprofiler("tc_pa_016026821", "live");
 </script>

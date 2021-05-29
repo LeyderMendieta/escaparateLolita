@@ -55,9 +55,9 @@
                                 <section>
                                     <div class="content_container">
                                         <div>
-                                            El pago no pudo ser procesado con exito<br/><hr>
+                                            <b style="color:chocolate">El pago no pudo ser procesado con exito</b><br/><hr>
                                             <b>Status:</b> <span style="color:red;font-weight:bold">{{$status}}</span><br/>
-                                            <b>Mensaje:</b> {{$mensaje}}<br/>
+                                            <b>Mensaje:</b> Tu pago no pudo ser procesado<br/>
                                             <b>Transacción UUID:</b> {{$uuid}}<br/>
                                             <b>Referencia:</b> {{$reference}}<br/><br/>
                                             <a href="{{ url('/shop') }}"> Regresar a la tienda</a>

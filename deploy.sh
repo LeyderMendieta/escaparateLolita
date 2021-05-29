@@ -1,6 +1,9 @@
 # Run Database Migrations
 php artisan migrate
 
+# Gift Cards With products
+ALTER TABLE `gift_cards` ADD `id_producto` INT NULL AFTER `id`, ADD INDEX (`id_producto`);
+
 #Database Changes
 • Importar Tabla "app_paises.sql"
 

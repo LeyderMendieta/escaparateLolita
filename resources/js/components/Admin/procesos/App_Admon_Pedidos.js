@@ -86,7 +86,7 @@ class App_Admon_Pedidos extends Component {
                             <td>{row.fecha}</td>                            
                             <td>{row.id_usuario}</td>                            
                             <td style={{color: (row.estado == "ACCEPT") ? "lightgreen" : "red"}} >{row.estado}</td>
-                            <td></td>
+                            <td>{row.estadoPedido}</td>
                             <td>{row.total}</td>
                             <td>{row.impuesto}</td>
                             <td>{row.transferencia.transaction_id}</td>

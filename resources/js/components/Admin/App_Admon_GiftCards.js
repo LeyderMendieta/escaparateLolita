@@ -27,6 +27,9 @@ class App_Admon_GiftCards extends Component {
                 this.setState({
                     cards: result
                 });
+
+                Configuracion.loadDatatable();
+                
                 if(result.length > 2)
                 {
                     $('#add_new_cardbtn').hide();

@@ -15,6 +15,7 @@ class Checkout_Compra_Shop extends Component {
             items: 0,
             total: 0,
             delivery: 5,
+            deliveryFull: false,
             tax_total: 0,
             paises: [],
             paymentsData: [],
@@ -81,6 +82,14 @@ class Checkout_Compra_Shop extends Component {
                         paymentsData: result.paymentsData,
                         tax_total: (result.subtotal * 7)/100
                     });
+
+                    if(this.state.total > 300)
+                    {
+                        this.setState({
+                            delivery: 0,
+                            deliveryFull: true
+                        });
+                    }
 
                     for (let index = 0; index <= this.state.cartProducts.length; index++) {
                         this.setState({
@@ -311,10 +320,11 @@ class Checkout_Compra_Shop extends Component {
                         <li className="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
                                 <h6 className="my-0"> Precio de Envío</h6>
-                                <small className="text-muted">seleccionar</small>
+                                <small className={(this.state.deliveryFull) ? "d-none text-muted" : "d-block text-muted"}>seleccionar</small>
                             </div>
+                            <div className={(this.state.deliveryFull) ? "d-block text-success font-weight-bold" : "d-none text-success font-weight-bold"} >Envio Gratis</div>
 
-                            <div className="d-block my-3" onChange={(e) => (this.setState({delivery: parseInt(e.target.value)}))}>
+                            <div className={(this.state.deliveryFull) ? "d-none my-3" : "d-block my-3"} onChange={(e) => (this.setState({delivery: parseInt(e.target.value)}))}>
                                 <div className="custom-control custom-radio">
                                     <input id="panamaenvio" name="envio" type="radio" className="custom-control-input" value="5" defaultChecked />
                                     <label className="custom-control-label" htmlFor="panamaenvio">Panamá / Panamá <span> $5</span></label>
@@ -359,8 +369,8 @@ class Checkout_Compra_Shop extends Component {
                     <h5 className="mb-3">Datos Facturación</h5>
                     <form className="needs-validation" method="post" action={Configuracion.url_principal+"checkout/confirm"} onSubmit={this.submitCheckout.bind(this)} >
                         <div className="row setparamsg">
-                        <input type="hidden" name="access_key" value="e4c15fd430d9361dabc777dc872fa3d2" />
-                        <input type="hidden" name="profile_id" value="52EC2BD8-DC18-467C-BF84-EAAA8777495F" />
+                        <input type="hidden" name="access_key" value="89a4b464668233929416c7ec39b1d95e" />
+                        <input type="hidden" name="profile_id" value="7ECD1FC7-B494-4971-B4D5-DAF1CE7347EF" />
                         <input type="hidden" name="transaction_type" value={"sale"+this.state.transactionType} />
                         <input type="hidden" name="transaction_uuid" value={Configuracion.uniqid("bill")} />
                         <input type="hidden" name="signed_field_names" value={"access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,payment_token,reference_number,amount,currency,payment_method,bill_to_forename,bill_to_surname,bill_to_email,bill_to_phone,bill_to_address_line1,bill_to_address_city,bill_to_address_state,bill_to_address_country,bill_to_address_postal_code,ship_to_forename,ship_to_surname,ship_to_phone,ship_to_address_line1,ship_to_address_city,ship_to_address_state,ship_to_address_country,ship_to_address_postal_code,override_custom_receipt_page,device_fingerprint_id,merchant_defined_data2,merchant_defined_data3,user_po,customer_ip_address,line_item_count,tax_indicator,tax_amount"+this.state.signedFielsExtra} />

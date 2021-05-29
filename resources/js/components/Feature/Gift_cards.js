@@ -39,7 +39,7 @@ class App_Feature_GiftCards extends Component {
         return (
             <React.Fragment>
                 {this.state.giftCards.map((row) => (
-                    <div className="column_container column-1_3 sc_layouts_column_icons_position_left">
+                    <div className="column_container column-1_3 sc_layouts_column_icons_position_left" key={row.id}>
                         <div className="column-inner">
                             <div className="text_column">
                                 <div className="empty_space h-1em"><span className="empty_space_inner"></span></div>
@@ -50,13 +50,13 @@ class App_Feature_GiftCards extends Component {
                                         <div className="sc_price_details">
                                             <p></p>
                                             <ul>
-                                                {row.etiquetas.split("\n").map((otrorow) =>(
-                                                    <li>{otrorow}</li>
+                                                {row.etiquetas.split("\n").map((otrorow,index) =>(
+                                                    <li key={index}>{otrorow}</li>
                                                 ))}
                                             </ul>
                                             <p></p>
                                         </div>
-                                        <a href="#" className="sc_price_link">Shop Now</a>
+                                        <a href={Configuracion.url_principal+"shop/"+row.acceso_url} className="sc_price_link">Shop Now</a>
                                     </div>
                                 </div>
                             </div>

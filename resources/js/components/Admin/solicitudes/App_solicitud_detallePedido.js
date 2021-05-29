@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Configuracion from '../../Configuration';
 
-class App_solicitud_detalleContacto extends Component {
+class App_solicitud_detallePedido extends Component {
 
     constructor(props) {
         super(props);        
@@ -10,28 +10,51 @@ class App_solicitud_detalleContacto extends Component {
           error: null,
           isLoaded: false,
           pedido: [],
-          transferencia: []     
+          transferencia: [],
+          funcActEstado: false,
+          newState: ""
         };
         
       }
 
-      componentDidMount(){
-           
-            fetch(Configuracion.url_principal+"api/admin/pedidosDetalle/"+$('#tokenAccess').val())
-            .then(res => res.json())
-            .then(
-            (result) => {
-                if(result.length > 0)
-                {
-                    this.setState({
-                        isLoaded: true,
-                        pedido: result[0],
-                        transferencia: result[0].transferencia
-                    });
-                }
-                else alert("internal error");
-                
-            });
+      componentDidMount(){           
+        fetch(Configuracion.url_principal+"api/admin/pedidosDetalle/"+$('#tokenAccess').val())
+        .then(res => res.json())
+        .then(
+        (result) => {
+            if(result.length > 0)
+            {
+                this.setState({
+                    isLoaded: true,
+                    pedido: result[0],
+                    transferencia: result[0].transferencia
+                });
+            }
+            else alert("internal error");
+            
+        });
+      }
+
+      actualizarEstado(event)
+      {
+        const formData = new FormData();
+        formData.append('pedido', this.state.pedido.id);
+        formData.append('newState', this.state.newState);
+
+        let config = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json'
+                },
+            body: formData
+        }
+
+        fetch(Configuracion.url_principal+"api/admin/Pedido/setState",config)
+        .then(res => res.json())
+        .then((result) => {
+                alert("Se ha actualizado el estado");
+            }
+        );
       }
 
       render(){
@@ -108,6 +131,24 @@ class App_solicitud_detalleContacto extends Component {
                                     </tbody>
                                 </table>
                             </div>
+                            <div className="row my-5">
+                                <div className="form-group">
+                                    <label className="form-label">Estado del Pedido</label>
+                                    <select className="form-control select2" data-placeholder="Elegir una opción" defaultValue={this.state.pedido.estadoPedido} onChange={(e) => ( (e.target.value != this.state.pedido.estadoPedido) ? this.setState({funcActEstado: true, newState: e.target.value}) : this.setState({funcActEstado: false}))}>
+                                        <option value="En Verificación" className="estadoPedidoP1">En Verificación</option>
+                                        <option value="Aceptado" className="estadoPedidoP1">Aceptado</option>
+                                        <option value="Rechazado" className="estadoPedidoP1">Rechazado</option>
+                                        <option value="En Proceso Envió" className="estadoPedidoP2">En Proceso Envió</option>
+                                        <option value="Enviado" className="estadoPedidoP2">Enviado</option>
+                                        <option value="Entregado" className="estadoPedidoP2">Entregado</option>
+                                        <option value="No pudo ser Entregado" className="estadoPedidoP2">No pudo ser Entregado</option>
+                                        <option value="Devuelto" className="estadoPedidoP2">Devuelto</option>
+                                    </select>
+                                </div>
+                                <div className="text-center m-4">
+                                    <button type="button" className={(this.state.funcActEstado) ? "btn btn-info" : "d-none"} onClick={this.actualizarEstado.bind(this)}>Actualizar Estado</button>
+                                </div>                                
+                            </div>
                         </div>
                         <div className="card-footer text-right">
                             <button id="btnprint" type="button" className="btn btn-success mb-1" onClick={(e) => {
@@ -135,5 +176,5 @@ class App_solicitud_detalleContacto extends Component {
 }
 
 if (document.getElementById('App_admPedidoDetalle')) {
-    ReactDOM.render(<App_solicitud_detalleContacto />, document.getElementById('App_admPedidoDetalle'));
+    ReactDOM.render(<App_solicitud_detallePedido />, document.getElementById('App_admPedidoDetalle'));
 }

@@ -11,7 +11,7 @@ class GiftCardController extends Controller
 {
     public function getAll()
     {
-        $response = DB::table('gift_cards')->orderBy('id', 'DESC')->get();
+        $response = DB::select("SELECT t0.*,t1.acceso_url,t1.name,t1.precio_ahora FROM gift_cards t0 LEFT JOIN products t1 ON t0.id_producto=t1.id ORDER BY t0.valor ASC");
 
         return response()->json($response, 200);
     }
@@ -33,6 +33,7 @@ class GiftCardController extends Controller
         $object->valor = $request->valor;
         $object->etiquetas = $request->etiquetas;
         $object->color_hex = $request->color;
+        $object->id_producto = $request->productoAsociado;
         $object->save();
                 
         return response()->json(array("gift_card"=> $object));
@@ -46,6 +47,7 @@ class GiftCardController extends Controller
         $object->valor = $request->valor;
         $object->etiquetas = $request->etiquetas;
         $object->color_hex = $request->color;
+        $object->id_producto = $request->productoAsociado;
         $object->save();
                 
         return response()->json(array("gift_card"=> $object));

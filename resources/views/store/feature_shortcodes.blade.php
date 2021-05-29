@@ -61,7 +61,6 @@
                                             <div class="column_container column-1_1 sc_layouts_column sc_layouts_column_align_center sc_layouts_column_icons_position_left">
                                                 <div class="column-inner">
                                                     <div class="sc_layouts_item">
-                                                        <!-- .sc_layouts_title -->
                                                         <div class="sc_layouts_title">
                                                             <div class="sc_layouts_title_title"><h1 class="sc_layouts_title_caption">Destacados</h1></div>
                                                             <div class="sc_layouts_title_breadcrumbs">
@@ -70,7 +69,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- /.sc_layouts_title -->
                                                     </div>
                                                 </div>
                                             </div>

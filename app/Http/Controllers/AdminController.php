@@ -174,7 +174,7 @@ class AdminController extends Controller
             $productos = UserPedidoProducto::where("id_user_pedido",$fila->id)->get();
             if(count($dbFactura) > 0)
             {
-                array_push($data,["id" => $fila->id, "id_usuario" => $fila->id_user, "card" => $fila->id_user_card, "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "total" => $fila->total, "impuesto" => $fila->impuesto, "transferencia" => $dbFactura[0], "productos" => $productos ]);
+                array_push($data,["id" => $fila->id, "id_usuario" => $fila->id_user, "card" => $fila->id_user_card, "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "estadoPedido" => $fila->estadoPedido, "total" => $fila->total, "impuesto" => $fila->impuesto, "transferencia" => $dbFactura[0], "productos" => $productos ]);
             }            
         }
 
@@ -193,10 +193,23 @@ class AdminController extends Controller
         $userPedidoProductos =  DB::select("SELECT *,t1.id as productoID FROM user_pedido_productos t0 INNER JOIN products t1 ON t0.id_product = t1.id WHERE  t0.id_user_pedido='$userPedido->id'");
         if(count($dbFactura) > 0)
         {
-            array_push($data,["id" => $userPedido->id, "id_usuario" => $userPedido->id_user, "card" => $userPedido->id_user_card, "fecha" => $userPedido->created_at->format('d-m-Y h:s a'), "estado" => $userPedido->estado, "domicilio" => $userPedido->costoDomicilio, "total" => $userPedido->total, "impuesto" => $userPedido->impuesto, "transferencia" => $dbFactura[0], "productos" => $userPedidoProductos ]);
+            array_push($data,["id" => $userPedido->id, "id_usuario" => $userPedido->id_user, "card" => $userPedido->id_user_card, "fecha" => $userPedido->created_at->format('d-m-Y h:s a'), "estado" => $userPedido->estado, "domicilio" => $userPedido->costoDomicilio, "estadoPedido" => $userPedido->estadoPedido, "total" => $userPedido->total, "impuesto" => $userPedido->impuesto, "transferencia" => $dbFactura[0], "productos" => $userPedidoProductos ]);
         }    
 
         return response()->json($data);
+    }
+
+    public function actualizarEstadoPedido(Request $request)
+    {
+        $userPedido = UserPedido::where("id",$request->pedido)->first();
+        if(isset($userPedido->estadoPedido))
+        {
+            $userPedido->estadoPedido = $request->newState;
+            $userPedido->save();
+            $result = "done";
+        }
+        else $result = "failed";
+        return response()->json(["result"=> $result]);
     }
 
     public function getTotalSect1()

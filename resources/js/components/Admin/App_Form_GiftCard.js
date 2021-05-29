@@ -13,44 +13,48 @@ class App_Admon_Form_Gift_Card extends Component {
           error: null,
           isLoaded: false,
           editing: false,
-          cards: [],     
+          cards: [],
+          productos: [],
+          productoAsociado: 0
         };
         
       }
 
       componentDidMount()
       {
-          if(document.getElementById("tokenEditing").value != "")
-          {
-            fetch(Configuracion.url_principal+"api/giftCard_detail/"+document.getElementById("tokenEditing").value)
+            fetch(Configuracion.url_principal+"api/all_products")
             .then(res => res.json())
             .then(
-              (result) => {
-                if(result.gift_card.length > 0)
-                {
-                    console.log(result);
-                    this.setState({
-                        editing: true,
-                        cards: result.gift_card[0]
-                    });
-
-                    $('#card_id').val(this.state.cards.id);
-                    $('#nombre').val(this.state.cards.nombre);
-                    $('#valor').val(this.state.cards.valor);
-                    $('#contenido').val(this.state.cards.etiquetas);
-                    $('#color').val(this.state.cards.color_hex);
-                }
-              },
-              
-              (error) => {
+            (result) => {
                 this.setState({
-                  isLoaded: true,
-                  error
+                    productos: result
                 });
-              }
-            )
-            
-          }
+                
+            });
+
+            if(document.getElementById("tokenEditing").value != "")
+            {
+                fetch(Configuracion.url_principal+"api/giftCard_detail/"+document.getElementById("tokenEditing").value)
+                .then(res => res.json())
+                .then(
+                (result) => {
+                    if(result.gift_card.length > 0)
+                    {
+                        this.setState({
+                            editing: true,
+                            cards: result.gift_card[0],
+                            productoAsociado: result.gift_card[0].id_producto,
+                        });
+
+                        $('#card_id').val(this.state.cards.id);
+                        $('#nombre').val(this.state.cards.nombre);
+                        $('#valor').val(this.state.cards.valor);
+                        $('#contenido').val(this.state.cards.etiquetas);
+                        $('#color').val(this.state.cards.color_hex);
+                    }
+                });         
+            }
+          
       }
 
       handleSubmitCreate()
@@ -59,8 +63,7 @@ class App_Admon_Form_Gift_Card extends Component {
           var valor = $('#valor').val();
           var contenido = $('#contenido').val();
           var color = $('#color').val();
-          
-          console.log($('#colorpicker').val());
+          var productoAsociado = $('#productoAsociado').val();
 
           if(nombre.length == 0)
           {
@@ -86,6 +89,12 @@ class App_Admon_Form_Gift_Card extends Component {
               return false;
           }
 
+          if(productoAsociado == "" || productoAsociado == 0)
+          {
+              alert("Es obligatorio el producto Asociado");
+              return false;
+          }
+
           try {
 
             $('#global-loader').show();
@@ -95,6 +104,7 @@ class App_Admon_Form_Gift_Card extends Component {
             formData.append('valor', valor);
             formData.append('etiquetas', contenido);
             formData.append('color', color);
+            formData.append('productoAsociado', productoAsociado);
 
             let config = {
                 method: 'POST',
@@ -124,6 +134,7 @@ class App_Admon_Form_Gift_Card extends Component {
             var valor = $('#valor').val();
             var contenido = $('#contenido').val();
             var color = $('#color').val();
+            var productoAsociado = $('#productoAsociado').val();
 
           if(nombre.length == 0)
           {
@@ -149,6 +160,12 @@ class App_Admon_Form_Gift_Card extends Component {
               return false;
           }
 
+          if(productoAsociado == "" || productoAsociado == 0)
+          {
+              alert("Es obligatorio el producto Asociado");
+              return false;
+          }
+
           try {
             $('#global-loader').show();
 
@@ -158,6 +175,7 @@ class App_Admon_Form_Gift_Card extends Component {
             formData.append('valor', valor);
             formData.append('etiquetas', contenido);
             formData.append('color', color);
+            formData.append('productoAsociado', productoAsociado);
 
             let config = {
                 method: 'POST',
@@ -223,7 +241,7 @@ class App_Admon_Form_Gift_Card extends Component {
                                 </div>
                             </div>
                             <div className="col-xl-6 col-lg-12 col-md-12">
-                            <div className="form-group">
+                                <div className="form-group">
                                     <label className="form-label">Contenido de la tarjeta (Ayuda a la derecha)</label>
                                     <div className="row gutters-sm">
                                         <div className="col">
@@ -235,6 +253,20 @@ class App_Admon_Form_Gift_Card extends Component {
                                             " data-original-title="" title="">?</span>
                                         </span>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xl-6 col-lg-12 col-md-12">
+                                <div className="form-group ">
+                                    <label className="form-label">Producto Asociado</label>
+                                    <select id="productoAsociado" value={this.state.productoAsociado} className="form-control select2-show-search" data-placeholder="Elige uno"  >
+                                    <option label="Choose one">
+                                        </option>
+                                        {this.state.productos.map((row) => (
+                                            <option value={row.id} key={row.id} >{row.name}</option>
+                                        ))}
+                                    </select>
                                 </div>
                             </div>
                         </div>

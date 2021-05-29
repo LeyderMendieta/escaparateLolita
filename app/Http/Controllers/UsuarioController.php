@@ -600,7 +600,7 @@ class UsuarioController extends Controller
                 $dbFactura = DB::select("SELECT * FROM transferencias WHERE id_pedido='$fila->id'");
                 if(isset($dbFactura[0]))
                 {
-                    array_push($data,["id" => $fila->id, "card" => $fila->id_user_card, "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "total" => $fila->total, "impuesto" => $fila->impuesto, "transferencia" => $dbFactura[0] ]);
+                    array_push($data,["id" => $fila->id, "card" => $fila->id_user_card, "fecha" => $fila->created_at->format('d-m-Y h:s a'), "estado" => $fila->estado, "estadoPedido" => $fila->estadoPedido, "total" => $fila->total, "impuesto" => $fila->impuesto, "transferencia" => $dbFactura[0] ]);
                 }
             }
 
