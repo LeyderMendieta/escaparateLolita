@@ -81,13 +81,12 @@
                                                             $params[$name] = $value;
                                                         }
                                                         
-                                                        /*
+                                                        
                                                         foreach($params as $name => $value) {
                                                             echo "<div>";
                                                             echo "<span class=\"fieldName\">" . $name . "</span>: <span class=\"fieldValue\">" . $value . "</span>";
                                                             echo "</div>\n";
                                                         }
-                                                        */
                                                     ?>
                                                 </div>
                                             </fieldset>
@@ -375,12 +374,14 @@ function validate(evt) {
         });
     });
     function cybs_dfprofiler(merchantID, environment) {
-            
+        /*
         if (environment.toLowerCase() == 'live') {
             var org_id = 'k8vif92e';
         } else {
             var org_id = '1snn5n9w';
         }
+        */
+        var org_id = 'k8vif92e';
 
         var sessionID =   new Date().getTime();
         str = "https://h.online-metrix.net/fp/tags.js?org_id=" + org_id + "&session_id=" + merchantID + sessionID + "&m=2";
@@ -429,6 +430,8 @@ function validate(evt) {
         document.body.appendChild(objectTM);
 
         return sessionID;
-    } 
+    }
+
     cybs_dfprofiler("tc_pa_016026821", "live");
+    
 </script>

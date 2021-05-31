@@ -283,4 +283,13 @@ class PagosController extends Controller
         }
         else return redirect("/shop");
     }
+
+    public function testing()
+    {
+        $sender = Mail::to("leyder154611@gmail.com")->send(new CrearUsuarioPorFacturacionAnonima(array(
+            "nombres" =>  "peter", 
+            "usuario" => "testing", 
+            "clave" => "testing"
+        )));
+    }
 }

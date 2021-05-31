@@ -14,12 +14,7 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 
-Route::get('/test', function () {
-    return view('store.mailer.VerificaTuCuenta',array(
-        "nombres" => "Leyder Mendieta", 
-        "url" => "leiderpresiado@gmail.com"
-    ));
-});
+//Route::get('/testing', 'PagosController@testing');
 
 
 Route::get('/','AppController@showHome');

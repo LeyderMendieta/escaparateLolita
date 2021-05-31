@@ -89989,7 +89989,7 @@ var ProductDetail_Summary = function ProductDetail_Summary(_ref) {
   }, "Comprar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#trx_addons_calendar_popup",
     className: producto.entallaje == false ? "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white d-none" : "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white"
-  }, "Echo a la medida")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Hecho a la medida")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "clear"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "product_meta"
@@ -90520,6 +90520,8 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         return res.json();
       }).then(function (result) {
         if (result.error == undefined) {
+          console.log(result);
+
           _this2.setState({
             isLoaded: true,
             cartProducts: result.products,
@@ -90530,7 +90532,8 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
             paises: result.paises,
             userPo: result.userPo,
             paymentsData: result.paymentsData,
-            tax_total: result.subtotal * 7 / 100
+            tax_total: result.subtotal * 7 / 100,
+            ipAddress: result.address
           });
 
           if (_this2.state.total > 300) {
@@ -90563,13 +90566,6 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
             zcDireccion1: result.user.ubicacion
           });
         }
-      });
-      fetch("http://api.ipify.org/?format=json").then(function (res) {
-        return res.json();
-      }).then(function (result) {
-        _this2.setState({
-          ipAddress: result.ip
-        });
       });
     }
   }, {

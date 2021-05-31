@@ -70,6 +70,7 @@ class Checkout_Compra_Shop extends Component {
                 
                 if(result.error == undefined)
                 {
+                    console.log(result);
                     this.setState({
                         isLoaded: true,
                         cartProducts: result.products,
@@ -80,7 +81,8 @@ class Checkout_Compra_Shop extends Component {
                         paises: result.paises,
                         userPo: result.userPo,
                         paymentsData: result.paymentsData,
-                        tax_total: (result.subtotal * 7)/100
+                        tax_total: (result.subtotal * 7)/100,
+                        ipAddress: result.address
                     });
 
                     if(this.state.total > 300)
@@ -119,17 +121,6 @@ class Checkout_Compra_Shop extends Component {
             }
             
         });
-        
-        fetch("http://api.ipify.org/?format=json")
-        .then(res => res.json())
-        .then(
-            (result) =>
-            {
-                this.setState({
-                    ipAddress: result.ip
-                });
-            }
-        );
       }
 
       componentDidUpdate(){
