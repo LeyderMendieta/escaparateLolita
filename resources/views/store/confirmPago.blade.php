@@ -72,7 +72,7 @@
                                         }
                                             //https://testsecureacceptance.cybersource.com/silent/pay
                                     ?>
-                                        <form id="payment_confirmation" action="https://testsecureacceptance.cybersource.com/silent/pay" method="post" />
+                                        <form id="payment_confirmation" action="https://secureacceptance.cybersource.com/silent/pay" method="post" />
                                             <fieldset id="confirmation">
                                                 <h3>Confirmar Pago</h3>
                                                 <div>
@@ -363,11 +363,6 @@ function validate(evt) {
                     {
                         $('.jsinfo-result-valCard').removeClass("d-none");
                         $('.jsinfo-result-valCard').html("Ya tienes asociada esta tarjeta tokenizada, regresa al checkout y elige la tarjeta para proceder con el pago!");                        
-                    }
-                    else if(result == 4100)
-                    {
-                        $('.jsinfo-result-valCard').removeClass("d-none");
-                        $('.jsinfo-result-valCard').html("Esta tarjeta no se encuentra disponible, esta asociada a otra cuenta!");
                     }
                     else
                     {
