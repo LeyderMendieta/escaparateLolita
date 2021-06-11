@@ -47,16 +47,8 @@
                                 <section>
                                     <div class="content_container">
                                     <?php
-
-                                        define ('HMAC_SHA256', 'sha256');
-                                        define ('SECRET_KEY', '9ef3e26c4bb94d48bbb6442cb8a980417ca7ce4c44914affb2716530ab6f655a194bda16d35c445f868596accff4a0a675f3191d29de44c28e7c6595378d3c5e2e002350dd2a4730b1bc7f10d02451a2f41a76be73a54d8287e0d69db606f84ac923f3d70d7447a5ac94402d71b823ab431b60b19bba460a92f0fe491d37f653');
-
                                         function sign ($params) {
-                                        return signData(buildDataToSign($params), SECRET_KEY);
-                                        }
-
-                                        function signData($data, $secretKey) {
-                                            return base64_encode(hash_hmac('sha256', $data, $secretKey, true));
+                                            return buildDataToSign($params);
                                         }
 
                                         function buildDataToSign($params) {
@@ -84,7 +76,7 @@
                                                         
                                                         foreach($params as $name => $value) {
                                                             echo "<div>";
-                                                            echo "<span class=\"fieldName\">" . $name . "</span>: <span class=\"fieldValue\">" . $value . "</span>";
+                                                            //echo "<span class=\"fieldName\">" . $name . "</span>: <span class=\"fieldValue\">" . $value . "</span>";
                                                             echo "</div>\n";
                                                         }
                                                     ?>
@@ -94,8 +86,9 @@
                                                 foreach($params as $name => $value) {
                                                     echo "<input type=\"hidden\" id=\"" . $name . "\" name=\"" . $name . "\" value=\"" . $value . "\"/>\n";
                                                 }
-                                                echo "<input type=\"hidden\" id=\"signature\" name=\"signature\" value=\"" . sign($params) . "\"/>\n";
-                                                
+                                                echo "<input type=\"hidden\" id=\"fieldsToSign\" value=\"" . sign($params) . "\"/>\n";
+                                                //echo "<h6 id='infoSign'>" . sign($params) . "</h6>";
+                                                echo "<input type=\"hidden\" id=\"signature\" name=\"signature\" value=\"null\"/>\n";
                                                 /**Validate if exist Token Payment */
                                                 if($params["transaction_type"] == "sale" )
                                                 {
@@ -108,11 +101,12 @@
                                                 {
                                                     echo "<span id='typeSale' style='display:none'>card</span>";
                                                     ?>
-                                                        <fieldset id="nuevoMetodoPago">
+                                                        <div class="alert alert-info ">Nota: Unicamente se permiten tarjetas VISA y/o Mastercard</div><br/>
+                                                        <fieldset id="nuevoMetodoPago" class="mx-3">
                                                             <div class="section w-50">
                                                                 <div class="row form-group">
                                                                     <input type="hidden" name="card_type" id="card_type">
-                                                                    <label for="card_type">Tarjeta</label>
+                                                                    <label for="card_type">Tipo de Tarjeta (Carga Automatico)</label>
                                                                     <select id="tipoTarjeta" class="form-control p-0 pl-3 border" disabled>
                                                                         <option value="" selected>...</option> 
                                                                         <option value="001">Visa</option>
@@ -177,17 +171,24 @@
                                                                 </div>
                                                             </div>
                                                         </fieldset>
+                                                        <div class="mx-5">
+                                                            <input type="checkbox" className="custom-control-input" id="confirmar-guardarTarjeta" checked />
+                                                            <label className="custom-control-label" for="confirmar-guardarTarjeta">
+                                                            Guardar la tarjeta para proximas compras
+                                                            </label>
+                                                        </div>
                                                     <?php
                                                 }
                                             ?>
                                             
-                                        <button type="button" id="realizarPago" role="button">Realizar Pago</button>
+                                        <button type="button" class="mx-5" id="realizarPago" role="button">Realizar Pago</button>
                                         <h6 id="msgProcesando" class="text-info d-none">Procesando el pago...</h6>
                                         </form>
                                     </div>
                                     <div class=" mt-4 alert alert-danger jsinfo-result-valCard d-none"></div>
                                 </section>
                                 <input type="hidden" class="apiCardVerify" value="{{ url('/' . $page='api/verifyCardAvailable/') }}">
+                                <input type="hidden" class="apiSignDataST" value="{{ url('/' . $page='api/signDataST/') }}">
                             </div>
                         </article>
                     </div>
@@ -227,6 +228,24 @@ function validate(evt) {
   }
 }
 
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    //mode: 'cors', // no-cors, *cors, same-origin
+   // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    //credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    //redirect: 'follow', // manual, *follow, error
+    //referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
     $(document).ready(function(){
 
         var nTarjeta = "";
@@ -236,6 +255,45 @@ function validate(evt) {
             $(this).siblings(".invalid-field").addClass("d-none");
             $(this).parents(".col-6").find(".invalid-field-mes").addClass("d-none");
             $(this).parents(".col-6").find(".invalid-field-year").addClass("d-none");
+        });
+
+        var st_FieldsToSign = $('#fieldsToSign').val();
+        var st_SignedFieldsNames = $('#signed_field_names').val();
+
+        $('#confirmar-guardarTarjeta').change(function(){
+
+            var newval = "";
+            var valSigned = $('#signed_field_names').val();
+            if($(this).prop("checked") == true)
+                {
+                    newval = st_FieldsToSign;
+
+                    
+                    if($('input[name="payment_token"]').length == 0)
+                    $('#payment_confirmation').find("input").first().after("<input type='hidden' name='payment_token' value='' />");
+
+                    $('#transaction_type').val("sale,create_payment_token");
+                    $('#signed_field_names').val(st_SignedFieldsNames);
+
+                }
+            else
+                {
+                    newval = $('#fieldsToSign').val().replace("transaction_type=sale,create_payment_token,payment_token=","transaction_type=sale").replace("payment_token,","");
+                    
+                    $('input[name="payment_token"]').remove();
+
+                    $('#transaction_type').val("sale");
+                    $('#signed_field_names').val(valSigned.replace(",payment_token",""));
+                }
+            $('#fieldsToSign').val(newval);
+
+
+            postData($('.apiSignDataST').val(), { data: $('#fieldsToSign').val() })
+            .then(response => {
+                //$('input[name="signed_date_time"]').val(response.date);
+                $('#signature').val(response.sign);
+            });
+
         });
 
         $('#cvn').change(function(){
@@ -272,6 +330,11 @@ function validate(evt) {
             else $(this).val("xxxx-xxxx-xxxx-xxxx");
 
             nTarjeta = numeroTarjeta;
+        });
+
+        postData($('.apiSignDataST').val(), { data: $('#fieldsToSign').val() })
+        .then(response => {
+            $('#signature').val(response.sign);
         });
 
         $('#realizarPago').click(function(){
@@ -355,13 +418,13 @@ function validate(evt) {
                     {
                         $('#realizarPago').show();
                         $('#msgProcesando').addClass("d-none");
-                        nTarjeta = "0";
                     }
                     //------------------
                     if(result == 4111)
                     {
                         $('.jsinfo-result-valCard').removeClass("d-none");
-                        $('.jsinfo-result-valCard').html("Ya tienes asociada esta tarjeta tokenizada, regresa al checkout y elige la tarjeta para proceder con el pago!");                        
+                        $('.jsinfo-result-valCard').html("Ya tienes asociada esta tarjeta tokenizada, regresa al checkout y elige la tarjeta para proceder con el pago!");     
+                        nTarjeta = "0";                   
                     }
                     else
                     {

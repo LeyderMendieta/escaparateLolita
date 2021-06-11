@@ -75,7 +75,6 @@ class PagosController extends Controller
         }
 
         /**----------END Guardar Pedido */
-       
 
         $transferencia = new Transferencia();
         $transferencia->id_pedido = $user_pedido->id;
@@ -232,13 +231,15 @@ class PagosController extends Controller
 
         if(isset($transferencia->transaction_id))
         {
-            $sendStatus = Mail::to($userToMail)->send(new EnviarFacturaRecibo(array(
+            $listadoEstados = ["ACCEPT" => "Pago Aceptado","ERROR" => "Pago no pudo ser procesado", "DECLINE" => "Pago Declinado", "REVIEW" => "Pago sujeto a Revisión", "CANCEL" => "Pago Cancelado"];
+            Mail::to($userToMail)->send(new EnviarFacturaRecibo(array(
                 "transferencia" => $transferencia,
                 "numero_factura" => $transferencia->transaction_id,
                 "fecha_factura" =>  date('d-m-Y h:i:s', strtotime($transferencia->auth_time)),
                 "pedido" => $user_pedido,
                 "productos" => $userPedidoProductos,
                 "subtotal" => $subtotal,
+                "estadoTransferencia" => $listadoEstados[$user_pedido->estado],
                 "mailing" => true
             )));
             return redirect("/invoice/$request->transaction_id/$request->req_transaction_uuid");
@@ -271,6 +272,7 @@ class PagosController extends Controller
                 $subtotal += $fila->total;
             }
 
+            $listadoEstados = ["ACCEPT" => "Pago Aceptado","ERROR" => "Pago no pudo ser procesado", "DECLINE" => "Pago Declinado", "REVIEW" => "Pago sujeto a Revisión", "CANCEL" => "Pago Cancelado"];
             return view("store.factura",array(
                 "transferencia" => $db_transaccion[0],
                 "numero_factura" => $id_transaccion,
@@ -278,7 +280,8 @@ class PagosController extends Controller
                 "pedido" => $userPedido,
                 "productos" => $userPedidoProductos,
                 "subtotal" => $subtotal,
-                "mailing" => false
+                "mailing" => false,
+                "estadoTransferencia" => $listadoEstados[$userPedido->estado],
             ));
         }
         else return redirect("/shop");
@@ -286,7 +289,7 @@ class PagosController extends Controller
 
     public function testing()
     {
-        $sender = Mail::to("leyder154611@gmail.com")->send(new CrearUsuarioPorFacturacionAnonima(array(
+        Mail::to("leyder154611@gmail.com")->send(new CrearUsuarioPorFacturacionAnonima(array(
             "nombres" =>  "peter", 
             "usuario" => "testing", 
             "clave" => "testing"

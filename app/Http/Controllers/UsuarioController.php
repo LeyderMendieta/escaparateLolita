@@ -344,56 +344,19 @@ class UsuarioController extends Controller
         $user = User::where(['api_token' => $session])->whereNotNull("api_token")->first();       
         if($user)
         {
-            $cards = UserCards::where(['id_user' => $user->id])->get();
+            $cards = DB::select("SELECT * FROM user_payment_tokens WHERE  id_user='$user->id' AND activo=1");
             $results = [];
             foreach($cards as $fila)
             {
                 array_push($results,[
-                    "id" => $fila->id,
-                    "mes" => $fila->mes_expiracion,
-                    "ano" => $fila->ano_expiracion, 
-                    "numeroH" => "**** **** **** ".substr($fila->numero,-4,4),
-                    "nombre" => $fila->nombre_tarjeta,
-                    "tipo" => $fila->tipo
+                        "id" => $fila->id,
+                        "expiracion" => $fila->req_card_expiry_date,
+                        "numero" => $fila->req_card_number,
+                        "nombre" => $fila->nombre_card,
+                        "tipo" => $fila->card_type_name
                     ]);
             }
             return response()->json(array("cards" => $results));
-        }
-        else 
-            return response()->json(array("error" => "error found"));
-        
-    }
-
-    public function addNewCardUser(Request $request)
-    {
-        $session = (isset($_COOKIE["authlog"])) ? $_COOKIE["authlog"] : "null";
-
-        if($session == "null") 
-            return response()->json(array("error" => "oauthlogged"));
-
-            $user = User::where(['api_token' => $session])->whereNotNull("api_token")->first();       
-        if($user)
-        {
-            $validateExists = UserCards::where(["numero"=> $request->numero])->first();
-            if($validateExists)
-            {
-                return response()->json(array("error" => "dontavailable"));
-            }
-            else
-            {
-                UserCards::create([
-                    "id_user" => $user->id,
-                    "tipo" => $request->tipo,
-                    "numero" => $request->numero,
-                    "ccv" => $request->ccv,
-                    "pais" => $request->pais,
-                    "nombre_tarjeta" => $request->nombre,
-                    "mes_expiracion" => $request->mes,
-                    "ano_expiracion" => $request->year
-                ]);
-                return $this->getTarjetasUsuario();
-            }
-           
         }
         else 
             return response()->json(array("error" => "error found"));
@@ -410,7 +373,7 @@ class UsuarioController extends Controller
         $user = User::where(['api_token' => $session])->whereNotNull("api_token")->first();       
         if($user)
         {
-            $result = DB::table('user_cards')->where(['id' => $card,"id_user" => $user->id])->delete();
+            $result = DB::table('user_payment_tokens')->where(['id' => $card,"id_user" => $user->id])->update(['activo' => 0]);
             if($result) return $this->getTarjetasUsuario();
             return response()->json(array("error" => "removing"));
         }

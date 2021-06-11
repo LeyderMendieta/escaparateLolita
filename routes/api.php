@@ -69,6 +69,21 @@ use Illuminate\Support\Facades\Route;
     Route::post('/aplicarCuponCarrito', 'UsuarioController@aplicarCuponCarrito');
 
     Route::get("/getMyPedidos","UsuarioController@getMyPedidos");
+    Route::post("/signDataST",function(Request $request){
+
+        define ('HMAC_SHA256', 'sha256');
+        define ('SECRET_KEY', '9ef3e26c4bb94d48bbb6442cb8a980417ca7ce4c44914affb2716530ab6f655a194bda16d35c445f868596accff4a0a675f3191d29de44c28e7c6595378d3c5e2e002350dd2a4730b1bc7f10d02451a2f41a76be73a54d8287e0d69db606f84ac923f3d70d7447a5ac94402d71b823ab431b60b19bba460a92f0fe491d37f653');
+
+        function sign ($data) {
+            return signData($data, SECRET_KEY);
+        }
+
+        function signData($data, $secretKey) {
+            return base64_encode(hash_hmac('sha256', $data, $secretKey, true));
+        }
+
+        return response()->json(["sign" => sign($request->data), "date" => gmdate("Y-m-d\TH:i:s\Z")]);
+    });
 
     Route::post('/asignarAgenda','AgendaController@store');
 
@@ -81,6 +96,7 @@ use Illuminate\Support\Facades\Route;
     Route::get("/admin/pedidosDetalle/{pedido}","AdminController@getPedidoDetalle");
     Route::post("/admin/Pedido/setState","AdminController@actualizarEstadoPedido");
     Route::get("/admin/getAgendasList","AgendaController@verListadoAgendas");
+  
 
     Route::get("/admin/getTotalSect1","AdminController@getTotalSect1");
 

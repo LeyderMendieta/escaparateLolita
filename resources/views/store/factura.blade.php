@@ -136,7 +136,7 @@ td.align-right {
                 </td> 
              </tr> 
              <tr> 
-              <td class="es-p20t es-p10b es-p20r es-p20l" align="left" bgcolor="#FF779A" style="background-color: #ff779a"> 
+              <td class="es-p20t es-p10b es-p20r es-p20l" align="left" style="background-color: #ff779a"> 
                <table cellpadding="0" cellspacing="0" width="100%"> 
                  <tr> 
                   <td width="560" align="center" valign="top"> 
@@ -163,7 +163,9 @@ td.align-right {
                   <td width="560" align="center" valign="top"> 
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation"> 
                      <tr> 
-                      <td align="left"><h3 style="color: #ff779a;font-size: 14px;font-family: arial, 'helvetica neue', helvetica, sans-serif;line-height: 28px"><strong>&nbsp;[<a target="_blank" href="https://elescaparatedelolita.com/contacts#" style="color: #ff779a;font-size: 14px;font-family: arial, 'helvetica neue', helvetica, sans-serif">Fecha de Transacción</a>] {{$fecha_factura}}</strong></h3></td> 
+                      <td align="left"><h3 style="color: #ff779a;font-size: 14px;font-family: arial, 'helvetica neue', helvetica, sans-serif;line-height: 28px"><strong>&nbsp;[<a target="_blank" href="https://elescaparatedelolita.com/contacts#" style="color: #ff779a;font-size: 14px;font-family: arial, 'helvetica neue', helvetica, sans-serif">Fecha de Transacción</a>] {{$fecha_factura}}</strong></h3>
+                      <h3 style="margin-left:8px; color: #ff779a;font-size: 14px;font-family: arial, 'helvetica neue', helvetica, sans-serif">Estado de Transacción: <span style="color:darkblue">{{$estadoTransferencia}}</span></h3>
+                      </td> 
                      </tr> 
                      <tr> 
                       <td><title>Factura Elescaparatedelolita</title> 
@@ -280,15 +282,6 @@ td.align-right {
                          <thead> 
                           <tr> 
                            <td class="align-left">Pais: {{$transferencia->req_bill_to_address_country}}</td> 
-                          </tr> 
-                         </thead> 
-                        </table> 
-                       </div> 
-                       <div class="container"> 
-                        <table class="table-7" role="presentation"> 
-                         <thead> 
-                          <tr> 
-                           <td class="align-left">Referencia de la entrega:Cerca de la tienda del chino</td> 
                           </tr> 
                          </thead> 
                         </table> 

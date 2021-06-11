@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 //Route::get('/testing', 'PagosController@testing');
-
+Route::get('/testing', function () {
+    return view('store.mailer.BienvenidaEscaparate');
+});
 
 Route::get('/','AppController@showHome');
 Route::get('/home','AppController@showHome');

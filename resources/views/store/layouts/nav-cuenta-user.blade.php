@@ -41,12 +41,12 @@
         </li>
 
         <li class="woocommerce-MyAccount-navigation p-3"  id="li_nav5">
-            <a href="{{ url('/' . $page='metodospago') }}"><span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card">
+            <a href="{{ url('/' . $page='metodospago') }}"><span style="padding-right:5px">
+                    <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card">
                         <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                         <line x1="1" y1="10" x2="23" y2="10">
                         </line>
-                    </svg></span>Métodos de pago</a>
+                    </svg></span>Metodos de Pago</a>
         </li>
 
         <li class="woocommerce-MyAccount-navigation p-3"  id="li_nav6">
