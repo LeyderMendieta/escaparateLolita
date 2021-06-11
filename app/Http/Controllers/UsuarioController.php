@@ -645,7 +645,7 @@ class UsuarioController extends Controller
 
         $firstNumbers = substr($cardNumber,0,6);
         $lastNumbers = substr($cardNumber,-4);
-        $validate = DB::select("SELECT * FROM user_payment_tokens WHERE req_card_number like '$firstNumbers%' AND req_card_number like '%$lastNumbers'");
+        $validate = DB::select("SELECT * FROM user_payment_tokens WHERE req_card_number like '$firstNumbers%' AND req_card_number like '%$lastNumbers' AND activo=1");
 
         if(count($validate) > 0){ 
             if( $mycart->id_usuario == $validate[0]->id_user ) $return = 4111;
