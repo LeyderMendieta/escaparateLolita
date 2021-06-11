@@ -90551,7 +90551,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
 
           ;
 
-          _this2.cybs_dfprofiler("tc_pa_016026821", "test");
+          _this2.cybs_dfprofiler("tc_pa_016026821", "live");
         }
       });
       fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/AuthInfoLogged").then(function (res) {
@@ -90620,7 +90620,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
       this.setState({
         device_fingerprint_id: sessionID
       });
-      return merchantID + merchantID + sessionID;
+      return sessionID;
     }
   }, {
     key: "submitCheckout",

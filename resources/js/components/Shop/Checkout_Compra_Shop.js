@@ -99,7 +99,7 @@ class Checkout_Compra_Shop extends Component {
                         });
                     };
 
-                    this.cybs_dfprofiler("tc_pa_016026821","test");
+                    this.cybs_dfprofiler("tc_pa_016026821","live");
                 }
             
         });
@@ -187,7 +187,7 @@ class Checkout_Compra_Shop extends Component {
         this.setState({
             device_fingerprint_id: sessionID
         });
-        return merchantID + merchantID + sessionID;
+        return sessionID;
     } 
 
 
