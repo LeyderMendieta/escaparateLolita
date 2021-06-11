@@ -74,7 +74,7 @@ class CartController extends Controller
         }
 
         $paises = DB::select("SELECT * FROM app_paises");
-        $paymentsToken = DB::select("SELECT * FROM user_payment_tokens WHERE id_user='$mycart->id_usuario'");
+        $paymentsToken = DB::select("SELECT * FROM user_payment_tokens WHERE id_user='$mycart->id_usuario' AND activo=1");
 
         return response()->json(array("products" => $myproducts_cart,"subtotal" => $subtotal,"items" => count($myproducts_cart),"reference" => "Cart$mycart->id-USR$mycart->id_usuario", "paises" => $paises,"userPo" => $mycart->id_usuario, "paymentsData" => $paymentsToken, "address" => $_SERVER['REMOTE_ADDR']));
     }
