@@ -145,7 +145,7 @@
                                                             <div class="column-inner">
                                                                 <div class="text_column">
                                                                     <div class="scheme_dark sc_promo sc_promo_default sc_promo_size_large sc_promo_image_position_left">
-                                                                        <div class="sc_promo_image bg_promo-3 w_50per l_0"></div>
+                                                                        <div class="sc_promo_image bg_promo-3 w_50per l_0" style="background-image: url(../images/<?php echo $configuraciones["str_nosotros_tienda_imagen"];?>);"></div>
                                                                         <div class="sc_promo_text w_50per f_right">
                                                                             <div class="sc_promo_text_inner sc_align_center bg_pink">
                                                                                 <div class="sc_promo_content sc_item_content">
@@ -220,9 +220,9 @@
                                                             <div class="widget_area sc_widget_video">
                                                                 <aside class="widget widget_video">
                                                                     <div class="trx_addons_video_player with_cover hover_play">
-                                                                        <img src="{{URL::asset('assets/store/images/bg_video-870x490.jpg')}}" alt="" >
+                                                                        <img src="{{URL::asset('images/')}}/<?php echo $configuraciones["str_nosotros_inferior_imagen"];?>" alt="" >
                                                                         <div class="video_mask"></div>
-                                                                        <div class="video_hover" data-video="&lt;iframe src=&quot;https://player.vimeo.com/video/21709803?autoplay=1&quot; width=&quot;640&quot; height=&quot;352&quot; frameborder=&quot;0&quot; title=&quot;Lingerie&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;"></div>
+                                                                        <div class="video_hover" data-video="&lt;iframe src=&quot;<?php echo $configuraciones["str_nosotros_inferior_urlvideo"];?>&quot; width=&quot;640&quot; height=&quot;352&quot; frameborder=&quot;0&quot; title=&quot;Lingerie&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;"></div>
                                                                         <div class="video_embed video_frame"></div>
                                                                     </div>
                                                                 </aside>

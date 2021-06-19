@@ -80079,6 +80079,8 @@ __webpack_require__(/*! ./components/Admin/solicitudes/App_solicitud_detallePedi
 
 __webpack_require__(/*! ./components/Admin/solicitudes/App_solicitud_detalleContacto */ "./resources/js/components/Admin/solicitudes/App_solicitud_detalleContacto.js");
 
+__webpack_require__(/*! ./components/Admin/procesos/App_Admon_CarritosAbandonados */ "./resources/js/components/Admin/procesos/App_Admon_CarritosAbandonados.js");
+
 __webpack_require__(/*! ./components/Admin/dashboard/App_Admon_Section1 */ "./resources/js/components/Admin/dashboard/App_Admon_Section1.js");
 
 /***/ }),
@@ -80842,7 +80844,11 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
       settings: [],
       politica_entrega_completa: [],
       politica_entrega: [],
-      politica_devoluciones: []
+      politica_devoluciones: [],
+      destacados_encuentra_estilo_titulo: "",
+      destacados_encuentra_estilo_descripcion: "",
+      destacados_encuentra_estilo_url: "",
+      nosotros_inferior_urlvideo: ""
     };
     return _this;
   }
@@ -80889,10 +80895,29 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         _this2.setState({
           politica_entrega_completa: result.politica_entrega_completa.valor_caracter,
           politica_entrega: result.politica_entrega.valor_caracter,
-          politica_devoluciones: result.politica_devoluciones.valor_caracter
+          politica_devoluciones: result.politica_devoluciones.valor_caracter,
+          destacados_encuentra_estilo_titulo: result.destacados_encuentra_estilo_titulo.valor_caracter,
+          destacados_encuentra_estilo_descripcion: result.destacados_encuentra_estilo_descripcion.valor_caracter,
+          destacados_encuentra_estilo_imagen: result.destacados_encuentra_estilo_imagen.valor_caracter,
+          destacados_encuentra_estilo_url: result.destacados_encuentra_estilo_url.valor_caracter,
+          nosotros_tienda_imagen: result.nosotros_tienda_imagen.valor_caracter,
+          nosotros_inferior_imagen: result.nosotros_inferior_imagen.valor_caracter,
+          nosotros_inferior_urlvideo: result.nosotros_inferior_urlvideo.valor_caracter,
+          home_agendacita_imagen: result.home_agendacita_imagen.valor_caracter,
+          home_inferior_buscalotuyo_imagen: result.home_inferior_buscalotuyo_imagen.valor_caracter
         });
 
         _this2.setDefaultImagen('imagen_nueva_coleccion', result.imagen_nueva_coleccion.valor_caracter);
+
+        _this2.setDefaultImagen('home_agendacita_imagen', result.home_agendacita_imagen.valor_caracter);
+
+        _this2.setDefaultImagen('home_inferior_buscalotuyo_imagen', result.home_inferior_buscalotuyo_imagen.valor_caracter);
+
+        _this2.setDefaultImagen('nosotros_tienda_imagen', result.nosotros_tienda_imagen.valor_caracter);
+
+        _this2.setDefaultImagen('nosotros_inferior_imagen', result.nosotros_inferior_imagen.valor_caracter);
+
+        _this2.setDefaultImagen('destacados_encuentra_estilo_imagen', result.destacados_encuentra_estilo_imagen.valor_caracter);
 
         $('#url_producto_2').val(result.imagen_nueva_coleccion.valor_caracter);
       });
@@ -80907,6 +80932,11 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
       var imagen_2 = $('#imagen_2').prop('files');
       var imagen_3 = $('#imagen_3').prop('files');
       var imagen_nueva_coleccion = $('#imagen_nueva_coleccion').prop('files');
+      var destacados_encuentra_estilo_imagen = $('#destacados_encuentra_estilo_imagen').prop('files');
+      var nosotros_tienda_imagen = $('#nosotros_tienda_imagen').prop('files');
+      var nosotros_inferior_imagen = $('#nosotros_inferior_imagen').prop('files');
+      var home_agendacita_imagen = $('#home_agendacita_imagen').prop('files');
+      var home_inferior_buscalotuyo_imagen = $('#home_inferior_buscalotuyo_imagen').prop('files');
       var url_producto_2 = $('#url_producto_2').val();
       var url_producto_3 = $('#url_producto_3').val();
       var url_producto_4 = $('#url_producto_4').val();
@@ -80942,16 +80972,21 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         var load_imagen_2 = "noset";
         var load_imagen_3 = "noset";
         var load_imagen_nueva_coleccion = "noset";
+        var load_destacados_encuentra_estilo_imagen = "noset";
+        var load_nosotros_tienda_imagen = "noset";
+        var load_nosotros_inferior_imagen = "noset";
+        var load_home_agendacita_imagen = "noset";
+        var load_home_inferior_buscalotuyo_imagen = "noset";
         var formData = new FormData();
-        if (imagen_video.length == 0) load_imagen_video = "noset";else formData.append('imagen_video', imagen_video[0]);
-        if (imagen_2.length == 0) load_imagen_2 = "noset";else formData.append('imagen_2', imagen_2[0]);
-        if (imagen_3.length == 0) load_imagen_3 = "noset";else {
-          formData.append('imagen_3', imagen_3[0]);
-        }
-        if (imagen_nueva_coleccion.length == 0) load_imagen_nueva_coleccion = "noset";else {
-          formData.append('imagen_nueva_coleccion', imagen_nueva_coleccion[0]);
-        } //$('#global-loader').show();
-
+        if (imagen_video.length > 0) formData.append('imagen_video', imagen_video[0]);
+        if (imagen_2.length > 0) formData.append('imagen_2', imagen_2[0]);
+        if (imagen_3.length > 0) formData.append('imagen_3', imagen_3[0]);
+        if (imagen_nueva_coleccion.length > 0) formData.append('imagen_nueva_coleccion', imagen_nueva_coleccion[0]);
+        if (destacados_encuentra_estilo_imagen.length > 0) formData.append('destacados_encuentra_estilo_imagen', destacados_encuentra_estilo_imagen[0]);
+        if (nosotros_tienda_imagen.length > 0) formData.append('nosotros_tienda_imagen', nosotros_tienda_imagen[0]);
+        if (nosotros_inferior_imagen.length > 0) formData.append('nosotros_inferior_imagen', nosotros_inferior_imagen[0]);
+        if (home_agendacita_imagen.length > 0) formData.append('home_agendacita_imagen', home_agendacita_imagen[0]);
+        if (home_inferior_buscalotuyo_imagen.length > 0) formData.append('home_inferior_buscalotuyo_imagen', home_inferior_buscalotuyo_imagen[0]);
         var config = {
           method: 'POST',
           headers: {
@@ -80966,6 +81001,11 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           if (result.files.imagen_2 != undefined) load_imagen_2 = result.files.imagen_2;
           if (result.files.imagen_3 != undefined) load_imagen_3 = result.files.imagen_3;
           if (result.files.imagen_nueva_coleccion != undefined) load_imagen_nueva_coleccion = result.files.imagen_nueva_coleccion;
+          if (result.files.destacados_encuentra_estilo_imagen != undefined) load_destacados_encuentra_estilo_imagen = result.files.destacados_encuentra_estilo_imagen;
+          if (result.files.nosotros_tienda_imagen != undefined) load_nosotros_tienda_imagen = result.files.nosotros_tienda_imagen;
+          if (result.files.nosotros_inferior_imagen != undefined) load_nosotros_inferior_imagen = result.files.nosotros_inferior_imagen;
+          if (result.files.home_agendacita_imagen != undefined) load_home_agendacita_imagen = result.files.home_agendacita_imagen;
+          if (result.files.home_inferior_buscalotuyo_imagen != undefined) load_home_inferior_buscalotuyo_imagen = result.files.home_inferior_buscalotuyo_imagen;
           var formDataUpdate = new FormData();
           formDataUpdate.append('url_embed_video', url_embed_video);
           formDataUpdate.append('imagen_video', load_imagen_video);
@@ -80976,11 +81016,20 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           formDataUpdate.append('url_producto_5', url_producto_4);
           formDataUpdate.append('url_nueva_collection', url_nueva_collection); //-------------Configuracions New Model
 
-          formDataUpdate.append("configurations", ["politica_entrega_completa", "politica_entrega", "politica_devoluciones", "imagen_nueva_coleccion"]);
+          formDataUpdate.append("configurations", ["politica_entrega_completa", "politica_entrega", "politica_devoluciones", "imagen_nueva_coleccion", "destacados_encuentra_estilo_imagen", "nosotros_tienda_imagen", "nosotros_inferior_imagen", "home_agendacita_imagen", "home_inferior_buscalotuyo_imagen", "destacados_encuentra_estilo_titulo", "destacados_encuentra_estilo_descripcion", "destacados_encuentra_estilo_url", "nosotros_inferior_urlvideo"]);
           formDataUpdate.append('politica_entrega_completa', _this3.state.politica_entrega_completa);
           formDataUpdate.append('politica_entrega', _this3.state.politica_entrega);
           formDataUpdate.append('politica_devoluciones', _this3.state.politica_devoluciones);
           formDataUpdate.append('imagen_nueva_coleccion', load_imagen_nueva_coleccion);
+          formDataUpdate.append('destacados_encuentra_estilo_imagen', load_destacados_encuentra_estilo_imagen);
+          formDataUpdate.append('nosotros_tienda_imagen', load_nosotros_tienda_imagen);
+          formDataUpdate.append('nosotros_inferior_imagen', load_nosotros_inferior_imagen);
+          formDataUpdate.append('home_agendacita_imagen', load_home_agendacita_imagen);
+          formDataUpdate.append('home_inferior_buscalotuyo_imagen', load_home_inferior_buscalotuyo_imagen);
+          formDataUpdate.append('destacados_encuentra_estilo_titulo', _this3.state.destacados_encuentra_estilo_titulo);
+          formDataUpdate.append('destacados_encuentra_estilo_descripcion', _this3.state.destacados_encuentra_estilo_descripcion);
+          formDataUpdate.append('destacados_encuentra_estilo_url', _this3.state.destacados_encuentra_estilo_url);
+          formDataUpdate.append('nosotros_inferior_urlvideo', _this3.state.nosotros_inferior_urlvideo);
           var config = {
             method: 'POST',
             headers: {
@@ -81014,16 +81063,32 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xl-6 col-lg-12 col-md-12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "form-label"
-      }, "Url Embed Video - Pagina Inicio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "url_embed_video",
-        type: "text",
-        className: "form-control",
-        name: "url_embed",
-        placeholder: "Url de video"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Home - Img Hecho a la medida ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 425X570"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "home_agendacita_imagen",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xl-6 col-lg-12 col-md-12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card shadow"
@@ -81031,7 +81096,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         className: "card-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "card-title"
-      }, "Imagen de Video Embed ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+      }, "Home - Img de Video ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
         className: "small ml-3"
       }, "Tama\xF1o: 870X490"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-options"
@@ -81061,9 +81126,9 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         className: "card-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "card-title"
-      }, "Imagen Promo 1 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+      }, "Home - Img Busca lo Tuyo  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
         className: "small ml-3"
-      }, "Tama\xF1o: 690X470"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Tama\xF1o: 550X357"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-options"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "col-auto align-self-center"
@@ -81077,7 +81142,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
       }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "imagen_2",
+        id: "home_inferior_buscalotuyo_imagen",
         type: "file",
         accept: "image/*",
         className: "dropify"
@@ -81089,7 +81154,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         className: "card-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "card-title"
-      }, "Imagen Promo 2 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+      }, "Home - Img Promo 2 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
         className: "small ml-3"
       }, "Tama\xF1o: 470X470"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-options"
@@ -81119,7 +81184,35 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         className: "card-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "card-title"
-      }, "Imagen Nueva Colecci\xF3n ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+      }, "Home - Img Promo 1 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 690X470"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "imagen_2",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Tienda - Img Nueva Colecci\xF3n ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
         className: "small ml-3"
       }, "Tama\xF1o: 270X380"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-options"
@@ -81140,6 +81233,184 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         accept: "image/*",
         className: "dropify"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Nosotros - Img Tienda en Linea ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 425X570"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "nosotros_tienda_imagen",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Nosotros - Img de Video Inferior ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 870X490"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "nosotros_inferior_imagen",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Destacados - Img encuentra tu estilo ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 425X570"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "destacados_encuentra_estilo_imagen",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Destacados - Titulo encuentra tu estilo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "destacados_encuentra_estilo_titulo",
+        type: "text",
+        className: "form-control",
+        name: "url_embed",
+        placeholder: "Titulo - Encuentra tu estilo",
+        value: this.state.destacados_encuentra_estilo_titulo,
+        onChange: function onChange(e) {
+          return _this4.setState({
+            destacados_encuentra_estilo_titulo: e.target.value
+          });
+        }
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Destacados - Descripci\xF3n encuentra tu estilo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "destacados_encuentra_estilo_descripcion",
+        type: "text",
+        className: "form-control",
+        name: "url_embed",
+        placeholder: "Descripci\xF3n - Encuentra tu estilo",
+        value: this.state.destacados_encuentra_estilo_descripcion,
+        onChange: function onChange(e) {
+          return _this4.setState({
+            destacados_encuentra_estilo_descripcion: e.target.value
+          });
+        }
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Destacados - URL encuentra tu estilo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "destacados_encuentra_estilo_url",
+        type: "text",
+        className: "form-control",
+        name: "url_embed",
+        placeholder: "URL - Encuentra tu estilo",
+        value: this.state.destacados_encuentra_estilo_url,
+        onChange: function onChange(e) {
+          return _this4.setState({
+            destacados_encuentra_estilo_url: e.target.value
+          });
+        }
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Url Embed Video - Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "url_embed_video",
+        type: "text",
+        className: "form-control",
+        name: "url_embed",
+        placeholder: "Url de video"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Url Embed Video - Nosotros"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "nosotros_inferior_urlvideo",
+        type: "text",
+        className: "form-control",
+        name: "url_embed",
+        placeholder: "Url de video",
+        value: this.state.nosotros_inferior_urlvideo,
+        onChange: function onChange(e) {
+          return _this4.setState({
+            nosotros_inferior_urlvideo: e.target.value
+          });
+        }
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xl-6 col-lg-12 col-md-12"
@@ -85930,6 +86201,139 @@ if (document.getElementById('App_admdashboards_sect1')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Admin/procesos/App_Admon_CarritosAbandonados.js":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/Admin/procesos/App_Admon_CarritosAbandonados.js ***!
+  \*********************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Configuration */ "./resources/js/components/Configuration.js");
+/* harmony import */ var react_html_table_to_excel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-html-table-to-excel */ "./node_modules/react-html-table-to-excel/index.js");
+/* harmony import */ var react_html_table_to_excel__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_html_table_to_excel__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var App_Admon_CarritosAbandonados = /*#__PURE__*/function (_Component) {
+  _inherits(App_Admon_CarritosAbandonados, _Component);
+
+  var _super = _createSuper(App_Admon_CarritosAbandonados);
+
+  function App_Admon_CarritosAbandonados(props) {
+    var _this;
+
+    _classCallCheck(this, App_Admon_CarritosAbandonados);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      error: null,
+      isLoaded: false,
+      carts: []
+    };
+    return _this;
+  }
+
+  _createClass(App_Admon_CarritosAbandonados, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/admin/carritosAbandonados/full").then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          carts: result,
+          isLoaded: true
+        });
+
+        $('#tableProducts').DataTable({
+          responsive: {
+            details: {
+              display: $.fn.dataTable.Responsive.display.modal({
+                header: function header(row) {
+                  var data = row.data();
+                  return '<b>' + data[0] + ' - ' + data[2] + '</b><br/><br/>';
+                }
+              }),
+              renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                tableClass: 'table table-dark'
+              })
+            }
+          },
+          language: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].languageDataTable
+        });
+      });
+      $('#download-xls').append("<i class='fa fa-download'></i> Descargar Excel");
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row text-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_html_table_to_excel__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        id: "download-xls",
+        className: "btn btn-success my-3 mb-5",
+        table: "tableProducts",
+        filename: "ListadoCarritosAbandonados_EscaparatedeLolita",
+        sheet: "CarritosAbandonados",
+        buttonText: ""
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        id: "tableProducts",
+        className: "table table-striped table-bordered text-nowrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fecha Creaci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Usuario"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "N\xBA Productos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Productos"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.carts.map(function (row) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: row.cart.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.cart.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.cart.created_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.user.email + " - " + row.user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.products.length), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, row.products.map(function (rowx, index) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: index
+          }, "\u2022 Producto ", index + 1, ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "shop/" + rowx.acceso_url,
+            target: "_blank"
+          }, rowx.name));
+        }))));
+      }))));
+    }
+  }]);
+
+  return App_Admon_CarritosAbandonados;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+if (document.getElementById('App_admCarritosAbandonados')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App_Admon_CarritosAbandonados, null), document.getElementById('App_admCarritosAbandonados'));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/Admin/procesos/App_Admon_Pedidos.js":
 /*!*********************************************************************!*\
   !*** ./resources/js/components/Admin/procesos/App_Admon_Pedidos.js ***!
@@ -86694,8 +87098,23 @@ var App_solicitud_agenda = /*#__PURE__*/function (_Component) {
       $('#download-xls').append("<i class='fa fa-download'></i> Descargar Excel");
     }
   }, {
+    key: "liberarEspacio",
+    value: function liberarEspacio(idAgenda) {
+      if (confirm("¿Esta seguro de liberar el espacio y eliminar la agenda " + idAgenda + "?")) {
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/admin/clearSpaceAgenda/" + idAgenda).then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          if (result) {
+            $("tr#agenda" + idAgenda).remove();
+          } else alert("fallo en el proceso, Contacta al Administrador");
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row text-right"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_html_table_to_excel__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -86708,10 +87127,14 @@ var App_solicitud_agenda = /*#__PURE__*/function (_Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "tableProducts",
         className: "table table-striped table-bordered text-nowrap"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fecha"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Hora"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Tipo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Producto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Usuario"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Correo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Celular"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Telefono"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Creado"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.agendas.map(function (row) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fecha"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Hora"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Tipo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Producto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Usuario"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Correo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Celular"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Telefono"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Creado"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.agendas.map(function (row) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: row.id
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.fecha), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.horario), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.tipo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.producto != 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          key: row.id,
+          id: "agenda" + row.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn btn-danger ml-3",
+          onClick: _this3.liberarEspacio.bind(_this3, row.id)
+        }, "Liberar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.fecha), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.horario), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.tipo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.producto != 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "shop/" + row.productoAcceso,
           target: "_blank"
         }, row.nombreProducto) : "Ninguno"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.usuario), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.celular), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.telefono), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.created_at));
@@ -94001,6 +94424,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Configuration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Configuration */ "./resources/js/components/Configuration.js");
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -94027,6 +94451,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var MyPedidos = /*#__PURE__*/function (_Component) {
   _inherits(MyPedidos, _Component);
 
@@ -94041,7 +94466,8 @@ var MyPedidos = /*#__PURE__*/function (_Component) {
     _this.state = {
       error: null,
       isLoaded: false,
-      pedidos: []
+      pedidos: [],
+      carts: []
     };
     return _this;
   }
@@ -94063,13 +94489,28 @@ var MyPedidos = /*#__PURE__*/function (_Component) {
           console.log(result.error);
         }
       });
+      var cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_3__["default"]();
+      fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/carritosAbandonados/" + cookies.get('authlog')).then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        if (result.error == undefined) {
+          _this2.setState({
+            isLoaded: true,
+            carts: result
+          });
+        } else {
+          console.log(result.error);
+        }
+      });
     }
   }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "pl-4 mt-3"
+      }, "Pedidos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-12 pl-4 pr-4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "table-responsive"
@@ -94125,7 +94566,38 @@ var MyPedidos = /*#__PURE__*/function (_Component) {
         style: {
           display: this.state.pedidos.length > 0 || this.state.isLoaded == false ? "none" : ""
         }
-      }, "A\xFAn no tienes ningun pedido"))));
+      }, "A\xFAn no tienes ningun pedido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "pl-4 mt-5"
+      }, "Carritos Abandonados"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-12 pl-4 pr-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "table-responsive"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table table-hover"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Fecha Creaci\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Usuario"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "N\xBA Productos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Productos"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.carts.map(function (row) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: row.cart.id,
+          style: {
+            textAlign: "center"
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.cart.created_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.user.email + " - " + row.user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row.products.length), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          style: {
+            textAlign: "left"
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, row.products.map(function (rowx, index) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: index
+          }, "Producto ", index + 1, ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "shop/" + rowx.acceso_url,
+            target: "_blank"
+          }, rowx.name));
+        }))));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "alert alert-success text-center",
+        style: {
+          display: this.state.carts.length > 0 || this.state.isLoaded == false ? "none" : ""
+        }
+      }, "No tienes Carritos Abandonados"))));
     }
   }]);
 

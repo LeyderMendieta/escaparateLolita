@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Configuracion from '../Configuration';
+import Cookies from 'universal-cookie';
 
 class MyPedidos extends Component {
 
     constructor(props) {
         super(props);
-
+        
         this.state = {
             error: null,
             isLoaded: false,
-            pedidos: []
+            pedidos: [],
+            carts: []
         };
 
     }
@@ -32,11 +34,30 @@ class MyPedidos extends Component {
             }
 
         });
+
+        const cookies = new Cookies();
+
+        fetch(Configuracion.url_principal + "api/carritosAbandonados/" + cookies.get('authlog'))
+        .then(res => res.json())
+        .then(
+        (result) => {
+            if (result.error == undefined) {
+                this.setState({
+                    isLoaded: true,
+                    carts: result
+                });
+            }
+            else {
+                console.log(result.error);
+            }
+
+        });
     }
 
     render() {
         return (
         <div className="row">
+            <h3 className="pl-4 mt-3">Pedidos</h3>
             <div className="col-md-12 pl-4 pr-4">
                 <div className="table-responsive">
                     <table className="table table-hover">
@@ -90,6 +111,41 @@ class MyPedidos extends Component {
                     </table>
                     <div className="alert alert-info text-center" style={{display: (this.state.pedidos.length > 0 || this.state.isLoaded == false) ? "none" : ""}}>
                         Aún no tienes ningun pedido
+                    </div>
+                </div>
+            </div>
+            <h3 className="pl-4 mt-5">Carritos Abandonados</h3>
+            <div className="col-md-12 pl-4 pr-4">
+                <div className="table-responsive">
+                    <table className="table table-hover">
+                        <thead>
+                            <tr>   
+                                <th>Fecha Creación</th>      
+                                <th>Usuario</th>      
+                                <th>Nº Productos</th>
+                                <th>Productos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.carts.map((row) => (
+                            <tr key={row.cart.id}  style={{textAlign: "center"}}>
+                                <td>{row.cart.created_at}</td>                     
+                                <td>{row.user.email+" - "+row.user.name}</td>
+                                <td>{row.products.length}</td>
+                                <td  style={{textAlign: "left"}}>
+                                    <ul>
+                                        {row.products.map((rowx, index) => (
+                                            <li key={index}>Producto {index+1}: <a href={Configuracion.url_principal+"shop/"+rowx.acceso_url} target="_blank">{rowx.name}</a></li>
+                                        ))}
+                                    </ul>
+                                </td>
+                            </tr>
+                            ))}
+                            
+                        </tbody>
+                    </table>
+                    <div className="alert alert-success text-center" style={{display: (this.state.carts.length > 0 || this.state.isLoaded == false) ? "none" : ""}}>
+                        No tienes Carritos Abandonados
                     </div>
                 </div>
             </div>

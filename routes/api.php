@@ -90,12 +90,18 @@ use Illuminate\Support\Facades\Route;
     Route::get("/getNotifications/{type}","NotificationController@getNotifications");
     Route::get("/updateNotifySeen/{type}/{id}","NotificationController@updateNotifySeen");
 
+    Route::get("/carritosAbandonados/{user}","CartController@getCartsAbandonados");
+
+
     //Administración
     Route::get("/admin/usersList","AdminController@getUsers");
     Route::get("/admin/pedidosList","AdminController@getPedidos");
     Route::get("/admin/pedidosDetalle/{pedido}","AdminController@getPedidoDetalle");
     Route::post("/admin/Pedido/setState","AdminController@actualizarEstadoPedido");
     Route::get("/admin/getAgendasList","AgendaController@verListadoAgendas");
+    Route::get("/admin/clearSpaceAgenda/{idAgenda}","AgendaController@liberarAgenda");
+
+    Route::get("/admin/carritosAbandonados/{full}","CartController@getCartsAbandonados");
   
 
     Route::get("/admin/getTotalSect1","AdminController@getTotalSect1");

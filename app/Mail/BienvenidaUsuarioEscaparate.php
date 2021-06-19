@@ -7,14 +7,15 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EnviarFacturaRecibo extends Mailable
+class BienvenidaUsuarioEscaparate extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $dataToView;
+
     /**
      * Create a new message instance.
-     * @param array $data
+     *
      * @return void
      */
     public function __construct($data)
@@ -29,8 +30,8 @@ class EnviarFacturaRecibo extends Mailable
      */
     public function build()
     {
-        return $this->view('store.factura')
-        ->subject("Factura #".$this->dataToView["numero_factura"]." - El Escaparate de Lolita")
+        return $this->view('store.mailer.BienvenidaUsuarioEscaparate')
+        ->subject("Bienvenido - El Escaparate de Lolita")
         ->with($this->dataToView);
     }
 }

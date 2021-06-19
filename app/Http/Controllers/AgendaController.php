@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Agenda;
+use App\AgendaTipo;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use App\notification;
 
 class AgendaController extends Controller
 {
@@ -47,6 +49,16 @@ class AgendaController extends Controller
             $agenda->id_user = $user->id;
             $agenda->id_producto = $request->producto;
             $agenda->save();
+
+            $result = DB::select("SELECT t0.tipo FROM agenda_tipos t0 INNER JOIN agenda_horarios t1 ON t0.id=t1.id_agenda_tipo WHERE t1.id='$request->horario'");
+            
+            $tipo = (isset($result[0]->tipo)) ? $result[0]->tipo : "Desconocido";
+            $noticacion = new notification();
+            $noticacion->tipo = "Admin";
+            $noticacion->texto = "Agenda Solicitada [$agenda->id] - $tipo";
+            $noticacion->logo = "fe fe-calendar";
+            $noticacion->link = url("/admon/agenda");
+            $noticacion->save();
     
             return response()->json($agenda, 201);
         }
@@ -63,6 +75,12 @@ class AgendaController extends Controller
         ->join("user_infos","users.id","=","user_infos.id_user")
         ->leftJoin("products","agendas.id_producto","=","products.id")
         ->select('agendas.*', 'agenda_horarios.horario', 'agenda_tipos.tipo','users.name as usuario','users.email','products.acceso_url as productoAcceso','products.name as nombreProducto','user_infos.telefono',"user_infos.celular")->get();
+        return response()->json($agendas);
+    }
+
+    public function liberarAgenda($idAgenda)
+    {
+        $agendas = DB::table("agendas")->where("id",$idAgenda)->delete();
         return response()->json($agendas);
     }
 }

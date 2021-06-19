@@ -155,7 +155,10 @@
                                                         </div>
                                                         @foreach ($tags as $fila)
                                                             <div class="esg-filterbutton" data-fid="{{$fila->id}}" data-filter="filter-{{str_replace(' ','-',$fila->nombre)}}">
-                                                                <span>{{$fila->nombre}}</span><span class="esg-filter-checked"><i class="eg-icon-ok-1"></i></span>
+                                                                <span>{{$fila->nombre}}</span>
+                                                                <span class="esg-filter-checked">
+                                                                    <i class="eg-icon-ok-1"></i>
+                                                                </span>
                                                             </div>
                                                         @endforeach
                                                         <div class="eg-clearfix"></div>
@@ -244,11 +247,8 @@
                                     <aside id="tag_cloud-3" class="column-1_3 widget widget_tag_cloud">
                                         <h5 class="widget_title">Tags</h5>
                                         <div class="tagcloud">
-                                        @foreach ($tags as $fila)
-                                            <div class="esg-filterbutton" data-fid="{{$fila->id}}" data-filter="filter-{{str_replace(' ','-',$fila->nombre)}}">
-                                                <span>{{$fila->nombre}}</span><span class="esg-filter-checked"><i class="eg-icon-ok-1"></i></span>
-                                            </div>
-                                            <a href='#' class='fsz-13_38pt' title='9 topics'>{{$fila->nombre}}</a>
+                                        @foreach ($tags as $fila)                                            
+                                            <a href='#{{$fila->nombre}}' class='fsz-13_38pt' title='9 topics'>{{$fila->nombre}}</a>
                                         @endforeach                                        
                                         </div>
                                     </aside>

@@ -245,11 +245,11 @@
                                                     <div class="column-inner">
                                                         <div class="empty_space h-2em"><span class="empty_space_inner"></span></div>
                                                         <div class="scheme_dark sc_promo sc_promo_default extra-margin sc_promo_size_large sc_promo_image_position_left">
-                                                            <div class="sc_promo_image bg_promo-4 w_50per l_0"></div>
+                                                            <div class="sc_promo_image bg_promo-4 w_50per l_0" style='background-image: url(../images/<?php echo $configuraciones["str_home_agendacita_imagen"];?>);'></div>
                                                             <div class="sc_promo_text w_50per f_right">
                                                                 <div class="sc_promo_text_inner sc_align_center bg_pink">
                                                                     <img class="top_promo_image" src="{{URL::asset('assets/store/images/promo.png')}}" alt="">
-                                                                    <h2 class="sc_item_title sc_promo_title sc_align_default sc_item_title_style_default">Retro<br />Briefs</h2>
+                                                                    <h2 class="sc_item_title sc_promo_title sc_align_default sc_item_title_style_default">Retro<br /></h2>
                                                                     <div class="sc_item_descr sc_promo_descr sc_align_default">Tenemos hecho a la medida</div>
                                                                     <div class="sc_item_button sc_item_button_simple sc_promo_button sc_align_default sc_button_wrap">
                                                                         <a  href="#trx_addons_calendar_popup"  class="sc_button sc_button_simple sc_button_size_normal sc_button_icon_left trx_addons_popup_link trx_addons_login_link">
@@ -307,7 +307,7 @@
                                                     <div class="column-inner">
                                                         <figure class="align_center">
                                                             <a href="{{ $url_producto_5_home }}">
-                                                                <img src="{{URL::asset('assets/store/images/home-style-bg.jpg')}}" alt="" />
+                                                                <img src="{{URL::asset('images')}}/<?php echo $configuraciones["str_home_inferior_buscalotuyo_imagen"];?>" alt="" />
                                                             </a>
                                                         </figure>
                                                         <div class="empty_space h-4_3em"><span class="empty_space_inner"></span></div>

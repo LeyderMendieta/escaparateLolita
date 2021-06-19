@@ -6,11 +6,14 @@ use App\Product;
 use App\User;
 use App\AmbienteConfiguration;
 use App\Configuration;
+use App\Mail\CambioEstadoPedido;
 use App\UserPedido;
 use App\UserPedidoProducto;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
@@ -143,7 +146,7 @@ class AdminController extends Controller
         foreach($models as $fila)
         {
             $confVariable = Configuration::where("campo",$fila)->first();
-            if($confVariable)
+            if($confVariable && $request->{$fila} != "noset")
             {
                 $confVariable->valor_caracter = $request->{$fila};
                 $confVariable->save();
@@ -207,6 +210,61 @@ class AdminController extends Controller
             $userPedido->estadoPedido = $request->newState;
             $userPedido->save();
             $result = "done";
+
+            $user = User::where("id",$userPedido->id_user)->first();
+            if(isset($user->email))
+            {
+                $transferencia = DB::table("transferencias")->where("id_pedido",$userPedido->id)->first();
+                switch($userPedido->estadoPedido)
+                {
+                    case "En Verificación":
+                        $titulo1 = "Su pedido #$userPedido->id en verificación.";
+                        $descripcion = "<strong>Su pedido esta en proceso de verificación</strong><br>Estamos verificando el detalle de tu pedido y procesando la información";
+                        break;
+                    case "Aceptado":
+                        $titulo1 = "Su pedido #$userPedido->id ha sido aceptado.";
+                        $descripcion = "<strong>Su pedido ha sido aceptado</strong><br>Felicidades, hemos tomado tu pedido de forma exitosa, estamos procesando la información correspondiente para proceder con el envio";
+                        break;
+                    case "Rechazado":
+                        $titulo1 = "Su pedido #$userPedido->id ha sido rechazado.";
+                        $descripcion = "<strong>Su pedido ha sido rechazado</strong><br>Le aconsejamos que se comunique con el escaparatedelolita para verificar el concepto de rechazado. [puede ser por pago, no existe dirección, fondos insuficientes, etc]";
+                        break;
+                    case "En Proceso Envió":
+                        $titulo1 = "Su pedido #$userPedido->id esta en proceso de envio.";
+                        $descripcion = "<strong>Su pedido esta en proceso de envio</strong><br>Se esta preparando su pedido para ser enviado a su destino.<br/>La dirección a la cual sera enviada es: $transferencia->req_ship_to_address_line1, $transferencia->req_ship_to_address_city $transferencia->req_ship_to_address_country";
+                        break;
+                    case "Enviado":
+                        $titulo1 = "Su pedido #$userPedido->id ha sido enviado.";
+                        $descripcion = "<strong>Su pedido ha sido enviado a la siguiente dirección:</strong><br/>$transferencia->req_ship_to_address_line1, $transferencia->req_ship_to_address_city $transferencia->req_ship_to_address_country<br/>
+                        <small>Si la dirección presenta inconsistencias le aconsejamos que se comunique con la empresa lo antes posible para corregir la dirección</small>";
+                        break;
+                    case "Entregado":
+                        $titulo1 = "Su pedido #$userPedido->id fue entregado correctamente.";
+                        $descripcion = "<strong>Su pedido fue entregado a la siguiente dirección:</strong><br>$transferencia->req_ship_to_address_line1, $transferencia->req_ship_to_address_city $transferencia->req_ship_to_address_country";
+                        break;
+                    case "No pudo ser Entregado":
+                        $titulo1 = "Su pedido #$userPedido->id no pudo ser entregado.";
+                        $descripcion = "<strong>Su pedido no fue entregado</strong><br>Le aconsejamos que verifique el sistema de seguimiento y que se comunique con la empresa si el status no se actualiza o presenta inconsistencias";
+                        break;
+                    case "Devuelto":
+                        $titulo1 = "Su pedido #$userPedido->id fue devuelto.";
+                        $descripcion = "<strong>Su pedido ha sido devuelto</strong><br>Le aconsejamos que verifique el sistema de seguimiento y que se comunique con la empresa si el status no se actualiza o presenta inconsistencias";
+                        break;
+                    default:
+                        $titulo1 = "Pedido #$userPedido->id.";
+                        $descripcion = "<strong>Su pedido</strong><br>Procesando...";
+                        break;                    
+                }
+                Mail::to($user)->send(new CambioEstadoPedido(array(
+                    "numeroPedido" => $userPedido->id,
+                    "nuevoEstadoAsunto" => $userPedido->estadoPedido,
+                    "nombres" => $user->name,
+                    "titulo1" => $titulo1,
+                    "descripcion" => $descripcion,
+                    "url_masinfo" => url("/home"),
+                )));
+                
+            }            
         }
         else $result = "failed";
         return response()->json(["result"=> $result]);

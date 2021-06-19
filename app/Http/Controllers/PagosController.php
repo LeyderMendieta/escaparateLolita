@@ -7,11 +7,13 @@ use App\UserPedido;
 use App\UserPedidoProducto;
 use App\cart;
 use App\cartProduct;
+use App\Mail\BienvenidaUsuarioEscaparate;
 use App\Mail\CrearUsuarioPorFacturacionAnonima;
 use App\Mail\EnviarFacturaRecibo;
 use App\User;
 use App\UserInfo;
 use App\notification;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -160,9 +162,19 @@ class PagosController extends Controller
                     "email" => $request->req_bill_to_email,
                     "email_verified_at" => now(),
                     "AccessToken" => Str::random(240),
-                    "api_token" => Str::random(20)
+                    "api_token" => Str::random(20),
+                    "graphDomain" => "Esparate Lolita - Compra Anonima"
                 ]);
-        
+
+                /** Notificacion de Nuevo Usuario */
+                $noticacion = new notification();
+                $noticacion->tipo = "Admin";
+                $noticacion->texto = "Usuario Registrado[$newUser->id] mediante Compra";
+                $noticacion->logo = "fe fe-user";
+                $noticacion->link = url("/admon/users");
+                $noticacion->save();
+                /** ----------------------------- */
+    
                 UserInfo::create([
                     "id_user" => $newUser->id,
                     "nombres" => $request->req_bill_to_forename,
@@ -289,10 +301,17 @@ class PagosController extends Controller
 
     public function testing()
     {
-        Mail::to("leyder154611@gmail.com")->send(new CrearUsuarioPorFacturacionAnonima(array(
+        /*
+        Mail::to("leyder154611@gmail.com")->send(new BienvenidaUsuarioEscaparate(array(
             "nombres" =>  "peter", 
             "usuario" => "testing", 
             "clave" => "testing"
         )));
+        */
+        $productos = DB::table('products')->orderBy('id', 'desc')->limit(4)->get();
+        Mail::to("leyder154611@gmail.com")->send(new BienvenidaUsuarioEscaparate(array(
+            "ultimosProductos" => $productos
+        )));
+        //--------------------
     }
 }

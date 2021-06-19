@@ -13,6 +13,7 @@ use App\UserInfo;
 use App\Product;
 use App\Category;
 use App\cart;
+use App\Mail\BienvenidaUsuarioEscaparate;
 use App\Mail\RestablecerPasswordStore;
 use App\UserPedido;
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Mail\VerificaTuCuenta;
+use App\notification;
 
 class UsuarioController extends Controller
 {
@@ -121,6 +123,14 @@ class UsuarioController extends Controller
         {
             $user->email_verified_at = now();
             $user->save();
+            
+            //---------------- Correo de Bienvenida
+            $productos = DB::table('products')->orderBy('id', 'desc')->limit(4)->get();
+            Mail::to($user)->send(new BienvenidaUsuarioEscaparate(array(
+                "ultimosProductos" => $productos
+            )));
+            //--------------------
+            
             return Redirect::to('/requestResponse/cuentaVerificadaSuccess-4B1DC2F3CBB785B7D5FEA655C6C4E0927B384A9B');
         }
         else return view("error",["message" => "El enlace no se encuentra disponible"]);
@@ -162,7 +172,6 @@ class UsuarioController extends Controller
         else return response()->json(["error" => "nofound"]);  
     }
 
-    
     public function registerUser(Request $request)
     {
         if(isset($request->name) && isset($request->nuevoPass) && isset($request->correo) && isset($request->nombres) && isset($request->apellidos) && isset($request->ubicacion) && isset($request->apartamento) && isset($request->celular))
@@ -178,6 +187,15 @@ class UsuarioController extends Controller
                     "AccessToken" => Str::random(240),
                     "api_token" => Str::random(20)
                 ]);
+
+                /** Notificacion de Nuevo Usuario */
+                $noticacion = new notification();
+                $noticacion->tipo = "Admin";
+                $noticacion->texto = "Usuario Registrado[$user->id] mediante Web";
+                $noticacion->logo = "fe fe-user";
+                $noticacion->link = url("/admon/users");
+                $noticacion->save();
+                /** ----------------------------- */
         
                 UserInfo::create([
                     "id_user" => $user->id,
@@ -229,6 +247,22 @@ class UsuarioController extends Controller
                         "idPlatform" => $request->id,
                         "api_token" => Str::random(20)
                     ]);
+
+                    //---------------- Correo de Bienvenida
+                    $productos = DB::table('products')->orderBy('id', 'desc')->limit(4)->get();
+                    Mail::to($user)->send(new BienvenidaUsuarioEscaparate(array(
+                        "ultimosProductos" => $productos
+                    )));
+                    //--------------------
+
+                    /** Notificacion de Nuevo Usuario */
+                    $noticacion = new notification();
+                    $noticacion->tipo = "Admin";
+                    $noticacion->texto = "Usuario Registrado[$user->id] mediante $request->graphDomain";
+                    $noticacion->logo = "fe fe-user";
+                    $noticacion->link = url("/admon/users");
+                    $noticacion->save();
+                    /** ----------------------------- */
 
                     UserInfo::create([
                         "id_user" => $user->id,

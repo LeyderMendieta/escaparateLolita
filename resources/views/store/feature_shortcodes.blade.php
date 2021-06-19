@@ -198,21 +198,18 @@
                                                     <!-- /.sc_title -->
                                                     <div class="empty_space h-2_8em"><span class="empty_space_inner"></span></div>
                                                     <div class="scheme_dark sc_promo sc_promo_default  sc_promo_size_large sc_promo_image_position_left">
-                                                        <div class="sc_promo_image bg_promo"></div>
+                                                        <div class="sc_promo_image bg_promo" style='background-image:url(../images/<?php echo $configuraciones["str_destacados_encuentra_estilo_imagen"];?>);'></div>
                                                         <div class="sc_promo_text w_50per f_right">
                                                             <div class="sc_promo_text_inner sc_align_center bg_pink"> 
-                                                                <img class="top_promo_image" src="{{URL::asset('assets/store/images/promo.png')}}" alt="">
-                                                                <h2 class="sc_item_title sc_promo_title sc_align_default sc_item_title_style_default">Back<br />
-                                                                    to<br />
-                                                                    Black
+                                                                <img class="top_promo_image" src="{{URL::asset('assets/store/images/<?php echo $configuraciones["str_destacados_encuentra_estilo_imagen"];?>')}}" alt="">
+                                                                <h2 class="sc_item_title sc_promo_title sc_align_default sc_item_title_style_default">
+                                                                    <?php echo $configuraciones["str_destacados_encuentra_estilo_titulo"];?>
                                                                 </h2>
-                                                                <div class="sc_item_descr sc_promo_descr sc_align_default">It’s the sultriest
-                                                                    <br /> shade of seduction
+                                                                <div class="sc_item_descr sc_promo_descr sc_align_default">
+                                                                <?php echo $configuraciones["str_destacados_encuentra_estilo_descripcion"];?>
                                                                 </div>
-                                                                <div class="sc_item_button sc_item_button_simple sc_promo_button sc_align_default sc_button_wrap"><a href="#" class="sc_button sc_button_simple sc_button_size_normal sc_button_icon_left"><span class="sc_button_text"><span class="sc_button_title">shop now</span></span><!-- /.sc_button_text --></a>
-                                                                    <!-- /.sc_button -->
+                                                                <div class="sc_item_button sc_item_button_simple sc_promo_button sc_align_default sc_button_wrap"><a href="<?php echo $configuraciones["str_destacados_encuentra_estilo_url"];?>" class="sc_button sc_button_simple sc_button_size_normal sc_button_icon_left"><span class="sc_button_text"><span class="sc_button_title">Comprar Ahora</span></span></a>
                                                                 </div>
-                                                                <!-- /.sc_item_button sc_item_button_simple sc_promo_button sc_align_default -->
                                                             </div>
                                                         </div>
                                                         <!-- /.sc_promo_text -->

@@ -14,20 +14,14 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 
-//Route::get('/testing', 'PagosController@testing');
-Route::get('/testing', function () {
-    return view('store.mailer.BienvenidaEscaparate');
-});
+Route::get('/testing', 'PagosController@testing');
+
 
 Route::get('/','AppController@showHome');
 Route::get('/home','AppController@showHome');
-Route::get('/about', function () {
-    return view('store.about');
-});
+Route::get('/about', "AppController@showAbout");
 
-Route::get('/features/shortcodes', function () {
-    return view('store.feature_shortcodes');
-});
+Route::get('/features/shortcodes', "AppController@showDestacados");
 Route::get('/shop', 'AppController@showShop');
 Route::get('shop/{page}', 'ProductController@verProducto');
 Route::get('/shop-grid', function () {

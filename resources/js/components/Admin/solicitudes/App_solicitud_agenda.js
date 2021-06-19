@@ -30,6 +30,23 @@ class App_solicitud_agenda extends Component {
         $('#download-xls').append("<i class='fa fa-download'></i> Descargar Excel");
       }
 
+      liberarEspacio(idAgenda)
+      {
+        if(confirm("¿Esta seguro de liberar el espacio y eliminar la agenda "+idAgenda+"?"))
+        {
+            fetch(Configuracion.url_principal+"api/admin/clearSpaceAgenda/"+idAgenda)
+            .then(res => res.json())
+            .then(
+            (result) => {
+                if(result)
+                {
+                    $("tr#agenda"+idAgenda).remove();
+                }
+                else alert("fallo en el proceso, Contacta al Administrador");
+            });
+        }
+      }
+
       render(){
         return (
             <React.Fragment>
@@ -46,6 +63,7 @@ class App_solicitud_agenda extends Component {
                 <thead>
                     <tr>
                         <th>ID</th>             
+                        <th></th>      
                         <th>Fecha</th>      
                         <th>Hora</th>      
                         <th>Tipo</th>
@@ -59,8 +77,11 @@ class App_solicitud_agenda extends Component {
                 </thead>
                 <tbody>
                     {this.state.agendas.map((row) => (
-                        <tr key={row.id}>
+                        <tr key={row.id} id={"agenda"+row.id}>
                             <td>{row.id}</td>
+                            <td>
+                                <button className="btn btn-danger ml-3" onClick={this.liberarEspacio.bind(this,row.id)} >Liberar</button>
+                            </td>  
                             <td>{row.fecha}</td>
                             <td>{row.horario}</td>
                             <td>{row.tipo}</td>

@@ -10,11 +10,26 @@ use Illuminate\Support\Facades\DB;
 
 class AppController extends Controller
 {
+    public function getConfiguraciones()
+    {
+        $configuraciones = Configuration::where("id",">",0)->get();
+        $arreglo = array();
+        foreach($configuraciones as $fila)
+        {
+            $arreglo["str_$fila->campo"] = $fila->valor_caracter;
+            $arreglo["num_$fila->campo"] = $fila->valor_numerico;
+        }
+        return $arreglo;
+    }
+
     public function showHome()
     {
         $settings = AmbienteConfiguration::first();
         $categorias = Category::where("id",">",0)->get();
-        return view('store.home',array("url_embed_video_home"=> $settings->url_embed_video_home, "imagen_video_home" => $settings->imagen_video_home, "imagen_2_home" => $settings->imagen_2_home, "url_producto_2_home" => $settings->url_producto_2_home, "imagen_3_home" => $settings->imagen_3_home, "url_producto_3_home" => $settings->url_producto_3_home,"url_producto_5_home" => $settings->url_producto_5_home,"categorias" => $categorias));
+
+        $configuraciones = $this->getConfiguraciones();
+        
+        return view('store.home',array("url_embed_video_home"=> $settings->url_embed_video_home, "imagen_video_home" => $settings->imagen_video_home, "imagen_2_home" => $settings->imagen_2_home, "url_producto_2_home" => $settings->url_producto_2_home, "imagen_3_home" => $settings->imagen_3_home, "url_producto_3_home" => $settings->url_producto_3_home,"url_producto_5_home" => $settings->url_producto_5_home,"categorias" => $categorias, "configuraciones"=> $configuraciones));
     }
 
     public function showShop()
@@ -35,6 +50,24 @@ class AppController extends Controller
         else $categoryText = "";
         return view('store.shop',array("url_nueva_colleccion"=> $settings->url_nueva_colleccion, "imagen_nueva_coleccion" => $configuraciones->valor_caracter,"min_price" => $min_price, "max_price" => $max_price, "search" => $search, "category" => $category, "categoryText" => $categoryText, "min_value_allow" => $min,"max_value_allow" => $max));
         
+    }
+
+   
+
+    public function showDestacados()
+    {
+        
+        $configuraciones = $this->getConfiguraciones();
+        
+        return view('store.feature_shortcodes',array("configuraciones"=> $configuraciones));
+    }
+
+    public function showAbout()
+    {
+        
+        $configuraciones = $this->getConfiguraciones();
+        
+        return view('store.about',array("configuraciones"=> $configuraciones));
     }
 
     public function getConfigurationField($field)

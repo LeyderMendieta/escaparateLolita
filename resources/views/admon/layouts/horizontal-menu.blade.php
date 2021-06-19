@@ -39,6 +39,7 @@
 										<ul class="sub-menu">
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/users') }}">Usuarios</a>
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/pedidos') }}">Pedidos</a></li>
+											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/carritosAbandonados') }}">Carritos Abandonados</a></li>
 										</ul>
 									</li>
 									
