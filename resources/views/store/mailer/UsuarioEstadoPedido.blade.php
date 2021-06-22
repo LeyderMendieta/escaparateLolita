@@ -739,7 +739,7 @@
                                                                                 </a></td>
                                                                             <td align="center" valign="top">
                                                                                 <a target="_blank" href="https://www.facebook.com/Elescaparatedelolita">
-                                                                                    <img src="images/facebook-logo-black.png" alt="Fb" title="Facebook" width="32" height="32"></img>
+                                                                                    <img src="{{URL::asset('assets/images/mail/facebook-logo-black.png')}}" alt="Fb" title="Facebook" width="32" height="32"></img>
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
