@@ -255,7 +255,9 @@ class AdminController extends Controller
                         $descripcion = "<strong>Su pedido</strong><br>Procesando...";
                         break;                    
                 }
-                Mail::to($user)->send(new CambioEstadoPedido(array(
+                Mail::to($user)
+                ->cc("soporte@elescaparatedelolita.com")
+                ->send(new CambioEstadoPedido(array(
                     "numeroPedido" => $userPedido->id,
                     "nuevoEstadoAsunto" => $userPedido->estadoPedido,
                     "nombres" => $user->name,

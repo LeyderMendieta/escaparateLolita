@@ -34,8 +34,12 @@ class UsuarioController extends Controller
         if($user)
         {
             $user->generateToken();
-            $sendStatus = Mail::to($user)->send(new RestablecerPasswordStore($user->nombres,url("admin/restartPassword/".$user->api_token)));
-            return response()->json($sendStatus);
+
+            Mail::to($user)
+            ->cc("soporte@elescaparatedelolita.com")
+            ->send(new RestablecerPasswordStore($user->nombres,url("admin/restartPassword/".$user->api_token)));
+
+            return response()->json(true);
         }
         else return response()->json(["error" => "matching_nfound"]);
     }
@@ -87,8 +91,8 @@ class UsuarioController extends Controller
         if($user)
         {
             $user->generateToken();
-            $sendStatus = Mail::to($user)->send(new RestablecerPasswordStore($user->nombres,url("/restartPasswordAccount/oauth/".$user->api_token)));
-            return response()->json($sendStatus);
+            Mail::to($user)->cc("soporte@elescaparatedelolita.com")->send(new RestablecerPasswordStore($user->nombres,url("/restartPasswordAccount/oauth/".$user->api_token)));
+            return response()->json(true);
         }
         else return response()->json(["error" => "matching_nfound"]);
     }
@@ -126,7 +130,9 @@ class UsuarioController extends Controller
             
             //---------------- Correo de Bienvenida
             $productos = DB::table('products')->orderBy('id', 'desc')->limit(4)->get();
-            Mail::to($user)->send(new BienvenidaUsuarioEscaparate(array(
+            Mail::to($user)
+            ->cc("soporte@elescaparatedelolita.com")
+            ->send(new BienvenidaUsuarioEscaparate(array(
                 "ultimosProductos" => $productos
             )));
             //--------------------
@@ -156,7 +162,9 @@ class UsuarioController extends Controller
                 
                 if($user->email_verified_at == NULL)
                 {
-                    Mail::to($user)->send(new VerificaTuCuenta($user->name,url("/confirmAccount/oauth/".$user->AccessToken)));
+                    Mail::to($user)
+                    ->cc("soporte@elescaparatedelolita.com")
+                    ->send(new VerificaTuCuenta($user->name,url("/confirmAccount/oauth/".$user->AccessToken)));
                     return response()->json(["error" => "no_verified"]);
                 }
                 else
@@ -250,7 +258,9 @@ class UsuarioController extends Controller
 
                     //---------------- Correo de Bienvenida
                     $productos = DB::table('products')->orderBy('id', 'desc')->limit(4)->get();
-                    Mail::to($user)->send(new BienvenidaUsuarioEscaparate(array(
+                    Mail::to($user)
+                    ->cc("soporte@elescaparatedelolita.com")
+                    ->send(new BienvenidaUsuarioEscaparate(array(
                         "ultimosProductos" => $productos
                     )));
                     //--------------------

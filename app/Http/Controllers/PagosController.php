@@ -193,7 +193,9 @@ class PagosController extends Controller
 
                 $userKey = $newUser->id;
 
-                $sender = Mail::to($newUser)->send(new CrearUsuarioPorFacturacionAnonima(array(
+                Mail::to($newUser)
+                ->cc("soporte@elescaparatedelolita.com")
+                ->send(new CrearUsuarioPorFacturacionAnonima(array(
                     "nombres" =>  $newUser->name, 
                     "usuario" => $newUser->email, 
                     "clave" => $createdPassword
@@ -244,7 +246,9 @@ class PagosController extends Controller
         if(isset($transferencia->transaction_id))
         {
             $listadoEstados = ["ACCEPT" => "Pago Aceptado","ERROR" => "Pago no pudo ser procesado", "DECLINE" => "Pago Declinado", "REVIEW" => "Pago sujeto a Revisión", "CANCEL" => "Pago Cancelado"];
-            Mail::to($userToMail)->send(new EnviarFacturaRecibo(array(
+            Mail::to($userToMail)
+            ->cc("soporte@elescaparatedelolita.com")
+            ->send(new EnviarFacturaRecibo(array(
                 "transferencia" => $transferencia,
                 "numero_factura" => $transferencia->transaction_id,
                 "fecha_factura" =>  date('d-m-Y h:i:s', strtotime($transferencia->auth_time)),
@@ -301,15 +305,9 @@ class PagosController extends Controller
 
     public function testing()
     {
-        /*
-        Mail::to("leyder154611@gmail.com")->send(new BienvenidaUsuarioEscaparate(array(
-            "nombres" =>  "peter", 
-            "usuario" => "testing", 
-            "clave" => "testing"
-        )));
-        */
         $productos = DB::table('products')->orderBy('id', 'desc')->limit(4)->get();
-        Mail::to("leyder154611@gmail.com")->send(new BienvenidaUsuarioEscaparate(array(
+        Mail::to("leyder154611@gmail.com")
+        ->send(new BienvenidaUsuarioEscaparate(array(
             "ultimosProductos" => $productos
         )));
         //--------------------

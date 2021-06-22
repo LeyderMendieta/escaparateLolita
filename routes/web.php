@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 
-Route::get('/testing', 'PagosController@testing');
+//Route::get('/testing', 'PagosController@testing');
 
 
 Route::get('/','AppController@showHome');
