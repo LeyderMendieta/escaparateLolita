@@ -99,7 +99,6 @@ class CartController extends Controller
         $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
         if(!isset($mycart->id))
         {
-            setcookie('session_mycart', '', time() - 3600, '/');
             return response()->json(array("error" => "Cart not found"));
         }
 

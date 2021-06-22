@@ -28,7 +28,7 @@ class App_mycart extends Component {
                 {
                     const cookies = new Cookies();
                     cookies.set('session_mycart', result.cart, { path: '/' });
-                    location.reload();
+                    //location.reload();
                 }
             });
         }
