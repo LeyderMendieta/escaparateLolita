@@ -93,7 +93,7 @@ class CartController extends Controller
     {
         if(!isset($_COOKIE["session_mycart"]))
         {
-            return response()->json(array("error" => "Cart not found"));
+            return response()->json(array("error" => "Cart not created"));
         }
         
         $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
