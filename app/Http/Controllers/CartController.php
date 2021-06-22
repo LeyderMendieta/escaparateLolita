@@ -26,8 +26,6 @@ class CartController extends Controller
             $mycart = cart::create([
                 "id_usuario" => $user->id
             ]);
-
-            $mycart->generateToken();
             
         }
         else
@@ -35,12 +33,11 @@ class CartController extends Controller
             
             $mycart = cart::create([
                 "id_usuario" => 9999999
-            ]);
-
-            $mycart->generateToken();
+            ]);            
         }
+        $mycart->generateToken();
 
-        $this->cleanCartsAndSetAbandonado();
+        //$this->cleanCartsAndSetAbandonado();
 
         return response()->json(array("cart" => $mycart->api_token));
         
