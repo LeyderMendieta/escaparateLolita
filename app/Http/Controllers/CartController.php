@@ -45,7 +45,7 @@ class CartController extends Controller
 
     public function cleanCartsAndSetAbandonado()
     {
-        $cartsYesterday = DB::select("SELECT * FROM carts WHERE DATE_FORMAT(created_at, '%j') < DATE_FORMAT(NOW(), '%j') ORDER BY `id` DESC");
+        $cartsYesterday = DB::select("SELECT * FROM carts WHERE DATE_FORMAT(created_at, '%j') < (DATE_FORMAT(NOW(), '%j') - 1) ORDER BY `id` DESC");
         foreach($cartsYesterday as $fila)
         {
             if($fila->id_usuario == 9999999)

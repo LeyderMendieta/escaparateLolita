@@ -89179,8 +89179,9 @@ var App_mycart = /*#__PURE__*/function (_Component) {
 
           _cookies.set('session_mycart', result.cart, {
             path: '/'
-          }); //location.reload();
+          });
 
+          location.reload();
         }
       });
     }
