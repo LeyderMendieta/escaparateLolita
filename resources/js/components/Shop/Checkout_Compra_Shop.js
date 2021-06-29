@@ -17,6 +17,11 @@ class Checkout_Compra_Shop extends Component {
             delivery: 5,
             deliveryFull: false,
             tax_total: 0,
+            cuponComponent: [],
+            cuponDescripcion: "",
+            discount: 0,
+            cuponAplicar:"",
+
             paises: [],
             paymentsData: [],
             paymentToken: "",
@@ -66,11 +71,9 @@ class Checkout_Compra_Shop extends Component {
         fetch(Configuracion.url_principal+"api/getMyCartProducts")
         .then(res => res.json())
         .then(
-            (result) => {
-                
+            (result) => {                
                 if(result.error == undefined)
                 {
-                    console.log(result);
                     this.setState({
                         isLoaded: true,
                         cartProducts: result.products,
@@ -82,7 +85,8 @@ class Checkout_Compra_Shop extends Component {
                         userPo: result.userPo,
                         paymentsData: result.paymentsData,
                         tax_total: (result.subtotal * 7)/100,
-                        ipAddress: result.address
+                        ipAddress: result.address,
+                        discount: result.discount
                     });
 
                     if(this.state.total > 300)
@@ -91,6 +95,16 @@ class Checkout_Compra_Shop extends Component {
                             delivery: 0,
                             deliveryFull: true
                         });
+                    }
+
+                    var cuponGetterStart = result.cupon;
+                    if(cuponGetterStart.status != "nullable")
+                    {
+                        this.setState({cuponComponent: cuponGetterStart.cuponComponent, cuponDescripcion: cuponGetterStart.cuponDescripcion});
+                        if(cuponGetterStart.status == "noRelated")
+                        {
+                            $('#cuponDescripcion').after("<small class='text-danger'>No hay ningun producto Relacionado</small>");
+                        }
                     }
 
                     for (let index = 0; index <= this.state.cartProducts.length; index++) {
@@ -124,7 +138,7 @@ class Checkout_Compra_Shop extends Component {
       }
 
       componentDidUpdate(){
-          var newVal1 = this.state.subtotal + this.state.delivery + ((this.state.subtotal * 7)/100);
+          var newVal1 = (this.state.subtotal - this.state.discount) + this.state.delivery + ((this.state.subtotal * 7)/100);
           
           if(this.state.total != newVal1)
           {
@@ -279,9 +293,11 @@ class Checkout_Compra_Shop extends Component {
             });
         }
       }
-
+    
       render(){
+        
         return (
+            (this.state.isLoaded) ?
             <div className="row">
                 <div className="col-md-4 order-md-2 mb-4">
                     <h4 className="d-flex justify-content-between align-items-center mb-3">
@@ -299,14 +315,22 @@ class Checkout_Compra_Shop extends Component {
                         </li>
                     ))}
                     
-                        <li className="list-group-item d-none justify-content-between bg-light">
-                            <div className="text-success">
-                                <h6 className="my-0"> Cupón: <span>promololita</span> </h6>
-
-                                <span><a href="" style={{color: "#FE7799"}}>eliminar</a></span>
-                            </div>
-                            <span className="text-success">-$5</span>
+                        <li className="list-group-item d-flex justify-content-between">
+                            <span>Subtotal</span>
+                            <strong>${this.state.subtotal}</strong>
                         </li>
+
+                        {(this.state.cuponDescripcion != "") ? (
+                            <li className="list-group-item justify-content-between bg-light">
+                                <div className="text-success">
+                                    <h6 className="my-0"> <span id="cuponDescripcion"> {this.state.cuponDescripcion}</span> </h6>
+
+                                    <span><a href={Configuracion.url_principal+"carrito"} style={{color: "#FE7799"}}>eliminar</a></span>
+                                </div>
+                                <span className="text-success">-${this.state.discount}</span>
+                            </li>
+                        ) : ""}
+                        
 
                         <li className="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
@@ -324,34 +348,38 @@ class Checkout_Compra_Shop extends Component {
                                     <input id="panamaprovincia" name="envio" type="radio" className="custom-control-input" value="12" />
                                     <label className="custom-control-label" htmlFor="panamaprovincia">Panamá / Provincia <span> $12</span></label>
                                 </div>
-
                                 <div className="custom-control custom-radio">
                                     <input id="panamalocal" name="envio" type="radio" className="custom-control-input" value="0" />
                                     <label className="custom-control-label" htmlFor="panamalocal">Recogida Local <span> $0</span></label>
                                 </div>
-
                             </div>
-
                         </li>
 
+                       
+                        <li className="list-group-item d-flex justify-content-between">
+                            <span>Impuesto 7%</span>
+                            <strong>${this.state.tax_total}</strong>
+                        </li>
                         <li className="list-group-item d-flex justify-content-between">
                             <span>Total (USD)</span>
                             <strong>${this.state.total}</strong>
                         </li>
                     </ul>
 
-                    <form className="card p-2 mb-3">
-                        <div className="input-group">
-                            <h6 className="my-0 mb-2">Si tienes un código de cupón, por favor, aplícalo abajo.</h6>
-                            <input type="text" className="form-control" placeholder="código promocional" />
-                            <div className="input-group-append">
-                                <button type="submit" className="btn btn-secondary">Usar</button>
+                    {(this.state.cuponDescripcion == "") ? (
+                        <form className="card p-2 mb-3">
+                            <div className="input-group">
+                                <h6 className="my-0 mb-2">Si tienes un código de cupón, por favor, aplícalo abajo.</h6>
+                                <input type="text" value={this.state.cuponAplicar} onChange={(e) => (this.setState({cuponAplicar: e.target.value}))} className="form-control" placeholder="código promocional" />
+                                <div className="input-group-append">
+                                    <button type="button" role="button" className="btn btn-secondary" onClick={(e) => (location.href = Configuracion.url_principal+"carrito?cupon="+this.state.cuponAplicar)} >Usar</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    ) : ""}
 
                     <div className="card p-2 mb-3">
-                        <p>Tus datos personales se utilizarán para procesar tu pedido, mejorar tu experiencia en esta web y otros propósitos descritos en nuestra <a href="#" className="woocommerce-privacy-policy-link" target="_blank">política de privacidad</a>.</p>
+                        <p>Tus datos personales se utilizarán para procesar tu pedido, mejorar tu experiencia en esta web y otros propósitos descritos en nuestra <a href={Configuracion.url_principal+"docs/terminos_condiciones_20201005.pdf"} className="woocommerce-privacy-policy-link" target="_blank">política de privacidad</a>.</p>
                     </div>
 
                 </div>
@@ -599,7 +627,8 @@ class Checkout_Compra_Shop extends Component {
                     </form>
                 </div>
             </div>
-        );  
+            : ""
+        ) 
     }
 }
 

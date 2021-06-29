@@ -22,16 +22,11 @@ class MisCupones extends Component {
         .then(res => res.json())
         .then(
         (result) => {
-            console.log(result);
             if (result.error == undefined) {
                 this.setState({
                     isLoaded: true,
                     cupones: result.cupones
-                });
-                
-            }
-            else {
-                console.log(result.error);
+                });                
             }
 
         });
@@ -39,8 +34,14 @@ class MisCupones extends Component {
 
     addCuponHandler(event)
     {
+        if(this.state.newCupon.length == 0)
+        {
+            this.setState({
+                statusLoad: "Campo Obligatorio"
+            });
+            return false;
+        }
         try {
-
             const formData = new FormData();
             formData.append('codigo', this.state.newCupon);
 
@@ -74,7 +75,10 @@ class MisCupones extends Component {
                         }
                         else
                         {
-                            alert("Fallo en el proceso, intenta más tarde");
+                            this.setState({
+                                statusLoad: "Cupon invalido",
+                                newCupon: ""
+                            });
                         }
                     }
                 }

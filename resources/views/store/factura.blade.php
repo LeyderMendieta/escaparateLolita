@@ -177,7 +177,6 @@ td.align-right {
                            <th>Color</th>
                            <th>Cantidad</th>
                            <th>C/U</th>
-                           <th>Impuesto</th>
                            <th>Total</th>
                           </tr> 
                          </thead> 
@@ -187,24 +186,40 @@ td.align-right {
                                 <td>{{$fila->color_selected}}</td> 
                                 <td>{{$fila->cantidad}}</td> 
                                 <td>${{$fila->precio}}</td> 
-                                <td>${{$fila->impuesto}}</td> 
-                                <td>${{$fila->total}}</td> 
+                                <td>${{($fila->total - $fila->impuesto)}}</td> 
                             </tr> 
                          @endforeach
                           
                           <tr> 
-                           <td colspan="3"></td> 
+                           <td colspan="2"></td> 
                            <td colspan="2" class="align-left">Subtotal</td>
                            <td>${{$subtotal}}</td> 
                           </tr>
                           <tr> 
-                           <td colspan="3"></td> 
-                           <td colspan="2" class="align-left">Costo de Envio</td>
-                           <td>${{$pedido->costoDomicilio}}</td> 
+                           <td colspan="2"></td> 
+                           <td colspan="2" class="align-left">Impuestos 7%</td>
+                           <td>${{$impuestos}}</td> 
                           </tr>
                           <tr> 
+                            <td colspan="2"></td> 
+                            <td colspan="2" class="align-left">Costo de Envio</td>
+                            <td>
+                            @if($pedido->costoDomicilio > 0)
+                              ${{$pedido->costoDomicilio}}
+                            @else
+                              Free Delivery
+                            @endif</td> 
+                          </tr>
+                          @if($descuento > 0)
+                          <tr> 
+                            <td colspan="2"></td> 
+                            <td colspan="2" class="align-left">Cupon de Descuento</td>
+                            <td style="color:crimson">- ${{$descuento}}</td> 
+                          </tr>
+                          @endif
+                          <tr style="background:#FF779A;color:white"> 
                            <td colspan="3"></td> 
-                           <td colspan="2" class="align-left">Total</td>
+                           <td class="align-left">TOTAL</td>
                            <td>${{$pedido->total}}</td> 
                           </tr>
                         </table> 

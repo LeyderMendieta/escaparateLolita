@@ -1,6 +1,14 @@
 # Run Database Migrations
 php artisan migrate
 
+#Commit 26/06/21
+#Uso de Cupones y Procesos generales
+
+ALTER TABLE `cupons` ADD UNIQUE(`codigo`);
+ALTER TABLE `user_cupons` CHANGE `fecha_uso` `fecha_uso` TIMESTAMP NULL DEFAULT NULL;
+
+
+
 #Commit 17/06/21
 # Configuración de Variables => destacados
 

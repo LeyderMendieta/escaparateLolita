@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\cart;
 use App\cartProduct;
+use App\Category;
+use App\Cupon;
 use App\User;
 use Illuminate\Support\Facades\DB;
 
@@ -102,19 +104,76 @@ class CartController extends Controller
             return response()->json(array("error" => "Cart not found"));
         }
 
-        $myproducts_cart = DB::select("SELECT t0.id as cartId,t0.talla_selected,t0.color_selected,t0.cantidad,t1.* FROM cart_products t0 INNER JOIN products t1 ON t0.id_product=t1.id WHERE t0.id_cart=".$mycart->id);
+        $myproducts_cart = DB::select("SELECT t0.id as cartId,t0.talla_selected,t0.color_selected,t0.cantidad,t1.*,0 as discount FROM cart_products t0 INNER JOIN products t1 ON t0.id_product=t1.id WHERE t0.id_cart=".$mycart->id);
+
+        if($mycart->id_cupon > 0)
+        {
+            $cupon = Cupon::where(["id" => $mycart->id_cupon])->first();
+            $status = false;
+            $tipoProductoAplicaCupon = "";                    
+            foreach($myproducts_cart as $fila)
+            {
+                if($cupon->tipo == "Cupon de Categoria")
+                {
+                    $categorias = json_decode($fila->categorias);
+                    foreach($categorias as $filacategoria)
+                    {
+                        if($cupon->id_target == $filacategoria)
+                        {
+                            $categoria = Category::where("id",$filacategoria)->first();
+                            $tipoProductoAplicaCupon = "Categoria: ".$categoria->nombre;
+                            $status = true;
+                            $fila->discount=$cupon->importe;
+                        }
+                    }
+                }
+                if($cupon->tipo == "Cupon de Producto")
+                {
+                    if($cupon->id_target == $fila->id)
+                    {
+                        $tipoProductoAplicaCupon = "Producto: ".$fila->name;
+                        $status = true;
+                        $fila->discount=$cupon->importe;
+                    }
+                }
+            }
+            if($cupon->tipo == "Cupon Global") 
+            {
+                $tipoProductoAplicaCupon = "en la compra global";
+                $status = true;
+                $fila->discount=$cupon->importe;
+            }
+
+            if($status)
+            {
+                $cuponRelated = array("status" => "success","cuponDescripcion" => "[$cupon->tipo] - Descuento $cupon->importe% en $tipoProductoAplicaCupon","cuponComponent" => $cupon);
+            }
+            else
+            {
+                $cuponRelated = array("status" => "noRelated","cuponDescripcion" => "[$cupon->tipo] - Descuento $cupon->importe% en $tipoProductoAplicaCupon","cuponComponent" => $cupon);
+            }
+        }
+        else
+        {
+            $cuponRelated = array("status" => "nullable");
+        }
 
         $subtotal = 0;
-
         foreach($myproducts_cart as $fila)
         {
             $subtotal += $fila->precio_ahora * $fila->cantidad;
         }
 
+        $descuentos = 0;
+        foreach($myproducts_cart as $fila)
+        {
+            $descuentos += ($fila->cantidad * $fila->discount * $fila->precio_ahora)/100 ;
+        }
+
         $paises = DB::select("SELECT * FROM app_paises");
         $paymentsToken = DB::select("SELECT * FROM user_payment_tokens WHERE id_user='$mycart->id_usuario' AND activo=1");
 
-        return response()->json(array("products" => $myproducts_cart,"subtotal" => $subtotal,"items" => count($myproducts_cart),"reference" => "Cart$mycart->id-USR$mycart->id_usuario", "paises" => $paises,"userPo" => $mycart->id_usuario, "paymentsData" => $paymentsToken, "address" => $_SERVER['REMOTE_ADDR']));
+        return response()->json(array("products" => $myproducts_cart,"cupon" => $cuponRelated ,"subtotal" => $subtotal,"discount"=>$descuentos,"items" => count($myproducts_cart),"reference" => "Cart$mycart->id-USR$mycart->id_usuario", "paises" => $paises,"userPo" => $mycart->id_usuario, "paymentsData" => $paymentsToken, "address" => $_SERVER['REMOTE_ADDR']));
     }
 
     public function addProductToCart(Request $request)
@@ -149,6 +208,25 @@ class CartController extends Controller
 
         return $this->getMyCartProducts();
 
+    }
+
+    public function removeCuponCarrito()
+    {
+        if(!isset($_COOKIE["session_mycart"])){
+            $error = "No Cart found";
+            return response()->json(array("error" => $error));
+        }
+
+        $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
+        if(!isset($mycart->id))
+        {
+            return response()->json(array("error" => "Cart not found"));
+        }
+
+        $mycart->id_cupon = null;
+        $mycart->save();
+
+        return response()->json(array("success" => "done"));
     }
 
     public function changeCantidadProducts(Request $request)

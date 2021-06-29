@@ -7,6 +7,7 @@ use App\UserPedido;
 use App\UserPedidoProducto;
 use App\cart;
 use App\cartProduct;
+use App\Cupon;
 use App\Mail\BienvenidaUsuarioEscaparate;
 use App\Mail\CrearUsuarioPorFacturacionAnonima;
 use App\Mail\EnviarFacturaRecibo;
@@ -14,6 +15,7 @@ use App\User;
 use App\UserInfo;
 use App\notification;
 use App\Product;
+use App\UserCupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -37,6 +39,17 @@ class PagosController extends Controller
         if(!isset($mycart->id))
         {
             return response()->json(array("error" => "Fallo en la conexión con el carrito"));
+        }
+
+        // && $request->decision == "ACCEPT"
+        if($mycart->id_cupon != null)
+        {
+            $cupon = UserCupon::where("id_cupon", $mycart->id_cupon)->first();
+            $cupon->fecha_uso = now();
+            $cupon->save();
+
+            $mycart->id_cupon = null;
+            $mycart->save();
         }
 
         /** ----------------- Guardar Pedido */
@@ -80,6 +93,39 @@ class PagosController extends Controller
 
         $transferencia = new Transferencia();
         $transferencia->id_pedido = $user_pedido->id;
+        $transferencia->req_bill_to_surname = $request->req_bill_to_surname;
+        $transferencia->req_bill_to_forename = $request->req_bill_to_forename;
+        $transferencia->req_bill_to_email = $request->req_bill_to_email;     
+        $transferencia->req_bill_to_phone = $request->req_bill_to_phone;
+        $transferencia->req_bill_to_address_line1 = $request->req_bill_to_address_line1; 
+        $transferencia->req_bill_to_address_country = $request->req_bill_to_address_country;   
+        $transferencia->req_bill_to_address_state = $request->req_bill_to_address_state;            
+        $transferencia->req_bill_to_address_city = $request->req_bill_to_address_city;        
+        $transferencia->req_bill_to_address_postal_code = $request->req_bill_to_address_postal_code;        
+        $transferencia->req_ship_to_surname = $request->req_ship_to_surname;        
+        $transferencia->req_ship_to_forename = $request->req_ship_to_forename;
+        $transferencia->req_ship_to_phone = $request->req_ship_to_phone;
+        $transferencia->req_ship_to_address_line1 = $request->req_ship_to_address_line1;  
+        $transferencia->req_ship_to_address_country = $request->req_ship_to_address_country;    
+        $transferencia->req_ship_to_address_state = $request->req_ship_to_address_state;
+        $transferencia->req_ship_to_address_city = $request->req_ship_to_address_city;        
+        $transferencia->req_ship_to_address_postal_code = $request->req_ship_to_address_postal_code;
+        //------------------
+        $transferencia->decision = $request->decision;
+        $transferencia->message = $request->message;
+        $transferencia->req_transaction_uuid = $request->req_transaction_uuid;
+        $transferencia->req_reference_number = $request->req_reference_number;
+        $transferencia->transaction_id = $request->transaction_id;
+        $transferencia->req_card_expiry_date = $request->req_card_expiry_date;
+        $transferencia->req_card_type =  $request->req_card_type;
+        $transferencia->req_card_number = $request->req_card_number;
+        $transferencia->req_amount = $request->req_amount;
+        $transferencia->signature = $request->signature;        
+        $transferencia->request_token = $request->request_token;
+        $transferencia->card_type_name = $request->card_type_name;
+        $transferencia->req_profile_id = $request->req_profile_id;
+        $transferencia->req_access_key = $request->req_access_key; 
+        //-------------------
         if($request->decision == "ACCEPT")
         {
             $noticacion = new notification();
@@ -94,54 +140,21 @@ class PagosController extends Controller
             $transferencia->auth_amount = $request->auth_amount;
             $transferencia->auth_response = $request->auth_response;
             $transferencia->auth_time = $request->auth_time;
-            $transferencia->auth_code = $request->auth_code;
-            $transferencia->transaction_id = $request->transaction_id;        
-            $transferencia->req_transaction_uuid = $request->req_transaction_uuid;
-            $transferencia->req_reference_number = $request->req_reference_number;
-            $transferencia->req_card_expiry_date = $request->req_card_expiry_date;
-            $transferencia->req_card_type =  $request->req_card_type;
-            $transferencia->req_card_number = $request->req_card_number;
+            $transferencia->auth_code = $request->auth_code;            
             $transferencia->req_line_item_count = $request->req_line_item_count;
-            $transferencia->req_amount = $request->req_amount;
-            $transferencia->req_profile_id = $request->req_profile_id;
-            $transferencia->req_access_key = $request->req_access_key;
-            $transferencia->request_token = $request->request_token;
-            $transferencia->card_type_name = $request->card_type_name;
             $transferencia->score_rcode = $request->score_rcode;
-            $transferencia->score_rmsg = $request->score_rmsg;
-            $transferencia->signature = $request->signature;
+            $transferencia->score_rmsg = $request->score_rmsg;           
             $transferencia->signed_field_names = $request->signed_field_names;
             $transferencia->decision_rmsg = $request->decision_rmsg;
             $transferencia->decision_return_code = $request->decision_return_code;
-            $transferencia->decision = $request->decision;
-            $transferencia->message = $request->message;
             $transferencia->bill_trans_ref_no = $request->bill_trans_ref_no;
-            $transferencia->req_bill_to_surname = $request->req_bill_to_surname;
-            $transferencia->req_bill_to_forename = $request->req_bill_to_forename;
-            $transferencia->req_bill_to_email = $request->req_bill_to_email;     
-            $transferencia->req_bill_to_phone = $request->req_bill_to_phone;
-            $transferencia->req_bill_to_address_line1 = $request->req_bill_to_address_line1; 
-            $transferencia->req_bill_to_address_country = $request->req_bill_to_address_country;   
-            $transferencia->req_bill_to_address_state = $request->req_bill_to_address_state;            
-            $transferencia->req_bill_to_address_city = $request->req_bill_to_address_city;        
-            $transferencia->req_bill_to_address_postal_code = $request->req_bill_to_address_postal_code;        
-            $transferencia->req_ship_to_surname = $request->req_ship_to_surname;        
-            $transferencia->req_ship_to_forename = $request->req_ship_to_forename;
-            $transferencia->req_ship_to_phone = $request->req_ship_to_phone;
-            $transferencia->req_ship_to_address_line1 = $request->req_ship_to_address_line1;  
-            $transferencia->req_ship_to_address_country = $request->req_ship_to_address_country;    
-            $transferencia->req_ship_to_address_state = $request->req_ship_to_address_state;
-            $transferencia->req_ship_to_address_city = $request->req_ship_to_address_city;        
-            $transferencia->req_ship_to_address_postal_code = $request->req_ship_to_address_postal_code;
+            
         }
         else
         {
             $user_pedido->estadoPedido = "Rechazado";
             $user_pedido->save();
-            $transferencia->decision = $request->decision;
-            $transferencia->message = $request->message;
-            $transferencia->req_transaction_uuid = $request->req_transaction_uuid;
-            $transferencia->req_reference_number = $request->req_reference_number;
+            
         }       
         $transferencia->save();
 
@@ -230,11 +243,17 @@ class PagosController extends Controller
         /** Send Notification Rules */
         $userPedidoProductos =  DB::select("SELECT *,t1.id as productoID FROM user_pedido_productos t0 INNER JOIN products t1 ON t0.id_product = t1.id WHERE  t0.id_user_pedido='$user_pedido->id'");
 
+        
         $subtotal = 0;
+        $impuestos = 0;
         foreach($userPedidoProductos as $fila)
         {
-            $subtotal += $fila->total;
+            $subtotal += $fila->precio;
+            $impuestos += $fila->impuesto;
         }
+
+        $descuento = ($subtotal + $impuestos + $user_pedido->costoDomicilio) - $user_pedido->total;
+
 
         if(count($user) > 0) $userToMail = $user ; 
         else if(count($validateMail) > 0) $userToMail = $validateMail ; 
@@ -255,6 +274,8 @@ class PagosController extends Controller
                 "pedido" => $user_pedido,
                 "productos" => $userPedidoProductos,
                 "subtotal" => $subtotal,
+                "descuento" => $descuento,
+                "impuestos" => $impuestos,
                 "estadoTransferencia" => $listadoEstados[$user_pedido->estado],
                 "mailing" => true
             )));
@@ -283,10 +304,14 @@ class PagosController extends Controller
             $userPedidoProductos =  DB::select("SELECT *,t1.id as productoID FROM user_pedido_productos t0 INNER JOIN products t1 ON t0.id_product = t1.id WHERE  t0.id_user_pedido='$userPedido->id'");
 
             $subtotal = 0;
+            $impuestos = 0;
             foreach($userPedidoProductos as $fila)
             {
-                $subtotal += $fila->total;
+                $subtotal += $fila->precio;
+                $impuestos += $fila->impuesto;
             }
+
+            $descuento = ($subtotal + $impuestos + $userPedido->costoDomicilio) - $userPedido->total;
 
             $listadoEstados = ["ACCEPT" => "Pago Aceptado","ERROR" => "Pago no pudo ser procesado", "DECLINE" => "Pago Declinado", "REVIEW" => "Pago sujeto a Revisión", "CANCEL" => "Pago Cancelado"];
             return view("store.factura",array(
@@ -296,6 +321,8 @@ class PagosController extends Controller
                 "pedido" => $userPedido,
                 "productos" => $userPedidoProductos,
                 "subtotal" => $subtotal,
+                "impuestos" => $impuestos,
+                "descuento" => $descuento,
                 "mailing" => false,
                 "estadoTransferencia" => $listadoEstados[$userPedido->estado],
             ));

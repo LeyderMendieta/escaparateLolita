@@ -65,8 +65,9 @@ use Illuminate\Support\Facades\Route;
     Route::post('/editAddressU', 'UsuarioController@editDireccionUser');
 
     Route::get('/getMyCupones', 'UsuarioController@getMyCupones');
-    Route::post('/addCupon', 'UsuarioController@addNewCuponUser');
+    Route::post('/addCupon', 'UsuarioController@addNewCuponUser');    
     Route::post('/aplicarCuponCarrito', 'UsuarioController@aplicarCuponCarrito');
+    Route::get('/cart/RemoveCupon', 'CartController@removeCuponCarrito');
 
     Route::get("/getMyPedidos","UsuarioController@getMyPedidos");
     Route::post("/signDataST",function(Request $request){

@@ -90894,6 +90894,10 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
       delivery: 5,
       deliveryFull: false,
       tax_total: 0,
+      cuponComponent: [],
+      cuponDescripcion: "",
+      discount: 0,
+      cuponAplicar: "",
       paises: [],
       paymentsData: [],
       paymentToken: "",
@@ -90943,8 +90947,6 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         return res.json();
       }).then(function (result) {
         if (result.error == undefined) {
-          console.log(result);
-
           _this2.setState({
             isLoaded: true,
             cartProducts: result.products,
@@ -90956,7 +90958,8 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
             userPo: result.userPo,
             paymentsData: result.paymentsData,
             tax_total: result.subtotal * 7 / 100,
-            ipAddress: result.address
+            ipAddress: result.address,
+            discount: result.discount
           });
 
           if (_this2.state.total > 300) {
@@ -90964,6 +90967,19 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
               delivery: 0,
               deliveryFull: true
             });
+          }
+
+          var cuponGetterStart = result.cupon;
+
+          if (cuponGetterStart.status != "nullable") {
+            _this2.setState({
+              cuponComponent: cuponGetterStart.cuponComponent,
+              cuponDescripcion: cuponGetterStart.cuponDescripcion
+            });
+
+            if (cuponGetterStart.status == "noRelated") {
+              $('#cuponDescripcion').after("<small class='text-danger'>No hay ningun producto Relacionado</small>");
+            }
           }
 
           for (var index = 0; index <= _this2.state.cartProducts.length; index++) {
@@ -90994,7 +91010,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      var newVal1 = this.state.subtotal + this.state.delivery + this.state.subtotal * 7 / 100;
+      var newVal1 = this.state.subtotal - this.state.discount + this.state.delivery + this.state.subtotal * 7 / 100;
 
       if (this.state.total != newVal1) {
         this.setState({
@@ -91130,7 +91146,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return this.state.isLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-4 order-md-2 mb-4"
@@ -91154,19 +91170,23 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
           className: "text-muted"
         }, "$", row.precio_ahora, " (", row.cantidad, ")"));
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-group-item d-none justify-content-between bg-light"
+        className: "list-group-item d-flex justify-content-between"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Subtotal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "$", this.state.subtotal)), this.state.cuponDescripcion != "" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item justify-content-between bg-light"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "text-success"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
         className: "my-0"
-      }, " Cup\xF3n: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "promololita"), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "",
+      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "cuponDescripcion"
+      }, " ", this.state.cuponDescripcion), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "carrito",
         style: {
           color: "#FE7799"
         }
       }, "eliminar"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "text-success"
-      }, "-$5")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, "-$", this.state.discount)) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "list-group-item d-flex justify-content-between lh-condensed"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
         className: "my-0"
@@ -91217,7 +91237,9 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         htmlFor: "panamalocal"
       }, "Recogida Local ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " $0"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "list-group-item d-flex justify-content-between"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Total (USD)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "$", this.state.total))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Impuesto 7%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "$", this.state.tax_total)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item d-flex justify-content-between"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Total (USD)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "$", this.state.total))), this.state.cuponDescripcion == "" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "card p-2 mb-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-group"
@@ -91225,17 +91247,27 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
         className: "my-0 mb-2"
       }, "Si tienes un c\xF3digo de cup\xF3n, por favor, apl\xEDcalo abajo."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        value: this.state.cuponAplicar,
+        onChange: function onChange(e) {
+          return _this3.setState({
+            cuponAplicar: e.target.value
+          });
+        },
         className: "form-control",
         placeholder: "c\xF3digo promocional"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-group-append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        className: "btn btn-secondary"
-      }, "Usar")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        type: "button",
+        role: "button",
+        className: "btn btn-secondary",
+        onClick: function onClick(e) {
+          return location.href = _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "carrito?cupon=" + _this3.state.cuponAplicar;
+        }
+      }, "Usar")))) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card p-2 mb-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Tus datos personales se utilizar\xE1n para procesar tu pedido, mejorar tu experiencia en esta web y otros prop\xF3sitos descritos en nuestra ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
+        href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "docs/terminos_condiciones_20201005.pdf",
         className: "woocommerce-privacy-policy-link",
         target: "_blank"
       }, "pol\xEDtica de privacidad"), "."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -91860,7 +91892,7 @@ var Checkout_Compra_Shop = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Es necesario aceptar terminos y condiciones para continuar"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary btn-lg btn-block",
         type: "submit"
-      }, "Finalizar Compra"))));
+      }, "Finalizar Compra")))) : "";
     }
   }]);
 
@@ -92051,9 +92083,13 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
       productos: [],
       cartProducts: [],
       subtotal: 0,
+      discount: 0,
+      total: 0,
       items: 0,
       cuponAplicar: "",
-      resultAplicarCupon: ""
+      resultAplicarCupon: "",
+      cuponComponent: [],
+      cuponDescripcion: ""
     };
     return _this;
   }
@@ -92061,8 +92097,6 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
   _createClass(Ver_Carrito_Shop, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
       var urlParams = new URLSearchParams(window.location.search);
 
       if (urlParams.get("cupon") != null) {
@@ -92070,6 +92104,13 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
           cuponAplicar: urlParams.get("cupon")
         });
       }
+
+      this.execGetMyCart();
+    }
+  }, {
+    key: "execGetMyCart",
+    value: function execGetMyCart() {
+      var _this2 = this;
 
       fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/getMyCartProducts").then(function (res) {
         return res.json();
@@ -92079,10 +92120,28 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
             isLoaded: true,
             cartProducts: result.products,
             subtotal: result.subtotal,
-            items: result.items
+            items: result.items,
+            discount: result.discount,
+            total: result.subtotal - result.discount
           });
-        } else {
-          console.log(result.error);
+
+          var cuponGetterStart = result.cupon;
+
+          if (cuponGetterStart.status != "nullable") {
+            _this2.setState({
+              cuponComponent: cuponGetterStart.cuponComponent,
+              cuponDescripcion: cuponGetterStart.cuponDescripcion
+            });
+
+            if (cuponGetterStart.status == "noRelated") {
+              $('#cuponDescripcion').after("<small class='text-danger'>No hay ningun producto Relacionado</small>");
+            }
+          } else {
+            _this2.setState({
+              cuponComponent: [],
+              cuponDescripcion: ""
+            });
+          }
         }
       });
     }
@@ -92161,9 +92220,10 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
 
       try {
         var errorShow = {
+          "oauthlogged": "Debes estar logueado para usar Cupon",
           "error found": "Error encontrado",
           "cupno-found": "El cupón no se encuentra",
-          "cupno-asocToUser": "No se posible aplicar el cupón",
+          "cupno-asocToUser": "No has agregado el cupon a tu cuenta, se requiere antes de Usar el cupon",
           "cupno-dateused": "El cupón ya fue usado anteriormente",
           "cookino-mycart": "Error durante el proceso, intenta más tarde",
           "cartno-setter": "Error durante el proceso del carrito, intenta más tarde",
@@ -92183,31 +92243,49 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
         }).then(function (result) {
           if (result.error == undefined) {
             _this5.setState({
-              cuponAplicar: "",
               resultAplicarCupon: ""
             });
+
+            _this5.execGetMyCart();
 
             alert("Se ha agregado el cupón exitosamente");
           } else {
             _this5.setState({
               resultAplicarCupon: errorShow[result.error] + " - (" + _this5.state.cuponAplicar + ")"
             });
-
-            _this5.setState({
-              cuponAplicar: ""
-            });
           }
+
+          _this5.setState({
+            cuponAplicar: ""
+          });
         });
       } catch (error) {
         console.log(error);
       }
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "removeCupon",
+    value: function removeCupon(event) {
       var _this6 = this;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      if (confirm("¿Estas seguro de remover el Cupon?")) {
+        fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/cart/RemoveCupon").then(function (res) {
+          return res.json();
+        }).then(function (result) {
+          if (result.success != undefined) {
+            _this6.execGetMyCart();
+          } else {
+            alert("Error durante el proceso de remover Cupon, intenta más tarde");
+          }
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this7 = this;
+
+      return this.state.isLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "shop_table shop_table_responsive cart woocommerce-cart-form__contents",
         cellSpacing: "0"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", {
@@ -92235,7 +92313,7 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
           className: "remove",
           "aria-label": "Borrar este art\xEDculo",
           "data-product_id": row.cartId,
-          onClick: _this6.removeFromCartHandler.bind(_this6)
+          onClick: _this7.removeFromCartHandler.bind(_this7)
         }, "\xD7")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
           className: "product-thumbnail"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -92256,9 +92334,9 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
           className: "product-price"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "woocommerce-Price-amount amount"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("bdi", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "woocommerce-Price-currencySymbol"
-        }, "$"), row.precio_ahora))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("bdi", null, "$", (row.precio_ahora - row.precio_ahora * row.discount / 100).toFixed(2), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: row.discount > 0 ? "text-success" : "text-success d-none"
+        }, "(Descuento Cupon: -$", (row.precio_ahora * row.discount / 100).toFixed(2), ")")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
           className: "product-quantity"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "quantity detail-qty"
@@ -92281,7 +92359,7 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
           size: "4",
           pattern: "[0-9]*",
           inputMode: "numeric",
-          onChange: _this6.changeCantidadProduct.bind(_this6)
+          onChange: _this7.changeCantidadProduct.bind(_this7)
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "#",
           className: "qty-up silver"
@@ -92294,12 +92372,12 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
           className: "woocommerce-Price-amount amount"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("bdi", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "woocommerce-Price-currencySymbol"
-        }, "$"), row.cantidad * row.precio_ahora))));
+        }, "$"), (row.cantidad * (row.precio_ahora - row.precio_ahora * row.discount / 100)).toFixed(2)))));
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
         colSpan: "6",
         className: "actions"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "coupon"
+        className: this.state.cuponDescripcion != "" ? "coupon d-none" : "coupon"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "coupon_code"
       }, "Cup\xF3n:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -92309,7 +92387,7 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
         id: "coupon_code",
         placeholder: "C\xF3digo de cup\xF3n",
         onChange: function onChange(e) {
-          return _this6.setState({
+          return _this7.setState({
             cuponAplicar: e.target.value.toUpperCase()
           });
         },
@@ -92347,28 +92425,30 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("bdi", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "woocommerce-Price-currencySymbol"
       }, "$"), this.state.subtotal)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        className: "cart-subtotal d-none",
+        className: this.state.cuponDescripcion != "" ? "cart-subtotal" : "cart-subtotal d-none",
         id: "fila-cupon"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Cup\xF3n: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
         className: "text-white",
         style: {
           fontSize: "1rem"
-        }
-      }, "\" promololita \""), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        },
+        id: "cuponDescripcion"
+      }, " ", this.state.cuponDescripcion), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
         "data-title": "Subtotal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "woocommerce-Price-amount amount"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("bdi", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "woocommerce-Price-currencySymbol"
-      }, "- $"), "44.00 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
+      }, "-$"), this.state.discount, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#removeCupon",
+        onClick: this.removeCupon.bind(this)
       }, "Eliminar"), " ")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "order-total"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "woocommerce-Price-amount amount"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("bdi", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "woocommerce-Price-currencySymbol"
-      }, "$"), this.state.subtotal))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "$"), this.state.total))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "wc-proceed-to-checkout",
         style: {
           display: this.state.subtotal == 0 ? "none" : ""
@@ -92377,7 +92457,7 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
         href: _Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "checkout",
         className: "checkout-button button alt wc-forward",
         type: "button"
-      }, "Finalizar compra")))));
+      }, "Finalizar compra"))))) : "";
     }
   }]);
 
@@ -93228,15 +93308,11 @@ var MisCupones = /*#__PURE__*/function (_Component) {
       fetch(_Configuration__WEBPACK_IMPORTED_MODULE_2__["default"].url_principal + "api/getMyCupones").then(function (res) {
         return res.json();
       }).then(function (result) {
-        console.log(result);
-
         if (result.error == undefined) {
           _this2.setState({
             isLoaded: true,
             cupones: result.cupones
           });
-        } else {
-          console.log(result.error);
         }
       });
     }
@@ -93244,6 +93320,13 @@ var MisCupones = /*#__PURE__*/function (_Component) {
     key: "addCuponHandler",
     value: function addCuponHandler(event) {
       var _this3 = this;
+
+      if (this.state.newCupon.length == 0) {
+        this.setState({
+          statusLoad: "Campo Obligatorio"
+        });
+        return false;
+      }
 
       try {
         var formData = new FormData();
@@ -93272,7 +93355,10 @@ var MisCupones = /*#__PURE__*/function (_Component) {
                 newCupon: ""
               });
             } else {
-              alert("Fallo en el proceso, intenta más tarde");
+              _this3.setState({
+                statusLoad: "Cupon invalido",
+                newCupon: ""
+              });
             }
           }
         });

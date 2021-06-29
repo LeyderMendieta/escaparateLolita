@@ -641,7 +641,8 @@ class UsuarioController extends Controller
                             {
                                 $myproducts_cart = DB::select("SELECT t0.id as cartId,t0.talla_selected,t0.color_selected,t0.cantidad,t1.* FROM cart_products t0 INNER JOIN products t1 ON t0.id_product=t1.id WHERE t0.id_cart=".$mycart->id);
 
-                                $status = false;                                
+                                $status = false;
+                                $tipoProductoAplicaCupon = "";                    
                                 foreach($myproducts_cart as $fila)
                                 {
                                     if($cupon->tipo == "Cupon de Categoria")
@@ -649,21 +650,35 @@ class UsuarioController extends Controller
                                         $categorias = json_decode($fila->categorias);
                                         foreach($categorias as $filacategoria)
                                         {
-                                            if($cupon->id_target == $filacategoria) $status = true;
+                                            if($cupon->id_target == $filacategoria)
+                                            {
+                                                $categoria = Category::where("id",$filacategoria)->first();
+                                                $tipoProductoAplicaCupon = "Categoria: ".$categoria->nombre;
+                                                $status = true;                                                
+                                            }
                                         }
                                     }
                                     if($cupon->tipo == "Cupon de Producto")
                                     {
-                                        if($cupon->id_target == $fila->id) $status = true;
+                                        if($cupon->id_target == $fila->id)
+                                        {
+                                            $tipoProductoAplicaCupon = "Producto: ".$fila->name;
+                                            $status = true;
+                                        }
                                     }
                                 }
-                                if($cupon->tipo == "Cupon Global") $status = true;
+                                if($cupon->tipo == "Cupon Global") 
+                                {
+                                    $tipoProductoAplicaCupon = "en la compra global";
+                                    $status = true;
+                                }
 
                                 if($status)
                                 {
                                     $mycart->id_cupon = $cupon->id;
                                     $mycart->save();
                                     return response()->json(array("success" => "added"));
+                                    // return response()->json(array("success" => "added", "cuponDescripcion" => "[$cupon->tipo] - Descuento $cupon->importe% en $tipoProductoAplicaCupon","cuponComponent" => $cupon));
                                 }
                                 else $error = "producno-asocToCart";
                             }
