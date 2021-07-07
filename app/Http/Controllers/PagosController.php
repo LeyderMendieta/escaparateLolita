@@ -87,6 +87,16 @@ class PagosController extends Controller
             $user_pedido_producto->impuesto = $impuestox;
             $user_pedido_producto->total = ($producto->precio_ahora * $producto->cantidad) + $impuestox;
             $user_pedido_producto->save();
+
+            if($request->decision == "ACCEPT")
+            {
+                $productoTarget = Product::where("id",$producto->id)->first();
+                if(isset($productoTarget->stock))
+                {
+                    $productoTarget->stock = $productoTarget->stock - 1;
+                    $productoTarget->save();
+                }                
+            }
         }
 
         /**----------END Guardar Pedido */
@@ -115,12 +125,12 @@ class PagosController extends Controller
         $transferencia->message = $request->message;
         $transferencia->req_transaction_uuid = $request->req_transaction_uuid;
         $transferencia->req_reference_number = $request->req_reference_number;
-        $transferencia->transaction_id = $request->transaction_id;
-        $transferencia->req_card_expiry_date = $request->req_card_expiry_date;
-        $transferencia->req_card_type =  $request->req_card_type;
-        $transferencia->req_card_number = $request->req_card_number;
+        $transferencia->transaction_id = (isset($request->transaction_id)) ? $request->transaction_id : 1;
+        $transferencia->req_card_expiry_date = (isset($request->req_card_expiry_date)) ? $request->req_card_expiry_date : "null";
+        $transferencia->req_card_type =  (isset($request->req_card_type)) ? $request->req_card_type : "null";
+        $transferencia->req_card_number = (isset($request->req_card_number)) ? $request->req_card_number : "null";
         $transferencia->req_amount = $request->req_amount;
-        $transferencia->signature = $request->signature;        
+        $transferencia->signature = $request->signature;
         $transferencia->request_token = $request->request_token;
         $transferencia->card_type_name = $request->card_type_name;
         $transferencia->req_profile_id = $request->req_profile_id;
@@ -148,7 +158,6 @@ class PagosController extends Controller
             $transferencia->decision_rmsg = $request->decision_rmsg;
             $transferencia->decision_return_code = $request->decision_return_code;
             $transferencia->bill_trans_ref_no = $request->bill_trans_ref_no;
-            
         }
         else
         {
@@ -328,6 +337,12 @@ class PagosController extends Controller
             ));
         }
         else return redirect("/shop");
+    }
+
+    public function getBitacoraPagos()
+    {
+        $transacciones = DB::select("SELECT * FROM transferencias");
+        return response()->json(["transacciones" => $transacciones]);
     }
 
     public function testing()

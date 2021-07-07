@@ -103,6 +103,7 @@ use Illuminate\Support\Facades\Route;
     Route::get("/admin/clearSpaceAgenda/{idAgenda}","AgendaController@liberarAgenda");
 
     Route::get("/admin/carritosAbandonados/{full}","CartController@getCartsAbandonados");
+    Route::get("/admin/getBitacoraPagos","PagosController@getBitacoraPagos");
   
 
     Route::get("/admin/getTotalSect1","AdminController@getTotalSect1");

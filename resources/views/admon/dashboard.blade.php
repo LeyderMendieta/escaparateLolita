@@ -21,110 +21,7 @@
 						</div>
 
 						<!-- Row -->
-						<div class="row">
-							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
-								<div class="card overflow-hidden">
-									<div class="card-header cards-tabs-option">
-										<div>
-											<h3 class="card-title">Resumen de Pedido</h3>
-										</div>
-										<div class="card-options">
-											<div class="tab-menu-heading card-tabs-heading">
-												<div class="tabs-menu card-tabs-menu">
-													<ul class="nav card-navs">
-														<li><a href="#tab-session1" class="active" data-toggle="tab">Mes</a></li>
-														<li><a href="#tab-session2" data-toggle="tab">Año</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="card-body">
-										<div>
-											<canvas id="order-summary" class="chartwidget"></canvas>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
-								<div class="card">
-									<div class="card-header">
-										<div>
-											<h3 class="card-title">Order Activity</h3>
-										</div>
-										<div class="card-options">
-											<a href="" class="mr-4 text-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-												<span class="fe fe-more-horizontal fs-20"></span>
-											</a>
-											<ul class="dropdown-menu dropdown-menu-right" role="menu">
-												<li><a href="#"><i class="fe fe-eye mr-2"></i>View</a></li>
-												<li><a href="#"><i class="fe fe-plus-circle mr-2"></i>Add</a></li>
-												<li><a href="#"><i class="fe fe-trash-2 mr-2"></i>Remove</a></li>
-												<li><a href="#"><i class="fe fe-download-cloud mr-2"></i>Download</a></li>
-												<li><a href="#"><i class="fe fe-settings mr-2"></i>More</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="card-body p-0">
-										<div class="list-group projects-list pt-0 pb-0 pl-0 pr-0">
-											<a href="#" class="list-group-item list-group-item-action flex-column align-items-start border-0">
-												<div class="d-flex w-100 justify-content-between">
-													<h6 class="mb-1 font-weight-semibold ">Order Picking</h6>
-													<h6 class="mb-0 font-weight-semibold text-dark">3,876</h6>
-												</div>
-												<div class="d-flex w-100 justify-content-between">
-													<span class="text-muted"><i class="fe fe-arrow-down text-success "></i> 03% last month</span>
-													<span class="text-muted">5 days ago</span>
-												</div>
-											</a>
-											<a href="#" class="list-group-item list-group-item-action flex-column align-items-start border-bottom-0  border-left-0 border-right-0 border-top">
-												<div class="d-flex w-100 justify-content-between">
-													<h6 class="mb-1 font-weight-semibold ">Storage</h6>
-													<h6 class="mb-0 font-weight-semibold text-dark">2,178</h6>
-												</div>
-												<div class="d-flex w-100 justify-content-between">
-													<span class="text-muted"><i class="fe fe-arrow-down text-danger "></i> 16% last month</span>
-													<span class="text-muted">2 days ago</span>
-												</div>
-											</a>
-											<a href="#" class="list-group-item list-group-item-action flex-column align-items-start border-bottom-0  border-left-0 border-right-0 border-top">
-												<div class="d-flex w-100 justify-content-between"> <h6 class="mb-1 font-weight-semibold ">Shipping</h6>
-													<h6 class="mb-0 font-weight-semibold text-dark">1,367</h6>
-												</div>
-												<div class="d-flex w-100 justify-content-between">
-													<span class="text-muted"><i class="fe fe-arrow-up text-success"></i> 06% last month</span>
-													<span class="text-muted">1 days ago</span>
-												</div>
-											</a>
-											<a href="#" class="list-group-item list-group-item-action flex-column align-items-start border-bottom-0  border-left-0 border-right-0 border-top">
-												<div class="d-flex w-100 justify-content-between">
-													<h6 class="mb-1 font-weight-semibold ">Receiving</h6>
-													<h6 class="mb-0 font-weight-semibold text-dark">678</h6>
-												</div>
-												<div class="d-flex w-100 justify-content-between">
-													<span class="text-muted"><i class="fe fe-arrow-down text-danger "></i> 25% last month</span>
-													<span class="text-muted">10 days ago</span>
-												</div>
-											</a>
-											<a href="#" class="list-group-item list-group-item-action flex-column align-items-start border-bottom-0  border-left-0 border-right-0 border-top">
-												<div class="d-flex w-100 justify-content-between">
-													<h6 class="mb-1 font-weight-semibold ">Other</h6>
-													<h6 class="mb-0 font-weight-semibold text-dark">5,678</h6>
-												</div>
-												<div class="d-flex w-100 justify-content-between">
-													<span class="text-muted"><i class="fe fe-arrow-up text-success "></i> 16% last month</span>
-													<span class="text-muted">5 days ago</span>
-												</div>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End Row -->
-
-						<!-- Row -->
-						<div class="row">
+						<div class="row d-none">
 							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
 								<div class="card">
 									<div class="card-header">
@@ -319,7 +216,7 @@
 						<!-- End Row -->
 
 						<!-- Row -->
-						<div class="row">
+						<div class="row d-none">
 							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 								<div class="card overflow-hidden">
 									<div class="card-header cards-tabs-option">

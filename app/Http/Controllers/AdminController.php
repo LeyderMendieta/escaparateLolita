@@ -275,9 +275,14 @@ class AdminController extends Controller
     public function getTotalSect1()
     {
         $productTotal = DB::table("products")->count();
-        $usersTotal = DB::table("users")->count();
+        $usersTotal = DB::table("users")->where("graphDomain","!=","Administrador")->count();
+        $usersFB = DB::table("users")->where("graphDomain","facebook")->count();
+        $usersEscaparate = DB::table("users")->where("graphDomain","Esparate Lolita")->count();
+        $usersGoogle = DB::table("users")->where("graphDomain","Google")->count();
         $pedidosTotal = DB::table("user_pedidos")->count();
-        $pagosTotal = DB::table("user_pedidos")->sum("total");
-        return response()->json(["products" => $productTotal,"users" => $usersTotal,"pedidos" => $pedidosTotal,"pagos" => $pagosTotal]);
+        $pedidosAceptados = DB::table("user_pedidos")->where("estado","ACCEPT")->count();
+        $pedidosRechazados = DB::table("user_pedidos")->where("estado","!=","ACCEPT")->count();
+        $pagosTotal = DB::table("user_pedidos")->where("estado","ACCEPT")->sum("total");
+        return response()->json(["products" => $productTotal,"users" => $usersTotal,"usersFB" => $usersFB,"usersEscaparate" => $usersEscaparate,"usersGoogle" => $usersGoogle,"pedidos" => $pedidosTotal,"pedidosAceptados" => $pedidosAceptados,"pedidosRechazados" => $pedidosRechazados,"pagos" => $pagosTotal]);
     }
 }
