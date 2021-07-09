@@ -284,8 +284,8 @@ class AdminController extends Controller
         $pedidosRechazados = DB::table("user_pedidos")->where("estado","!=","ACCEPT")->count();
         $pagosTotal = DB::table("user_pedidos")->where("estado","ACCEPT")->sum("total");
         $pedidosGrafica = DB::select("SELECT count(*) as total,estado,MONTH(created_at) as mes,YEAR(created_at) as year FROM `user_pedidos` GROUP BY estado,MONTH(created_at),YEAR(created_at) ORDER BY created_at DESC LIMIT 12");
-        $productosMasVistos = DB::select("SELECT count(*) as totalCount,(SELECT COUNT(*) FROM product_views ORDER BY created_at DESC LIMIT 8) as totalAll,t1.* FROM product_views t0 INNER JOIN products t1 ON t0.id_producto=t1.id GROUP BY t0.id_producto ORDER BY totalCount DESC LIMIT 8");
-        $productosVistosReciente = DB::select("SELECT t1.* FROM product_views t0 INNER JOIN products t1 ON t0.id_producto=t1.id GROUP BY t0.id_producto ORDER BY t0.created_at DESC LIMIT 8");
+        $productosMasVistos = DB::select("SELECT count(*) as totalCount,(SELECT COUNT(*) FROM product_views ORDER BY created_at DESC LIMIT 6) as totalAll,t1.* FROM product_views t0 INNER JOIN products t1 ON t0.id_producto=t1.id GROUP BY t0.id_producto ORDER BY totalCount DESC LIMIT 6");
+        $productosVistosReciente = DB::select("SELECT t1.* FROM product_views t0 INNER JOIN products t1 ON t0.id_producto=t1.id GROUP BY t0.id_producto ORDER BY t0.created_at DESC LIMIT 6");
 
         return response()->json(["products" => $productTotal,"users" => $usersTotal,"usersFB" => $usersFB,"usersEscaparate" => $usersEscaparate,"usersGoogle" => $usersGoogle,"pedidos" => $pedidosTotal,"pedidosAceptados" => $pedidosAceptados,"pedidosRechazados" => $pedidosRechazados,"pagos" => $pagosTotal,"pedidosGrafica" => $pedidosGrafica,"productosMasVistos" => $productosMasVistos,"productosVistosReciente" => $productosVistosReciente]);
     }
