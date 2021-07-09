@@ -390,7 +390,7 @@ class App_Admon_Dashboard_Section1 extends Component {
                                             <div className="mb-3">
                                                 <h5 className="mb-2 d-block">
                                                     <span className="fs-12">{row.name}</span>
-                                                    <span className="float-right fs-12"><b>{row.totalCount}</b><span className="text-muted ml-1"> ({row.totalCount/row.totalAll*100}%)</span></span>
+                                                    <span className="float-right fs-12"><b>{row.totalCount}</b><span className="text-muted ml-1"> ({Math.round(row.totalCount/row.totalAll*100)}%)</span></span>
                                                 </h5>
                                                 <div className="progress progress-md h-1">
                                                     <div className="progress-bar progress-bar-striped progress-bar-animated bg-primary" style={{width: (row.totalCount/row.totalAll*100)+"%"}}></div>

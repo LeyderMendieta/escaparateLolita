@@ -86468,7 +86468,7 @@ var App_Admon_Dashboard_Section1 = /*#__PURE__*/function (_Component) {
           className: "float-right fs-12"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("b", null, row.totalCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
           className: "text-muted ml-1"
-        }, " (", row.totalCount / row.totalAll * 100, "%)"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        }, " (", Math.round(row.totalCount / row.totalAll * 100), "%)"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
           className: "progress progress-md h-1"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
           className: "progress-bar progress-bar-striped progress-bar-animated bg-primary",
