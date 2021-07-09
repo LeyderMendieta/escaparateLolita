@@ -41,6 +41,7 @@
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/pedidos') }}">Pedidos</a></li>
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/carritosAbandonados') }}">Carritos Abandonados</a></li>
 											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/bitacoraPagos') }}">Bitacora de Pagos</a></li>
+											<li aria-haspopup="true"><a href="{{ url('/' . $page='admon/usuariosCupones') }}">Uso de Cupones</a></li>
 										</ul>
 									</li>
 									

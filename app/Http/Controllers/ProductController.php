@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\cart;
 use App\Configuration;
 use Illuminate\Http\Request;
 use App\Product;
@@ -63,6 +64,10 @@ class ProductController extends Controller
             }
             if($dividendo > 0) $resultRating = ($counter/$dividendo)*20;
             $fila->rating = $resultRating;
+            $fila->ratings = count($ratings);
+
+            $vistas = DB::select("SELECT * FROM product_views WHERE id_producto='$fila->id'");
+            $fila->views = count($vistas);
             array_push($retorno, $fila);     
         }
         return response()->json($retorno, 200);
@@ -166,6 +171,15 @@ class ProductController extends Controller
         $products = DB::table('products')
             ->where('acceso_url',$product)
             ->get();
+            
+        $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
+        if(isset($mycart->id))
+        {
+            $id_user = $mycart->id_usuario;
+            $id_producto = (isset($products[0]->id)) ? $products[0]->id : 0;
+            DB::insert("INSERT INTO product_views(id_user,id_producto) VALUES('$id_user','$id_producto')");
+        }
+
         return response()->json($products, 200);
     }
 

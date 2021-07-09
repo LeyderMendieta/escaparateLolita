@@ -109,6 +109,7 @@ use Illuminate\Support\Facades\Route;
     Route::get("/admin/getTotalSect1","AdminController@getTotalSect1");
 
 
+    Route::get("/admin/getCuponsUsers","AdminController@getCuponsUsers");
     Route::get("/admin/cupones","CuponController@index");
     Route::get("/admin/cupones/{cupon}","CuponController@show");
     Route::post("/new/cupon","CuponController@store");

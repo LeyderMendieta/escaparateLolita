@@ -69,6 +69,7 @@ require('./components/Admin/solicitudes/App_solicitud_detallePedido');
 require('./components/Admin/solicitudes/App_solicitud_detalleContacto');
 require('./components/Admin/procesos/App_Admon_CarritosAbandonados');
 require('./components/Admin/procesos/App_Admon_BitacoraPagos');
+require('./components/Admin/procesos/App_Admon_UsuariosCupones');
 
 require('./components/Admin/dashboard/App_Admon_Section1');
 

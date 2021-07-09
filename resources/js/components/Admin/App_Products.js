@@ -71,6 +71,8 @@ class App_Admon_Products extends Component {
                         <th>Imagen Tienda</th>
                         <th>Imagen Tienda Hover</th>
                         <th>Descripcion</th>
+                        <th>Reseñas</th>
+                        <th>Vistas</th>
                         <th>Creado</th>
                         <th>Actualizado</th>
                     </tr>
@@ -104,6 +106,8 @@ class App_Admon_Products extends Component {
                             <td><img src={Configuracion.url_images+producto.imagen_main} alt="" width="80" /></td>
                             <td><img src={Configuracion.url_images+producto.imagen_secundaria} alt="" width="80" /></td>
                             <td style={{whiteSpace: "normal!important"}}>{producto.descripcion}</td>
+                            <td>{producto.ratings}</td>
+                            <td>{producto.views}</td>
                             <td>{producto.created_at}</td>
                             <td>{producto.updated_at}</td>
                         </tr>

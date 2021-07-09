@@ -283,6 +283,16 @@ class AdminController extends Controller
         $pedidosAceptados = DB::table("user_pedidos")->where("estado","ACCEPT")->count();
         $pedidosRechazados = DB::table("user_pedidos")->where("estado","!=","ACCEPT")->count();
         $pagosTotal = DB::table("user_pedidos")->where("estado","ACCEPT")->sum("total");
-        return response()->json(["products" => $productTotal,"users" => $usersTotal,"usersFB" => $usersFB,"usersEscaparate" => $usersEscaparate,"usersGoogle" => $usersGoogle,"pedidos" => $pedidosTotal,"pedidosAceptados" => $pedidosAceptados,"pedidosRechazados" => $pedidosRechazados,"pagos" => $pagosTotal]);
+        $pedidosGrafica = DB::select("SELECT count(*) as total,estado,MONTH(created_at) as mes,YEAR(created_at) as year FROM `user_pedidos` GROUP BY estado,MONTH(created_at),YEAR(created_at) ORDER BY created_at DESC LIMIT 12");
+        $productosMasVistos = DB::select("SELECT count(*) as totalCount,(SELECT COUNT(*) FROM product_views ORDER BY created_at DESC LIMIT 8) as totalAll,t1.* FROM product_views t0 INNER JOIN products t1 ON t0.id_producto=t1.id GROUP BY t0.id_producto ORDER BY totalCount DESC LIMIT 8");
+        $productosVistosReciente = DB::select("SELECT t1.* FROM product_views t0 INNER JOIN products t1 ON t0.id_producto=t1.id GROUP BY t0.id_producto ORDER BY t0.created_at DESC LIMIT 8");
+
+        return response()->json(["products" => $productTotal,"users" => $usersTotal,"usersFB" => $usersFB,"usersEscaparate" => $usersEscaparate,"usersGoogle" => $usersGoogle,"pedidos" => $pedidosTotal,"pedidosAceptados" => $pedidosAceptados,"pedidosRechazados" => $pedidosRechazados,"pagos" => $pagosTotal,"pedidosGrafica" => $pedidosGrafica,"productosMasVistos" => $productosMasVistos,"productosVistosReciente" => $productosVistosReciente]);
+    }
+
+    public function getCuponsUsers()
+    {
+        $results = DB::select("SELECT t0.id as idUserCupon,t0.fecha_uso,t0.created_at as registrado,t1.name,t1.email,t2.* FROM user_cupons t0 INNER JOIN users t1 ON t0.id_user=t1.id INNER JOIN cupons t2 ON t0.id_cupon=t2.id");
+        return response()->json(["userCupons" => $results]);
     }
 }
