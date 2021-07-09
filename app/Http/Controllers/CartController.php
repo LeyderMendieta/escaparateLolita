@@ -39,7 +39,7 @@ class CartController extends Controller
         }
         $mycart->generateToken();
 
-        //$this->cleanCartsAndSetAbandonado();
+        $this->cleanCartsAndSetAbandonado();
 
         return response()->json(array("cart" => $mycart->api_token));
         
