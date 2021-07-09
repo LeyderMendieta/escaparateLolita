@@ -75,7 +75,7 @@ class CartController extends Controller
             $identificador = (isset($user->id)) ? $user->id : 0;
             $cartsAbandonados = DB::select("SELECT * FROM carts WHERE id_usuario='$identificador' AND DATE_FORMAT(created_at, '%j') < DATE_FORMAT(NOW(), '%j') ORDER BY `id` DESC");
         }
-        else $cartsAbandonados = DB::select("SELECT * FROM carts WHERE DATE_FORMAT(created_at, '%j') < DATE_FORMAT(NOW(), '%j') ORDER BY `id` DESC");
+        else $cartsAbandonados = DB::select("SELECT * FROM carts WHERE DATE_FORMAT(created_at, '%j') < (DATE_FORMAT(NOW(), '%j') - 1) ORDER BY `id` DESC");
         
         $result = array();
         $i = 0;
