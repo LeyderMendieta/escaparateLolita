@@ -43,9 +43,9 @@ class App_Admon_Usuarios extends Component {
            <ReactHTMLTableToExcel
                     id="download-xls"
                     className="btn btn-success my-3 mb-5"
-                    table="tableProducts"
+                    table="table-download"
                     filename="ListadoUsuarios_EscaparatedeLolita"
-                    sheet="Usuairos"
+                    sheet="Usuarios"
                     buttonText=""/>
             </div>
             <table id="tableProducts" className="table table-striped table-bordered text-nowrap" >
@@ -77,6 +77,32 @@ class App_Admon_Usuarios extends Component {
                         </tr>
                     ))}                    
                 </tbody>
+            </table>
+            <table id="table-download" className='d-none'>
+                    <tr>
+                        <th>ID</th>             
+                        <th>Usuario</th>      
+                        <th>Correo</th>
+                        <th>Nombres</th>      
+                        <th>Apellidos</th>
+                        <th>Ubicación</th>
+                        <th>Celular</th>
+                        <th>Fuente Registro</th>
+                        <th>Fecha de Registro</th>
+                    </tr>
+                {this.state.users.map((row) => (
+                        <tr key={row.id}>
+                            <td>{row.id}</td>              
+                            <td>{row.name}</td>                            
+                            <td>{row.email}</td>
+                            <td>{row.nombres}</td>
+                            <td>{row.apellidos}</td>
+                            <td>{row.ubicacion}</td>
+                            <td>{row.celular}</td>
+                            <td>{row.graphDomain}</td>
+                            <td>{row.created_at}</td>
+                        </tr>
+                    ))}
             </table>
             </React.Fragment>
         );  

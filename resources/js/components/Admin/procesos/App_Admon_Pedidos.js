@@ -58,9 +58,9 @@ class App_Admon_Pedidos extends Component {
            <ReactHTMLTableToExcel
                     id="download-xls"
                     className="btn btn-success my-3 mb-5"
-                    table="tableProducts"
-                    filename="ListadoUsuarios_EscaparatedeLolita"
-                    sheet="Usuairos"
+                    table="table-download"
+                    filename="ListadoPedidos_EscaparatedeLolita"
+                    sheet="Pedidos"
                     buttonText=""/>
             </div>
             <table id="tableProducts" className="table table-striped table-bordered text-nowrap" >
@@ -69,13 +69,20 @@ class App_Admon_Pedidos extends Component {
                         <th>ID</th>        
                         <th></th>        
                         <th>Fecha</th>      
-                        <th>Usuario</th>      
+                        <th>Usuario ID</th>    
                         <th>Transferencia</th>
                         <th>Envio</th>
                         <th>Total</th>      
                         <th>Impuesto</th>
                         <th>Transacción</th>
                         <th>Productos</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Telefono</th>
+                        <th>Dirección</th>
+                        <th>Ciudad</th>
+                        <th>Estado</th>                    
                     </tr>
                 </thead>
                 <tbody>
@@ -84,7 +91,7 @@ class App_Admon_Pedidos extends Component {
                             <td>{row.id}</td>      
                             <td><a href={Configuracion.url_principal+"admon/viewDetails/pedido/"+row.id} className="btn btn-info" style={{display: (row.estado == "ACCEPT") ? "block" : "none"}}>Ver Detalle</a></td>     
                             <td>{row.fecha}</td>                            
-                            <td>{row.id_usuario}</td>                            
+                            <td>{(row.id_usuario == 9999999) ? "Anonimo": row.id_usuario}</td>                            
                             <td style={{color: (row.estado == "ACCEPT") ? "lightgreen" : "red"}} >{row.estado}</td>
                             <td>{row.estadoPedido}</td>
                             <td>{row.total}</td>
@@ -97,9 +104,64 @@ class App_Admon_Pedidos extends Component {
                                     ))}
                                 </ul>
                             </td>
+                            <td>{row.transferencia.req_bill_to_surname}</td>
+                            <td>{row.transferencia.req_bill_to_forename}</td>
+                            <td>{row.transferencia.req_bill_to_email}</td>
+                            <td>{row.transferencia.req_bill_to_phone}</td>
+                            <td>{row.transferencia.req_bill_to_address_line1}</td>
+                            <td>{row.transferencia.req_bill_to_address_city}</td>
+                            <td>{row.transferencia.req_bill_to_address_state}</td>
                         </tr>
                     ))}                    
                 </tbody>
+            </table>
+            <table id="table-download" className='d-none'>
+                    <tr>
+                        <th>ID</th>        
+                        <th></th>        
+                        <th>Fecha</th>      
+                        <th>Usuario ID</th>    
+                        <th>Transferencia</th>
+                        <th>Envio</th>
+                        <th>Total</th>      
+                        <th>Impuesto</th>
+                        <th>Transacción</th>
+                        <th>Productos</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Telefono</th>
+                        <th>Dirección</th>
+                        <th>Ciudad</th>
+                        <th>Estado</th>                    
+                    </tr>
+                    {this.state.pedidos.map((row) => (
+                        <tr key={row.id}>
+                            <td>{row.id}</td>      
+                            <td><a href={Configuracion.url_principal+"admon/viewDetails/pedido/"+row.id} className="btn btn-info" style={{display: (row.estado == "ACCEPT") ? "block" : "none"}}>Ver Detalle</a></td>     
+                            <td>{row.fecha}</td>                            
+                            <td>{(row.id_usuario == 9999999) ? "Anonimo": row.id_usuario}</td>                            
+                            <td style={{color: (row.estado == "ACCEPT") ? "lightgreen" : "red"}} >{row.estado}</td>
+                            <td>{row.estadoPedido}</td>
+                            <td>{row.total}</td>
+                            <td>{row.impuesto}</td>
+                            <td>{row.transferencia.transaction_id}</td>
+                            <td>
+                                <ul>
+                                    {row.productos.map((rowx, index) => (
+                                        <li key={index}> Producto: {rowx.id_product} Precio: {rowx.precio}</li>
+                                    ))}
+                                </ul>
+                            </td>
+                            <td>{row.transferencia.req_bill_to_surname}</td>
+                            <td>{row.transferencia.req_bill_to_forename}</td>
+                            <td>{row.transferencia.req_bill_to_email}</td>
+                            <td>{row.transferencia.req_bill_to_phone}</td>
+                            <td>{row.transferencia.req_bill_to_address_line1}</td>
+                            <td>{row.transferencia.req_bill_to_address_city}</td>
+                            <td>{row.transferencia.req_bill_to_address_state}</td>
+                        </tr>
+                    ))} 
             </table>
             </React.Fragment>
         );  
