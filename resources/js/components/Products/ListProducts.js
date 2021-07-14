@@ -1,14 +1,12 @@
 import React from 'react';
 
-const ListProducts = ({productos,url_images,url_href,totalItemsCount,from,to}) => (
+const ListProducts = ({productos,url_images,url_href,totalItemsCount,from,to,orderBySomething}) => (
       <div>
         <p className="woocommerce-result-count"> Mostrando {from} - {to} de {totalItemsCount} resultados</p>
         <form className="woocommerce-ordering" method="get">
             <div className="select_container">
-                <select name="orderby" className="orderby" defaultValue="date">
-                    <option value="popularity">Ordenar por Popilaridad</option>
-                    <option value="rating">Ordenar por Rating</option>
-                    <option value="date">Ordenar por más reciente</option>
+                <select name="orderby" className="orderby" defaultValue="date" onChange={(e) => (orderBySomething(e.target.value))}>
+                    <option value="normal" selected="selected" >Ordenar por...</option>
                     <option value="price">Ordenar por precio: menor a mayor</option>
                     <option value="price-desc">Ordenar por precio: mayor a menor</option>
                 </select>

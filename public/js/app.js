@@ -90019,6 +90019,28 @@ var Configuracion = {
     }
 
     return arr;
+  },
+  GetSortOrder: function GetSortOrder(prop) {
+    var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "ASC";
+    return function (a, b) {
+      if (type == "ASC") {
+        if (a[prop] > b[prop]) {
+          return 1;
+        } else if (a[prop] < b[prop]) {
+          return -1;
+        }
+
+        return 0;
+      } else {
+        if (a[prop] > b[prop]) {
+          return -1;
+        } else if (a[prop] < b[prop]) {
+          return 1;
+        }
+
+        return 0;
+      }
+    };
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (Configuracion);
@@ -90512,7 +90534,8 @@ var ListProducts = function ListProducts(_ref) {
       url_href = _ref.url_href,
       totalItemsCount = _ref.totalItemsCount,
       from = _ref.from,
-      to = _ref.to;
+      to = _ref.to,
+      orderBySomething = _ref.orderBySomething;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "woocommerce-result-count"
   }, " Mostrando ", from, " - ", to, " de ", totalItemsCount, " resultados"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -90523,14 +90546,14 @@ var ListProducts = function ListProducts(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     name: "orderby",
     className: "orderby",
-    defaultValue: "date"
+    defaultValue: "date",
+    onChange: function onChange(e) {
+      return orderBySomething(e.target.value);
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "popularity"
-  }, "Ordenar por Popilaridad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "rating"
-  }, "Ordenar por Rating"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "date"
-  }, "Ordenar por m\xE1s reciente"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "normal",
+    selected: "selected"
+  }, "Ordenar por..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "price"
   }, "Ordenar por precio: menor a mayor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "price-desc"
@@ -92955,14 +92978,17 @@ var Ver_Carrito_Shop = /*#__PURE__*/function (_Component) {
           className: "input-text qty text",
           step: "1",
           min: "0",
-          max: "",
+          max: row.stock,
           name: "",
           defaultValue: row.cantidad,
           title: "Qty",
           size: "4",
           pattern: "[0-9]*",
           inputMode: "numeric",
-          onChange: _this7.changeCantidadProduct.bind(_this7)
+          onChange: _this7.changeCantidadProduct.bind(_this7),
+          onKeyDown: function onKeyDown(e) {
+            return e.preventDefault();
+          }
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: "#",
           className: "qty-up silver"
@@ -93392,6 +93418,16 @@ var Products_Shop = /*#__PURE__*/function (_Component3) {
       return handlePageChange;
     }()
   }, {
+    key: "orderBySomething",
+    value: function orderBySomething(target) {
+      if (target == "price") this.setState({
+        products: this.state.products.sort(_Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].GetSortOrder("precio_ahora", "ASC"))
+      });
+      if (target == "price-desc") this.setState({
+        products: this.state.products.sort(_Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].GetSortOrder("precio_ahora", "DESC"))
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Products_ListProducts__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -93400,7 +93436,8 @@ var Products_Shop = /*#__PURE__*/function (_Component3) {
         url_href: _Configuration__WEBPACK_IMPORTED_MODULE_3__["default"].url_principal,
         totalItemsCount: this.state.page.total,
         from: this.state.from,
-        to: this.state.to
+        to: this.state.to,
+        orderBySomething: this.orderBySomething.bind(this)
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("nav", {
         className: "woocommerce-pagination"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_7___default.a, {

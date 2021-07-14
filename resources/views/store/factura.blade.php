@@ -315,7 +315,7 @@ td.align-right {
                       <td align="center" bgcolor="#efefef"><p style="color: #656060;line-height: 11px;font-size: 11px"><strong>Términos y condiciones de entrega:</strong> Si selecciono el interior del país su tiempo estimado de entrega es de 48 horas hábiles despues de la compra, si es dentro de la ciudad de Panamá será entregado en 24 horas hábiles despues de la compra, por lo tanto si su paquete es devuelto porque no se encuentra en la dirección definida nos comunicaremos a su número de teléfono que tiene inscrito en la plataforma, si no encontramos respuesta el producto&nbsp;se traera devuelta a nuestra tienda&nbsp;y tendrá un cargo adicional al ser reenviado a la dirección nuevamente.</p></td> 
                      </tr> 
                      <tr> 
-                      <td align="center" style="font-size: 0px"><a target="_blank" href="https://www.whatsapp.com/business/api/?lang=en"><img class="adapt-img" src="{{URL::asset('assets/store/images/6791610215347634.png')}}" alt style="display: block" width="150" height="124" layout="responsive" /></a></td> 
+                      <td align="center" style="font-size: 0px"><a target="_blank" href="https://wa.link/svi8h3"><img class="adapt-img" src="{{URL::asset('assets/store/images/6791610215347634.png')}}" alt style="display: block" width="150" height="124" layout="responsive" /></a></td> 
                      </tr> 
                    </table></td> 
                  </tr> 

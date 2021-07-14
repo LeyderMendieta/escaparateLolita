@@ -93,7 +93,7 @@ class PagosController extends Controller
                 $productoTarget = Product::where("id",$producto->id)->first();
                 if(isset($productoTarget->stock))
                 {
-                    $productoTarget->stock = $productoTarget->stock - 1;
+                    $productoTarget->stock = $productoTarget->stock - $producto->cantidad;
                     $productoTarget->save();
                 }                
             }
@@ -136,15 +136,16 @@ class PagosController extends Controller
         $transferencia->req_profile_id = $request->req_profile_id;
         $transferencia->req_access_key = $request->req_access_key; 
         //-------------------
+
+        $noticacion = new notification();
+        $noticacion->tipo = "Admin";
+        $noticacion->texto = "Nuevo Pedido - $request->decision";
+        $noticacion->logo = "fe fe-dollar-sign";
+        $noticacion->link = url("/admon/viewDetails/pedido/".$user_pedido->id);
+        $noticacion->save();
+
         if($request->decision == "ACCEPT")
         {
-            $noticacion = new notification();
-            $noticacion->tipo = "Admin";
-            $noticacion->texto = "Nuevo Pedido";
-            $noticacion->logo = "fe fe-dollar-sign";
-            $noticacion->link = url("/admon/viewDetails/pedido/".$user_pedido->id);
-            $noticacion->save();
-
             $transferencia->auth_cv_result = (isset($request->auth_cv_result)) ? "M" : "T";  
             $transferencia->auth_trans_ref_no = $request->auth_trans_ref_no;
             $transferencia->auth_amount = $request->auth_amount;

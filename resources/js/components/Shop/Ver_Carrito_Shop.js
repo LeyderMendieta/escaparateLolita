@@ -33,6 +33,7 @@ class Ver_Carrito_Shop extends Component {
             this.setState({cuponAplicar: urlParams.get("cupon")})
         }      
         
+
         this.execGetMyCart();
       }
 
@@ -72,6 +73,7 @@ class Ver_Carrito_Shop extends Component {
 
       changeCantidadProduct(event)
       {
+         
         $('#btnUpdateCart').removeClass("d-none");
         if(this.state.cantidadProductsUpdate.indexOf(event.target.id) < 0)
             this.state.cantidadProductsUpdate.push(event.target.id);
@@ -249,7 +251,7 @@ class Ver_Carrito_Shop extends Component {
                                 <td className="product-quantity">
                                     <div className="quantity detail-qty">
                                         <a href="#" className="qty-down silver"><i className="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
-                                        <input type="number" id={"cartproduct_"+row.cartId} className="input-text qty text" step="1" min="0" max="" name="" defaultValue={row.cantidad} title="Qty" size="4" pattern="[0-9]*" inputMode="numeric" onChange={this.changeCantidadProduct.bind(this)} />
+                                        <input type="number" id={"cartproduct_"+row.cartId} className="input-text qty text" step="1" min="0" max={row.stock} name="" defaultValue={row.cantidad} title="Qty" size="4" pattern="[0-9]*" inputMode="numeric" onChange={this.changeCantidadProduct.bind(this)} onKeyDown={(e) => (e.preventDefault())} />
                                         <a href="#" className="qty-up silver"><i className="fa fa-arrow-circle-up" aria-hidden="true"></i></a>
                                     </div>
                                 </td>

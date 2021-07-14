@@ -7,6 +7,7 @@ use App\cart;
 use App\cartProduct;
 use App\Category;
 use App\Cupon;
+use App\Product;
 use App\User;
 use Illuminate\Support\Facades\DB;
 
@@ -242,11 +243,20 @@ class CartController extends Controller
         foreach($request->updates as $fila)
         {
             $cart = cartProduct::where(["id" => str_replace("cartproduct_","",$fila["producto"]),"id_cart" => $mycart->id])->first();
+           
             if($cart)
             {
-                $cart->cantidad = $fila["cantidad"];
-                $cart->save();
-                $cambios++;
+                $productCheck = Product::where(["id" =>  $cart->id_product])->first();
+                if(isset($productCheck->stock))
+                {
+                    if($productCheck->stock >= $fila["cantidad"])
+                    {
+                        $cart->cantidad = $fila["cantidad"];
+                        $cart->save();
+                        $cambios++;
+                    }
+                }
+               
             }
         }
        

@@ -174,6 +174,18 @@ class Products_Shop extends Component {
       
     }
 
+    orderBySomething(target)
+    {
+      if(target == "price")
+        this.setState({
+          products: this.state.products.sort(Configuracion.GetSortOrder("precio_ahora","ASC"))
+        });
+      if(target == "price-desc")
+        this.setState({
+          products: this.state.products.sort(Configuracion.GetSortOrder("precio_ahora","DESC"))
+        });
+    }
+
   render(){
       return (
           
@@ -185,6 +197,7 @@ class Products_Shop extends Component {
                 totalItemsCount={this.state.page.total}
                 from={this.state.from}
                 to={this.state.to}
+                orderBySomething={this.orderBySomething.bind(this)}
             />
             <nav className="woocommerce-pagination">
               <Pagination
