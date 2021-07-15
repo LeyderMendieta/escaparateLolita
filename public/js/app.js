@@ -88962,7 +88962,7 @@ var App_Login = /*#__PURE__*/function (_Component) {
         } catch (error) {
           console.log(error);
         }
-      } else alert("Error en la conexión FB Login, intente más tarde");
+      } else console.log("Error en la conexión FB Login, intente más tarde");
     }
   }, {
     key: "responseGoogle",
@@ -89008,7 +89008,7 @@ var App_Login = /*#__PURE__*/function (_Component) {
         } catch (error) {
           console.log(error);
         }
-      } else alert("Error en la conexión Google Login, intente más tarde");
+      } else console.log("Error en la conexión Google Login, intente más tarde");
     }
   }, {
     key: "render",

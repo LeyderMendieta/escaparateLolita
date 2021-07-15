@@ -211,7 +211,7 @@ class App_Login extends Component {
                 console.log(error);
             }
         }
-        else alert("Error en la conexión FB Login, intente más tarde");
+        else console.log("Error en la conexión FB Login, intente más tarde");
       }
 
       responseGoogle(response)
@@ -266,7 +266,7 @@ class App_Login extends Component {
                 console.log(error);
             }
         }
-        else alert("Error en la conexión Google Login, intente más tarde");
+        else console.log("Error en la conexión Google Login, intente más tarde");
       }
       
       render(){
