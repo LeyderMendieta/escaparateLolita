@@ -211,14 +211,14 @@ class App_Login extends Component {
                 console.log(error);
             }
         }
-        else alert("Error en el proceso, intente más tarde");
+        else alert("Error en la conexión FB Login, intente más tarde");
       }
 
       responseGoogle(response)
       {
           //ID 317123491034-cj589tn7k9nb8l4espljjju8hkfnoekr.apps.googleusercontent.com
           //Secreto xiKnFH9yce0DZZfFeCZRVM2h
-          if(response.profileObj != undefined)
+        if(response.profileObj != undefined)
         {
             var dataResponse = response.profileObj;
             try {
@@ -266,7 +266,7 @@ class App_Login extends Component {
                 console.log(error);
             }
         }
-        else alert("Error en el proceso, intente más tarde");
+        else alert("Error en la conexión Google Login, intente más tarde");
       }
       
       render(){
