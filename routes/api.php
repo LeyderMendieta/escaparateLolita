@@ -101,6 +101,7 @@ use Illuminate\Support\Facades\Route;
     Route::post("/admin/Pedido/setState","AdminController@actualizarEstadoPedido");
     Route::get("/admin/getAgendasList","AgendaController@verListadoAgendas");
     Route::get("/admin/clearSpaceAgenda/{idAgenda}","AgendaController@liberarAgenda");
+    Route::get("/admin/acceptAgenda/{idAgenda}","AgendaController@aceptarAgenda");
 
     Route::get("/admin/carritosAbandonados/{full}","CartController@getCartsAbandonados");
     Route::get("/admin/getBitacoraPagos","PagosController@getBitacoraPagos");

@@ -47,6 +47,26 @@ class App_solicitud_agenda extends Component {
         }
       }
 
+      aceptarEspacio(idAgenda)
+      {
+        if(confirm("¿Esta seguro de aceptar la agenda "+idAgenda+"?"))
+        {
+            $('#global-loader').show();
+            fetch(Configuracion.url_principal+"api/admin/acceptAgenda/"+idAgenda)
+            .then(res => res.json())
+            .then(
+            (result) => {
+                $('#global-loader').hide();
+                if(result)
+                {
+                    $("tr#agenda"+idAgenda+" .actions button").hide();
+                    alert("Agenda Aprobada y Notificación enviada");
+                }
+                else alert("fallo en el proceso, Contacta al Administrador");
+            });
+        }
+      }
+
       render(){
         return (
             <React.Fragment>
@@ -63,7 +83,7 @@ class App_solicitud_agenda extends Component {
                 <thead>
                     <tr>
                         <th>ID</th>             
-                        <th></th>      
+                        <th>Acciones</th>      
                         <th>Fecha</th>      
                         <th>Hora</th>      
                         <th>Tipo</th>
@@ -79,8 +99,13 @@ class App_solicitud_agenda extends Component {
                     {this.state.agendas.map((row) => (
                         <tr key={row.id} id={"agenda"+row.id}>
                             <td>{row.id}</td>
-                            <td>
-                                <button className="btn btn-danger ml-3" onClick={this.liberarEspacio.bind(this,row.id)} >Liberar</button>
+                            <td className="actions">
+                                {(row.estado == 1) ? (
+                                    <React.Fragment>
+                                        <button className="btn btn-danger ml-3" onClick={this.liberarEspacio.bind(this,row.id)} >Liberar</button>
+                                        <button className="btn btn-success ml-3" onClick={this.aceptarEspacio.bind(this,row.id)} >Aceptar</button>
+                                    </React.Fragment>
+                                ) : ""}
                             </td>  
                             <td>{row.fecha}</td>
                             <td>{row.horario}</td>

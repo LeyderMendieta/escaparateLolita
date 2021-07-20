@@ -348,11 +348,15 @@ class PagosController extends Controller
 
     public function testing()
     {
+        /*
         $productos = DB::table('products')->orderBy('id', 'desc')->limit(4)->get();
         Mail::to("leyder154611@gmail.com")
         ->send(new BienvenidaUsuarioEscaparate(array(
             "ultimosProductos" => $productos
         )));
+        */
+        return view('store.mailer.AgendaAprobadaParaCliente')
+        ->with(["nombres"=>"Leyder Mendieta","tipoAgenda" => "Hecho a la Medida","producto" => "One Size", "fecha" => "2021-03-22", "horario" => "9:30 am a 10:30 am"]);
         //--------------------
     }
 }
