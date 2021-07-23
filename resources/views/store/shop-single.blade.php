@@ -15,7 +15,8 @@
         <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/css/front.css')}}" type='text/css' media='all'/>
 
         <link rel='newest stylesheet' href="{{URL::asset('assets/store/css/calendario.css')}}" type='text/css' media='all'/>
-        <meta property="og:image" content="https://mywebsite.net/assets/opengraph/theogimage.jpg"/>
+        
+        <meta property="og:image" content="https://static8.depositphotos.com/1020618/933/i/950/depositphotos_9332752-stock-photo-fire-alphabet-letter-s.jpg"/>
 
         <meta property="og:title" content="Your Title"/>
 
