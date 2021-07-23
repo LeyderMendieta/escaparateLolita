@@ -24,6 +24,12 @@
        <meta property="og:image" content="{{ url('/' . $page='images/'. $info_product->imagen_main) }}"/>
        <meta property="og:image:height" content="1480.7502467917077"/>
        <meta property="og:image:width" content="1000"/>
+       <meta property="twitter:site" content="@elescaparate"/>
+       <meta property="twitter:title" content="{{$info_product->name}} - Escaparate de Lolita"/>
+       <meta property="twitter:description" content="{{$info_product->name}}: {{$info_product->descripcion}}"/>
+       <meta property="twitter:card" content="summary_large_image"/>
+       <meta property="twitter:image" content="{{ url('/' . $page='images/'. $info_product->imagen_main) }}"/>
+       <meta property="twitter:image:alt" content="{{$info_product->name}}: {{$info_product->descripcion}}"/>
     </head>
     
     <body class="product-template-default single single-product woocommerce woocommerce-page scheme_default blog_mode_shop body_style_wide is_stream blog_style_excerpt sidebar_hide expand_content header_position_default menu_style_top no_layout">
