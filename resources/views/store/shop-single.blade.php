@@ -15,7 +15,15 @@
         <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/css/front.css')}}" type='text/css' media='all'/>
 
         <link rel='newest stylesheet' href="{{URL::asset('assets/store/css/calendario.css')}}" type='text/css' media='all'/>
-        
+        <meta property="og:image" content="https://mywebsite.net/assets/opengraph/theogimage.jpg"/>
+
+        <meta property="og:title" content="Your Title"/>
+
+        <meta property="og:description" content="A full description of the page."/>
+
+        <meta property="og:image:width" content="1200"/>
+
+        <meta property="og:image:height" content="630"/>
     </head>
     
     <body class="product-template-default single single-product woocommerce woocommerce-page scheme_default blog_mode_shop body_style_wide is_stream blog_style_excerpt sidebar_hide expand_content header_position_default menu_style_top no_layout">
