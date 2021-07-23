@@ -89548,6 +89548,7 @@ var App_ProductDetail = /*#__PURE__*/function (_Component) {
           error: error
         });
       });
+      $("head").append("<meta property=\"og:image\" content=\"https://mywebsite.net/assets/opengraph/theogimage.jpg\"/>\n\n          <meta property=\"og:title\" content=\"Your Title\"/>\n          \n          <meta property=\"og:description\" content=\"A full description of the page.\"/>\n          \n          <meta property=\"og:image:width\" content=\"1200\"/>\n          \n          <meta property=\"og:image:height\" content=\"630\"/>");
     }
   }, {
     key: "handleBuyProduct",
@@ -89947,9 +89948,9 @@ if (document.getElementById('App_Mycart')) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+ //const url_principal = "https://elescaparatedelolita.com/";
 
-var url_principal = "https://elescaparatedelolita.com/"; //const url_principal = "http://127.0.0.1:8000/";
-//const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
+var url_principal = "http://127.0.0.1:8000/"; //const url_principal = "http://localhost/Horizontal-Dark-ltr/public/";
 
 var url_images = url_principal + 'images/';
 var Configuracion = {
