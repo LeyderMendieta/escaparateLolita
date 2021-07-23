@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js scheme_default" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
     <head>
-        <title>Producto - Escaparate de Lolita</title>
+        <title>{{$info_product->name}} - Escaparate de Lolita</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="format-detection" content="telephone=no">
@@ -16,12 +16,12 @@
 
         <link rel='newest stylesheet' href="{{URL::asset('assets/store/css/calendario.css')}}" type='text/css' media='all'/>
 
-       <meta property="og:url" content="https://www.imdb.com/title/tt0117500/"/>
-       <meta property="og:site_name" content="IMDb"/>
-       <meta property="og:title" content="La Roca (1996) - IMDb"/>
-       <meta property="og:description" content="La Roca: Directed by Michael Bay. With Sean Connery, Nicolas Cage, Ed Harris, John Spencer. A mild-mannered chemist and an ex-con must lead the counterstrike when a rogue group of military men, led by a renegade general, threaten a nerve gas attack from Alcatraz against San Francisco."/>
+       <meta property="og:url" content="{{ url('/' . $page='shop/'. $producto) }}"/>
+       <meta property="og:site_name" content="El Escaparate de Lolita"/>
+       <meta property="og:title" content="{{$info_product->name}} - Escaparate de Lolita"/>
+       <meta property="og:description" content="{{$info_product->name}}: {{$info_product->descripcion}}"/>
        <meta property="og:type" content="image"/>
-       <meta property="og:image" content="https://m.media-amazon.com/images/M/MV5BZDJjOTE0N2EtMmRlZS00NzU0LWE0ZWQtM2Q3MWMxNjcwZjBhXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_FMjpg_UX1000_.jpg"/>
+       <meta property="og:image" content="{{ url('/' . $page='images/'. $info_product->imagen_main) }}"/>
        <meta property="og:image:height" content="1480.7502467917077"/>
        <meta property="og:image:width" content="1000"/>
     </head>
@@ -73,7 +73,7 @@
                 <div class="menu_mobile scheme_dark">
                     <div class="menu_mobile_inner">
                         <a class="menu_mobile_close icon-cancel"></a>
-                        <a class="sc_layouts_logo" href="index.html"><img src="{{ URL::asset('assets/store/images/logo.svg')}}" alt=""></a>
+                        <a class="sc_layouts_logo" href="#"><img src="{{ URL::asset('assets/store/images/logo.svg')}}" alt=""></a>
                         @include('store.layouts.nav-mobile-menu')
                         <div class="search_wrap search_style_normal search_mobile">
                             <div class="search_form_wrap">
