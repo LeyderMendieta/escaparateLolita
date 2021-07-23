@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" class="no-js scheme_default" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml>
+<html lang="en-US" class="no-js scheme_default" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
     <head>
         <title>Producto - Escaparate de Lolita</title>
         <meta charset="UTF-8">
