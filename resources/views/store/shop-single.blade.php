@@ -15,16 +15,15 @@
         <link rel='stylesheet' href="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/css/front.css')}}" type='text/css' media='all'/>
 
         <link rel='newest stylesheet' href="{{URL::asset('assets/store/css/calendario.css')}}" type='text/css' media='all'/>
-        
-        <meta property="og:image" content="https://static8.depositphotos.com/1020618/933/i/950/depositphotos_9332752-stock-photo-fire-alphabet-letter-s.jpg"/>
 
-        <meta property="og:title" content="Your Title"/>
-
-        <meta property="og:description" content="A full description of the page."/>
-
-        <meta property="og:image:width" content="1200"/>
-
-        <meta property="og:image:height" content="630"/>
+       <meta property="og:url" content="https://www.imdb.com/title/tt0117500/"/>
+       <meta property="og:site_name" content="IMDb"/>
+       <meta property="og:title" content="La Roca (1996) - IMDb"/>
+       <meta property="og:description" content="La Roca: Directed by Michael Bay. With Sean Connery, Nicolas Cage, Ed Harris, John Spencer. A mild-mannered chemist and an ex-con must lead the counterstrike when a rogue group of military men, led by a renegade general, threaten a nerve gas attack from Alcatraz against San Francisco."/>
+       <meta property="og:type" content="image"/>
+       <meta property="og:image" content="https://m.media-amazon.com/images/M/MV5BZDJjOTE0N2EtMmRlZS00NzU0LWE0ZWQtM2Q3MWMxNjcwZjBhXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_FMjpg_UX1000_.jpg"/>
+       <meta property="og:image:height" content="1480.7502467917077"/>
+       <meta property="og:image:width" content="1000"/>
     </head>
     
     <body class="product-template-default single single-product woocommerce woocommerce-page scheme_default blog_mode_shop body_style_wide is_stream blog_style_excerpt sidebar_hide expand_content header_position_default menu_style_top no_layout">
