@@ -110,7 +110,7 @@
                                                         <div class="sc_form_info_item sc_form_info_item_phone"> 
                                                             <span class="sc_form_info_area">
                                                                 <span class="sc_form_info_title">Teléfono:</span> 
-                                                                <span class="sc_form_info_data"><span>+507 388-8936 / +507 6324-9894</span></span>
+                                                                <span class="sc_form_info_data"><span>+507 388-8936 / +507 6270-2795</span></span>
                                                             </span>
                                                         </div>
                                                         <div class="sc_form_info_item sc_form_info_item_email">
@@ -134,11 +134,16 @@
                                     </div>
                                 </section>  
                                 <section>
-                                    <div class="container-fluid">
-                                        <div class="column_container column-1_1 sc_layouts_column_icons_position_left">
+                                    <div class="container-fluid row">
+                                        <div class="column_container column-1_2 sc_layouts_column_icons_position_left">
+                                            <div class="column-inner">
+                                                <image src="{{URL::asset('images/mapa_lolita.jpg')}}" width="80%" style="margin-left:10%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="column_container column-1_2  sc_layouts_column_icons_position_right">
                                             <div class="column-inner">
                                                 <div id="sc_googlemap_1590802060_wrap" class="sc_googlemap_wrap">
-                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.817772184326!2d-79.50982478521368!3d8.988909793548698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca95ad747390f%3A0x9551762c17c6e4d0!2sEl%20Escaparate%20de%20Lolita!5e0!3m2!1ses-419!2sco!4v1601735164563!5m2!1ses-419!2sco" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.817772184326!2d-79.50982478521368!3d8.988909793548698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca95ad747390f%3A0x9551762c17c6e4d0!2sEl%20Escaparate%20de%20Lolita!5e0!3m2!1ses-419!2sco!4v1601735164563!5m2!1ses-419!2sco" width="100%" height="530" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                                                 </div>
                                                 <!-- /.sc_googlemap_wrap -->
                                             </div>

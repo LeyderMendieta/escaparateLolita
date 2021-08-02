@@ -17,8 +17,10 @@
 
     </head>
     
-    <body class="home page-template-default page frontpage scheme_default blog_mode_home body_style_wide blog_style_excerpt expand_content remove_margins no_layout">
+    <body class="home page-template-default page frontpage scheme_default blog_mode_home body_style_wide blog_style_excerpt expand_content remove_margins no_layout" >
         <div class="body_wrap">
+            <div style="background-image:url(images/fondo.jpg);background-size: 100%;background-repeat-y: repeat;height:3000px;width:100%;opacity:0.5;position:absolute;">
+            </div>
             <div class="page_wrap">
                 <header class="top_panel top_panel_custom without_bg_image scheme_default">
                     <div class="column_row sc_layouts_row sc_layouts_row_type_narrow sc_layouts_row_delimiter scheme_dark">
@@ -199,7 +201,7 @@
                                                                         <div class="sc_action_item_mask"></div>
                                                                         <div class="sc_action_item_inner">
                                                                             <h3 class="sc_action_item_title"><span>Algo Sexy</span></h3>
-                                                                            <div class="sc_action_item_description"><span>Piezas Coquetas para una <br/></span><span>apariencia perfecta</span></div><a href="{{ $url_producto_2_home }}" class="sc_action_item_link">Buscar</a>
+                                                                            <div class="sc_action_item_description"><span>Piezas únicas para una apariencia perfecta</span></div><a href="{{ $url_producto_2_home }}" class="sc_action_item_link">Buscar</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -228,7 +230,7 @@
                                                         <div class="empty_space h-5em"><span class="empty_space_inner"></span></div>
                                                         <div class="sc_title sc_title_default">
                                                             <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Must Have</h2>
-                                                            <div class="sc_item_descr sc_title_descr sc_align_center">un toque de cobertura nunca se ha sentido tan sexy</div>
+                                                            <div class="sc_item_descr sc_title_descr sc_align_center">Verte y sentirte única nunca había sido tan fácil</div>
                                                         </div>
                                                         <!-- /.sc_title -->
                                                         <div class="empty_space h-2_3em"><span class="empty_space_inner"></span></div>
@@ -249,8 +251,8 @@
                                                             <div class="sc_promo_text w_50per f_right">
                                                                 <div class="sc_promo_text_inner sc_align_center bg_pink">
                                                                     <img class="top_promo_image" src="{{URL::asset('assets/store/images/promo.png')}}" alt="">
-                                                                    <h2 class="sc_item_title sc_promo_title sc_align_default sc_item_title_style_default">Retro<br /></h2>
-                                                                    <div class="sc_item_descr sc_promo_descr sc_align_default">Tenemos hecho a la medida</div>
+                                                                    <h2 class="sc_item_title sc_promo_title sc_align_default sc_item_title_style_default">Hecho a la medida<br /></h2>
+                                                                    <div class="sc_item_descr sc_promo_descr sc_align_default">La belleza de la mujer no la define su talla</div>
                                                                     <div class="sc_item_button sc_item_button_simple sc_promo_button sc_align_default sc_button_wrap">
                                                                         <a  href="#trx_addons_calendar_popup"  class="sc_button sc_button_simple sc_button_size_normal sc_button_icon_left trx_addons_popup_link trx_addons_login_link">
                                                                             <span class="sc_button_text"><span class="sc_button_title">Agendar Cita</span></span>
@@ -272,25 +274,8 @@
                                                         <div class="empty_space hide_on_mobile h-2em"><span class="empty_space_inner"></span></div>
                                                         <div class="empty_space h-4_3em"><span class="empty_space_inner"></span></div>
                                                         <div class="sc_blogger sc_blogger_plain" data-slides-per-view="4" data-slides-min-width="150">
-                                                            <h2 class="sc_item_title sc_blogger_title sc_align_center sc_item_title_style_default">Atajos Rápidos</h2>
+                                                            <h4 class="sc_item_title sc_blogger_title sc_align_center sc_item_title_style_default">Diseños exclusivos para cada una de nuestras Lolitas</h4>
                                                             <div class="sc_blogger_columns sc_item_columns trx_addons_columns_wrap" id="App_Feature_Articles">
-
-                                                                <!-- <div class="trx_addons_column-1_4">
-                                                                    <div class="sc_blogger_item post type-post">
-                                                                        <div class="sc_blogger_item_content entry-content">
-                                                                            <h4 class="sc_blogger_item_title entry-title">
-                                                                                <a href="#post-standart.html" >Sin camisa, No hay problema</a>
-                                                                            </h4></div>
-                                                                        <div class="sc_blogger_item_excerpt">
-                                                                            <div class="sc_blogger_item_excerpt_text">
-                                                                                <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore&hellip;</p>
-                                                                            </div>
-                                                                            <div class="sc_blogger_item_button sc_item_button">
-                                                                                <a href="#post-standart.html" class="sc_button sc_button_simple">Leer Más</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> -->
                                                             </div>
                                                         </div>
                                                         <!-- /.sc_blogger -->
@@ -325,8 +310,7 @@
                                                         <div class="column_container column-1_4 sc_layouts_column_icons_position_left scr_xs">
                                                             <div class="column-inner">
                                                                 <div class="text_column demo-title">
-                                                                    <h2 class="fw_400 fsz-3_2em lh-1em m_0">Busca</h2>
-                                                                    <h2 class="fsz-4_53 lh-1em m_0">Lo tuyo</h2>
+                                                                    <h2 class="fsz-4_53 lh-1em m_0"> ¿Qué buscas?</h2>
                                                                     <h5 class="fw_400 fsz_12px mt-13px tt_upper lspace-1px"><span class="grey">Seleccionar una categoria</span></h5> 
                                                                 </div>
                                                             </div>

@@ -12,7 +12,7 @@
                                     <div class="cta3_content-container">
                                         <div class="cta3-content">
                                             <div class="cta3-content-header">
-                                                <h2>Mantente Conectado!</h2>									
+                                                <h2>Se una Lolita!</h2>									
                                             </div>
                                             <p>Registrate hoy para recibir nuestras noticias y obtener un descuento en tu primera compra, además obtendras tips y ofertas esclusivas.</p>
                                         </div>

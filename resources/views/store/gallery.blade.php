@@ -18,6 +18,8 @@
     
     <body class="page-template-default page scheme_default body_style_wide expand_content remove_margins no_layout">
         <div class="body_wrap">
+            <div style="background-image:url(images/fondo.jpg);background-size: 100%;background-repeat-y: repeat;height:3000px;width:100%;opacity:0.5;position:absolute;">
+            </div>
             <div class="page_wrap">
                 <header class="top_panel top_panel_custom without_bg_image scheme_default">
                     <div class="column_row sc_layouts_row sc_layouts_row_type_narrow sc_layouts_row_delimiter scheme_dark">

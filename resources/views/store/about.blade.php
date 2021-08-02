@@ -11,6 +11,8 @@
 
     <body class="page-template-default page scheme_default body_style_wide expand_content no_layout">
         <div class="body_wrap">
+        <div style="background-image:url(images/fondo.jpg);background-size: 100%;background-repeat-y: repeat;height:3000px;width:100%;opacity:0.5;position:absolute;">
+            </div>
             <div class="page_wrap">
                 <header class="top_panel top_panel_custom  without_bg_image scheme_default">
                     <div class="column_row sc_layouts_row sc_layouts_row_type_narrow sc_layouts_row_delimiter scheme_dark">
@@ -137,6 +139,15 @@
                                             <div class="column_row"> 
                                                 <div class="column-inner">
                                                     <div class="columns_wrap">
+                                                        <div class="w_50per l_0" style="text-align:justify;margin:20px auto">
+                                                        El Escaparate de Lolita, es un espacio único, una galería de diseños latinoamericanos donde converge el talento de increíbles diseñadores tanto locales como internacionales dando como resultado trajes únicos, exclusivos, vibrantes y llenos de color. En El escaparate de Lolita, creemos fielmente que la belleza de la mujer no la define su talla, es por eso que cualquiera de nuestras piezas puede ser confeccionada a tu medida, en las telas y colores de tu preferencia
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column_row"> 
+                                                <div class="column-inner">
+                                                    <div class="columns_wrap">
                                                         <div class="column_container column-1_6 sc_layouts_column_icons_position_left">
                                                             <div class="column-inner">
                                                                 <div class="text_column"></div>
@@ -156,12 +167,9 @@
                                                                                     <div class="empty_space h-2_25em"><span class="empty_space_inner"></span></div>
                                                                                     <div class="text_column">
                                                                                         <h5>El Escaparate de Lolita</h5>
-                                                                                        <p><span class="white">Tienda en linea</span></p>
+                                                                                        <p><span class="white">#HECHOAMANOHECHOCONAMOR</span></p>
                                                                                     </div>
                                                                                     <div class="empty_space h-1_3em"><span class="empty_space_inner"></span></div>
-                                                                                    <figure>
-                                                                                        <div><img src="{{URL::asset('assets/store/images/promo-3.png')}}" alt="" /></div>
-                                                                                    </figure>
                                                                                     <div class="empty_space h-2_55em"><span class="empty_space_inner"></span></div>
                                                                                 </div>
                                                                             </div>
@@ -190,10 +198,9 @@
                                                         <div class="empty_space h-4_6em"><span class="empty_space_inner"></span></div>
                                                         <div class="text_column">
                                                             <div class="sc_title sc_title_default">
-                                                                <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Marcas</h2>
-                                                                <div class="sc_item_descr sc_title_descr sc_align_center">Un toque de cobertura nunca se ha sentido tan sexy</div>
+                                                                <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Firmas</h2>
+                                                                <div class="sc_item_descr sc_title_descr sc_align_center">Galería de diseños Latinoamericanos</div>
                                                             </div>
-                                                            <!-- /.sc_title -->
                                                         </div>
                                                         <div class="empty_space h-3_5em"><span class="empty_space_inner"></span></div>
                                                     </div>

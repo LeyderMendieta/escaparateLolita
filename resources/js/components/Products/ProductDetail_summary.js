@@ -76,7 +76,7 @@ const ProductDetail_Summary = ({ producto, handleBuyProduct, setValueModel, tall
                         <br/>
                         
                         <a  href="#trx_addons_calendar_popup" className={producto.entallaje == false ? "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white d-none" : "trx_addons_popup_link trx_addons_login_link btn btn-dark text-white"} >
-                        Hecho a la medida
+                        Solicitar Entalle
                         </a>
                     </div>
                 </div>

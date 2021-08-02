@@ -13,6 +13,8 @@
     </head>
     <body class="page-template-default page scheme_default blog_mode_page body_style_wide is_single sidebar_hide expand_content remove_margins  header_position_default menu_style_top no_layout">
         <div class="body_wrap">
+            <div style="background-image:url(images/fondo.jpg);background-size: 100%;background-repeat-y: repeat;height:3000px;width:100%;opacity:0.5;position:absolute;">
+            </div>
             <div class="page_wrap">
                 <header class="top_panel scheme_default">
                     <div class="column_row sc_layouts_row sc_layouts_row_type_narrow sc_layouts_row_delimiter scheme_dark">
@@ -193,7 +195,7 @@
                                                     <div class="empty_space h-3em"><span class="empty_space_inner"></span></div>
                                                     <div class="empty_space hide_on_mobile h-4_4em"><span class="empty_space_inner"></span></div>
                                                     <div class="sc_title sc_title_default">
-                                                        <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Encuentra tu estilo</h2>
+                                                        <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">New Arrivals!</h2>
                                                     </div>
                                                     <!-- /.sc_title -->
                                                     <div class="empty_space h-2_8em"><span class="empty_space_inner"></span></div>

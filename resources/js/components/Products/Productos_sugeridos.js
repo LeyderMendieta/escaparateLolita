@@ -47,7 +47,7 @@ class App_Productos_Sugeridos_Show extends Component {
                     </a>
                     <div className="star-rating" title="Rated 5 out of 5"><span className="w_100per"><strong className="rating">5</strong> out of 5</span>
                     </div> 
-                    <span className="woocs_price_code"><s className="amount text-muted"><span className="woocommerce-Price-currencySymbol">&#36;</span>{row.precio_antes}</s> / <span className="amount"><span className="woocommerce-Price-currencySymbol">&#36;</span>{row.precio_ahora}</span></span>
+                    <span className="woocs_price_code"><span className="amount"><span className="woocommerce-Price-currencySymbol">&#36;</span>{row.precio_ahora}</span></span>
                 </li>
             ))}
             </React.Fragment>
