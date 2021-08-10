@@ -26,6 +26,7 @@
                     <div class="column_row sc_layouts_row sc_layouts_row_type_narrow sc_layouts_row_delimiter scheme_dark">
                         <div class="column-equal-height column-content-middle column-flex">
                             <div class="container">
+                                
                                 <div class="sc_content_width_1_1">
                                     <div class="column_row">
                                         <div class="columns_wrap">
@@ -161,6 +162,35 @@
                 </div> 
                 <div class="page_content_wrap scheme_default">
                     <div class="content_wrap">
+                        <div class="column-inner">
+                            <div class="empty_space h-2_9em"><span class="empty_space_inner"></span></div>   
+                            <div class="widget_area sc_widget_slider">
+                                <aside class="widget widget_slider">
+                                    <div class="slider_wrap slider_engine_swiper">
+                                        <div class="slider_swiper_outer slider_style_default slider_outer_controls slider_outer_controls_side slider_outer_nopagination slider_outer_titles_center slider_outer_one">
+                                            <div class="slider_swiper swiper-slider-container slider_controls slider_controls_side slider_nopagination slider_titles_center slider_one slider_resize slider_height_fixed slider_type_bg" style="max-height:200px!important" 
+                                            data-ratio="16:9" 
+                                            data-interval="7000" 
+                                            data-effect="slide" 
+                                            data-pagination="bullets" 
+                                            data-slides-per-view="1" 
+                                            data-slides-space="0">
+
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide swiper-image-1" style="background:url(images/<?php echo $configuraciones["str_home_inferior_slider_1"];?>);background-size:100% 100%;" ></div>
+                                                    <div class="swiper-slide swiper-image-2" style="background:url(images/<?php echo $configuraciones["str_home_inferior_slider_2"];?>);background-size:100% 100%;" ></div>
+                                                    <div class="swiper-slide" style="background:url(images/<?php echo $configuraciones["str_home_inferior_slider_3"];?>);background-size:100% 100%;" ></div>
+                                                </div>
+                                                <div class="slider_controls_wrap">
+                                                    <a class="slider_prev swiper-button-prev" href="#"></a>
+                                                    <a class="slider_next swiper-button-next" href="#"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
                         <div class="content">
                             <article class="post_item_single post_type_page page type-page">
                                 <div class="post_content entry-content">
@@ -170,7 +200,6 @@
                                                 <div class="column_container column-1_1 sc_layouts_column_icons_position_left">   
                                                     <div class="column-inner">
                                                         <div class="empty_space hide_on_mobile h-2em"><span class="empty_space_inner"></span></div>
-                                                        <div class="empty_space h-2_3em"><span class="empty_space_inner"></span></div>
                                                         <div class="text_column">
                                                             <div class="widget_area sc_widget_video">
                                                                 <aside class="widget widget_video">
@@ -227,7 +256,6 @@
                                             <div class="column_row"> 
                                                 <div class="column_container column-1_1 sc_layouts_column_icons_position_left">   
                                                     <div class="column-inner">
-                                                        <div class="empty_space h-5em"><span class="empty_space_inner"></span></div>
                                                         <div class="sc_title sc_title_default">
                                                             <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Must Have</h2>
                                                             <div class="sc_item_descr sc_title_descr sc_align_center">Verte y sentirte única nunca había sido tan fácil</div>
@@ -363,14 +391,10 @@
                                 <!-- .entry-content -->
                             </article>
                         </div>
-                        <!-- </.content> -->
                     </div>
-                    <!-- </.content_wrap> -->
                 </div>
-                <!-- </.page_content_wrap> -->
                 
                 @include('store.layouts.footer1')
-                <!-- /.footer_wrap -->
             </div>
             <!-- /.page_wrap -->
         </div>

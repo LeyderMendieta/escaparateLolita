@@ -80908,7 +80908,10 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           nosotros_inferior_imagen: result.nosotros_inferior_imagen.valor_caracter,
           nosotros_inferior_urlvideo: result.nosotros_inferior_urlvideo.valor_caracter,
           home_agendacita_imagen: result.home_agendacita_imagen.valor_caracter,
-          home_inferior_buscalotuyo_imagen: result.home_inferior_buscalotuyo_imagen.valor_caracter
+          home_inferior_buscalotuyo_imagen: result.home_inferior_buscalotuyo_imagen.valor_caracter,
+          home_inferior_slider_1: result.home_inferior_slider_1.valor_caracter,
+          home_inferior_slider_2: result.home_inferior_slider_2.valor_caracter,
+          home_inferior_slider_3: result.home_inferior_slider_3.valor_caracter
         });
 
         _this2.setDefaultImagen('imagen_nueva_coleccion', result.imagen_nueva_coleccion.valor_caracter);
@@ -80916,6 +80919,12 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         _this2.setDefaultImagen('home_agendacita_imagen', result.home_agendacita_imagen.valor_caracter);
 
         _this2.setDefaultImagen('home_inferior_buscalotuyo_imagen', result.home_inferior_buscalotuyo_imagen.valor_caracter);
+
+        _this2.setDefaultImagen('home_inferior_slider_1', result.home_inferior_slider_1.valor_caracter);
+
+        _this2.setDefaultImagen('home_inferior_slider_2', result.home_inferior_slider_2.valor_caracter);
+
+        _this2.setDefaultImagen('home_inferior_slider_3', result.home_inferior_slider_3.valor_caracter);
 
         _this2.setDefaultImagen('nosotros_tienda_imagen', result.nosotros_tienda_imagen.valor_caracter);
 
@@ -80941,6 +80950,9 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
       var nosotros_inferior_imagen = $('#nosotros_inferior_imagen').prop('files');
       var home_agendacita_imagen = $('#home_agendacita_imagen').prop('files');
       var home_inferior_buscalotuyo_imagen = $('#home_inferior_buscalotuyo_imagen').prop('files');
+      var home_inferior_slider_1 = $('#home_inferior_slider_1').prop('files');
+      var home_inferior_slider_2 = $('#home_inferior_slider_2').prop('files');
+      var home_inferior_slider_3 = $('#home_inferior_slider_3').prop('files');
       var url_producto_2 = $('#url_producto_2').val();
       var url_producto_3 = $('#url_producto_3').val();
       var url_producto_4 = $('#url_producto_4').val();
@@ -80981,6 +80993,9 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         var load_nosotros_inferior_imagen = "noset";
         var load_home_agendacita_imagen = "noset";
         var load_home_inferior_buscalotuyo_imagen = "noset";
+        var load_home_inferior_slider_1 = "noset";
+        var load_home_inferior_slider_2 = "noset";
+        var load_home_inferior_slider_3 = "noset";
         var formData = new FormData();
         if (imagen_video.length > 0) formData.append('imagen_video', imagen_video[0]);
         if (imagen_2.length > 0) formData.append('imagen_2', imagen_2[0]);
@@ -80991,6 +81006,9 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         if (nosotros_inferior_imagen.length > 0) formData.append('nosotros_inferior_imagen', nosotros_inferior_imagen[0]);
         if (home_agendacita_imagen.length > 0) formData.append('home_agendacita_imagen', home_agendacita_imagen[0]);
         if (home_inferior_buscalotuyo_imagen.length > 0) formData.append('home_inferior_buscalotuyo_imagen', home_inferior_buscalotuyo_imagen[0]);
+        if (home_inferior_slider_1.length > 0) formData.append('home_inferior_slider_1', home_inferior_slider_1[0]);
+        if (home_inferior_slider_2.length > 0) formData.append('home_inferior_slider_2', home_inferior_slider_2[0]);
+        if (home_inferior_slider_3.length > 0) formData.append('home_inferior_slider_3', home_inferior_slider_3[0]);
         var config = {
           method: 'POST',
           headers: {
@@ -81010,6 +81028,9 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           if (result.files.nosotros_inferior_imagen != undefined) load_nosotros_inferior_imagen = result.files.nosotros_inferior_imagen;
           if (result.files.home_agendacita_imagen != undefined) load_home_agendacita_imagen = result.files.home_agendacita_imagen;
           if (result.files.home_inferior_buscalotuyo_imagen != undefined) load_home_inferior_buscalotuyo_imagen = result.files.home_inferior_buscalotuyo_imagen;
+          if (result.files.home_inferior_slider_1 != undefined) load_home_inferior_slider_1 = result.files.home_inferior_slider_1;
+          if (result.files.home_inferior_slider_2 != undefined) load_home_inferior_slider_2 = result.files.home_inferior_slider_2;
+          if (result.files.home_inferior_slider_3 != undefined) load_home_inferior_slider_3 = result.files.home_inferior_slider_3;
           var formDataUpdate = new FormData();
           formDataUpdate.append('url_embed_video', url_embed_video);
           formDataUpdate.append('imagen_video', load_imagen_video);
@@ -81020,7 +81041,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           formDataUpdate.append('url_producto_5', url_producto_4);
           formDataUpdate.append('url_nueva_collection', url_nueva_collection); //-------------Configuracions New Model
 
-          formDataUpdate.append("configurations", ["politica_entrega_completa", "politica_entrega", "politica_devoluciones", "imagen_nueva_coleccion", "destacados_encuentra_estilo_imagen", "nosotros_tienda_imagen", "nosotros_inferior_imagen", "home_agendacita_imagen", "home_inferior_buscalotuyo_imagen", "destacados_encuentra_estilo_titulo", "destacados_encuentra_estilo_descripcion", "destacados_encuentra_estilo_url", "nosotros_inferior_urlvideo"]);
+          formDataUpdate.append("configurations", ["politica_entrega_completa", "politica_entrega", "politica_devoluciones", "imagen_nueva_coleccion", "destacados_encuentra_estilo_imagen", "nosotros_tienda_imagen", "nosotros_inferior_imagen", "home_agendacita_imagen", "home_inferior_buscalotuyo_imagen", "destacados_encuentra_estilo_titulo", "destacados_encuentra_estilo_descripcion", "destacados_encuentra_estilo_url", "nosotros_inferior_urlvideo", "home_inferior_slider_1", "home_inferior_slider_2", "home_inferior_slider_3"]);
           formDataUpdate.append('politica_entrega_completa', _this3.state.politica_entrega_completa);
           formDataUpdate.append('politica_entrega', _this3.state.politica_entrega);
           formDataUpdate.append('politica_devoluciones', _this3.state.politica_devoluciones);
@@ -81030,6 +81051,9 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
           formDataUpdate.append('nosotros_inferior_imagen', load_nosotros_inferior_imagen);
           formDataUpdate.append('home_agendacita_imagen', load_home_agendacita_imagen);
           formDataUpdate.append('home_inferior_buscalotuyo_imagen', load_home_inferior_buscalotuyo_imagen);
+          formDataUpdate.append('home_inferior_slider_1', load_home_inferior_slider_1);
+          formDataUpdate.append('home_inferior_slider_2', load_home_inferior_slider_2);
+          formDataUpdate.append('home_inferior_slider_3', load_home_inferior_slider_3);
           formDataUpdate.append('destacados_encuentra_estilo_titulo', _this3.state.destacados_encuentra_estilo_titulo);
           formDataUpdate.append('destacados_encuentra_estilo_descripcion', _this3.state.destacados_encuentra_estilo_descripcion);
           formDataUpdate.append('destacados_encuentra_estilo_url', _this3.state.destacados_encuentra_estilo_url);
@@ -81063,6 +81087,96 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Home - Slider IMG 1 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 650X200"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "home_inferior_slider_1",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Home - Slider IMG 2 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 650X200"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "home_inferior_slider_2",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "card-title"
+      }, "Home - Slider IMG 3 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
+        className: "small ml-3"
+      }, "Tama\xF1o: 650X200"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "col-auto align-self-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "form-help",
+        "data-toggle": "popover",
+        "data-placement": "top",
+        "data-content": "<p>Se recomienda usar el tama\xF1o adecuado en las imagenes para una visibilidad nitida dentro del app</p>\r <p className='mb-0'><a href='https://www.iloveimg.com/resize-image'>URL para redimensionar imagenes</a></p>\r ",
+        "data-original-title": "",
+        title: ""
+      }, "?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "home_inferior_slider_3",
+        type: "file",
+        accept: "image/*",
+        className: "dropify"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-xl-6 col-lg-12 col-md-12"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-xl-6 col-lg-12 col-md-12"
@@ -85229,11 +85343,11 @@ var App_Admon_Productos_MustHave = /*#__PURE__*/function (_Component) {
       }).then(function (result) {
         _this2.setState({
           productosSugeridos: result,
-          opcion1: result[0],
-          opcion2: result[1],
-          opcion3: result[2],
-          opcion4: result[3],
-          opcion5: result[4]
+          opcion1: result[0] != undefined ? result[0] : 0,
+          opcion2: result[1] != undefined ? result[1] : 0,
+          opcion3: result[2] != undefined ? result[2] : 0,
+          opcion4: result[3] != undefined ? result[3] : 0,
+          opcion5: result[4] != undefined ? result[4] : 0
         });
       }, function (error) {
         _this2.setState({

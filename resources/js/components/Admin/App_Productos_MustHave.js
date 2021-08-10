@@ -31,11 +31,11 @@ class App_Admon_Productos_MustHave extends Component {
             (result) => {
                 this.setState({
                     productosSugeridos: result,
-                    opcion1: result[0],
-                    opcion2: result[1],
-                    opcion3: result[2],
-                    opcion4: result[3],
-                    opcion5: result[4],
+                    opcion1: (result[0] != undefined) ? result[0] : 0,
+                    opcion2: (result[1] != undefined) ? result[1] : 0,
+                    opcion3: (result[2] != undefined) ? result[2] : 0,
+                    opcion4: (result[3] != undefined) ? result[3] : 0,
+                    opcion5: (result[4] != undefined) ? result[4] : 0,
                 })
             },
             
