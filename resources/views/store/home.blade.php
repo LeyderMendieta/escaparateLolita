@@ -199,7 +199,7 @@
                                             <div class="column_row"> 
                                                 <div class="column_container column-1_1 sc_layouts_column_icons_position_left">   
                                                     <div class="column-inner">
-                                                        <div class="empty_space hide_on_mobile h-2em"><span class="empty_space_inner"></span></div>
+                                                        <div class="empty_space h-2em"><span class="empty_space_inner"></span></div>
                                                         <div class="text_column">
                                                             <div class="widget_area sc_widget_video">
                                                                 <aside class="widget widget_video">
