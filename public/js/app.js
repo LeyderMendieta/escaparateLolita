@@ -81098,7 +81098,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         className: "card-title"
       }, "Home - Slider IMG 1 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
         className: "small ml-3"
-      }, "Tama\xF1o: 650X200"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Tama\xF1o: 870X290"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-options"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "col-auto align-self-center"
@@ -81126,7 +81126,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         className: "card-title"
       }, "Home - Slider IMG 2 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
         className: "small ml-3"
-      }, "Tama\xF1o: 650X200"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Tama\xF1o: 870X290"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-options"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "col-auto align-self-center"
@@ -81156,7 +81156,7 @@ var App_Admon_Settings_Enviroment = /*#__PURE__*/function (_Component) {
         className: "card-title"
       }, "Home - Slider IMG 3 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", {
         className: "small ml-3"
-      }, "Tama\xF1o: 650X200"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Tama\xF1o: 870X290"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-options"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "col-auto align-self-center"
