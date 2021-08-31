@@ -172,7 +172,8 @@ class ProductController extends Controller
             ->where('acceso_url',$product)
             ->get();
             
-        $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
+        $tokenCart = (isset($_COOKIE["session_mycart"])) ? $_COOKIE["session_mycart"] : "nocart";
+        $mycart = cart::where("api_token",$tokenCart)->first();
         if(isset($mycart->id))
         {
             $id_user = $mycart->id_usuario;
