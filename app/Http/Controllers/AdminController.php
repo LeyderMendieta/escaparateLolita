@@ -53,13 +53,19 @@ class AdminController extends Controller
             if(isset($_COOKIE["USADM-OAUTH"]))
             {
                 $user = User::where(["api_token" => $_COOKIE["USADM-OAUTH"],"graphDomain" => "Administrador"])->first();
-                if($user) return view("admon.$id",["user_name" => $user->name]);
-                else return view('500');
+                if($user) 
+                {
+                    return view("admon.$id",["user_name" => $user->name]);
+                }
+                else 
+                {
+                    setcookie('USADM-OAUTH', '', time() - 3600, '/');
+                    return Redirect::to('admin/login/oauth');
+                }
             }
             else 
             {
-                return Redirect::to('admin/login/oauth');
-                
+                return Redirect::to('admin/login/oauth');                
             }
         }
         else
