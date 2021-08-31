@@ -230,7 +230,7 @@
                                                                         <div class="sc_action_item_mask"></div>
                                                                         <div class="sc_action_item_inner">
                                                                             <h3 class="sc_action_item_title"><span>Algo Sexy</span></h3>
-                                                                            <div class="sc_action_item_description"><span>Piezas únicas para una apariencia perfecta</span></div><a href="{{ $url_producto_2_home }}" class="sc_action_item_link">Buscar</a>
+                                                                            <div class="sc_action_item_description"><span>Piezas únicas para una apariencia perfecta</span></div><a href="/shop" class="sc_action_item_link" style="color:white">Ir a la Tienda</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
