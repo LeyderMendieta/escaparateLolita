@@ -182,10 +182,12 @@ class CartController extends Controller
         if(!isset($_COOKIE["session_mycart"])) $error = "No Cart found";
         if($request->product_id == null || $request->product_id == "") $error = "Producto Necessary";
 
-        if(isset($error)) return response()->json(array("error" => $error));
-        
-
         $mycart = cart::where("api_token",$_COOKIE["session_mycart"])->first();
+        if(!isset($mycart->id)) {
+            setcookie('session_mycart', '', time() - 3600, '/');
+            $error = "Carrito Inexistente";
+        }
+        if(isset($error)) return response()->json(array("error" => $error));
 
         $myproduct_added = cartProduct::create([
             "id_cart" => $mycart->id,
