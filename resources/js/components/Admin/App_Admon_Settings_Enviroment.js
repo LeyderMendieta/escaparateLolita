@@ -277,7 +277,7 @@ class App_Admon_Settings_Enviroment extends Component {
                                 <div className="card shadow">
                                     <div className="card-header">
                                         <div>
-                                            <h3 className="card-title">Home - Slider IMG 1 <u className='small ml-3'>Tamaño: 870X204</u></h3>
+                                            <h3 className="card-title">Home - Slider IMG 1 <u className='small ml-3'>Tamaño: 957X180</u></h3>
                                         </div>
                                         <div className="card-options">
                                             <span className="col-auto align-self-center">
@@ -296,7 +296,7 @@ class App_Admon_Settings_Enviroment extends Component {
                                 <div className="card shadow">
                                     <div className="card-header">
                                         <div>
-                                            <h3 className="card-title">Home - Slider IMG 2 <u className='small ml-3'>Tamaño: 870X204</u></h3>
+                                            <h3 className="card-title">Home - Slider IMG 2 <u className='small ml-3'>Tamaño: 957X180</u></h3>
                                         </div>
                                         <div className="card-options">
                                             <span className="col-auto align-self-center">
@@ -317,7 +317,7 @@ class App_Admon_Settings_Enviroment extends Component {
                                 <div className="card shadow">
                                     <div className="card-header">
                                         <div>
-                                            <h3 className="card-title">Home - Slider IMG 3 <u className='small ml-3'>Tamaño: 870X204</u></h3>
+                                            <h3 className="card-title">Home - Slider IMG 3 <u className='small ml-3'>Tamaño: 957X180</u></h3>
                                         </div>
                                         <div className="card-options">
                                             <span className="col-auto align-self-center">

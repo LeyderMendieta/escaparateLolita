@@ -168,7 +168,7 @@
                                 <aside class="widget widget_slider">
                                     <div class="slider_wrap slider_engine_swiper">
                                         <div class="slider_swiper_outer slider_style_default slider_outer_controls slider_outer_controls_side slider_outer_nopagination slider_outer_titles_center slider_outer_one">
-                                            <div class="slider_swiper swiper-slider-container slider_controls slider_controls_side slider_nopagination slider_titles_center slider_one slider_resize slider_height_fixed slider_type_bg" style="max-height:200px!important" 
+                                            <div id="banner_slider" class="slider_swiper swiper-slider-container slider_controls slider_controls_side slider_nopagination slider_titles_center slider_one slider_resize slider_height_fixed slider_type_bg" 
                                             data-ratio="16:9" 
                                             data-interval="7000" 
                                             data-effect="slide" 
@@ -415,7 +415,14 @@
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/revslider/public/assets/js/jquery.themepunch.revolution.min.js')}}"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/chosen/chosen.jquery.min.js')}}"></script>
         <script type='text/javascript' src="{{URL::asset('assets/store/js/vendor/woocommerce-currency-switcher/js/front.js')}}"></script>
-        
+        <script>
+        $(document).ready(function(){
+            $('#banner_slider').height(function(_,v){ return v/3; });        
+            $(window).resize(function(){
+                $('#banner_slider').height(function(_,v){ return v/3; });
+            });
+        });
+        </script>
         <a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>
     </body>
 </html>  
